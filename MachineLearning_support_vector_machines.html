@@ -1,0 +1,1507 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Support Vector Machines &#8212; Applied Machine Learning in Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'MachineLearning_support_vector_machines';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="e-Book Conclusions" href="conclusions.html" />
+    <link rel="prev" title="Gradient Boosting Trees" href="MachineLearning_gradient_boosting.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/AppliedMachineLearning.jpg" class="logo__image only-light" alt="Applied Machine Learning in Python - Home"/>
+    <script>document.write(`<img src="_static/AppliedMachineLearning.jpg" class="logo__image only-dark" alt="Applied Machine Learning in Python - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Applied Machine Learning in Python: a Hands-on Guide with Code
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_multivariate_analysis.html">Multivariate Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_transformations.html">Feature Transformations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_ranking.html">Feature Ranking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_clustering.html">Cluster Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_PCA.html">Principal Components Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_linear_regression.html">Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_ridge_regression.html">Ridge Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_LASSO_regression.html">LASSO Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_Bayesian_linear_regression.html">Bayesian Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_naive_Bayes.html">Naive Bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_polynomial_regression.html">Polynomial Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_knearest_neighbours.html">k-Nearest Neighbours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_decision_tree.html">Decision Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_ensemble_trees.html">Bagging Tree and Random Forest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_gradient_boosting.html">Gradient Boosting</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/GeostatsPyDemos_Book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/GeostatsPyDemos_Book/issues/new?title=Issue%20on%20page%20%2FMachineLearning_support_vector_machines.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/MachineLearning_support_vector_machines.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Support Vector Machines</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivations-for-support-vector-machines">Motivations for Support Vector Machines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the working directory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data">Loading Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standardize-predictor-features">Standardize Predictor Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train-and-test-split">Train and Test Split</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-dataframe">Visualize the DataFrame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-statistics-for-tabular-data">Summary Statistics for Tabular Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-train-and-test-splits">Visualize the Train and Test Splits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-predictor-feature-space">Visualize the Predictor Feature Space</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-machine-model-with-linear-kernel">Support Vector Machine Model with Linear Kernel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-machine-model-with-polynomial-kernel">Support Vector Machine Model with Polynomial Kernel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-machine-model-with-radial-basis-function-kernel">Support Vector Machine Model with Radial Basis Function Kernel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-machines-without-standardizing-the-predictor-features">Support Vector Machines without Standardizing the Predictor Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hyperparameter-tuning">Hyperparameter Tuning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-high-mid-and-low-performing-models">Visualizing High, Mid and Low Performing Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | Applied Geostats in Python e-book | LinkedIn</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="support-vector-machines">
+<h1>Support Vector Machines<a class="headerlink" href="#support-vector-machines" title="Permalink to this heading">#</a></h1>
+<p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
+<p>Cite as: Pyrcz, M.J., 2024, Applied Machine Learning in Python: a Hands-on Guide with Code, <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book">https://geostatsguy.github.io/MachineLearningDemos_Book</a>.</p>
+<p>By Michael J. Pyrcz <br />
+© Copyright 2024.</p>
+<p>This chapter is a tutorial for / demonstration of <strong>Support Vector Machines</strong>.</p>
+<p><strong>YouTube Lecture</strong>: check out my lectures on:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://youtu.be/zOUM_AnI1DQ?si=wzWdJ35qJ9n8O6Bl">Introduction to Machine Learning</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/z19Hs2HfO88?si=U2eAMJcMXRMwHG0C">Polynomial Regression</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/UpN6TLMJiGg?si=-aevKAWNqk_sXxYO">Support Vector Machines</a></p></li>
+</ul>
+<p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
+<section id="motivations-for-support-vector-machines">
+<h2>Motivations for Support Vector Machines<a class="headerlink" href="#motivations-for-support-vector-machines" title="Permalink to this heading">#</a></h2>
+<p>Support vector machines are a predictive machine learning method for supervised learning for classification and regression analysis. It is important to know about support vector machines,</p>
+<ul class="simple">
+<li><p>good classification method when there is poor separation of groups</p></li>
+<li><p>projects the original predictor features to higher dimensional space and then applies a linear (plane/hyperplane) classification boundary</p></li>
+</ul>
+<p>Here are some key aspects of support vector machines,</p>
+<p><strong>Prediction</strong></p>
+<ul class="simple">
+<li><p>estimate a function <span class="math notranslate nohighlight">\(\hat{f}\)</span> such that we predict a response feature <span class="math notranslate nohighlight">\(Y\)</span> from a set of predictor features <span class="math notranslate nohighlight">\(X_1,\ldots,X_m\)</span>.</p></li>
+<li><p>the prediction is of the form <span class="math notranslate nohighlight">\(\hat{Y} = \hat{f}(X_1,\ldots,X_m)\)</span></p></li>
+</ul>
+<p><strong>Supervised learning</strong></p>
+<ul class="simple">
+<li><p>the response feature label, <span class="math notranslate nohighlight">\(Y\)</span>, is available over the training and testing data</p></li>
+</ul>
+<p><strong>Unsupervised learning</strong></p>
+<ul class="simple">
+<li><p>is available with <strong>support vector clustering</strong></p></li>
+</ul>
+<p><strong>Binary separator</strong></p>
+<ul class="simple">
+<li><p>given the data within a mD feature space, <span class="math notranslate nohighlight">\(X_1,\ldots,X_m\)</span>, find that boundary maximizes the gap between the two categories</p></li>
+<li><p>new cases are classified based on where they fall relative to this boundary</p></li>
+</ul>
+<p><strong>Linear and Non-linear</strong></p>
+<ul class="simple">
+<li><p><strong>maximum margin classifier</strong>, assignment of a m-1 dimensional hyperplane that maximizes the gap (margin) between the two categories</p></li>
+<li><p><strong>mapped to a higher dimensional space</strong> based on a kernel function, e.g. polygonal and Gaussian radial basis function shown below</p></li>
+</ul>
+</section>
+<section id="load-the-required-libraries">
+<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
+<p>We will also need some standard packages. These should have been installed with Anaconda 3.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline                                         
+<span class="n">suppress_warnings</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="kn">import</span> <span class="nn">os</span>                                                     <span class="c1"># to set current working directory </span>
+<span class="kn">import</span> <span class="nn">math</span>                                                   <span class="c1"># square root operator</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                                            <span class="c1"># arrays and matrix math</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">st</span>                                      <span class="c1"># statistical methods</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                                           <span class="c1"># DataFrames</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>                               <span class="c1"># for plotting</span>
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="p">(</span><span class="n">MultipleLocator</span><span class="p">,</span><span class="n">AutoMinorLocator</span><span class="p">,</span><span class="n">FuncFormatter</span><span class="p">,</span><span class="n">NullLocator</span><span class="p">)</span> <span class="c1"># control of axes ticks</span>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">ListedColormap</span>                  <span class="c1"># custom color maps</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>                                         <span class="c1"># for matrix scatter plots</span>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>                                   <span class="c1"># support vector machine methods</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>                                   <span class="c1"># measures to check our models</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>                  <span class="c1"># for summarizing model performance</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>              <span class="c1"># standardize the features</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="p">(</span><span class="n">cross_val_score</span><span class="p">,</span><span class="n">train_test_split</span><span class="p">,</span><span class="n">GridSearchCV</span><span class="p">,</span><span class="n">StratifiedShuffleSplit</span><span class="p">)</span> <span class="c1"># model tuning</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="p">(</span><span class="n">Pipeline</span><span class="p">,</span><span class="n">make_pipeline</span><span class="p">)</span>         <span class="c1"># machine learning modeling pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>                                   <span class="c1"># measures to check our models</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>           <span class="c1"># multi-processor K-fold crossvalidation</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>          <span class="c1"># train and test split</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>                     <span class="c1"># custom displays</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">inferno</span>                                         <span class="c1"># default color bar, no bias</span>
+<span class="n">binary_cmap</span> <span class="o">=</span> <span class="n">ListedColormap</span><span class="p">([</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="s1">&#39;gold&#39;</span><span class="p">])</span>                <span class="c1"># custom binary categorical colormap</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">axisbelow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                                <span class="c1"># grid behind plotting elements</span>
+<span class="k">if</span> <span class="n">suppress_warnings</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>  
+    <span class="kn">import</span> <span class="nn">warnings</span>                                           <span class="c1"># suppress any warnings for this demonstration</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span> 
+<span class="n">seed</span> <span class="o">=</span> <span class="mi">13</span>                                                     <span class="c1"># random number seed for workflow repeatability</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you get a package import error, you may have to first install some of these packages. This can usually be accomplished by opening up a command window on Windows and then typing ‘python -m pip install [package-name]’. More assistance is available with the respective package docs.</p>
+</section>
+<section id="declare-functions">
+<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
+<p>Let’s define a couple of functions to streamline plotting correlation matrices and visualization of a decision tree regression model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">comma_format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1">&#39;</span>
+
+<span class="k">def</span> <span class="nf">add_grid</span><span class="p">():</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">)</span> <span class="c1"># add y grids</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span><span class="n">length</span><span class="o">=</span><span class="mi">7</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">AutoMinorLocator</span><span class="p">());</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">AutoMinorLocator</span><span class="p">())</span> <span class="c1"># turn on minor ticks  </span>
+
+<span class="k">def</span> <span class="nf">plot_CDF</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">color</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">):</span>
+    <span class="n">cumprob</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)))</span><span class="o">/</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">data</span><span class="p">),</span><span class="n">cumprob</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="n">color</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="n">lw</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="n">ls</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">data</span><span class="p">),</span><span class="n">cumprob</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="n">color</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="n">lw</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="n">ls</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">visualize_SVM</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="n">xfeature</span><span class="p">,</span><span class="n">x_min</span><span class="p">,</span><span class="n">x_max</span><span class="p">,</span><span class="n">yfeature</span><span class="p">,</span><span class="n">y_min</span><span class="p">,</span><span class="n">y_max</span><span class="p">,</span><span class="n">response</span><span class="p">,</span><span class="n">z_min</span><span class="p">,</span><span class="n">z_max</span><span class="p">,</span><span class="n">xlabel</span><span class="p">,</span><span class="n">ylabel</span><span class="p">,</span><span class="n">title</span><span class="p">,</span><span class="n">cat</span><span class="p">,</span><span class="n">label</span><span class="p">,</span><span class="n">cmap</span><span class="p">,</span><span class="n">plot_support</span><span class="p">):</span> 
+    <span class="n">xplot_step</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_max</span> <span class="o">-</span> <span class="n">x_min</span><span class="p">)</span><span class="o">/</span><span class="mf">300.0</span><span class="p">;</span> <span class="n">yplot_step</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_max</span> <span class="o">-</span> <span class="n">y_min</span><span class="p">)</span><span class="o">/</span><span class="mf">300.0</span> <span class="c1"># resolution of the model visualization</span>
+    <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="n">xplot_step</span><span class="p">),</span> <span class="c1"># set up the mesh</span>
+                     <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">,</span> <span class="n">yplot_step</span><span class="p">))</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">xx</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span>          <span class="c1"># predict with our trained model over the mesh</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">cs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span><span class="n">Z</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="n">z_min</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="n">z_max</span><span class="p">,</span><span class="n">levels</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span> <span class="c1"># plot the predictions</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cat</span><span class="p">)):</span>
+        <span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xfeature</span><span class="p">[</span><span class="n">response</span><span class="o">==</span><span class="n">cat</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span><span class="n">yfeature</span><span class="p">[</span><span class="n">response</span><span class="o">==</span><span class="n">cat</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span><span class="n">s</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="n">response</span><span class="p">[</span><span class="n">response</span><span class="o">==</span><span class="n">cat</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span> 
+                    <span class="n">marker</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="n">z_min</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="n">z_max</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">linewidths</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">c</span> <span class="o">=</span> <span class="n">cat</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="n">z_min</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="n">z_max</span><span class="p">)</span> <span class="c1"># custom legend</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">c</span> <span class="o">=</span> <span class="n">cat</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="n">z_min</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="n">z_max</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="o">-</span><span class="mi">999</span><span class="p">,</span><span class="o">-</span><span class="mi">999</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;white&#39;</span><span class="p">,</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span><span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Train&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">plot_support</span><span class="p">:</span>                                          <span class="c1"># modified from Jake VanderPlas&#39;s Python Data Science Handbook </span>
+        <span class="n">sv</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">support_vectors_</span>                           <span class="c1"># retrieve the support vectors</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">sv</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span><span class="n">sv</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span><span class="n">s</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.6</span><span class="p">,</span><span class="n">facecolors</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Support Vector&#39;</span><span class="p">);</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>                    
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">xlabel</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">ylabel</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="n">x_min</span><span class="p">,</span><span class="n">x_max</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="n">y_min</span><span class="p">,</span><span class="n">y_max</span><span class="p">]);</span> <span class="n">add_grid</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">display_sidebyside</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>                                <span class="c1"># display DataFrames side-by-side (ChatGPT 4.0 generated Spet, 2024)</span>
+    <span class="n">html_str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+        <span class="n">html_str</span> <span class="o">+=</span> <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">to_html</span><span class="p">()</span>                       <span class="c1"># Using .head() for the first few rows</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;&lt;div style=&quot;display: flex;&quot;&gt;</span><span class="si">{</span><span class="n">html_str</span><span class="si">}</span><span class="s1">&lt;/div&gt;&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="set-the-working-directory">
+<h2>Set the working directory<a class="headerlink" href="#set-the-working-directory" title="Permalink to this heading">#</a></h2>
+<p>I always like to do this so I don’t lose files and to simplify subsequent read and writes (avoid including the full address each time).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#os.chdir(&quot;c:/PGE383&quot;)                                        # set the working directory</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="loading-data">
+<h2>Loading Data<a class="headerlink" href="#loading-data" title="Permalink to this heading">#</a></h2>
+<p>Let’s load the provided multivariate, spatial dataset ‘12_sample_data.csv’.  It is a comma delimited file with:</p>
+<ul class="simple">
+<li><p>X and Y coordinates (<span class="math notranslate nohighlight">\(m\)</span>)</p></li>
+<li><p>facies 0 and 1</p></li>
+<li><p>porosity (fraction)</p></li>
+<li><p>permeability (<span class="math notranslate nohighlight">\(mD\)</span>)</p></li>
+<li><p>acoustic impedance (<span class="math notranslate nohighlight">\(\frac{kg}{m^3} \cdot \frac{m}{s} \cdot 10^3\)</span>).</p></li>
+</ul>
+<p>We load it with the pandas ‘read_csv’ function into a data frame we called ‘df’ and then preview it to make sure it loaded correctly.</p>
+<p><strong>Python Tip: using functions from a package</strong> just type the label for the package that we declared at the beginning:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+<p>so we can access the pandas function ‘read_csv’ with the command:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>but read csv has required input parameters. The essential one is the name of the file. For our circumstance all the other default parameters are fine. If you want to see all the possible parameters for this function, just go to the docs <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html">here</a>.</p>
+<ul class="simple">
+<li><p>The docs are always helpful</p></li>
+<li><p>There is often a lot of flexibility for Python functions, possible through using various inputs parameters</p></li>
+</ul>
+<p>also, the program has an output, a pandas DataFrame loaded from the data.  So we have to specficy the name / variable representing that new object.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;12_sample_data.csv&quot;</span><span class="p">)</span>  
+</pre></div>
+</div>
+</section>
+<section id="standardize-predictor-features">
+<h2>Standardize Predictor Features<a class="headerlink" href="#standardize-predictor-features" title="Permalink to this heading">#</a></h2>
+<p>The support vector machines minimize the error, the distance of training data from the margin. Therefore, this method is sensitivity to the relative ranges of the predictor features.</p>
+<ul class="simple">
+<li><p>if one predictor feature has a much larger range then it will dominate the model, the model will only separate on that feature! The result is a model orthogonal to that one feature, i.e., splitting only on that feature.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/12_sample_data.csv&quot;</span><span class="p">)</span>
+
+<span class="n">yname</span> <span class="o">=</span> <span class="s1">&#39;Facies&#39;</span><span class="p">;</span> <span class="n">Xname</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="s1">&#39;AI&#39;</span><span class="p">]</span>                   <span class="c1"># specify the predictor features (x2) and response feature (x1)</span>
+<span class="n">Xmin</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1500.0</span><span class="p">];</span> <span class="n">Xmax</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">6500.0</span><span class="p">]</span>                      <span class="c1"># set minimums and maximums for visualization </span>
+<span class="n">ymin</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">ymax</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">Xlabel</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="s1">&#39;Acoustic Impedance&#39;</span><span class="p">];</span> <span class="n">ylabel</span> <span class="o">=</span> <span class="s1">&#39;Facies&#39;</span> <span class="c1"># specify the feature labels for plotting</span>
+<span class="n">Xunit</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Fraction&#39;</span><span class="p">,</span><span class="sa">r</span><span class="s1">&#39;$\frac</span><span class="si">{kg}</span><span class="s1">{m^3} \cdot \frac</span><span class="si">{m}{s}</span><span class="s1"> \cdot 10^3$&#39;</span><span class="p">];</span> <span class="n">yunit</span> <span class="o">=</span> <span class="s1">&#39;MCFPD&#39;</span>
+<span class="n">Xlabelunit</span> <span class="o">=</span> <span class="p">[</span><span class="n">Xlabel</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; (&#39;</span> <span class="o">+</span> <span class="n">Xunit</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span><span class="p">,</span><span class="n">Xlabel</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; (&#39;</span> <span class="o">+</span> <span class="n">Xunit</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span><span class="p">]</span>
+<span class="n">ylabelunit</span> <span class="o">=</span> <span class="n">ylabel</span> <span class="o">+</span> <span class="s1">&#39; (&#39;</span> <span class="o">+</span> <span class="n">yunit</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">yname</span><span class="p">])</span>                                   <span class="c1"># extract selected features as X and y DataFrames</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">Xname</span><span class="p">]</span>
+
+<span class="n">ysname</span> <span class="o">=</span> <span class="s1">&#39;s&#39;</span> <span class="o">+</span> <span class="n">yname</span><span class="p">;</span> <span class="n">Xsname</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;s&#39;</span> <span class="o">+</span> <span class="n">element</span> <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">Xname</span><span class="p">]</span> <span class="c1"># standardized predictor names</span>
+<span class="n">Xsmin</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">3.0</span><span class="p">,</span><span class="o">-</span><span class="mf">3.0</span><span class="p">];</span> <span class="n">Xsmax</span> <span class="o">=</span> <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">3.0</span><span class="p">]</span>                        <span class="c1"># set minimums and maximums for standardized features</span>
+<span class="n">Xslabel</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Standardized &#39;</span> <span class="o">+</span> <span class="n">element</span> <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">Xlabel</span><span class="p">]</span>   <span class="c1"># standardized predictor names</span>
+<span class="n">Xsunit</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;S[&#39;</span> <span class="o">+</span> <span class="n">element</span> <span class="o">+</span> <span class="s1">&#39;]&#39;</span> <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">Xunit</span><span class="p">]</span>          <span class="c1"># standardized predictor names</span>
+<span class="n">Xslabelunit</span> <span class="o">=</span> <span class="p">[</span><span class="n">Xslabel</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; (&#39;</span> <span class="o">+</span> <span class="n">Xsunit</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span><span class="p">,</span><span class="n">Xslabel</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; (&#39;</span> <span class="o">+</span> <span class="n">Xsunit</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span><span class="p">]</span>
+
+<span class="n">transform</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">();</span>                                 <span class="c1"># instantiate feature standardization method</span>
+<span class="n">Xs</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>                               <span class="c1"># standardize the data features to mean = 0, var = 1.0</span>
+<span class="n">X</span><span class="p">[</span><span class="n">Xsname</span><span class="p">]</span> <span class="o">=</span> <span class="n">Xs</span>                                                <span class="c1"># add standardized features to the predictor feature DataFrame</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="train-and-test-split">
+<h2>Train and Test Split<a class="headerlink" href="#train-and-test-split" title="Permalink to this heading">#</a></h2>
+<p>For convenience and simplicity we use scikit-learn’s random train and test split.</p>
+<ul class="simple">
+<li><p>we use the same random_state parameter so the train and test splits on original and standardized features are the same.</p></li>
+<li><p>I could have just backtransformed the standardize latter (spoiler alert, I’m going to show the impact of not standardizing on the model).</p></li>
+<li><p>typically we don’t have to back transform the predictor features, for our prediction workflows it is a one way trip for the predictor features.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">73073</span><span class="p">)</span> <span class="c1"># train and test split</span>
+<span class="n">df_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>                <span class="c1"># make one train and test DataFrame with both X and y</span>
+<span class="n">df_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>                   
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualize-the-dataframe">
+<h2>Visualize the DataFrame<a class="headerlink" href="#visualize-the-dataframe" title="Permalink to this heading">#</a></h2>
+<p>Visualizing the train and test DataFrame is useful check before we build our models.</p>
+<ul class="simple">
+<li><p>many things can go wrong, e.g., we loaded the wrong data, all the features did not load, etc.</p></li>
+</ul>
+<p>We can preview by utilizing the ‘head’ DataFrame member function (with a nice and clean format, see below).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;       Training DataFrame          Testing DataFrame&#39;</span><span class="p">)</span>
+<span class="n">display_sidebyside</span><span class="p">(</span><span class="n">df_train</span><span class="p">,</span><span class="n">df_test</span><span class="p">)</span>                          <span class="c1"># custom function for side-by-side DataFrame display</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       Training DataFrame          Testing DataFrame
+</pre></div>
+</div>
+<div class="output text_html"><div style="display: flex;"><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Porosity</th>
+      <th>AI</th>
+      <th>sPorosity</th>
+      <th>sAI</th>
+      <th>Facies</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>340</th>
+      <td>0.204313</td>
+      <td>4373.187870</td>
+      <td>0.469659</td>
+      <td>0.788406</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>159</th>
+      <td>0.167316</td>
+      <td>3088.482947</td>
+      <td>-0.698603</td>
+      <td>-0.860390</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>315</th>
+      <td>0.219801</td>
+      <td>2983.326185</td>
+      <td>0.958720</td>
+      <td>-0.995349</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>365</th>
+      <td>0.216819</td>
+      <td>2543.772663</td>
+      <td>0.864542</td>
+      <td>-1.559474</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>385</th>
+      <td>0.191565</td>
+      <td>3670.457907</td>
+      <td>0.067120</td>
+      <td>-0.113481</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Porosity</th>
+      <th>AI</th>
+      <th>sPorosity</th>
+      <th>sAI</th>
+      <th>Facies</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>72</th>
+      <td>0.139637</td>
+      <td>4747.274043</td>
+      <td>-1.572630</td>
+      <td>1.268510</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>153</th>
+      <td>0.170732</td>
+      <td>4535.625583</td>
+      <td>-0.590742</td>
+      <td>0.996879</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>258</th>
+      <td>0.244345</td>
+      <td>2696.102930</td>
+      <td>1.733755</td>
+      <td>-1.363972</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>0.167125</td>
+      <td>5500.997419</td>
+      <td>-0.704644</td>
+      <td>2.235841</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>303</th>
+      <td>0.216253</td>
+      <td>3959.934912</td>
+      <td>0.846677</td>
+      <td>0.258035</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table></div></div></div>
+</div>
+</section>
+<section id="summary-statistics-for-tabular-data">
+<h2>Summary Statistics for Tabular Data<a class="headerlink" href="#summary-statistics-for-tabular-data" title="Permalink to this heading">#</a></h2>
+<p>There are a lot of efficient methods to calculate summary statistics from tabular data in DataFrames.</p>
+<ul class="simple">
+<li><p>The describe command provides count, mean, minimum, maximum in a nice data table.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;            Training DataFrame                      Testing DataFrame&#39;</span><span class="p">)</span> <span class="c1"># custom function for side-by-side summary statistics</span>
+<span class="n">display_sidebyside</span><span class="p">(</span><span class="n">df_train</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">]],</span><span class="n">df_test</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            Training DataFrame                      Testing DataFrame
+</pre></div>
+</div>
+<div class="output text_html"><div style="display: flex;"><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Porosity</th>
+      <th>AI</th>
+      <th>sPorosity</th>
+      <th>sAI</th>
+      <th>Facies</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>360.000000</td>
+      <td>360.000000</td>
+      <td>360.000000</td>
+      <td>360.000000</td>
+      <td>360.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>0.189150</td>
+      <td>3767.451286</td>
+      <td>-0.009167</td>
+      <td>0.011001</td>
+      <td>0.602778</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>0.031636</td>
+      <td>786.394126</td>
+      <td>0.998983</td>
+      <td>1.009262</td>
+      <td>0.490004</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.117562</td>
+      <td>1746.387548</td>
+      <td>-2.269691</td>
+      <td>-2.582841</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>0.261091</td>
+      <td>5957.162150</td>
+      <td>2.262519</td>
+      <td>2.821285</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Porosity</th>
+      <th>AI</th>
+      <th>sPorosity</th>
+      <th>sAI</th>
+      <th>Facies</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>120.000000</td>
+      <td>120.000000</td>
+      <td>120.000000</td>
+      <td>120.000000</td>
+      <td>120.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>0.190311</td>
+      <td>3733.164755</td>
+      <td>0.027500</td>
+      <td>-0.033003</td>
+      <td>0.658333</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>0.032014</td>
+      <td>763.117871</td>
+      <td>1.010903</td>
+      <td>0.979389</td>
+      <td>0.476257</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.131230</td>
+      <td>1961.600397</td>
+      <td>-1.838105</td>
+      <td>-2.306636</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>0.256172</td>
+      <td>6194.573653</td>
+      <td>2.107198</td>
+      <td>3.125980</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table></div></div></div>
+</div>
+<p>It is good that we checked the summary statistics.</p>
+<ul class="simple">
+<li><p>there are no obvious issues</p></li>
+<li><p>check out the range of values for each feature to set up and adjust plotting limits. See above.</p></li>
+</ul>
+</section>
+<section id="visualize-the-train-and-test-splits">
+<h2>Visualize the Train and Test Splits<a class="headerlink" href="#visualize-the-train-and-test-splits" title="Permalink to this heading">#</a></h2>
+<p>Let’s check the consistency and coverage of training and testing with histograms and scatter plots.</p>
+<ul class="simple">
+<li><p>check to make sure the training and testing cover the range of possible feature combinations</p></li>
+<li><p>ensure we are not extrapolating beyond the training data with the testing cases</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nbins</span> <span class="o">=</span> <span class="mi">20</span>                                                    <span class="c1"># number of histogram bins</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">231</span><span class="p">)</span>                                              <span class="c1"># predictor feature #1 histogram</span>
+<span class="n">freq1</span><span class="p">,</span><span class="n">_</span><span class="p">,</span><span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X_train</span><span class="p">[</span><span class="n">Xname</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">Xmin</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">Xmax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">nbins</span><span class="p">),</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.6</span><span class="p">,</span>
+                     <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Train&#39;</span><span class="p">)</span>
+<span class="n">freq2</span><span class="p">,</span><span class="n">_</span><span class="p">,</span><span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X_test</span><span class="p">[</span><span class="n">Xname</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">Xmin</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">Xmax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">nbins</span><span class="p">),</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.6</span><span class="p">,</span>
+                     <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Test&#39;</span><span class="p">)</span>
+<span class="n">max_freq</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">freq1</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">*</span><span class="mf">1.10</span><span class="p">,</span><span class="n">freq2</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">*</span><span class="mf">1.10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">Xlabelunit</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span><span class="n">max_freq</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">Xlabel</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="n">add_grid</span><span class="p">()</span>  
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="n">Xmin</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">Xmax</span><span class="p">[</span><span class="mi">0</span><span class="p">]]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>   
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">232</span><span class="p">)</span>                                              <span class="c1"># predictor feature #2 histogram</span>
+<span class="n">freq1</span><span class="p">,</span><span class="n">_</span><span class="p">,</span><span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X_train</span><span class="p">[</span><span class="n">Xname</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">Xmin</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">Xmax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">nbins</span><span class="p">),</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.6</span><span class="p">,</span>
+                     <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Train&#39;</span><span class="p">)</span>
+<span class="n">freq2</span><span class="p">,</span><span class="n">_</span><span class="p">,</span><span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X_test</span><span class="p">[</span><span class="n">Xname</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">Xmin</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">Xmax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">nbins</span><span class="p">),</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.6</span><span class="p">,</span>
+                     <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Test&#39;</span><span class="p">)</span>
+<span class="n">max_freq</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">freq1</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">*</span><span class="mf">1.10</span><span class="p">,</span><span class="n">freq2</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">*</span><span class="mf">1.10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">Xlabelunit</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span><span class="n">max_freq</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">Xlabel</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span> <span class="n">add_grid</span><span class="p">()</span>  
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="n">comma_format</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="n">Xmin</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">Xmax</span><span class="p">[</span><span class="mi">1</span><span class="p">]]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>   
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">233</span><span class="p">)</span>                                              <span class="c1"># predictor features #1 and #2 scatter plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">Xname</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">X_train</span><span class="p">[</span><span class="n">Xname</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="n">s</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span><span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Train&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="n">Xname</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">X_test</span><span class="p">[</span><span class="n">Xname</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="n">s</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span><span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Test&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">Xlabel</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; vs &#39;</span> <span class="o">+</span>  <span class="n">Xlabel</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">Xlabelunit</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">Xlabelunit</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="n">Xmin</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">Xmax</span><span class="p">[</span><span class="mi">0</span><span class="p">]]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="n">Xmin</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">Xmax</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="n">comma_format</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">234</span><span class="p">)</span>                                              <span class="c1"># predictor feature #1 histogram</span>
+<span class="n">freq1</span><span class="p">,</span><span class="n">_</span><span class="p">,</span><span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X_train</span><span class="p">[</span><span class="n">Xsname</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">Xsmin</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">Xsmax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">nbins</span><span class="p">),</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.6</span><span class="p">,</span>
+                     <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Train&#39;</span><span class="p">)</span>
+<span class="n">freq2</span><span class="p">,</span><span class="n">_</span><span class="p">,</span><span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X_test</span><span class="p">[</span><span class="n">Xsname</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">Xsmin</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">Xsmax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">nbins</span><span class="p">),</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.6</span><span class="p">,</span>
+                     <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Test&#39;</span><span class="p">)</span>
+<span class="n">max_freq</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">freq1</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">*</span><span class="mf">1.10</span><span class="p">,</span><span class="n">freq2</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">*</span><span class="mf">1.10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">Xslabelunit</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span><span class="n">max_freq</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">Xslabel</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="n">add_grid</span><span class="p">()</span>  
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="n">Xsmin</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">Xsmax</span><span class="p">[</span><span class="mi">0</span><span class="p">]]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>   
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">235</span><span class="p">)</span>                                              <span class="c1"># predictor feature #2 histogram</span>
+<span class="n">freq1</span><span class="p">,</span><span class="n">_</span><span class="p">,</span><span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X_train</span><span class="p">[</span><span class="n">Xsname</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">Xsmin</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">Xsmax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">nbins</span><span class="p">),</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.6</span><span class="p">,</span>
+                     <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Train&#39;</span><span class="p">)</span>
+<span class="n">freq2</span><span class="p">,</span><span class="n">_</span><span class="p">,</span><span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X_test</span><span class="p">[</span><span class="n">Xsname</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">Xsmin</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">Xsmax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">nbins</span><span class="p">),</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.6</span><span class="p">,</span>
+                     <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Test&#39;</span><span class="p">)</span>
+<span class="n">max_freq</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">freq1</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">*</span><span class="mf">1.10</span><span class="p">,</span><span class="n">freq2</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">*</span><span class="mf">1.10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">Xslabelunit</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span><span class="n">max_freq</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">Xslabel</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span> <span class="n">add_grid</span><span class="p">()</span>  
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="n">Xsmin</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">Xsmax</span><span class="p">[</span><span class="mi">1</span><span class="p">]]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>   
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">236</span><span class="p">)</span>                                              <span class="c1"># predictor features #1 and #2 scatter plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">Xsname</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">X_train</span><span class="p">[</span><span class="n">Xsname</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="n">s</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span><span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Train&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="n">Xsname</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">X_test</span><span class="p">[</span><span class="n">Xsname</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="n">s</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span><span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Test&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">Xslabel</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; vs &#39;</span> <span class="o">+</span>  <span class="n">Xslabel</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">Xslabelunit</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">Xslabelunit</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="n">Xsmin</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">Xsmax</span><span class="p">[</span><span class="mi">0</span><span class="p">]]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="n">Xsmin</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">Xsmax</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.6</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="c1">#plt.savefig(&#39;Test.pdf&#39;, dpi=600, bbox_inches = &#39;tight&#39;,format=&#39;pdf&#39;)   </span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c96849d9ac15251e0c63378a9f425aa0f734d87c0a250b8ce44f189349db09c5.png" src="_images/c96849d9ac15251e0c63378a9f425aa0f734d87c0a250b8ce44f189349db09c5.png" />
+</div>
+</div>
+<p>Sometimes I find it more convenient to compare distributions by looking at CDF’s instead of histograms.</p>
+<ul class="simple">
+<li><p>we avoid the arbitrary choice of histogram bin size, because CDF’s are at the data resolution.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>                                              <span class="c1"># predictor feature #1 CDF</span>
+<span class="n">plot_CDF</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">Xsname</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Train&#39;</span><span class="p">)</span>
+<span class="n">plot_CDF</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="n">Xsname</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Test&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">Xslabelunit</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">Xsmin</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">Xsmax</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]);</span> <span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">Xslabel</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; Train and Test CDFs&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">)</span>                                              <span class="c1"># predictor feature #2 CDF</span>
+<span class="n">plot_CDF</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">Xsname</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Train&#39;</span><span class="p">)</span>
+<span class="n">plot_CDF</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="n">Xsname</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Test&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">Xslabelunit</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">Xsmin</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">Xsmax</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]);</span> <span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">Xslabel</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; Train and Test CDFs&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span>                                              <span class="c1"># categorical response feature grouped histogram</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="o">-</span><span class="mf">0.125</span><span class="p">],</span><span class="nb">len</span><span class="p">(</span><span class="n">y_train</span><span class="p">[</span><span class="n">yname</span><span class="p">][</span><span class="n">y_train</span><span class="p">[</span><span class="n">yname</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">]),</span><span class="n">width</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;darkorange&#39;</span><span class="p">],</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Train&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="mf">0.125</span><span class="p">],</span><span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">[</span><span class="n">yname</span><span class="p">][</span><span class="n">y_test</span><span class="p">[</span><span class="n">yname</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">]),</span><span class="n">width</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">],</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Test&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="mf">0.875</span><span class="p">],</span><span class="nb">len</span><span class="p">(</span><span class="n">y_train</span><span class="p">[</span><span class="n">yname</span><span class="p">][</span><span class="n">y_train</span><span class="p">[</span><span class="n">yname</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">]),</span><span class="n">width</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;darkorange&#39;</span><span class="p">],</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="mf">1.125</span><span class="p">],</span><span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">[</span><span class="n">yname</span><span class="p">][</span><span class="n">y_test</span><span class="p">[</span><span class="n">yname</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">]),</span><span class="n">width</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">],</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">x_ticks</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">];</span> <span class="n">x_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Shale&#39;</span><span class="p">,</span> <span class="s1">&#39;Sand&#39;</span><span class="p">];</span> <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">x_ticks</span><span class="p">,</span><span class="n">x_labels</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span><span class="mf">250.0</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">1.5</span><span class="p">]);</span> <span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">();</span> <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">NullLocator</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">ylabel</span> <span class="o">+</span> <span class="s1">&#39; Train and Test Categorical Response Frequencies&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Facies&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="c1">#plt.savefig(&#39;Test.pdf&#39;, dpi=600, bbox_inches = &#39;tight&#39;,format=&#39;pdf&#39;)   </span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7f4199220c2686c54fc8e8ceea1351ff88ab7bba2333e7441c6d268c034adbed.png" src="_images/7f4199220c2686c54fc8e8ceea1351ff88ab7bba2333e7441c6d268c034adbed.png" />
+</div>
+</div>
+<p>This looks good,</p>
+<ul class="simple">
+<li><p>the distributions are well behaved, we cannot observe obvious gaps, outliers nor truncations</p></li>
+<li><p>the test and train cases have similar coverage</p></li>
+<li><p>the relative frequencies of the categorical response are similar over train and test datasets, i.e., a good train and test balance.</p></li>
+</ul>
+</section>
+<section id="visualize-the-predictor-feature-space">
+<h2>Visualize the Predictor Feature Space<a class="headerlink" href="#visualize-the-predictor-feature-space" title="Permalink to this heading">#</a></h2>
+<p>Let’s build a simplified plot to visualize the 2D predictor feature space with the train and test data.</p>
+<ul class="simple">
+<li><p>we ask the question, will we be able to model the classification boundary? Is there a lot of data overlap? Is the boundary simple (i.e., linear) or more complicated?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>                                              <span class="c1"># plot train and test data in predictor feature space</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">Xsname</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">y_train</span><span class="p">[</span><span class="n">yname</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">],</span><span class="n">X_train</span><span class="p">[</span><span class="n">Xsname</span><span class="p">[</span><span class="mi">1</span><span class="p">]][</span><span class="n">y_train</span><span class="p">[</span><span class="n">yname</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">],</span><span class="n">s</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span>
+            <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;gold&#39;</span><span class="p">,</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span><span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Sand&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">Xsname</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">y_train</span><span class="p">[</span><span class="n">yname</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">],</span><span class="n">X_train</span><span class="p">[</span><span class="n">Xsname</span><span class="p">[</span><span class="mi">1</span><span class="p">]][</span><span class="n">y_train</span><span class="p">[</span><span class="n">yname</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">],</span><span class="n">s</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span>
+            <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;darkgrey&#39;</span><span class="p">,</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span><span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Shale&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="n">Xsname</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">y_test</span><span class="p">[</span><span class="n">yname</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">],</span><span class="n">X_test</span><span class="p">[</span><span class="n">Xsname</span><span class="p">[</span><span class="mi">1</span><span class="p">]][</span><span class="n">y_test</span><span class="p">[</span><span class="n">yname</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">],</span><span class="n">s</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span>
+            <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;gold&#39;</span><span class="p">,</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span><span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="n">Xsname</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">y_test</span><span class="p">[</span><span class="n">yname</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">],</span><span class="n">X_test</span><span class="p">[</span><span class="n">Xsname</span><span class="p">[</span><span class="mi">1</span><span class="p">]][</span><span class="n">y_test</span><span class="p">[</span><span class="n">yname</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">],</span><span class="n">s</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span>
+            <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;darkgrey&#39;</span><span class="p">,</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span><span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="o">-</span><span class="mi">999</span><span class="p">],[</span><span class="o">-</span><span class="mi">999</span><span class="p">],</span><span class="n">s</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;white&#39;</span><span class="p">,</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span><span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Train&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="o">-</span><span class="mi">999</span><span class="p">],[</span><span class="o">-</span><span class="mi">999</span><span class="p">],</span><span class="n">s</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;white&#39;</span><span class="p">,</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span><span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Test&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Training and Testing &#39;</span> <span class="o">+</span> <span class="n">ylabel</span> <span class="o">+</span> <span class="s1">&#39; vs. &#39;</span> <span class="o">+</span> <span class="n">Xslabel</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; and &#39;</span> <span class="o">+</span> <span class="n">Xlabel</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">Xslabelunit</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">Xslabelunit</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span> <span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="n">Xsmin</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">Xsmax</span><span class="p">[</span><span class="mi">0</span><span class="p">]]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="n">Xsmin</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">Xsmax</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="n">comma_format</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b3c308d6eca35509ace9645fe2c47910d318c23c40b049222f1c1f89bfeeea5b.png" src="_images/b3c308d6eca35509ace9645fe2c47910d318c23c40b049222f1c1f89bfeeea5b.png" />
+</div>
+</div>
+<p>This will be a difficult classification,</p>
+<ul class="simple">
+<li><p>there is certainly a lot of overlap</p></li>
+<li><p>the boundary may be nonlinear.</p></li>
+</ul>
+<p>But, there is good news,</p>
+<ul class="simple">
+<li><p>the train and test coverage looks good in general, note there are a few testing cases that will test model extrapolation.</p></li>
+<li><p>support vector machines are designed to work with this overlap!</p></li>
+</ul>
+</section>
+<section id="support-vector-machine-model-with-linear-kernel">
+<h2>Support Vector Machine Model with Linear Kernel<a class="headerlink" href="#support-vector-machine-model-with-linear-kernel" title="Permalink to this heading">#</a></h2>
+<p>Let’s start simple, train and visualize linear support vector machine models over our feature space.</p>
+<ul class="simple">
+<li><p>This will provide a linear spatial classification model for facies 0 and 1 as a function of AI and porosity.</p></li>
+</ul>
+<p>We use the scikit-learn function <span class="math notranslate nohighlight">\(SVC\)</span> substantiate the support vector machine:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">svm_linear</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The parameters include:</p>
+<ul class="simple">
+<li><p><strong>kernel</strong> the kernel type that is applied to project the data to a potentially higher dimensional space</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(C\)</span></strong> penalty for misclassification</p></li>
+<li><p><strong>random_state</strong> random number see for random shuffling data for probability estimates</p></li>
+</ul>
+<p>We then use the command,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">svm_linear</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>to train the model with the training dataset.</p>
+<p>The inputs to the fit function include:</p>
+<ul class="simple">
+<li><p><strong>X</strong> - the <span class="math notranslate nohighlight">\(n \times m\)</span> array with the predictor features for the training dataset</p></li>
+<li><p><strong>y</strong> - the <span class="math notranslate nohighlight">\(n \times 1\)</span> array with the response feature for the training dataset</p></li>
+</ul>
+<p>Let’s try out 2 different <span class="math notranslate nohighlight">\(C\)</span> penalty hyperparameters to visualize the impact of the penalty for misclassification.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">C1_list</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span><span class="mi">100</span><span class="p">]</span>                                          <span class="c1"># set hyperparameters</span>
+<span class="n">SVM1_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">C</span> <span class="ow">in</span> <span class="n">C1_list</span><span class="p">:</span>                                             <span class="c1"># train the models</span>
+    <span class="n">SVM1_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span> <span class="o">=</span> <span class="s1">&#39;linear&#39;</span><span class="p">,</span><span class="n">C</span> <span class="o">=</span> <span class="n">C</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="n">seed</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">Xsname</span><span class="p">],</span><span class="n">y_train</span><span class="p">))</span> <span class="c1"># instantiate and train</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Looks like it ran ok!  Let’s visualize the results using the convenient visualization functions that we previously defined.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">iC</span><span class="p">,</span> <span class="n">C</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">C1_list</span><span class="p">):</span>                              <span class="c1"># visualize the training data and model</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">iC</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">visualize_SVM</span><span class="p">(</span><span class="n">SVM1_list</span><span class="p">[</span><span class="n">iC</span><span class="p">],</span><span class="n">X_train</span><span class="p">[</span><span class="n">Xsname</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">Xsmin</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">Xsmax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">X_train</span><span class="p">[</span><span class="n">Xsname</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="n">Xsmin</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">Xsmax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">y_train</span><span class="p">[</span><span class="n">yname</span><span class="p">],</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span>
+                <span class="n">Xslabelunit</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">Xslabelunit</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="sa">r</span><span class="s1">&#39;Training Data and Linear Support Vector Machine, $C$ = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">C</span><span class="p">),[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="s1">&#39;Shale&#39;</span><span class="p">,</span><span class="s1">&#39;Sand&#39;</span><span class="p">],</span>
+                <span class="n">binary_cmap</span><span class="p">,</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7a3450ba38b16a468856d999af0b07f9019eae01e0f2cbfa71d905b24d662fd0.png" src="_images/7a3450ba38b16a468856d999af0b07f9019eae01e0f2cbfa71d905b24d662fd0.png" />
+</div>
+</div>
+<p>The above plot shows the linear kernel support vector machine classification model, the training dataset and the resulting support vectors with bold circles.</p>
+<ul class="simple">
+<li><p>Linear kernel only provide a straight decision boundary.</p></li>
+<li><p>It is hard to tune the model to fit more complicated situation.</p></li>
+</ul>
+<p>Note that with higher C, weighting of the sum of errors, we get a smaller margin. The linear model is fit with fewer support vectors (training data in the margin. Let’s summarize the end members of this hyperparameter with respect to simple and complicated models, potential under and overfit and the model bias and variance trade-off.</p>
+<ul class="simple">
+<li><p><strong>simple model \ underfit model</strong> - when C is smaller, the classifier is more tolerant with misclassified data points (higher model bias, lower model variance).</p></li>
+<li><p><strong>complex model \ overfit model</strong> - when C is larger, the classifier is more sensitive to misclassified data points (lower model bias, higher model variance).</p></li>
+</ul>
+<p>In other words, <span class="math notranslate nohighlight">\(C\)</span> is a regularization term, just like the shrinkage term for ridge regression. Let’s try some more flexible classifiers with a different kernel so we can better see this.</p>
+</section>
+<section id="support-vector-machine-model-with-polynomial-kernel">
+<h2>Support Vector Machine Model with Polynomial Kernel<a class="headerlink" href="#support-vector-machine-model-with-polynomial-kernel" title="Permalink to this heading">#</a></h2>
+<p>The polynomial kernel is defined as</p>
+<p>\begin{equation}
+K(x,x’) = (x^Tx)^d,
+\end{equation}</p>
+<p>where <span class="math notranslate nohighlight">\(d\)</span> is the degree of polynomials.</p>
+<p>The hyperparameter <span class="math notranslate nohighlight">\(degree\)</span> is the order of the polynomial kernel function.</p>
+<p>As previously mentioned, let’s try out different <span class="math notranslate nohighlight">\(C\)</span>, penalty for error, with a single polynomial order observe the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">C2_list</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">]</span>                                     <span class="c1"># set hyperparameters</span>
+<span class="n">order</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">C2_list</span><span class="p">)),</span><span class="mi">3</span><span class="p">)</span>       
+<span class="n">SVM2_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">iC</span><span class="p">,</span> <span class="n">C</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">C2_list</span><span class="p">):</span>                              <span class="c1"># train the model and visualize the training data and model</span>
+    <span class="n">SVM2_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span> <span class="o">=</span> <span class="s1">&#39;poly&#39;</span><span class="p">,</span><span class="n">degree</span><span class="o">=</span><span class="n">order</span><span class="p">[</span><span class="n">iC</span><span class="p">],</span><span class="n">C</span> <span class="o">=</span> <span class="n">C</span><span class="p">,</span><span class="n">random_state</span> <span class="o">=</span> <span class="n">seed</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">Xsname</span><span class="p">],</span><span class="n">y_train</span><span class="p">))</span> <span class="c1"># instantiate and train</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">iC</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">visualize_SVM</span><span class="p">(</span><span class="n">SVM2_list</span><span class="p">[</span><span class="n">iC</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">X_train</span><span class="p">[</span><span class="n">Xsname</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">Xsmin</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">Xsmax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">X_train</span><span class="p">[</span><span class="n">Xsname</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="n">Xsmin</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">Xsmax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">y_train</span><span class="p">[</span><span class="n">yname</span><span class="p">],</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span>
+                <span class="n">Xslabelunit</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">Xslabelunit</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="s1">&#39;Polynomial Support Vector Machine, Order = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">order</span><span class="p">[</span><span class="n">iC</span><span class="p">])</span> <span class="o">+</span> <span class="sa">r</span><span class="s1">&#39;, $C$ = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">C</span><span class="p">),</span>
+                <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="s1">&#39;Shale&#39;</span><span class="p">,</span><span class="s1">&#39;Sand&#39;</span><span class="p">],</span><span class="n">binary_cmap</span><span class="p">,</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.6</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.6</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7992c4df34b7b4f7cfa7ca1ede017f6fa32a75293f181e29b51f4d6aa2eede96.png" src="_images/7992c4df34b7b4f7cfa7ca1ede017f6fa32a75293f181e29b51f4d6aa2eede96.png" />
+</div>
+</div>
+<p>As we increase the <span class="math notranslate nohighlight">\(C\)</span> hyperparameter, the margin shrinks, the number of support vectors reduces and the model complexity increases.</p>
+</section>
+<section id="support-vector-machine-model-with-radial-basis-function-kernel">
+<h2>Support Vector Machine Model with Radial Basis Function Kernel<a class="headerlink" href="#support-vector-machine-model-with-radial-basis-function-kernel" title="Permalink to this heading">#</a></h2>
+<p>Radial Basis Function (RBF) is another commonly used kernel in SVC:</p>
+<p>\begin{equation}
+K(x,x’) = e^{- \gamma ||x-x’||^2},
+\end{equation}</p>
+<p>where <span class="math notranslate nohighlight">\(||x-x'||^2\)</span> is the squared Euclidean distance between two data points x and x’.</p>
+<p>Gaussian kernel is a special case of RBF, where:</p>
+<p>\begin{equation}
+K(x,x’) = e^{- \frac {||x-x’||^2} {2 \sigma^2}}.
+\end{equation}</p>
+<p>By changing the value of <span class="math notranslate nohighlight">\(\gamma\)</span> and C, the classifier with an RBF kernel can be tuned.</p>
+<p><span class="math notranslate nohighlight">\(\gamma\)</span> can be thought of as the spread of the kernel.</p>
+<ul class="simple">
+<li><p>when <span class="math notranslate nohighlight">\(\gamma\)</span> is low, the curvature of the decision boundary is low, leading to a broad decision region (low variance, high bias), low complexity</p></li>
+<li><p>The <span class="math notranslate nohighlight">\(\gamma\)</span> parameter can be interpreted as the inverse of the radius of influence of samples selected by the model as support vectors, i.e., low gamma integrates more data for a smoother model</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">C3_list</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1e-1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1e2</span><span class="p">]</span>                                      <span class="c1"># set hyperparameters</span>
+<span class="n">gamma1_list</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1e-1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1e1</span><span class="p">]</span>
+
+<span class="n">index</span><span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">C</span> <span class="ow">in</span> <span class="n">C3_list</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">gamma</span> <span class="ow">in</span> <span class="n">gamma1_list</span><span class="p">:</span>                                 <span class="c1"># train the models, visualize the training data and models</span>
+        <span class="n">svc</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;rbf&#39;</span><span class="p">,</span><span class="n">gamma</span><span class="o">=</span><span class="n">gamma</span><span class="p">,</span><span class="n">C</span><span class="o">=</span><span class="n">C</span><span class="p">,</span><span class="n">random_state</span> <span class="o">=</span> <span class="n">seed</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">Xsname</span><span class="p">],</span><span class="n">y_train</span><span class="p">)</span> <span class="c1"># instantiate and train</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">index</span><span class="p">)</span>
+        <span class="n">visualize_SVM</span><span class="p">(</span><span class="n">svc</span><span class="p">,</span><span class="n">X_train</span><span class="p">[</span><span class="n">Xsname</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">Xsmin</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">Xsmax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">X_train</span><span class="p">[</span><span class="n">Xsname</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="n">Xsmin</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">Xsmax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">y_train</span><span class="p">[</span><span class="n">yname</span><span class="p">],</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span>
+                <span class="n">Xslabelunit</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">Xslabelunit</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="sa">r</span><span class="s1">&#39;RBF Support Vector Machine, $\gamma$ = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">gamma</span><span class="p">)</span> <span class="o">+</span> <span class="sa">r</span><span class="s1">&#39;, $C$ = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">C</span><span class="p">),</span>
+                <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="s1">&#39;Shale&#39;</span><span class="p">,</span><span class="s1">&#39;Sand&#39;</span><span class="p">],</span><span class="n">binary_cmap</span><span class="p">,</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">2.4</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">2.4</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/0532d57fe5f284746a23de34e3ab0449ea3ce9aa6fbf1aec6669dc58bad54542.png" src="_images/0532d57fe5f284746a23de34e3ab0449ea3ce9aa6fbf1aec6669dc58bad54542.png" />
+</div>
+</div>
+<p>The impact of regularization with the C hyperparameter is very clear in this case,</p>
+<ul class="simple">
+<li><p>higher C, smaller margin, fewer support vectors, tends to overfit</p></li>
+<li><p>lower C, larger margin, more support vectors, tends to underfit</p></li>
+</ul>
+<p>The impact of gamma is also very clear in this case,</p>
+<ul class="simple">
+<li><p>higher gamma results in more complicated, high curvature decision boundaries</p></li>
+<li><p>lower gamma results in more simple, low curvature, smooth decision boundaries</p></li>
+</ul>
+<p>Although two facies seem to be classified properly in some cases above, there is a risk of overfitting, specifically for the high gamma and high C example.</p>
+</section>
+<section id="support-vector-machines-without-standardizing-the-predictor-features">
+<h2>Support Vector Machines without Standardizing the Predictor Features<a class="headerlink" href="#support-vector-machines-without-standardizing-the-predictor-features" title="Permalink to this heading">#</a></h2>
+<p>As promised, let’s try a model without standardizing the predictor features.</p>
+<ul class="simple">
+<li><p>this will be illustrative as the original predictor features have very different ranges!</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="n">C</span> <span class="o">=</span> <span class="mf">0.01</span>                                           <span class="c1"># set the hyperparameters</span>
+<span class="n">svc_test1</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;poly&#39;</span><span class="p">,</span><span class="n">degree</span><span class="o">=</span><span class="n">order</span><span class="p">,</span><span class="n">C</span><span class="o">=</span><span class="n">C</span><span class="p">,</span><span class="n">random_state</span> <span class="o">=</span> <span class="n">seed</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">Xname</span><span class="p">],</span><span class="n">y_train</span><span class="p">)</span> <span class="c1"># fit with original features, not standardized</span>
+<span class="n">gamma</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span> <span class="n">C</span> <span class="o">=</span> <span class="mf">1.0</span>                                          <span class="c1"># set the hyperparameters</span>
+<span class="n">svc_test2</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;rbf&#39;</span><span class="p">,</span><span class="n">gamma</span><span class="o">=</span><span class="n">gamma</span><span class="p">,</span><span class="n">C</span><span class="o">=</span><span class="n">C</span><span class="p">,</span><span class="n">random_state</span> <span class="o">=</span> <span class="n">seed</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">Xname</span><span class="p">],</span><span class="n">y_train</span><span class="p">)</span> <span class="c1"># fit with original features, not standardized</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>                                              <span class="c1"># visualize the training data and models</span>
+<span class="n">visualize_SVM</span><span class="p">(</span><span class="n">svc_test1</span><span class="p">,</span><span class="n">X_train</span><span class="p">[</span><span class="n">Xname</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">Xmin</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">Xmax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">X_train</span><span class="p">[</span><span class="n">Xname</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="n">Xmin</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">Xmax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">y_train</span><span class="p">[</span><span class="n">yname</span><span class="p">],</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span>
+                <span class="n">Xlabelunit</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">Xlabelunit</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="s1">&#39;Polynomial Support Vector Machine, Order = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">order</span><span class="p">)</span> <span class="o">+</span> <span class="sa">r</span><span class="s1">&#39;, $C$ = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">C</span><span class="p">),</span>
+                <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="s1">&#39;Shale&#39;</span><span class="p">,</span><span class="s1">&#39;Sand&#39;</span><span class="p">],</span><span class="n">binary_cmap</span><span class="p">,</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="n">comma_format</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">visualize_SVM</span><span class="p">(</span><span class="n">svc_test2</span><span class="p">,</span><span class="n">X_train</span><span class="p">[</span><span class="n">Xname</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">Xmin</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">Xmax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">X_train</span><span class="p">[</span><span class="n">Xname</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="n">Xmin</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">Xmax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">y_train</span><span class="p">[</span><span class="n">yname</span><span class="p">],</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span>
+                <span class="n">Xlabelunit</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">Xlabelunit</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="sa">r</span><span class="s1">&#39;RBF Support Vector Machine, $\gamma$ = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">gamma</span><span class="p">)</span> <span class="o">+</span> <span class="sa">r</span><span class="s1">&#39;, $C$ = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">C</span><span class="p">),</span>
+                <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="s1">&#39;Shale&#39;</span><span class="p">,</span><span class="s1">&#39;Sand&#39;</span><span class="p">],</span><span class="n">binary_cmap</span><span class="p">,</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="n">comma_format</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.6</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a589bfc5dba99189a88ad23fe0dab08f3a47c28130651d5dcce353ff023346ef.png" src="_images/a589bfc5dba99189a88ad23fe0dab08f3a47c28130651d5dcce353ff023346ef.png" />
+</div>
+</div>
+<p>What happened?</p>
+<ul class="simple">
+<li><p>The support vector machine with the polynomial kernel splits on the feature with the largest range, acoustic impedance. The differences in the feature with the very small range, porosity here, do not significantly influence to the model.</p></li>
+<li><p>The radial basis function support vector machine has thin shale and sand layers over the acoustic impedance.</p></li>
+</ul>
+<p>We must standardize our predictor features to apply support vector machines.</p>
+</section>
+<section id="hyperparameter-tuning">
+<h2>Hyperparameter Tuning<a class="headerlink" href="#hyperparameter-tuning" title="Permalink to this heading">#</a></h2>
+<p>Let’s use the brute force grid search with stratified shuffle splits to iterate over multiple hyperparameters and find the optimum model complexity.</p>
+<ul class="simple">
+<li><p><strong>Grid Search Cross Validation</strong> - models are constructed for the full combinatorial of hyperparameters</p></li>
+<li><p><strong>Stratified Shuffle Splits</strong> - ensures that the balance of categorical cases is preserved in the splits and randomizes the split to ensure the model does use the same data in the same order each time</p></li>
+<li><p>warning this will take about 2 minutes to run on a regular PC</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">C_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>                              <span class="c1"># set hyperparameter cases</span>
+<span class="n">gamma_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">param_grid</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="n">gamma_range</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">C_range</span><span class="p">)</span>               <span class="c1"># store hyperparameter cases in a dictionary</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="n">StratifiedShuffleSplit</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span> <span class="c1"># instantiate the cross validation method</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">SVC</span><span class="p">(),</span> <span class="n">param_grid</span><span class="o">=</span><span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span><span class="n">n_jobs</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">Xsname</span><span class="p">],</span><span class="n">y</span><span class="p">)</span> <span class="c1"># brute force, full combinatorial search with cross validation </span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">[</span><span class="s1">&#39;mean_test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">C_range</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">gamma_range</span><span class="p">))</span> <span class="c1"># retrieve average accuracy and shape as a 2D array for plot</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can visualize the cross validation accuracy for all of the hyperparameter combinations.</p>
+<ul class="simple">
+<li><p>note, the output is average accuracy over all of the stratified shuffle splits, where accuracy is,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+Accuracy = \frac{n_{\text{correctly classified}}}{n}
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>                                              <span class="c1"># plot results of hyperparameter tuning                               </span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\gamma$ Hyperparameter&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$C$ Hyperparameter&#39;</span><span class="p">)</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">orientation</span> <span class="o">=</span> <span class="s1">&#39;vertical&#39;</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Average Classification Accuracy Over Splits&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">gamma_range</span><span class="p">)),</span> <span class="n">gamma_range</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">C_range</span><span class="p">)),</span> <span class="n">C_range</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;SVC Hyperparameter Tuning, Cross Validation Accuracy&#39;</span><span class="p">);</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7f1921fbc6d5ab78bc41dbdd5dc3ca160a3aec7c66aa4dfe8f128b62698c5211.png" src="_images/7f1921fbc6d5ab78bc41dbdd5dc3ca160a3aec7c66aa4dfe8f128b62698c5211.png" />
+</div>
+</div>
+<p>We can observe a region around <span class="math notranslate nohighlight">\(C\)</span> of 100 and <span class="math notranslate nohighlight">\(\gamma\)</span> of 0.1 with the best model cross validation accuracy.</p>
+</section>
+<section id="visualizing-high-mid-and-low-performing-models">
+<h2>Visualizing High, Mid and Low Performing Models<a class="headerlink" href="#visualizing-high-mid-and-low-performing-models" title="Permalink to this heading">#</a></h2>
+<p>Now we show examples of high, mid and low performing model based on validation accuracy from the demonstration above.</p>
+<ul class="simple">
+<li><p>we will use parameter combinations, <span class="math notranslate nohighlight">\(C\)</span> and <span class="math notranslate nohighlight">\(\gamma\)</span>, from the plot above to select and rerun the cases.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cases</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Poor&#39;</span><span class="p">,</span><span class="s1">&#39;OK&#39;</span><span class="p">,</span><span class="s1">&#39;Good&#39;</span><span class="p">]</span>                                  <span class="c1"># selected hyperparameter cases for visualization</span>
+<span class="n">C_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mf">1e6</span><span class="p">]</span>
+<span class="n">gamma_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mf">0.01</span><span class="p">]</span>
+<span class="n">model_cases</span> <span class="o">=</span> <span class="p">[]</span>
+ 
+<span class="k">for</span> <span class="n">icase</span><span class="p">,</span> <span class="n">case</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cases</span><span class="p">):</span>                          <span class="c1"># visualize the training data and model</span>
+    <span class="n">model_cases</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;rbf&#39;</span><span class="p">,</span><span class="n">C</span><span class="o">=</span><span class="n">C_list</span><span class="p">[</span><span class="n">icase</span><span class="p">],</span><span class="n">gamma</span><span class="o">=</span><span class="n">gamma_list</span><span class="p">[</span><span class="n">icase</span><span class="p">])</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">Xsname</span><span class="p">],</span><span class="n">y</span><span class="p">))</span> <span class="c1"># train on all the data</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">icase</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>                                  <span class="c1"># visualize model cases and all data</span>
+    <span class="n">visualize_SVM</span><span class="p">(</span><span class="n">model_cases</span><span class="p">[</span><span class="n">icase</span><span class="p">],</span><span class="n">X_train</span><span class="p">[</span><span class="n">Xsname</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">Xsmin</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">Xsmax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">X_train</span><span class="p">[</span><span class="n">Xsname</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="n">Xsmin</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">Xsmax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">y_train</span><span class="p">[</span><span class="n">yname</span><span class="p">],</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">Xslabelunit</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">Xslabelunit</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="sa">r</span><span class="s1">&#39;RBF Support Vector Machine, &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">cases</span><span class="p">[</span><span class="n">icase</span><span class="p">])</span> <span class="o">+</span> <span class="s1">&#39; Model&#39;</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="s1">&#39;Shale&#39;</span><span class="p">,</span><span class="s1">&#39;Sand&#39;</span><span class="p">],</span><span class="n">binary_cmap</span><span class="p">,</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="n">comma_format</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.6</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/9036851654484112397b05d09eada4a687f7fb8d0f78ea5dd365bec9a13afae3.png" src="_images/9036851654484112397b05d09eada4a687f7fb8d0f78ea5dd365bec9a13afae3.png" />
+</div>
+</div>
+<p>By selecting low, mid and high accuracy hyperparameter cases from our hyperparameter tuning cross validation accuracy we obtain a good illustration example of overfit to well-fit models.</p>
+</section>
+<section id="comments">
+<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
+<p>I hope you found this tutorial useful. I’m always happy to discuss geostatistics, statistical modeling, uncertainty modeling and machine learning,</p>
+<p><em>Michael</em></p>
+</section>
+<section id="the-author">
+<h2>The Author:<a class="headerlink" href="#the-author" title="Permalink to this heading">#</a></h2>
+<p>Michael Pyrcz, Professor, The University of Texas at Austin
+<em>Novel Data Analytics, Geostatistics and Machine Learning Subsurface Solutions</em></p>
+<p>With over 17 years of experience in subsurface consulting, research and development, Michael has returned to academia driven by his passion for teaching and enthusiasm for enhancing engineers’ and geoscientists’ impact in subsurface resource development.</p>
+<p>For more about Michael check out these links:</p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a> | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+</section>
+<section id="want-to-work-together">
+<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<ul class="simple">
+<li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
+</ul>
+<p>I’m always happy to discuss,</p>
+<p><em>Michael</em></p>
+<p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
+</section>
+<section id="more-resources-available-at-twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin">
+<h2>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="MachineLearning_gradient_boosting.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Gradient Boosting Trees</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="conclusions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">e-Book Conclusions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivations-for-support-vector-machines">Motivations for Support Vector Machines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the working directory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data">Loading Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standardize-predictor-features">Standardize Predictor Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train-and-test-split">Train and Test Split</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-dataframe">Visualize the DataFrame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-statistics-for-tabular-data">Summary Statistics for Tabular Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-train-and-test-splits">Visualize the Train and Test Splits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-predictor-feature-space">Visualize the Predictor Feature Space</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-machine-model-with-linear-kernel">Support Vector Machine Model with Linear Kernel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-machine-model-with-polynomial-kernel">Support Vector Machine Model with Polynomial Kernel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-machine-model-with-radial-basis-function-kernel">Support Vector Machine Model with Radial Basis Function Kernel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-machines-without-standardizing-the-predictor-features">Support Vector Machines without Standardizing the Predictor Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hyperparameter-tuning">Hyperparameter Tuning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-high-mid-and-low-performing-models">Visualizing High, Mid and Low Performing Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | Applied Geostats in Python e-book | LinkedIn</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Michael J. Pyrcz
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
