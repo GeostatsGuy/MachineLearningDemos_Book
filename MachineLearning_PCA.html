@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Linear Regression" href="MachineLearning_linear_regression.html" />
-    <link rel="prev" title="k-means Clustering" href="MachineLearning_clustering.html" />
+    <link rel="prev" title="Density-based Clustering" href="MachineLearning_density-based_clustering.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -176,32 +176,19 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_transformations.html">Feature Transformations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_ranking.html">Feature Ranking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_clustering.html">Cluster Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_density-based_clustering.html">Density-based Clustering</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Principal Components Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_linear_regression.html">Linear Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ridge_regression.html">Ridge Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_LASSO_regression.html">LASSO Regression</a></li>
-
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_Bayesian_linear_regression.html">Bayesian Linear Regression</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_naive_Bayes.html">Naive Bayes Classifier</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_naive_Bayes.html">Naive Bayes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_polynomial_regression.html">Polynomial Regression</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_knearest_neighbours.html">k-nearest Neighbours Regression</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_knearest_neighbours.html">k-Nearest Neighbours</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_decision_tree.html">Decision Trees</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_ensemble_trees.html">Ensemble Trees, Bagging and Random Forest</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_gradient_boosting.html">Gradient Boosting Trees</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_ensemble_trees.html">Bagging Tree and Random Forest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_gradient_boosting.html">Gradient Boosting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_support_vector_machines.html">Support Vector Machines</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
@@ -2068,26 +2055,26 @@ Correlation Matrix of original features:
 [[ 0.08  0.   -0.    0.   -0.  ]
  [ 0.    0.08  0.    0.   -0.  ]
  [-0.    0.    0.08 -0.   -0.  ]
- [ 0.    0.   -0.    0.08 -0.  ]
- [-0.   -0.   -0.   -0.    0.08]]
+ [ 0.    0.   -0.    0.08  0.  ]
+ [-0.   -0.   -0.    0.    0.08]]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PCA Variance Explained  [0.21 0.2  0.2  0.2  0.19]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PCA Variance Explained  [0.2  0.2  0.2  0.2  0.19]
 
 Correlation Matrix of scores:
 
-[[ 0.09 -0.    0.   -0.    0.  ]
- [-0.    0.09  0.    0.   -0.  ]
- [ 0.    0.    0.08 -0.   -0.  ]
- [-0.    0.   -0.    0.08 -0.  ]
- [ 0.   -0.   -0.   -0.    0.08]]
+[[ 0.09  0.   -0.   -0.    0.  ]
+ [ 0.    0.08 -0.    0.    0.  ]
+ [-0.   -0.    0.08  0.    0.  ]
+ [-0.    0.    0.    0.08 -0.  ]
+ [ 0.    0.    0.   -0.    0.08]]
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.98, &#39;Principal Component Scores&#39;)
 </pre></div>
 </div>
-<img alt="_images/87d36087ce3c44aac61c27542a291108458969de36c6fe994c254f48e9feb316.png" src="_images/87d36087ce3c44aac61c27542a291108458969de36c6fe994c254f48e9feb316.png" />
-<img alt="_images/23518f3deff6d3fdfeda79648c0ffe3dbcb932854a569022aa2d334391fa9e36.png" src="_images/23518f3deff6d3fdfeda79648c0ffe3dbcb932854a569022aa2d334391fa9e36.png" />
+<img alt="_images/fcabed3fc39607aa5c8b2860b9424e44074c26f297ad430820c905735e553e94.png" src="_images/fcabed3fc39607aa5c8b2860b9424e44074c26f297ad430820c905735e553e94.png" />
+<img alt="_images/ccaab0899f2a0cf72c23e847adcfb9b87005608a41c91f36890ac5f00215742d.png" src="_images/ccaab0899f2a0cf72c23e847adcfb9b87005608a41c91f36890ac5f00215742d.png" />
 </div>
 </div>
 <p>What happens when principal component analysis is applied to uncorrelated, uniformly distributed features?</p>
@@ -2158,12 +2145,12 @@ Correlation Matrix of scores:
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="MachineLearning_clustering.html"
+       href="MachineLearning_density-based_clustering.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">k-means Clustering</p>
+        <p class="prev-next-title">Density-based Clustering</p>
       </div>
     </a>
     <a class="right-next"

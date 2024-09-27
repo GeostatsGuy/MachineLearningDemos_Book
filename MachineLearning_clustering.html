@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'MachineLearning_clustering';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Principal Component Analysis" href="MachineLearning_PCA.html" />
+    <link rel="next" title="Density-based Clustering" href="MachineLearning_density-based_clustering.html" />
     <link rel="prev" title="Feature Ranking" href="MachineLearning_feature_ranking.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -176,38 +176,19 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_transformations.html">Feature Transformations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_ranking.html">Feature Ranking</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Cluster Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_PCA.html">Principal Component Analysis</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_density-based_clustering.html">Density-based Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_PCA.html">Principal Components Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_linear_regression.html">Linear Regression</a></li>
-
-
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ridge_regression.html">Ridge Regression</a></li>
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_LASSO_regression.html">LASSO Regression</a></li>
-
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_Bayesian_linear_regression.html">Bayesian Linear Regression</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_naive_Bayes.html">Naive Bayes Classifier</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_naive_Bayes.html">Naive Bayes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_polynomial_regression.html">Polynomial Regression</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_knearest_neighbours.html">k-nearest Neighbours Regression</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_knearest_neighbours.html">k-Nearest Neighbours</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_decision_tree.html">Decision Trees</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_ensemble_trees.html">Ensemble Trees, Bagging and Random Forest</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_gradient_boosting.html">Gradient Boosting Trees</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_ensemble_trees.html">Bagging Tree and Random Forest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_gradient_boosting.html">Gradient Boosting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_support_vector_machines.html">Support Vector Machines</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
@@ -407,10 +388,8 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-for-cluster-analysis">Motivation for Cluster Analysis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inferential-machine-learning">Inferential Machine Learning</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">k-Means Clustering</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-k-means-clustering-demonstration">The k-Means Clustering Demonstration</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">k-Means Clustering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-k-means-clustering-demonstration">The k-Means Clustering Demonstration</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
@@ -430,6 +409,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means-clustering-with-the-scikit-learn-function">k-Means Clustering with the scikit-learn Function</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-the-optimum-number-of-clusters">Selecting the Optimum Number of Clusters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering-without-normalization-standardization">Clustering without Normalization / Standardization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
@@ -486,17 +466,27 @@ document.write(`
 </section>
 <section id="id1">
 <h2>k-Means Clustering<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
-<p>The K-means clustering approach is primarily applied as an unsupervised method for classification:</p>
+<p>The K-means clustering approach is primarily applied as an unsupervised machine learning method for clustering, group assignment to unlabeled data, where dissimilarity within clustered groups is mini minimized. The loss function that is minimized is:</p>
+<div class="math notranslate nohighlight">
+\[ 
+J = \sum^k_{i=1} \sum_{\alpha \in C_i} || X_{\alpha} - \mu_i ||
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(i\)</span> is the cluster index, <span class="math notranslate nohighlight">\(\alpha\)</span> is the data sample index, <span class="math notranslate nohighlight">\(X\)</span> is the data sample and <span class="math notranslate nohighlight">\(\mu_i\)</span> is the <span class="math notranslate nohighlight">\(i\)</span> cluster prototype, <span class="math notranslate nohighlight">\(k\)</span> is the total number of clusters, and <span class="math notranslate nohighlight">\(|| X_m - \mu_m ||\)</span> is the Euclidean distance from a sample to the cluster prototype in <span class="math notranslate nohighlight">\(M\)</span> dimensional space calculated as:</p>
+<div class="math notranslate nohighlight">
+\[
+|| X_{m,\alpha} - \mu_i || =  \sqrt{ \sum_m^M \left( X_{m,\alpha} - \mu_{m,i} \right)^2 }
+\]</div>
+<p>Here is a summary of import aspects for k-means clustering:</p>
 <ul class="simple">
 <li><p><strong>Prototype Method</strong> - represents the training data with number of synthetic cases in the features space. For K-means clustering we assign and iteratively update <span class="math notranslate nohighlight">\(K\)</span> prototypes.</p></li>
 <li><p><strong>Iterative Solution</strong> - the initial prototypes are assigned randomly in the feature space, the labels for each training sample are updated to the nearest prototype, then the prototypes are adjusted to the centroid of their assigned training data, repeat until there is no further update to the training data assignments.</p></li>
-<li><p><strong>Unsupervised Learning</strong> - the training data are not labeled and are assigned <span class="math notranslate nohighlight">\(K\)</span> labels based on their proximity to the prototypes in the feature space.  The idea is that similar things, proximity in feature space, should belong to the same category.</p></li>
-<li><p><strong>Feature Weighting</strong> - the procedure depends on the ‘distance’ between training samples and prototypes in feature space.  Distance is treated as the ‘inverse’ of similarity. If the features have significantly different magnitudes, the feature(s) with the largest magnitudes and ranges will dominate the process. One approach is to standardize / normalize the variables.  Also, by-feature weighting may be applied.  In this demonstration we normalize the features to range from 0.0 to 1.0.</p></li>
-<li><p>Supervised Learning Variant for Classification of the Feature Space - applies multiple prototypes in each category to then constructs a decision boundary based on nearest prototype.  More prototypes per category results in a more complicated decision boundary in the feature space.</p></li>
+<li><p><strong>Unsupervised Learning</strong> - the training data are not labeled and are assigned <span class="math notranslate nohighlight">\(K\)</span> labels based on their proximity to the prototypes in the feature space. The idea is that similar things, proximity in feature space, should belong to the same cluster group.</p></li>
+<li><p><strong>Feature Weighting</strong> - the procedure depends on the Euclidian distance between training samples and prototypes in feature space. Distance is treated as the ‘inverse’ of similarity. If the features have significantly different magnitudes, the feature(s) with the largest magnitudes and ranges will dominate the loss function and cluster groups will become anisotropic aligned orthogonal to the high range feature(s). While the common approach is to standardize / normalize the variables, by-feature weighting may be applied through unequal variances. Note, in this demonstration we normalize the features to range from 0.0 to 1.0.</p></li>
 </ul>
+</section>
 <section id="the-k-means-clustering-demonstration">
-<h3>The k-Means Clustering Demonstration<a class="headerlink" href="#the-k-means-clustering-demonstration" title="Permalink to this heading">#</a></h3>
-<p>Here’s a simple workflow, demonstration of k-means clustering for subsurface modeling workflows. Initially I use functions for each of the steps to train k-means clustering ‘by-hand’ and then I demonstrate the approach with the scikit-learn Python package function. This should help you get started with inferential methods to find patterns in your subsurface data sets and the concept of a heuristic solution.</p>
+<h2>The k-Means Clustering Demonstration<a class="headerlink" href="#the-k-means-clustering-demonstration" title="Permalink to this heading">#</a></h2>
+<p>Here’s a simple workflow, demonstration of k-means clustering for subsurface modeling workflows. Initially I use functions to train k-means clustering ‘by-hand’ and then I demonstrate the approach with the scikit-learn Python package function. This should help you get started with inferential methods to find patterns in your subsurface data sets and the concept of a heuristic solution.</p>
 <ul class="simple">
 <li><p><strong>Heuristic</strong> - a shortcut the sacrifices accuracy for practicality, i.e., the solution is usually good enough and has a reasonable run time.</p></li>
 </ul>
@@ -515,7 +505,6 @@ k^n
 </ol>
 <p>This allows us to be able to watch the method in action, as opposed to just getting a result.  I think this is more instructive.</p>
 <p>Note, for this workflow I have modified code from the tutorial provided by Ben Keen as functions to take care of the steps (assign training data to the nearest prototype, update the prototype to the centroid of the assigned data).  The original tutorial is available at <a class="reference external" href="http://benalexkeen.com/k-means-clustering-in-python">here</a>. All I did was specify the method to my data example for clarity, and include the normalized and original data. Appreciation to Ben!</p>
-</section>
 </section>
 <section id="load-the-required-libraries">
 <h2>Load the required libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
@@ -1332,7 +1321,7 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/506295eff7f7ca3e37f91990aea04e68fd2f71ec7b494995d9a97337a2b2c7f5.png" src="_images/506295eff7f7ca3e37f91990aea04e68fd2f71ec7b494995d9a97337a2b2c7f5.png" />
+<img alt="_images/7e1f6e0bcc7da2241ba5123e3c631fccb78820552ecc8223d871a89be4d61dc1.png" src="_images/7e1f6e0bcc7da2241ba5123e3c631fccb78820552ecc8223d871a89be4d61dc1.png" />
 </div>
 </div>
 </section>
@@ -1361,9 +1350,64 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/db6c1e299f4f3349c51b4b7efadfaccb85e625f0968c9c73a33e08e3c05d403a.png" src="_images/db6c1e299f4f3349c51b4b7efadfaccb85e625f0968c9c73a33e08e3c05d403a.png" />
+<img alt="_images/b79f2885e621d28a74da22c03971275240baf9456aad1d9e4382cc9300ceef46.png" src="_images/b79f2885e621d28a74da22c03971275240baf9456aad1d9e4382cc9300ceef46.png" />
 </div>
 </div>
+</section>
+<section id="clustering-without-normalization-standardization">
+<h2>Clustering without Normalization / Standardization<a class="headerlink" href="#clustering-without-normalization-standardization" title="Permalink to this heading">#</a></h2>
+<p>One of the critical assumptions of clustering is that the variability is the same over each feature.</p>
+<ul class="simple">
+<li><p>an exception would be if the features have the same units and the variability differences are meaningful</p></li>
+</ul>
+<p>Let’s take this dataset and draw it to scale (to show what a distance metric would see in original units.</p>
+<ul class="simple">
+<li><p>we rotate the plot and provide an approximate visualization with porosity 1 unit equal to permeability 1 unit on the plot</p></li>
+<li><p>effectively the dataset looks 1D to the clustering algorithm, difference in porosity becomes meaningless</p></li>
+</ul>
+<p>Here’s what our plot looks like with equal aspect ratio between the 2 features.</p>
+<ul class="simple">
+<li><p>the plot becomes a line and the data does not show up properly.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>                                              <span class="c1"># scatter plot our training data </span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_subset</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;AI&#39;</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Acoustic Impedance vs. Porosity&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Porosity (fraction)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Acoustic Impedance (kg/m^3 x m/s x 10^3)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">por_min</span><span class="p">,</span> <span class="n">por_max</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">AI_min</span><span class="p">,</span> <span class="n">AI_max</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">();</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span> <span class="n">adjustable</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/4f6ebe27d62c2cec31298b9304e5761354ba457676c91a47dc292391053a85f5.png" src="_images/4f6ebe27d62c2cec31298b9304e5761354ba457676c91a47dc292391053a85f5.png" />
+</div>
+</div>
+<p>Now let’s repeat the previous k-means clustering, but with the original features (not normalized).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="mi">5</span>                                                         <span class="c1"># number categories / clusters </span>
+
+<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">K</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">n_init</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="s1">&#39;AI&#39;</span><span class="p">]])</span> <span class="c1"># k-means clustering</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;kMeans_Orig&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">labels_</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>                                              <span class="c1"># plot the training data and K prototypes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_subset</span><span class="p">[</span><span class="s1">&#39;Norm_Porosity&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Norm_AI&#39;</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;kMeans_Orig&#39;</span><span class="p">],</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Normalized Acoustic Impedance vs. Porosity with Final Prototypes&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Porosity (normalized)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Acoustic Impedance (normalized)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]);</span> <span class="n">add_grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/97d973f5aa607a358a6d5574411ec9d3c73e50912bf240c5a3ba9288434109bf.png" src="_images/97d973f5aa607a358a6d5574411ec9d3c73e50912bf240c5a3ba9288434109bf.png" />
+</div>
+</div>
+<p>The clusters are only in acoustic impedance since the differences in porosity on not significant due to the much larger range for the acoustic impedance feature.</p>
+<ul class="simple">
+<li><p>clusters are orthogonal to acoustic impedance</p></li>
+</ul>
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
@@ -1442,11 +1486,11 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
       </div>
     </a>
     <a class="right-next"
-       href="MachineLearning_PCA.html"
+       href="MachineLearning_density-based_clustering.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Principal Component Analysis</p>
+        <p class="prev-next-title">Density-based Clustering</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1467,10 +1511,8 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-for-cluster-analysis">Motivation for Cluster Analysis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inferential-machine-learning">Inferential Machine Learning</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">k-Means Clustering</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-k-means-clustering-demonstration">The k-Means Clustering Demonstration</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">k-Means Clustering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-k-means-clustering-demonstration">The k-Means Clustering Demonstration</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
@@ -1490,6 +1532,7 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means-clustering-with-the-scikit-learn-function">k-Means Clustering with the scikit-learn Function</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-the-optimum-number-of-clusters">Selecting the Optimum Number of Clusters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering-without-normalization-standardization">Clustering without Normalization / Standardization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
