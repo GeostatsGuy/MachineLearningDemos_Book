@@ -68,8 +68,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'MachineLearning_PCA';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Linear Regression" href="MachineLearning_linear_regression.html" />
-    <link rel="prev" title="Density-based Clustering" href="MachineLearning_density-based_clustering.html" />
+    <link rel="next" title="Multidimensional Scaling" href="MachineLearning_multidimensional_scaling.html" />
+    <link rel="prev" title="Spectral Clustering" href="MachineLearning_spectral_clustering.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -177,7 +177,29 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_ranking.html">Feature Ranking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_clustering.html">Cluster Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_density-based_clustering.html">Density-based Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_spectral_clustering.html">Spectral Clustering</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Principal Components Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_multidimensional_scaling.html">Multidimensional Scaling</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_linear_regression.html">Linear Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ridge_regression.html">Ridge Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_LASSO_regression.html">LASSO Regression</a></li>
@@ -2052,29 +2074,29 @@ Correlation Matrix of the 6 principle components&#39; scores:
 Proportion of variance of original features:  [0.2 0.2 0.2 0.2 0.2]
 Correlation Matrix of original features:
 
-[[ 0.08  0.   -0.    0.   -0.  ]
- [ 0.    0.08  0.    0.   -0.  ]
- [-0.    0.    0.08 -0.   -0.  ]
- [ 0.    0.   -0.    0.08  0.  ]
- [-0.   -0.   -0.    0.    0.08]]
+[[ 0.08 -0.    0.    0.   -0.  ]
+ [-0.    0.08 -0.    0.    0.  ]
+ [ 0.   -0.    0.08  0.   -0.  ]
+ [ 0.    0.    0.    0.08  0.  ]
+ [-0.    0.   -0.    0.    0.08]]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PCA Variance Explained  [0.2  0.2  0.2  0.2  0.19]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PCA Variance Explained  [0.21 0.2  0.2  0.2  0.19]
 
 Correlation Matrix of scores:
 
-[[ 0.09  0.   -0.   -0.    0.  ]
- [ 0.    0.08 -0.    0.    0.  ]
- [-0.   -0.    0.08  0.    0.  ]
- [-0.    0.    0.    0.08 -0.  ]
- [ 0.    0.    0.   -0.    0.08]]
+[[ 0.09  0.    0.   -0.    0.  ]
+ [ 0.    0.08 -0.   -0.   -0.  ]
+ [ 0.   -0.    0.08  0.    0.  ]
+ [-0.   -0.    0.    0.08  0.  ]
+ [ 0.   -0.    0.    0.    0.08]]
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.98, &#39;Principal Component Scores&#39;)
 </pre></div>
 </div>
-<img alt="_images/fcabed3fc39607aa5c8b2860b9424e44074c26f297ad430820c905735e553e94.png" src="_images/fcabed3fc39607aa5c8b2860b9424e44074c26f297ad430820c905735e553e94.png" />
-<img alt="_images/ccaab0899f2a0cf72c23e847adcfb9b87005608a41c91f36890ac5f00215742d.png" src="_images/ccaab0899f2a0cf72c23e847adcfb9b87005608a41c91f36890ac5f00215742d.png" />
+<img alt="_images/826608dc51c41372f07439d3f4adf93bf4abcaa46526fa14efd81b455fc1f59a.png" src="_images/826608dc51c41372f07439d3f4adf93bf4abcaa46526fa14efd81b455fc1f59a.png" />
+<img alt="_images/26a6601b8e0daeb11f43b64fb2f82fa2e920ce93f9e8aff25c42932219d560e3.png" src="_images/26a6601b8e0daeb11f43b64fb2f82fa2e920ce93f9e8aff25c42932219d560e3.png" />
 </div>
 </div>
 <p>What happens when principal component analysis is applied to uncorrelated, uniformly distributed features?</p>
@@ -2145,20 +2167,20 @@ Correlation Matrix of scores:
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="MachineLearning_density-based_clustering.html"
+       href="MachineLearning_spectral_clustering.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Density-based Clustering</p>
+        <p class="prev-next-title">Spectral Clustering</p>
       </div>
     </a>
     <a class="right-next"
-       href="MachineLearning_linear_regression.html"
+       href="MachineLearning_multidimensional_scaling.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Linear Regression</p>
+        <p class="prev-next-title">Multidimensional Scaling</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2237,7 +2259,7 @@ By Michael J. Pyrcz
 
   <p class="copyright">
     
-      © Copyright 2024.
+      © Copyright 2024 CC-BY-SA 4.0.
       <br/>
     
   </p>

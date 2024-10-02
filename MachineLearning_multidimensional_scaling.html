@@ -1,0 +1,1471 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Multidimensional Scaling &#8212; Applied Machine Learning in Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'MachineLearning_multidimensional_scaling';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Linear Regression" href="MachineLearning_linear_regression.html" />
+    <link rel="prev" title="Principal Component Analysis" href="MachineLearning_PCA.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/AppliedMachineLearning.jpg" class="logo__image only-light" alt="Applied Machine Learning in Python - Home"/>
+    <script>document.write(`<img src="_static/AppliedMachineLearning.jpg" class="logo__image only-dark" alt="Applied Machine Learning in Python - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Applied Machine Learning in Python: a Hands-on Guide with Code
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_multivariate_analysis.html">Multivariate Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_transformations.html">Feature Transformations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_ranking.html">Feature Ranking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_clustering.html">Cluster Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_density-based_clustering.html">Density-based Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_spectral_clustering.html">Spectral Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_PCA.html">Principal Components Analysis</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Multidimensional Scaling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_linear_regression.html">Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_ridge_regression.html">Ridge Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_LASSO_regression.html">LASSO Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_Bayesian_linear_regression.html">Bayesian Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_naive_Bayes.html">Naive Bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_polynomial_regression.html">Polynomial Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_knearest_neighbours.html">k-Nearest Neighbours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_decision_tree.html">Decision Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_ensemble_trees.html">Bagging Tree and Random Forest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_gradient_boosting.html">Gradient Boosting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_support_vector_machines.html">Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/GeostatsPyDemos_Book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/GeostatsPyDemos_Book/issues/new?title=Issue%20on%20page%20%2FMachineLearning_multidimensional_scaling.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/MachineLearning_multidimensional_scaling.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Multidimensional Scaling</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-for-multidimensional-scaling">Motivation for Multidimensional Scaling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inferential-machine-learning">Inferential Machine Learning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Multidimensional Scaling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-multidimensional-scaling">Classical Multidimensional Scaling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metric-multidimensional-scaling">Metric Multidimensional Scaling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-multidimensional-scaling-results">Checking Multidimensional Scaling Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-with-principal-component-analysis">Comparison with Principal Component Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data">Loading Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-loaded-dataframe">Visualize the Loaded DataFrame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-statistics">Summary Statistics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preparation">Data Preparation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Multidimensional Scaling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observing-specific-samples">Observing Specific Samples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-of-mds">Applications of MDS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="multidimensional-scaling">
+<h1>Multidimensional Scaling<a class="headerlink" href="#multidimensional-scaling" title="Permalink to this heading">#</a></h1>
+<p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
+<p>Cite as: Pyrcz, M.J., 2024, Applied Machine Learning in Python: a Hands-on Guide with Code, <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book">https://geostatsguy.github.io/MachineLearningDemos_Book</a>.</p>
+<p>By Michael J. Pyrcz <br />
+© Copyright 2024.</p>
+<p>This chapter is a tutorial for / demonstration of <strong>Multidimensional Scaling</strong>.</p>
+<p><strong>YouTube Lecture</strong>: check out my lectures on:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://youtu.be/zOUM_AnI1DQ?si=wzWdJ35qJ9n8O6Bl">Introduction to Machine Learning</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/-to3JXiae9Y?si=W1j2CwR9t0t8hxIB">Curse of Dimensionality, Dimensionality Reduction, Principal Component Analysis</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/Yt0o8ukIOKU?si=_ri1NPwKVdhYzgO3">Multidimensional Scaling and Random Projection</a></p></li>
+</ul>
+<p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
+<section id="motivation-for-multidimensional-scaling">
+<h2>Motivation for Multidimensional Scaling<a class="headerlink" href="#motivation-for-multidimensional-scaling" title="Permalink to this heading">#</a></h2>
+<p>Working with more features / variables is harder!</p>
+<ol class="arabic simple">
+<li><p>More difficult to visualize data and model</p></li>
+<li><p>More data are required to infer the joint probabilities</p></li>
+<li><p>Less data coverage of feature space</p></li>
+<li><p>More difficult to interrogate / check the model</p></li>
+<li><p>More likely redundant features, e.g., multicollinearity, resulting in model instability</p></li>
+<li><p>More computational effort, more computational resources and longer run times</p></li>
+<li><p>More complicated model is more likely overfit</p></li>
+<li><p>More professional time for model construction</p></li>
+</ol>
+<p>We get a better model with fewer, informative features than throwing all our features into the model!</p>
+</section>
+<section id="inferential-machine-learning">
+<h2>Inferential Machine Learning<a class="headerlink" href="#inferential-machine-learning" title="Permalink to this heading">#</a></h2>
+<p>There are no response features, <span class="math notranslate nohighlight">\(y\)</span>, just predictor features,</p>
+<div class="math notranslate nohighlight">
+\[
+𝑋_1,\ldots,𝑋_𝑚
+\]</div>
+<ul class="simple">
+<li><p>Machine learns by mimicry a compact representation of the data</p></li>
+<li><p>Captures patterns as feature projections, group assignments, neural network latent features, etc.</p></li>
+<li><p>We focus on inference of the population, the natural system, instead of prediction of response features.</p></li>
+</ul>
+</section>
+<section id="id1">
+<h2>Multidimensional Scaling<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>A powerful ordination method in inferential statistics / information visualization for exploring / visualizing the similarity (conversely the difference) between individual samples from a high dimensional dataset.</p>
+<ul class="simple">
+<li><p>beyond 2 or 3 features it is difficult to visualize the relationships within our datasets</p></li>
+<li><p>for 2 features we can easily visualize the relationships between data samples with a regular scatter plot</p></li>
+<li><p>for 3 features we can either visualize our scatter plot in 3D (e.g., with interactive rotation) or by including color or through marginalization with matrix scatter plots</p></li>
+</ul>
+<p>Multidimensional scaling projects the <span class="math notranslate nohighlight">\(m\)</span> dimensional data to <span class="math notranslate nohighlight">\(p\)</span> dimensions such that <span class="math notranslate nohighlight">\(p &lt;&lt; m\)</span>.</p>
+<ul class="simple">
+<li><p>ideally we are able to project to <span class="math notranslate nohighlight">\(p=2\)</span> to easily explore the relationships between the samples</p></li>
+</ul>
+<p>While principal component analysis (PCA) operates with the covariance matrix, multidimensional scaling operates with the distance / dissimilarity matrix. For multidimensional scaling:</p>
+<ul class="simple">
+<li><p>you don’t need to know the actual feature values, just the distance or dissimilarity between the samples</p></li>
+<li><p>as with any distance in feature space, we consider feature standardization to ensure that features with larger variance do not dominate the calculation</p></li>
+<li><p>we may work with a variety of dissimilarity measures</p></li>
+</ul>
+</section>
+<section id="classical-multidimensional-scaling">
+<h2>Classical Multidimensional Scaling<a class="headerlink" href="#classical-multidimensional-scaling" title="Permalink to this heading">#</a></h2>
+<p>Based on Euclidian distance between samples.</p>
+<p>The Steps:</p>
+<ol class="arabic simple">
+<li><p>calculate the square, symmetric distance matrix:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+D^(2) = \begin{bmatrix}
+\delta_{1,1}^2 &amp; \delta_{1,2}^2 &amp; \dots &amp; \delta_{1,n}^2 \\
+\delta_{2,1}^2 &amp; \delta_{2,2}^2 &amp; \dots &amp; \delta_{2,n}^2 \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+\delta_{n,1}^2 &amp; \delta_{n,2}^2 &amp; \dots &amp; \delta_{n,n}^2 \\
+\end{bmatrix}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\delta_{i,j}^2\)</span> is Euclidean distance between data samples at data indices <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>.</p>
+<ol class="arabic simple" start="3">
+<li><p>apply double centering <span class="math notranslate nohighlight">\(B = - \frac{1}{2} J D^{(2)} J\)</span></p></li>
+<li><p>solve for the eigenvalues, <span class="math notranslate nohighlight">\(\lambda_1,\ldots,\lambda_p\)</span></p></li>
+<li><p>solve for the projected coordinates, <span class="math notranslate nohighlight">\(x^{'}_1, \dots ,x^{'}_p\)</span></p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+X^{'} = E_m \land^{\frac{1}{2}}_m
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(E_m\)</span> is the matrix of eigenvectors and <span class="math notranslate nohighlight">\(\land_m\)</span> is the diagonal matrix of eigenvalues.</p>
+<p>General comments about classical multidimensional scaling:</p>
+<ul class="simple">
+<li><p>nonlinear dimensionality reduction</p></li>
+<li><p>no distribution assumption</p></li>
+<li><p>the transform may not be unique, and may be arbitrarily be translated, rotated and transformed (note, these do not change the pairwise distances <span class="math notranslate nohighlight">\(\delta_{i,j}^2\)</span>).</p></li>
+</ul>
+</section>
+<section id="metric-multidimensional-scaling">
+<h2>Metric Multidimensional Scaling<a class="headerlink" href="#metric-multidimensional-scaling" title="Permalink to this heading">#</a></h2>
+<p>A generalization of classical multidimensional scaling with a variety of metrics and a loss function optimization.</p>
+<ul class="simple">
+<li><p>formulated as an optimization problem to minimize the square difference between the original and projected pairwise distances</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+min_{x_1,\ldots,x_m} \sum_{i&lt;j} \left( ||x_i - x_j|| - \delta_{i,j} \right)^2
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(||x_i - x_j||\)</span> are the pairwise distances in the projected space (<span class="math notranslate nohighlight">\(p\)</span> dimensional) and <span class="math notranslate nohighlight">\(\delta_{i,j}\)</span> are the pairwise distances in the original feature space.</p>
+<p>General comments about metric multidimensional scaling:</p>
+<ul class="simple">
+<li><p>dissimilarity measure must be meaningful</p></li>
+<li><p>dimensionality reduction is performed such that the error in the sample pairwise distance is minimized</p></li>
+<li><p>there is a variant known as non-metric multidimensional scaling for ordinal features (categorical with ordering).</p></li>
+</ul>
+</section>
+<section id="checking-multidimensional-scaling-results">
+<h2>Checking Multidimensional Scaling Results<a class="headerlink" href="#checking-multidimensional-scaling-results" title="Permalink to this heading">#</a></h2>
+<p>The multidimensional scaling approach minimizes the square difference of the pairwise distances between all of the data samples and each other between the projected, lower dimensional, and original feature space.</p>
+<ul class="simple">
+<li><p><strong>stress</strong> is defined as:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+Stress_P(x_1,\ldots,x_n) = \left( \sum_{i \ne j = 1,\ldots,n} \left( ||x_i - x_j|| - \delta_{i,j} \right)^2 \right)^{\frac{1}{2}}
+\]</div>
+<ul class="simple">
+<li><p>it is also useful to visualize the scatterplot of projected vs. original pairwise distances</p></li>
+</ul>
+</section>
+<section id="comparison-with-principal-component-analysis">
+<h2>Comparison with Principal Component Analysis<a class="headerlink" href="#comparison-with-principal-component-analysis" title="Permalink to this heading">#</a></h2>
+<p>MDS and PCA qre quite different, here’s a short summary of each to help ellucidate the difference:</p>
+<p>Principal component analysis takes the covariance matrix (<span class="math notranslate nohighlight">\(m \times m\)</span>) between all the features and finds the orthogonal rotation such that the <strong>variance is maximized</strong> over the ordered principle components.</p>
+<p>Multidimensional scaling takes the matrix of the pairwise distances (<span class="math notranslate nohighlight">\(n \times n\)</span>) between all the samples in feature space and finds the nonlinear projection such that the <strong>error in the pairwise distances is minimized</strong>.</p>
+</section>
+<section id="load-the-required-libraries">
+<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
+<p>The following code loads the required libraries. These should have been installed with Anaconda 3.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ignore_warnings</span> <span class="o">=</span> <span class="kc">True</span>                                        <span class="c1"># ignore warnings?</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                                            <span class="c1"># ndarrays for gridded data</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                                           <span class="c1"># DataFrames for tabular data</span>
+<span class="kn">import</span> <span class="nn">copy</span>                                                   <span class="c1"># for deep copies</span>
+<span class="kn">import</span> <span class="nn">os</span>                                                     <span class="c1"># set working directory, run executables</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>                               <span class="c1"># for plotting</span>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">ListedColormap</span>                  <span class="c1"># custom color maps</span>
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="p">(</span><span class="n">MultipleLocator</span><span class="p">,</span><span class="n">AutoMinorLocator</span><span class="p">,</span><span class="n">NullLocator</span><span class="p">,</span><span class="n">FuncFormatter</span><span class="p">)</span> <span class="c1"># control of axes ticks</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>                                       <span class="c1"># summary statistics</span>
+<span class="kn">import</span> <span class="nn">math</span>                                                   <span class="c1"># trigonometry etc.</span>
+<span class="kn">import</span> <span class="nn">scipy.signal</span> <span class="k">as</span> <span class="nn">signal</span>                                 <span class="c1"># kernel for moving window calculation</span>
+<span class="kn">import</span> <span class="nn">random</span>                                                 <span class="c1"># for random numbers</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>                                         <span class="c1"># for matrix scatter plots</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">linalg</span>                                      <span class="c1"># for linear regression</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span> <span class="c1"># feature standardization</span>
+<span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">MDS</span>                              <span class="c1"># multidimensional scaling</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">euclidean_distances</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">axisbelow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                                <span class="c1"># plot all grids below the plot elements</span>
+<span class="k">if</span> <span class="n">ignore_warnings</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>                                   
+    <span class="kn">import</span> <span class="nn">warnings</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">inferno</span>                                         <span class="c1"># color map</span>
+<span class="n">seed</span> <span class="o">=</span> <span class="mi">42</span>                                                     <span class="c1"># random number seed </span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you get a package import error, you may have to first install some of these packages. This can usually be accomplished by opening up a command window on Windows and then typing ‘python -m pip install [package-name]’. More assistance is available with the respective package docs.</p>
+</section>
+<section id="declare-functions">
+<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
+<p>Convenience functions to add commas to numbers and major and minor gridlines to plots.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">comma_format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1">&#39;</span>
+    
+<span class="k">def</span> <span class="nf">add_grid</span><span class="p">():</span>                                            
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">)</span> <span class="c1"># add y grids</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span><span class="n">length</span><span class="o">=</span><span class="mi">7</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">AutoMinorLocator</span><span class="p">());</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">AutoMinorLocator</span><span class="p">())</span> <span class="c1"># turn on minor ticks </span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="set-the-working-directory">
+<h2>Set the Working Directory<a class="headerlink" href="#set-the-working-directory" title="Permalink to this heading">#</a></h2>
+<p>I always like to do this so I don’t lose files and to simplify subsequent read and writes (avoid including the full address each time).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#os.chdir(&quot;c:/PGE383&quot;)                     # set the working directory</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You will have to update the part in quotes with your own working directory and the format is different on a Mac (e.g. “~/PGE”).</p>
+</section>
+<section id="loading-data">
+<h2>Loading Data<a class="headerlink" href="#loading-data" title="Permalink to this heading">#</a></h2>
+<p>Let’s load the provided multivariate, spatial dataset <a class="reference external" href="https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/unconv_MV.csv">unconv_MV.csv</a> available in my GeoDataSet repo. It is a comma delimited file with:</p>
+<ul class="simple">
+<li><p>well index (integer)</p></li>
+<li><p>porosity (%)</p></li>
+<li><p>permeability (<span class="math notranslate nohighlight">\(mD\)</span>)</p></li>
+<li><p>acoustic impedance (<span class="math notranslate nohighlight">\(\frac{kg}{m^3} \cdot \frac{m}{s} \cdot 10^6\)</span>).</p></li>
+<li><p>brittleness (%)</p></li>
+<li><p>total organic carbon (%)</p></li>
+<li><p>vitrinite reflectance (%)</p></li>
+<li><p>initial gas production (90 day average) (MCFPD)</p></li>
+</ul>
+<p>We load it with the pandas ‘read_csv’ function into a data frame we called ‘df’ and then preview it to make sure it loaded correctly.</p>
+<p><strong>Python Tip: using functions from a package</strong> just type the label for the package that we declared at the beginning:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+<p>so we can access the pandas function ‘read_csv’ with the command:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>but read csv has required input parameters. The essential one is the name of the file. For our circumstance all the other default parameters are fine. If you want to see all the possible parameters for this function, just go to the docs <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html">here</a>.</p>
+<ul class="simple">
+<li><p>The docs are always helpful</p></li>
+<li><p>There is often a lot of flexibility for Python functions, possible through using various inputs parameters</p></li>
+</ul>
+<p>also, the program has an output, a pandas DataFrame loaded from the data.  So we have to specficy the name / variable representing that new object.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;unconv_MV.csv&quot;</span><span class="p">)</span>  
+</pre></div>
+</div>
+<p>Let’s run this command to load the data and then this command to extract a random subset of the data.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mf">.30</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">73073</span><span class="p">);</span> 
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/unconv_MV_v4.csv&#39;</span><span class="p">)</span>
+
+<span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Well&#39;</span><span class="p">]</span>
+<span class="n">Xname</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Por&#39;</span><span class="p">,</span><span class="s1">&#39;AI&#39;</span><span class="p">,</span><span class="s1">&#39;TOC&#39;</span><span class="p">]</span>                                    <span class="c1"># specify features of interest</span>
+
+<span class="n">yname</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Prod&#39;</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span>  <span class="n">df</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="n">Xname</span> <span class="o">+</span> <span class="n">yname</span><span class="p">]</span>
+
+<span class="n">Xunit</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;%&#39;</span><span class="p">,</span><span class="sa">r</span><span class="s1">&#39;$kg/m2 \times 10^6$&#39;</span><span class="p">,</span><span class="s1">&#39;%&#39;</span><span class="p">];</span> <span class="n">Xlabel</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="s1">&#39;Acoustic Impedance&#39;</span><span class="p">,</span><span class="s1">&#39;Total Organic Carbon&#39;</span><span class="p">]</span> <span class="c1"># specify features&#39; metadata</span>
+<span class="n">Xlabelunit</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s1</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">s2</span><span class="si">}</span><span class="s2">)&quot;</span> <span class="k">for</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">Xlabel</span><span class="p">,</span> <span class="n">Xunit</span><span class="p">)]</span>
+<span class="n">Xmin</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">];</span> <span class="n">Xmax</span> <span class="o">=</span> <span class="p">[</span><span class="mf">30.0</span><span class="p">,</span><span class="mf">5.0</span><span class="p">,</span><span class="mf">100.0</span><span class="p">]</span>                 <span class="c1"># set minimums and maximums for visualization </span>
+<span class="n">nXname</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;n&#39;</span> <span class="o">+</span> <span class="n">feature</span> <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">Xname</span><span class="p">]</span>                 <span class="c1"># labels, units and ranges for normalized features</span>
+
+<span class="n">normalized</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">Xname</span><span class="p">])</span>        <span class="c1"># standardize the features</span>
+
+<span class="k">for</span> <span class="n">col_name</span><span class="p">,</span> <span class="n">new_col</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">nXname</span><span class="p">,</span> <span class="n">normalized</span><span class="o">.</span><span class="n">T</span><span class="p">):</span>           <span class="c1"># add standardized features to the DataFrame</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_col</span>
+
+<span class="n">nXunit</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;norm[&#39;</span> <span class="o">+</span> <span class="n">unit</span> <span class="o">+</span> <span class="s1">&#39;]&#39;</span> <span class="k">for</span> <span class="n">unit</span> <span class="ow">in</span> <span class="n">Xunit</span><span class="p">]</span>             <span class="c1"># specify the standardized features&#39; metadata</span>
+<span class="n">nXlabel</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Normalized &#39;</span> <span class="o">+</span> <span class="n">feature</span> <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">Xlabel</span><span class="p">]</span>
+<span class="n">nXlabelunit</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s1</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">s2</span><span class="si">}</span><span class="s2">)&quot;</span> <span class="k">for</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">nXlabel</span><span class="p">,</span> <span class="n">nXunit</span><span class="p">)]</span>
+<span class="n">nXmin</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">3.0</span><span class="p">,</span><span class="o">-</span><span class="mf">3.0</span><span class="p">,</span><span class="o">-</span><span class="mf">3.0</span><span class="p">];</span> <span class="n">nXmax</span> <span class="o">=</span> <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">3.0</span><span class="p">]</span>  
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualize-the-loaded-dataframe">
+<h2>Visualize the Loaded DataFrame<a class="headerlink" href="#visualize-the-loaded-dataframe" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>                                                  <span class="c1"># we could also use this command for a table preview</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Well</th>
+      <th>Por</th>
+      <th>AI</th>
+      <th>TOC</th>
+      <th>Prod</th>
+      <th>nPor</th>
+      <th>nAI</th>
+      <th>nTOC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>12.08</td>
+      <td>2.80</td>
+      <td>1.16</td>
+      <td>1695.360819</td>
+      <td>-0.982256</td>
+      <td>-0.298603</td>
+      <td>0.352948</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>12.38</td>
+      <td>3.22</td>
+      <td>0.89</td>
+      <td>3007.096063</td>
+      <td>-0.881032</td>
+      <td>0.444147</td>
+      <td>-0.209104</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>14.02</td>
+      <td>4.01</td>
+      <td>0.89</td>
+      <td>2531.938259</td>
+      <td>-0.327677</td>
+      <td>1.841224</td>
+      <td>-0.209104</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>17.67</td>
+      <td>2.63</td>
+      <td>1.08</td>
+      <td>5288.514854</td>
+      <td>0.903875</td>
+      <td>-0.599240</td>
+      <td>0.186414</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="summary-statistics">
+<h2>Summary Statistics<a class="headerlink" href="#summary-statistics" title="Permalink to this heading">#</a></h2>
+<p>Let’s check the summary statistics of our data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Well</th>
+      <th>Por</th>
+      <th>AI</th>
+      <th>TOC</th>
+      <th>Prod</th>
+      <th>nPor</th>
+      <th>nAI</th>
+      <th>nTOC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>200.000000</td>
+      <td>200.000000</td>
+      <td>200.000000</td>
+      <td>200.000000</td>
+      <td>200.000000</td>
+      <td>2.000000e+02</td>
+      <td>2.000000e+02</td>
+      <td>2.000000e+02</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>100.500000</td>
+      <td>14.991150</td>
+      <td>2.968850</td>
+      <td>0.990450</td>
+      <td>3864.407081</td>
+      <td>2.486900e-16</td>
+      <td>4.130030e-16</td>
+      <td>3.375078e-16</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>57.879185</td>
+      <td>2.971176</td>
+      <td>0.566885</td>
+      <td>0.481588</td>
+      <td>1553.277558</td>
+      <td>1.002509e+00</td>
+      <td>1.002509e+00</td>
+      <td>1.002509e+00</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1.000000</td>
+      <td>6.550000</td>
+      <td>1.280000</td>
+      <td>-0.190000</td>
+      <td>839.822063</td>
+      <td>-2.848142e+00</td>
+      <td>-2.986650e+00</td>
+      <td>-2.457313e+00</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>50.750000</td>
+      <td>12.912500</td>
+      <td>2.547500</td>
+      <td>0.617500</td>
+      <td>2686.227611</td>
+      <td>-7.013606e-01</td>
+      <td>-7.451372e-01</td>
+      <td>-7.763606e-01</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>100.500000</td>
+      <td>15.070000</td>
+      <td>2.955000</td>
+      <td>1.030000</td>
+      <td>3604.303506</td>
+      <td>2.660490e-02</td>
+      <td>-2.449306e-02</td>
+      <td>8.233024e-02</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>150.250000</td>
+      <td>17.402500</td>
+      <td>3.345000</td>
+      <td>1.350000</td>
+      <td>4752.637555</td>
+      <td>8.136175e-01</td>
+      <td>6.652032e-01</td>
+      <td>7.484661e-01</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>200.000000</td>
+      <td>23.550000</td>
+      <td>4.630000</td>
+      <td>2.180000</td>
+      <td>8590.384044</td>
+      <td>2.887855e+00</td>
+      <td>2.937664e+00</td>
+      <td>2.476256e+00</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The data looks to be in pretty good shape and for brevity we skip outlier detection. Let’s look at the distributions with a matrix scatter plot from the Seaborn package.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pairplot</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="nb">vars</span><span class="o">=</span><span class="n">nXname</span><span class="p">,</span><span class="n">markers</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="n">plot_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span><span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">},)</span>
+<span class="n">pairplot</span><span class="o">.</span><span class="n">map_diag</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">pairplot</span><span class="o">.</span><span class="n">x_vars</span> <span class="o">=</span> <span class="n">Xlabelunit</span><span class="p">;</span> <span class="n">pairplot</span><span class="o">.</span><span class="n">y_vars</span> <span class="o">=</span> <span class="n">Xlabelunit</span><span class="p">;</span> <span class="n">pairplot</span><span class="o">.</span><span class="n">_add_axis_labels</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/322a920d30e5891ae978cbd8c7837f204979312d742c54f31ab1193828b0cdd7.png" src="_images/322a920d30e5891ae978cbd8c7837f204979312d742c54f31ab1193828b0cdd7.png" />
+</div>
+</div>
+</section>
+<section id="data-preparation">
+<h2>Data Preparation<a class="headerlink" href="#data-preparation" title="Permalink to this heading">#</a></h2>
+<p>Let’s make an ordinal feature from the continuous production:</p>
+<ol class="arabic simple">
+<li><p>low</p></li>
+<li><p>medium</p></li>
+<li><p>high</p></li>
+<li><p>very high</p></li>
+</ol>
+<p>production rates.  This will help us visualize the results as we proceed, we can look at wells with different levels of production projected into a variety of lower dimensional spaces with multidimensional scaling.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2500</span><span class="p">,</span><span class="mi">5000</span><span class="p">,</span><span class="mi">7500</span><span class="p">,</span><span class="mi">10000</span><span class="p">]</span>                               <span class="c1"># assign the production bins (these are the fence posts)</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;low&#39;</span><span class="p">,</span> <span class="s1">&#39;med&#39;</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">,</span> <span class="s1">&#39;vhigh&#39;</span><span class="p">]</span>                      <span class="c1"># assign the labels</span>
+<span class="n">category</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">yname</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span><span class="n">bins</span><span class="p">,</span><span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span> <span class="c1"># make the 1D array with the labels for our data</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;tProd&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">category</span>                                        <span class="c1"># add the new ordinal production feature to our DataFrames    </span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">dpalette</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;rocket_r&quot;</span><span class="p">,</span><span class="n">n_colors</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">palette</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;rocket&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s take a look at the matrix scatter plot of our 3 features and the production levels.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pairplot2</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">nXname</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;tProd&#39;</span><span class="p">]],</span><span class="n">markers</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;tProd&#39;</span><span class="p">,</span> <span class="n">palette</span> <span class="o">=</span> <span class="n">dpalette</span><span class="p">,</span><span class="n">diag_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;edgecolor&#39;</span><span class="p">:</span><span class="s1">&#39;black&#39;</span><span class="p">},</span>
+                    <span class="n">plot_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="n">pairplot2</span><span class="o">.</span><span class="n">x_vars</span> <span class="o">=</span> <span class="n">Xlabelunit</span><span class="p">;</span> <span class="n">pairplot2</span><span class="o">.</span><span class="n">y_vars</span> <span class="o">=</span> <span class="n">Xlabelunit</span><span class="p">;</span> <span class="n">pairplot2</span><span class="o">.</span><span class="n">_add_axis_labels</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/2862000c378356e1a3b7086ca47073c0d92c817dc95b150a9d66584ac3e0515d.png" src="_images/2862000c378356e1a3b7086ca47073c0d92c817dc95b150a9d66584ac3e0515d.png" />
+</div>
+</div>
+</section>
+<section id="id2">
+<h2>Multidimensional Scaling<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>The multidimensional scaling method follows the sample pattern as other scikit-learn methods, we:</p>
+<ol class="arabic simple">
+<li><p>instantiate</p></li>
+<li><p>fit</p></li>
+<li><p>apply, transform or predict</p></li>
+</ol>
+<p>Let’s run multidimensional scaling on our subset of features (<span class="math notranslate nohighlight">\(m = 3\)</span>) and project to only 2 features (<span class="math notranslate nohighlight">\(p = 2\)</span>).</p>
+<ul class="simple">
+<li><p>we set the random_state for repeatability, everyone gets the same result from the iterative solution</p></li>
+<li><p>we use 20 random initializations, the best solution is selected to improve likelihood of selection of (or search resulting in) the global optimum and not a local optimum</p></li>
+<li><p>we use an increased number of max_iter to improve the convergence</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>                                          <span class="c1"># set the random number seed, so we all get the same answer</span>
+<span class="n">n_components</span> <span class="o">=</span> <span class="mi">2</span>                                              <span class="c1"># p, reduced dimensionality space</span>
+<span class="n">embedding</span> <span class="o">=</span> <span class="n">MDS</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">n_init</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span><span class="n">max_iter</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span><span class="n">random_state</span> <span class="o">=</span> <span class="mi">73073</span><span class="p">)</span> <span class="c1"># instantiate and set the hyperparameter</span>
+<span class="n">MDS_transformed</span> <span class="o">=</span> <span class="n">embedding</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">nXname</span><span class="p">])</span>
+<span class="n">MDS_transformed</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(200, 2)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The output is 2 multidimensional scaling components.  We have projected our 3 features to 2 features to minimize the error in pairwise distance between the samples.  Let’s add the 2 components to our DataFrame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;MDS1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">MDS_transformed</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>                             <span class="c1"># add MDS projections to DataFrame</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;MDS2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">MDS_transformed</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Well</th>
+      <th>Por</th>
+      <th>AI</th>
+      <th>TOC</th>
+      <th>Prod</th>
+      <th>nPor</th>
+      <th>nAI</th>
+      <th>nTOC</th>
+      <th>tProd</th>
+      <th>MDS1</th>
+      <th>MDS2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>12.08</td>
+      <td>2.80</td>
+      <td>1.16</td>
+      <td>1695.360819</td>
+      <td>-0.982256</td>
+      <td>-0.298603</td>
+      <td>0.352948</td>
+      <td>low</td>
+      <td>0.619075</td>
+      <td>-0.641325</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>12.38</td>
+      <td>3.22</td>
+      <td>0.89</td>
+      <td>3007.096063</td>
+      <td>-0.881032</td>
+      <td>0.444147</td>
+      <td>-0.209104</td>
+      <td>med</td>
+      <td>0.872691</td>
+      <td>0.306021</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>14.02</td>
+      <td>4.01</td>
+      <td>0.89</td>
+      <td>2531.938259</td>
+      <td>-0.327677</td>
+      <td>1.841224</td>
+      <td>-0.209104</td>
+      <td>med</td>
+      <td>0.458548</td>
+      <td>1.846056</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>17.67</td>
+      <td>2.63</td>
+      <td>1.08</td>
+      <td>5288.514854</td>
+      <td>0.903875</td>
+      <td>-0.599240</td>
+      <td>0.186414</td>
+      <td>high</td>
+      <td>-0.885125</td>
+      <td>-0.484969</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>17.52</td>
+      <td>3.18</td>
+      <td>1.51</td>
+      <td>2859.469624</td>
+      <td>0.853263</td>
+      <td>0.373409</td>
+      <td>1.081534</td>
+      <td>med</td>
+      <td>-1.382408</td>
+      <td>0.413270</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Let’s take a look at the samples projected into the new 2 dimensional feature space.</p>
+<ul class="simple">
+<li><p>note the rotation, translation is arbitrary in this space, only the sample pairwise distances are relevant.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>                                              <span class="c1"># plot labeled MDS projection</span>
+<span class="n">pairplot</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;MDS1&#39;</span><span class="p">],</span><span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;MDS2&#39;</span><span class="p">],</span><span class="n">hue</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;tProd&#39;</span><span class="p">],</span><span class="n">markers</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="n">palette</span> <span class="o">=</span> <span class="n">dpalette</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">pairplot</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;MDS1&#39;</span><span class="p">],</span><span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;MDS2&#39;</span><span class="p">],</span><span class="n">hue</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Well&#39;</span><span class="p">],</span><span class="n">markers</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">2.</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/878020c74fa0b6fc3c688626e51d63152eb408d458e31f001912e5bf1844201a.png" src="_images/878020c74fa0b6fc3c688626e51d63152eb408d458e31f001912e5bf1844201a.png" />
+</div>
+</div>
+<p>Some comments:</p>
+<ul class="simple">
+<li><p>these are the actual samples in this space, we know the values, including the sample number to assist with interpretations</p></li>
+<li><p>the general relationship between samples is preserved.</p></li>
+<li><p>the general production transition from low to very high production is preserved.</p></li>
+</ul>
+<p>Let’s check our model:</p>
+<ul class="simple">
+<li><p>we will calculate the original and projected pairwise distances between all the samples</p></li>
+<li><p>we will cross plot the original vs the projects pairwise distances</p></li>
+<li><p>we will plot the distribution of the ratio between projects / original pairwise distances</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dists</span> <span class="o">=</span> <span class="n">euclidean_distances</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">nXname</span><span class="p">],</span> <span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="c1"># calculate pairwise distance</span>
+<span class="n">nonzero</span> <span class="o">=</span> <span class="n">dists</span> <span class="o">!=</span> <span class="mi">0</span>                                          <span class="c1"># select only non-identical samples pairs</span>
+<span class="n">dists</span> <span class="o">=</span> <span class="n">dists</span><span class="p">[</span><span class="n">nonzero</span><span class="p">]</span>
+<span class="n">projected_dists</span> <span class="o">=</span> <span class="n">euclidean_distances</span><span class="p">(</span><span class="n">MDS_transformed</span><span class="p">,</span> <span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()[</span><span class="n">nonzero</span><span class="p">]</span> <span class="c1"># calculate projected pairwise distance</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">221</span><span class="p">)</span>                                              <span class="c1"># scatter plot original and projected pairwise distance</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dists</span><span class="p">,</span><span class="n">projected_dists</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span><span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">head_length</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">head_width</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">15</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">15</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Pairwise Distance: original space&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Pairwise Distance: projected space&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;MDS Pairwise Distance: Projected to </span><span class="si">%d</span><span class="s2"> Components&quot;</span> <span class="o">%</span> <span class="n">n_components</span><span class="p">)</span>
+
+<span class="n">ratio</span> <span class="o">=</span> <span class="n">projected_dists</span> <span class="o">/</span> <span class="n">dists</span>                               <span class="c1"># calculate projected distance/original distance ratio</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">222</span><span class="p">)</span>                                              <span class="c1"># histogram of distance ratio</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ratio</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">),</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Distance Ratio: projected / original&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Frequency&quot;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;MDS Pairwise Distance: Projected to </span><span class="si">%d</span><span class="s2"> Components&quot;</span> <span class="o">%</span> <span class="n">n_components</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Distance Ratio:&#39;</span><span class="p">,[</span><span class="mf">0.55</span><span class="p">,</span><span class="mi">9000</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;mean = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ratio</span><span class="p">),</span><span class="mi">2</span><span class="p">)),[</span><span class="mf">0.61</span><span class="p">,</span><span class="mi">8300</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;st.dev. = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ratio</span><span class="p">),</span><span class="mi">2</span><span class="p">)),[</span><span class="mf">0.61</span><span class="p">,</span><span class="mi">7600</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">223</span><span class="p">)</span>                                               <span class="c1"># histogram of original pairwise distance</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">dists</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">15.</span><span class="p">),</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Pairwise Distance&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Frequency&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;MDS Pairwise Distance: Original Data&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Original Pairwise Distance:&#39;</span><span class="p">,[</span><span class="mi">9</span><span class="p">,</span><span class="mi">4000</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">5500</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;mean = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dists</span><span class="p">),</span><span class="mi">2</span><span class="p">)),[</span><span class="mi">10</span><span class="p">,</span><span class="mi">3700</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;st.dev. = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">dists</span><span class="p">),</span><span class="mi">2</span><span class="p">)),[</span><span class="mi">10</span><span class="p">,</span><span class="mi">3400</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">224</span><span class="p">)</span>                                               <span class="c1"># histogram of projected pairwise distance</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">projected_dists</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">15.</span><span class="p">),</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Pairwise Distance&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Frequency&quot;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">5500</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;MDS Pairwise Distance: Projected to </span><span class="si">%d</span><span class="s2"> Components&quot;</span> <span class="o">%</span> <span class="n">n_components</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Original Pairwise Distance:&#39;</span><span class="p">,[</span><span class="mi">9</span><span class="p">,</span><span class="mi">4000</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;mean = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">projected_dists</span><span class="p">),</span><span class="mi">2</span><span class="p">)),[</span><span class="mi">10</span><span class="p">,</span><span class="mi">3700</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;st.dev. = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">projected_dists</span><span class="p">),</span><span class="mi">2</span><span class="p">)),[</span><span class="mi">10</span><span class="p">,</span><span class="mi">3400</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.6</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.7</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/86303ca6a38106e6d81078053b2c24fac4ab9aed520d28d5f239bf009b7bb5d9.png" src="_images/86303ca6a38106e6d81078053b2c24fac4ab9aed520d28d5f239bf009b7bb5d9.png" />
+</div>
+</div>
+<p>We projected to a 2 dimensional feature space and did a pretty good job preserving the pairwise distances between the samples.</p>
+</section>
+<section id="observing-specific-samples">
+<h2>Observing Specific Samples<a class="headerlink" href="#observing-specific-samples" title="Permalink to this heading">#</a></h2>
+<p>Let’s reduce the number of wells and post the well numbers to observe their spacings in the original and projected features spaces.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_subset</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span><span class="n">random_state</span> <span class="o">=</span> <span class="n">seed</span><span class="o">+</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>           <span class="c1"># randomly sample 30 data without replacement</span>
+<span class="n">df_subset</span> <span class="o">=</span> <span class="n">df_subset</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s look at out dataset, we will visualize the 3 possible scatter plots between the three features with the sample points labeled by well number (1 through 30).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>
+<span class="n">pairplot</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">df_subset</span><span class="p">[</span><span class="n">nXname</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">y</span> <span class="o">=</span> <span class="n">df_subset</span><span class="p">[</span><span class="n">nXname</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="n">s</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span>
+        <span class="n">hue</span> <span class="o">=</span> <span class="n">df_subset</span><span class="p">[</span><span class="s1">&#39;tProd&#39;</span><span class="p">],</span><span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span><span class="n">markers</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">nXlabelunit</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">nXlabelunit</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span> <span class="n">add_grid</span><span class="p">();</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="n">nXmin</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">nXmax</span><span class="p">[</span><span class="mi">0</span><span class="p">]]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="n">nXmin</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">nXmax</span><span class="p">[</span><span class="mi">1</span><span class="p">]]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;30 Samples, &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">Xlabel</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="s1">&#39; vs. &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">Xlabel</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">txt</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">df_subset</span><span class="p">[</span><span class="s1">&#39;Well&#39;</span><span class="p">]):</span>
+    <span class="n">pairplot</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span> <span class="p">(</span><span class="n">df_subset</span><span class="p">[</span><span class="n">nXname</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">df_subset</span><span class="p">[</span><span class="n">nXname</span><span class="p">[</span><span class="mi">1</span><span class="p">]][</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mf">0.1</span><span class="p">))</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">)</span>
+<span class="n">pairplot</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">df_subset</span><span class="p">[</span><span class="n">nXname</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="n">y</span> <span class="o">=</span> <span class="n">df_subset</span><span class="p">[</span><span class="n">nXname</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span><span class="n">s</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span>
+        <span class="n">hue</span> <span class="o">=</span> <span class="n">df_subset</span><span class="p">[</span><span class="s1">&#39;tProd&#39;</span><span class="p">],</span><span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span><span class="n">markers</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">nXlabelunit</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">nXlabelunit</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span> <span class="n">add_grid</span><span class="p">();</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="n">nXmin</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">nXmax</span><span class="p">[</span><span class="mi">1</span><span class="p">]]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="n">nXmin</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">nXmax</span><span class="p">[</span><span class="mi">2</span><span class="p">]]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;30 Samples, &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">Xlabel</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">+</span> <span class="s1">&#39; vs. &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">Xlabel</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">txt</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">df_subset</span><span class="p">[</span><span class="s1">&#39;Well&#39;</span><span class="p">]):</span>
+    <span class="n">pairplot</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span> <span class="p">(</span><span class="n">df_subset</span><span class="p">[</span><span class="n">nXname</span><span class="p">[</span><span class="mi">1</span><span class="p">]][</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">df_subset</span><span class="p">[</span><span class="n">nXname</span><span class="p">[</span><span class="mi">2</span><span class="p">]][</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mf">0.1</span><span class="p">))</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span>
+<span class="n">pairplot</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">df_subset</span><span class="p">[</span><span class="n">nXname</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">y</span> <span class="o">=</span> <span class="n">df_subset</span><span class="p">[</span><span class="n">nXname</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span><span class="n">s</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span>
+        <span class="n">hue</span> <span class="o">=</span> <span class="n">df_subset</span><span class="p">[</span><span class="s1">&#39;tProd&#39;</span><span class="p">],</span><span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span><span class="n">markers</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">nXlabelunit</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">nXlabelunit</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span> <span class="n">add_grid</span><span class="p">();</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="n">nXmin</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">nXmax</span><span class="p">[</span><span class="mi">0</span><span class="p">]]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="n">nXmin</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">nXmax</span><span class="p">[</span><span class="mi">2</span><span class="p">]]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;30 Samples, &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">Xlabel</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">+</span> <span class="s1">&#39; vs. &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">Xlabel</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">txt</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">df_subset</span><span class="p">[</span><span class="s1">&#39;Well&#39;</span><span class="p">]):</span>
+    <span class="n">pairplot</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span> <span class="p">(</span><span class="n">df_subset</span><span class="p">[</span><span class="n">nXname</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">df_subset</span><span class="p">[</span><span class="n">nXname</span><span class="p">[</span><span class="mi">2</span><span class="p">]][</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mf">0.1</span><span class="p">))</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/6e9e890f08655d5dcfe32faa16b55fc80fd973a37b63d0015962db70c23a5aa9.png" src="_images/6e9e890f08655d5dcfe32faa16b55fc80fd973a37b63d0015962db70c23a5aa9.png" />
+</div>
+</div>
+<p>We can now see our 30 wells with their sample numbers plots on each of the 3 possible bivariate plots. Let’s perform multidimensional scaling to project 2 components.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embedding_subset</span> <span class="o">=</span> <span class="n">MDS</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>                        <span class="c1"># MDS projection</span>
+<span class="n">MDS_transformed_subset</span> <span class="o">=</span> <span class="n">embedding_subset</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_subset</span><span class="p">[</span><span class="n">nXname</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s visualize the wells in the projected feature space.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>                                              <span class="c1"># plot data samples in MDS space</span>
+<span class="n">pairplot</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">MDS_transformed_subset</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">y</span> <span class="o">=</span> <span class="n">MDS_transformed_subset</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="n">s</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span>
+        <span class="n">hue</span> <span class="o">=</span> <span class="n">df_subset</span><span class="p">[</span><span class="s1">&#39;tProd&#39;</span><span class="p">],</span><span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span><span class="n">markers</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">txt</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">df_subset</span><span class="p">[</span><span class="s1">&#39;Well&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span> <span class="p">[</span><span class="n">MDS_transformed_subset</span><span class="p">[:,</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span><span class="n">MDS_transformed_subset</span><span class="p">[:,</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mf">0.1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span><span class="mf">3.5</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span><span class="mf">3.5</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;30 Samples, MDS#2 vs. MDS#1&#39;</span><span class="p">)</span>
+<span class="n">pairplot</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;MDS1&#39;</span><span class="p">);</span> <span class="n">pairplot</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;MDS2&#39;</span><span class="p">)</span>  
+<span class="n">pairplot</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+
+<span class="n">dists</span> <span class="o">=</span> <span class="n">euclidean_distances</span><span class="p">(</span><span class="n">df_subset</span><span class="p">[</span><span class="n">nXname</span><span class="p">],</span> <span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="c1"># calculate all pairwise distances</span>
+<span class="n">nonzero</span> <span class="o">=</span> <span class="n">dists</span> <span class="o">!=</span> <span class="mi">0</span>                                          <span class="c1"># select only non-identical samples pairs</span>
+<span class="n">dists</span> <span class="o">=</span> <span class="n">dists</span><span class="p">[</span><span class="n">nonzero</span><span class="p">]</span>
+<span class="n">projected_dists</span> <span class="o">=</span> <span class="n">euclidean_distances</span><span class="p">(</span><span class="n">MDS_transformed_subset</span><span class="p">,</span> <span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()[</span><span class="n">nonzero</span><span class="p">]</span> <span class="c1"># calculate projected pairwise distance</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>                                              <span class="c1"># scatter plot original and projected pairwise distance</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dists</span><span class="p">,</span><span class="n">projected_dists</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span><span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">head_length</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">head_width</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">15</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">15</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Pairwise Distance: original space&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Pairwise Distance: projected space&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;MDS Pairwise Distance: Projected to </span><span class="si">%d</span><span class="s2"> Components&quot;</span> <span class="o">%</span> <span class="n">n_components</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">2.</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/965ceb7c6a6d4c9f915821ebdff43af35733b767e8481c508762c7e4ae620a19.png" src="_images/965ceb7c6a6d4c9f915821ebdff43af35733b767e8481c508762c7e4ae620a19.png" />
+</div>
+</div>
+<p>Some observations:</p>
+<ul class="simple">
+<li><p>the transformation is nonlinear, nor orthogonal, i.e., not a rotation (like PCA)</p></li>
+<li><p>the inter-sample distance is approximately preserved</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\delta_{i,j} = \sqrt{\left( (\delta Por_{i,j}^{2}) + (\delta AI_{i,j}^{2}) + (\delta TOC_{i,j}^{2}) \right)}
+\]</div>
+</section>
+<section id="applications-of-mds">
+<h2>Applications of MDS<a class="headerlink" href="#applications-of-mds" title="Permalink to this heading">#</a></h2>
+<p>The main application with multidimensional scaling is the ability to inspect high dimensional feature spaces for relationships between samples.</p>
+<ul class="simple">
+<li><p>we may observe that specific wells cluster together</p></li>
+<li><p>we may observe systematic transitions</p></li>
+</ul>
+<p>For example, in the figure above we could observe:</p>
+<ol class="arabic simple">
+<li><p>Wells 1 and 168 are in a location of medium producing wells, but are low producing wells.</p></li>
+<li><p>Well 70 is close to the many low producing well, but is a medium producing well.</p></li>
+<li><p>Wells 155 and 158 are in a location of high producing wells, but are medium producing wells.</p></li>
+</ol>
+<p>This analysis may identify opportunities for further investigation into these specific data samples. Perhaps there are data issues or other confounding features to integrate.</p>
+<p>Recall, MDS is a one-way-trip.</p>
+<ul class="simple">
+<li><p>While we can project the data into MDS space, there is no backtransformation; therefore, we cannot take an arbitrary location in MDS space and calculate the original feature combination.</p></li>
+<li><p>The solution is nonunique with respect to translation, rotation and flipping. Our interpretation is based on separation distance and groupings in MDS space.</p></li>
+<li><p>The calculation is performed each time we change the data resulting in a new solution.</p></li>
+</ul>
+</section>
+<section id="comments">
+<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
+<p>I hope you found this tutorial useful. I’m always happy to discuss geostatistics, statistical modeling, uncertainty modeling and machine learning,</p>
+<p><em>Michael</em></p>
+</section>
+<section id="the-author">
+<h2>The Author:<a class="headerlink" href="#the-author" title="Permalink to this heading">#</a></h2>
+<p>Michael Pyrcz, Professor, The University of Texas at Austin
+<em>Novel Data Analytics, Geostatistics and Machine Learning Subsurface Solutions</em></p>
+<p>With over 17 years of experience in subsurface consulting, research and development, Michael has returned to academia driven by his passion for teaching and enthusiasm for enhancing engineers’ and geoscientists’ impact in subsurface resource development.</p>
+<p>For more about Michael check out these links:</p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+</section>
+<section id="want-to-work-together">
+<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<ul class="simple">
+<li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
+</ul>
+<p>I’m always happy to discuss,</p>
+<p><em>Michael</em></p>
+<p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
+</section>
+<section id="more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">
+<h2>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="MachineLearning_PCA.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Principal Component Analysis</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="MachineLearning_linear_regression.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Linear Regression</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-for-multidimensional-scaling">Motivation for Multidimensional Scaling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inferential-machine-learning">Inferential Machine Learning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Multidimensional Scaling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-multidimensional-scaling">Classical Multidimensional Scaling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metric-multidimensional-scaling">Metric Multidimensional Scaling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-multidimensional-scaling-results">Checking Multidimensional Scaling Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-with-principal-component-analysis">Comparison with Principal Component Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data">Loading Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-loaded-dataframe">Visualize the Loaded DataFrame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-statistics">Summary Statistics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preparation">Data Preparation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Multidimensional Scaling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observing-specific-samples">Observing Specific Samples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-of-mds">Applications of MDS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Michael J. Pyrcz
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024 CC-BY-SA 4.0.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
