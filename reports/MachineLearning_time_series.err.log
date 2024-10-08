@@ -1,0 +1,56 @@
+Traceback (most recent call last):
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\nbclient\client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\jupyter_core\utils\__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\asyncio\base_events.py", line 608, in run_until_complete
+    return future.result()
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\nbclient\client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\nbclient\client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\nbclient\client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+ignore_warnings = True                                        # ignore warnings?
+
+from tqdm import tqdm                                         # suppress the status bar
+from functools import partialmethod
+tqdm.__init__ = partialmethod(tqdm.__init__, disable=True)
+
+import numpy as np                                            # ndarrays for gridded data
+import pandas as pd                                           # DataFrames for tabular data
+import os                                                     # set working directory, run executables
+import matplotlib.pyplot as plt                               # for plotting
+from matplotlib.ticker import (MultipleLocator, AutoMinorLocator,FuncFormatter) # control of axes ticks
+import matplotlib.dates as mdates                             # manually format date display
+from statsmodels.tsa.stattools import acf, pacf               # autocorrelation and partical autocorrelation
+from scipy import stats                                       # summary statistics
+import math                                                   # trig etc.
+from statsmodels.tsa.stattools import acf, pacf               # autocorrelation and partial autocorrelation
+from statsmodels.tsa.stattools import adfuller                # Dickey-Fulley test for stationarity
+from statsmodels.tsa.seasonal import seasonal_decompose       # decomposition time series model
+from statsmodels.tsa.arima.model import ARIMA                 # ARIMA time series model
+import pmdarima as pm                                         # autotune for ARIMA
+plt.rc('axes', axisbelow=True)                                # plot all grids below the plot elements
+if ignore_warnings == True:                                   
+    import warnings
+    warnings.filterwarnings('ignore')
+cmap = plt.cm.inferno                                         # color map
+------------------
+
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+Cell [1;32mIn[2], line 20[0m
+[0;32m     18[0m [38;5;28;01mfrom[39;00m [38;5;21;01mstatsmodels[39;00m[38;5;21;01m.[39;00m[38;5;21;01mtsa[39;00m[38;5;21;01m.[39;00m[38;5;21;01mseasonal[39;00m [38;5;28;01mimport[39;00m seasonal_decompose       [38;5;66;03m# decomposition time series model[39;00m
+[0;32m     19[0m [38;5;28;01mfrom[39;00m [38;5;21;01mstatsmodels[39;00m[38;5;21;01m.[39;00m[38;5;21;01mtsa[39;00m[38;5;21;01m.[39;00m[38;5;21;01marima[39;00m[38;5;21;01m.[39;00m[38;5;21;01mmodel[39;00m [38;5;28;01mimport[39;00m ARIMA                 [38;5;66;03m# ARIMA time series model[39;00m
+[1;32m---> 20[0m [38;5;28;01mimport[39;00m [38;5;21;01mpmdarima[39;00m [38;5;28;01mas[39;00m [38;5;21;01mpm[39;00m                                         [38;5;66;03m# autotune for ARIMA[39;00m
+[0;32m     21[0m plt[38;5;241m.[39mrc([38;5;124m'[39m[38;5;124maxes[39m[38;5;124m'[39m, axisbelow[38;5;241m=[39m[38;5;28;01mTrue[39;00m)                                [38;5;66;03m# plot all grids below the plot elements[39;00m
+[0;32m     22[0m [38;5;28;01mif[39;00m ignore_warnings [38;5;241m==[39m [38;5;28;01mTrue[39;00m:                                   
+
+[1;31mModuleNotFoundError[0m: No module named 'pmdarima'
+

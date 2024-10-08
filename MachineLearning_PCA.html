@@ -173,6 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_plotting_data_models.html">Loading and Plotting Data and Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_univariate_analysis.html">Univariate Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_multivariate_analysis.html">Multivariate Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_transformations.html">Feature Transformations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_ranking.html">Feature Ranking</a></li>
@@ -192,6 +193,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ensemble_trees.html">Bagging Tree and Random Forest</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_gradient_boosting.html">Gradient Boosting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_support_vector_machines.html">Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_time_series.html">Time Series Analysis and Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
@@ -2051,33 +2053,33 @@ Correlation Matrix of the 6 principle components&#39; scores:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Variance of original features:  [0.09 0.08 0.08 0.08 0.09]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Variance of original features:  [0.08 0.08 0.08 0.08 0.08]
 Proportion of variance of original features:  [0.2 0.2 0.2 0.2 0.2]
 Correlation Matrix of original features:
 
-[[ 0.09 -0.    0.   -0.   -0.  ]
- [-0.    0.08  0.    0.    0.  ]
- [ 0.    0.    0.08  0.    0.  ]
- [-0.    0.    0.    0.08 -0.  ]
- [-0.    0.    0.   -0.    0.09]]
+[[ 0.08 -0.    0.    0.   -0.  ]
+ [-0.    0.08 -0.   -0.    0.  ]
+ [ 0.   -0.    0.08  0.   -0.  ]
+ [ 0.   -0.    0.    0.08  0.  ]
+ [-0.    0.   -0.    0.    0.08]]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PCA Variance Explained  [0.21 0.2  0.2  0.2  0.19]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PCA Variance Explained  [0.21 0.2  0.2  0.2  0.2 ]
 
 Correlation Matrix of scores:
 
-[[ 0.09 -0.   -0.   -0.   -0.  ]
- [-0.    0.09 -0.   -0.    0.  ]
- [-0.   -0.    0.08  0.   -0.  ]
- [-0.   -0.    0.    0.08  0.  ]
- [-0.    0.   -0.    0.    0.08]]
+[[ 0.09  0.   -0.    0.   -0.  ]
+ [ 0.    0.08 -0.    0.   -0.  ]
+ [-0.   -0.    0.08  0.    0.  ]
+ [ 0.    0.    0.    0.08 -0.  ]
+ [-0.   -0.    0.   -0.    0.08]]
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.98, &#39;Principal Component Scores&#39;)
 </pre></div>
 </div>
-<img alt="_images/f9dce478545cc8bb1b7e53d7a8fceaf86ae1da0a046aeb84ff87f18458e0d4e0.png" src="_images/f9dce478545cc8bb1b7e53d7a8fceaf86ae1da0a046aeb84ff87f18458e0d4e0.png" />
-<img alt="_images/53560c5284213abe10ec02b747a444a9745415ccb0a6edf81f83f6069278aa8b.png" src="_images/53560c5284213abe10ec02b747a444a9745415ccb0a6edf81f83f6069278aa8b.png" />
+<img alt="_images/2be0883d9e0d2cf1fd1510000d893f5b0432e0ab9f815f1e385a3fa360bff7f0.png" src="_images/2be0883d9e0d2cf1fd1510000d893f5b0432e0ab9f815f1e385a3fa360bff7f0.png" />
+<img alt="_images/87a1d0fe5b8cf9c99834e3788a666c8e0790bb09b9e0c8f0b4a1cf5c634b9b7c.png" src="_images/87a1d0fe5b8cf9c99834e3788a666c8e0790bb09b9e0c8f0b4a1cf5c634b9b7c.png" />
 </div>
 </div>
 <p>What happens when principal component analysis is applied to uncorrelated, uniformly distributed features?</p>
