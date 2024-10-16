@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'MachineLearning_concepts';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Loading and Plotting Data and Models" href="MachineLearning_plotting_data_models.html" />
+    <link rel="next" title="Machine Learning Workflow Construction and Coding" href="MachineLearning_worklfow_construction.html" />
     <link rel="prev" title="Applied Machine Learning in Python: a Hands-on Guide with Code" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -173,6 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Machine Learning Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_worklfow_construction.html">Workflow Construction and Coding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_plotting_data_models.html">Loading and Plotting Data and Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_univariate_analysis.html">Univariate Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_multivariate_analysis.html">Multivariate Analysis</a></li>
@@ -438,6 +439,11 @@ document.write(`
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
 <p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
+<div class="remove-from-content-only admonition">
+<p class="admonition-title">Cite this e-Book as:</p>
+<p>Pyrcz, M.J., 2024, Applied Machine Learning in Python: a Hands-on Guide with Code, <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book">https://geostatsguy.github.io/MachineLearningDemos_Book</a>.</p>
+</div>
+<p>The workflows in this book and more are available here:</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite the MachineLearningDemos GitHub Repository as:</p>
 <p>Pyrcz, M.J., 2024, MachineLearningDemos: Python Machine Learning Demonstration Workflows Repository (0.0.1). Zenodo. <a class="reference external" href="https://zenodo.org/doi/10.5281/zenodo.13835312"><img alt="DOI" src="https://zenodo.org/badge/862519860.svg" /></a></p>
@@ -756,7 +762,7 @@ E \left[ \left( y_0 - \hat{f}(x^1_0, \ldots , x^m_0) \right)^2 \right]
 \]</div>
 <p>where we use the <span class="math notranslate nohighlight">\(_0\)</span> notation to indicate data samples not in the training dataset split, but in the withheld testing split. We can expand the quadratic and group the terms to get this convenient decomposition of expect test square error into three additive sources (derivation is available in <a class="reference external" href="https://www.amazon.com/Elements-Statistical-Learning-Prediction-Statistics/dp/0387848576/ref=sr_1_1?crid=32MDGH9EIGR9T&amp;dib=eyJ2IjoiMSJ9.p0bVgWPuChRIt10algkzSRLwDHzW4bCihIh1RA6GGZDYFtIQN37sOnIqDS5rCJ4fF5dgqsleBiGbmgJUSXISlcmayLc6C0aOcXVX8iCtyZElt9qVbd-Dvq9P3x4KTBlzHCFHDtjz0ImJUAd3LhT6D6KhOtiHOAveaz8xiE4jU1ah6LlDo0xzGoQVDXzNE6ODFzysbfBvzJMRGXhLbQBD292ixuH_tTBTPZwOzNGzpIw.TpRqJ1llQqMdsDXdXhWr0WQIhzTn6rpjDKSAzA10E_I&amp;dib_tag=se&amp;keywords=hastie+machine+learning&amp;qid=1728683359&amp;s=books&amp;sprefix=hastie+machine+learn%2Cstripbooks%2C187&amp;sr=1-1">Hastie et al., 2009</a>,</p>
 <figure style="text-align: center;">
-  <img src="_static/concepts/three_error.png" style="display: block; margin: 0 auto; width: 80%;">
+  <img src="_static/concepts/three_error.png" style="display: block; margin: 0 auto; width: 90%;">
   <figcaption style="text-align: center;">Model error in testing with three additive components, model variance, model bias and irreducible error.</figcaption>
 </figure>
 <p>Let’s explain these three additive sources of error over test data, i.e., the error we expect in the real-world use of our model to predict for cases not used to train the model,</p>
@@ -901,11 +907,11 @@ E \left[ \left( y_0 - \hat{f}(x^1_0, \ldots , x^m_0) \right)^2 \right]
       </div>
     </a>
     <a class="right-next"
-       href="MachineLearning_plotting_data_models.html"
+       href="MachineLearning_worklfow_construction.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Loading and Plotting Data and Models</p>
+        <p class="prev-next-title">Machine Learning Workflow Construction and Coding</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
