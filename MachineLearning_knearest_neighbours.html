@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>k-nearest Neighbours Regression &#8212; Applied Machine Learning in Python</title>
+    <title>k-nearest Neighbours &#8212; Applied Machine Learning in Python</title>
   
   
   
@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'MachineLearning_knearest_neighbours';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Decision Trees" href="MachineLearning_decision_tree.html" />
+    <link rel="next" title="Decision Tree" href="MachineLearning_decision_tree.html" />
     <link rel="prev" title="Polynomial Regression" href="MachineLearning_polynomial_regression.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -173,13 +173,14 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_concepts.html">Machine Learning Concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_worklfow_construction.html">Workflow Construction and Coding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_plotting_data_models.html">Loading and Plotting Data and Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_univariate_analysis.html">Univariate Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_multivariate_analysis.html">Multivariate Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_transformations.html">Feature Transformations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_ranking.html">Feature Ranking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_imputation.html">Feature Imputation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_clustering.html">Cluster Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_density-based_clustering.html">Density-based Clustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_spectral_clustering.html">Spectral Clustering</a></li>
@@ -198,6 +199,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_support_vector_machines.html">Support Vector Machines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_time_series.html">Time Series Analysis and Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -384,7 +386,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>k-nearest Neighbours Regression</h1>
+    <h1>k-nearest Neighbours</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -395,6 +397,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivations-for-k-nearest-neighbours-regression">Motivations for k-nearest Neighbours Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convolution"><strong>Convolution</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
@@ -433,8 +436,11 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="k-nearest-neighbours-regression">
-<h1>k-nearest Neighbours Regression<a class="headerlink" href="#k-nearest-neighbours-regression" title="Permalink to this heading">#</a></h1>
+  <figure style="text-align: center;">
+  <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
+</figure>
+<section id="k-nearest-neighbours">
+<h1>k-nearest Neighbours<a class="headerlink" href="#k-nearest-neighbours" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
 <p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
@@ -449,7 +455,7 @@ document.write(`
 </div>
 <p>By Michael J. Pyrcz <br />
 © Copyright 2024.</p>
-<p>This chapter is a tutorial for / demonstration of <strong>k-nearest Neighbours Regression</strong>.</p>
+<p>This chapter is a tutorial for / demonstration of <strong>k-nearest Neighbours</strong>.</p>
 <p><strong>YouTube Lecture</strong>: check out my lectures on:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://youtu.be/zOUM_AnI1DQ?si=wzWdJ35qJ9n8O6Bl">Introduction to Machine Learning</a></p></li>
@@ -504,9 +510,45 @@ document.write(`
 d_i = \sqrt{\sum_{\alpha = 1}^{m} \left(x_{\alpha,i} - x_{\alpha,0}\right)^2}
 \end{equation}</p>
 <ol class="arabic simple" start="2">
-<li><p>overlap metric / Hamming distance used for discrete variables</p></li>
-<li><p>correlation coefficients used for comparing sets and images</p></li>
+<li><p>Minkowski Distance - a general expersion for distance with well-known Manhattan and Euclidean distances are special cases,</p></li>
 </ol>
+<div class="math notranslate nohighlight">
+\[
+d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \right)^{\frac{1}{p}}
+\]</div>
+<ul class="simple">
+<li><p>when <span class="math notranslate nohighlight">\(p=2\)</span>, this becomes the Euclidean distance</p></li>
+<li><p>when <span class="math notranslate nohighlight">\(p=1\)</span> it becomes the Manhattan distance</p></li>
+</ul>
+</section>
+<section id="convolution">
+<h2><strong>Convolution</strong><a class="headerlink" href="#convolution" title="Permalink to this heading">#</a></h2>
+<p>The k-nearest neighbours approach is similar to a convolution approach for spatial interpolation. Convolution is the integral product of two functions, after one is reversed and shifted by <span class="math notranslate nohighlight">\(\Delta\)</span>.</p>
+<ul class="simple">
+<li><p>one interpretation is smoothing a function with weighting function, <span class="math notranslate nohighlight">\(𝑓(\Delta)\)</span>, is applied to calculate the weighted average of function, <span class="math notranslate nohighlight">\(𝑔(x)\)</span>,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ 
+(f * g)(x) = \int_{-\infty}^{\infty} f(\Delta) g(x - \Delta) \, d\Delta 
+\]</div>
+<p>this easily extends into multidimensional</p>
+<div class="math notranslate nohighlight">
+\[
+(f * g)(x, y, z) = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(\Delta_x, \Delta_y, \Delta_z) g(x - \Delta_x, y - \Delta_y, z - \Delta_z) \, d\Delta_x \, d\Delta_y \, d\Delta_z
+\]</div>
+<p>The choice of which function is shifted before integration does not change the result, the convolution operator has commutativity.</p>
+<div class="math notranslate nohighlight">
+\[ 
+(f * g)(x) = \int_{-\infty}^{\infty} f(\Delta) g(x - \Delta) \, d\Delta 
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+(f * g)(x) = \int_{-\infty}^{\infty} f(x - \Delta) g(\Delta) \, d\Delta 
+\]</div>
+<ul class="simple">
+<li><p>if either function is reflected then convolution is equivalent to cross-correlation, measure of similarity between 2 signals as a function of displacement.</p></li>
+<li><p>for k-nearest neighbours the use of <span class="math notranslate nohighlight">\(k\)</span> results in a locally adaptive window size, different from standard convolution</p></li>
+</ul>
 </section>
 <section id="load-the-required-libraries">
 <h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
@@ -2071,7 +2113,7 @@ Response Feature: [[&#39;Prod&#39;]]
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Decision Trees</p>
+        <p class="prev-next-title">Decision Tree</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2091,6 +2133,7 @@ Response Feature: [[&#39;Prod&#39;]]
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivations-for-k-nearest-neighbours-regression">Motivations for k-nearest Neighbours Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convolution"><strong>Convolution</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>

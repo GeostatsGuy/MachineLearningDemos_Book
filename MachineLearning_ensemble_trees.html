@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Gradient Boosting Trees" href="MachineLearning_gradient_boosting.html" />
-    <link rel="prev" title="Decision Trees" href="MachineLearning_decision_tree.html" />
+    <link rel="prev" title="Decision Tree" href="MachineLearning_decision_tree.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -173,13 +173,14 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_concepts.html">Machine Learning Concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_worklfow_construction.html">Workflow Construction and Coding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_plotting_data_models.html">Loading and Plotting Data and Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_univariate_analysis.html">Univariate Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_multivariate_analysis.html">Multivariate Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_transformations.html">Feature Transformations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_ranking.html">Feature Ranking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_imputation.html">Feature Imputation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_clustering.html">Cluster Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_density-based_clustering.html">Density-based Clustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_spectral_clustering.html">Spectral Clustering</a></li>
@@ -198,6 +199,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_support_vector_machines.html">Support Vector Machines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_time_series.html">Time Series Analysis and Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -434,7 +436,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="ensemble-trees-bagging-and-random-forest">
+  <figure style="text-align: center;">
+  <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
+</figure>
+<section id="ensemble-trees-bagging-and-random-forest">
 <h1>Ensemble Trees, Bagging and Random Forest<a class="headerlink" href="#ensemble-trees-bagging-and-random-forest" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
 <p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
@@ -540,15 +545,20 @@ RSS = \sum^{J}_{j=1} \sum_{i \in R_j} (y_i - \hat{y}_{R_j})^2
 <p><strong>Out-of-Bag</strong></p>
 <p>With bootstrap resampling of the data, it can be shown that about 2/3 of the data will be included (in expectation) for each tree.</p>
 <ul class="simple">
-<li><p>therefore are 1/3 of the data (in expectation) unused in predicting each tree, these are know as out-of-bag observations</p></li>
-<li><p>for every response feature observation, <span class="math notranslate nohighlight">\(y_{\alpha}\)</span>,  there will be <span class="math notranslate nohighlight">\(\frac{B}{3}\)</span> out-of-bag predictions, <span class="math notranslate nohighlight">\(y^{*,b}_{\alpha}\)</span></p></li>
-<li><p>we can average (for regression) these prediction to calculate a single out-of-bag prediction, <span class="math notranslate nohighlight">\(y^{*}_{\alpha} = \sum_{\alpha = 1}^{\frac{B}{3}} y^{*,b}_{\alpha}\)</span></p></li>
-<li><p>we then calculate the out-of-bag mean square error (MSE)</p></li>
+<li><p>therefore are <span class="math notranslate nohighlight">\(\frac{1}{3}\)</span> of the data (in expectation) unused in training each model realization, these are know as out-of-bag observations</p></li>
+<li><p>for every response feature observation, <span class="math notranslate nohighlight">\(y_{\alpha}\)</span>, there are <span class="math notranslate nohighlight">\(\frac{B}{3}\)</span> out-of-bag predictions, <span class="math notranslate nohighlight">\(y^{*,b}_{\alpha}\)</span></p></li>
+<li><p>we can aggregate this ensemble of prediction realizations, average for regression or mode for classification, to calculate a single out-of-bag prediction, <span class="math notranslate nohighlight">\(y^{*}_{\alpha} = \sum_{\alpha = 1}^{\frac{B}{3}} y^{*,b}_{\alpha}\)</span></p></li>
+<li><p>from these single out-of-bag predictions over all data, the out-of-bag mean square error (MSE) is calculated as,</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
 MSE_{OOB} = \sum_{\alpha = 1}^{\frac{B}{3}} \left[ y^{*}_{\alpha} - y_{\alpha} \right]^2
 \]</div>
+<p>For bagging-based ensemble predictive machine learning, there is no need to perform training and testing splits, hyperparameter tuning can be applied with out-of-bag MSE.</p>
+<ul class="simple">
+<li><p>this is equivalent to random train and test split that may not be fair, same difficulty as the planned use of the model</p></li>
+<li><p>this freezes the test proportion at about <span class="math notranslate nohighlight">\(\frac{1}{3}\)</span></p></li>
+</ul>
 <p><strong>Interpretability</strong></p>
 <p>Compared to decision trees, the ensemble methods have reduced interpretability.  One tool to improve model interpretability is feature importance.</p>
 <p>We calculate variable importance through calculating the average of:</p>
@@ -1854,7 +1864,7 @@ Estimated Production for Porosity = 0.25 and Brittleness = 0.3 is 2001.2 MCFPD
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Decision Trees</p>
+        <p class="prev-next-title">Decision Tree</p>
       </div>
     </a>
     <a class="right-next"

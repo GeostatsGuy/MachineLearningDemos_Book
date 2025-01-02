@@ -1,0 +1,46 @@
+Traceback (most recent call last):
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\nbclient\client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\jupyter_core\utils\__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\asyncio\base_events.py", line 608, in run_until_complete
+    return future.result()
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\nbclient\client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\nbclient\client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\nbclient\client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+#df = pd.read_csv('unconv_MV_v4.csv')                         # load our data table
+df = pd.read_csv('https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/unconv_MV_v4.csv') # load data from Dr. Pyrcz's GitHub repository  
+df.drop('Prod',axis=1,inplace=True)
+
+features = df.columns.values.tolist()                          # store the names of the features
+
+xmin = [6.0,0.0,1.0,10.0,0.0,0.9]; xmax = [24.0,10.0,5.0,85.0,2.2,2.9] # set the minimum and maximum values for plotting
+
+flabel = ['Porosity (%)','Permeability (mD)','Acoustic Impedance (kg/m2s*10^6)','Brittleness Ratio (%)', # set the names for plotting
+             'Total Organic Carbon (%)','Vitrinite Reflectance (%)']
+
+ftitle = ['Porosity','Permeability','Acoustic Impedance','Brittleness Ratio', # set the units for plotting
+             'Total Organic Carbon','Vitrinite Reflectance']
+
+m = len(pred)
+------------------
+
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mNameError[0m                                 Traceback (most recent call last)
+Cell [1;32mIn[5], line 15[0m
+[0;32m      9[0m flabel [38;5;241m=[39m [[38;5;124m'[39m[38;5;124mPorosity ([39m[38;5;124m%[39m[38;5;124m)[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124mPermeability (mD)[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124mAcoustic Impedance (kg/m2s*10^6)[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124mBrittleness Ratio ([39m[38;5;124m%[39m[38;5;124m)[39m[38;5;124m'[39m, [38;5;66;03m# set the names for plotting[39;00m
+[0;32m     10[0m              [38;5;124m'[39m[38;5;124mTotal Organic Carbon ([39m[38;5;124m%[39m[38;5;124m)[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124mVitrinite Reflectance ([39m[38;5;124m%[39m[38;5;124m)[39m[38;5;124m'[39m]
+[0;32m     12[0m ftitle [38;5;241m=[39m [[38;5;124m'[39m[38;5;124mPorosity[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124mPermeability[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124mAcoustic Impedance[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124mBrittleness Ratio[39m[38;5;124m'[39m, [38;5;66;03m# set the units for plotting[39;00m
+[0;32m     13[0m              [38;5;124m'[39m[38;5;124mTotal Organic Carbon[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124mVitrinite Reflectance[39m[38;5;124m'[39m]
+[1;32m---> 15[0m m [38;5;241m=[39m [38;5;28mlen[39m([43mpred[49m)
+
+[1;31mNameError[0m: name 'pred' is not defined
+

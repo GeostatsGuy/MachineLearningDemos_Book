@@ -63,6 +63,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -170,13 +172,14 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_concepts.html">Machine Learning Concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_worklfow_construction.html">Workflow Construction and Coding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_plotting_data_models.html">Loading and Plotting Data and Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_univariate_analysis.html">Univariate Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_multivariate_analysis.html">Multivariate Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_transformations.html">Feature Transformations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_ranking.html">Feature Ranking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_imputation.html">Feature Imputation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_clustering.html">Cluster Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_density-based_clustering.html">Density-based Clustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_spectral_clustering.html">Spectral Clustering</a></li>
@@ -195,6 +198,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_support_vector_machines.html">Support Vector Machines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_time_series.html">Time Series Analysis and Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -394,6 +398,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recent-updates">Recent Updates</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-new-with-version-0-0-1">What’s New with Version 0.0.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-new-with-version-0-0-2">What’s New with Version 0.0.2</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-for-open-educational-content">Motivation for Open Educational Content</a></li>
@@ -420,12 +425,22 @@ document.write(`
 <p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book">Geostatistics e-book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>By Michael J. Pyrcz <br />
 © Copyright 2024.</p>
-<p>This e-book provides an accessible, online version of my MachineLearningDemos GitHub repository. This repository includes well-documented demonstration Python Jupyter workflows for many common machine learning workflows. The goal of the e-book is to share this content beyond the GitHub users, often only the experts and developers.</p>
+<p>This e-book provides an accessible, online version, a new vehicle to share my <strong>Machine Learning Graduate Course</strong> at The University of Texas at Austin, that includes,</p>
+<ul class="simple">
+<li><p><strong>Well Documented Demonstration Python Workflows</strong> - almost half the lecture time is spend with these workflows from my <a class="reference external" href="https://github.com/GeostatsGuy/MachineLearningDemos">MachineLearningDemos</a> GitHub repository, that includes well-documented demonstration Python Jupyter workflows for many common machine learning workflows. One goal of this e-book is to share this content beyond the GitHub users, often only the experts and developers - to reach and help more people!</p></li>
+<li><p><strong>Course Notes</strong> - I’m also making an effort to continue adding more of the course notes into this e-book, to provid even more coverage of theory and implimentation details.</p></li>
+<li><p><strong>Interactive Python Dashboards</strong> - I have a lot of interactive Python dashboards that I use in my classes that I will continue to explain and cite in this e-book to help you get the entire in-class experience. These are all available in my <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython">DataScienceInteractivePython</a> GitHub repository.</p></li>
+<li><p><strong>Recorded Lectures</strong> - there are many thousands of views of my lectures every month on <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube channel</a>, but many of those people are not on GitHub. I will add links to this e-book to support them. Also, the YouTube channel can enhance the e-book experience, read the book and drop by to hear my explanations.</p></li>
+</ul>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Welcome!</p>
-<p>The goal of this e-book is to teach the application of machine learning in Python, for those new to machine learning I provide and overview of theory and links to my recorded lectures for a deeper dive, and for those experienced practitioners I provide example and enhanced workflows and visualizations that you can implement.</p>
+<p>The scope of this e-book is to teach the application of machine learning in Python, for those new to machine learning I provide and overview of theory and links to my recorded lectures for a deeper dive, and for those experienced practitioners I provide example and enhanced workflows and visualizations that you can implement.</p>
 </div>
-<p>This is my second effort to convert one of my GitHub repositories of well-documented Python workflows into an online, accessible e-book. For those interested in spatial data analytics and geostatistics, I welcome you to visit my other e-book, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a><span id="id1">[]</span>. The great response to this e-book from students and working professionals all over the world motivated me to compile, build and release this e-book. The original repository for the workflows in this book are found at <a class="reference external" href="https://github.com/GeostatsGuy/MachineLearningDemos">MachineLearningDemos: Python Machine Learning Demonstration Workflows Repository</a> <span id="id2">[<a class="reference internal" href="references.html#id5" title="M.J. Pyrcz. MachineLearningDemos: Python Machine Learning Demonstration Workflows Repository. https://github.com/GeostatsGuy/MachineLearningDemos, 2024. doi:10.5281/zenodo.13835318.">Pyr24f</a>]</span>, but rest assured every chapter in this book is a Jupyter Notebook or Jupyter Lab .ipynb file that may be downloaded and run locally. All I ask is that you retain my authorship and cite the source when my work is used. My motivation is to attract more people to all of the resources that I share online! Please consider citing and linking these resources in your work.</p>
+<p>This is my second effort to convert one of my GitHub repositories of well-documented Python workflows into an online, accessible e-book.</p>
+<ul class="simple">
+<li><p>For those interested in spatial data analytics and geostatistics, I welcome you to visit my other e-book, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a><span id="id1">[]</span>.</p></li>
+</ul>
+<p>The great response to this e-book from students and working professionals all over the world motivated me to compile, build and release this e-book. The original repository for the workflows in this book are found at <a class="reference external" href="https://github.com/GeostatsGuy/MachineLearningDemos">MachineLearningDemos: Python Machine Learning Demonstration Workflows Repository</a> <span id="id2">[<a class="reference internal" href="references.html#id5" title="M.J. Pyrcz. MachineLearningDemos: Python Machine Learning Demonstration Workflows Repository. https://github.com/GeostatsGuy/MachineLearningDemos, 2024. doi:10.5281/zenodo.13835318.">Pyr24d</a>]</span>, but rest assured every chapter in this book is a Jupyter Notebook or Jupyter Lab .ipynb file that may be downloaded and run locally. All I ask is that you retain my authorship and cite the source when my work is used. My motivation is to attract more people to all of the resources that I share online! Please consider citing and linking these resources in your work.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite this e-Book as:</p>
 <p>Pyrcz, M.J., 2024, Applied Machine Learning in Python: a Hands-on Guide with Code, <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book">https://geostatsguy.github.io/MachineLearningDemos_Book</a>.</p>
@@ -434,8 +449,23 @@ document.write(`
 <p class="admonition-title">Cite the MachineLearningDemos GitHub Repository as:</p>
 <p>Pyrcz, M.J., 2024, MachineLearningDemos: Python Machine Learning Demonstration Workflows Repository (0.0.1). Zenodo. <a class="reference external" href="https://zenodo.org/doi/10.5281/zenodo.13835312"><img alt="DOI" src="https://zenodo.org/badge/862519860.svg" /></a></p>
 </div>
-<p>The ultimate source for the content in this e-book is my semester-long subsurface machine learning course, so I have made decisions based on the target scope for this e-book, i.e., what is included and what is not? All the workflows demonstrate the functionality of machine learning and the use of machine learning to accomplish fundamental data science workflow steps. Also, while each chapter can stand alone I made an effort to order the chapters to build up the concepts of machine learning, from feature engineering, through inferential machine learning and up to predictive machine learning. The predictive machine learning is ordered to start with linear regression, introduce hyperparameter tuning with ridge regression, introduce basis expansion with polynomial regression, integrate Bayesian methods with Bayesian linear regression, demonstrate lazy vs. eager learning with k-nearest neighbours, present ensemble methods with trees, etc. If you work through the chapters in order you will benefit from this “scaffolding”” and “spiraling” approach to education that I like to apply in all my courses.</p>
-<p>This e-book is not a general introduction to statistics nor is it a comprehensive treatment of machine learning. For a deeper dive into the theory and practice built on fundamental probability and statistics follow the links at the top of each chapter to my recorded lectures on my <a class="reference external" href="https://www.youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf">Machine Learning Lecture Series</a> <span id="id3">[<a class="reference internal" href="references.html#id10" title="M.J. Pyrcz. Data Analytics and Geostatistics, GeostatsGuy Lectures. https://www.youtube.com/playlist?list=PLG19vXLQHvSB-D4XKYieEku9GQMQyAzjJ, August 2024.">Pyr24a</a>]</span> of my YouTube channel.  Of course there are excellent books for machine learning theory, one of my favourites is <a class="reference external" href="https://www.amazon.com/Elements-Statistical-Learning-Prediction-Statistics/dp/0387848576/ref=sr_1_1?crid=219UH54M8MIS6&amp;dib=eyJ2IjoiMSJ9.fh_JG0GOjaLD32XrqN8uJE0bBbEVgutMStZUYLHACzr8YEzjV2ommtSpLcI0ed8OflRxA4AgTUEYl4S8Y4ICbP3s2OkSR8EaSxk8OHLwyavIw52GFVGGSJpyX9Y7BNipvmjdb8VgidS9njUPpDwpl1CmpD0BTb8LtbTHm8nCXBQT0W21r5H0DU84tHqrT0AQUUBb2fA9DMIdAJGqdFp1yssN1rXciwATn5v4juV5TiA.nGxoUTS2l564x_D3GUdkwt-QUKt8be_WRfy8eJPgjkQ&amp;dib_tag=se&amp;keywords=machine+learning+statistical+learning&amp;qid=1727204107&amp;sprefix=machine+learning+statistical+learning%2Caps%2C119&amp;sr=8-1">The Elements of Statistical Learning: Data Mining, Inference, and Prediction</a> <span id="id4">[<a class="reference internal" href="references.html#id9" title="H. Hastie, R. Tibshirani, and J. Friedman. The Elements of Statistical Learning: Data Mining, Inference, and Prediction. Springer, New York, United States, 2009.">HTF09</a>]</span>.</p>
+<p>The ultimate source for the content in this e-book is my semester-long Machine Learning graduate course, so I have made scope decisions based on the educational narrative in my course.</p>
+<ul class="simple">
+<li><p>I believe that 80% or more of any data science is data prepartion so I spend 1/3 of the course on workflow design, probability concepts, data preparation and feature engineering before we turn on any machines</p></li>
+<li><p>I spend a lot of time on simple machines, like linear regression and the regularized variants to teach fundamental theory</p></li>
+<li><p>I step through specific methods to build up concepts, for example, <span class="math notranslate nohighlight">\(L^2\)</span> vs <span class="math notranslate nohighlight">\(L^1\)</span> norms, regularization, convolution, bootstrap and bagging, Bayesian approaches, etc.</p></li>
+<li><p>I have chapters on deep learning that will be added shortly.</p></li>
+</ul>
+<p>I made an effort to order the chapters to build up the concepts of machine learning, from feature engineering, through inferential machine learning and up to predictive machine learning. The predictive machine learning is ordered to start with linear regression, introduce hyperparameter tuning with ridge regression, introduce basis expansion with polynomial regression, integrate Bayesian methods with Bayesian linear regression, demonstrate lazy vs. eager learning with k-nearest neighbours, present ensemble methods with trees, etc.</p>
+<ul class="simple">
+<li><p>If you work through the chapters in order you will benefit from this “scaffolding”” and “spiraling” approach to education that I like to apply in all of my courses.</p></li>
+<li><p>Nevertheless, each chapter is designed to be a stand-alone resource, in most cases you could readily plug and play your own dataset. Remember to cite the e-book and repos and bring me a breakfast taco if you pass through Austin!</p></li>
+</ul>
+<p>This e-book is not a general introduction to statistics nor is it a comprehensive treatment of machine learning.</p>
+<ul class="simple">
+<li><p>For a deeper dive into the theory and practice built on fundamental probability and statistics follow the links at the top of each chapter to my recorded lectures on my <a class="reference external" href="https://www.youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf">Machine Learning Lecture Series</a> <span id="id3">[<a class="reference internal" href="references.html#id10" title="M.J. Pyrcz. Data Analytics and Geostatistics, GeostatsGuy Lectures. https://www.youtube.com/playlist?list=PLG19vXLQHvSB-D4XKYieEku9GQMQyAzjJ, August 2024.">Pyr24a</a>]</span> of my YouTube channel.</p></li>
+<li><p>Of course there are excellent books for machine learning theory, one of my favourites is <a class="reference external" href="https://www.amazon.com/Elements-Statistical-Learning-Prediction-Statistics/dp/0387848576/ref=sr_1_1?crid=219UH54M8MIS6&amp;dib=eyJ2IjoiMSJ9.fh_JG0GOjaLD32XrqN8uJE0bBbEVgutMStZUYLHACzr8YEzjV2ommtSpLcI0ed8OflRxA4AgTUEYl4S8Y4ICbP3s2OkSR8EaSxk8OHLwyavIw52GFVGGSJpyX9Y7BNipvmjdb8VgidS9njUPpDwpl1CmpD0BTb8LtbTHm8nCXBQT0W21r5H0DU84tHqrT0AQUUBb2fA9DMIdAJGqdFp1yssN1rXciwATn5v4juV5TiA.nGxoUTS2l564x_D3GUdkwt-QUKt8be_WRfy8eJPgjkQ&amp;dib_tag=se&amp;keywords=machine+learning+statistical+learning&amp;qid=1727204107&amp;sprefix=machine+learning+statistical+learning%2Caps%2C119&amp;sr=8-1">The Elements of Statistical Learning: Data Mining, Inference, and Prediction</a> <span id="id4">[<a class="reference internal" href="references.html#id9" title="H. Hastie, R. Tibshirani, and J. Friedman. The Elements of Statistical Learning: Data Mining, Inference, and Prediction. Springer, New York, United States, 2009.">HTF09</a>]</span>.</p></li>
+</ul>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Linked Recorded Lectures are Available</p>
 <p>For a deeper dive into the theory and practice of geostatistics follow the links at the top of each chapter to my recorded YouTube lectures.</p>
@@ -457,13 +487,14 @@ document.write(`
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_concepts.html">Machine Learning Concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_worklfow_construction.html">Workflow Construction and Coding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_plotting_data_models.html">Loading and Plotting Data and Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_univariate_analysis.html">Univariate Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_multivariate_analysis.html">Multivariate Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_transformations.html">Feature Transformations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_ranking.html">Feature Ranking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_imputation.html">Feature Imputation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_clustering.html">Cluster Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_density-based_clustering.html">Density-based Clustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_spectral_clustering.html">Spectral Clustering</a></li>
@@ -482,6 +513,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_support_vector_machines.html">Support Vector Machines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_time_series.html">Time Series Analysis and Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 </div>
@@ -494,6 +526,13 @@ document.write(`
 <ul class="simple">
 <li><p>this is the first release. Thank you for joining in early! Sorry, there are many minor formatting issues that I will resolve over the next couple of months. I welcome feedback with errata. I appreciate any assistance.</p></li>
 <li><p>I will be looking at practical methods to integrate my <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython">Interactive Educational Data Science Python Dashboards</a> interactive dashboards <span id="id6">[<a class="reference internal" href="references.html#id6" title="M.J. Pyrcz. Data Science Interactive Python: Educational Data Science Interactive Python Dashboards Repository. https://github.com/GeostatsGuy/DataScienceInteractivePython, 2021. doi:10.5281/zenodo.5564966.">Pyr21</a>]</span>, and more from my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=tfOVljWgWiduwGYl">Machine Learning Lecture Series</a> <span id="id7">[<a class="reference internal" href="references.html#id10" title="M.J. Pyrcz. Data Analytics and Geostatistics, GeostatsGuy Lectures. https://www.youtube.com/playlist?list=PLG19vXLQHvSB-D4XKYieEku9GQMQyAzjJ, August 2024.">Pyr24a</a>]</span>.</p></li>
+</ul>
+</section>
+<section id="what-s-new-with-version-0-0-2">
+<h3>What’s New with Version 0.0.2<a class="headerlink" href="#what-s-new-with-version-0-0-2" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>added new sections for feature engineering, machine learning concepts overview chapter, and a glossary!</p></li>
+<li><p>I’m making efforts to catch and correct error, links, spelling and grammar</p></li>
 </ul>
 </section>
 </section>
@@ -512,7 +551,7 @@ document.write(`
 </section>
 <section id="machinelearningdemos-repository">
 <h2>MachineLearningDemos Repository<a class="headerlink" href="#machinelearningdemos-repository" title="Permalink to this heading">#</a></h2>
-<p>The <a class="reference external" href="https://github.com/GeostatsGuy/MachineLearningDemos">MachineLearningDemos: Python Machine Learning Demonstration Workflows Repository</a><span id="id8">[<a class="reference internal" href="references.html#id5" title="M.J. Pyrcz. MachineLearningDemos: Python Machine Learning Demonstration Workflows Repository. https://github.com/GeostatsGuy/MachineLearningDemos, 2024. doi:10.5281/zenodo.13835318.">Pyr24f</a>]</span> is the ultimate source of content for this e-book and hosts more than 20 well-documented demonstration workflow for common machine learning.</p>
+<p>The <a class="reference external" href="https://github.com/GeostatsGuy/MachineLearningDemos">MachineLearningDemos: Python Machine Learning Demonstration Workflows Repository</a><span id="id8">[<a class="reference internal" href="references.html#id5" title="M.J. Pyrcz. MachineLearningDemos: Python Machine Learning Demonstration Workflows Repository. https://github.com/GeostatsGuy/MachineLearningDemos, 2024. doi:10.5281/zenodo.13835318.">Pyr24d</a>]</span> is the ultimate source of content for this e-book and hosts more than 20 well-documented demonstration workflow for common machine learning.</p>
 <ul class="simple">
 <li><p>utilizing synthetic data from my <a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets">GeoDataSets</a> repository</p></li>
 <li><p>small and often 2D examples for fast run times and ease of interpretation</p></li>
@@ -646,6 +685,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recent-updates">Recent Updates</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-new-with-version-0-0-1">What’s New with Version 0.0.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-new-with-version-0-0-2">What’s New with Version 0.0.2</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-for-open-educational-content">Motivation for Open Educational Content</a></li>

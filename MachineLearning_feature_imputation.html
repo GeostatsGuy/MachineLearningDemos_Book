@@ -1,0 +1,2196 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Feature Imputation &#8212; Applied Machine Learning in Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'MachineLearning_feature_imputation';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="k-means Clustering" href="MachineLearning_clustering.html" />
+    <link rel="prev" title="Feature Ranking" href="MachineLearning_feature_ranking.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/AppliedMachineLearning.jpg" class="logo__image only-light" alt="Applied Machine Learning in Python - Home"/>
+    <script>document.write(`<img src="_static/AppliedMachineLearning.jpg" class="logo__image only-dark" alt="Applied Machine Learning in Python - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Applied Machine Learning in Python: a Hands-on Guide with Code
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_concepts.html">Machine Learning Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_plotting_data_models.html">Loading and Plotting Data and Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_univariate_analysis.html">Univariate Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_multivariate_analysis.html">Multivariate Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_transformations.html">Feature Transformations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_ranking.html">Feature Ranking</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Feature Imputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_clustering.html">Cluster Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_density-based_clustering.html">Density-based Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_spectral_clustering.html">Spectral Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_PCA.html">Principal Components Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_multidimensional_scaling.html">Multidimensional Scaling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_linear_regression.html">Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_ridge_regression.html">Ridge Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_LASSO_regression.html">LASSO Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_Bayesian_linear_regression.html">Bayesian Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_naive_Bayes.html">Naive Bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_polynomial_regression.html">Polynomial Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_knearest_neighbours.html">k-Nearest Neighbours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_decision_tree.html">Decision Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_ensemble_trees.html">Bagging Tree and Random Forest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_gradient_boosting.html">Gradient Boosting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_support_vector_machines.html">Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_time_series.html">Time Series Analysis and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/GeostatsPyDemos_Book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/GeostatsPyDemos_Book/issues/new?title=Issue%20on%20page%20%2FMachineLearning_feature_imputation.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/MachineLearning_feature_imputation.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Feature Imputation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-for-feature-imputation">Motivation for Feature Imputation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cause-of-missing-feature-values">Cause of Missing Feature Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consequences-of-missing-feature-values">Consequences of Missing Feature Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the working directory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-tabular-data">Loading Tabular Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-dataframe">Visualize the DataFrame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-some-data">Remove Some Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-of-the-data-coverage">Evaluation of the Data Coverage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imputation-method-1-feature-selection">Imputation Method #1 - Feature Selection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imputation-method-2-sample-selection">Imputation Method #2 - Sample Selection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imputation-method-3-likewise-deletion">Imputation Method #3 - Likewise Deletion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-methods-for-imputation">Modeling Methods for Imputation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imputation-method-4-replace-with-a-constant">Imputation Method #4 - Replace with a Constant</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imputation-method-6-replace-with-the-mean">Imputation Method #6 - Replace with the Mean</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imputation-method-6-replace-with-the-mode">Imputation Method #6 - Replace with the Mode</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imputation-method-7-replace-with-the-n-nearest-neighbor-estimation">Imputation Method #7 - Replace with the n-nearest Neighbor estimation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imputation-method-8-multivariate-imputation-by-chained-equations">Imputation Method #8 - Multivariate imputation by chained equations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <figure style="text-align: center;">
+  <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
+</figure>
+<section id="feature-imputation">
+<h1>Feature Imputation<a class="headerlink" href="#feature-imputation" title="Permalink to this heading">#</a></h1>
+<p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
+<div class="remove-from-content-only admonition">
+<p class="admonition-title">Cite this e-Book as:</p>
+<p>Pyrcz, M.J., 2024, Applied Machine Learning in Python: a Hands-on Guide with Code, <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book">https://geostatsguy.github.io/MachineLearningDemos_Book</a>.</p>
+</div>
+<p>The workflows in this book and more are available here:</p>
+<div class="remove-from-content-only admonition">
+<p class="admonition-title">Cite the MachineLearningDemos GitHub Repository as:</p>
+<p>Pyrcz, M.J., 2024, MachineLearningDemos: Python Machine Learning Demonstration Workflows Repository (0.0.1). Zenodo. <a class="reference external" href="https://zenodo.org/doi/10.5281/zenodo.13835312"><img alt="DOI" src="https://zenodo.org/badge/862519860.svg" /></a></p>
+</div>
+<p>By Michael J. Pyrcz <br />
+© Copyright 2024.</p>
+<p>This chapter is a tutorial for / demonstration of <strong>Feature Imputation</strong>.</p>
+<p><strong>YouTube Lecture</strong>: check out my lectures on:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://youtu.be/zOUM_AnI1DQ?si=wzWdJ35qJ9n8O6Bl">Introduction to Machine Learning</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/embks9p4pb8?si=B2HXm_i0oMSWkBhN">Curse of Dimensionality, Dimensionality Reduction, Principal Component Analysis</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/Yt0o8ukIOKU?si=_ri1NPwKVdhYzgO3">Multidimensional Scaling and Random Projection</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/6QJjZoWknEI?si=p6vp811xWAmzWY3r">Feature Transformations</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/5Q0gemu-h3Q?si=ATG-ue0i2qcc-IVx">Feature Selection</a></p></li>
+<li><p>Feature Imputation - To Be Recorded Soon</p></li>
+</ul>
+<p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
+<section id="motivation-for-feature-imputation">
+<h2>Motivation for Feature Imputation<a class="headerlink" href="#motivation-for-feature-imputation" title="Permalink to this heading">#</a></h2>
+<p>Most spatial, subsurface datasets are not complete, missing values from the database.</p>
+<ul class="simple">
+<li><p>many data analytics and machine learning workflows require complete data, <span class="math notranslate nohighlight">\(𝑥_(1,𝑖),\dots,𝑥_(𝑚,𝑖)\)</span> for each of the data samples <span class="math notranslate nohighlight">\(𝑖 = 1,\ldots,𝑛\)</span>.</p></li>
+</ul>
+<p><strong>Inferential Machine Learning</strong> - methods the require complete data, for example,</p>
+<ol class="arabic simple">
+<li><p>principal components analysis - require covariance matrix and covariance needs all feature values</p></li>
+<li><p>multidimensional scaling - we cannot calculate the dissimilarity matrix without all features available</p></li>
+<li><p>cluster analysis - we cannot calculate distances in feature space without all features values</p></li>
+</ol>
+<p><strong>Predictive Machine Learning</strong> - always require all features to train and test the model,</p>
+<div class="math notranslate nohighlight">
+\[
+y = f(X_1,\ldots,X_m)
+\]</div>
+<p>Dealing with missing data is an essential part of feature / data engineering, prerequisite for data analytics and machine learning.</p>
+<ul class="simple">
+<li><p>it is important firstly to understand the cause and impact of the missing data.</p></li>
+</ul>
+</section>
+<section id="cause-of-missing-feature-values">
+<h2>Cause of Missing Feature Values<a class="headerlink" href="#cause-of-missing-feature-values" title="Permalink to this heading">#</a></h2>
+<p>Missing at random (MAR) is not common and is difficult to evaluated, in this case,</p>
+<ul class="simple">
+<li><p>global random omission may not result in data bias and bias in the resulting models</p></li>
+</ul>
+<p>MAR is not typically the case as missing data often is related to a confounding feature, for example,</p>
+<ul class="simple">
+<li><p><strong>sampling cost</strong> - for example, low permeability test takes too long</p></li>
+<li><p><strong>rock rheology or other sample survivorship biases</strong> - for example, not possible to recover the mudstone samples</p></li>
+<li><p><strong>sample design</strong> - sampling to reduce uncertainty and maximize profitability instead of statistical representativity, dual purpose samples for information and production</p></li>
+<li><p><strong>sampling accessibility</strong> - there are locations in the subsurface that are difficult or impossible to samples, for example, near lakes or communities, or subsalt for seismic imaging</p></li>
+</ul>
+</section>
+<section id="consequences-of-missing-feature-values">
+<h2>Consequences of Missing Feature Values<a class="headerlink" href="#consequences-of-missing-feature-values" title="Permalink to this heading">#</a></h2>
+<p>This will result in clustering of missing values over locations and feature space.</p>
+<ul class="simple">
+<li><p>omission of these feature values may bias global statistics, and degrade accuracy of local predictions</p></li>
+<li><p>the use of global distributions for imputing missing values may not be reasonable</p></li>
+</ul>
+<p>More than reducing the amount of training and testing data, missing data, if not completely at random will result in:</p>
+<ul class="simple">
+<li><p>Biased sample statistics resulting in biased model training and testing</p></li>
+<li><p>Biased models with biased predictions with potentially no indication of the bias!</p></li>
+</ul>
+<p>If you reread the above looking for solutions, I offer my Canadian, “I’m sorry”. Those who know us know that we say sorry a lot and have a cool pronunciation of the word.</p>
+<p>I say all of the above as a cautionary note but,</p>
+<ul class="simple">
+<li><p>in some cases there are gaps in practice due to our data challenges, i.e., data paucity and nonstationarity.</p></li>
+<li><p>I could spend an entire course teaching methods to address these challenges</p></li>
+<li><p>the solutions integrate the entire subsurface, spatial project team, i.e., domain expertise is critical</p></li>
+<li><p>I’m going to leave this at the level of awareness</p></li>
+</ul>
+<p>We must move beyond the commonly applied likewise deletion, removal of all samples with any missing features.</p>
+</section>
+<section id="load-the-required-libraries">
+<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
+<p>The following code loads the required libraries.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geostatspy.GSLIB</span> <span class="k">as</span> <span class="nn">GSLIB</span>                              <span class="c1"># GSLIB utilities, visualization and wrapper</span>
+<span class="kn">import</span> <span class="nn">geostatspy.geostats</span> <span class="k">as</span> <span class="nn">geostats</span>                        <span class="c1"># GSLIB methods convert to Python  </span>
+<span class="kn">import</span> <span class="nn">geostatspy</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;GeostatsPy version: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">geostatspy</span><span class="o">.</span><span class="n">__version__</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GeostatsPy version: 0.0.72
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will also need some standard packages. These should have been installed with Anaconda 3.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ignore_warnings</span> <span class="o">=</span> <span class="kc">True</span>                                        <span class="c1"># ignore warnings?</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                                            <span class="c1"># ndarrays for gridded data</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                                           <span class="c1"># DataFrames for tabular data</span>
+<span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">SimpleImputer</span>                      <span class="c1"># basic imputation method</span>
+<span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">KNNImputer</span>                         <span class="c1"># k-nearest neighbour imputation method</span>
+<span class="kn">from</span> <span class="nn">sklearn.experimental</span> <span class="kn">import</span> <span class="n">enable_iterative_imputer</span>     <span class="c1"># required for MICE imputation</span>
+<span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">IterativeImputer</span>                   <span class="c1"># MICE imputation</span>
+<span class="kn">import</span> <span class="nn">os</span>                                                     <span class="c1"># set working directory, run executables</span>
+<span class="kn">import</span> <span class="nn">math</span>                                                   <span class="c1"># basic math operations</span>
+<span class="kn">import</span> <span class="nn">random</span>                                                 <span class="c1"># for random numbers</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>                               <span class="c1"># for plotting</span>
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="p">(</span><span class="n">MultipleLocator</span><span class="p">,</span> <span class="n">AutoMinorLocator</span><span class="p">)</span> <span class="c1"># control of axes ticks</span>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">ListedColormap</span>                  <span class="c1"># custom color maps</span>
+<span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="k">as</span> <span class="nn">mtick</span>                             <span class="c1"># control tick label formatting</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>                                         <span class="c1"># for matrix scatter plots</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>                                       <span class="c1"># summary statistics</span>
+<span class="kn">import</span> <span class="nn">numpy.linalg</span> <span class="k">as</span> <span class="nn">linalg</span>                                 <span class="c1"># for linear algebra</span>
+<span class="kn">import</span> <span class="nn">scipy.spatial</span> <span class="k">as</span> <span class="nn">sp</span>                                    <span class="c1"># for fast nearest neighbor search</span>
+<span class="kn">import</span> <span class="nn">scipy.signal</span> <span class="k">as</span> <span class="nn">signal</span>                                 <span class="c1"># kernel for moving window calculation</span>
+<span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">jit</span>                                         <span class="c1"># for numerical speed up</span>
+<span class="kn">from</span> <span class="nn">statsmodels.stats.weightstats</span> <span class="kn">import</span> <span class="n">DescrStatsW</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">axisbelow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                                <span class="c1"># plot all grids below the plot elements</span>
+<span class="k">if</span> <span class="n">ignore_warnings</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>                                   
+    <span class="kn">import</span> <span class="nn">warnings</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">inferno</span>                                         <span class="c1"># color map</span>
+<span class="n">seed</span> <span class="o">=</span> <span class="mi">73071</span>                                                  <span class="c1"># random seed</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="declare-functions">
+<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
+<p>Here’s a function to assist with the plots:</p>
+<ul class="simple">
+<li><p><strong>add_grid</strong> - convenience function to add major and minor gridlines to improve plot interpretability</p></li>
+</ul>
+<p>Here is the function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_grid</span><span class="p">():</span>                                               <span class="c1"># add major and minor gridlines</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">)</span> <span class="c1"># add y grids</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span><span class="n">length</span><span class="o">=</span><span class="mi">7</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">AutoMinorLocator</span><span class="p">());</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">AutoMinorLocator</span><span class="p">())</span> <span class="c1"># turn on minor ticks</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="set-the-working-directory">
+<h2>Set the working directory<a class="headerlink" href="#set-the-working-directory" title="Permalink to this heading">#</a></h2>
+<p>I always like to do this so I don’t lose files and to simplify subsequent read and writes (avoid including the full address each time).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#os.chdir(&quot;c:/PGE383&quot;)                                        # set the working directory</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You will have to update the part in quotes with your own working directory and the format is different on a Mac (e.g. “~/PGE”).</p>
+</section>
+<section id="loading-tabular-data">
+<h2>Loading Tabular Data<a class="headerlink" href="#loading-tabular-data" title="Permalink to this heading">#</a></h2>
+<p>Here’s the command to load our comma delimited data file in to a Pandas’ DataFrame object.</p>
+<p>Let’s load the provided multivariate, spatial dataset ‘unconv_MV.csv’. This dataset has variables from 1,000 unconventional wells including:</p>
+<ul class="simple">
+<li><p>well average porosity</p></li>
+<li><p>log transform of permeability (to linearize the relationships with other variables)</p></li>
+<li><p>acoustic impedance (kg/m^3 x m/s x 10^6)</p></li>
+<li><p>brittleness ratio (%)</p></li>
+<li><p>total organic carbon (%)</p></li>
+<li><p>vitrinite reflectance (%)</p></li>
+<li><p>initial production 90 day average (MCFPD).</p></li>
+</ul>
+<p>Note, the dataset is synthetic.</p>
+<p>We load it with the pandas ‘read_csv’ function into a DataFrame we called ‘my_data’ and then preview it to make sure it loaded correctly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#df = pd.read_csv(&#39;unconv_MV_v4.csv&#39;)                         # load our data table</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/unconv_MV_v4.csv&#39;</span><span class="p">)</span> <span class="c1"># load data from Dr. Pyrcz&#39;s GitHub repository  </span>
+<span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Prod&#39;</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">features</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>                          <span class="c1"># store the names of the features</span>
+
+<span class="n">xmin</span> <span class="o">=</span> <span class="p">[</span><span class="mf">6.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">10.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.9</span><span class="p">];</span> <span class="n">xmax</span> <span class="o">=</span> <span class="p">[</span><span class="mf">24.0</span><span class="p">,</span><span class="mf">10.0</span><span class="p">,</span><span class="mf">5.0</span><span class="p">,</span><span class="mf">85.0</span><span class="p">,</span><span class="mf">2.2</span><span class="p">,</span><span class="mf">2.9</span><span class="p">]</span> <span class="c1"># set the minimum and maximum values for plotting</span>
+
+<span class="n">flabel</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Porosity (%)&#39;</span><span class="p">,</span><span class="s1">&#39;Permeability (mD)&#39;</span><span class="p">,</span><span class="s1">&#39;Acoustic Impedance (kg/m2s*10^6)&#39;</span><span class="p">,</span><span class="s1">&#39;Brittleness Ratio (%)&#39;</span><span class="p">,</span> <span class="c1"># set the names for plotting</span>
+             <span class="s1">&#39;Total Organic Carbon (%)&#39;</span><span class="p">,</span><span class="s1">&#39;Vitrinite Reflectance (%)&#39;</span><span class="p">]</span>
+
+<span class="n">ftitle</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="s1">&#39;Permeability&#39;</span><span class="p">,</span><span class="s1">&#39;Acoustic Impedance&#39;</span><span class="p">,</span><span class="s1">&#39;Brittleness Ratio&#39;</span><span class="p">,</span> <span class="c1"># set the units for plotting</span>
+             <span class="s1">&#39;Total Organic Carbon&#39;</span><span class="p">,</span><span class="s1">&#39;Vitrinite Reflectance&#39;</span><span class="p">]</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">15</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">flabel</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Porosity (%)&#39;</span><span class="p">,</span><span class="s1">&#39;Permeability (mD)&#39;</span><span class="p">,</span><span class="s1">&#39;Acoustic Impedance (kg/m2s*10^6)&#39;</span><span class="p">,</span><span class="s1">&#39;Brittleness Ratio (%)&#39;</span><span class="p">,</span> <span class="c1"># set the names for plotting</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>              <span class="s1">&#39;Total Organic Carbon (%)&#39;</span><span class="p">,</span><span class="s1">&#39;Vitrinite Reflectance (%)&#39;</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">ftitle</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="s1">&#39;Permeability&#39;</span><span class="p">,</span><span class="s1">&#39;Acoustic Impedance&#39;</span><span class="p">,</span><span class="s1">&#39;Brittleness Ratio&#39;</span><span class="p">,</span> <span class="c1"># set the units for plotting</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span>              <span class="s1">&#39;Total Organic Carbon&#39;</span><span class="p">,</span><span class="s1">&#39;Vitrinite Reflectance&#39;</span><span class="p">]</span>
+<span class="ne">---&gt; </span><span class="mi">15</span> <span class="n">m</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pred</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;pred&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>We can also establish the feature ranges for plotting. We could calculate the feature range directly from the data with code like this:</p></li>
+</ul>
+<div class="highlight-p notranslate"><div class="highlight"><pre><span></span>Pormin = np.min(df[&#39;Por&#39;].values)                             # extract ndarray of data table column
+Pormax = np.max(df[&#39;Por&#39;].values)                             # and calculate min and max
+</pre></div>
+</div>
+<p>but, this would not result in easy to understand color bars and axis scales, let’s pick convenient round numbers. We will also declare feature labels for ease of plotting.</p>
+</section>
+<section id="visualize-the-dataframe">
+<h2>Visualize the DataFrame<a class="headerlink" href="#visualize-the-dataframe" title="Permalink to this heading">#</a></h2>
+<p>Visualizing the DataFrame is useful first check of the data.</p>
+<ul class="simple">
+<li><p>many things can go wrong, e.g., we loaded the wrong data, all the features did not load, etc.</p></li>
+</ul>
+<p>We can preview by utilizing the ‘head’ DataFrame member function (with a nice and clean format, see below).</p>
+<ul class="simple">
+<li><p>add parameter ‘n=13’ to see the first 13 rows of the dataset.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>                                                 <span class="c1"># DataFrame preview</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Well</th>
+      <th>Por</th>
+      <th>Perm</th>
+      <th>AI</th>
+      <th>Brittle</th>
+      <th>TOC</th>
+      <th>VR</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>12.08</td>
+      <td>2.92</td>
+      <td>2.80</td>
+      <td>81.40</td>
+      <td>1.16</td>
+      <td>2.31</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>12.38</td>
+      <td>3.53</td>
+      <td>3.22</td>
+      <td>46.17</td>
+      <td>0.89</td>
+      <td>1.88</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>14.02</td>
+      <td>2.59</td>
+      <td>4.01</td>
+      <td>72.80</td>
+      <td>0.89</td>
+      <td>2.72</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>17.67</td>
+      <td>6.75</td>
+      <td>2.63</td>
+      <td>39.81</td>
+      <td>1.08</td>
+      <td>1.88</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>17.52</td>
+      <td>4.57</td>
+      <td>3.18</td>
+      <td>10.94</td>
+      <td>1.51</td>
+      <td>1.90</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>14.53</td>
+      <td>4.81</td>
+      <td>2.69</td>
+      <td>53.60</td>
+      <td>0.94</td>
+      <td>1.67</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>13.49</td>
+      <td>3.60</td>
+      <td>2.93</td>
+      <td>63.71</td>
+      <td>0.80</td>
+      <td>1.85</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>11.58</td>
+      <td>3.03</td>
+      <td>3.25</td>
+      <td>53.00</td>
+      <td>0.69</td>
+      <td>1.93</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9</td>
+      <td>12.52</td>
+      <td>2.72</td>
+      <td>2.43</td>
+      <td>65.77</td>
+      <td>0.95</td>
+      <td>1.98</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10</td>
+      <td>13.25</td>
+      <td>3.94</td>
+      <td>3.71</td>
+      <td>66.20</td>
+      <td>1.14</td>
+      <td>2.65</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>11</td>
+      <td>15.04</td>
+      <td>4.39</td>
+      <td>2.22</td>
+      <td>61.11</td>
+      <td>1.08</td>
+      <td>1.77</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>12</td>
+      <td>16.19</td>
+      <td>6.30</td>
+      <td>2.29</td>
+      <td>49.10</td>
+      <td>1.53</td>
+      <td>1.86</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>13</td>
+      <td>16.82</td>
+      <td>5.42</td>
+      <td>2.80</td>
+      <td>66.65</td>
+      <td>1.17</td>
+      <td>1.98</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>This dataset has features from 200 unconventional wells.</p>
+<p>Note, the dataset is synthetic, but has realistic ranges and general multivariate relationships.</p>
+</section>
+<section id="remove-some-data">
+<h2>Remove Some Data<a class="headerlink" href="#remove-some-data" title="Permalink to this heading">#</a></h2>
+<p>Let’s select a proportion of NaN values, values to set as missing,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">proportion_NaN</span> <span class="o">=</span> <span class="mf">0.1</span>
+</pre></div>
+</div>
+<p>Then we can make a boolean array</p>
+<ol class="arabic simple">
+<li><p>make an ndarray of same shape (number rows and columns) as the DataFrame of uniform[0,1] distributed values</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>check condition of less than the identified proportion to make a boolean ndarray of same size, true if less than the proportion. The result will be the correct proportion (within error) of random true values.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">remove</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">proportion_NaN</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>apply the mask to remove the identified values from the DataFrame</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_mask</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">mask</span><span class="p">(</span><span class="n">remove</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Full disclosure, for this demonstration our data is missing at random, MAR, and this simplifies our task.</p>
+<ul class="simple">
+<li><p>this allows us to focus on the mechanics of feature imputation without the additional domain expertise topics. This is a good first step!</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">proportion_NaN</span> <span class="o">=</span> <span class="mf">0.1</span>                                          <span class="c1"># proportion of values in DataFrame to remove</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>                                     <span class="c1"># ensure repeatability</span>
+<span class="n">remove</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">proportion_NaN</span>          <span class="c1"># make the boolean array for removal</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Fraction of removed values in mask ndarray = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">remove</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="n">remove</span><span class="o">.</span><span class="n">size</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+
+<span class="n">df_mask</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">mask</span><span class="p">(</span><span class="n">remove</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Fraction of nan values in the DataFrame = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">df_mask</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="p">(</span><span class="n">df_mask</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">df_mask</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span><span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fraction of removed values in mask ndarray = 0.093.
+Fraction of nan values in the DataFrame = 0.093.
+</pre></div>
+</div>
+</div>
+</div>
+<p>We now have a new DataFrame with some missing data.</p>
+<ul class="simple">
+<li><p>Let’s do a .head() preview to abserve the NaN values scattered throughout the dataset</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_mask</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>                                            <span class="c1"># DataFrame preview</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Well</th>
+      <th>Por</th>
+      <th>Perm</th>
+      <th>AI</th>
+      <th>Brittle</th>
+      <th>TOC</th>
+      <th>VR</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>12.08</td>
+      <td>2.92</td>
+      <td>2.80</td>
+      <td>81.40</td>
+      <td>1.16</td>
+      <td>2.31</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.0</td>
+      <td>12.38</td>
+      <td>3.53</td>
+      <td>NaN</td>
+      <td>46.17</td>
+      <td>0.89</td>
+      <td>1.88</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NaN</td>
+      <td>14.02</td>
+      <td>2.59</td>
+      <td>4.01</td>
+      <td>72.80</td>
+      <td>0.89</td>
+      <td>2.72</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.0</td>
+      <td>17.67</td>
+      <td>6.75</td>
+      <td>2.63</td>
+      <td>39.81</td>
+      <td>1.08</td>
+      <td>1.88</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>17.52</td>
+      <td>4.57</td>
+      <td>3.18</td>
+      <td>10.94</td>
+      <td>1.51</td>
+      <td>1.90</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6.0</td>
+      <td>14.53</td>
+      <td>4.81</td>
+      <td>2.69</td>
+      <td>53.60</td>
+      <td>0.94</td>
+      <td>1.67</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7.0</td>
+      <td>13.49</td>
+      <td>3.60</td>
+      <td>NaN</td>
+      <td>63.71</td>
+      <td>0.80</td>
+      <td>1.85</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8.0</td>
+      <td>11.58</td>
+      <td>3.03</td>
+      <td>NaN</td>
+      <td>53.00</td>
+      <td>0.69</td>
+      <td>1.93</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9.0</td>
+      <td>NaN</td>
+      <td>2.72</td>
+      <td>NaN</td>
+      <td>65.77</td>
+      <td>0.95</td>
+      <td>1.98</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10.0</td>
+      <td>NaN</td>
+      <td>3.94</td>
+      <td>3.71</td>
+      <td>66.20</td>
+      <td>1.14</td>
+      <td>2.65</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>11.0</td>
+      <td>15.04</td>
+      <td>4.39</td>
+      <td>2.22</td>
+      <td>NaN</td>
+      <td>1.08</td>
+      <td>1.77</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>NaN</td>
+      <td>16.19</td>
+      <td>6.30</td>
+      <td>2.29</td>
+      <td>49.10</td>
+      <td>1.53</td>
+      <td>1.86</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>13.0</td>
+      <td>NaN</td>
+      <td>5.42</td>
+      <td>2.80</td>
+      <td>66.65</td>
+      <td>1.17</td>
+      <td>1.98</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="evaluation-of-the-data-coverage">
+<h2>Evaluation of the Data Coverage<a class="headerlink" href="#evaluation-of-the-data-coverage" title="Permalink to this heading">#</a></h2>
+<p>Let’s calculate the amount of missing data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_mask</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>                                <span class="c1"># DataFrame summary statistics</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Well</th>
+      <td>182.0</td>
+      <td>102.653846</td>
+      <td>58.078019</td>
+      <td>1.00</td>
+      <td>53.2500</td>
+      <td>104.000</td>
+      <td>153.7500</td>
+      <td>200.00</td>
+    </tr>
+    <tr>
+      <th>Por</th>
+      <td>184.0</td>
+      <td>14.935978</td>
+      <td>3.002142</td>
+      <td>6.55</td>
+      <td>12.8900</td>
+      <td>15.055</td>
+      <td>17.4225</td>
+      <td>23.55</td>
+    </tr>
+    <tr>
+      <th>Perm</th>
+      <td>172.0</td>
+      <td>4.319419</td>
+      <td>1.684672</td>
+      <td>1.13</td>
+      <td>3.1300</td>
+      <td>4.010</td>
+      <td>5.1850</td>
+      <td>9.78</td>
+    </tr>
+    <tr>
+      <th>AI</th>
+      <td>184.0</td>
+      <td>2.991630</td>
+      <td>0.571569</td>
+      <td>1.28</td>
+      <td>2.5675</td>
+      <td>2.975</td>
+      <td>3.3950</td>
+      <td>4.63</td>
+    </tr>
+    <tr>
+      <th>Brittle</th>
+      <td>186.0</td>
+      <td>47.793817</td>
+      <td>13.781815</td>
+      <td>10.94</td>
+      <td>37.7450</td>
+      <td>48.830</td>
+      <td>58.0150</td>
+      <td>81.40</td>
+    </tr>
+    <tr>
+      <th>TOC</th>
+      <td>186.0</td>
+      <td>0.991882</td>
+      <td>0.481896</td>
+      <td>-0.19</td>
+      <td>0.6225</td>
+      <td>1.020</td>
+      <td>1.3500</td>
+      <td>2.18</td>
+    </tr>
+    <tr>
+      <th>VR</th>
+      <td>176.0</td>
+      <td>1.969602</td>
+      <td>0.293877</td>
+      <td>0.93</td>
+      <td>1.7775</td>
+      <td>1.970</td>
+      <td>2.1100</td>
+      <td>2.87</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can see the counts of available values for each feature, less than the total number of samples due to missing values.</p>
+<p>Let’s make a plot to indicate data completeness for each feature</p>
+<ul class="simple">
+<li><p>this is a useful summarization</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>                                              <span class="c1"># data completeness plot</span>
+<span class="p">(</span><span class="n">df_mask</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Feature&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Percentage of Missing Values&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Data Completeness&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mf">0.5</span><span class="p">],[</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b1bf476305b9f1199d4869c12d96c48b24d1c7a00266e4f24c7a7091c556bd66.png" src="_images/b1bf476305b9f1199d4869c12d96c48b24d1c7a00266e4f24c7a7091c556bd66.png" />
+</div>
+</div>
+<p>This leads to the first data imputation method, feature selection.</p>
+</section>
+<section id="imputation-method-1-feature-selection">
+<h2>Imputation Method #1 - Feature Selection<a class="headerlink" href="#imputation-method-1-feature-selection" title="Permalink to this heading">#</a></h2>
+<p>Data completeness should be considered in feature selection.</p>
+<ul class="simple">
+<li><p>if there is low data completeness, high percentage of missing samples, for a feature then the feature may be removed.</p></li>
+</ul>
+<p>One method is to use the .drop() DataFrame function.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_test</span> <span class="o">=</span> <span class="n">df_mask</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;VR&#39;</span><span class="p">,</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We use axis = 1 to drop a feature (as above) to remove features with more than 10% of feature values missing.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_test</span> <span class="o">=</span> <span class="n">df_mask</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Perm&#39;</span><span class="p">,</span><span class="s1">&#39;VR&#39;</span><span class="p">],</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="p">(</span><span class="n">df_test</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>                <span class="c1"># calculate DataFrame with percentage missing by feature</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Feature&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Percentage of Missing Values&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Data Completeness&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mf">0.5</span><span class="p">],[</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8a7c8d88bca723184e048fd777df3743356c4ba22ca026e0ab1841255feae7f4.png" src="_images/8a7c8d88bca723184e048fd777df3743356c4ba22ca026e0ab1841255feae7f4.png" />
+</div>
+</div>
+</section>
+<section id="imputation-method-2-sample-selection">
+<h2>Imputation Method #2 - Sample Selection<a class="headerlink" href="#imputation-method-2-sample-selection" title="Permalink to this heading">#</a></h2>
+<p>There may be samples with more missing feature values.</p>
+<ul class="simple">
+<li><p>a specific vintage of data, for example, older data, or sample locations that experienced data collection problems</p></li>
+</ul>
+<p>Let’s check the coverage by sample in the DataFrame.</p>
+<ul class="simple">
+<li><p>we use the axis=1 parameter in the sum command to sum NaN values over the rows, samples, of the DataFrame.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">df_mask</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">3.2</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span> <span class="c1"># plot formatting</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Sample Index&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Percentage of Missing Records&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Data Completeness&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">df_mask</span><span class="p">),</span><span class="mi">10</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">df_mask</span><span class="p">),</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">+</span><span class="mf">0.5</span><span class="p">],[</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.2</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8398e6d58914d4cbe0d2855e1abf228f2f4d6c81b63e03a6c6b1faed15854842.png" src="_images/8398e6d58914d4cbe0d2855e1abf228f2f4d6c81b63e03a6c6b1faed15854842.png" />
+</div>
+</div>
+<p>If we identified samples with low data completeness, high percentage of missing samples, for a sample then the sample may be removed.</p>
+<p>Once again we use the .drop() DataFrame function.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_test</span> <span class="o">=</span> <span class="n">df_mask</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Water&#39;</span><span class="p">,</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This time we use axis = 0 to drop a list of samples and demonstrated below.</p>
+<ol class="arabic simple">
+<li><p>We need to make a list of the sample indices with too many missing samples</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">df_mask</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">))</span> <span class="o">&gt;</span> <span class="n">max_proportion_missing_by_sample</span> 
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>This is a tuple type, let’s convert it to a ndarray then we ensure strip it to just the 1D values</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">index_low_coverage_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">low_coverage_samples</span> <span class="o">==</span> <span class="kc">True</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Now we are ready to apply our boolean array of length number of samples with True for too many missing values to remove these samples by index.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_test2</span> <span class="o">=</span> <span class="n">df_mask</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="n">index_low_coverage_samples</span><span class="p">,</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_proportion_missing_by_sample</span> <span class="o">=</span> <span class="mf">0.2</span>
+
+<span class="n">low_coverage_samples</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_mask</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">))</span> <span class="o">&gt;</span> <span class="n">max_proportion_missing_by_sample</span> 
+<span class="n">index_low_coverage_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">low_coverage_samples</span> <span class="o">==</span> <span class="kc">True</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">df_test2</span> <span class="o">=</span> <span class="n">df_mask</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="n">index_low_coverage_samples</span><span class="p">,</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">df_test2</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">df_test2</span><span class="o">.</span><span class="n">columns</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">3.2</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span> <span class="c1"># plot formatting</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Updated Sample Index&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Percentage of Missing Records&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Data Completeness&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">df_mask</span><span class="p">),</span><span class="mi">10</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">df_mask</span><span class="p">),</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">+</span><span class="mf">0.5</span><span class="p">],[</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.2</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3724251782036a1d6e35f097f18c379bcf2c2e001e12546dfdb5d1176b113d00.png" src="_images/3724251782036a1d6e35f097f18c379bcf2c2e001e12546dfdb5d1176b113d00.png" />
+</div>
+</div>
+</section>
+<section id="imputation-method-3-likewise-deletion">
+<h2>Imputation Method #3 - Likewise Deletion<a class="headerlink" href="#imputation-method-3-likewise-deletion" title="Permalink to this heading">#</a></h2>
+<p>This is the method of removing all samples that have any missing feature values.</p>
+<ul class="simple">
+<li><p>this approach ensures complete data while technically avoiding the need for imputation</p></li>
+<li><p>no need for a imputation model decision</p></li>
+<li><p>often removes important information</p></li>
+<li><p>maximizes data bias if information is not missing at random (MAR)</p></li>
+</ul>
+<p>We must consider data completeness, coverage for each feature, as visualized above. Consider that,</p>
+<ul class="simple">
+<li><p>missing records in one feature may be different than the missing features in another feature</p></li>
+<li><p>the union of missing over all features, may result in loss of much more than the largest proportion of missing over the features</p></li>
+</ul>
+<p>Also, if missing not at random (MNAR), the sample bias is maximized</p>
+<ul class="simple">
+<li><p>while likewise deletion is often applied, it is not recommended.</p></li>
+</ul>
+<p>We can use the dropna() function.</p>
+<ul class="simple">
+<li><p>with subset we can only consider a list of features</p></li>
+<li><p>how can be set to ‘any’ for drop if any missing values and ‘all’ drop if all are missing</p></li>
+<li><p>inplace true will overwrite the DataFrame and has no output while false will pass the new dataframe as a copy</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_likewise</span> <span class="o">=</span> <span class="n">df_mask</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;any&#39;</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df_likewise</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">plot_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;alpha&#39;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span><span class="s1">&#39;s&#39;</span><span class="p">:</span><span class="mi">20</span><span class="p">},</span><span class="n">corner</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="c1"># df_likewise.head(n = 13)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3ffc071740f16e8b554a48b94676650d408dd93c4df0027c3a90e66b4e275534.png" src="_images/3ffc071740f16e8b554a48b94676650d408dd93c4df0027c3a90e66b4e275534.png" />
+</div>
+</div>
+</section>
+<section id="modeling-methods-for-imputation">
+<h2>Modeling Methods for Imputation<a class="headerlink" href="#modeling-methods-for-imputation" title="Permalink to this heading">#</a></h2>
+<p>These are methods for feature imputation that treat feature imputation as a prediction problem, i.e., predict missing feature value with other available data, for example,</p>
+<ul class="simple">
+<li><p>the collocated other available feature values</p></li>
+<li><p>the same feature values available at other sample locations</p></li>
+</ul>
+<p>There are many prediction methods applied for feature imputation,</p>
+<ul class="simple">
+<li><p>we start with the most simple prediction model possible, predicting with the global mean and proceed from there to more complicated models</p></li>
+</ul>
+<p>To help us visualize the results, let’s add a feature indicating if there are any missing feature values for a specific sample</p>
+<ul class="simple">
+<li><p>this way we can label the samples that have had features imputed for evaluation and visualization of the feature imputation results</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_mask</span><span class="p">[</span><span class="s1">&#39;Imputed&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_mask</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="n">df_mask</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Well</th>
+      <th>Por</th>
+      <th>Perm</th>
+      <th>AI</th>
+      <th>Brittle</th>
+      <th>TOC</th>
+      <th>VR</th>
+      <th>Imputed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>12.08</td>
+      <td>2.92</td>
+      <td>2.80</td>
+      <td>81.40</td>
+      <td>1.16</td>
+      <td>2.31</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.0</td>
+      <td>12.38</td>
+      <td>3.53</td>
+      <td>NaN</td>
+      <td>46.17</td>
+      <td>0.89</td>
+      <td>1.88</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NaN</td>
+      <td>14.02</td>
+      <td>2.59</td>
+      <td>4.01</td>
+      <td>72.80</td>
+      <td>0.89</td>
+      <td>2.72</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.0</td>
+      <td>17.67</td>
+      <td>6.75</td>
+      <td>2.63</td>
+      <td>39.81</td>
+      <td>1.08</td>
+      <td>1.88</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>17.52</td>
+      <td>4.57</td>
+      <td>3.18</td>
+      <td>10.94</td>
+      <td>1.51</td>
+      <td>1.90</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="imputation-method-4-replace-with-a-constant">
+<h2>Imputation Method #4 - Replace with a Constant<a class="headerlink" href="#imputation-method-4-replace-with-a-constant" title="Permalink to this heading">#</a></h2>
+<p>This is the method of replacing the missing values with a constant value.</p>
+<ul class="simple">
+<li><p>here’s an example of replacing the missing feature values with a very low value</p></li>
+</ul>
+<p>This results in bias and should not be done.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_constant</span> <span class="o">=</span> <span class="n">df_mask</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                         <span class="c1"># make a deep copy of the DataFrame</span>
+<span class="n">constant_imputer</span> <span class="o">=</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">,</span><span class="n">fill_value</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="n">df_constant</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:]</span> <span class="o">=</span> <span class="n">constant_imputer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_constant</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df_constant</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:],</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;Imputed&quot;</span><span class="p">,</span> <span class="n">plot_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;alpha&#39;</span><span class="p">:</span><span class="mf">0.15</span><span class="p">,</span><span class="s1">&#39;s&#39;</span><span class="p">:</span><span class="mi">20</span><span class="p">},</span> <span class="n">palette</span> <span class="o">=</span> <span class="s1">&#39;gnuplot&#39;</span><span class="p">,</span> <span class="n">corner</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">df_constant</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Well</th>
+      <th>Por</th>
+      <th>Perm</th>
+      <th>AI</th>
+      <th>Brittle</th>
+      <th>TOC</th>
+      <th>VR</th>
+      <th>Imputed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.00</td>
+      <td>12.08</td>
+      <td>2.92</td>
+      <td>2.80</td>
+      <td>81.40</td>
+      <td>1.16</td>
+      <td>2.31</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.00</td>
+      <td>12.38</td>
+      <td>3.53</td>
+      <td>0.01</td>
+      <td>46.17</td>
+      <td>0.89</td>
+      <td>1.88</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.01</td>
+      <td>14.02</td>
+      <td>2.59</td>
+      <td>4.01</td>
+      <td>72.80</td>
+      <td>0.89</td>
+      <td>2.72</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.00</td>
+      <td>17.67</td>
+      <td>6.75</td>
+      <td>2.63</td>
+      <td>39.81</td>
+      <td>1.08</td>
+      <td>1.88</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.00</td>
+      <td>17.52</td>
+      <td>4.57</td>
+      <td>3.18</td>
+      <td>10.94</td>
+      <td>1.51</td>
+      <td>1.90</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="_images/d56b6b518a192ee91424bfaead41c4fc03c8e7c477f5b895c795022cd8325255.png" src="_images/d56b6b518a192ee91424bfaead41c4fc03c8e7c477f5b895c795022cd8325255.png" />
+</div>
+</div>
+</section>
+<section id="imputation-method-6-replace-with-the-mean">
+<h2>Imputation Method #6 - Replace with the Mean<a class="headerlink" href="#imputation-method-6-replace-with-the-mean" title="Permalink to this heading">#</a></h2>
+<p>This is the method of replacing the missing values with the mean, arithmetic average, over the feature.</p>
+<div class="math notranslate nohighlight">
+\[
+𝑥_𝑖 = 𝐸\{𝑋_𝑖\}
+\]</div>
+<ul class="simple">
+<li><p>the global mean is globally unbiased, but may result in local bias, i.e., low values are overestimated and high values are underestimated</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_mean</span> <span class="o">=</span> <span class="n">df_mask</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                         <span class="c1"># make a deep copy of the DataFrame</span>
+<span class="n">mean_imputer</span> <span class="o">=</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+<span class="n">df_mean</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:]</span> <span class="o">=</span> <span class="n">mean_imputer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_mean</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df_mean</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:],</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;Imputed&quot;</span><span class="p">,</span> <span class="n">plot_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;alpha&#39;</span><span class="p">:</span><span class="mf">0.15</span><span class="p">,</span><span class="s1">&#39;s&#39;</span><span class="p">:</span><span class="mi">20</span><span class="p">},</span> <span class="n">palette</span> <span class="o">=</span> <span class="s1">&#39;gnuplot&#39;</span><span class="p">,</span> <span class="n">corner</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">df_constant</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">df_mean</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Well</th>
+      <th>Por</th>
+      <th>Perm</th>
+      <th>AI</th>
+      <th>Brittle</th>
+      <th>TOC</th>
+      <th>VR</th>
+      <th>Imputed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.000000</td>
+      <td>12.08</td>
+      <td>2.92</td>
+      <td>2.80000</td>
+      <td>81.40</td>
+      <td>1.16</td>
+      <td>2.31</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.000000</td>
+      <td>12.38</td>
+      <td>3.53</td>
+      <td>2.99163</td>
+      <td>46.17</td>
+      <td>0.89</td>
+      <td>1.88</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>102.653846</td>
+      <td>14.02</td>
+      <td>2.59</td>
+      <td>4.01000</td>
+      <td>72.80</td>
+      <td>0.89</td>
+      <td>2.72</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.000000</td>
+      <td>17.67</td>
+      <td>6.75</td>
+      <td>2.63000</td>
+      <td>39.81</td>
+      <td>1.08</td>
+      <td>1.88</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.000000</td>
+      <td>17.52</td>
+      <td>4.57</td>
+      <td>3.18000</td>
+      <td>10.94</td>
+      <td>1.51</td>
+      <td>1.90</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="_images/778b379253b6bede8a0f5b94aac49542e328179796b60c96bc3c802bee7f3f69.png" src="_images/778b379253b6bede8a0f5b94aac49542e328179796b60c96bc3c802bee7f3f69.png" />
+</div>
+</div>
+</section>
+<section id="imputation-method-6-replace-with-the-mode">
+<h2>Imputation Method #6 - Replace with the Mode<a class="headerlink" href="#imputation-method-6-replace-with-the-mode" title="Permalink to this heading">#</a></h2>
+<p>This is the method of replacing the missing values with the most frequent value, mode, over the feature.</p>
+<ul class="simple">
+<li><p>in the presence of outliers the mean may not be reliable. My recommendation is to first deal with outliers prior to feature imputation</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_mode</span> <span class="o">=</span> <span class="n">df_mask</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                         <span class="c1"># make a deep copy of the DataFrame</span>
+<span class="n">mode_imputer</span> <span class="o">=</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;most_frequent&#39;</span><span class="p">)</span>
+<span class="n">df_mode</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:]</span> <span class="o">=</span> <span class="n">mode_imputer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_mode</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df_mode</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:],</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;Imputed&quot;</span><span class="p">,</span> <span class="n">plot_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;alpha&#39;</span><span class="p">:</span><span class="mf">0.15</span><span class="p">,</span><span class="s1">&#39;s&#39;</span><span class="p">:</span><span class="mi">20</span><span class="p">},</span> <span class="n">palette</span> <span class="o">=</span> <span class="s1">&#39;gnuplot&#39;</span><span class="p">,</span> <span class="n">corner</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">df_constant</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">df_mode</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Well</th>
+      <th>Por</th>
+      <th>Perm</th>
+      <th>AI</th>
+      <th>Brittle</th>
+      <th>TOC</th>
+      <th>VR</th>
+      <th>Imputed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>12.08</td>
+      <td>2.92</td>
+      <td>2.80</td>
+      <td>81.40</td>
+      <td>1.16</td>
+      <td>2.31</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.0</td>
+      <td>12.38</td>
+      <td>3.53</td>
+      <td>2.45</td>
+      <td>46.17</td>
+      <td>0.89</td>
+      <td>1.88</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.0</td>
+      <td>14.02</td>
+      <td>2.59</td>
+      <td>4.01</td>
+      <td>72.80</td>
+      <td>0.89</td>
+      <td>2.72</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.0</td>
+      <td>17.67</td>
+      <td>6.75</td>
+      <td>2.63</td>
+      <td>39.81</td>
+      <td>1.08</td>
+      <td>1.88</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>17.52</td>
+      <td>4.57</td>
+      <td>3.18</td>
+      <td>10.94</td>
+      <td>1.51</td>
+      <td>1.90</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="_images/cafcda1fe54702d29f8cec4b44ee48f39144ea70a19edc9c608ed4d284153136.png" src="_images/cafcda1fe54702d29f8cec4b44ee48f39144ea70a19edc9c608ed4d284153136.png" />
+</div>
+</div>
+</section>
+<section id="imputation-method-7-replace-with-the-n-nearest-neighbor-estimation">
+<h2>Imputation Method #7 - Replace with the n-nearest Neighbor estimation<a class="headerlink" href="#imputation-method-7-replace-with-the-n-nearest-neighbor-estimation" title="Permalink to this heading">#</a></h2>
+<p>This is the method of replacing the missing values with the k-nearest neighbour prediction model based on the other available collocated feature values</p>
+<ul class="simple">
+<li><p>see the k-nearest neighbour chapter in this e-book for explanation of the method, assumptions and hyperparameters</p></li>
+<li><p>the available data is applied to predict at the missing values in features space</p></li>
+</ul>
+<p>Since the k-nearest neighbor method is a lazy learner, imputed values are calculated in a single pass over the missing values</p>
+<ul class="simple">
+<li><p>there is not a separate train and predict step</p></li>
+</ul>
+<p>This method should be globally unbiased and will reduce local bias relative to global mean feature imputation</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_knn</span> <span class="o">=</span> <span class="n">df_mask</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                         <span class="c1"># make a deep copy of the DataFrame</span>
+<span class="n">knn_imputer</span> <span class="o">=</span> <span class="n">KNNImputer</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="s2">&quot;uniform&quot;</span><span class="p">)</span>
+<span class="n">df_knn</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:]</span> <span class="o">=</span> <span class="n">knn_imputer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_knn</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df_knn</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:],</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;Imputed&quot;</span><span class="p">,</span> <span class="n">plot_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;alpha&#39;</span><span class="p">:</span><span class="mf">0.15</span><span class="p">,</span><span class="s1">&#39;s&#39;</span><span class="p">:</span><span class="mi">20</span><span class="p">},</span> <span class="n">palette</span> <span class="o">=</span> <span class="s1">&#39;gnuplot&#39;</span><span class="p">,</span> <span class="n">corner</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">df_constant</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">df_mode</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Well</th>
+      <th>Por</th>
+      <th>Perm</th>
+      <th>AI</th>
+      <th>Brittle</th>
+      <th>TOC</th>
+      <th>VR</th>
+      <th>Imputed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>12.08</td>
+      <td>2.92</td>
+      <td>2.80</td>
+      <td>81.40</td>
+      <td>1.16</td>
+      <td>2.31</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.0</td>
+      <td>12.38</td>
+      <td>3.53</td>
+      <td>2.45</td>
+      <td>46.17</td>
+      <td>0.89</td>
+      <td>1.88</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.0</td>
+      <td>14.02</td>
+      <td>2.59</td>
+      <td>4.01</td>
+      <td>72.80</td>
+      <td>0.89</td>
+      <td>2.72</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.0</td>
+      <td>17.67</td>
+      <td>6.75</td>
+      <td>2.63</td>
+      <td>39.81</td>
+      <td>1.08</td>
+      <td>1.88</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>17.52</td>
+      <td>4.57</td>
+      <td>3.18</td>
+      <td>10.94</td>
+      <td>1.51</td>
+      <td>1.90</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="_images/342678de0a00eaf0afd432abdbb8412519091d1c8746408d4fcb35ed2f6c83f8.png" src="_images/342678de0a00eaf0afd432abdbb8412519091d1c8746408d4fcb35ed2f6c83f8.png" />
+</div>
+</div>
+</section>
+<section id="imputation-method-8-multivariate-imputation-by-chained-equations">
+<h2>Imputation Method #8 - Multivariate imputation by chained equations<a class="headerlink" href="#imputation-method-8-multivariate-imputation-by-chained-equations" title="Permalink to this heading">#</a></h2>
+<p>This is the method of replacing the missing values with the k-nearest neighbour prediction model</p>
+<ol class="arabic simple">
+<li><p>Substitute random values from <span class="math notranslate nohighlight">\(𝐹_{𝑋_{𝑖=1,\ldots,𝑚}}(𝑋_{𝑖=1,\ldots,𝑚})\)</span> for missing values</p></li>
+<li><p>Sequentially predict missing values for a feature with others</p></li>
+<li><p>Iterative until convergence criteria, usually multivariate statistics</p></li>
+<li><p>Repeat for multiple realizations of the dataset</p></li>
+</ol>
+<p>The default predictor is BayesianRidge().</p>
+<ul class="simple">
+<li><p>we can specify the maximum number of iterations. The last computed imputations are returned.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_mice</span> <span class="o">=</span> <span class="n">df_mask</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                         <span class="c1"># make a deep copy of the DataFrame</span>
+<span class="n">mice_imputer</span> <span class="o">=</span> <span class="n">IterativeImputer</span><span class="p">()</span>
+<span class="n">df_mice</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:]</span> <span class="o">=</span> <span class="n">mice_imputer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_mice</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df_mice</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:],</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;Imputed&quot;</span><span class="p">,</span> <span class="n">plot_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;alpha&#39;</span><span class="p">:</span><span class="mf">0.15</span><span class="p">,</span><span class="s1">&#39;s&#39;</span><span class="p">:</span><span class="mi">20</span><span class="p">},</span> <span class="n">palette</span> <span class="o">=</span> <span class="s1">&#39;gnuplot&#39;</span><span class="p">,</span> <span class="n">corner</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">df_constant</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">df_mode</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Well</th>
+      <th>Por</th>
+      <th>Perm</th>
+      <th>AI</th>
+      <th>Brittle</th>
+      <th>TOC</th>
+      <th>VR</th>
+      <th>Imputed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>12.08</td>
+      <td>2.92</td>
+      <td>2.80</td>
+      <td>81.40</td>
+      <td>1.16</td>
+      <td>2.31</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.0</td>
+      <td>12.38</td>
+      <td>3.53</td>
+      <td>2.45</td>
+      <td>46.17</td>
+      <td>0.89</td>
+      <td>1.88</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.0</td>
+      <td>14.02</td>
+      <td>2.59</td>
+      <td>4.01</td>
+      <td>72.80</td>
+      <td>0.89</td>
+      <td>2.72</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.0</td>
+      <td>17.67</td>
+      <td>6.75</td>
+      <td>2.63</td>
+      <td>39.81</td>
+      <td>1.08</td>
+      <td>1.88</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>17.52</td>
+      <td>4.57</td>
+      <td>3.18</td>
+      <td>10.94</td>
+      <td>1.51</td>
+      <td>1.90</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="_images/18e0e0423b4b3eac989e163a6542e3ab6cf5e33b92164b4d827b23c520204c3b.png" src="_images/18e0e0423b4b3eac989e163a6542e3ab6cf5e33b92164b4d827b23c520204c3b.png" />
+</div>
+</div>
+</section>
+<section id="comments">
+<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
+<p>I hope you found this chapter helpful. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a>,</p>
+<p><em>Michael</em></p>
+</section>
+<section id="the-author">
+<h2>The Author:<a class="headerlink" href="#the-author" title="Permalink to this heading">#</a></h2>
+<p>Michael J. Pyrcz, Professor, The University of Texas at Austin
+<em>Novel Data Analytics, Geostatistics and Machine Learning Subsurface Solutions</em></p>
+<p>With over 17 years of experience in subsurface consulting, research and development, Michael has returned to academia driven by his passion for teaching and enthusiasm for enhancing engineers’ and geoscientists’ impact in subsurface resource development.</p>
+<p>For more about Michael check out these links:</p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a> | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+</section>
+<section id="want-to-work-together">
+<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<ul class="simple">
+<li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
+</ul>
+<p>I’m always happy to discuss,</p>
+<p><em>Michael</em></p>
+<p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="MachineLearning_feature_ranking.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Feature Ranking</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="MachineLearning_clustering.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">k-means Clustering</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-for-feature-imputation">Motivation for Feature Imputation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cause-of-missing-feature-values">Cause of Missing Feature Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consequences-of-missing-feature-values">Consequences of Missing Feature Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the working directory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-tabular-data">Loading Tabular Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-dataframe">Visualize the DataFrame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-some-data">Remove Some Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-of-the-data-coverage">Evaluation of the Data Coverage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imputation-method-1-feature-selection">Imputation Method #1 - Feature Selection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imputation-method-2-sample-selection">Imputation Method #2 - Sample Selection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imputation-method-3-likewise-deletion">Imputation Method #3 - Likewise Deletion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-methods-for-imputation">Modeling Methods for Imputation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imputation-method-4-replace-with-a-constant">Imputation Method #4 - Replace with a Constant</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imputation-method-6-replace-with-the-mean">Imputation Method #6 - Replace with the Mean</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imputation-method-6-replace-with-the-mode">Imputation Method #6 - Replace with the Mode</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imputation-method-7-replace-with-the-n-nearest-neighbor-estimation">Imputation Method #7 - Replace with the n-nearest Neighbor estimation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imputation-method-8-multivariate-imputation-by-chained-equations">Imputation Method #8 - Multivariate imputation by chained equations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Michael J. Pyrcz
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024 CC-BY-SA 4.0.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

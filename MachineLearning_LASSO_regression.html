@@ -173,13 +173,14 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_concepts.html">Machine Learning Concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_worklfow_construction.html">Workflow Construction and Coding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_plotting_data_models.html">Loading and Plotting Data and Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_univariate_analysis.html">Univariate Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_multivariate_analysis.html">Multivariate Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_transformations.html">Feature Transformations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_ranking.html">Feature Ranking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_imputation.html">Feature Imputation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_clustering.html">Cluster Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_density-based_clustering.html">Density-based Clustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_spectral_clustering.html">Spectral Clustering</a></li>
@@ -198,6 +199,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_support_vector_machines.html">Support Vector Machines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_time_series.html">Time Series Analysis and Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -398,6 +400,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression">Linear Regression</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ridge-regression">Ridge Regression</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">LASSO Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l-1-vs-l-2-norm"><strong><span class="math notranslate nohighlight">\(L^1\)</span> vs. <span class="math notranslate nohighlight">\(L^2\)</span> Norm</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
@@ -435,7 +438,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="lasso-regression">
+  <figure style="text-align: center;">
+  <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
+</figure>
+<section id="lasso-regression">
 <h1>LASSO Regression<a class="headerlink" href="#lasso-regression" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
 <p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
@@ -568,16 +574,62 @@ RSS = \sum_{i=1}^n \left(y_i - (\sum_{\alpha = 1}^m b_{\alpha} x_{\alpha,i} + b_
 \[
 \lambda \sum_{\alpha=1}^m \left(b_{\alpha}\right)^2
 \]</div>
-<p>While both ridge regression and the lasso shrink the model parameters (<span class="math notranslate nohighlight">\(b_{\alpha}, \alpha = 1,\ldots,m\)</span>) towards zero:</p>
+<p>While both ridge regression and LASSO shrink the model parameters (<span class="math notranslate nohighlight">\(b_{\alpha}, \alpha = 1,\ldots,m\)</span>) towards zero:</p>
 <ul class="simple">
 <li><p>LASSO parameters reach zero at different rates for each predictor feature as the lambda, <span class="math notranslate nohighlight">\(\lambda\)</span>, hyperparameter increases.</p></li>
-<li><p>as a result the lasso provides a method for feature ranking and selection!</p></li>
+<li><p>as a result LASSO provides a method for feature ranking and selection!</p></li>
 </ul>
-<p>The lambda, <span class="math notranslate nohighlight">\(\lambda\)</span>, hyperparameter controls the degree of fit of the model and may be related to the model variance and bias trade-off.</p>
+<p>The lambda, <span class="math notranslate nohighlight">\(\lambda\)</span>, hyperparameter controls the degree of fit of the model and may be related to the model bias-variance trade-off.</p>
 <ul class="simple">
 <li><p>for <span class="math notranslate nohighlight">\(\lambda \rightarrow 0\)</span> the prediction model approaches linear regression, there is lower model bias, but the model variance is higher</p></li>
 <li><p>as <span class="math notranslate nohighlight">\(\lambda\)</span> increases the model variance decreases and the model bias increases</p></li>
 <li><p>for <span class="math notranslate nohighlight">\(\lambda \rightarrow \infty\)</span> the coefficients all become 0.0 and the model is the training data response feature mean</p></li>
+</ul>
+</section>
+<section id="l-1-vs-l-2-norm">
+<h2><strong><span class="math notranslate nohighlight">\(L^1\)</span> vs. <span class="math notranslate nohighlight">\(L^2\)</span> Norm</strong><a class="headerlink" href="#l-1-vs-l-2-norm" title="Permalink to this heading">#</a></h2>
+<p>This would be a good time to discuss the choice of <span class="math notranslate nohighlight">\(L^1\)</span> and <span class="math notranslate nohighlight">\(L^2\)</span> norm. To explain this let’s compare the performance of <span class="math notranslate nohighlight">\(L^1\)</span> and <span class="math notranslate nohighlight">\(L^2\)</span> norms in loss functions while training model parameters.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>Least Absolute Deviations (L1)</p></th>
+<th class="head"><p>Least Squares (L2)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Robustness</strong></p></td>
+<td><p>Robust</p></td>
+<td><p>Not very robust</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Solution Stability</strong></p></td>
+<td><p>Unstable solution</p></td>
+<td><p>Stable solution</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Number of Solutions</strong></p></td>
+<td><p>Possibly multiple solutions</p></td>
+<td><p>Always one solution</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Feature Selection</strong></p></td>
+<td><p>Built-in feature selection</p></td>
+<td><p>No feature selection</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Output Sparsity</strong></p></td>
+<td><p>Sparse outputs</p></td>
+<td><p>Non-sparse outputs</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Analytical Solutions</strong></p></td>
+<td><p>No analytical solutions</p></td>
+<td><p>Analytical solutions</p></td>
+</tr>
+</tbody>
+</table>
+<p>Here’s some important points,</p>
+<ul class="simple">
+<li><p><em>robust</em> - resistant to outliers</p></li>
+<li><p><em>unstable</em> - for small changes in training the trained model predictions may jump</p></li>
+<li><p><em>multiple solutions</em> - different solution have similar or the same loss, resulting in solutions jumping with small changes to the training data</p></li>
+<li><p><em>output sparsity</em> and <em>feature selection</em> - model parameters tend to 0.0</p></li>
+<li><p>analytical solutions* - an analytical solution is available to solve for the optimum model parameters</p></li>
 </ul>
 </section>
 <section id="load-the-required-libraries">
@@ -1979,6 +2031,7 @@ RSS = \sum_{i=1}^n \left(y_i - (\sum_{\alpha = 1}^m b_{\alpha} x_{\alpha,i} + b_
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression">Linear Regression</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ridge-regression">Ridge Regression</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">LASSO Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l-1-vs-l-2-norm"><strong><span class="math notranslate nohighlight">\(L^1\)</span> vs. <span class="math notranslate nohighlight">\(L^2\)</span> Norm</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>

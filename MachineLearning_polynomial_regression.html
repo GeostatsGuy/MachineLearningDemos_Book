@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'MachineLearning_polynomial_regression';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="k-nearest Neighbours Regression" href="MachineLearning_knearest_neighbours.html" />
+    <link rel="next" title="k-nearest Neighbours" href="MachineLearning_knearest_neighbours.html" />
     <link rel="prev" title="Naive Bayes Classifier" href="MachineLearning_naive_Bayes.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -173,13 +173,14 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_concepts.html">Machine Learning Concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_worklfow_construction.html">Workflow Construction and Coding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_plotting_data_models.html">Loading and Plotting Data and Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_univariate_analysis.html">Univariate Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_multivariate_analysis.html">Multivariate Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_transformations.html">Feature Transformations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_ranking.html">Feature Ranking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_imputation.html">Feature Imputation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_clustering.html">Cluster Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_density-based_clustering.html">Density-based Clustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_spectral_clustering.html">Spectral Clustering</a></li>
@@ -198,6 +199,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_support_vector_machines.html">Support Vector Machines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_time_series.html">Time Series Analysis and Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -398,6 +400,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression">Linear Regression</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predictor-feature-basis-expansion">Predictor Feature / Basis Expansion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Polynomial Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hermite-polynomials"><strong>Hermite Polynomials</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
@@ -431,7 +434,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="polynomial-regression">
+  <figure style="text-align: center;">
+  <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
+</figure>
+<section id="polynomial-regression">
 <h1>Polynomial Regression<a class="headerlink" href="#polynomial-regression" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
 <p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
@@ -539,6 +545,49 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 <ul class="simple">
 <li><p>apply polynomial basis expansion</p></li>
 <li><p>perform linear regression on the polynomial basis expansion</p></li>
+</ul>
+</section>
+<section id="hermite-polynomials">
+<h2><strong>Hermite Polynomials</strong><a class="headerlink" href="#hermite-polynomials" title="Permalink to this heading">#</a></h2>
+<p>Is a family of orthogonal polynomials on the real number line.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Order</p></th>
+<th class="head text-center"><p>Hermite Polynomial <span class="math notranslate nohighlight">\(H_e(x)\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>0th Order</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(H_{e_0}(x) = 1\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>1st Order</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(H_{e_1}(x) = x\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>2nd Order</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(H_{e_2}(x) = x^2 - 1\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>3rd Order</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(H_{e_3}(x) = x^3 - 3x\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>4th Order</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(H_{e_4}(x) = x^4 - 6x^2 + 3\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>These polynomials are orthogonal with respect to a weighting function,</p>
+<div class="math notranslate nohighlight">
+\[
+𝑤(𝑥)=𝑒^{−\frac{𝑥^2}{2}}
+\]</div>
+<p>this is the standard Gaussian probability density function without the scaler, <span class="math notranslate nohighlight">\(\frac{1}{\sqrt{2\pi}}\)</span>. The definition of orthogonality is stated as,</p>
+<div class="math notranslate nohighlight">
+\[ 
+\int_{-\infty}^{\infty} H_m(x) H_n(x) w(x) \, dx = 0 
+\]</div>
+<p>The Hermite polynomials are orthogonal over the interval <span class="math notranslate nohighlight">\([−\infty,\infty]\)</span> for the standard normal probability distribution.</p>
+<p>By applying hermite polynomials instead of regular polynomials for polynomial basis expandion in polynomial regression were remove the multicolinearity between the predictor features,</p>
+<ul class="simple">
+<li><p>recall, independence of the predictor features is an assumption of the linear system applied in polynomial regression with the polynomial basis expansion</p></li>
 </ul>
 </section>
 <section id="load-the-required-libraries">
@@ -1188,7 +1237,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/755d1382295f3fd07e0683be6d771930d7e88c0979aefd931d56f4ff26a91392.png" src="_images/755d1382295f3fd07e0683be6d771930d7e88c0979aefd931d56f4ff26a91392.png" />
+<img alt="_images/f46ef7608edadc18a6411549ea45620ca8798d0aa101ac7b76ccc5cd74f931cd.png" src="_images/f46ef7608edadc18a6411549ea45620ca8798d0aa101ac7b76ccc5cd74f931cd.png" />
 </div>
 </div>
 <p>Let’s visualize the polynomial expansion over the Gaussian transformed depth.</p>
@@ -1377,7 +1426,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1edba43490d9426589b9511ff3ee7455d92beb24c10c2911528a364dfb528390.png" src="_images/1edba43490d9426589b9511ff3ee7455d92beb24c10c2911528a364dfb528390.png" />
+<img alt="_images/6a6442a8967709de7b5caf0884e1d81f5370ac13bf86374161aca1110c1149bf.png" src="_images/6a6442a8967709de7b5caf0884e1d81f5370ac13bf86374161aca1110c1149bf.png" />
 </div>
 </div>
 <p>We can check the arithmetic averages of all the Hermite basis expansions.</p>
@@ -1602,10 +1651,10 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x26627b2de50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x2d23b51ed30&gt;
 </pre></div>
 </div>
-<img alt="_images/7f29edc4e90cdbe57df89cbbb43e534c74bac98e711c717f3bcc71b872052988.png" src="_images/7f29edc4e90cdbe57df89cbbb43e534c74bac98e711c717f3bcc71b872052988.png" />
+<img alt="_images/2878453ab5e42a10212e07d3d6a773e4541da416bdad5605edd618b7023ce178.png" src="_images/2878453ab5e42a10212e07d3d6a773e4541da416bdad5605edd618b7023ce178.png" />
 </div>
 </div>
 <p>Let’s visualize orthogonal polynomial basis orders over the range of the standardized depth.</p>
@@ -1803,7 +1852,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">k-nearest Neighbours Regression</p>
+        <p class="prev-next-title">k-nearest Neighbours</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1826,6 +1875,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression">Linear Regression</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predictor-feature-basis-expansion">Predictor Feature / Basis Expansion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Polynomial Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hermite-polynomials"><strong>Hermite Polynomials</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>

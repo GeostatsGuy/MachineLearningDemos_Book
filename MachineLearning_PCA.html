@@ -173,13 +173,14 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_concepts.html">Machine Learning Concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_worklfow_construction.html">Workflow Construction and Coding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_plotting_data_models.html">Loading and Plotting Data and Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_univariate_analysis.html">Univariate Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_multivariate_analysis.html">Multivariate Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_transformations.html">Feature Transformations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_ranking.html">Feature Ranking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_imputation.html">Feature Imputation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_clustering.html">Cluster Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_density-based_clustering.html">Density-based Clustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_spectral_clustering.html">Spectral Clustering</a></li>
@@ -198,6 +199,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_support_vector_machines.html">Support Vector Machines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_time_series.html">Time Series Analysis and Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -420,7 +422,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#independence-of-principal-component-scores">Independence of Principal Component Scores</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-component-analysis-by-hand-with-eigenvalue-and-eigen-vector-calculator">Principal Component Analysis By-hand with Eigenvalue and Eigen Vector Calculator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstration-of-dimensional-reduction">Demonstration of Dimensional Reduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#all-predictor-features">All Predictor Features</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scree-plots">Scree Plots</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Independence of Principal Component Scores</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduced-dimensionality-impact-on-a-2-feature-relationship">Reduced Dimensionality Impact on a 2 Feature Relationship</a></li>
@@ -441,7 +442,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="principal-component-analysis">
+  <figure style="text-align: center;">
+  <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
+</figure>
+<section id="principal-component-analysis">
 <h1>Principal Component Analysis<a class="headerlink" href="#principal-component-analysis" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
 <p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
@@ -1492,7 +1496,8 @@ Eigen Values:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nComp</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">f</span><span class="p">,</span> <span class="p">((</span><span class="n">ax201</span><span class="p">,</span> <span class="n">ax202</span><span class="p">),</span> <span class="p">(</span><span class="n">ax203</span><span class="p">,</span> <span class="n">ax204</span><span class="p">),</span> <span class="p">(</span><span class="n">ax205</span><span class="p">,</span> <span class="n">ax206</span><span class="p">))</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">15</span><span class="p">))</span>
+<span class="n">f</span><span class="p">,</span> <span class="p">((</span><span class="n">ax201</span><span class="p">,</span> <span class="n">ax202</span><span class="p">,</span> <span class="n">ax203</span><span class="p">),</span> <span class="p">(</span><span class="n">ax206</span><span class="p">,</span> <span class="n">ax205</span><span class="p">,</span> <span class="n">ax204</span><span class="p">))</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="c1">#f, ((ax201, ax202), (ax203, ax204), (ax205, ax206)) = plt.subplots(3, 2,figsize=(10,15))</span>
 <span class="n">f</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">hspace</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">)</span>
 
 <span class="n">ax201</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">my_data_por_perm</span><span class="p">[</span><span class="s2">&quot;Por&quot;</span><span class="p">],</span><span class="n">my_data_por_perm</span><span class="p">[</span><span class="s2">&quot;LogPerm&quot;</span><span class="p">],</span><span class="n">s</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;darkorange&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
@@ -1540,7 +1545,7 @@ Eigen Values:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a96ea9c2383c7fb10b075509c6a9544615e7520a22bc05c5d1b9984153cc99ea.png" src="_images/a96ea9c2383c7fb10b075509c6a9544615e7520a22bc05c5d1b9984153cc99ea.png" />
+<img alt="_images/99fce5c8ff4962b84e1d76599a56e25a485eb8a4462b4fa608f8d5a9af64a8dd.png" src="_images/99fce5c8ff4962b84e1d76599a56e25a485eb8a4462b4fa608f8d5a9af64a8dd.png" />
 </div>
 </div>
 <p>Let’s put the original data and the resulting lower dimensional model side-by-side and check the resulting variances.</p>
@@ -1575,11 +1580,23 @@ Total Variance = 8.041 , Total Variance Reduced Dimension = 7.208 Fraction =  0.
 </div>
 </div>
 </div>
-<p>We got a model that explains 89.6% of the variance for both porosity and log permeability.</p>
-</section>
-<section id="all-predictor-features">
-<h2>All Predictor Features<a class="headerlink" href="#all-predictor-features" title="Permalink to this heading">#</a></h2>
-<p>We will go back to the original data file and this time extract all 6 predictor variables and the first 500 samples.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#### All Predictor Features</span>
+
+<span class="n">We</span> <span class="n">will</span> <span class="n">go</span> <span class="n">back</span> <span class="n">to</span> <span class="n">the</span> <span class="n">original</span> <span class="n">data</span> <span class="n">file</span> <span class="ow">and</span> <span class="n">this</span> <span class="n">time</span> <span class="n">extract</span> <span class="nb">all</span> <span class="mi">6</span> <span class="n">predictor</span> <span class="n">variables</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">first</span> <span class="mi">500</span> <span class="n">samples</span><span class="o">.</span>  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">26</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+    <span class="n">We</span> <span class="n">will</span> <span class="n">go</span> <span class="n">back</span> <span class="n">to</span> <span class="n">the</span> <span class="n">original</span> <span class="n">data</span> <span class="n">file</span> <span class="ow">and</span> <span class="n">this</span> <span class="n">time</span> <span class="n">extract</span> <span class="nb">all</span> <span class="mi">6</span> <span class="n">predictor</span> <span class="n">variables</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">first</span> <span class="mi">500</span> <span class="n">samples</span><span class="o">.</span>
+       <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_data_f6</span> <span class="o">=</span> <span class="n">my_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">500</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>                      <span class="c1"># extract the 6 predictors, 500 samples</span>
@@ -1753,7 +1770,7 @@ Variance Transformed Por = [&#39;Por&#39;, &#39;LogPerm&#39;, &#39;AI&#39;, &#39
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/cb70ebc58a6161c91e168f37c51faf16ad0c7a73cb23c7741794ee731d2470a4.png" src="_images/cb70ebc58a6161c91e168f37c51faf16ad0c7a73cb23c7741794ee731d2470a4.png" />
+<img alt="_images/723ea42f5bdf48a43d93c909876263675500438d484279bc163c899b6c5189f9.png" src="_images/723ea42f5bdf48a43d93c909876263675500438d484279bc163c899b6c5189f9.png" />
 </div>
 </div>
 <p>The summary statistics and distributions look good.  No obvious missing data, gaps, significant truncations, spikes or outliers.  We are ready to perform principal component analysis on our 6 features.</p>
@@ -1814,7 +1831,7 @@ Variance Transformed Por = [&#39;Por&#39;, &#39;LogPerm&#39;, &#39;AI&#39;, &#39
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Variance explained by PC1 thru PC6 = [0.462 0.246 0.149 0.11  0.024 0.009]
 </pre></div>
 </div>
-<img alt="_images/f13a2759a5a3a9ba079c2c90976c1d01b7e4e03c073aeb9780c2e4db83e7bbbf.png" src="_images/f13a2759a5a3a9ba079c2c90976c1d01b7e4e03c073aeb9780c2e4db83e7bbbf.png" />
+<img alt="_images/440bc104628ed7ca4c595ebaff4fff2fa70e71b24b63daa330698e03fb7ff9fa.png" src="_images/440bc104628ed7ca4c595ebaff4fff2fa70e71b24b63daa330698e03fb7ff9fa.png" />
 </div>
 </div>
 <p>We can see that about 46% of the variance is described by the 1st principal component and then about 25% is described by the 2nd principal component etc.</p>
@@ -1925,7 +1942,7 @@ Correlation Matrix of the 6 principle components&#39; scores:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2c07008ca4c1cad616bfb73f5ffed082b67c565a0bbab5e216624e59e8c949ff.png" src="_images/2c07008ca4c1cad616bfb73f5ffed082b67c565a0bbab5e216624e59e8c949ff.png" />
+<img alt="_images/422a00fd31196fe093314dad28d30e0b04af5817a25075faffb515ac32a96a72.png" src="_images/422a00fd31196fe093314dad28d30e0b04af5817a25075faffb515ac32a96a72.png" />
 </div>
 </div>
 <p>Very interesting to watch the accuracy of the bivariate relationship between log permeability and porosity improve as we include more components.  Let’s check the variances.</p>
@@ -2021,13 +2038,13 @@ Correlation Matrix of the 6 principle components&#39; scores:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
 </pre></div>
 </div>
-<img alt="_images/7e0fd0b08b519dd15fc7c0b2a9ccd5a2b5754140ab93346fc7115546b8d3e809.png" src="_images/7e0fd0b08b519dd15fc7c0b2a9ccd5a2b5754140ab93346fc7115546b8d3e809.png" />
-<img alt="_images/f27b9d55ef99f92c08c7cb21de0a0d689254e6fc3a83a54a3e8eb85f5c95c0d0.png" src="_images/f27b9d55ef99f92c08c7cb21de0a0d689254e6fc3a83a54a3e8eb85f5c95c0d0.png" />
-<img alt="_images/aed8d060779415617db82a0fcf6fe64f0807b6bd8859de1bf769095e5a16edf8.png" src="_images/aed8d060779415617db82a0fcf6fe64f0807b6bd8859de1bf769095e5a16edf8.png" />
-<img alt="_images/fe7783f010bac449b06713e8507ed1212dae68d11fe79bf77c977cfda4ec2a47.png" src="_images/fe7783f010bac449b06713e8507ed1212dae68d11fe79bf77c977cfda4ec2a47.png" />
-<img alt="_images/258d2ca47aaa2f729024d1eb1517e1e69073d620c641c8c2a8663cf88c072056.png" src="_images/258d2ca47aaa2f729024d1eb1517e1e69073d620c641c8c2a8663cf88c072056.png" />
-<img alt="_images/c8dbfa1e504c7c4ee4572bd05c6736e244f886478e03ac2b6eba2326d41cf45f.png" src="_images/c8dbfa1e504c7c4ee4572bd05c6736e244f886478e03ac2b6eba2326d41cf45f.png" />
-<img alt="_images/ea4343603b3fdf5cb42d2edb405f36462556c343aa0a8d5a79a90a367b4c45e2.png" src="_images/ea4343603b3fdf5cb42d2edb405f36462556c343aa0a8d5a79a90a367b4c45e2.png" />
+<img alt="_images/9037b92fcdafe9a720302d1a1992c353882de03fbb58d7636a99f3bc723cc668.png" src="_images/9037b92fcdafe9a720302d1a1992c353882de03fbb58d7636a99f3bc723cc668.png" />
+<img alt="_images/6196eb5d627c4f2fbe52fec9822e0c4480369f587058fb6b53633e6f26e21cbb.png" src="_images/6196eb5d627c4f2fbe52fec9822e0c4480369f587058fb6b53633e6f26e21cbb.png" />
+<img alt="_images/7ec799f9728d5b7cb4ae06957f30aeed9d702cb0c0e7bd56d8897cb2be4ef1cd.png" src="_images/7ec799f9728d5b7cb4ae06957f30aeed9d702cb0c0e7bd56d8897cb2be4ef1cd.png" />
+<img alt="_images/48284ddedfa43e6cf42229c8c5d4f25a72df3247dedac542cbc23664c2044fb3.png" src="_images/48284ddedfa43e6cf42229c8c5d4f25a72df3247dedac542cbc23664c2044fb3.png" />
+<img alt="_images/5b8d868cfd7077aca0e5cf9aa13f2327e85f86e516d61d6aa0103d070f6487dd.png" src="_images/5b8d868cfd7077aca0e5cf9aa13f2327e85f86e516d61d6aa0103d070f6487dd.png" />
+<img alt="_images/9f43cd1d40efe65f50f73dc0c7e33230e21b82413bfce8ebe8dc13dbfa4f6351.png" src="_images/9f43cd1d40efe65f50f73dc0c7e33230e21b82413bfce8ebe8dc13dbfa4f6351.png" />
+<img alt="_images/e5f6bf1a8c41d590c3552be8d7754a8f16f447bb52c6b155fb5efbb5b59faece.png" src="_images/e5f6bf1a8c41d590c3552be8d7754a8f16f447bb52c6b155fb5efbb5b59faece.png" />
 </div>
 </div>
 </section>
@@ -2068,29 +2085,28 @@ Correlation Matrix of the 6 principle components&#39; scores:
 Proportion of variance of original features:  [0.2 0.2 0.2 0.2 0.2]
 Correlation Matrix of original features:
 
-[[ 0.08  0.    0.    0.   -0.  ]
- [ 0.    0.08  0.    0.    0.  ]
- [ 0.    0.    0.08  0.    0.  ]
- [ 0.    0.    0.    0.08 -0.  ]
- [-0.    0.    0.   -0.    0.08]]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PCA Variance Explained  [0.21 0.2  0.2  0.2  0.19]
+[[ 0.08  0.    0.   -0.   -0.  ]
+ [ 0.    0.08  0.   -0.    0.  ]
+ [ 0.    0.    0.08 -0.   -0.  ]
+ [-0.   -0.   -0.    0.08 -0.  ]
+ [-0.    0.   -0.   -0.    0.08]]
+
+PCA Variance Explained  [0.21 0.2  0.2  0.2  0.2 ]
 
 Correlation Matrix of scores:
 
-[[ 0.09  0.    0.    0.   -0.  ]
- [ 0.    0.08  0.   -0.   -0.  ]
- [ 0.    0.    0.08 -0.   -0.  ]
- [ 0.   -0.   -0.    0.08 -0.  ]
- [-0.   -0.   -0.   -0.    0.08]]
+[[ 0.09  0.    0.   -0.   -0.  ]
+ [ 0.    0.08 -0.   -0.   -0.  ]
+ [ 0.   -0.    0.08  0.    0.  ]
+ [-0.   -0.    0.    0.08  0.  ]
+ [-0.   -0.    0.    0.    0.08]]
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.98, &#39;Principal Component Scores&#39;)
 </pre></div>
 </div>
-<img alt="_images/8e7492da24a30ff2971fe6d97638f933ba49cd8fafc8b47ed006b6432e6de00c.png" src="_images/8e7492da24a30ff2971fe6d97638f933ba49cd8fafc8b47ed006b6432e6de00c.png" />
-<img alt="_images/0890a859238fa24ec5da379b324bfdd218beab99955f656de921e7c338f2bd9a.png" src="_images/0890a859238fa24ec5da379b324bfdd218beab99955f656de921e7c338f2bd9a.png" />
+<img alt="_images/b608454587414ebe9ba4ea41decad8db779e801ebfd6fd313550566b8726ef3d.png" src="_images/b608454587414ebe9ba4ea41decad8db779e801ebfd6fd313550566b8726ef3d.png" />
+<img alt="_images/d8ea4dfe662ba4b2c4207d6791270894da00d2d43dde6d50dfc4cc3c81cc37a2.png" src="_images/d8ea4dfe662ba4b2c4207d6791270894da00d2d43dde6d50dfc4cc3c81cc37a2.png" />
 </div>
 </div>
 <p>What happens when principal component analysis is applied to uncorrelated, uniformly distributed features?</p>
@@ -2219,7 +2235,6 @@ Correlation Matrix of scores:
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#independence-of-principal-component-scores">Independence of Principal Component Scores</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-component-analysis-by-hand-with-eigenvalue-and-eigen-vector-calculator">Principal Component Analysis By-hand with Eigenvalue and Eigen Vector Calculator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstration-of-dimensional-reduction">Demonstration of Dimensional Reduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#all-predictor-features">All Predictor Features</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scree-plots">Scree Plots</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Independence of Principal Component Scores</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduced-dimensionality-impact-on-a-2-feature-relationship">Reduced Dimensionality Impact on a 2 Feature Relationship</a></li>

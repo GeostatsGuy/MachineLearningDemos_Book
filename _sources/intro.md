@@ -7,15 +7,27 @@ Michael J. Pyrcz, Professor, The University of Texas at Austin
 By Michael J. Pyrcz <br />
 &copy; Copyright 2024.
 
-This e-book provides an accessible, online version of my MachineLearningDemos GitHub repository. This repository includes well-documented demonstration Python Jupyter workflows for many common machine learning workflows. The goal of the e-book is to share this content beyond the GitHub users, often only the experts and developers.
+This e-book provides an accessible, online version, a new vehicle to share my **Machine Learning Graduate Course** at The University of Texas at Austin, that includes, 
+
+* **Well Documented Demonstration Python Workflows** - almost half the lecture time is spend with these workflows from my [MachineLearningDemos](https://github.com/GeostatsGuy/MachineLearningDemos) GitHub repository, that includes well-documented demonstration Python Jupyter workflows for many common machine learning workflows. One goal of this e-book is to share this content beyond the GitHub users, often only the experts and developers - to reach and help more people!
+
+* **Course Notes** - I'm also making an effort to continue adding more of the course notes into this e-book, to provid even more coverage of theory and implimentation details. 
+
+* **Interactive Python Dashboards** - I have a lot of interactive Python dashboards that I use in my classes that I will continue to explain and cite in this e-book to help you get the entire in-class experience. These are all available in my [DataScienceInteractivePython](https://github.com/GeostatsGuy/DataScienceInteractivePython) GitHub repository.
+
+* **Recorded Lectures** - there are many thousands of views of my lectures every month on [YouTube channel](https://www.youtube.com/@GeostatsGuyLectures), but many of those people are not on GitHub. I will add links to this e-book to support them. Also, the YouTube channel can enhance the e-book experience, read the book and drop by to hear my explanations. 
 
 ```{admonition} Welcome!
 :class: remove-from-content-only
 
-The goal of this e-book is to teach the application of machine learning in Python, for those new to machine learning I provide and overview of theory and links to my recorded lectures for a deeper dive, and for those experienced practitioners I provide example and enhanced workflows and visualizations that you can implement. 
+The scope of this e-book is to teach the application of machine learning in Python, for those new to machine learning I provide and overview of theory and links to my recorded lectures for a deeper dive, and for those experienced practitioners I provide example and enhanced workflows and visualizations that you can implement. 
 ```
 
-This is my second effort to convert one of my GitHub repositories of well-documented Python workflows into an online, accessible e-book. For those interested in spatial data analytics and geostatistics, I welcome you to visit my other e-book, [Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy](https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html){cite}`pyrczappliedgeostats2024`. The great response to this e-book from students and working professionals all over the world motivated me to compile, build and release this e-book. The original repository for the workflows in this book are found at [MachineLearningDemos: Python Machine Learning Demonstration Workflows Repository](https://github.com/GeostatsGuy/MachineLearningDemos) {cite}`pyrczMLdemos2024`, but rest assured every chapter in this book is a Jupyter Notebook or Jupyter Lab .ipynb file that may be downloaded and run locally. All I ask is that you retain my authorship and cite the source when my work is used. My motivation is to attract more people to all of the resources that I share online! Please consider citing and linking these resources in your work.
+This is my second effort to convert one of my GitHub repositories of well-documented Python workflows into an online, accessible e-book. 
+
+* For those interested in spatial data analytics and geostatistics, I welcome you to visit my other e-book, [Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy](https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html){cite}`pyrczappliedgeostats2024`. 
+
+The great response to this e-book from students and working professionals all over the world motivated me to compile, build and release this e-book. The original repository for the workflows in this book are found at [MachineLearningDemos: Python Machine Learning Demonstration Workflows Repository](https://github.com/GeostatsGuy/MachineLearningDemos) {cite}`pyrczMLdemos2024`, but rest assured every chapter in this book is a Jupyter Notebook or Jupyter Lab .ipynb file that may be downloaded and run locally. All I ask is that you retain my authorship and cite the source when my work is used. My motivation is to attract more people to all of the resources that I share online! Please consider citing and linking these resources in your work.
 
 ```{admonition} Cite this e-Book as:
 :class: remove-from-content-only
@@ -29,9 +41,27 @@ Pyrcz, M.J., 2024, Applied Machine Learning in Python: a Hands-on Guide with Cod
 Pyrcz, M.J., 2024, MachineLearningDemos: Python Machine Learning Demonstration Workflows Repository (0.0.1). Zenodo. [![DOI](https://zenodo.org/badge/862519860.svg)](https://zenodo.org/doi/10.5281/zenodo.13835312)
 ```
 
-The ultimate source for the content in this e-book is my semester-long subsurface machine learning course, so I have made decisions based on the target scope for this e-book, i.e., what is included and what is not? All the workflows demonstrate the functionality of machine learning and the use of machine learning to accomplish fundamental data science workflow steps. Also, while each chapter can stand alone I made an effort to order the chapters to build up the concepts of machine learning, from feature engineering, through inferential machine learning and up to predictive machine learning. The predictive machine learning is ordered to start with linear regression, introduce hyperparameter tuning with ridge regression, introduce basis expansion with polynomial regression, integrate Bayesian methods with Bayesian linear regression, demonstrate lazy vs. eager learning with k-nearest neighbours, present ensemble methods with trees, etc. If you work through the chapters in order you will benefit from this "scaffolding"" and "spiraling" approach to education that I like to apply in all my courses.
+The ultimate source for the content in this e-book is my semester-long Machine Learning graduate course, so I have made scope decisions based on the educational narrative in my course. 
 
-This e-book is not a general introduction to statistics nor is it a comprehensive treatment of machine learning. For a deeper dive into the theory and practice built on fundamental probability and statistics follow the links at the top of each chapter to my recorded lectures on my [Machine Learning Lecture Series](https://www.youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf) {cite}`pyrczyoutube` of my YouTube channel.  Of course there are excellent books for machine learning theory, one of my favourites is [The Elements of Statistical Learning: Data Mining, Inference, and Prediction](https://www.amazon.com/Elements-Statistical-Learning-Prediction-Statistics/dp/0387848576/ref=sr_1_1?crid=219UH54M8MIS6&dib=eyJ2IjoiMSJ9.fh_JG0GOjaLD32XrqN8uJE0bBbEVgutMStZUYLHACzr8YEzjV2ommtSpLcI0ed8OflRxA4AgTUEYl4S8Y4ICbP3s2OkSR8EaSxk8OHLwyavIw52GFVGGSJpyX9Y7BNipvmjdb8VgidS9njUPpDwpl1CmpD0BTb8LtbTHm8nCXBQT0W21r5H0DU84tHqrT0AQUUBb2fA9DMIdAJGqdFp1yssN1rXciwATn5v4juV5TiA.nGxoUTS2l564x_D3GUdkwt-QUKt8be_WRfy8eJPgjkQ&dib_tag=se&keywords=machine+learning+statistical+learning&qid=1727204107&sprefix=machine+learning+statistical+learning%2Caps%2C119&sr=8-1) {cite}`statlearning2009`.
+* I believe that 80\% or more of any data science is data prepartion so I spend 1/3 of the course on workflow design, probability concepts, data preparation and feature engineering before we turn on any machines
+
+* I spend a lot of time on simple machines, like linear regression and the regularized variants to teach fundamental theory
+
+* I step through specific methods to build up concepts, for example, $L^2$ vs $L^1$ norms, regularization, convolution, bootstrap and bagging, Bayesian approaches, etc.
+
+* I have chapters on deep learning that will be added shortly.
+
+I made an effort to order the chapters to build up the concepts of machine learning, from feature engineering, through inferential machine learning and up to predictive machine learning. The predictive machine learning is ordered to start with linear regression, introduce hyperparameter tuning with ridge regression, introduce basis expansion with polynomial regression, integrate Bayesian methods with Bayesian linear regression, demonstrate lazy vs. eager learning with k-nearest neighbours, present ensemble methods with trees, etc. 
+
+* If you work through the chapters in order you will benefit from this "scaffolding"" and "spiraling" approach to education that I like to apply in all of my courses.
+
+* Nevertheless, each chapter is designed to be a stand-alone resource, in most cases you could readily plug and play your own dataset. Remember to cite the e-book and repos and bring me a breakfast taco if you pass through Austin!
+
+This e-book is not a general introduction to statistics nor is it a comprehensive treatment of machine learning. 
+
+* For a deeper dive into the theory and practice built on fundamental probability and statistics follow the links at the top of each chapter to my recorded lectures on my [Machine Learning Lecture Series](https://www.youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf) {cite}`pyrczyoutube` of my YouTube channel.  
+
+* Of course there are excellent books for machine learning theory, one of my favourites is [The Elements of Statistical Learning: Data Mining, Inference, and Prediction](https://www.amazon.com/Elements-Statistical-Learning-Prediction-Statistics/dp/0387848576/ref=sr_1_1?crid=219UH54M8MIS6&dib=eyJ2IjoiMSJ9.fh_JG0GOjaLD32XrqN8uJE0bBbEVgutMStZUYLHACzr8YEzjV2ommtSpLcI0ed8OflRxA4AgTUEYl4S8Y4ICbP3s2OkSR8EaSxk8OHLwyavIw52GFVGGSJpyX9Y7BNipvmjdb8VgidS9njUPpDwpl1CmpD0BTb8LtbTHm8nCXBQT0W21r5H0DU84tHqrT0AQUUBb2fA9DMIdAJGqdFp1yssN1rXciwATn5v4juV5TiA.nGxoUTS2l564x_D3GUdkwt-QUKt8be_WRfy8eJPgjkQ&dib_tag=se&keywords=machine+learning+statistical+learning&qid=1727204107&sprefix=machine+learning+statistical+learning%2Caps%2C119&sr=8-1) {cite}`statlearning2009`.
 
 ```{admonition} Linked Recorded Lectures are Available
 :class: remove-from-content-only
@@ -64,6 +94,11 @@ Here's some highlights from recent updates to this e-book:
 
 * this is the first release. Thank you for joining in early! Sorry, there are many minor formatting issues that I will resolve over the next couple of months. I welcome feedback with errata. I appreciate any assistance. 
 * I will be looking at practical methods to integrate my [Interactive Educational Data Science Python Dashboards](https://github.com/GeostatsGuy/DataScienceInteractivePython) interactive dashboards {cite}`pyrczdemos2021`, and more from my [Machine Learning Lecture Series](https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&si=tfOVljWgWiduwGYl) {cite}`pyrczyoutube`.
+
+##### What's New with Version 0.0.2
+
+* added new sections for feature engineering, machine learning concepts overview chapter, and a glossary!
+* I'm making efforts to catch and correct error, links, spelling and grammar
 
 #### Motivation for Open Educational Content
 

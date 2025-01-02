@@ -1,6 +1,6 @@
 # e-Book Conclusions
 
-## Applied Geostatistics in Python: A Hands-on Guide with GeostatsPy 
+## Applied Machine Learning in Python: A Hands-on Guide with Code 
 
 #### Michael Pyrcz, Professor, The University of Texas at Austin 
 
@@ -8,12 +8,14 @@
 
 I sincerely hope that this e-book has been helpful. To maximize your learning experience please remember to review the YouTube lectures linked to each workflow to better understand the essential theory and for guidance on best practice and possible applications.
 
-This has been my first attempt to convert my repository of well-documented Python workflows, [GeostatsPyDemos: GeostatsPy Python Package for Spatial Data Analytics and Geostatistics Demonstration Workflows Repository](https://github.com/GeostatsGuy/GeostatsPyDemos) {cite}`pyrczdemos2024` into an online e-book. Given this source for the content of this e-book, there are natural consequences on the e-book scope, i.e., what is included and what is not? All the workflows demonstrate the functionality of GeostatsPy and the use of GeostatsPy to accomplish fundamental geostatistics workflow steps. Therefore, this is not a general introduction to statistics nor is it a comprehensive treatment of geostatistics. For this I invite you to refer to a standard textbook like, [Geostatistical Reservoir Modeling](https://a.co/d/4tspALH) {cite}`pyrcz2014`. Alternatively, you can review the linked lectures from my [Data Analytics and Geostatistics Lecture Series](https://youtube.com/playlist?list=PLG19vXLQHvSB-D4XKYieEku9GQMQyAzjJ&si=zBls7dCMaYLzraoe) {cite}`pyrczyoutube` for a deeper dive into the theory and practice of geostatistics. Also, I have a recent book chapter that summarizes GeostatsPy, [GeostatsPy: Open-Source Geostatistics in Python](https://www.intechopen.com/online-first/89590){cite}`pyrczchapter2024` that may be helpful. Recall my stated goal from the introduction.
+This is my second effort to convert one of my GitHub repositories of well-documented Python workflows into an online, accessible e-book. For those interested in spatial data analytics and geostatistics, I welcome you to visit my other e-book, [Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy](https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html){cite}`pyrczappliedgeostats2024`. The great response to this e-book from students and working professionals all over the world motivated me to compile, build and release this e-book. The original repository for the workflows in this book are found at [MachineLearningDemos: Python Machine Learning Demonstration Workflows Repository](https://github.com/GeostatsGuy/MachineLearningDemos) {cite}`pyrczMLdemos2024`, but rest assured every chapter in this book is a Jupyter Notebook or Jupyter Lab .ipynb file that may be downloaded and run locally. 
+
+All I ask is that you retain my authorship and cite the source when my work is used. Share the links not the work. Do not modify, build new educational products or translations from it, nor repost. My motivation is to attract more people to all of the resources that I share online! Please consider citing and linking these resources in your work. 
 
 ```{admonition} Welcome!
 :class: remove-from-content-only
 
-The goal of this e-book is to teach the application of geostatistics in Python, for those new to geostatistics I provide theory and links to my course content, and for those experienced practitioners I provide example workflows and plots that you can implement.
+The goal of this e-book is to teach the application of machine learning in Python, for those new to machine learning I provide theory and links to my course content, and for those experienced practitioners I provide example workflows and plots that you can implement in their work and studies.
 ```
 
 I am only partially successful in this goal. More can be done! I welcome your feedback and errata, return often and watch this project continue to grow. Yet, I am pleased with this opportunity to expand the reach of my educational content to support stuudents and working professions. 
