@@ -167,7 +167,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Applied Machine Learning in Python: a Hands-on Guide with Code
+                    Introduction
                 </a>
             </li>
         </ul>
@@ -396,13 +396,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-for-principal-component-analysis-the-curse-of-dimensionality">Motivation for Principal Component Analysis, The Curse of Dimensionality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-for-principal-component-analysis">Motivation for Principal Component Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#curse-of-dimensionality">Curse of Dimensionality</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inferential-machine-learning">Inferential Machine Learning</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Principal Component Analysis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonal-transformation">Orthogonal Transformation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-eigenvectors">Eigenvalues / Eigenvectors</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonal-transformation">Orthogonal Transformation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#best-fitting-interpretation">Best Fitting Interpretation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotation-based-intepretation">Rotation-based Intepretation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-eigenvectors-interpretation">Eigenvalues / Eigenvectors Interpretation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-principal-components-analysis-workflow">The Principal Components Analysis Workflow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
@@ -428,9 +430,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduced-dimensionality-impact-on-matrix-scatter-plots-of-all-features">Reduced Dimensionality Impact on Matrix Scatter Plots of All Features</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-components-analysis-on-uncorrelated-data">Principal Components Analysis on Uncorrelated Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | Applied Geostats in Python e-book | LinkedIn</a></li>
 </ul>
             </nav>
         </div>
@@ -448,7 +449,7 @@ document.write(`
 <section id="principal-component-analysis">
 <h1>Principal Component Analysis<a class="headerlink" href="#principal-component-analysis" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite this e-Book as:</p>
@@ -469,8 +470,8 @@ document.write(`
 <li><p><a class="reference external" href="https://youtu.be/Yt0o8ukIOKU?si=_ri1NPwKVdhYzgO3">Multidimensional Scaling and Random Projection</a></p></li>
 </ul>
 <p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
-<section id="motivation-for-principal-component-analysis-the-curse-of-dimensionality">
-<h2>Motivation for Principal Component Analysis, The Curse of Dimensionality<a class="headerlink" href="#motivation-for-principal-component-analysis-the-curse-of-dimensionality" title="Permalink to this heading">#</a></h2>
+<section id="motivation-for-principal-component-analysis">
+<h2>Motivation for Principal Component Analysis<a class="headerlink" href="#motivation-for-principal-component-analysis" title="Permalink to this heading">#</a></h2>
 <p>Working with more features / variables is harder!</p>
 <ol class="arabic simple">
 <li><p>More difficult to visualize data and model</p></li>
@@ -482,11 +483,128 @@ document.write(`
 <li><p>More complicated model is more likely overfit</p></li>
 <li><p>More professional time for model construction</p></li>
 </ol>
-<p>We get a better model with fewer, informative features than throwing all our features into the model!</p>
+<p>We get a better model with fewer, informative features than throwing all our features into the model! A big part of this motivation is driven by the curse of dimensionality.</p>
+</section>
+<section id="curse-of-dimensionality">
+<h2>Curse of Dimensionality<a class="headerlink" href="#curse-of-dimensionality" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Data and Model Visualization</strong> - we cannot visualize beyond 3D, i.e., access the model fit to data, evaluate interpolation vs. extrapolation.</p></li>
+</ol>
+<ul class="simple">
+<li><p>consider a 5D example shown as a matrix scatter plot, even in this case there is an extreme marginalization to 2D for each plot,</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static\feature_ranking\matrix_scatterplot.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;">Example 5D data as a matrix scatter plot.</figcaption>
+</figure>
+<ol class="arabic simple" start="2">
+<li><p><strong>Sampling</strong> - the number of samples sufficient to infer statistics like the joint probability, <span class="math notranslate nohighlight">\(P(x_1,\ldots,x_m)\)</span>.</p></li>
+</ol>
+<ul class="simple">
+<li><p>recall the calculation of a histogram or normalized histogram: we establish bins and calculate frequencies or probabilities in each bin.</p></li>
+<li><p>we require a nominal number of data samples for each bin, so we require <span class="math notranslate nohighlight">\(𝑛=𝑛_{𝑠/𝑏𝑖𝑛} \cdot 𝑛_{𝑏𝑖𝑛𝑠}\)</span> samples in 1D</p></li>
+<li><p>but in mD we required <span class="math notranslate nohighlight">\(n\)</span> samples to calculate the discretized joint probability,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+𝑛=𝑛_{𝑠/𝑏𝑖𝑛} \cdot 𝑛_{𝑏𝑖𝑛𝑠}^m$
+\]</div>
+<ul class="simple">
+<li><p>for example, 10 samples per bin with 35 bins requires 12,250 samples in 2D, and 428,750 samples in 3D</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/feature_ranking/bivariate_example.png" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;">Example 2D data with 35 bins for each feature.</figcaption>
+</figure>
+<ol class="arabic simple" start="3">
+<li><p><strong>Sample Coverage</strong> - the range of the sample values cover the predictor feature space.</p></li>
+</ol>
+<ul class="simple">
+<li><p>fraction of the possible solution space that is sampled, for 1 feature we assume 80% coverage</p></li>
+<li><p>remember, we usually, directly sample only <span class="math notranslate nohighlight">\(\frac{1}{10^7}\)</span> of the volume of the subsurface</p></li>
+<li><p>yes, the concept of coverage is subjective, how much data to cover? What about gaps? etc.</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/feature_ranking/coverage1D.png" style="display: block; margin: 0 auto; width: 80%;">
+  <figcaption style="text-align: center;">Example 2D data with 35 bins for each feature.</figcaption>
+</figure>
+<ul class="simple">
+<li><p>now if there is 80% coverage for 2 features the 2D coverage is 64%</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/feature_ranking/coverage2D.png" style="display: block; margin: 0 auto; width: 80%;">
+  <figcaption style="text-align: center;">Example 2D data with 35 bins for each feature.</figcaption>
+</figure>
+<ul class="simple">
+<li><p>coverage is,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+c =  c_1^m
+\]</div>
+<ol class="arabic simple" start="4">
+<li><p><strong>Distorted Space</strong> - high dimensional space is distorted.</p></li>
+</ol>
+<ul class="simple">
+<li><p>take the ratio of the volume of an inscribed hypersphere in a hypercube,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\frac{\pi^{\frac{m}{2}}}{m 2^{m-1} \Gamma\left(\frac{m}{2}\right)} \to 0 \quad \text{as} \quad m \to \infty
+\]</div>
+<ul class="simple">
+<li><p>recall, <span class="math notranslate nohighlight">\(\Gamma(𝑛)=(𝑛−1)!\)</span>.</p></li>
+<li><p>high dimensional space is all corners and no middle and most of high dimensional space is far from the middle (all corners!).</p></li>
+<li><p>as a result distances in high dimensional space lose sensitivity, i.e., for any random points in the space the expected pairwise distances all become the same,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\lim_{m \to \infty} \left( \mathbb{E}\left[\text{dist}_{\text{max}}(m) - \text{dist}_{\text{min}}(m)\right] \right) \to 0
+\]</div>
+<ul class="simple">
+<li><p>the limit of the expectation of the range of pairwise distances over random points in hyper-dimensional space tends to zero. If distances are almost all the same, Euclidian distance is no longer meaningful!</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/feature_ranking/distortion_chart.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;">The ratio of the volume of a hypersphere within a hypercube.</figcaption>
+</figure>
+<ul class="simple">
+<li><p>here’s the severity of the distortion for various dimensionalities,</p></li>
+</ul>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>m</p></th>
+<th class="head"><p>nD / 2D</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>1.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>0.28</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>0.003</p></td>
+</tr>
+<tr class="row-odd"><td><p>20</p></td>
+<td><p>0.00000003</p></td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple" start="5">
+<li><p><strong>Multicollinearity</strong> - higher dimensional datasets are more likely to have collinearity or multicollinearity.</p></li>
+</ol>
+<ul class="simple">
+<li><p>Feature linearly described by other features resulting in high model variance.</p></li>
+</ul>
 </section>
 <section id="inferential-machine-learning">
 <h2>Inferential Machine Learning<a class="headerlink" href="#inferential-machine-learning" title="Permalink to this heading">#</a></h2>
-<p>There are no response features, <span class="math notranslate nohighlight">\(y\)</span>, just predictor features,</p>
+<p>Princpal conponent analysis is an inferential, unsupervised machine learnng method.</p>
+<ul class="simple">
+<li><p>there are no response features, <span class="math notranslate nohighlight">\(y\)</span>, just predictor features,</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[
 𝑋_1,\ldots,𝑋_𝑚
@@ -527,14 +645,153 @@ document.write(`
 <li><p>Next component describes the largest possible remaining variance</p></li>
 <li><p>Up to the maximum number of principal components</p></li>
 </ul>
-<section id="eigenvalues-eigenvectors">
-<h3>Eigenvalues / Eigenvectors<a class="headerlink" href="#eigenvalues-eigenvectors" title="Permalink to this heading">#</a></h3>
-<p>For principal components analysis we calculate the data covariance matrix, the pairwise covariance for the combinatorial of features. The we calculate the eigenvectors and eigenvalues from the covariance matrix.</p>
+<p>There are mutliple ways to interpret principal components analysis,</p>
+</section>
+<section id="best-fitting-interpretation">
+<h2>Best Fitting Interpretation<a class="headerlink" href="#best-fitting-interpretation" title="Permalink to this heading">#</a></h2>
+<p>Minimizes the orthogonal projection error between the data and the principal components,</p>
+<div class="math notranslate nohighlight">
+\[ 
+\min \sum_{i=1}^{n} \left( \left( X_i - \bar{X} \right) - \left( X_i - \bar{X} \right) V_p V_p^T \right)^2 
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(𝑽_𝒑\)</span> is a matrix of our first <span class="math notranslate nohighlight">\(𝒑\)</span> vectors, and <span class="math notranslate nohighlight">\(𝑿_𝒊\)</span> is a vector for sample <span class="math notranslate nohighlight">\(𝑖\)</span> over all <span class="math notranslate nohighlight">\(𝑝\)</span> features and <span class="math notranslate nohighlight">\(\overline{X}\)</span> is a vector of the means,</p>
+<figure style="text-align: center;">
+  <img src="_static/PCA/error.png" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Orthogonal error when projecting 2D data to 1D (left) and 3D data to 2D (right)(citation to be added).
+</figcaption>
+</figure>
+<p>where the princpal components describe a vector in 1D and a plane in 2D, and where the principal component scores in the projected space are,</p>
+<div class="math notranslate nohighlight">
+\[
+(𝑿_𝒊−\overline{𝑿})𝑽_𝒑
+\]</div>
+<p>and the back transformation in the original space with reduced dimensionality is,</p>
+<div class="math notranslate nohighlight">
+\[
+(𝑿_𝒊−\overline{X})𝑽_𝒑 𝑽_𝒑^𝑻
+\]</div>
+<p>note, given the <span class="math notranslate nohighlight">\(V_p\)</span> matrix is orthogonal,</p>
+<div class="math notranslate nohighlight">
+\[
+V_p^T = V_p^{-1}
+\]</div>
+</section>
+<section id="rotation-based-intepretation">
+<h2>Rotation-based Intepretation<a class="headerlink" href="#rotation-based-intepretation" title="Permalink to this heading">#</a></h2>
+<p>Orthogonal transformation is a rotation that maximizes the variance explained on the first principal component, maximizes the remaining variance on the second principal component, etc.</p>
+<p>If you would like to see PCA as a rotation in action, check out my <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_PCA_Rotation.ipynb">PCA Rotation interactive Python dashboard</a>,</p>
+<figure style="text-align: center;">
+  <img src="_static/PCA/rotation.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> My interactive dashboard demonstrating PCA as rotation of the data.
+</figcaption>
+</figure>
+<p>from this dashboard it is clear that there is a rotation that maixmizes the variance explained by the first principal component while removing the correlation between the first and second principal component.</p>
+</section>
+<section id="eigenvalues-eigenvectors-interpretation">
+<h2>Eigenvalues / Eigenvectors Interpretation<a class="headerlink" href="#eigenvalues-eigenvectors-interpretation" title="Permalink to this heading">#</a></h2>
+<p>For principal components analysis we calculate the data covariance matrix, the pairwise covariance for the combinatorial of features.</p>
 <ul class="simple">
+<li><p>The we calculate the eigenvectors and eigenvalues from the covariance matrix.</p></li>
 <li><p>The eigenvalues are the variance explained for each component.</p></li>
 <li><p>The eigenvectors of the data covariance matrix are the principal components.</p></li>
 </ul>
 </section>
+<section id="the-principal-components-analysis-workflow">
+<h2>The Principal Components Analysis Workflow<a class="headerlink" href="#the-principal-components-analysis-workflow" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Standardize the Features</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+𝑋^𝑠=\frac{𝑋−\overline{X}}{\sigma_𝑋} 
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+𝑋_1,\ldots,𝑋_𝑚 \quad \rightarrow 𝑋_1^𝑠,\ldots,𝑋_𝑚^𝑠
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>where $X_i$ are original features and $X^s_i$ are transformed features.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>standardization is required to prevent features with larger variance dominating the solution, i.e., first principal component aligned with feature with greatest variance</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>Calculate the standardized feature covariance matrix</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[ 
+C_{(X_{m_1}, X_{m_2})} = \frac{\sum_{i=1}^{n} \left( (x_{m_1} - \bar{x}_{m_1})(x_{m_2} - \bar{x}_{m_2}) \right)}{n - 1} 
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>given the features are standardized the matrix is a correlation matrix
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+C = \begin{bmatrix}
+C(X_1, X_1) &amp; \cdots &amp; C(X_1, X_m) \\
+\vdots &amp; \ddots &amp; \vdots \\
+C(X_m, X_1) &amp; \cdots &amp; C(X_m, X_m)
+\end{bmatrix} 
+\end{split}\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>given the features are standardized the matrix is a correlation matrix,
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+C = \begin{bmatrix}
+\rho(X_1, X_1) &amp; \cdots &amp; \rho(X_1, X_m) \\
+\vdots &amp; \ddots &amp; \vdots \\
+\rho(X_m, X_1) &amp; \cdots &amp; \rho(X_m, X_m)
+\end{bmatrix} 
+\end{split}\]</div>
+<ol class="arabic" start="3">
+<li><p>Calculate the eigenvalues and eigenvectors of covariance matrix, <span class="math notranslate nohighlight">\(𝑪\)</span>,</p>
+<p>given 𝐶 is a square matrix <span class="math notranslate nohighlight">\((𝑚 \times 𝑚)\)</span>, <span class="math notranslate nohighlight">\(𝑣 (𝑚 \times 1)\)</span> is a vector and <span class="math notranslate nohighlight">\(\lambda\)</span> is a scaler (<span class="math notranslate nohighlight">\(1\)</span>),</p>
+</li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+𝐶𝑣=\lambda 𝑣
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>we can reorder to,
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[
+(𝐶− \lambda \cdot 𝐼)∙𝑣=0
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>where $I$ is an identity matrix. By Cramer’s rule, we have a solution if the determinant is 0,
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[
+|𝐶− \lambda \cdot 𝐼|=0
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>find the possible Eigenvalues, $\lambda_𝛼$, and solve for eigenvectors, $𝒗_𝜶, \quad \alpha=𝟏,\ldots,𝒎$
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>the resulting <span class="math notranslate nohighlight">\(\text{𝒎𝒊𝒏}⁡(𝒎,𝒏−𝟏)\)</span> eigenvectors in a matrix, <span class="math notranslate nohighlight">\(𝑽_𝒎\)</span></p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/PCA/components.png" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Eigen vectors as principal components.
+</figcaption>
+</figure>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>that form a basis on which the data are projected for dimensionality reduction,
+</pre></div>
+</div>
+<figure style="text-align: center;">
+  <img src="_static/PCA/components_basis.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Eigen vectors as principal components defining the new rotated basis.
+</figcaption>
+</figure>
+<p>If you would like to see the principal components loadings and the variance partitioning between components, check out my <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_PCA_Eigen.ipynb">PCA loadings interactive Python dashboard</a>,</p>
+<figure style="text-align: center;">
+  <img src="_static/PCA/interactive_loadings.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> My interactive dashboard demonstrating PCA loadings and variance explained for eacch principal component as correlation is changes between features 1, 2 and 3.
+</figcaption>
+</figure>
 </section>
 <section id="load-the-required-libraries">
 <h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
@@ -2118,16 +2375,24 @@ Correlation Matrix of scores:
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
-<p>There are so many more tests that one could attempt to gain experience with principal components analysis. I’ll end here for brevity, but I invite you to continue. Consider, on your own apply other data sets or attempting methods with PCA kernels or regression. I hope you found this chapter helpful. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a>,</p>
+<p>This was a basic treatment of dimensionality reduction by principal component analysis (PCA). Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
+<p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
-<section id="the-author">
-<h2>The Author:<a class="headerlink" href="#the-author" title="Permalink to this heading">#</a></h2>
-<p>Michael Pyrcz, Professor, The University of Texas at Austin
-<em>Novel Data Analytics, Geostatistics and Machine Learning Subsurface Solutions</em></p>
-<p>With over 17 years of experience in subsurface consulting, research and development, Michael has returned to academia driven by his passion for teaching and enthusiasm for enhancing engineers’ and geoscientists’ impact in subsurface resource development.</p>
-<p>For more about Michael check out these links:</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a> | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<section id="about-the-author">
+<h2>About the Author<a class="headerlink" href="#about-the-author" title="Permalink to this heading">#</a></h2>
+<figure style="text-align: center;">
+  <img src="_static/intro/michael_pyrcz_officeshot_jacket.jpg" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
+</figcaption>
+</figure>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<ul class="simple">
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
+</ul>
+<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
@@ -2140,9 +2405,7 @@ Correlation Matrix of scores:
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-</section>
-<section id="more-resources-available-at-twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin">
-<h2>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin" title="Permalink to this heading">#</a></h2>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -2209,13 +2472,15 @@ Correlation Matrix of scores:
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-for-principal-component-analysis-the-curse-of-dimensionality">Motivation for Principal Component Analysis, The Curse of Dimensionality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-for-principal-component-analysis">Motivation for Principal Component Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#curse-of-dimensionality">Curse of Dimensionality</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inferential-machine-learning">Inferential Machine Learning</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Principal Component Analysis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonal-transformation">Orthogonal Transformation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-eigenvectors">Eigenvalues / Eigenvectors</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonal-transformation">Orthogonal Transformation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#best-fitting-interpretation">Best Fitting Interpretation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotation-based-intepretation">Rotation-based Intepretation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-eigenvectors-interpretation">Eigenvalues / Eigenvectors Interpretation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-principal-components-analysis-workflow">The Principal Components Analysis Workflow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
@@ -2241,9 +2506,8 @@ Correlation Matrix of scores:
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduced-dimensionality-impact-on-matrix-scatter-plots-of-all-features">Reduced Dimensionality Impact on Matrix Scatter Plots of All Features</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-components-analysis-on-uncorrelated-data">Principal Components Analysis on Uncorrelated Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | Applied Geostats in Python e-book | LinkedIn</a></li>
 </ul>
   </nav></div>
 

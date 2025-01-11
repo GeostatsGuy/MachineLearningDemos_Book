@@ -167,7 +167,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Applied Machine Learning in Python: a Hands-on Guide with Code
+                    Introduction
                 </a>
             </li>
         </ul>
@@ -397,9 +397,10 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivations-for-bayesian-linear-regression">Motivations for Bayesian Linear Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression">Linear Regression</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-updating">Bayesian Updating</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Bayesian Linear Regression</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-chain-monte-carlo-mcmc"><strong>Markov Chain Monte Carlo</strong> (MCMC)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-chain-monte-carlo-mcmc">Markov Chain Monte Carlo (MCMC)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-linear-regression-with-the-metropolis-hastings-sampler">Bayesian Linear Regression with the Metropolis-Hastings Sampler</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#our-simplified-demonstration-metropolis-sampling">Our Simplified Demonstration Metropolis Sampling</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
@@ -414,9 +415,8 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | Applied Geostats in Python e-book | LinkedIn</a></li>
 </ul>
             </nav>
         </div>
@@ -434,7 +434,7 @@ document.write(`
 <section id="bayesian-linear-regression">
 <h1>Bayesian Linear Regression<a class="headerlink" href="#bayesian-linear-regression" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite this e-Book as:</p>
@@ -463,6 +463,61 @@ document.write(`
 <p>Bayesian machine learning methods apply probability to make predictions with an intrinsic uncertainty model. In addition, the Bayesian methods integrate the concept of Bayesian updating, a prior model updated with a likelihood model from data to calculate a posterior model.</p>
 <p>There are additional complexities with model training due to working with these probabilities, represented by continuous probability density functions. Due to the resulting high complexity, we can’t solve for the model parameters directly, instead we must apply a sampling method such as Markov Chain Monte Carlo (MCMC) simulation.</p>
 <p>This is a simple, very accessible demonstration of Bayesian linear regression with McMC Metropolis-Hastings sampling. My students struggled with these concepts so I challenged myself to built a workflow from scratch with all details explained clearly. Let’s explain the critical prerequisites, starting with Bayesian updating.</p>
+</section>
+<section id="linear-regression">
+<h2>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this heading">#</a></h2>
+<p>Let’s start by recalling the salient points for linear regression for prediction, let’s start by looking at a linear model fit to a set of data.</p>
+<figure style="text-align: center;">
+  <img src="_static/linear/linear_example.png" style="display: block; margin: 0 auto; width: 50%;">
+  <figcaption style="text-align: center;">Example linear regression model.</figcaption>
+</figure>
+<p><strong>Parametric Model</strong></p>
+<p>This is a parametric predictive machine learning model, we accept an a prior assumption of linearity and then gain a very low parametric representation that is easy to train without a onerous amount of data.</p>
+<ul class="simple">
+<li><p>the fit model is a simple weighted linear additive model based on all the available features, <span class="math notranslate nohighlight">\(x_1,\ldots,x_m\)</span>.</p></li>
+<li><p>the parametric model takes the form of:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+y = \sum_{\alpha = 1}^m b_{\alpha} x_{\alpha} + b_0
+\]</div>
+<p>Here’s the visualization of the linear model parameters,</p>
+<figure style="text-align: center;">
+  <img src="_static/linear/linear_model.png" style="display: block; margin: 0 auto; width: 50%;">
+  <figcaption style="text-align: center;">The linear model parameters.</figcaption>
+</figure>
+<p><strong>Least Squares</strong></p>
+<p>The analytical solution for the model parameters, <span class="math notranslate nohighlight">\(b_1,\ldots,b_m,b_0\)</span>, is available for the L2 norm loss function, the errors are summed and squared known a least squares.</p>
+<ul class="simple">
+<li><p>we minimize the error, residual sum of squares (RSS) over the training data:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+RSS = \sum_{i=1}^n \left(y_i - (\sum_{\alpha = 1}^m b_{\alpha} x_{\alpha,i} + b_0) \right)^2
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(y_i\)</span> is the actual response feature values and <span class="math notranslate nohighlight">\(\sum_{\alpha = 1}^m b_{\alpha} x_{\alpha} + b_0\)</span> are the model predictions, over the <span class="math notranslate nohighlight">\(\alpha = 1,\ldots,n\)</span> training data.</p>
+<p>Here’s a visualization of the L2 norm loss function, MSE,</p>
+<figure style="text-align: center;">
+  <img src="_static/linear/linear_MSE.png" style="display: block; margin: 0 auto; width: 50%;">
+  <figcaption style="text-align: center;">The linear model loss function, mean square error.</figcaption>
+</figure>
+<ul class="simple">
+<li><p>this may be simplified as the sum of square error over the training data,</p></li>
+</ul>
+<p>\begin{equation}
+\sum_{i=1}^n (\Delta y_i)^2
+\end{equation}</p>
+<p>where <span class="math notranslate nohighlight">\(\Delta y_i\)</span> is actual response feature observation <span class="math notranslate nohighlight">\(y_i\)</span> minus the model prediction <span class="math notranslate nohighlight">\(\sum_{\alpha = 1}^m b_{\alpha} x_{\alpha} + b_0\)</span>, over the <span class="math notranslate nohighlight">\(i = 1,\ldots,n\)</span> training data.</p>
+<p><strong>Assumptions</strong></p>
+<p>There are important assumption with our linear regression model,</p>
+<ul class="simple">
+<li><p><strong>Error-free</strong> - predictor variables are error free, not random variables</p></li>
+<li><p><strong>Linearity</strong> - response is linear combination of feature(s)</p></li>
+<li><p><strong>Constant Variance</strong> - error in response is constant over predictor(s) value</p></li>
+<li><p><strong>Independence of Error</strong> - error in response are uncorrelated with each other</p></li>
+<li><p><strong>No multicollinearity</strong> - none of the features are redundant with other features</p></li>
+</ul>
+<p>Now’s let’s recall Bayesian updating and then update our linear regression model to Bayesian linear regression.</p>
 </section>
 <section id="bayesian-updating">
 <h2>Bayesian Updating<a class="headerlink" href="#bayesian-updating" title="Permalink to this heading">#</a></h2>
@@ -495,15 +550,46 @@ Y \sim N(\beta^{T}X, \sigma^{2} I)
 \[
 p(\beta | y, X) = \frac{p(y,X| \beta) p(\beta)}{p(y,X)}
 \]</div>
+<p>Let’s talk about each term,</p>
+<ol class="arabic simple">
+<li><p>Prior, <span class="math notranslate nohighlight">\(𝑃(\beta)\)</span> - initial, prior to new data, inference of the model parameters over the predictor features based on,</p></li>
+</ol>
+<ul class="simple">
+<li><p>expert knowledge</p></li>
+<li><p>naïve prior, in the case of non-informative priors the likelihood will dominate</p></li>
+<li><p>informative prior, in the case of a low uncertainty prior the prior will dominate the likelihood</p></li>
+<li><p>cannot include the new training data, prior to integration of the training data</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>Likelihood, <span class="math notranslate nohighlight">\(𝑃(𝑦,𝑋│\beta)\)</span> - conditional distribution of the training data given assumed model parameters based on,</p></li>
+</ol>
+<ul class="simple">
+<li><p>the new data, data-driven</p></li>
+<li><p>as the number of sample data increases the likelihood overwhelms the prior distribution</p></li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p>Evidence, <span class="math notranslate nohighlight">\(P(y,X)\)</span> - normalization constant to ensure probability closure, i.e., a valid posterior probability density function</p></li>
+</ol>
+<ul class="simple">
+<li><p>independent of the model parameters</p></li>
+<li><p>solved by marginalization of the numerator, collapses by integrating over all possible model parameters</p></li>
+<li><p>for some solution methods, e.g., MCMC Metropolis-Hastings the evidence term cancels out</p></li>
+</ul>
+<ol class="arabic simple" start="4">
+<li><p>Posterior, <span class="math notranslate nohighlight">\(P(\beta│y,X)\)</span> - conditional distribution of the model parameters given the data-driven likelihood and prior based on expert knowledge and belief</p></li>
+</ol>
+<ul class="simple">
+<li><p>as the number of data, <span class="math notranslate nohighlight">\(𝑛 \rightarrow \infty\)</span>, the model parameters, <span class="math notranslate nohighlight">\(\beta\)</span>, converge to ordinary least squares linear regression, the prior is overwhelmed by the data.</p></li>
+</ul>
 <p>In general for continuous features we are not able to directly calculate the posterior and we must use a sampling method, such as Markov chain Monte Carlo (McMC) to sample the posterior.</p>
 <p>Here’s a McMC Metropolis Hastings workflow and more details.</p>
 </section>
 <section id="markov-chain-monte-carlo-mcmc">
-<h2><strong>Markov Chain Monte Carlo</strong> (MCMC)<a class="headerlink" href="#markov-chain-monte-carlo-mcmc" title="Permalink to this heading">#</a></h2>
+<h2>Markov Chain Monte Carlo (MCMC)<a class="headerlink" href="#markov-chain-monte-carlo-mcmc" title="Permalink to this heading">#</a></h2>
 <p>Is a set of algorithms to sample from a probability distribution such that the samples match the distribution statistics.</p>
 <ul class="simple">
 <li><p><strong>Markov</strong> - screening assumption, the next sample is only dependent on the previous sample</p></li>
-<li><p><strong>Chain</strong> - the samples form a sequence often demonstrating a transition from burn-in chain with inaccurate statistics and equillibrium chain with accurate statistics</p></li>
+<li><p><strong>Chain</strong> - the samples form a sequence often demonstrating a transition from burn-in chain with inaccurate statistics and equilibrium chain with accurate statistics</p></li>
 <li><p><strong>Monte Carlo</strong> - use of Monte Carlo simulation, random sampling from a statistical distribution</p></li>
 </ul>
 <p>Why is this useful?</p>
@@ -636,7 +722,7 @@ f(y,X| \beta) = \prod_{\alpha = 1}^{n} f_{y,X | \beta}(y_{\alpha})
 <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">inferno</span>                                         <span class="c1"># default color bar, no bias and friendly for color vision defeciency</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">axisbelow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                                <span class="c1"># grid behind plotting elements</span>
 <span class="k">if</span> <span class="n">suppress_warnings</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>  
-    <span class="kn">import</span> <span class="nn">warnings</span>                                           <span class="c1"># supress any warnings for this demonstration</span>
+    <span class="kn">import</span> <span class="nn">warnings</span>                                           <span class="c1"># suppress any warnings for this demonstration</span>
     <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span> 
 <span class="n">seed</span> <span class="o">=</span> <span class="mi">13</span>                                                     <span class="c1"># random number seed for workflow repeatability</span>
 </pre></div>
@@ -833,7 +919,7 @@ We will work in log probability and log density to improve stability of the syst
 <p>Let’s visualize the McMC Metropolis sample chain for each of the model parameters.</p>
 <ul class="simple">
 <li><p>Note the burn-in and equilibrium chains.</p></li>
-<li><p>Compare the slope and intercept model parameters to the frequentest, linear regression solution, based only on the ordinary least squares solution, minimizing the L2 norm of the error vector over all sample data.</p></li>
+<li><p>Compare the slope and intercept model parameters to the frequentist, linear regression solution, based only on the ordinary least squares solution, minimizing the L2 norm of the error vector over all sample data.</p></li>
 <li><p>Compare the noise parameter to the noise added to the synthetic data.</p></li>
 </ul>
 <div class="cell docutils container">
@@ -915,18 +1001,24 @@ We will work in log probability and log density to improve stability of the syst
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
-<p>This was a demonstration of Bayesian Linear Regression with MCMC Metropolis-Hastings Sampling.</p>
-<p>I have many other demonstrations on data analytics and machine learning, e.g. on the basics of working with DataFrames, ndarrays, univariate statistics, plotting data, declustering, data transformations, trend modeling and many other workflows available at <a class="github reference external" href="https://github.com/GeostatsGuy/PythonNumericalDemos">GeostatsGuy/PythonNumericalDemos</a> and <a class="github reference external" href="https://github.com/GeostatsGuy/GeostatsPy">GeostatsGuy/GeostatsPy</a>.</p>
-<p>I hope this was helpful,</p>
+<p>This was a basic treatment of Bayesian linear regression. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
+<p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
-<section id="the-author">
-<h2>The Author:<a class="headerlink" href="#the-author" title="Permalink to this heading">#</a></h2>
-<p>Michael Pyrcz, Professor, The University of Texas at Austin
-<em>Novel Data Analytics, Geostatistics and Machine Learning Subsurface Solutions</em></p>
-<p>With over 17 years of experience in subsurface consulting, research and development, Michael has returned to academia driven by his passion for teaching and enthusiasm for enhancing engineers’ and geoscientists’ impact in subsurface resource development.</p>
-<p>For more about Michael check out these links:</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a> | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<section id="about-the-author">
+<h2>About the Author<a class="headerlink" href="#about-the-author" title="Permalink to this heading">#</a></h2>
+<figure style="text-align: center;">
+  <img src="_static/intro/michael_pyrcz_officeshot_jacket.jpg" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
+</figcaption>
+</figure>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<ul class="simple">
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
+</ul>
+<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
@@ -939,9 +1031,7 @@ We will work in log probability and log density to improve stability of the syst
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-</section>
-<section id="more-resources-available-at-twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin">
-<h2>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin" title="Permalink to this heading">#</a></h2>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -1009,9 +1099,10 @@ We will work in log probability and log density to improve stability of the syst
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivations-for-bayesian-linear-regression">Motivations for Bayesian Linear Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression">Linear Regression</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-updating">Bayesian Updating</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Bayesian Linear Regression</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-chain-monte-carlo-mcmc"><strong>Markov Chain Monte Carlo</strong> (MCMC)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-chain-monte-carlo-mcmc">Markov Chain Monte Carlo (MCMC)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-linear-regression-with-the-metropolis-hastings-sampler">Bayesian Linear Regression with the Metropolis-Hastings Sampler</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#our-simplified-demonstration-metropolis-sampling">Our Simplified Demonstration Metropolis Sampling</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
@@ -1026,9 +1117,8 @@ We will work in log probability and log density to improve stability of the syst
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | Applied Geostats in Python e-book | LinkedIn</a></li>
 </ul>
   </nav></div>
 

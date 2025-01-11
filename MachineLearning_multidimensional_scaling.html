@@ -167,7 +167,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Applied Machine Learning in Python: a Hands-on Guide with Code
+                    Introduction
                 </a>
             </li>
         </ul>
@@ -399,6 +399,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-for-multidimensional-scaling">Motivation for Multidimensional Scaling</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inferential-machine-learning">Inferential Machine Learning</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Multidimensional Scaling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-demonstrations-of-multidimensional-scaling">Simple Demonstrations of Multidimensional Scaling</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-multidimensional-scaling">Classical Multidimensional Scaling</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metric-multidimensional-scaling">Metric Multidimensional Scaling</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-multidimensional-scaling-results">Checking Multidimensional Scaling Results</a></li>
@@ -414,9 +415,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observing-specific-samples">Observing Specific Samples</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-of-mds">Applications of MDS</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
 </ul>
             </nav>
         </div>
@@ -434,7 +434,7 @@ document.write(`
 <section id="multidimensional-scaling">
 <h1>Multidimensional Scaling<a class="headerlink" href="#multidimensional-scaling" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite this e-Book as:</p>
@@ -502,6 +502,64 @@ document.write(`
 <li><p>we may work with a variety of dissimilarity measures</p></li>
 </ul>
 </section>
+<section id="simple-demonstrations-of-multidimensional-scaling">
+<h2>Simple Demonstrations of Multidimensional Scaling<a class="headerlink" href="#simple-demonstrations-of-multidimensional-scaling" title="Permalink to this heading">#</a></h2>
+<p>Let’s say that we have,</p>
+<ul class="simple">
+<li><p>a list of cities, Boston, Chicago, DC, Denver, etc.</p></li>
+<li><p>along with their X and Y locations (ignore geodesic considerations)</p></li>
+</ul>
+<p>We have the locations, and we calculate the distance between each of the cities, a measure of pairwise sample dissimilarity by Euclidean distance, the distance matrix,</p>
+<figure style="text-align: center;">
+  <img src="_static\MDS\cities.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;">Matrix of inter-city distances, analogous to sample dissimilarity, from http://personality-project.org/r/mds.html.</figcaption>
+</figure>
+<p>It is logical that from these pairwise distances between each city, we project the cities into a 2D space such that we preserve the distances between the cities.</p>
+<ul class="simple">
+<li><p>this is the result if we do this.</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static\MDS\cities_MDS1.png" style="display: block; margin: 0 auto; width: 80%;">
+  <figcaption style="text-align: center;">Cites projected by the distance matrix into a 2D space such that the inter-city distances are preserved, from http://personality-project.org/r/mds.html.</figcaption>
+</figure>
+<p>Unsurprisingly the matrix of distances between cities is perfectly reproduced, since the original data is in 2D, <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> coordinates, ignoring geodesic context</p>
+<ul class="simple">
+<li><p>the distance matrix did not include any information about orientation or origin</p></li>
+</ul>
+<p>This method is invariant and insensitive to,</p>
+<ol class="arabic simple">
+<li><p><strong>translation</strong> - often the results are centered on 0, 0</p></li>
+<li><p><strong>rotation</strong> - the orientation is arbitrary</p></li>
+<li><p><strong>reflection</strong> - as we see with the example above, the <span class="math notranslate nohighlight">\(Y\)</span> coordinate is flipped, but the pairwise distances are correct</p></li>
+</ol>
+<p>of course we could correct the resulting projection.</p>
+<figure style="text-align: center;">
+  <img src="_static\MDS\cities_MDS2.png" style="display: block; margin: 0 auto; width: 80%;">
+  <figcaption style="text-align: center;">, MDS solution flipped to correct the \(Y\) coordinate, i.e., Seattle above LA, from http://personality-project.org/r/mds.html.</figcaption>
+</figure>
+<p>Of course, this example is trivial. Let’s demonstrate dimensionality reduction with a <a class="reference external" href="https://github.com/GeostatsGuy/PythonNumericalDemos/blob/master/MachineLearning_multidimensional_scaling_cities.ipynb">MDS workflow</a> developed by <a class="reference external" href="https://www.linkedin.com/in/alan-scherman/">Alan Scherman</a> while working with me on a summer undergraduate research project during an undergraduate Engineering <a class="reference external" href="http://B.Sc">B.Sc</a>. at Rice University.</p>
+<p>Alan took 20 cities, 10 from Texas and 10 from California and tabulated the distance from the centroid of the state, population, median income and average commute time and calculate the dissimilarity as the Euclidian norm.</p>
+<div class="math notranslate nohighlight">
+\[
+d_{i,j} = \sqrt{\left(d^{\Delta}_i - d^{\Delta}_j \right)^2 + \left(N_i - N_j \right)^2 + \left(I^{P50}_i - I^{P50}_j \right)^2 + \left(\overline{t}_i - \overline{t}_j \right)^2}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(d^{\Delta}\)</span> is distance from state centroid, <span class="math notranslate nohighlight">\(N\)</span> is population, <span class="math notranslate nohighlight">\(I^{P50}\)</span> is median income and <span class="math notranslate nohighlight">\(\overline{t}\)</span> is average commute time. This Euclidian city dissimilarity is applied to calculate this dissimilarity matrix.</p>
+<figure style="text-align: center;">
+  <img src="_static\MDS\TX_CA_dissimilarity.png" style="display: block; margin: 0 auto; width: 80%;">
+  <figcaption style="text-align: center;"> Euclidean city dissimilarity matrix based on distance from the centroid of the state, population, median income and average commute time.</figcaption>
+</figure>
+<p>then with multidimensional scaling the cities are projected into a 2D space,</p>
+<figure style="text-align: center;">
+  <img src="_static\MDS\TX_CA_MDS.png" style="display: block; margin: 0 auto; width: 80%;">
+  <figcaption style="text-align: center;"> Texas and California cities projected into a lower dimensional 2D space from a 4D space based on centroid of the state, population, median income and average commute time.</figcaption>
+</figure>
+<p>The groupings and spacing are informative.</p>
+<ul class="simple">
+<li><p>San Jose, San Francisco and Oakland for a group and Fresno, Bakersfield and Midland form another group</p></li>
+<li><p>Corpus Christi and Amarillo are unlike Texas and all California cities</p></li>
+</ul>
+<p>Given these simple demonstrations, let’s now get into the multidimensional scaling methods for projecting to 2D from a dissimilarity matrix,</p>
+</section>
 <section id="classical-multidimensional-scaling">
 <h2>Classical Multidimensional Scaling<a class="headerlink" href="#classical-multidimensional-scaling" title="Permalink to this heading">#</a></h2>
 <p>Based on Euclidian distance between samples.</p>
@@ -544,7 +602,7 @@ X^{'} = E_m \land^{\frac{1}{2}}_m
 </ul>
 <div class="math notranslate nohighlight">
 \[
-min_{x_1,\ldots,x_m} \sum_{i&lt;j} \left( ||x_i - x_j|| - \delta_{i,j} \right)^2
+min_{x_1,\ldots,x_m} \sum_{i&lt;j} \left( ||x_i - x_j|| - \delta_{i,j} \right)^2 
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(||x_i - x_j||\)</span> are the pairwise distances in the projected space (<span class="math notranslate nohighlight">\(p\)</span> dimensional) and <span class="math notranslate nohighlight">\(\delta_{i,j}\)</span> are the pairwise distances in the original feature space.</p>
 <p>General comments about metric multidimensional scaling:</p>
@@ -570,7 +628,7 @@ Stress_P(x_1,\ldots,x_n) = \left( \sum_{i \ne j = 1,\ldots,n} \left( ||x_i - x_j
 </section>
 <section id="comparison-with-principal-component-analysis">
 <h2>Comparison with Principal Component Analysis<a class="headerlink" href="#comparison-with-principal-component-analysis" title="Permalink to this heading">#</a></h2>
-<p>MDS and PCA are quite different, here’s a short summary of each to help ellucidate the difference:</p>
+<p>MDS and PCA are quite different, here’s a short summary of each to help elucidate the difference:</p>
 <p>Principal component analysis takes the covariance matrix (<span class="math notranslate nohighlight">\(m \times m\)</span>) between all the features and finds the orthogonal rotation such that the <strong>variance is maximized</strong> over the ordered principle components.</p>
 <p>Multidimensional scaling takes the matrix of the pairwise distances (<span class="math notranslate nohighlight">\(n \times n\)</span>) between all the samples in feature space and finds the nonlinear projection such that the <strong>error in the pairwise distances is minimized</strong>.</p>
 </section>
@@ -1215,7 +1273,7 @@ Stress_P(x_1,\ldots,x_n) = \left( \sum_{i \ne j = 1,\ldots,n} \left( ||x_i - x_j
 <p>Let’s look at out dataset, we will visualize the 3 possible scatter plots between the three features with the sample points labeled by well number (1 through 30).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">311</span><span class="p">)</span>
 <span class="n">pairplot</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">df_subset</span><span class="p">[</span><span class="n">nXname</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">y</span> <span class="o">=</span> <span class="n">df_subset</span><span class="p">[</span><span class="n">nXname</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="n">s</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span>
         <span class="n">hue</span> <span class="o">=</span> <span class="n">df_subset</span><span class="p">[</span><span class="s1">&#39;tProd&#39;</span><span class="p">],</span><span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span><span class="n">markers</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">nXlabelunit</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">nXlabelunit</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span> <span class="n">add_grid</span><span class="p">();</span>
@@ -1223,7 +1281,7 @@ Stress_P(x_1,\ldots,x_n) = \left( \sum_{i \ne j = 1,\ldots,n} \left( ||x_i - x_j
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">txt</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">df_subset</span><span class="p">[</span><span class="s1">&#39;Well&#39;</span><span class="p">]):</span>
     <span class="n">pairplot</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span> <span class="p">(</span><span class="n">df_subset</span><span class="p">[</span><span class="n">nXname</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">df_subset</span><span class="p">[</span><span class="n">nXname</span><span class="p">[</span><span class="mi">1</span><span class="p">]][</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mf">0.1</span><span class="p">))</span>
     
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">312</span><span class="p">)</span>
 <span class="n">pairplot</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">df_subset</span><span class="p">[</span><span class="n">nXname</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="n">y</span> <span class="o">=</span> <span class="n">df_subset</span><span class="p">[</span><span class="n">nXname</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span><span class="n">s</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span>
         <span class="n">hue</span> <span class="o">=</span> <span class="n">df_subset</span><span class="p">[</span><span class="s1">&#39;tProd&#39;</span><span class="p">],</span><span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span><span class="n">markers</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">nXlabelunit</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">nXlabelunit</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span> <span class="n">add_grid</span><span class="p">();</span>
@@ -1231,7 +1289,7 @@ Stress_P(x_1,\ldots,x_n) = \left( \sum_{i \ne j = 1,\ldots,n} \left( ||x_i - x_j
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">txt</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">df_subset</span><span class="p">[</span><span class="s1">&#39;Well&#39;</span><span class="p">]):</span>
     <span class="n">pairplot</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span> <span class="p">(</span><span class="n">df_subset</span><span class="p">[</span><span class="n">nXname</span><span class="p">[</span><span class="mi">1</span><span class="p">]][</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">df_subset</span><span class="p">[</span><span class="n">nXname</span><span class="p">[</span><span class="mi">2</span><span class="p">]][</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mf">0.1</span><span class="p">))</span>
     
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">313</span><span class="p">)</span>
 <span class="n">pairplot</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">df_subset</span><span class="p">[</span><span class="n">nXname</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">y</span> <span class="o">=</span> <span class="n">df_subset</span><span class="p">[</span><span class="n">nXname</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span><span class="n">s</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span>
         <span class="n">hue</span> <span class="o">=</span> <span class="n">df_subset</span><span class="p">[</span><span class="s1">&#39;tProd&#39;</span><span class="p">],</span><span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span><span class="n">markers</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">nXlabelunit</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">nXlabelunit</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span> <span class="n">add_grid</span><span class="p">();</span>
@@ -1239,12 +1297,12 @@ Stress_P(x_1,\ldots,x_n) = \left( \sum_{i \ne j = 1,\ldots,n} \left( ||x_i - x_j
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">txt</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">df_subset</span><span class="p">[</span><span class="s1">&#39;Well&#39;</span><span class="p">]):</span>
     <span class="n">pairplot</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span> <span class="p">(</span><span class="n">df_subset</span><span class="p">[</span><span class="n">nXname</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">df_subset</span><span class="p">[</span><span class="n">nXname</span><span class="p">[</span><span class="mi">2</span><span class="p">]][</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mf">0.1</span><span class="p">))</span>
     
-<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">3.1</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6e9e890f08655d5dcfe32faa16b55fc80fd973a37b63d0015962db70c23a5aa9.png" src="_images/6e9e890f08655d5dcfe32faa16b55fc80fd973a37b63d0015962db70c23a5aa9.png" />
+<img alt="_images/0184364a433a53eeeb9e811911cc4c57b127c1e8e8cf28ad694e3e7a7c4df863.png" src="_images/0184364a433a53eeeb9e811911cc4c57b127c1e8e8cf28ad694e3e7a7c4df863.png" />
 </div>
 </div>
 <p>We can now see our 30 wells with their sample numbers plots on each of the 3 possible bivariate plots. Let’s perform multidimensional scaling to project 2 components.</p>
@@ -1321,16 +1379,24 @@ Stress_P(x_1,\ldots,x_n) = \left( \sum_{i \ne j = 1,\ldots,n} \left( ||x_i - x_j
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
-<p>I hope you found this chapter helpful. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a>,</p>
+<p>This was a basic treatment of multidimensional scaling. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
+<p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
-<section id="the-author">
-<h2>The Author:<a class="headerlink" href="#the-author" title="Permalink to this heading">#</a></h2>
-<p>Michael Pyrcz, Professor, The University of Texas at Austin
-<em>Novel Data Analytics, Geostatistics and Machine Learning Subsurface Solutions</em></p>
-<p>With over 17 years of experience in subsurface consulting, research and development, Michael has returned to academia driven by his passion for teaching and enthusiasm for enhancing engineers’ and geoscientists’ impact in subsurface resource development.</p>
-<p>For more about Michael check out these links:</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<section id="about-the-author">
+<h2>About the Author<a class="headerlink" href="#about-the-author" title="Permalink to this heading">#</a></h2>
+<figure style="text-align: center;">
+  <img src="_static/intro/michael_pyrcz_officeshot_jacket.jpg" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
+</figcaption>
+</figure>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<ul class="simple">
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
+</ul>
+<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
@@ -1343,9 +1409,7 @@ Stress_P(x_1,\ldots,x_n) = \left( \sum_{i \ne j = 1,\ldots,n} \left( ||x_i - x_j
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-</section>
-<section id="more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">
-<h2>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin" title="Permalink to this heading">#</a></h2>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -1415,6 +1479,7 @@ Stress_P(x_1,\ldots,x_n) = \left( \sum_{i \ne j = 1,\ldots,n} \left( ||x_i - x_j
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-for-multidimensional-scaling">Motivation for Multidimensional Scaling</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inferential-machine-learning">Inferential Machine Learning</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Multidimensional Scaling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-demonstrations-of-multidimensional-scaling">Simple Demonstrations of Multidimensional Scaling</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-multidimensional-scaling">Classical Multidimensional Scaling</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metric-multidimensional-scaling">Metric Multidimensional Scaling</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-multidimensional-scaling-results">Checking Multidimensional Scaling Results</a></li>
@@ -1430,9 +1495,8 @@ Stress_P(x_1,\ldots,x_n) = \left( \sum_{i \ne j = 1,\ldots,n} \left( ||x_i - x_j
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observing-specific-samples">Observing Specific Samples</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-of-mds">Applications of MDS</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
 </ul>
   </nav></div>
 

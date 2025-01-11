@@ -167,7 +167,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Applied Machine Learning in Python: a Hands-on Guide with Code
+                    Introduction
                 </a>
             </li>
         </ul>
@@ -397,6 +397,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivations-for-feature-transformations">Motivations for Feature Transformations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-transformation-workflow">Feature Transformation Workflow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
@@ -405,21 +406,20 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-statistics-for-tabular-data">Summary Statistics for Tabular Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-visualization">Data Visualization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#truncation">Truncation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#affine-correction">Affine Correction</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standardization">Standardization</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#affine-correction">Affine Correction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standardization">Standardization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalization">Normalization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l1-l2-normalizer">L1 / L2 Normalizer</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-or-indictor-transform">Binary or Indictor Transform</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-bins-discretization">k Bins Discretization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-distribution-transformation">General Distribution Transformation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-transformation-to-a-parametric-distribution">Distribution Transformation to a Parametric Distribution</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-transform-gaussian-anamorphosis">Gaussian Transform / Gaussian Anamorphosis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantile-uniform-0-1-transform">Quantile / Uniform[0,1] Transform</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-feature-transforms">Custom Feature Transforms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | Applied Geostats in Python e-book | LinkedIn</a></li>
 </ul>
             </nav>
         </div>
@@ -437,7 +437,7 @@ document.write(`
 <section id="feature-transformations">
 <h1>Feature Transformations<a class="headerlink" href="#feature-transformations" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite this e-Book as:</p>
@@ -464,7 +464,7 @@ document.write(`
 <p>There are many reasons that we may want to perform feature transformations.</p>
 <ul class="simple">
 <li><p>the make the features consistent for visualization and comparison</p></li>
-<li><p>to avoid bias or impose feature weighting for methods (e.g. k nearest neighbours regression) that rely on distances calculated in predictor feature space</p></li>
+<li><p>to avoid bias or impose feature weighting for methods (e.g. k-nearest neighbours regression) that rely on distances calculated in predictor feature space</p></li>
 <li><p>the method requires the variables to have a specific range or distribution:</p>
 <ul>
 <li><p>artificial neural networks may require all features to range from [-1,1]</p></li>
@@ -478,6 +478,15 @@ document.write(`
 <ul class="simple">
 <li><p>Let’s learn how to perform feature transformations.</p></li>
 </ul>
+</section>
+<section id="feature-transformation-workflow">
+<h2>Feature Transformation Workflow<a class="headerlink" href="#feature-transformation-workflow" title="Permalink to this heading">#</a></h2>
+<p>A common feature transformation workflow involves the transformation of the features to a new space, completed the machine learning workflow in the new space and then backtransform to the original space.</p>
+<figure style="text-align: center;">
+  <img src="_static/feature_transformations/transform_workflow.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> The common feature transformation workflow, transform predictor features, \(X_1,\ldots,X_m\), to \(X^{\prime}_1,\ldots,X^{\prime}_m\), apply data analytics, geostatistics or machine learning steps to predict transformed response feature, \(Y^{\prime}\), and then backtransform to original response feature, \(Y\).
+</figcaption>
+</figure>
 </section>
 <section id="load-the-required-libraries">
 <h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
@@ -510,6 +519,7 @@ document.write(`
 <span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="p">(</span><span class="n">MultipleLocator</span><span class="p">,</span> <span class="n">AutoMinorLocator</span><span class="p">)</span> <span class="c1"># control of axes ticks</span>
 <span class="kn">import</span> <span class="nn">matplotlib.patheffects</span> <span class="k">as</span> <span class="nn">pe</span>                           <span class="c1"># advanced plotting of lines / curves</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>                                       <span class="c1"># summary statistics</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>                                  <span class="c1"># Gaussian parametric distribution</span>
 <span class="kn">import</span> <span class="nn">math</span>                                                   <span class="c1"># trigonometry etc.</span>
 <span class="kn">import</span> <span class="nn">scipy.signal</span> <span class="k">as</span> <span class="nn">signal</span>                                 <span class="c1"># kernel for moving window calculation</span>
 <span class="kn">import</span> <span class="nn">random</span>                                                 <span class="c1"># for random numbers</span>
@@ -1193,8 +1203,9 @@ Name: aPor, dtype: float64
 </div>
 </div>
 </div>
+</section>
 <section id="standardization">
-<h3>Standardization<a class="headerlink" href="#standardization" title="Permalink to this heading">#</a></h3>
+<h2>Standardization<a class="headerlink" href="#standardization" title="Permalink to this heading">#</a></h2>
 <p>Standardization is the transform of the feature distribution to a mean of zero and a variance of one.</p>
 <ul class="simple">
 <li><p>this is a shift and stretch / squeeze of the original property distribution</p></li>
@@ -1322,7 +1333,6 @@ y = \frac{1}{\sigma_x}\left( x - \overline{x} \right)
 </div>
 </div>
 </div>
-</section>
 </section>
 <section id="normalization">
 <h2>Normalization<a class="headerlink" href="#normalization" title="Permalink to this heading">#</a></h2>
@@ -1796,14 +1806,142 @@ y = \frac{x - min(x)}{max(x) - min(x)}
 </div>
 <p>Spot check the first sample, <span class="math notranslate nohighlight">\(12.08\%\)</span> porosity is <span class="math notranslate nohighlight">\(\in [9.95\%,13.35\%]\)</span> so we have a 1 in the second bin (second column in our table) and zeros in the other bins.</p>
 </section>
-<section id="gaussian-transform-gaussian-anamorphosis">
-<h2>Gaussian Transform / Gaussian Anamorphosis<a class="headerlink" href="#gaussian-transform-gaussian-anamorphosis" title="Permalink to this heading">#</a></h2>
-<p>This is a quantile transformation of the feature to a Gaussian distribution. We actually map each of the quantiles from the original feature distribution to the target distribution. This is required for a wide range of statistical methods.</p>
+<section id="general-distribution-transformation">
+<h2>General Distribution Transformation<a class="headerlink" href="#general-distribution-transformation" title="Permalink to this heading">#</a></h2>
+<p>The distribution transformation may be applied to transform any distribution, <span class="math notranslate nohighlight">\(F_x(x)\)</span> to any other distribution, <span class="math notranslate nohighlight">\(F_y(y)\)</span>.</p>
+<ul class="simple">
+<li><p>the target distribution, <span class="math notranslate nohighlight">\(F_y(y)\)</span>, could be nonparametric, i.e., a set of values. In this case the data is converted to a CDF and some form of interpolation is applied to find the inverse of the target CDF, <span class="math notranslate nohighlight">\(F_y^{-1}(p)\)</span>, for any cumulative probability, <span class="math notranslate nohighlight">\(p\)</span></p></li>
+<li><p>the target distribution, <span class="math notranslate nohighlight">\(F_y(y)\)</span>, could be any parametric distribution, and the calculation of the inverse of the target CDF, <span class="math notranslate nohighlight">\(F_y^{-1}(p)\)</span>, for any cumulative probability, <span class="math notranslate nohighlight">\(p\)</span> is available through an analytical solution</p></li>
+</ul>
+<p>I have built out an interactive Python dashboard <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_Distribution_Transformations.ipynb">Distribution Transformation</a> with a transformation to a parametric distribution,</p>
+<figure style="text-align: center;">
+  <img src="_static/feature_transformations/interactive_transforms_par.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Interactive Python dashboard for distribution transformation to a parametric target distribution.
+</figcaption>
+</figure>
+<p>and a transformation to a nonparametric distribution,</p>
+<figure style="text-align: center;">
+  <img src="_static/feature_transformations/interactive_transforms_nonpar.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Interactive Python dashboard for distribution transformation to a nonparametric target distribution.
+</figcaption>
+</figure>
+</section>
+<section id="distribution-transformation-to-a-parametric-distribution">
+<h2>Distribution Transformation to a Parametric Distribution<a class="headerlink" href="#distribution-transformation-to-a-parametric-distribution" title="Permalink to this heading">#</a></h2>
+<p>We can transform our data feature distribution to any parametric distribution with this workflow.</p>
+<ol class="arabic simple">
+<li><p>Calculate the cumulative probability value of each of our data values, <span class="math notranslate nohighlight">\(p_{\alpha} = F_x(x_\alpha)\)</span>, <span class="math notranslate nohighlight">\(\forall\)</span> <span class="math notranslate nohighlight">\(\alpha = 1,\ldots, n\)</span>.</p></li>
+<li><p>Apply the inverse of the target parametric cumulative distribution function (CDF) to calculate the transformed values. <span class="math notranslate nohighlight">\(y_{\alpha} = G_y^{-1}\left(F_x(x_\alpha)\right)\)</span>, <span class="math notranslate nohighlight">\(\forall\)</span> <span class="math notranslate nohighlight">\(\alpha = 1,\ldots, n\)</span>.</p></li>
+</ol>
+<p>While assigning the cumulative probabilities you must make an assumption about the distribution tails (minimum and maximum values).</p>
+<ul class="simple">
+<li><p><strong>known tail</strong> - the minimum or maximum value in the dataset is the minimum or maximum value of the distribution</p></li>
+<li><p><strong>unknown tail</strong> - the minimum or maximum value of the distribution is known</p></li>
+</ul>
+<p>For each possible case we calculate cumulative probability of the sorted in ascending order data as,</p>
+<ol class="arabic simple">
+<li><p>known lower and upper tail,</p></li>
+</ol>
 <div class="math notranslate nohighlight">
 \[
-y = G_y^{-1}(F_x(x))
+F_i = \frac{i-1}{n-1}
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(G_y\)</span> is the Gaussian cumulative distribution function and <span class="math notranslate nohighlight">\(F_x\)</span> is the original feature cumulative distribution function.</p>
+<ol class="arabic simple" start="2">
+<li><p>unknown lower and known upper tail,</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+F_i = \frac{i}{n}
+\]</div>
+<ol class="arabic simple" start="3">
+<li><p>known lower and unknown upper tail,</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+F_i = \frac{i-1}{n}
+\]</div>
+<ol class="arabic simple" start="4">
+<li><p>unknown upper and lower tail,</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+F_i = \frac{i}{n+1}
+\]</div>
+<p>this is more important with sparsely sampled datasets. When <span class="math notranslate nohighlight">\(n\)</span> is large this is not as important,</p>
+<ul class="simple">
+<li><p>the range of cumulative probability at the tails is very small!</p></li>
+<li><p>the minimum and maximum of the feature may be well-known</p></li>
+</ul>
+</section>
+<section id="gaussian-transform-gaussian-anamorphosis">
+<h2>Gaussian Transform / Gaussian Anamorphosis<a class="headerlink" href="#gaussian-transform-gaussian-anamorphosis" title="Permalink to this heading">#</a></h2>
+<p>We showed that the correction of the mean to 0.0 and standard deviation to 1.0 with affine correction does not change the shape; therefore, does not make a Gaussian distributed property.</p>
+<ul class="simple">
+<li><p>for many statistic or geostatistical methods the assumption of Gaussian distributed is required. We need normal score transforms in many subsurface modeling workflows</p></li>
+</ul>
+<p>Gaussian anamorphosis is applied through the cumulative distribution functions (CDF)s, <span class="math notranslate nohighlight">\(F_{X}\)</span>, to a new CDF , <span class="math notranslate nohighlight">\(G_{Y}\)</span>. This can be generalized with the quantile - quantile transformation applied to all the sample data:</p>
+<ul class="simple">
+<li><p>The forward transform:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+Y = G_{Y}^{-1}(F_{X}(X))
+\]</div>
+<ul class="simple">
+<li><p>The reverse transform:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+X = F_{X}^{-1}(G_{Y}(Y))
+\]</div>
+<p>Here’s a visualization of the Gaussian transformation,</p>
+<figure style="text-align: center;">
+  <img src="_static/feature_transformations/norm_score.png" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Gaussian anamorphosis to transform the original distribution to standard normal, Gaussian shape with a mean of 0.0 and variance of 1.0.
+</figcaption>
+</figure>
+<p>Let’s look at the original cumulative distribution function and Gaussian transformed cumulative distribution function for a single feature by-hand.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">por</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Por&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>                 <span class="c1"># make a deepcopy of the feature from the DataFrame</span>
+
+<span class="n">por</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">por</span><span class="p">)</span>                                            <span class="c1"># sort the data in ascending order</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">por</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>                                              <span class="c1"># get the number of data samples</span>
+
+<span class="n">cprob</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">cprob</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">index</span> <span class="o">/</span> <span class="n">n</span>                                      <span class="c1"># known upper tail</span>
+    <span class="c1"># cprob[i] = (index - 1)/n                                # known lower tail</span>
+    <span class="c1"># cprob[i] = (index - 1)/(n - 1)                          # known upper and lower tails</span>
+    <span class="c1"># cprob[i] = index/(n+1)                                  # unknown tails  </span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">cprob</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">por</span><span class="p">,</span><span class="n">cprob</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span> <span class="c1"># plot piecewise linear interpolation</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">por</span><span class="p">,</span><span class="n">cprob</span><span class="p">,</span><span class="n">s</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span> <span class="c1"># plot the CDF points</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">25</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Porosity (fraction)&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Cumulative Probability&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Non-parametric Porosity Cumulative Distribution Function&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">cprob</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span> <span class="c1"># plot piecewise linear interpolation</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">cprob</span><span class="p">,</span><span class="n">s</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span> <span class="c1"># plot the CDF points</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">3.0</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Porosity (fraction)&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Cumulative Probability&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;After Distribution Transformation to Gaussian&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ccfe930544f5631942cac6455936c674ed3658e40aa34b66bc3c368a840557e0.png" src="_images/ccfe930544f5631942cac6455936c674ed3658e40aa34b66bc3c368a840557e0.png" />
+</div>
+</div>
+<p>Now let’s perform the Gaussian transformation with a function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">QuantileTransformer</span>
@@ -2010,16 +2148,24 @@ x = exp(y)
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
-<p>I hope you found this chapter helpful. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a>,</p>
+<p>This was a basic treatment of feature transformations. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
+<p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
-<section id="the-author">
-<h2>The Author:<a class="headerlink" href="#the-author" title="Permalink to this heading">#</a></h2>
-<p>Michael J. Pyrcz, Professor, The University of Texas at Austin
-<em>Novel Data Analytics, Geostatistics and Machine Learning Subsurface Solutions</em></p>
-<p>With over 17 years of experience in subsurface consulting, research and development, Michael has returned to academia driven by his passion for teaching and enthusiasm for enhancing engineers’ and geoscientists’ impact in subsurface resource development.</p>
-<p>For more about Michael check out these links:</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a> | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<section id="about-the-author">
+<h2>About the Author<a class="headerlink" href="#about-the-author" title="Permalink to this heading">#</a></h2>
+<figure style="text-align: center;">
+  <img src="_static/intro/michael_pyrcz_officeshot_jacket.jpg" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
+</figcaption>
+</figure>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<ul class="simple">
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
+</ul>
+<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
@@ -2032,9 +2178,7 @@ x = exp(y)
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael J. Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-</section>
-<section id="more-resources-available-at-twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin">
-<h2>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin" title="Permalink to this heading">#</a></h2>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -2102,6 +2246,7 @@ x = exp(y)
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivations-for-feature-transformations">Motivations for Feature Transformations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-transformation-workflow">Feature Transformation Workflow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
@@ -2110,21 +2255,20 @@ x = exp(y)
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-statistics-for-tabular-data">Summary Statistics for Tabular Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-visualization">Data Visualization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#truncation">Truncation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#affine-correction">Affine Correction</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standardization">Standardization</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#affine-correction">Affine Correction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standardization">Standardization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalization">Normalization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l1-l2-normalizer">L1 / L2 Normalizer</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-or-indictor-transform">Binary or Indictor Transform</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-bins-discretization">k Bins Discretization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-distribution-transformation">General Distribution Transformation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-transformation-to-a-parametric-distribution">Distribution Transformation to a Parametric Distribution</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-transform-gaussian-anamorphosis">Gaussian Transform / Gaussian Anamorphosis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantile-uniform-0-1-transform">Quantile / Uniform[0,1] Transform</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-feature-transforms">Custom Feature Transforms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | Applied Geostats in Python e-book | LinkedIn</a></li>
 </ul>
   </nav></div>
 

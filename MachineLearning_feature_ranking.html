@@ -167,7 +167,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Applied Machine Learning in Python: a Hands-on Guide with Code
+                    Introduction
                 </a>
             </li>
         </ul>
@@ -397,6 +397,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-for-feature-ranking">Motivation for Feature Ranking</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#curse-of-dimensionality">Curse of Dimensionality</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-feature-ranking">What is Feature Ranking?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#design-custom-color-map">Design Custom Color Map</a></li>
@@ -439,7 +440,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
 </ul>
             </nav>
@@ -458,7 +459,7 @@ document.write(`
 <section id="feature-ranking">
 <h1>Feature Ranking<a class="headerlink" href="#feature-ranking" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite this e-Book as:</p>
@@ -483,7 +484,11 @@ document.write(`
 <p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
 <section id="motivation-for-feature-ranking">
 <h2>Motivation for Feature Ranking<a class="headerlink" href="#motivation-for-feature-ranking" title="Permalink to this heading">#</a></h2>
-<p>There are often many predictor features (input variables), available for us to work with for building our prediction models. There are good reasons to be selective, throwing in every possible feature is not a good idea! In general, for the best prediction model, careful selection of the fewest features that provide the most amount of information is the best practice.</p>
+<p>There are often many predictor features (input variables), available for us to work with for building our prediction models.</p>
+<ul class="simple">
+<li><p>there are good reasons to be selective, throwing in every possible feature is not a good idea!</p></li>
+</ul>
+<p>In general, for the best prediction model, careful selection of the fewest features that provide the most amount of information is the best practice.</p>
 <p>Here’s why:</p>
 <ul class="simple">
 <li><p><strong>blunders</strong> - more predictor features result in more complicated workflows that require more professional time and have increased opportunity for mistakes in the workflow</p></li>
@@ -493,6 +498,121 @@ document.write(`
 <li><p><strong>computational time</strong> - more predictor features generally increase the computational time required to train the model and the computational storage, i.e., the model may be less compact and portable</p></li>
 <li><p><strong>model overfit</strong> - the risk of overfit increases with the more features, due to increase in model complexity</p></li>
 <li><p><strong>model extrapolation</strong> - many predictor features results in high dimensional model space with less data coverage and more likelihood for model extrapolation that may be inaccurate</p></li>
+</ul>
+<p>The primary concern with many predictor features is the curse of dimensionality. Let’s summarize the curse!</p>
+</section>
+<section id="curse-of-dimensionality">
+<h2>Curse of Dimensionality<a class="headerlink" href="#curse-of-dimensionality" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Data and Model Visualization</strong> - we cannot visualize beyond 3D, i.e., access the model fit to data, evaluate interpolation vs. extrapolation.</p></li>
+</ol>
+<ul class="simple">
+<li><p>consider a 5D example shown as a matrix scatter plot, even in this case there is an extreme marginalization to 2D for each plot,</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static\feature_ranking\matrix_scatterplot.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;">Example 5D data as a matrix scatter plot.</figcaption>
+</figure>
+<ol class="arabic simple" start="2">
+<li><p><strong>Sampling</strong> - the number of samples sufficient to infer statistics like the joint probability, <span class="math notranslate nohighlight">\(P(x_1,\ldots,x_m)\)</span>.</p></li>
+</ol>
+<ul class="simple">
+<li><p>recall the calculation of a histogram or normalized histogram: we establish bins and calculate frequencies or probabilities in each bin.</p></li>
+<li><p>we require a nominal number of data samples for each bin, so we require <span class="math notranslate nohighlight">\(𝑛=𝑛_{𝑠/𝑏𝑖𝑛} \cdot 𝑛_{𝑏𝑖𝑛𝑠}\)</span> samples in 1D</p></li>
+<li><p>but in mD we required <span class="math notranslate nohighlight">\(n\)</span> samples to calculate the discretized joint probability,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+𝑛=𝑛_{𝑠/𝑏𝑖𝑛} \cdot 𝑛_{𝑏𝑖𝑛𝑠}^m$
+\]</div>
+<ul class="simple">
+<li><p>for example, 10 samples per bin with 35 bins requires 12,250 samples in 2D, and 428,750 samples in 3D</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/feature_ranking/bivariate_example.png" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;">Example 2D data with 35 bins for each feature.</figcaption>
+</figure>
+<ol class="arabic simple" start="3">
+<li><p><strong>Sample Coverage</strong> - the range of the sample values cover the predictor feature space.</p></li>
+</ol>
+<ul class="simple">
+<li><p>fraction of the possible solution space that is sampled, for 1 feature we assume 80% coverage</p></li>
+<li><p>remember, we usually, directly sample only <span class="math notranslate nohighlight">\(\frac{1}{10^7}\)</span> of the volume of the subsurface</p></li>
+<li><p>yes, the concept of coverage is subjective, how much data to cover? What about gaps? etc.</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/feature_ranking/coverage1D.png" style="display: block; margin: 0 auto; width: 80%;">
+  <figcaption style="text-align: center;">Example 2D data with 35 bins for each feature.</figcaption>
+</figure>
+<ul class="simple">
+<li><p>now if there is 80% coverage for 2 features the 2D coverage is 64%</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/feature_ranking/coverage2D.png" style="display: block; margin: 0 auto; width: 80%;">
+  <figcaption style="text-align: center;">Example 2D data with 35 bins for each feature.</figcaption>
+</figure>
+<ul class="simple">
+<li><p>coverage is,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+c =  c_1^m
+\]</div>
+<ol class="arabic simple" start="4">
+<li><p><strong>Distorted Space</strong> - high dimensional space is distorted.</p></li>
+</ol>
+<ul class="simple">
+<li><p>take the ratio of the volume of an inscribed hypersphere in a hypercube,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\frac{\pi^{\frac{m}{2}}}{m 2^{m-1} \Gamma\left(\frac{m}{2}\right)} \to 0 \quad \text{as} \quad m \to \infty
+\]</div>
+<ul class="simple">
+<li><p>recall, <span class="math notranslate nohighlight">\(\Gamma(𝑛)=(𝑛−1)!\)</span>.</p></li>
+<li><p>high dimensional space is all corners and no middle and most of high dimensional space is far from the middle (all corners!).</p></li>
+<li><p>as a result distances in high dimensional space lose sensitivity, i.e., for any random points in the space the expected pairwise distances all become the same,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\lim_{m \to \infty} \left( \mathbb{E}\left[\text{dist}_{\text{max}}(m) - \text{dist}_{\text{min}}(m)\right] \right) \to 0
+\]</div>
+<ul class="simple">
+<li><p>the limit of the expectation of the range of pairwise distances over random points in hyper-dimensional space tends to zero. If distances are almost all the same, Euclidian distance is no longer meaningful!</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/feature_ranking/distortion_chart.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;">The ratio of the volume of a hypersphere within a hypercube.</figcaption>
+</figure>
+<ul class="simple">
+<li><p>here’s the severity of the distortion for various dimensionalities,</p></li>
+</ul>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>m</p></th>
+<th class="head"><p>nD / 2D</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>1.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>0.28</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>0.003</p></td>
+</tr>
+<tr class="row-odd"><td><p>20</p></td>
+<td><p>0.00000003</p></td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple" start="5">
+<li><p><strong>Multicollinearity</strong> - higher dimensional datasets are more likely to have collinearity or multicollinearity.</p></li>
+</ol>
+<ul class="simple">
+<li><p>Feature linearly described by other features resulting in high model variance.</p></li>
 </ul>
 </section>
 <section id="what-is-feature-ranking">
@@ -2888,16 +3008,24 @@ Rank #6 AI
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
-<p>I hope you found this chapter helpful. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a>,</p>
+<p>This was a basic treatment of feature ranking. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
+<p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
-<section id="the-author">
-<h2>The Author:<a class="headerlink" href="#the-author" title="Permalink to this heading">#</a></h2>
-<p>Michael J. Pyrcz, Professor, The University of Texas at Austin
-<em>Novel Data Analytics, Geostatistics and Machine Learning Subsurface Solutions</em></p>
-<p>With over 17 years of experience in subsurface consulting, research and development, Michael has returned to academia driven by his passion for teaching and enthusiasm for enhancing engineers’ and geoscientists’ impact in subsurface resource development.</p>
-<p>For more about Michael check out these links:</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a> | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<section id="about-the-author">
+<h2>About the Author<a class="headerlink" href="#about-the-author" title="Permalink to this heading">#</a></h2>
+<figure style="text-align: center;">
+  <img src="_static/intro/michael_pyrcz_officeshot_jacket.jpg" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
+</figcaption>
+</figure>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<ul class="simple">
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
+</ul>
+<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
@@ -2910,7 +3038,7 @@ Rank #6 AI
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -2978,6 +3106,7 @@ Rank #6 AI
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-for-feature-ranking">Motivation for Feature Ranking</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#curse-of-dimensionality">Curse of Dimensionality</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-feature-ranking">What is Feature Ranking?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#design-custom-color-map">Design Custom Color Map</a></li>
@@ -3020,7 +3149,7 @@ Rank #6 AI
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
 </ul>
   </nav></div>

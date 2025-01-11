@@ -152,8 +152,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/TCG_color_logo.png" class="logo__image only-light" alt="Applied Machine Learning in Python - Home"/>
-    <script>document.write(`<img src="_static/TCG_color_logo.png" class="logo__image only-dark" alt="Applied Machine Learning in Python - Home"/>`);</script>
+    <img src="_static/AppliedMachineLearning.jpg" class="logo__image only-light" alt="Applied Machine Learning in Python - Home"/>
+    <script>document.write(`<img src="_static/AppliedMachineLearning.jpg" class="logo__image only-dark" alt="Applied Machine Learning in Python - Home"/>`);</script>
   
   
 </a></div>
@@ -163,18 +163,25 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    e-Book Introduction
+                    Introduction
                 </a>
             </li>
         </ul>
         <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_concepts.html">Machine Learning Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_plotting_data_models.html">Loading and Plotting Data and Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_univariate_analysis.html">Univariate Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_multivariate_analysis.html">Multivariate Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_transformations.html">Feature Transformations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_ranking.html">Machine Learning Well-documented, Demonstration Python Workflows</a></li>
-
-
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_ranking.html">Feature Ranking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_imputation.html">Feature Imputation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_clustering.html">Cluster Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_density-based_clustering.html">Density-based Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_spectral_clustering.html">Spectral Clustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_PCA.html">Principal Components Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_multidimensional_scaling.html">Multidimensional Scaling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_linear_regression.html">Linear Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ridge_regression.html">Ridge Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_LASSO_regression.html">LASSO Regression</a></li>
@@ -186,7 +193,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ensemble_trees.html">Bagging Tree and Random Forest</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_gradient_boosting.html">Gradient Boosting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_support_vector_machines.html">Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_time_series.html">Time Series Analysis and Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -397,7 +406,19 @@ document.write(`
                   
   <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mf">0.001</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="mi">17</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="mf">0.000001</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16.999996909767695
 </pre></div>
 </div>
 </div>
@@ -473,7 +494,7 @@ By Michael J. Pyrcz
 
   <p class="copyright">
     
-      © Copyright 2024.
+      © Copyright 2024 CC-BY-SA 4.0.
       <br/>
     
   </p>

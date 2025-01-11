@@ -167,7 +167,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Applied Machine Learning in Python: a Hands-on Guide with Code
+                    Introduction
                 </a>
             </li>
         </ul>
@@ -398,6 +398,10 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivations-for-linear-regression">Motivations for Linear Regression</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Linear Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analytical-solution">Analytical Solution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression-training">Linear Regression Training</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-the-model">Checking the Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-uncertainty">Model Uncertainty</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
@@ -406,14 +410,15 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-statistics-for-tabular-data">Summary Statistics for Tabular Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-visualization">Data Visualization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression-model">Linear Regression Model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-checking-with-hypothesis-testing-and-r-2-values">Model Checking with Hypothesis Testing and <span class="math notranslate nohighlight">\(r^2\)</span> Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-checking-with-r-2-values">Model Checking with <span class="math notranslate nohighlight">\(r^2\)</span> Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-checking-with-hypothesis-testing">Model Checking with Hypothesis Testing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-intervals-for-model-uncertainty">Confidence Intervals for Model Uncertainty</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-prediction-intervals">Model Prediction Intervals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediction">Prediction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-prediction-error">Checking Prediction Error</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | Applied Geostats in Python e-book | LinkedIn</a></li>
 </ul>
             </nav>
         </div>
@@ -431,7 +436,7 @@ document.write(`
 <section id="linear-regression">
 <h1>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite this e-Book as:</p>
@@ -467,7 +472,17 @@ document.write(`
 </section>
 <section id="id1">
 <h2>Linear Regression<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
-<p>Linear regression for prediction. Here are some key aspects of linear regression:</p>
+<p>Linear regression for prediction, let’s start by looking at a linear model fit to a set of data.</p>
+<figure style="text-align: center;">
+  <img src="_static/linear/linear_example.png" style="display: block; margin: 0 auto; width: 50%;">
+  <figcaption style="text-align: center;">Example linear regression model.</figcaption>
+</figure>
+<p>Let’s start by defining some terms,</p>
+<ul class="simple">
+<li><p><strong>predictor feature</strong> - an input feature for the prediction model, given we are only discussing linear regression and not multilinear regression we have only one predictor feature, <span class="math notranslate nohighlight">\(x\)</span>. On out plots (including above) the predictor feature is on the x-axis.</p></li>
+<li><p><strong>response feature</strong> - the output feature for the prediction model, in this case, <span class="math notranslate nohighlight">\(y\)</span>. On our plots (including above) the response feature is on the y-axis.</p></li>
+</ul>
+<p>Now, here are some key aspects of linear regression:</p>
 <p><strong>Parametric Model</strong></p>
 <p>This is a parametric predictive machine learning model, we accept an a prior assumption of linearity and then gain a very low parametric representation that is easy to train without a onerous amount of data.</p>
 <ul class="simple">
@@ -478,6 +493,11 @@ document.write(`
 \[
 y = \sum_{\alpha = 1}^m b_{\alpha} x_{\alpha} + b_0
 \]</div>
+<p>Here’s the visualization of the linear model parameters,</p>
+<figure style="text-align: center;">
+  <img src="_static/linear/linear_model.png" style="display: block; margin: 0 auto; width: 50%;">
+  <figcaption style="text-align: center;">The linear model parameters.</figcaption>
+</figure>
 <p><strong>Least Squares</strong></p>
 <p>The analytical solution for the model parameters, <span class="math notranslate nohighlight">\(b_1,\ldots,b_m,b_0\)</span>, is available for the L2 norm loss function, the errors are summed and squared known a least squares.</p>
 <ul class="simple">
@@ -488,13 +508,17 @@ y = \sum_{\alpha = 1}^m b_{\alpha} x_{\alpha} + b_0
 RSS = \sum_{i=1}^n \left(y_i - (\sum_{\alpha = 1}^m b_{\alpha} x_{\alpha,i} + b_0) \right)^2
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(y_i\)</span> is the actual response feature values and <span class="math notranslate nohighlight">\(\sum_{\alpha = 1}^m b_{\alpha} x_{\alpha} + b_0\)</span> are the model predictions, over the <span class="math notranslate nohighlight">\(\alpha = 1,\ldots,n\)</span> training data.</p>
+<p>Here’s a visualization of the L2 norm loss function, MSE,</p>
+<figure style="text-align: center;">
+  <img src="_static/linear/linear_MSE.png" style="display: block; margin: 0 auto; width: 50%;">
+  <figcaption style="text-align: center;">The linear model loss function, mean square error.</figcaption>
+</figure>
 <ul class="simple">
 <li><p>this may be simplified as the sum of square error over the training data,</p></li>
 </ul>
-<div class="math notranslate nohighlight">
-\[
+<p>\begin{equation}
 \sum_{i=1}^n (\Delta y_i)^2
-\]</div>
+\end{equation}</p>
 <p>where <span class="math notranslate nohighlight">\(\Delta y_i\)</span> is actual response feature observation <span class="math notranslate nohighlight">\(y_i\)</span> minus the model prediction <span class="math notranslate nohighlight">\(\sum_{\alpha = 1}^m b_{\alpha} x_{\alpha} + b_0\)</span>, over the <span class="math notranslate nohighlight">\(i = 1,\ldots,n\)</span> training data.</p>
 <p><strong>Assumptions</strong></p>
 <p>There are important assumption with our linear regression model,</p>
@@ -506,6 +530,197 @@ RSS = \sum_{i=1}^n \left(y_i - (\sum_{\alpha = 1}^m b_{\alpha} x_{\alpha,i} + b_
 <li><p><strong>No multicollinearity</strong> - none of the features are redundant with other features</p></li>
 </ul>
 </section>
+<section id="analytical-solution">
+<h2>Analytical Solution<a class="headerlink" href="#analytical-solution" title="Permalink to this heading">#</a></h2>
+<p>Since the loss is <span class="math notranslate nohighlight">\(L^2\)</span> we have access to a non-iterative, analytics solution, i.e., optimization of the linear regression model parameters.</p>
+<ul class="simple">
+<li><p>we are looking for the model parameter(s) that minimize the loss function</p></li>
+<li><p>when we have an analytical solution, we can use the 1st and 2nd derivatives of the loss function,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+RSS = \sum_{i=1}^n \left(y_i - (\sum_{\alpha = 1}^m b_{\alpha} x_{\alpha,i} + b_0) \right)^2
+\]</div>
+<p>A local or global loss minimum occurs where,</p>
+<ul class="simple">
+<li><p>first derivative of the loss function is 0.0 - zero slope indicating a local minimum or maximum</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial L(y_{\alpha}, F(X_{\alpha}))}{\partial b_1} = 0
+\]</div>
+<ul class="simple">
+<li><p>second derivative of the loss function is greater than 0.0 - positive curvature indicated a local minimum instead of maximum</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial^2 L(y_{\alpha}, F(X_{\alpha}))}{\partial b_1^2} &gt; 0
+\]</div>
+<p>Now let’s use this approach to derived the solution for linear regression.</p>
+</section>
+<section id="linear-regression-training">
+<h2>Linear Regression Training<a class="headerlink" href="#linear-regression-training" title="Permalink to this heading">#</a></h2>
+<p>For the least squares (L2) norm the linear regression model parameters can be trained with training data with an analytical solution. Let’s derive it for linear regression analytical solution for the case of 1 predictor feature.</p>
+<p>To calculated the slope coefficient, <span class="math notranslate nohighlight">\(b_1\)</span>, we start with the loss function,</p>
+<div class="math notranslate nohighlight">
+\[
+RSS = \sum_{i=1}^n \left(y_i - \left( b_{1} x_{i} + b_0 \right) \right)^2 = \sum_{i=1}^n \left(y_i - b_{1} x_{i} - b_0 \right)^2
+\]</div>
+<p>Now we take the partial derivative with respect to the model parameter, <span class="math notranslate nohighlight">\(b_1\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial}{\partial b_1} \sum_{i=1}^n \left(y_i - b_{1} x_{i} - b_0 \right)^2 = \sum_{i=1}^n -2 \cdot x_i \left(y_i - b_0 -b_1 x_i \right)
+\]</div>
+<p>to optimize, minimize the loss, we set the partical derivative with respect to the model parameter, <span class="math notranslate nohighlight">\(b_1\)</span> equal to 0.0.</p>
+<div class="math notranslate nohighlight">
+\[
+0 = \sum_{i=1}^n -2 \cdot x_i \left(y_i - b_0 -b_1 x_i \right)
+\]</div>
+<p>we can simplify (divide both sides by -2) and distribute multiply to get,</p>
+<div class="math notranslate nohighlight">
+\[
+0 = \sum_{i=1}^n x_i \cdot y_i - b_0 \cdot x_i -b_1 x_i^2 
+\]</div>
+<p>now we can substitute in <span class="math notranslate nohighlight">\(b_0 = \overline{y} - b_1 \cdot \overline{x}\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+0 = \sum_{i=1}^n x_i \cdot y_i - \left(\overline{y} - b_1 \cdot \overline{x} \right) \cdot x_i - b_1 x_i^2 
+\]</div>
+<p>once again we multiply to get,</p>
+<div class="math notranslate nohighlight">
+\[
+0 = \sum_{i=1}^n x_i \cdot y_i - \overline{y} \cdot x_i + b_1 \cdot \overline{x} \cdot x_i - b_1 x_i^2 
+\]</div>
+<p>we separate the sums,</p>
+<div class="math notranslate nohighlight">
+\[
+0 = \sum_{i=1}^n x_i \cdot y_i - \overline{y} \cdot x_i + \sum_{i=1}^n b_1 \cdot \overline{x} \cdot x_i - b_1 x_i^2 
+\]</div>
+<p>and we can pull out the <span class="math notranslate nohighlight">\(b_1\)</span> constant,</p>
+<div class="math notranslate nohighlight">
+\[
+0 = \sum_{i=1}^n x_i \cdot y_i - \overline{y} \cdot x_i +  b_1 \sum_{i=1}^n \overline{x} \cdot x_i - x_i^2 
+\]</div>
+<p>and reorder a little to get,</p>
+<div class="math notranslate nohighlight">
+\[
+0 = \sum_{i=1}^n x_i \cdot y_i - \overline{y} \cdot x_i - b_1 \sum_{i=1}^n x_i^2 - \overline{x} \cdot x_i
+\]</div>
+<p>move to the other side,</p>
+<div class="math notranslate nohighlight">
+\[
+b_1 \sum_{i=1}^n x_i^2 - \overline{x} \cdot x_i = \sum_{i=1}^n x_i \cdot y_i - \overline{y} \cdot x_i
+\]</div>
+<p>and divide both sizes by <span class="math notranslate nohighlight">\(\sum_{i=1}^n x_i^2 - \overline{x} \cdot x_i\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+b_1 = \frac{\sum_{i=1}^n x_i \cdot y_i - \overline{y} \cdot x_i}{\sum_{i=1}^n x_i^2 - \overline{x} \cdot x_i}
+\]</div>
+<p>we now have an analytical solution for the <span class="math notranslate nohighlight">\(b_1\)</span> slope term for linear regression. It can be shown that this is equivalent to another form,</p>
+<div class="math notranslate nohighlight">
+\[
+b_1 = \frac{\sum_{i=1}^n \left( x_i - \overline{x} \right) \cdot \left( y_i - \overline{y} \right)}{\sum_{i=1}^n \left( x_i - \overline{x} \right)^2}
+\]</div>
+<p>I prefer this form because it is easily interpreted as the covariance of <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>, <span class="math notranslate nohighlight">\(C_{x,y}\)</span> divided by the variance of <span class="math notranslate nohighlight">\(X\)</span>, <span class="math notranslate nohighlight">\(sigma_{x}^2\)</span>.</p>
+<p>Now for the calculation of the intercept term, <span class="math notranslate nohighlight">\(b_0\)</span>, we return to the loss function,</p>
+<div class="math notranslate nohighlight">
+\[
+RSS = \sum_{i=1}^n \left(y_i - \left( b_{1} x_{i} + b_0 \right) \right)^2 = \sum_{i=1}^n \left(y_i - b_{1} x_{i} - b_0 \right)^2
+\]</div>
+<p>and this time we take the partial derivative with respect to <span class="math notranslate nohighlight">\(b_0\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial}{\partial b_0} \sum_{i=1}^n \left(y_i - b_{1} x_{i} - b_0 \right)^2 = \sum_{i=1}^n -2 \left(y_i - b_0 -b_1 x_i \right)
+\]</div>
+<p>to optimize, minimize the loss, we set the partical derivative with respect to the model parameter, <span class="math notranslate nohighlight">\(b_0\)</span> equal to 0.0.</p>
+<div class="math notranslate nohighlight">
+\[
+0 = \sum_{i=1}^n -2 \left(y_i - b_0 -b_1 x_i \right)
+\]</div>
+<p>we divide both sides by -2,</p>
+<div class="math notranslate nohighlight">
+\[
+0 = \sum_{i=1}^n y_i - b_0 -b_1 x_i
+\]</div>
+<p>and break up the sum,</p>
+<div class="math notranslate nohighlight">
+\[
+0 = \sum_{i=1}^n y_i - \sum_{i=1}^n b_0 - \sum_{i=1}^n b_1 x_i
+\]</div>
+<p>simplify the simple term as it is a constant, <span class="math notranslate nohighlight">\(\sum_{i=1}^n b_0 = n \cdot b_0\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+0 = \sum_{i=1}^n y_i - n \cdot b_0 - \sum_{i=1}^n b_1 x_i
+\]</div>
+<p>now move the <span class="math notranslate nohighlight">\(b_0\)</span> term to the left-hand side,</p>
+<div class="math notranslate nohighlight">
+\[
+n \cdot b_0 = \sum_{i=1}^n y_i - \sum_{i=1}^n b_1 x_i
+\]</div>
+<p>pull out the constant <span class="math notranslate nohighlight">\(b_1\)</span> from the sum,</p>
+<div class="math notranslate nohighlight">
+\[
+n \cdot b_0 = \sum_{i=1}^n y_i - b_1 \sum_{i=1}^n x_i
+\]</div>
+<p>divide both sides by <span class="math notranslate nohighlight">\(n\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+b_0 = \frac{\sum_{i=1}^n y_i}{n} - b_1 \frac{\sum_{i=1}^n x_i}{n}
+\]</div>
+<p>this is very interesting, we now see 2 arithmetic means!</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\sum_{i=1}^n y_i}{n} = \overline{y} \quad \quad \frac{\sum_{i=1}^n x_i}{n} = \overline{x}
+\]</div>
+<p>so our solution is simply,</p>
+<div class="math notranslate nohighlight">
+\[
+b_0 = \overline{y} - b_1 \cdot \overline{x}
+\]</div>
+</section>
+<section id="checking-the-model">
+<h2>Checking the Model<a class="headerlink" href="#checking-the-model" title="Permalink to this heading">#</a></h2>
+<p>For linear regression models we have access to a powerful metric to check our model, the coefficient of determination, also known as “r-squared”, <span class="math notranslate nohighlight">\(r^2\)</span>.</p>
+<ul class="simple">
+<li><p>the proportion of variance explained by the model</p></li>
+<li><p>calculated as the explained variance, <span class="math notranslate nohighlight">\(SS_{reg}\)</span> divided by the total variance, <span class="math notranslate nohighlight">\(SS_{tot}\)</span>,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+SS_{reg} = \sum_{i=1}^n \left(\hat{y}_i - \overline{y} \right)^2 \quad \quad SS_{tot} = \sum_{i=1}^n \left(y_i - \overline{y} \right)^2
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> is the model prediction at the <span class="math notranslate nohighlight">\(i\)</span> training data, and $\overline{y} is the average of the sample data.</p>
+<ul class="simple">
+<li><p>the <span class="math notranslate nohighlight">\(r^2\)</span> can be calculated from the correlation coefficient, so you can know the goodness of a linear regression model, before you train it!</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+r^2 = \left(\rho_{x,y} \right)^2
+\]</div>
+<p>note, <span class="math notranslate nohighlight">\(r^2\)</span> can only be used for linear models where,</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma^2_{tot} = \sigma^2_{reg} + \sigma^2_{res}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\sigma^2_{tot}\)</span> is total variance of the response feature, <span class="math notranslate nohighlight">\(\sigma^2_{reg}\)</span> is the variance of the model predictions, and <span class="math notranslate nohighlight">\(\sigma^2_{res}\)</span> is the variance of the error, i.e., the residuals, <span class="math notranslate nohighlight">\(\Delta y_i = y_i - \hat{y}_i\)</span>.</p>
+<p>How to interpret <span class="math notranslate nohighlight">\(r^2\)</span>? It would be dangerous to hard thresholds, but I can give some soft guidance,</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(r^2 \ge 0.98\)</span> - the model is cheating or the problem is very easy, linear, noise-free and well sampled</p></li>
+<li><p><span class="math notranslate nohighlight">\(0.0 \le r^2 \le 0.6\)</span> - the model is not working well, check the data and model choice</p></li>
+<li><p><span class="math notranslate nohighlight">\(r^2 \lt 0.0\)</span> - the model is going the wrong way! You are better off with estimating by the global mean, <span class="math notranslate nohighlight">\(\overline{y}\)</span></p></li>
+</ul>
+</section>
+<section id="model-uncertainty">
+<h2>Model Uncertainty<a class="headerlink" href="#model-uncertainty" title="Permalink to this heading">#</a></h2>
+<p>To communicate model uncertainty we rely on confidence intervals for the model parameters, <span class="math notranslate nohighlight">\(b_1\)</span> and <span class="math notranslate nohighlight">\(b_0\)</span>. Let’s define confidence interval here for convenience,</p>
+<p><strong>Confidence Interval</strong> - the uncertainty in a summary statistic / model / model parameter represented as a range, lower and upper bound, based on a specified probability interval known as the confidence level.</p>
+<p>We communicate confidence intervals like this:</p>
+<ul class="simple">
+<li><p>there is a 95% probability (or 19 times out of 20) that model slope is between 0.5 and 0.7.</p></li>
+</ul>
+<p>We cover analytical methods here, but we could also use the more flexible <span class="xref myst">Bootstrap</span> approach.</p>
+<p>That’s enough here, let’s load data and explain more as we demonstrate linear regression.</p>
+</section>
 <section id="load-the-required-libraries">
 <h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
 <p>We will also need some standard packages. These should have been installed with Anaconda 3.</p>
@@ -513,6 +728,7 @@ RSS = \sum_{i=1}^n \left(y_i - (\sum_{\alpha = 1}^m b_{\alpha} x_{\alpha,i} + b_
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">suppress_warnings</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="kn">import</span> <span class="nn">os</span>                                                     <span class="c1"># to set current working directory </span>
+<span class="kn">import</span> <span class="nn">math</span>                                                   <span class="c1"># square root</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                                            <span class="c1"># arrays and matrix math</span>
 <span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">st</span>                                      <span class="c1"># statistical methods</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                                           <span class="c1"># DataFrames</span>
@@ -605,6 +821,7 @@ RSS = \sum_{i=1}^n \left(y_i - (\sum_{\alpha = 1}^m b_{\alpha} x_{\alpha,i} + b_
 
 <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">yname</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">xname</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+<span class="n">dX</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>                               <span class="c1"># values for plotting the model</span>
 </pre></div>
 </div>
 </div>
@@ -799,33 +1016,33 @@ RSS = \sum_{i=1}^n \left(y_i - (\sum_{\alpha = 1}^m b_{\alpha} x_{\alpha,i} + b_
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nbins</span> <span class="o">=</span> <span class="mi">20</span>                                                    <span class="c1"># number of histogram bins</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">221</span><span class="p">)</span>
 <span class="n">freq</span><span class="p">,</span><span class="n">_</span><span class="p">,</span><span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">xname</span><span class="p">],</span><span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="n">nbins</span><span class="p">,</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">histogram_bounds</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">xname</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">weights</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)),</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">xname</span> <span class="o">+</span> <span class="s1">&#39; (&#39;</span> <span class="o">+</span> <span class="n">xunit</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span><span class="n">freq</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">*</span><span class="mf">1.10</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">()</span>  
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">])</span>    
 
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">222</span><span class="p">)</span>
 <span class="n">freq</span><span class="p">,</span><span class="n">_</span><span class="p">,</span><span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">yname</span><span class="p">],</span><span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="n">nbins</span><span class="p">,</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">histogram_bounds</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">yname</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">weights</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)),</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">yname</span> <span class="o">+</span> <span class="s1">&#39; (&#39;</span> <span class="o">+</span> <span class="n">yunit</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span><span class="n">freq</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">*</span><span class="mf">1.10</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Porosity&#39;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">()</span>  
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">])</span>  
 
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span>                                              <span class="c1"># plot the model</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">223</span><span class="p">)</span>                                              <span class="c1"># plot the model</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">xname</span><span class="p">],</span><span class="n">df</span><span class="p">[</span><span class="n">yname</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span><span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Porosity vs Density&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">xname</span> <span class="o">+</span> <span class="s1">&#39; (&#39;</span> <span class="o">+</span> <span class="n">xunit</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">yname</span> <span class="o">+</span> <span class="s1">&#39; (&#39;</span> <span class="o">+</span> <span class="n">yunit</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">])</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">2.1</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 <span class="c1">#plt.savefig(&#39;Test.pdf&#39;, dpi=600, bbox_inches = &#39;tight&#39;,format=&#39;pdf&#39;)   </span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1449430ca0b54d09fa1845eacc729a52d82764aa36d572fd7260ce212ad2725d.png" src="_images/1449430ca0b54d09fa1845eacc729a52d82764aa36d572fd7260ce212ad2725d.png" />
+<img alt="_images/98de0f9e6b4fc55ef535855f27875a0c49893f41a34ad00f9df6b7568c083cdf.png" src="_images/98de0f9e6b4fc55ef535855f27875a0c49893f41a34ad00f9df6b7568c083cdf.png" />
 </div>
 </div>
 </section>
@@ -891,9 +1108,25 @@ RSS = \sum_{i=1}^n \left(y_i - (\sum_{\alpha = 1}^m b_{\alpha} x_{\alpha,i} + b_
 </div>
 <p>The model looks reasonable. Let’s go beyond occular inspection.</p>
 </section>
-<section id="model-checking-with-hypothesis-testing-and-r-2-values">
-<h2>Model Checking with Hypothesis Testing and <span class="math notranslate nohighlight">\(r^2\)</span> Values<a class="headerlink" href="#model-checking-with-hypothesis-testing-and-r-2-values" title="Permalink to this heading">#</a></h2>
-<p>Let’s test the slope with the following hypothesis test:</p>
+<section id="model-checking-with-r-2-values">
+<h2>Model Checking with <span class="math notranslate nohighlight">\(r^2\)</span> Values<a class="headerlink" href="#model-checking-with-r-2-values" title="Permalink to this heading">#</a></h2>
+<p>Let’s first explain <span class="math notranslate nohighlight">\(r^2\)</span>, proportion of variance explained. Here’s the variance explained by the model:</p>
+<p>\begin{equation}
+𝑠𝑠𝑟𝑒𝑔 = \sum_{𝑖=1}^{𝑛}\left(\hat{y}_i - \overline{y}\right)^2
+\end{equation}</p>
+<p>and the variance not explained by the model,</p>
+<p>\begin{equation}
+𝑠𝑠𝑟𝑒sid = \sum_{𝑖=1}^{𝑛}\left(y_i - \hat{y}\right)^2
+\end{equation}</p>
+<p>Now we can calculate the variance explained as,</p>
+<p>\begin{equation}
+𝑟^2 = \frac{𝑠𝑠_{𝑟𝑒𝑔}}{𝑠𝑠_{𝑟𝑒𝑔}+𝑠𝑠_{𝑟𝑒𝑠𝑖𝑑}} = \frac{\text{variance explained}}{\text{total variance}}
+\end{equation}</p>
+<p>which is a common and intuitive metric for the goodness of a linear regression model.</p>
+</section>
+<section id="model-checking-with-hypothesis-testing">
+<h2>Model Checking with Hypothesis Testing<a class="headerlink" href="#model-checking-with-hypothesis-testing" title="Permalink to this heading">#</a></h2>
+<p>Let’s test the slope, <span class="math notranslate nohighlight">\(b_1\)</span>, with the following hypothesis test,</p>
 <p>\begin{equation}
 H_0: b_{1} = 0.0
 \end{equation}</p>
@@ -970,6 +1203,83 @@ The slope P02.5 and P97.5 are [-12.8  -7.8]
 </div>
 </div>
 </div>
+<p>Let’s visualize the model uncertainty through confidence intervals in the slope.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">tstat</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">ppf</span><span class="p">([</span><span class="n">alpha</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="o">/</span><span class="mi">2</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>            <span class="c1"># calculate t-stat for confidence interval</span>
+<span class="n">slope_lower</span><span class="p">,</span><span class="n">slope_upper</span> <span class="o">=</span> <span class="n">slope</span> <span class="o">+</span> <span class="n">tstat</span><span class="o">*</span><span class="n">std_err</span> <span class="c1"># calculate the lower and upper confidence interval for b1</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;sample data&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dX</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">+</span> <span class="n">slope</span><span class="o">*</span><span class="n">dX</span><span class="p">,</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;linear regression model&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dX</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">+</span> <span class="n">slope_upper</span><span class="o">*</span><span class="n">dX</span><span class="p">,</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;alpha = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; confidence interval&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dX</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">+</span> <span class="n">slope_lower</span><span class="o">*</span><span class="n">dX</span><span class="p">,</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;The model parameters confidence intervals at &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; significance level:&#39;</span><span class="p">,[</span><span class="mf">1.3</span><span class="p">,</span><span class="mi">24</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Slope: P&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">alpha</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; = &#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">slope_lower</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39; , P&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">slope_upper</span><span class="p">,</span><span class="mi">2</span><span class="p">)),[</span><span class="mf">1.5</span><span class="p">,</span><span class="mi">23</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">dX</span><span class="p">,</span><span class="n">intercept</span> <span class="o">+</span> <span class="n">slope_upper</span><span class="o">*</span><span class="n">dX</span><span class="p">,</span><span class="n">intercept</span> <span class="o">+</span> <span class="n">slope_lower</span><span class="o">*</span><span class="n">dX</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sample Data, Linear Regression Model and Slope Confidence Intervals&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Density ($g/cm^3$)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Porosity (%)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/0bbbe3bf373fd68d3772e3c17b50ebbc962bfa52dfe9696bbbcf88f2260be693.png" src="_images/0bbbe3bf373fd68d3772e3c17b50ebbc962bfa52dfe9696bbbcf88f2260be693.png" />
+</div>
+</div>
+</section>
+<section id="model-prediction-intervals">
+<h2>Model Prediction Intervals<a class="headerlink" href="#model-prediction-intervals" title="Permalink to this heading">#</a></h2>
+<p>Let’s calculate the prediction intervals.</p>
+<p>\begin{equation}
+\hat{y}<em>{n+1} ± t</em>{(\frac{\alpha}{2},n-2)} \sqrt{MSE}\ \times \sqrt{1+\frac{1}{n}+\frac{(x_{n+1}-\overline{x})^2}{\sum_{i=1}^{n}(x_{i}-\overline{x})^2}  }
+\end{equation}</p>
+<p>Note, this is the standard error of the prediction,</p>
+<p>\begin{equation}
+SE_{\hat{y}<em>{n+1}} = \sqrt{MSE}\ \times \sqrt{1+\frac{1}{n}+\frac{(x</em>{n+1}-\overline{x})^2}{\sum_{i=1}^{n}(x_{i}-\overline{x})^2}  }
+\end{equation}</p>
+<p>where MSE, model mean square error calculated as,</p>
+<p>\begin{equation}
+MSE = \sum_{i=1}^n\frac{(y_i - \hat{y}<em>i)^2}{n-2} = \sum</em>{i=1}^n \frac{\left(y_i - (b_1 x - b_0) \right)^2}{n-2}
+\end{equation}</p>
+<p>Note, that this indicates that prediction intervals are wider the further we estimate from the mean of the predictor feature values. We can substitute model MSE, MSE, and standard error of the estimate, <span class="math notranslate nohighlight">\(SE_{\hat{y}_{n+1}}\)</span> for the final form is,</p>
+<p>\begin{equation}
+\hat{y}<em>{n+1} ± t</em>{(\frac{\alpha}{2},n-2)} \sqrt{\sum_{i=1}^n \frac{\left(y_i - (b_1 x - b_0) \right)^2}{n-2}}\sqrt{1+\frac{1}{n}+\frac{(x_{n+1}-\overline{x})^2}{\sum_{i=1}^{n}(x_{i}-\overline{x})^2}  }
+\end{equation}</p>
+<p>Now let’s demonstrate a prediction interval.</p>
+<ul class="simple">
+<li><p>select a X value, new_X below as the input, and the alpha level for the prediction interval, i.e., alpha = 0.05 results in the P025 and P975 results to define the interval</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_X</span> <span class="o">=</span> <span class="mf">2.00</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
+
+<span class="n">tstat</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">ppf</span><span class="p">([</span><span class="n">alpha</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="o">/</span><span class="mi">2</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">yhat</span> <span class="o">=</span> <span class="n">intercept</span> <span class="o">+</span> <span class="n">slope</span><span class="o">*</span><span class="n">x</span>
+<span class="n">MSE</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">yhat</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># mean square error</span>
+<span class="n">est_stderr</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">MSE</span><span class="p">)</span> \
+      <span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">new_X</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span> \
+      <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="mi">2</span><span class="p">)))</span>
+
+<span class="n">y_pred_lower</span><span class="p">,</span> <span class="n">y_pred_upper</span> <span class="o">=</span> <span class="n">intercept</span> <span class="o">+</span> <span class="n">slope</span><span class="o">*</span><span class="n">new_X</span> <span class="o">+</span> <span class="n">tstat</span><span class="o">*</span><span class="n">est_stderr</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;sample data&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dX</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">+</span> <span class="n">slope</span><span class="o">*</span><span class="n">dX</span><span class="p">,</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;linear regression model&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">new_X</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">+</span> <span class="n">slope</span><span class="o">*</span><span class="n">new_X</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;prediction, $\hat</span><span class="si">{y}</span><span class="s1">$&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">new_X</span><span class="p">,</span><span class="n">new_X</span><span class="p">],[</span><span class="n">y_pred_lower</span><span class="p">,</span><span class="n">y_pred_upper</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;prediction interval&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Sample Data, Linear Regression Model and Prediction Interval, $\alpha = $&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">alpha</span><span class="p">));</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Density ($g/cm^3$)&#39;</span><span class="p">);</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Porosity (%)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">22</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">2.4</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.4</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/5a6dd7728637e0e475487e0a80b773a4446a401a945fb86809c1c1febb8c575d.png" src="_images/5a6dd7728637e0e475487e0a80b773a4446a401a945fb86809c1c1febb8c575d.png" />
+</div>
+</div>
 </section>
 <section id="prediction">
 <h2>Prediction<a class="headerlink" href="#prediction" title="Permalink to this heading">#</a></h2>
@@ -1000,8 +1310,14 @@ The slope P02.5 and P97.5 are [-12.8  -7.8]
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;training data&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;darkorange&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">markeredgecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_hat</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;training data&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;darkorange&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">markeredgecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_hat</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;prediction&#39;</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;grey&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dX</span><span class="p">,</span><span class="n">dX</span><span class="o">*</span><span class="n">slope</span><span class="o">+</span><span class="n">intercept</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;model&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">idata</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">idata</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="n">idata</span><span class="p">],</span><span class="n">x</span><span class="p">[</span><span class="n">idata</span><span class="p">]],[</span><span class="n">y</span><span class="p">[</span><span class="n">idata</span><span class="p">],</span><span class="n">y_hat</span><span class="p">[</span><span class="n">idata</span><span class="p">]],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\Delta_</span><span class="si">{y_i}</span><span class="s1">$&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>  
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="n">idata</span><span class="p">],</span><span class="n">x</span><span class="p">[</span><span class="n">idata</span><span class="p">]],[</span><span class="n">y</span><span class="p">[</span><span class="n">idata</span><span class="p">],</span><span class="n">y_hat</span><span class="p">[</span><span class="n">idata</span><span class="p">]],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Comparison of Training Data vs. Model&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">xname</span> <span class="o">+</span> <span class="s1">&#39; (&#39;</span> <span class="o">+</span> <span class="n">xunit</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">yname</span> <span class="o">+</span> <span class="s1">&#39; (&#39;</span> <span class="o">+</span> <span class="n">yunit</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span><span class="p">)</span>
@@ -1011,10 +1327,10 @@ The slope P02.5 and P97.5 are [-12.8  -7.8]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/df66b9d83eec47ed0d7fa04903723191f4c1fe292cb10777e0db00a7ab36903f.png" src="_images/df66b9d83eec47ed0d7fa04903723191f4c1fe292cb10777e0db00a7ab36903f.png" />
+<img alt="_images/c0b53c83c8aa3c23ee1636d164da4a46e45d2410df17b6670670dd5d04980935.png" src="_images/c0b53c83c8aa3c23ee1636d164da4a46e45d2410df17b6670670dd5d04980935.png" />
 </div>
 </div>
-<p>Next let’s calculate the error residual,</p>
+<p>See the plotted error residuals,</p>
 <div class="math notranslate nohighlight">
 \[
 \Delta y_i = y_i - \hat{y}_i
@@ -1026,6 +1342,7 @@ The slope P02.5 and P97.5 are [-12.8  -7.8]
 <li><p>the shape is not skewed</p></li>
 <li><p>there are no outliers</p></li>
 </ul>
+<p>Let’s look at the error residual distribution.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">residual</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">y_hat</span>
@@ -1033,6 +1350,8 @@ The slope P02.5 and P97.5 are [-12.8  -7.8]
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">residual</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;darkorange&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">30</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Error Residual at Training Data&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">yname</span> <span class="o">+</span> <span class="s1">&#39; True - Estimate (%)&#39;</span><span class="p">);</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">4.2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">residual</span><span class="p">),</span><span class="mi">0</span><span class="p">,</span><span class="mf">4.2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">4.2</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Residual Average = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">residual</span><span class="p">),</span><span class="mi">2</span><span class="p">)),[</span><span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">residual</span><span class="p">)</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">2.5</span><span class="p">],</span><span class="n">rotation</span><span class="o">=</span><span class="mf">90.0</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The average of the residuals is &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">residual</span><span class="p">),</span><span class="mi">2</span><span class="p">)))</span>
@@ -1040,7 +1359,7 @@ The slope P02.5 and P97.5 are [-12.8  -7.8]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e10cb9924bfd9f582b28b1ce2cf168e8a2d1f08eb431a2688cc2812973829bb4.png" src="_images/e10cb9924bfd9f582b28b1ce2cf168e8a2d1f08eb431a2688cc2812973829bb4.png" />
+<img alt="_images/1bc994acb07d204d76581a13525e09733c2f17f2105bbd67f0005fbc0001ac0e.png" src="_images/1bc994acb07d204d76581a13525e09733c2f17f2105bbd67f0005fbc0001ac0e.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The average of the residuals is 0.0
 </pre></div>
 </div>
@@ -1082,16 +1401,24 @@ The slope P02.5 and P97.5 are [-12.8  -7.8]
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
-<p>I hope you found this chapter helpful. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a>,</p>
+<p>This was a basic treatment of linear regression. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
+<p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
-<section id="the-author">
-<h2>The Author:<a class="headerlink" href="#the-author" title="Permalink to this heading">#</a></h2>
-<p>Michael Pyrcz, Professor, The University of Texas at Austin
-<em>Novel Data Analytics, Geostatistics and Machine Learning Subsurface Solutions</em></p>
-<p>With over 17 years of experience in subsurface consulting, research and development, Michael has returned to academia driven by his passion for teaching and enthusiasm for enhancing engineers’ and geoscientists’ impact in subsurface resource development.</p>
-<p>For more about Michael check out these links:</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a> | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<section id="about-the-author">
+<h2>About the Author<a class="headerlink" href="#about-the-author" title="Permalink to this heading">#</a></h2>
+<figure style="text-align: center;">
+  <img src="_static/intro/michael_pyrcz_officeshot_jacket.jpg" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
+</figcaption>
+</figure>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<ul class="simple">
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
+</ul>
+<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
@@ -1104,9 +1431,7 @@ The slope P02.5 and P97.5 are [-12.8  -7.8]
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-</section>
-<section id="more-resources-available-at-twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin">
-<h2>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin" title="Permalink to this heading">#</a></h2>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -1175,6 +1500,10 @@ The slope P02.5 and P97.5 are [-12.8  -7.8]
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivations-for-linear-regression">Motivations for Linear Regression</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Linear Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analytical-solution">Analytical Solution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression-training">Linear Regression Training</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-the-model">Checking the Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-uncertainty">Model Uncertainty</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
@@ -1183,14 +1512,15 @@ The slope P02.5 and P97.5 are [-12.8  -7.8]
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-statistics-for-tabular-data">Summary Statistics for Tabular Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-visualization">Data Visualization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression-model">Linear Regression Model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-checking-with-hypothesis-testing-and-r-2-values">Model Checking with Hypothesis Testing and <span class="math notranslate nohighlight">\(r^2\)</span> Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-checking-with-r-2-values">Model Checking with <span class="math notranslate nohighlight">\(r^2\)</span> Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-checking-with-hypothesis-testing">Model Checking with Hypothesis Testing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-intervals-for-model-uncertainty">Confidence Intervals for Model Uncertainty</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-prediction-intervals">Model Prediction Intervals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediction">Prediction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-prediction-error">Checking Prediction Error</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | Applied Geostats in Python e-book | LinkedIn</a></li>
 </ul>
   </nav></div>
 

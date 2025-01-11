@@ -167,7 +167,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Applied Machine Learning in Python: a Hands-on Guide with Code
+                    Introduction
                 </a>
             </li>
         </ul>
@@ -420,9 +420,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonal-polynomials">Orthogonal Polynomials</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polynomial-regression-in-scikit-learn-with-pipelines">Polynomial Regression in scikit-learn with Pipelines</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | Applied Geostats in Python e-book | LinkedIn</a></li>
 </ul>
             </nav>
         </div>
@@ -440,7 +439,7 @@ document.write(`
 <section id="polynomial-regression">
 <h1>Polynomial Regression<a class="headerlink" href="#polynomial-regression" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite this e-Book as:</p>
@@ -469,23 +468,60 @@ document.write(`
 <li><p>add prediction flexibility by modeling non-linearity in our data</p></li>
 <li><p>build on the feature engineering concept of feature expansion</p></li>
 </ul>
-<p>while benefiting from the analytical solutions for training model parameters like linear regression. Let’s start with linear regression and then build summarize polynomial regression.</p>
+<p>while benefiting from the analytical solutions for training model parameters like linear regression. Let’s start with linear regression and then build to polynomial regression.</p>
 </section>
 <section id="linear-regression">
 <h2>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this heading">#</a></h2>
-<p>Linear regression for prediction. Here are some key aspects of linear regression:</p>
+<p>Linear regression for prediction, let’s start by looking at a linear model fit to a set of data.</p>
+<figure style="text-align: center;">
+  <img src="_static/linear/linear_example.png" style="display: block; margin: 0 auto; width: 50%;">
+  <figcaption style="text-align: center;">Example linear regression model.</figcaption>
+</figure>
+<p>Let’s start by defining some terms,</p>
+<ul class="simple">
+<li><p><strong>predictor feature</strong> - an input feature for the prediction model, given we are only discussing linear regression and not multilinear regression we have only one predictor feature, <span class="math notranslate nohighlight">\(x\)</span>. On out plots (including above) the predictor feature is on the x-axis.</p></li>
+<li><p><strong>response feature</strong> - the output feature for the prediction model, in this case, <span class="math notranslate nohighlight">\(y\)</span>. On our plots (including above) the response feature is on the y-axis.</p></li>
+</ul>
+<p>Now, here are some key aspects of linear regression:</p>
 <p><strong>Parametric Model</strong></p>
+<p>This is a parametric predictive machine learning model, we accept an a prior assumption of linearity and then gain a very low parametric representation that is easy to train without a onerous amount of data.</p>
 <ul class="simple">
 <li><p>the fit model is a simple weighted linear additive model based on all the available features, <span class="math notranslate nohighlight">\(x_1,\ldots,x_m\)</span>.</p></li>
-<li><p>the model takes the form of <span class="math notranslate nohighlight">\(y = \sum_{\alpha = 1}^m b_{\alpha} x_{\alpha} + b_0\)</span></p></li>
+<li><p>the parametric model takes the form of:</p></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[
+y = \sum_{\alpha = 1}^m b_{\alpha} x_{\alpha} + b_0
+\]</div>
+<p>Here’s the visualization of the linear model parameters,</p>
+<figure style="text-align: center;">
+  <img src="_static/linear/linear_model.png" style="display: block; margin: 0 auto; width: 50%;">
+  <figcaption style="text-align: center;">The linear model parameters.</figcaption>
+</figure>
 <p><strong>Least Squares</strong></p>
+<p>The analytical solution for the model parameters, <span class="math notranslate nohighlight">\(b_1,\ldots,b_m,b_0\)</span>, is available for the L2 norm loss function, the errors are summed and squared known a least squares.</p>
 <ul class="simple">
-<li><p>least squares optimization is applied to select the model parameters, <span class="math notranslate nohighlight">\(b_1,\ldots,b_m,b_0\)</span></p></li>
-<li><p>we minimize the error over the training data <span class="math notranslate nohighlight">\(\sum_{i=1}^n (y_i - (\sum_{\alpha = 1}^m b_{\alpha} x_{\alpha} + b_0))^2\)</span></p></li>
-<li><p>this could be simplified as the sum of square error over the training data, <span class="math notranslate nohighlight">\(\sum_{i=1}^n (\Delta y_i)^2\)</span></p></li>
+<li><p>we minimize the error, residual sum of squares (RSS) over the training data:</p></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[
+RSS = \sum_{i=1}^n \left(y_i - (\sum_{\alpha = 1}^m b_{\alpha} x_{\alpha,i} + b_0) \right)^2
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(y_i\)</span> is the actual response feature values and <span class="math notranslate nohighlight">\(\sum_{\alpha = 1}^m b_{\alpha} x_{\alpha} + b_0\)</span> are the model predictions, over the <span class="math notranslate nohighlight">\(\alpha = 1,\ldots,n\)</span> training data.</p>
+<p>Here’s a visualization of the L2 norm loss function, MSE,</p>
+<figure style="text-align: center;">
+  <img src="_static/linear/linear_MSE.png" style="display: block; margin: 0 auto; width: 50%;">
+  <figcaption style="text-align: center;">The linear model loss function, mean square error.</figcaption>
+</figure>
+<ul class="simple">
+<li><p>this may be simplified as the sum of square error over the training data,</p></li>
+</ul>
+<p>\begin{equation}
+\sum_{i=1}^n (\Delta y_i)^2
+\end{equation}</p>
+<p>where <span class="math notranslate nohighlight">\(\Delta y_i\)</span> is actual response feature observation <span class="math notranslate nohighlight">\(y_i\)</span> minus the model prediction <span class="math notranslate nohighlight">\(\sum_{\alpha = 1}^m b_{\alpha} x_{\alpha} + b_0\)</span>, over the <span class="math notranslate nohighlight">\(i = 1,\ldots,n\)</span> training data.</p>
 <p><strong>Assumptions</strong></p>
+<p>There are important assumption with our linear regression model,</p>
 <ul class="simple">
 <li><p><strong>Error-free</strong> - predictor variables are error free, not random variables</p></li>
 <li><p><strong>Linearity</strong> - response is linear combination of feature(s)</p></li>
@@ -505,6 +541,10 @@ h(x_i) = (h_1(x_i),h_1(x_i),\ldots,h_k(x_i))
 <ul class="simple">
 <li><p>if we had <span class="math notranslate nohighlight">\(m\)</span> features in our data table, we now have <span class="math notranslate nohighlight">\(k \times m\)</span> features</p></li>
 </ul>
+<figure style="text-align: center;">
+  <img src="_static/polynomial/basis_expansion.png" style="display: block; margin: 0 auto; width: 90%;">
+  <figcaption style="text-align: center;">Basis expansion of predictor $m$ features with $k$ basis functions to $m \times k$ expanded features.</figcaption>
+</figure>
 </section>
 <section id="id1">
 <h2>Polynomial Regression<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
@@ -1237,7 +1277,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f46ef7608edadc18a6411549ea45620ca8798d0aa101ac7b76ccc5cd74f931cd.png" src="_images/f46ef7608edadc18a6411549ea45620ca8798d0aa101ac7b76ccc5cd74f931cd.png" />
+<img alt="_images/c5b210c6b4f3fe60ec653f9f2c1b74bc60b4c4677c9440c2bd84f626d4cad3d1.png" src="_images/c5b210c6b4f3fe60ec653f9f2c1b74bc60b4c4677c9440c2bd84f626d4cad3d1.png" />
 </div>
 </div>
 <p>Let’s visualize the polynomial expansion over the Gaussian transformed depth.</p>
@@ -1426,7 +1466,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6a6442a8967709de7b5caf0884e1d81f5370ac13bf86374161aca1110c1149bf.png" src="_images/6a6442a8967709de7b5caf0884e1d81f5370ac13bf86374161aca1110c1149bf.png" />
+<img alt="_images/306daad7ffb935dddbb13a7184a5742d130058d33f5a12730183d374c4051a6a.png" src="_images/306daad7ffb935dddbb13a7184a5742d130058d33f5a12730183d374c4051a6a.png" />
 </div>
 </div>
 <p>We can check the arithmetic averages of all the Hermite basis expansions.</p>
@@ -1651,10 +1691,10 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x2d23b51ed30&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x1ec13532100&gt;
 </pre></div>
 </div>
-<img alt="_images/2878453ab5e42a10212e07d3d6a773e4541da416bdad5605edd618b7023ce178.png" src="_images/2878453ab5e42a10212e07d3d6a773e4541da416bdad5605edd618b7023ce178.png" />
+<img alt="_images/44d9ba5438df83dfcd77951e7dfbf6b0c62d4f6005a8e040099071498fa22f45.png" src="_images/44d9ba5438df83dfcd77951e7dfbf6b0c62d4f6005a8e040099071498fa22f45.png" />
 </div>
 </div>
 <p>Let’s visualize orthogonal polynomial basis orders over the range of the standardized depth.</p>
@@ -1779,17 +1819,24 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
-<p>Polynomial regression is a flexible method for modeling nonlinear data and it introduces the concept of basis expansion.</p>
-<p>I hope you found this chapter helpful. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a>.</p>
+<p>This was a basic treatment of polynomial regression. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
+<p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
-<section id="the-author">
-<h2>The Author:<a class="headerlink" href="#the-author" title="Permalink to this heading">#</a></h2>
-<p>Michael Pyrcz, Professor, The University of Texas at Austin
-<em>Novel Data Analytics, Geostatistics and Machine Learning Subsurface Solutions</em></p>
-<p>With over 17 years of experience in subsurface consulting, research and development, Michael has returned to academia driven by his passion for teaching and enthusiasm for enhancing engineers’ and geoscientists’ impact in subsurface resource development.</p>
-<p>For more about Michael check out these links:</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a> | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<section id="about-the-author">
+<h2>About the Author<a class="headerlink" href="#about-the-author" title="Permalink to this heading">#</a></h2>
+<figure style="text-align: center;">
+  <img src="_static/intro/michael_pyrcz_officeshot_jacket.jpg" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
+</figcaption>
+</figure>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<ul class="simple">
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
+</ul>
+<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
@@ -1802,9 +1849,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-</section>
-<section id="more-resources-available-at-twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin">
-<h2>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin" title="Permalink to this heading">#</a></h2>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -1895,9 +1940,8 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonal-polynomials">Orthogonal Polynomials</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polynomial-regression-in-scikit-learn-with-pipelines">Polynomial Regression in scikit-learn with Pipelines</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | Applied Geostats in Python e-book | LinkedIn</a></li>
 </ul>
   </nav></div>
 

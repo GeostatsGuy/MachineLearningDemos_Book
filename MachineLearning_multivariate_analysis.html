@@ -167,7 +167,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Applied Machine Learning in Python: a Hands-on Guide with Code
+                    Introduction
                 </a>
             </li>
         </ul>
@@ -403,6 +403,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#design-custom-color-map">Design Custom Color Map</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-correlation">Visualizing Correlation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impact-of-outliers-on-correlation-coefficients">Impact of Outliers on Correlation Coefficients</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-tabular-data">Loading Tabular Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-dataframe">Visualize the DataFrame</a></li>
@@ -413,7 +415,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-correlation-matrix">Visualize the Correlation Matrix</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spearman-s-rank-correlation-coefficient">Spearman’s Rank Correlation Coefficient</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-pearson-and-spearman-correlation">Compare Pearson and Spearman Correlation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-pearson-and-spearman-correlation-with-a-paradola">Compare Pearson and Spearman Correlation with a Paradola</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-pearson-and-spearman-correlation-with-a-parabola">Compare Pearson and Spearman Correlation with a Parabola</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-with-multiple-populations">Correlation with Multiple Populations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simpson-s-paradox">Simpson’s Paradox</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-correlation-and-rank-correlation-matrices">Plot Correlation and Rank Correlation Matrices</a></li>
@@ -422,10 +424,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-conditional-and-marginals">Joint, Conditional and Marginals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-conditional-statistics">Calculating Conditional Statistics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube | Applied Geostats in Python e-book | LinkedIn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | Applied Geostats in Python e-book | LinkedIn</a></li>
 </ul>
             </nav>
         </div>
@@ -443,7 +443,7 @@ document.write(`
 <section id="multivariate-analysis">
 <h1>Multivariate Analysis<a class="headerlink" href="#multivariate-analysis" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite this e-Book as:</p>
@@ -477,26 +477,46 @@ document.write(`
 </section>
 <section id="bivariate-analysis">
 <h2>Bivariate Analysis<a class="headerlink" href="#bivariate-analysis" title="Permalink to this heading">#</a></h2>
-<p>Understand and quantify the relationship between two variables</p>
+<p>Understand and quantify the relationship between two variables, i.e., the bivariate probability density function, <span class="math notranslate nohighlight">\(f_{x,y}(x,y)\)</span>, for example,</p>
 <ul class="simple">
-<li><p>example: relationship between porosity and permeability</p></li>
-<li><p>how can we use this relationship?</p></li>
+<li><p>porosity and permeability</p></li>
+<li><p>fraction of shale and oil recovery</p></li>
+<li><p>copper and gold</p></li>
+<li><p>basal area and tree height</p></li>
 </ul>
-<p>What would be the impact if we ignore this relationship and simply modeled porosity and permeability independently?</p>
+<p>How can we use these relationships? To improve our prediction models and ultimately make better decisions.</p>
+<p>What would be the impact if we ignore these relationships and simply modeled each feature separately?</p>
 <ul class="simple">
-<li><p>no relationship beyond constraints at data locations</p></li>
-<li><p>independent away from data</p></li>
-<li><p>nonphysical results, unrealistic uncertainty models</p></li>
+<li><p><strong>assumption of independence</strong> - there will be no relationship between our estimates or simulated realizations, the joint probability density function will not be reproduced and unrealistic combinations may occur, e.g., very high permeability with very low porosity</p></li>
+<li><p><strong>data conditioning</strong> - will impose the relationship at data locations. The geostatistics models honor the data at the data locations and the data scatter plot is the correct relationship, but away from the data this relationship will fade</p></li>
 </ul>
+<p>Here’s an example of an interesting bivariate relationship. When we scatter plot the data and plot the facies we can see the natural groups with respect to porosity and permeability. Clearly, considering only porosity or permeability would not be sufficient to understand this data.</p>
+<figure style="text-align: center;">
+  <img src="_static/multivariate/bivariate_example.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;">Example of a complicated bivariate relationship.</figcaption>
+</figure>
+<p>Bivariate statistics are our tools to quantify and impose these bivariate relationships in our geostatistical models.</p>
 </section>
 <section id="bivariate-statistics">
 <h2>Bivariate Statistics<a class="headerlink" href="#bivariate-statistics" title="Permalink to this heading">#</a></h2>
-<p>Pearson’s Product‐Moment Correlation Coefficient</p>
+<p><strong>Pearson’s Product‐Moment Correlation Coefficient</strong> or just the correlation coefficient or just correlation, is a widely-known bivariate statistic, if you say 0.9 correlation most engineers and scientists can visualize this! Here’s the important points and limitations for the correlation coefficient,</p>
 <ul class="simple">
-<li><p>Provides a measure of the degree of linear relationship.</p></li>
-<li><p>We refer to it as the ‘correlation coefficient’</p></li>
+<li><p>the notation for correlation is, <span class="math notranslate nohighlight">\(\rho_{x,y}\)</span></p></li>
+<li><p>provides a measure of the degree of linear relationship, i.e., nonlinear relationships will bias the correlation coefficient</p></li>
+<li><p>is very sensitive to outliers, i.e., a single extreme outlier can significantly increase or reduce the apparent correlation</p></li>
 </ul>
-<p>Let’s review the sample variance of variable <span class="math notranslate nohighlight">\(x\)</span>. Of course, I’m truncating our notation as <span class="math notranslate nohighlight">\(x\)</span> is a set of samples a locations in our modeling space, <span class="math notranslate nohighlight">\(x(\bf{u_\alpha}), \, \forall \, \alpha = 0, 1, \dots, n - 1\)</span>.</p>
+<p>There are some other deeper points that should be made about the Gaussian assumption,</p>
+<ul class="simple">
+<li><p>the correlation coefficient provides a complete description for the bivariate relationship only under the assumption of bivariate Gaussianity. If we assume Gaussian, then the means, <span class="math notranslate nohighlight">\(\overline{x}\)</span> and <span class="math notranslate nohighlight">\(\overline{y}\)</span>, standard deviations, <span class="math notranslate nohighlight">\(s_x\)</span> and <span class="math notranslate nohighlight">\(s_y\)</span>, with the correlation coefficient, <span class="math notranslate nohighlight">\(\rho_{x,y}\)</span> completely describe the bivariate probability density function <span class="math notranslate nohighlight">\(f_{x,y}(x,y)\)</span></p></li>
+<li><p>for any other distributions, the correlation coefficient is not sufficient to know the entire, bivariate probability density function <span class="math notranslate nohighlight">\(f_{x,y}(x,y)\)</span>, e.g., to calculate conditional distributions, <span class="math notranslate nohighlight">\(f_{x|y}\)</span></p></li>
+<li><p>the standard approach in geostatistics is to apply Gaussian anamorphosis to each feature and then to assume bivariate Gaussian so that the correlation coefficient is sufficient to describe the relationship between the two features</p></li>
+</ul>
+<p>What about spatial bivariate relationship?</p>
+<ul class="simple">
+<li><p>the full cokriging system includes cross variograms and cross covariance that capture the relationships between two features over space! But due to the difficulty of inferring and modeling the required linear model of coregionalization, this is rarely done.</p></li>
+<li><p>instead a simplifying apply like collocated cokriging is applied that only retains the collocated secondary data and limits the model of bivariate relationship to the collocated (lag <span class="math notranslate nohighlight">\(\bf{h}\)</span> of 0.0) correlation coefficient</p></li>
+</ul>
+<p>More could be done! Let’s review the sample variance of variable <span class="math notranslate nohighlight">\(x\)</span>. Of course, I’m truncating our notation as <span class="math notranslate nohighlight">\(x\)</span> is a set of samples a locations in our modeling space, <span class="math notranslate nohighlight">\(x(\bf{u_\alpha}), \, \forall \, \alpha = 0, 1, \dots, n - 1\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[
 \sigma^2_{x}  = \frac{\sum_{i=1}^{n} (x_i - \overline{x})^2}{(n-1)}
@@ -516,10 +536,19 @@ C_{xy}  = \frac{\sum_{i=1}^{n} (x_i - \overline{x})(y_i - \overline{y})}{(n-1)}
 \[
 \rho_{xy}  = \frac{C_{xy}}{\sigma_x \sigma_y}
 \]</div>
-<p>The Person’s correlation coefficient is quite sensitive to outliers and departure from linear behavior (in the bivariate sense).  We have an alternative known as the Spearman’s rank correlations coefficient.</p>
+<p>To help you calibrate you eye to the correlation coefficient I developed an interactive <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_Correlation_Coefficient.ipynb">correlation dashboard</a>.</p>
+<ul class="simple">
+<li><p>for the bivariate Gaussian case vary the correlation coefficient and observe the samples, condition expectation and joint probability density</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/multivariate/correlation.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;">Interactive Python dashboard for visualizing correlation coefficient.</figcaption>
+</figure>
+<p>The Person’s correlation coefficient is quite sensitive to outliers and departure from linear behavior (in the bivariate sense).</p>
+<p>For an more robust correlation measure in the presence of outliers and nonlinearity, we have an alternative known as the Spearman’s rank correlations coefficient.</p>
 <div class="math notranslate nohighlight">
 \[
-\rho_{R_x R_y}  = \frac{\sum_{i=1}^{n} (R_{x_i} - \overline{R_x})(R_{y_i} - \overline{R_y})}{(n-1)\sigma_{R_x} \sigma_{R_y}}, \, -1.0 \le \rho_{xy} \le 1.0
+\rho_{R_x R_y}  = \frac{\sum_{i=1}^{n} (R_{x_i} - \overline{R_x})(R_{y_i} - \overline{R_y})}{(n-1)\sigma_{R_x} \sigma_{R_y}}, \, -1.0 \le \rho_{R_x,R_y} \le 1.0
 \]</div>
 <p>The rank correlation applies the rank transform to the data prior to calculating the correlation coefficient.  To calculate the rank transform simply replace the data values with the rank <span class="math notranslate nohighlight">\(R_x = 1,\dots,n\)</span>, where <span class="math notranslate nohighlight">\(n\)</span> is the maximum value and <span class="math notranslate nohighlight">\(1\)</span> is the minimum value.</p>
 <div class="math notranslate nohighlight">
@@ -530,15 +559,27 @@ x_\alpha, \, \forall \alpha = 1,\dots, n, \, | \, x_i \ge x_j \, \forall \, i \g
 \[
 R_{x_i} = i
 \]</div>
-<p>The correlation coefficients provide useful metrics to quantify relationships between two variables at a time. We can also consider bivariate scatter plots and matrix scatter plots to visualize multivariate data. In general, current practical subsurface modeling is bivariate, two variables at a time.</p>
+<p>To compare Pearson and rank correlation in the presence of an outlier I developed this <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_Correlation_Coefficient_Issues.ipynb">correlation outlier dashboard</a>,</p>
+<figure style="text-align: center;">
+  <img src="_static/multivariate/correlation_outlier.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;">Interactive Python dashboard for visualizing correlation coefficient.</figcaption>
+</figure>
+<p>The correlation coefficients provide useful metrics to quantify relationships between two variables at a time. We can also consider bivariate scatter plots and matrix scatter plots to visualize multivariate data.</p>
+<ul class="simple">
+<li><p>remember, current practical subsurface modeling is bivariate, two variables at a time</p></li>
+</ul>
 </section>
 <section id="multivariate-statistics">
 <h2>Multivariate Statistics<a class="headerlink" href="#multivariate-statistics" title="Permalink to this heading">#</a></h2>
-<p>See my lecture on <a class="reference external" href="https://youtu.be/Ui2El5CZPRE?si=uA_IqurENzC6Owbg">Multivariate Analysis</a> that includes more on multivariate statistics, including the concepts of joint, conditional and marginal probability. For convenience I summarize some concepts here.</p>
-<p>For example, if we define a probability density function (PDF) of feature <span class="math notranslate nohighlight">\(X_1\)</span> as,</p>
+<p>While we are limited to bivariate models, we need to understand some multivariate methods to work with multivariate data.</p>
+<ul class="simple">
+<li><p>only a short summary is provided here, see the discussion on joint and conditional probabilities and distributions in the <span class="xref myst">Probability Concepts</span> chapter</p></li>
+<li><p>see my lecture on <a class="reference external" href="https://youtu.be/Ui2El5CZPRE?si=uA_IqurENzC6Owbg">Multivariate Analysis</a></p></li>
+</ul>
+<p>Here’s a short summary of multivariate statistics. If we define a probability density function (PDF) of feature <span class="math notranslate nohighlight">\(X_1\)</span> as,</p>
 <div class="math notranslate nohighlight">
 \[
-f_X(x)
+f_{X_1}(x_1)
 \]</div>
 <p>we can extend the definition to a joint PDF for any arbitrary number, e.g., <span class="math notranslate nohighlight">\(m\)</span>, features as,</p>
 <div class="math notranslate nohighlight">
@@ -595,6 +636,8 @@ f_{Y | X_1, \ldots, X_m}(y | x_1,\ldots,x_m)
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                                            <span class="c1"># ndarrays for gridded data</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                                           <span class="c1"># DataFrames for tabular data</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>                                       <span class="c1"># summary statistics</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">pearsonr</span>                              <span class="c1"># Pearson product moment correlation</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">spearmanr</span>                             <span class="c1"># spearman rank correlation</span>
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">rankdata</span>                              <span class="c1"># rank data for visualization</span>
 <span class="kn">import</span> <span class="nn">copy</span>                                                   <span class="c1"># for deep copies</span>
 <span class="kn">import</span> <span class="nn">os</span>                                                     <span class="c1"># set working directory, run executables</span>
@@ -679,6 +722,84 @@ f_{Y | X_1, \ldots, X_m}(y | x_1,\ldots,x_m)
 </div>
 </div>
 </div>
+</section>
+<section id="visualizing-correlation">
+<h2>Visualizing Correlation<a class="headerlink" href="#visualizing-correlation" title="Permalink to this heading">#</a></h2>
+<p>Before we load data, let’s make some synthetic bivariate Gaussian data on the fly and calculate the correlation coefficient.</p>
+<ul class="simple">
+<li><p>this will help us calibrate our eye to correlation, in the Gaussian case where it perfectly describes the relationship</p></li>
+</ul>
+<p>You can specify 4 correlation coefficients and the number of data and then rerun this block to visualize the scatter plots.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corr_mat</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.96</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.7</span><span class="p">];</span> <span class="n">ndata</span> <span class="o">=</span> <span class="mi">1000</span>                   <span class="c1"># set the correlation coefficient, number of samples</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">corr</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">corr_mat</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>                                     <span class="c1"># make the bivariate Gaussian data</span>
+    <span class="n">correl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">,</span><span class="n">corr</span><span class="p">],[</span><span class="n">corr</span><span class="p">,</span><span class="mf">1.0</span><span class="p">]],</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span> <span class="o">=</span> <span class="n">seed</span><span class="p">)</span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span><span class="n">correl</span><span class="p">,</span><span class="n">size</span> <span class="o">=</span> <span class="n">ndata</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">sample</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">sample</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span><span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Samples&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">3.0</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">3.0</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x_1$&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$X_2$&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Bivariate Standard Gaussian Distributed Data with $\rho_{x_1,x_2} =$&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">corr</span><span class="p">,</span><span class="mi">2</span><span class="p">)))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c879d92e61440a7ca49a6351009408e1166cd04c0a7ca7ffa30754eb86452bb4.png" src="_images/c879d92e61440a7ca49a6351009408e1166cd04c0a7ca7ffa30754eb86452bb4.png" />
+</div>
+</div>
+</section>
+<section id="impact-of-outliers-on-correlation-coefficients">
+<h2>Impact of Outliers on Correlation Coefficients<a class="headerlink" href="#impact-of-outliers-on-correlation-coefficients" title="Permalink to this heading">#</a></h2>
+<p>Let’s observe the impact of a single outlier on the correlation coefficient.</p>
+<ul class="simple">
+<li><p>compare Person product moment and Spearman rank correlation coefficient</p></li>
+</ul>
+<p>How to run this example?</p>
+<ul class="simple">
+<li><p>set the original data correlation, defaulted as 0.0, no correlation</p></li>
+<li><p>set the number of data in the original sample with correlation</p></li>
+<li><p>set the sample <span class="math notranslate nohighlight">\(x_{n+1},y_{n+1}\)</span>, to be appended to the data as potentially an outlier</p></li>
+</ul>
+<p>For the case that I designed you will observe,</p>
+<ul class="simple">
+<li><p>when the new sample is in the middle of the previous data there is not a significant impact on either correlation statistic</p></li>
+<li><p>when as the new sample moves further from the sample data the correlation coefficient increases while the rank correlation coefficient remains close to the original sample correlation, it is more robust in the presence of outliers</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corr</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">outlier_mat</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">1.9</span><span class="p">];</span> <span class="n">ndata</span> <span class="o">=</span> <span class="mi">100</span>           <span class="c1"># set the correlation coefficient, number of samples</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">outlier</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">outlier_mat</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>                                     <span class="c1"># make the bivariate Gaussian data</span>
+    <span class="n">correl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">,</span><span class="n">corr</span><span class="p">],[</span><span class="n">corr</span><span class="p">,</span><span class="mf">1.0</span><span class="p">]],</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span> <span class="o">=</span> <span class="n">seed</span><span class="p">)</span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span><span class="n">correl</span><span class="p">,</span><span class="n">size</span> <span class="o">=</span> <span class="n">ndata</span><span class="p">)</span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">sample</span><span class="p">,</span> <span class="p">[</span><span class="nb">pow</span><span class="p">(</span><span class="mf">10.0</span><span class="p">,</span><span class="n">outlier</span><span class="p">),</span><span class="nb">pow</span><span class="p">(</span><span class="mf">10.0</span><span class="p">,</span><span class="n">outlier</span><span class="p">)]])</span> <span class="c1"># add outlier</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">sample</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">sample</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span><span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;samples&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span> <span class="c1"># plot result</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">sample</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">sample</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;outlier&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">100.0</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">100.0</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x_1$&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$X_2$&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Bivariate Standard Gaussian Distributed Data with $\rho_{x_1,x_2} =$&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">corr</span><span class="p">,</span><span class="mi">2</span><span class="p">)))</span>
+    <span class="n">pearson_corr</span> <span class="o">=</span> <span class="n">pearsonr</span><span class="p">(</span><span class="n">sample</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">sample</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">rank_corr</span> <span class="o">=</span> <span class="n">spearmanr</span><span class="p">(</span><span class="n">sample</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">sample</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\rho_{x_1,x_2}$ = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">pearson_corr</span><span class="p">,</span><span class="mi">3</span><span class="p">)),[</span><span class="mf">75.0</span><span class="p">,</span><span class="mf">30.0</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\rho_{R_</span><span class="si">{x_1}</span><span class="s1">,R_</span><span class="si">{x_2}</span><span class="s1">}$ = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">rank_corr</span><span class="p">,</span><span class="mi">3</span><span class="p">)),[</span><span class="mf">75.0</span><span class="p">,</span><span class="mf">25.0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/dd2afb2ce7bccc9b020992b89ab592ba2eade5862458bd30bb1dc61021e0185d.png" src="_images/dd2afb2ce7bccc9b020992b89ab592ba2eade5862458bd30bb1dc61021e0185d.png" />
+</div>
+</div>
+<p>We are ready to load some data and work with bivariate and multivariate statistics.</p>
 </section>
 <section id="set-the-working-directory">
 <h2>Set the Working Directory<a class="headerlink" href="#set-the-working-directory" title="Permalink to this heading">#</a></h2>
@@ -1089,7 +1210,7 @@ The variance of porosity is 0.000936
 </div>
 </div>
 </div>
-<p>Here’s the correlation coefficient.</p>
+<p>Here’s the correlation coefficient matrix.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">3</span><span class="p">:</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>                                         <span class="c1"># correlation matrix</span>
@@ -1163,6 +1284,34 @@ The variance of porosity is 0.000936
 <img alt="_images/83761366319655e588a2d6284fe8bda3b63be5655c93c0deb0fb5a9394b8d6d6.png" src="_images/83761366319655e588a2d6284fe8bda3b63be5655c93c0deb0fb5a9394b8d6d6.png" />
 </div>
 </div>
+<p>To calculate a single correlation coefficient with the associate p-value for significance testing we can use SciPy’s pearsonr function.</p>
+<ul class="simple">
+<li><p>the p-value indicates the <span class="math notranslate nohighlight">\(\alpha\)</span> level at which we would reject the null hypothesis that the correlation coefficient is actually 0.0 and the value is due to random effect</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corr</span><span class="p">,</span> <span class="n">corr_p_value</span> <span class="o">=</span> <span class="n">pearsonr</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">],</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Perm&#39;</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Perm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span> <span class="n">markeredgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Well Data Permeability vs. Porosity&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Porosity (fraction)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Permeability (mD)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="n">pormin</span><span class="p">,</span><span class="n">pormax</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="n">permmin</span><span class="p">,</span><span class="n">permmax</span><span class="p">]);</span> <span class="n">add_grid</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\rho_{\phi,k}$ = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">corr</span><span class="p">,</span><span class="mi">3</span><span class="p">)),[</span><span class="mf">0.075</span><span class="p">,</span><span class="mf">1600.0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\rho_{\phi,k}$, p-value = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">corr_p_value</span><span class="p">,</span><span class="mi">20</span><span class="p">)),[</span><span class="mf">0.075</span><span class="p">,</span><span class="mf">1500.0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b7686c6dc96be9614c207297741721888cbdb15bdcbf4e6d4fcf6c54f140b248.png" src="_images/b7686c6dc96be9614c207297741721888cbdb15bdcbf4e6d4fcf6c54f140b248.png" />
+</div>
+</div>
+<p>The p-value of the porosity and permeability correlation coefficient is 2.1569195170201772e-34,</p>
+<ul class="simple">
+<li><p>correlation is significantly different from 0.0 for any feasible alpha level</p></li>
+</ul>
 </section>
 <section id="spearman-s-rank-correlation-coefficient">
 <h2>Spearman’s Rank Correlation Coefficient<a class="headerlink" href="#spearman-s-rank-correlation-coefficient" title="Permalink to this heading">#</a></h2>
@@ -1289,8 +1438,8 @@ Rank Correlation p-value:
 </div>
 </div>
 </section>
-<section id="compare-pearson-and-spearman-correlation-with-a-paradola">
-<h2>Compare Pearson and Spearman Correlation with a Paradola<a class="headerlink" href="#compare-pearson-and-spearman-correlation-with-a-paradola" title="Permalink to this heading">#</a></h2>
+<section id="compare-pearson-and-spearman-correlation-with-a-parabola">
+<h2>Compare Pearson and Spearman Correlation with a Parabola<a class="headerlink" href="#compare-pearson-and-spearman-correlation-with-a-parabola" title="Permalink to this heading">#</a></h2>
 <p>Let’s try the famous parabola example that is commonly used to demonstrate the impact of nonlinearity on correlation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1369,7 +1518,7 @@ Rank Correlation p-value:
 <img alt="_images/d34a8a06185f53255efb333209733b72f5d0d690a53f6c531cf0a64f38e50a50.png" src="_images/d34a8a06185f53255efb333209733b72f5d0d690a53f6c531cf0a64f38e50a50.png" />
 </div>
 </div>
-<p>Rank transforms can linearlize monotonic increasing or decreasing segments of the data.</p>
+<p>Rank transforms can linearize monotonic increasing or decreasing segments of the data.</p>
 </section>
 <section id="correlation-with-multiple-populations">
 <h2>Correlation with Multiple Populations<a class="headerlink" href="#correlation-with-multiple-populations" title="Permalink to this heading">#</a></h2>
@@ -1710,18 +1859,24 @@ Rank Correlation p-value:
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
-<p>I hope you found this chapter helpful. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a>,</p>
+<p>This was a basic treatment of multivariate analysis with a focus on bivariate. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
+<p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
-<section id="the-author">
-<h2>The Author:<a class="headerlink" href="#the-author" title="Permalink to this heading">#</a></h2>
-<p>Michael J. Pyrcz, Professor, The University of Texas at Austin
-<em>Novel Data Analytics, Geostatistics and Machine Learning Subsurface Solutions</em></p>
-<p>With over 17 years of experience in subsurface consulting, research and development, Michael has returned to academia driven by his passion for teaching and enthusiasm for enhancing engineers’ and geoscientists’ impact in subsurface resource development.</p>
-<p>For more about Michael check out these links:</p>
-</section>
-<section id="twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin">
-<h2><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a> | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin" title="Permalink to this heading">#</a></h2>
+<section id="about-the-author">
+<h2>About the Author<a class="headerlink" href="#about-the-author" title="Permalink to this heading">#</a></h2>
+<figure style="text-align: center;">
+  <img src="_static/intro/michael_pyrcz_officeshot_jacket.jpg" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
+</figcaption>
+</figure>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<ul class="simple">
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
+</ul>
+<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
@@ -1734,9 +1889,7 @@ Rank Correlation p-value:
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael J. Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-</section>
-<section id="more-resources-available-at-twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin">
-<h2>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin" title="Permalink to this heading">#</a></h2>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -1810,6 +1963,8 @@ Rank Correlation p-value:
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#design-custom-color-map">Design Custom Color Map</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-correlation">Visualizing Correlation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impact-of-outliers-on-correlation-coefficients">Impact of Outliers on Correlation Coefficients</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-tabular-data">Loading Tabular Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-dataframe">Visualize the DataFrame</a></li>
@@ -1820,7 +1975,7 @@ Rank Correlation p-value:
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-correlation-matrix">Visualize the Correlation Matrix</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spearman-s-rank-correlation-coefficient">Spearman’s Rank Correlation Coefficient</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-pearson-and-spearman-correlation">Compare Pearson and Spearman Correlation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-pearson-and-spearman-correlation-with-a-paradola">Compare Pearson and Spearman Correlation with a Paradola</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-pearson-and-spearman-correlation-with-a-parabola">Compare Pearson and Spearman Correlation with a Parabola</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-with-multiple-populations">Correlation with Multiple Populations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simpson-s-paradox">Simpson’s Paradox</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-correlation-and-rank-correlation-matrices">Plot Correlation and Rank Correlation Matrices</a></li>
@@ -1829,10 +1984,8 @@ Rank Correlation p-value:
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-conditional-and-marginals">Joint, Conditional and Marginals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-conditional-statistics">Calculating Conditional Statistics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube | Applied Geostats in Python e-book | LinkedIn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | Applied Geostats in Python e-book | LinkedIn</a></li>
 </ul>
   </nav></div>
 
