@@ -276,7 +276,7 @@ For now I will add links to these interactive dashboards.
 * in the future I would like these to be included in the e-book live and interactive. The jupyter-book hosted on GitHub does not allow for this at this time.
 
 
-#### Running the Workflows
+#### Running the Workflows in this e-book
 
 You can use this e-book, i.e., read and review the workflows, without ever running the code. I recommend that you run the code yourself to cement the concepts.
 
@@ -305,7 +305,7 @@ from a terminal window.
 
 #### Suggestions for Using this e-book
 
-This is a topical approach to the hands-on application of geostatistics. Each chapter stands alone and covers a unique machine learning method. 
+This is a topical approach to the hands-on application of machine learning. Each chapter stands alone and covers a unique machine learning method. 
 
 * Want to rank your features? 
 
