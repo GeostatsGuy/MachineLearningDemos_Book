@@ -1367,7 +1367,7 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>                            <span class="c1"># k-means clustering</span>
 
-<span class="n">K</span> <span class="o">=</span> <span class="mi">5</span>                                                         <span class="c1"># number categories / clusters </span>
+<span class="n">K</span> <span class="o">=</span> <span class="mi">2</span>                                                         <span class="c1"># number categories / clusters </span>
 
 <span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">K</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">n_init</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,[</span><span class="s1">&#39;Norm_Porosity&#39;</span><span class="p">,</span><span class="s1">&#39;Norm_AI&#39;</span><span class="p">]])</span> <span class="c1"># k-means clustering</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;kMeans&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">labels_</span> <span class="o">+</span> <span class="mi">1</span>
@@ -1382,7 +1382,7 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/506295eff7f7ca3e37f91990aea04e68fd2f71ec7b494995d9a97337a2b2c7f5.png" src="_images/506295eff7f7ca3e37f91990aea04e68fd2f71ec7b494995d9a97337a2b2c7f5.png" />
+<img alt="_images/4771b6c168aa6b56c7b12c41a532387e7cf0ff46ef7b811df2e36b899ee81dde.png" src="_images/4771b6c168aa6b56c7b12c41a532387e7cf0ff46ef7b811df2e36b899ee81dde.png" />
 </div>
 </div>
 </section>
