@@ -1,0 +1,52 @@
+Traceback (most recent call last):
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\nbclient\client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\jupyter_core\utils\__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\asyncio\base_events.py", line 608, in run_until_complete
+    return future.result()
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\nbclient\client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\nbclient\client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\nbclient\client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+orthogonal_check = np.dot(rp.components_.T, rp.components_)
+
+fig, ax = plt.subplots()
+cax = ax.imshow(orthogonal_check,cmap=plt.cm.grey,vmin=-1,vmax=1.0,interpolation='None',zorder=1)
+#cbar = plt.colorbar(); cbar.set_label('Value')
+
+matrix_size = orthogonal_check.shape[0]  # Assuming the matrix is square (m x m)
+square_size = 1  # Each square has size 1x1
+
+for i in range(matrix_size):
+    # Add a square around each diagonal element
+    square = patches.Rectangle((i - 0.5, i - 0.5),square_size,square_size,linewidth=3, edgecolor='white', facecolor='none')
+    ax.add_patch(square)
+
+# Add a colorbar
+cbar = fig.colorbar(cax)
+cbar.set_label('Value', rotation=90, labelpad=15)  # Set label for colorbar
+
+plt.title(r'Orthogonal Check, $R_p^T R_p$')
+plt.xlabel('Columns'); plt.ylabel('Rows')
+plt.subplots_adjust(left=0.0, bottom=0.0, right=1.0, top=1.0, wspace=0.2, hspace=0.3); plt.show()
+------------------
+
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mAttributeError[0m                            Traceback (most recent call last)
+Cell [1;32mIn[13], line 4[0m
+[0;32m      1[0m orthogonal_check [38;5;241m=[39m np[38;5;241m.[39mdot(rp[38;5;241m.[39mcomponents_[38;5;241m.[39mT, rp[38;5;241m.[39mcomponents_)
+[0;32m      3[0m fig, ax [38;5;241m=[39m plt[38;5;241m.[39msubplots()
+[1;32m----> 4[0m cax [38;5;241m=[39m ax[38;5;241m.[39mimshow(orthogonal_check,cmap[38;5;241m=[39m[43mplt[49m[38;5;241;43m.[39;49m[43mcm[49m[38;5;241;43m.[39;49m[43mgrey[49m,vmin[38;5;241m=[39m[38;5;241m-[39m[38;5;241m1[39m,vmax[38;5;241m=[39m[38;5;241m1.0[39m,interpolation[38;5;241m=[39m[38;5;124m'[39m[38;5;124mNone[39m[38;5;124m'[39m,zorder[38;5;241m=[39m[38;5;241m1[39m)
+[0;32m      5[0m [38;5;66;03m#cbar = plt.colorbar(); cbar.set_label('Value')[39;00m
+[0;32m      7[0m matrix_size [38;5;241m=[39m orthogonal_check[38;5;241m.[39mshape[[38;5;241m0[39m]  [38;5;66;03m# Assuming the matrix is square (m x m)[39;00m
+
+[1;31mAttributeError[0m: module 'matplotlib.cm' has no attribute 'grey'
+
