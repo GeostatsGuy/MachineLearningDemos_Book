@@ -499,6 +499,16 @@ Prop_{Unknown} = \frac{0}{\sigma^2_{m}} = 0%
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">&quot;c:/PGE383&quot;</span><span class="p">)</span>             <span class="c1"># set the working directory</span>
+
+<span class="ne">FileNotFoundError</span>: [WinError 2] The system cannot find the file specified: &#39;c:/PGE383&#39;
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="simple-dataset">
@@ -587,7 +597,7 @@ df is type &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/af592f53ccae7da9e73398cb9c7a6a456c64e9987e77eb47ee483b374ace7842.png" src="_images/af592f53ccae7da9e73398cb9c7a6a456c64e9987e77eb47ee483b374ace7842.png" />
+<img alt="_images/93c7f0c420c094e3151cfcecce580c65addcaa981c768e0ccc745c07eedef13e.png" src="_images/93c7f0c420c094e3151cfcecce580c65addcaa981c768e0ccc745c07eedef13e.png" />
 </div>
 </div>
 <p>It seems pretty clear that permeability mean is not stationary over <span class="math notranslate nohighlight">\(z\)</span>, let’s fit a variety of polygonal trends including, 1st, 3rd, 5th and 7th order polynomials (in order of increasing complexity).</p>
@@ -662,7 +672,7 @@ df is type &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9a34a73385999152d3a201c6127c63f2f753f6634794cc5305fb21c647b4f0c6.png" src="_images/9a34a73385999152d3a201c6127c63f2f753f6634794cc5305fb21c647b4f0c6.png" />
+<img alt="_images/e7b7daccf6d921e041b6bbb809b9279c977dfb4a972cbf752c68058722941977.png" src="_images/e7b7daccf6d921e041b6bbb809b9279c977dfb4a972cbf752c68058722941977.png" />
 </div>
 </div>
 </section>
@@ -689,7 +699,7 @@ df is type &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9ee542002ce1430e58a17207c6d4d4563575d30af1390e1e0e52a33eb787bd10.png" src="_images/9ee542002ce1430e58a17207c6d4d4563575d30af1390e1e0e52a33eb787bd10.png" />
+<img alt="_images/b684977b403254016315258594a1d73a49d07288b972c2ad9537816fe49c9c44.png" src="_images/b684977b403254016315258594a1d73a49d07288b972c2ad9537816fe49c9c44.png" />
 </div>
 </div>
 <p>As the complexity of the model, the order of the polynomial, increases the flexibility to fit the data increases. With a 7th order polynomial we infact perfectly fit our 8 data and the residual is contant <span class="math notranslate nohighlight">\(=\)</span> 0.</p>
@@ -716,7 +726,7 @@ df is type &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/45ffdb8d082b861756856d62c9c5ebe4de0f9e479167f6536e736da5f65266cf.png" src="_images/45ffdb8d082b861756856d62c9c5ebe4de0f9e479167f6536e736da5f65266cf.png" />
+<img alt="_images/8192de33dcaacbba45eaebac2b79c220586fa148bf8aa7065529ea99ca737cb4.png" src="_images/8192de33dcaacbba45eaebac2b79c220586fa148bf8aa7065529ea99ca737cb4.png" />
 </div>
 </div>
 <p>The testing data looks fair. They are not unusual compared to the training data, that is they do not have different ranges of values, nor represent significant discontinuities or jumps in the data, also they are not spatially extrapolated. Now let’s repeat the plots for our models over a range of complexities, but this time include the testing data for comparison and plot the residual distribution for the testing data (this is testing error).</p>
@@ -755,7 +765,7 @@ df is type &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e0abe4dbc28258e759564fde1db97ede395b7380947656085e566404d2e47559.png" src="_images/e0abe4dbc28258e759564fde1db97ede395b7380947656085e566404d2e47559.png" />
+<img alt="_images/5b3b3ea4d152ef933e88e7c55f096f75988a5b7ddc3e1c0bfaf99590974d84d1.png" src="_images/5b3b3ea4d152ef933e88e7c55f096f75988a5b7ddc3e1c0bfaf99590974d84d1.png" />
 </div>
 </div>
 <p>Now let’s add the histograms of testing error to help compare the models.</p>
@@ -819,7 +829,7 @@ df is type &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6da0426b57077fd88a27ccf18487060c129c41c4ddf627f64f91ad181c0d3db3.png" src="_images/6da0426b57077fd88a27ccf18487060c129c41c4ddf627f64f91ad181c0d3db3.png" />
+<img alt="_images/7c151b48abfe689387b1f8db973d4eab4cc61b85f6cf1926144b323c8218c025.png" src="_images/7c151b48abfe689387b1f8db973d4eab4cc61b85f6cf1926144b323c8218c025.png" />
 </div>
 </div>
 <p>See what happenned? As the complexity increased, our model becomes more inaccurate for the testing data.</p>
@@ -856,19 +866,7 @@ df is type &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">f</span><span class="p">,</span><span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="ne">----&gt; </span><span class="mi">7</span> <span class="n">lm1</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">],</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;perm&#39;</span><span class="p">],</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">axes1</span> <span class="o">=</span> <span class="n">lm1</span><span class="o">.</span><span class="n">axes</span><span class="p">;</span> <span class="n">axes1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">300</span><span class="p">);</span> <span class="n">axes1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">2000</span><span class="p">,</span><span class="mi">4000</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">lm1</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;X (m)&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Permeability (mD)&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;1st Order Polynomial Fit and Confidence Interval&#39;</span><span class="p">)</span>
-
-<span class="ne">TypeError</span>: regplot() takes from 0 to 1 positional arguments but 2 positional arguments (and 3 keyword-only arguments) were given
-</pre></div>
-</div>
-<img alt="_images/9c806e371540bcce936cf00f8676066126dfdf81dbd58bafee589b3e8bcf0c0e.png" src="_images/9c806e371540bcce936cf00f8676066126dfdf81dbd58bafee589b3e8bcf0c0e.png" />
+<img alt="_images/567d4a15e2430cda48e64b5c8ecedc8d4e7a3534fa99a31728479352e89f2013.png" src="_images/567d4a15e2430cda48e64b5c8ecedc8d4e7a3534fa99a31728479352e89f2013.png" />
 </div>
 </div>
 <p>Due to the few data available, the confidence intervals expand repidly as the complexity increases. Statistics is telling us that we have no confidence in our model!  We do not have enough data to justify a complicated trend model.</p>

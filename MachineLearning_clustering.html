@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>k-means Clustering &#8212; Applied Machine Learning in Python</title>
+    <title>K-means Clustering &#8212; Applied Machine Learning in Python</title>
   
   
   
@@ -387,7 +387,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>k-means Clustering</h1>
+    <h1>K-means Clustering</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -399,8 +399,9 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-for-cluster-analysis">Motivation for Cluster Analysis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inferential-machine-learning">Inferential Machine Learning</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">k-Means Clustering</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-k-means-clustering-demonstration">The k-Means Clustering Demonstration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">K-Means Clustering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-heuristic">Solution Heuristic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstration">Demonstration</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
@@ -439,7 +440,7 @@ document.write(`
   <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
 </figure>
 <section id="k-means-clustering">
-<h1>k-means Clustering<a class="headerlink" href="#k-means-clustering" title="Permalink to this heading">#</a></h1>
+<h1>K-means Clustering<a class="headerlink" href="#k-means-clustering" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
 <p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
@@ -454,7 +455,7 @@ document.write(`
 </div>
 <p>By Michael J. Pyrcz <br />
 © Copyright 2024.</p>
-<p>This chapter is a tutorial for / demonstration of <strong>k-means Clustering</strong>.</p>
+<p>This chapter is a tutorial for / demonstration of <strong>K-means Clustering</strong>.</p>
 <p><strong>YouTube Lecture</strong>: check out my lectures on:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://youtu.be/zOUM_AnI1DQ?si=wzWdJ35qJ9n8O6Bl">Introduction to Machine Learning</a></p></li>
@@ -465,17 +466,31 @@ document.write(`
 <p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
 <section id="motivation-for-cluster-analysis">
 <h2>Motivation for Cluster Analysis<a class="headerlink" href="#motivation-for-cluster-analysis" title="Permalink to this heading">#</a></h2>
+<p>Mixing distinct populations to train prediction models often reduces model accuracy.</p>
+<ul class="simple">
+<li><p>clustering is an inferential machine learning method to automate the segmentation of the dataset into separate groups, known as clusters and specified by an integer index.</p></li>
+<li><p>the computer does not provide meaning nor description of the groups, that is our job!</p></li>
+</ul>
 <p>We need to learn and segment distinct populations to improve our prediction models,</p>
 <figure style="text-align: center;">
-  <img src="_static/cluster/cluster.png" style="display: block; margin: 0 auto; width: 60%;">
-  <figcaption style="text-align: center;"> Example dataset divided into 5 groups indicated by color.
+  <img src="_static/cluster/cluster1.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> Example dataset divided into 5 groups.
 </figcaption>
 </figure>
+<p>Yet, the above figure is misleading. If we calculate the boundaries as shown above, we would actually have a predictive classification model for the any new cases,</p>
 <ul class="simple">
-<li><p>Mixing distinct populations to train prediction models often reduces model accuracy.</p></li>
-<li><p>Clustering is an inferential machine learning method to automate the segmentation of the dataset into separate groups, known as clusters and specified by an integer index.</p></li>
-<li><p>The computer does not provide meaning nor description of the groups, that is our job!</p></li>
+<li><p>given normalized porosity of 0.7 and noramlized acoustic impedance of 0.18 classify as group #5</p></li>
 </ul>
+<p>Clustering does not do this, it is an inferential, unsupervised machine learning method,</p>
+<ul class="simple">
+<li><p>it is learning structures in the data</p></li>
+<li><p>clustering assigns labels to the data</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/cluster/cluster2.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> Example dataset with the 5 groups labels assigned with clustering indicated by color.
+</figcaption>
+</figure>
 </section>
 <section id="inferential-machine-learning">
 <h2>Inferential Machine Learning<a class="headerlink" href="#inferential-machine-learning" title="Permalink to this heading">#</a></h2>
@@ -491,8 +506,8 @@ document.write(`
 </ul>
 </section>
 <section id="id1">
-<h2>k-Means Clustering<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
-<p>The k-means clustering approach is primarily applied as an unsupervised machine learning method for clustering, group assignment to unlabeled data, where dissimilarity within clustered groups is mini minimized. The loss function that is minimized is:</p>
+<h2>K-Means Clustering<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>The K-means clustering approach is primarily applied as an unsupervised machine learning method for clustering, group assignment to unlabeled data, where dissimilarity within clustered groups is minimized. The loss function that is minimized for K-means clustering, known as intertia, is,</p>
 <div class="math notranslate nohighlight">
 \[ 
 J = \sum^k_{i=1} \sum_{\alpha \in C_i} || X_{\alpha} - \mu_i ||
@@ -502,7 +517,13 @@ J = \sum^k_{i=1} \sum_{\alpha \in C_i} || X_{\alpha} - \mu_i ||
 \[
 || X_{m,\alpha} - \mu_i || =  \sqrt{ \sum_m^M \left( X_{m,\alpha} - \mu_{m,i} \right)^2 }
 \]</div>
-<p>Here is a summary of import aspects for k-means clustering:</p>
+<p>Here’s a schematic illustration of this loss function, summing the distances between group prototypes and the samples in the groups,</p>
+<figure style="text-align: center;">
+  <img src="_static/cluster/cluster_loss.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> Schematic of the .
+</figcaption>
+</figure>
+<p>Here is a summary of import aspects for K-means clustering:</p>
 <ul class="simple">
 <li><p><strong>Prototype Method</strong> - represents the training data with number of synthetic cases in the features space. For K-means clustering we assign and iteratively update <span class="math notranslate nohighlight">\(K\)</span> prototypes.</p></li>
 <li><p><strong>Iterative Solution</strong> - the initial prototypes are assigned randomly in the feature space, the labels for each training sample are updated to the nearest prototype, then the prototypes are adjusted to the centroid of their assigned training data, repeat until there is no further update to the training data assignments.</p></li>
@@ -510,19 +531,19 @@ J = \sum^k_{i=1} \sum_{\alpha \in C_i} || X_{\alpha} - \mu_i ||
 <li><p><strong>Feature Weighting</strong> - the procedure depends on the Euclidian distance between training samples and prototypes in feature space. Distance is treated as the ‘inverse’ of similarity. If the features have significantly different magnitudes, the feature(s) with the largest magnitudes and ranges will dominate the loss function and cluster groups will become anisotropic aligned orthogonal to the high range feature(s). While the common approach is to standardize / normalize the variables, by-feature weighting may be applied through unequal variances. Note, in this demonstration we normalize the features to range from 0.0 to 1.0.</p></li>
 </ul>
 </section>
-<section id="the-k-means-clustering-demonstration">
-<h2>The k-Means Clustering Demonstration<a class="headerlink" href="#the-k-means-clustering-demonstration" title="Permalink to this heading">#</a></h2>
-<p>Here’s a simple workflow, demonstration of k-means clustering for subsurface modeling workflows. Initially I use functions to train k-means clustering ‘by-hand’ and then I demonstrate the approach with the scikit-learn Python package function. This should help you get started with inferential methods to find patterns in your subsurface data sets and the concept of a heuristic solution.</p>
+<section id="solution-heuristic">
+<h2>Solution Heuristic<a class="headerlink" href="#solution-heuristic" title="Permalink to this heading">#</a></h2>
+<p>Let’s first define a solution heuristic,</p>
 <ul class="simple">
 <li><p><strong>Heuristic</strong> - a shortcut the sacrifices accuracy for practicality, i.e., the solution is usually good enough and has a reasonable run time.</p></li>
 </ul>
-<p>For the k-means clustering problem of assigning one of <span class="math notranslate nohighlight">\(k\)</span> categorical labels to <span class="math notranslate nohighlight">\(n\)</span> sample data, the solution space includes,</p>
+<p>For the K-means clustering problem of assigning one of <span class="math notranslate nohighlight">\(k\)</span> categorical labels to <span class="math notranslate nohighlight">\(n\)</span> sample data, the solution space includes,</p>
 <div class="math notranslate nohighlight">
 \[
 k^n
 \]</div>
 <p>possible solutions.</p>
-<p>The k-means clustering solution includes these steps:</p>
+<p>The k-means clustering solution heuristic includes these steps:</p>
 <ol class="arabic simple">
 <li><p>Assign initial random prototype with labels.</p></li>
 </ol>
@@ -555,7 +576,14 @@ k^n
   <figcaption style="text-align: center;"> Assignment and update iterations until heuristic solution convergence.
 </figcaption>
 </figure>
-<p>This allows us to be able to watch the method in action, as opposed to just getting a result.  I think this is more instructive.</p>
+</section>
+<section id="demonstration">
+<h2>Demonstration<a class="headerlink" href="#demonstration" title="Permalink to this heading">#</a></h2>
+<p>I start with a ‘by-hand’ approach to calculate the K-means clustering group assignments.</p>
+<ul class="simple">
+<li><p>this allows us to be able to watch the method in action, as opposed to just getting a result. I think this is more instructive.</p></li>
+<li><p>afterwards, I show the function from scikit-learn to complete the calculation in one line of code.</p></li>
+</ul>
 <p>I have also developed a set of <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_kMeans_Clustering.ipynb">interactive k-means clustering dashboards</a> to explore the k-mean clustering heuristic, including this one that shows each solution for multiple random prototypes and the cumulative distribution function of intertia to explore the consistency in the solution.</p>
 <figure style="text-align: center;">
   <img src="_static/cluster/interactive_clustering.png" style="display: block; margin: 0 auto; width: 100%;">
@@ -565,7 +593,7 @@ k^n
 <p>Note, for the workflow below I have modified code from the tutorial provided by Ben Keen as functions to take care of the steps (assign training data to the nearest prototype, update the prototype to the centroid of the assigned data).</p>
 <ul class="simple">
 <li><p>The original tutorial is available at <a class="reference external" href="http://benalexkeen.com/k-means-clustering-in-python">here</a>.</p></li>
-<li><p>My modifications are to tailor it to a specific example, and to include the normalized and original data. Appreciation to Ben!</p></li>
+<li><p>My modifications tailor this workflow for my specific example, and to include the normalized and original data. Appreciation to Ben!</p></li>
 </ul>
 </section>
 <section id="load-the-required-libraries">
@@ -1572,8 +1600,9 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-for-cluster-analysis">Motivation for Cluster Analysis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inferential-machine-learning">Inferential Machine Learning</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">k-Means Clustering</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-k-means-clustering-demonstration">The k-Means Clustering Demonstration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">K-Means Clustering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-heuristic">Solution Heuristic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstration">Demonstration</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
