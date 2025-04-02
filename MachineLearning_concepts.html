@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'MachineLearning_concepts';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Machine Learning Workflow Construction and Coding" href="MachineLearning_workflow_construction.html" />
+    <link rel="next" title="Training and Tuning" href="MachineLearning_training_tuning.html" />
     <link rel="prev" title="Introduction" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -173,6 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Machine Learning Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_training_tuning.html">Training and Tuning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_plotting_data_models.html">Loading and Plotting Data and Models</a></li>
@@ -423,7 +424,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#underfit-and-overfit-models">Underfit and Overfit Models</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-about-training-and-testing-splits">More About Training and Testing Splits</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ethical-and-professional-practice-concerns-with-data-science">Ethical and Professional Practice Concerns with Data Science</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-of-cross-validation">Limitations of Cross Validation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
@@ -892,32 +892,6 @@ E \left[ \left( y_0 - \hat{f}(x^1_0, \ldots , x^m_0) \right)^2 \right]
 <p>“Once a technology is admitted, it plays out its hand.”</p>
 </div>
 </section>
-<section id="limitations-of-cross-validation">
-<h2>Limitations of Cross Validation<a class="headerlink" href="#limitations-of-cross-validation" title="Permalink to this heading">#</a></h2>
-<p>An here are some additional issues with the model cross validation approach in general,</p>
-<ul class="simple">
-<li><p><strong>Peeking, Information Leakage</strong> – some information is transmitted from the withheld data into the model, some model decision(s) use all the data. Pipelines and wrappers help with this.</p></li>
-<li><p><strong>Black Swans / Stationarity</strong> – the model cannot be tested for data events not available in the data. This is also known as the ‘No Free Lunch Theorem’ in machine learning</p></li>
-</ul>
-<p>Consider the words of Hume,</p>
-<p>“even after the observation of the frequent or constant conjunction of objects, we have no reason to draw any inference concerning any object beyond those of which we have had experience” - Hume (1739–1740)</p>
-<ul class="simple">
-<li><p>We cannot predict things that we have never seen in our data!</p></li>
-</ul>
-<p>here’s a quote from the famous Oreskes et al. (1994) paper on subsurface validation and verification,</p>
-<p>“Verification and validation of numerical models of natural systems is impossible. This is because natural systems are never closed and because model results are always nonunique. Models can be confirmed by the demonstration of agreement between observation and prediction, but confirmation is inherently partial. Complete confirmation is logically precluded by the fallacy of affirming the consequent and by incomplete access to natural phenomena. Models can only be evaluated in relative terms, and their predictive value is always open to question. The primary value of models is heuristic.”</p>
-<ul class="simple">
-<li><p>Oreskes et al. (1994)</p></li>
-</ul>
-<p>all of this is summed up very well with,</p>
-<p>‘All models are wrong, but some are useful’ – George Box</p>
-<p>and a reminder of,</p>
-<p><strong>Parsimony</strong> – since all models are wrong, an economical description of the system. Occam’s Razor</p>
-<p>resulting in a pragmatic approach of,</p>
-<p><strong>Worrying Selectively</strong> – since all models are wrong, figure out what is most importantly wrong.</p>
-<p>finally, I add my own words,</p>
-<p>‘Be humble, the earth will surprise you!’ – Michael Pyrcz</p>
-</section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
 <p>This was a basic description of machine learning concepts. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
@@ -994,11 +968,11 @@ E \left[ \left( y_0 - \hat{f}(x^1_0, \ldots , x^m_0) \right)^2 \right]
       </div>
     </a>
     <a class="right-next"
-       href="MachineLearning_workflow_construction.html"
+       href="MachineLearning_training_tuning.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Machine Learning Workflow Construction and Coding</p>
+        <p class="prev-next-title">Training and Tuning</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1043,7 +1017,6 @@ E \left[ \left( y_0 - \hat{f}(x^1_0, \ldots , x^m_0) \right)^2 \right]
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#underfit-and-overfit-models">Underfit and Overfit Models</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-about-training-and-testing-splits">More About Training and Testing Splits</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ethical-and-professional-practice-concerns-with-data-science">Ethical and Professional Practice Concerns with Data Science</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-of-cross-validation">Limitations of Cross Validation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>

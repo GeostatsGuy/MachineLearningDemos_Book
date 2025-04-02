@@ -173,6 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_concepts.html">Machine Learning Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_training_tuning.html">Training and Tuning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_plotting_data_models.html">Loading and Plotting Data and Models</a></li>
@@ -402,7 +403,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">K-Means Clustering</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-heuristic">Solution Heuristic</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstration">Demonstration</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-tabular-data">Loading Tabular Data</a></li>
@@ -421,6 +422,8 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means-clustering-with-the-scikit-learn-function">k-Means Clustering with the scikit-learn Function</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-the-optimum-number-of-clusters">Selecting the Optimum Number of Clusters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elbow-method">Elbow Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#silhouette-method">Silhouette Method</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering-without-normalization-standardization">Clustering without Normalization / Standardization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
@@ -520,7 +523,7 @@ J = \sum^k_{i=1} \sum_{\alpha \in C_i} || X_{\alpha} - \mu_i ||
 <p>Here’s a schematic illustration of this loss function, summing the distances between group prototypes and the samples in the groups,</p>
 <figure style="text-align: center;">
   <img src="_static/cluster/cluster_loss.png" style="display: block; margin: 0 auto; width: 60%;">
-  <figcaption style="text-align: center;"> Schematic of the .
+  <figcaption style="text-align: center;"> Schematic of the K-means clustering loss function, intertia. Note, for clarity only some of the distances from samples to prototypes are annotated and some of the data labels are included.
 </figcaption>
 </figure>
 <p>Here is a summary of import aspects for K-means clustering:</p>
@@ -597,7 +600,7 @@ k^n
 </ul>
 </section>
 <section id="load-the-required-libraries">
-<h2>Load the required libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
+<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
 <p>The following code loads the required libraries. These should have been installed with Anaconda 3.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -609,6 +612,8 @@ k^n
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>                               <span class="c1"># for plotting</span>
 <span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="p">(</span><span class="n">MultipleLocator</span><span class="p">,</span> <span class="n">AutoMinorLocator</span><span class="p">)</span> <span class="c1"># control of axes ticks</span>
 <span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="k">as</span> <span class="nn">mtick</span>                             <span class="c1"># control tick label formatting</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">silhouette_score</span>                  <span class="c1"># calculating the optimum K number of clusters</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>                            <span class="c1"># k-means clustering</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">axisbelow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                                <span class="c1"># plot all grids below the plot elements</span>
 <span class="k">if</span> <span class="n">ignore_warnings</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>                                   
     <span class="kn">import</span> <span class="nn">warnings</span>
@@ -1394,9 +1399,7 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 <p>Let’s repeat with the scikit-learn function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>                            <span class="c1"># k-means clustering</span>
-
-<span class="n">K</span> <span class="o">=</span> <span class="mi">2</span>                                                         <span class="c1"># number categories / clusters </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="mi">2</span>                                                         <span class="c1"># number categories / clusters </span>
 
 <span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">K</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">n_init</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,[</span><span class="s1">&#39;Norm_Porosity&#39;</span><span class="p">,</span><span class="s1">&#39;Norm_AI&#39;</span><span class="p">]])</span> <span class="c1"># k-means clustering</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;kMeans&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">labels_</span> <span class="o">+</span> <span class="mi">1</span>
@@ -1417,13 +1420,53 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 </section>
 <section id="selecting-the-optimum-number-of-clusters">
 <h2>Selecting the Optimum Number of Clusters<a class="headerlink" href="#selecting-the-optimum-number-of-clusters" title="Permalink to this heading">#</a></h2>
-<p>One method to assist with selection of the optimum number of clusters is the elbow method.</p>
+<p>For K-means clustering, the K number of clusters is an input.</p>
 <ul class="simple">
-<li><p>calculate the loss function for a range of k = 1,…,K cases and look for an inflection point, rapid reduction in slope.</p></li>
+<li><p>in some cases this choice is easy or constrained by the context of the problem, for example, we know that there are 3 distinct facies in our subsurface dataset</p></li>
+<li><p>this can be seen as a strength for K-means clustering as we can use our expert knowledge to constrain the number of clusters</p></li>
+<li><p>or this may be seen as a weekness for K-means clustering as the method is unable to determine the number of clusters, as with methods such as DBSCAN</p></li>
+</ul>
+<p>When the number of clusters, K, is not know there are multiple methods to quantitatively determine an optimum K value, including,</p>
+<ul class="simple">
+<li><p><strong>Elbow Method</strong> - perform k-means clustering for a range of K values and the within-cluster sum of squares (WCSS) or inertia (the sum of squared distances from each point to its assigned cluster centroid) against the number of clusters (K) and look for the “elbow” point where the rate of decrease in WCSS slows down.</p></li>
+<li><p><strong>Silhouette Score</strong> - the silhouette score measures how similar an object is to its own cluster compared to other clusters.</p></li>
+</ul>
+</section>
+<section id="elbow-method">
+<h2>Elbow Method<a class="headerlink" href="#elbow-method" title="Permalink to this heading">#</a></h2>
+<p>The <strong>Elbow Method</strong> is a heuristic used to determine the optimal number of clusters, <span class="math notranslate nohighlight">\(K\)</span>, in a clustering algorithm, such as <strong>K-Means</strong>.</p>
+<ul class="simple">
+<li><p>The idea is to run the clustering algorithm for a range of cluster values <span class="math notranslate nohighlight">\(K\)</span>, calculate a performance metric, and plot it. The <strong>elbow</strong> point on the plot represents the optimal number of clusters, where adding more clusters doesn’t significantly improve the model, that is, further reduce the loss function.</p></li>
+<li><p>The method is based on the K-means loss function, inertia, also known more decriptively as Within-Cluster Sum of Squares (WCSS), once again this is,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ 
+J = \sum^k_{i=1} \sum_{\alpha \in C_i} || X_{\alpha} - \mu_i ||
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(i\)</span> is the cluster index, <span class="math notranslate nohighlight">\(\alpha\)</span> is the data sample index, <span class="math notranslate nohighlight">\(X\)</span> is the data sample and <span class="math notranslate nohighlight">\(\mu_i\)</span> is the <span class="math notranslate nohighlight">\(i\)</span> cluster prototype, <span class="math notranslate nohighlight">\(k\)</span> is the total number of clusters, and <span class="math notranslate nohighlight">\(|| X_m - \mu_m ||\)</span> is the Euclidean distance from a sample to the cluster prototype in <span class="math notranslate nohighlight">\(M\)</span> dimensional space calculated as:</p>
+<div class="math notranslate nohighlight">
+\[
+|| X_{m,\alpha} - \mu_i || =  \sqrt{ \sum_m^M \left( X_{m,\alpha} - \mu_{m,i} \right)^2 }
+\]</div>
+<p>The elbow method proceeds with the following steps,</p>
+<ol class="arabic simple">
+<li><p><strong>Fit K-Means for different values of <span class="math notranslate nohighlight">\(K\)</span></strong>, select a range of possible values for (K) and for each value of (K), fit the K-Means algorithm and calculate the inertia.</p></li>
+<li><p><strong>Plot the Intertia vs. <span class="math notranslate nohighlight">\(K\)</span></strong>, create a plot where the x-axis represents the number of clusters (<span class="math notranslate nohighlight">\(K\)</span>) and the y-axis represents the inertia.</p></li>
+<li><p><strong>Look for the “elbow”</strong>, The <strong>elbow</strong> point on the plot is where the decrease in WCSS starts to slow down, indicating that increasing the number of clusters beyond this point provides diminishing returns in terms of reducing inertia.</p></li>
+</ol>
+<p>Advantages of the elbow method include,</p>
+<ul class="simple">
+<li><p>For K-means clustering the exact loss function is used for consistency, i.e., the fit is minimizes inertia</p></li>
+</ul>
+<p>The limitations of sihouette score include,</p>
+<ul class="simple">
+<li><p>The inertia method, can only be applied to K means clustering, but an elbow approach with k-distance plots is applied with density-based clustering, for example, DBSCAN.</p></li>
+<li><p>It may not provide clear results for complex datasets with overlapping or irregularly shaped clusters.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_K</span> <span class="o">=</span> <span class="mi">50</span>                                                    <span class="c1"># maximum number of clusters, k</span>
+<span class="n">optimal_k</span> <span class="o">=</span> <span class="mi">13</span>
 
 <span class="n">inertia</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">max_K</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>                                    <span class="c1"># loop over number of clusters and store the inertia</span>
@@ -1433,14 +1476,102 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">max_K</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">inertia</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">max_K</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">inertia</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">max_K</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of Clusters&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Inertia&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">bottom</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">inertia</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;k-Means Clustering Inertia vs. Number of Clusters&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">optimal_k</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">inertia</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Optimum K = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">optimal_k</span><span class="p">),[</span><span class="n">optimal_k</span><span class="o">+</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">4.0</span><span class="p">],</span><span class="n">rotation</span><span class="o">=</span><span class="mf">90.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;k-Means Clustering Inertia vs. Number of Clusters&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="n">max_K</span><span class="o">+</span><span class="mi">1</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">inertia</span><span class="p">)]);</span> <span class="n">add_grid</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/db6c1e299f4f3349c51b4b7efadfaccb85e625f0968c9c73a33e08e3c05d403a.png" src="_images/db6c1e299f4f3349c51b4b7efadfaccb85e625f0968c9c73a33e08e3c05d403a.png" />
+<img alt="_images/9b4490f494f9ed350eba4adf028c03f3f0e3c8bd4f03d40ce20e2694e80ad8e0.png" src="_images/9b4490f494f9ed350eba4adf028c03f3f0e3c8bd4f03d40ce20e2694e80ad8e0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>in this case there is a continuous change in gradient and not a clear elbow.</p></li>
+</ul>
+</section>
+<section id="silhouette-method">
+<h2>Silhouette Method<a class="headerlink" href="#silhouette-method" title="Permalink to this heading">#</a></h2>
+<p>Description: The Silhouette Score measures how similar an object is to its own cluster compared to other clusters.
+How it works: Compute the silhouette score for each K value. The silhouette score ranges from -1 (poor fit) to +1 (good fit), where higher values indicate better clustering.
+Interpretation: The optimal K corresponds to the highest average silhouette score.
+Pros: Provides both cohesion and separation metrics.
+Cons: Can be computationally expensive for large datasets.</p>
+<p>The silhouette calculation proceeds as, for a given data point (i), the silhouette score is calculated using the following steps:</p>
+<ol class="arabic simple">
+<li><p>Calculate the <strong>average distance within the same cluster</strong>,</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+a(i) = \frac{1}{|C_i| - 1} \sum_{j \in C_i, j \neq i} d(i, j)
+\]</div>
+<p>where, <span class="math notranslate nohighlight">\(C_i\)</span> is the cluster containing point <span class="math notranslate nohighlight">\(i\)</span>, <span class="math notranslate nohighlight">\(d(i, j)\)</span> is the Euclidean distance between points <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>, and <span class="math notranslate nohighlight">\(C_i|\)</span> is the number of points in the cluster <span class="math notranslate nohighlight">\(C_i\)</span>.</p>
+<ol class="arabic simple" start="2">
+<li><p>Calculate the <strong>average distance to the nearest cluster</strong>,</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+b(i) = \min_{C_k \neq C_i} \left( \frac{1}{|C_k|} \sum_{j \in C_k} d(i, j) \right)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(C_k\)</span> is any other cluster, different from the cluster <span class="math notranslate nohighlight">\(C_i\)</span> that contains point <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<ol class="arabic simple" start="3">
+<li><p>Calculate the <strong>silhouette score for point <span class="math notranslate nohighlight">\(i\)</span></strong>,</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+s(i) = \frac{b(i) - a(i)}{\max(a(i), b(i))}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(s(i)\)</span> is the silhouette score for point <span class="math notranslate nohighlight">\(i\)</span>, <span class="math notranslate nohighlight">\(a(i)\)</span> is the average distance to points in the same cluster, <span class="math notranslate nohighlight">\(b(i)\)</span> is the average distance to points in the nearest neighboring cluster.</p>
+<ol class="arabic simple" start="4">
+<li><p>Now over all points, calculate the <strong>overall silhouette score</strong>, the average silhouette score of all points,</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+S = \frac{1}{n} \sum_{i=1}^{n} s(i)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(n\)</span> is the number of data points, <span class="math notranslate nohighlight">\(s(i)\)</span> is the silhouette score of point <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<p>We interpret overall silhouette score values as,</p>
+<ul class="simple">
+<li><p><strong>+1</strong>, the points on average are well clustered and far from neighboring clusters.</p></li>
+<li><p><strong>0</strong>, the points on average are on or very close to the boundary between two clusters.</p></li>
+<li><p><strong>-1</strong>, the points on average are likely assigned to the wrong cluster.</p></li>
+</ul>
+<p>Now we repeat the overall silhouette score calculation on a range of <span class="math notranslate nohighlight">\(K\)</span> values and select the maximium silhouette score case as the optimum <span class="math notranslate nohighlight">\(K\)</span>.</p>
+<p>Advantages of the silhouette method include,</p>
+<ul class="simple">
+<li><p>The silhouette score provides an understanding of both the compactness and separation of clusters.</p></li>
+<li><p>Can be applied to any clustering algorithm, not just K-Means, i.e., the input is the data and cluster assignments.</p></li>
+</ul>
+<p>The limitations of sihouette score include,</p>
+<ul class="simple">
+<li><p>The silhouette method is computationally expensive, especially for large datasets.</p></li>
+<li><p>It may not provide clear results for complex datasets with overlapping or irregularly shaped clusters.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_K</span> <span class="o">=</span> <span class="mi">50</span>                                                    <span class="c1"># maximum number of clusters, k</span>
+
+<span class="n">silhouette</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">max_K</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>                                    <span class="c1"># loop over number of clusters and store the inertia</span>
+    <span class="n">kmeans_iter</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">n_init</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,[</span><span class="s1">&#39;Norm_Porosity&#39;</span><span class="p">,</span><span class="s1">&#39;Norm_AI&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="n">silhouette_score</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,[</span><span class="s1">&#39;Norm_Porosity&#39;</span><span class="p">,</span><span class="s1">&#39;Norm_AI&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">kmeans_iter</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
+    <span class="n">silhouette</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+<span class="n">optimal_k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">silhouette</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span> 
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">max_K</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">silhouette</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Good Fit&#39;</span><span class="p">,[</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">0.7</span><span class="p">],</span><span class="n">rotation</span> <span class="o">=</span> <span class="mi">90</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Poor Fit&#39;</span><span class="p">,[</span><span class="mf">0.8</span><span class="p">,</span><span class="o">-</span><span class="mf">0.9</span><span class="p">],</span><span class="n">rotation</span> <span class="o">=</span> <span class="mi">90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">max_K</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">silhouette</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">max_K</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of Clusters&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Silhouetter Score&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">bottom</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">optimal_k</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Optimum K = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">optimal_k</span><span class="p">),[</span><span class="n">optimal_k</span><span class="o">+</span><span class="mf">0.5</span><span class="p">,</span><span class="o">-</span><span class="mf">0.75</span><span class="p">],</span><span class="n">rotation</span><span class="o">=</span><span class="mf">90.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Silhouetter Score vs. Number of Clusters&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="n">max_K</span><span class="o">+</span><span class="mi">1</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]);</span> <span class="n">add_grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d832b7eb61524e55f01f2c0e1d3511d436008f09a451ec121046dce075d36982.png" src="_images/d832b7eb61524e55f01f2c0e1d3511d436008f09a451ec121046dce075d36982.png" />
 </div>
 </div>
 </section>
@@ -1603,7 +1734,7 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">K-Means Clustering</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-heuristic">Solution Heuristic</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstration">Demonstration</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-tabular-data">Loading Tabular Data</a></li>
@@ -1622,6 +1753,8 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means-clustering-with-the-scikit-learn-function">k-Means Clustering with the scikit-learn Function</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-the-optimum-number-of-clusters">Selecting the Optimum Number of Clusters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elbow-method">Elbow Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#silhouette-method">Silhouette Method</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering-without-normalization-standardization">Clustering without Normalization / Standardization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>

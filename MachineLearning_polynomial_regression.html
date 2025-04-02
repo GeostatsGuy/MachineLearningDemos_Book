@@ -173,6 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_concepts.html">Machine Learning Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_training_tuning.html">Training and Tuning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_plotting_data_models.html">Loading and Plotting Data and Models</a></li>
@@ -401,6 +402,9 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression">Linear Regression</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predictor-feature-basis-expansion">Predictor Feature / Basis Expansion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Polynomial Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advantage-and-disadvantages-of-polynomial-regression">Advantage and Disadvantages of Polynomial Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-elementary-functions">Adding Elementary Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assumptions-of-polynomial-regression">Assumptions of Polynomial Regression</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hermite-polynomials"><strong>Hermite Polynomials</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
@@ -469,7 +473,14 @@ document.write(`
 <li><p>add prediction flexibility by modeling non-linearity in our data</p></li>
 <li><p>build on the feature engineering concept of feature expansion</p></li>
 </ul>
-<p>while benefiting from the analytical solutions for training model parameters like linear regression. Let’s start with linear regression and then build to polynomial regression.</p>
+<p>while benefiting from the analytical solutions for training model parameters like linear regression.</p>
+<p>We accomplish all of this with basis expansion,</p>
+<ul class="simple">
+<li><p>we transform and expand the features <span class="math notranslate nohighlight">\(\rightarrow\)</span> introduce basis expansion!</p></li>
+<li><p>we can increase our predictive model complexity and flexibility <span class="math notranslate nohighlight">\(\rightarrow\)</span> nonlinear basis!</p></li>
+<li><p>we can improve the model robustness by removing multicollinearity <span class="math notranslate nohighlight">\(\rightarrow\)</span> orthogonal basis!</p></li>
+</ul>
+<p>Let’s start with linear regression and then build to polynomial regression.</p>
 </section>
 <section id="linear-regression">
 <h2>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this heading">#</a></h2>
@@ -587,6 +598,107 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 <li><p>apply polynomial basis expansion</p></li>
 <li><p>perform linear regression on the polynomial basis expansion</p></li>
 </ul>
+</section>
+<section id="advantage-and-disadvantages-of-polynomial-regression">
+<h2>Advantage and Disadvantages of Polynomial Regression<a class="headerlink" href="#advantage-and-disadvantages-of-polynomial-regression" title="Permalink to this heading">#</a></h2>
+<p>The advantages of polynomial regression vs. linear regression, include,</p>
+<ul class="simple">
+<li><p>improved flexibility to fit nonlinear phenomenon, with linear analysis and an analytical solution to train the model parameters.</p></li>
+</ul>
+<p>Disadvantages</p>
+<p>Generally, significantly higher model variance! May have unstable interpolation and especially extrapolation.</p>
+<p>sensitivity to outliers, especially with <span class="math notranslate nohighlight">\(ℎ_𝑘 \left(𝑥_{𝑖,𝑗}\right)=𝑥_{𝑖,𝑗}^𝑘\)</span> where <span class="math notranslate nohighlight">\(𝑘\)</span> is large</p>
+<p>we lose model parameter interpretability, <span class="math notranslate nohighlight">\(𝛽_{𝑗,𝑘}\)</span> is related to <span class="math notranslate nohighlight">\(ℎ_𝑘 \left(𝑋_j \right)\)</span>.</p>
+</section>
+<section id="adding-elementary-functions">
+<h2>Adding Elementary Functions<a class="headerlink" href="#adding-elementary-functions" title="Permalink to this heading">#</a></h2>
+<p>An alternative interpretation of polynomial regression is the construction of a regression model by adding elementary functions, i.e., the basis functions.</p>
+<p>Let’s work with a single predictor feature and <span class="math notranslate nohighlight">\(K\)</span> basis expansion.</p>
+<div class="math notranslate nohighlight">
+\[ y = \sum_{l=1}^{k} \beta_{1,k} h_k (X_j) \]</div>
+<p>For our simple, single predictor feature, <span class="math notranslate nohighlight">\(X\)</span>, polynomial problem this is,</p>
+<div class="math notranslate nohighlight">
+\[ y = \beta_{1,K} X^K + \beta_{1,K-1} X^{K-1} + \dots + \beta_{1,2} X^2 + \beta_{1,1} X + \beta_0 \]</div>
+<p>Let’s work with a 4th order polynomial expansion, <span class="math notranslate nohighlight">\(K=4\)</span>, of standardized depth.</p>
+<figure style="text-align: center;">
+  <img src="_static/polynomial/basis.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;">Polynomial basis for up to \(K=4\).</figcaption>
+</figure>
+<p>To build our function we are moving, scaling and adding these elementary functions. Let’s review how we perform moving and scaling of an elementary function with the example of the <span class="math notranslate nohighlight">\(k=2\)</span> basis function, i.e., a parabola, <span class="math notranslate nohighlight">\(h_2: 𝑦=𝑥^2\)</span>. Consider the following changes:</p>
+<ul class="simple">
+<li><p>shifting on the X-axis</p></li>
+<li><p>shifting on the Y-axis</p></li>
+<li><p>flipping on the X-axis</p></li>
+<li><p>changing the slope</p></li>
+</ul>
+<p>For each, I show a visualization of the change and then the impact on the polynomial equation.</p>
+<ul class="simple">
+<li><p>Shifting the function on the X-axis,</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/polynomial/shiftx.png" style="display: block; margin: 0 auto; width: 50%;">
+  <figcaption style="text-align: center;">Shifting $2^{nd}$ order elementary function on the X-axis.</figcaption>
+</figure>
+<div class="math notranslate nohighlight">
+\[ y = (x - \Delta_x)^2 = x^2 - 2\Delta_x x + \Delta_x^2 \]</div>
+<ul class="simple">
+<li><p>Shifting the function on the Y-axis,</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/polynomial/shiftx.png" style="display: block; margin: 0 auto; width: 50%;">
+  <figcaption style="text-align: center;">Shifting $2^{nd}$ order elementary function on the Y-axis.</figcaption>
+</figure>
+<div class="math notranslate nohighlight">
+\[ y = x^2 - \Delta_y \]</div>
+<ul class="simple">
+<li><p>flipping the function on the X-axis:</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/polynomial/flip.png" style="display: block; margin: 0 auto; width: 50%;">
+  <figcaption style="text-align: center;">Flipping the $2^{nd}$ order elmentary function on the X-axis.</figcaption>
+</figure>
+<div class="math notranslate nohighlight">
+\[ y = \pm \beta_2 x^2 \]</div>
+<ul class="simple">
+<li><p>changing the slope:</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/polynomial/scale.png" style="display: block; margin: 0 auto; width: 50%;">
+  <figcaption style="text-align: center;">Changing the slope of the $2^{nd}$ order elmentary function.</figcaption>
+</figure>
+<div class="math notranslate nohighlight">
+\[ y = \downarrow \beta_2 x^2, \text{wider / shallower} \]</div>
+<div class="math notranslate nohighlight">
+\[ y = \uparrow \beta_2 x^2, \text{narrower / deeper} \]</div>
+<p>Let’s make some observations from above,</p>
+<ul class="simple">
+<li><p>shifting on the Y-axis only requires modification of the contant term of the model parameters in the polynomial equation</p></li>
+<li><p>shifting on the X-axis requires modification of the lower order model parameters in the polynomial equation</p></li>
+<li><p>flipping on the X-axis requires change in sign of the current order model parameter in the polynomial equation</p></li>
+<li><p>increasing the slope requires increasing the current order model parameter in the polynomial equation</p></li>
+</ul>
+</section>
+<section id="assumptions-of-polynomial-regression">
+<h2>Assumptions of Polynomial Regression<a class="headerlink" href="#assumptions-of-polynomial-regression" title="Permalink to this heading">#</a></h2>
+<p>There are important assumption with our polynomial regression model, extended from the assumptions of linear regression above,</p>
+<ul class="simple">
+<li><p><strong>Error-free</strong> - predictor features basis expansions are error free, not random variables</p></li>
+<li><p><strong>Constant Variance</strong> - error in response is constant over predictor(s) value</p></li>
+<li><p><strong>Linearity</strong> - response is linear combination of basis features</p></li>
+<li><p><strong>Polynomial</strong> - relationships between 𝑋 and Y is polynomial</p></li>
+<li><p><strong>Independence of Error</strong> - error in response are uncorrelated with each other</p></li>
+<li><p><strong>No Multicollinearity</strong> - none of the basis feature expansions are linearly redundant with other features</p></li>
+</ul>
+<p>Consider the polynomial basis expansion above, are the colinearities between our basis. To check, I calculated the correlation matrix for the basis expansion used in the demonstration below.</p>
+<figure style="text-align: center;">
+  <img src="_static/polynomial/corr_matrix.png" style="display: block; margin: 0 auto; width: 50%;">
+  <figcaption style="text-align: center;">Correlation matrix from a polynomial basis expansion with $K=4$.</figcaption>
+</figure>
+<p>There is strong collinearity between the <span class="math notranslate nohighlight">\(K=1\)</span> and <span class="math notranslate nohighlight">\(K=3\)</span> bases and the <span class="math notranslate nohighlight">\(k=2\)</span> and <span class="math notranslate nohighlight">\(k=4\)</span> bases.</p>
+<ul class="simple">
+<li><p>recall, collinearity and multicolinearity may increase model variance</p></li>
+</ul>
+<p>To remove this collinearity we can apply Hermite polynomials.</p>
 </section>
 <section id="hermite-polynomials">
 <h2><strong>Hermite Polynomials</strong><a class="headerlink" href="#hermite-polynomials" title="Permalink to this heading">#</a></h2>
@@ -1278,7 +1390,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/16edf213635ffa5dc35ee32862f7395b536987c6479a5b53c8c4f8c2fcf9342b.png" src="_images/16edf213635ffa5dc35ee32862f7395b536987c6479a5b53c8c4f8c2fcf9342b.png" />
+<img alt="_images/add61f0bba81b06ba1689f8e28ec6710f7e4ad89cf11a9a8b5f5d0e92f7ce171.png" src="_images/add61f0bba81b06ba1689f8e28ec6710f7e4ad89cf11a9a8b5f5d0e92f7ce171.png" />
 </div>
 </div>
 <p>Let’s visualize the polynomial expansion over the Gaussian transformed depth.</p>
@@ -1467,7 +1579,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/36226a1a24cd72dc15e489918b2569a5adc1116f66bd2cfd7906aeb03872f27a.png" src="_images/36226a1a24cd72dc15e489918b2569a5adc1116f66bd2cfd7906aeb03872f27a.png" />
+<img alt="_images/021a90751380a4ef47e8c25397b8d4ea2181f90868007f6def2a8ef8ac9a100b.png" src="_images/021a90751380a4ef47e8c25397b8d4ea2181f90868007f6def2a8ef8ac9a100b.png" />
 </div>
 </div>
 <p>We can check the arithmetic averages of all the Hermite basis expansions.</p>
@@ -1692,10 +1804,10 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x28a1661b460&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x186c1b8c100&gt;
 </pre></div>
 </div>
-<img alt="_images/9f8e9d253367ec894257c29147314f314f6672ee487aa48461eed60aaaf8ebbb.png" src="_images/9f8e9d253367ec894257c29147314f314f6672ee487aa48461eed60aaaf8ebbb.png" />
+<img alt="_images/d408c9989a634e5c993a3d5cb894643b1d487e97e8eee271dc918a5dfcc8981c.png" src="_images/d408c9989a634e5c993a3d5cb894643b1d487e97e8eee271dc918a5dfcc8981c.png" />
 </div>
 </div>
 <p>Let’s visualize orthogonal polynomial basis orders over the range of the standardized depth.</p>
@@ -1921,6 +2033,9 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression">Linear Regression</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predictor-feature-basis-expansion">Predictor Feature / Basis Expansion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Polynomial Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advantage-and-disadvantages-of-polynomial-regression">Advantage and Disadvantages of Polynomial Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-elementary-functions">Adding Elementary Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assumptions-of-polynomial-regression">Assumptions of Polynomial Regression</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hermite-polynomials"><strong>Hermite Polynomials</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>

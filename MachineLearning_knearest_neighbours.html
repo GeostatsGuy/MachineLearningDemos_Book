@@ -173,6 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_concepts.html">Machine Learning Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_training_tuning.html">Training and Tuning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_plotting_data_models.html">Loading and Plotting Data and Models</a></li>
@@ -494,7 +495,7 @@ document.write(`
 \[
 (f * g)(x, y, z) = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(\Delta_x, \Delta_y, \Delta_z) g(x - \Delta_x, y - \Delta_y, z - \Delta_z) \, d\Delta_x \, d\Delta_y \, d\Delta_z
 \]</div>
-<p>The choice of which function is shifted before integration does not change the result, the convolution operator has commutativity.</p>
+<p>The choice of which function is shifted before integration does not change the result, the convolution operator has commutativity,</p>
 <div class="math notranslate nohighlight">
 \[ 
 (f * g)(x) = \int_{-\infty}^{\infty} f(\Delta) g(x - \Delta) \, d\Delta 
@@ -1534,7 +1535,7 @@ Response Feature: [[&#39;Prod&#39;]]
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_neighbours</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">weights</span> <span class="o">=</span> <span class="s1">&#39;uniform&#39;</span>                 <span class="c1"># model hyperparameters</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_neighbours</span> <span class="o">=</span> <span class="mi">150</span><span class="p">;</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">weights</span> <span class="o">=</span> <span class="s1">&#39;uniform&#39;</span>                 <span class="c1"># model hyperparameters</span>
 <span class="n">neigh</span> <span class="o">=</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">weights</span> <span class="o">=</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="n">n_neighbours</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="p">)</span> <span class="c1"># instantiate the prediction model</span>
 </pre></div>
 </div>
@@ -1566,16 +1567,16 @@ Response Feature: [[&#39;Prod&#39;]]
 <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Hyperparameters&#39;</span><span class="p">,[</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">3.2</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;weights: &#39;</span> <span class="o">+</span> <span class="n">weights</span><span class="p">,[</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">2.9</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;n neighbours: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n_neighbours</span><span class="p">),[</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">2.6</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;distance norm: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">),[</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">2.3</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">223</span><span class="p">)</span>                                              <span class="c1"># model accuracy check</span>
-<span class="n">check_model</span><span class="p">(</span><span class="n">neigh_fit</span><span class="p">,</span><span class="n">X_train</span><span class="p">[</span><span class="n">sel_spred</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">X_train</span><span class="p">[</span><span class="n">sel_spred</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="n">X_test</span><span class="p">[</span><span class="n">sel_spred</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">X_test</span><span class="p">[</span><span class="n">sel_spred</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span>
-            <span class="n">y_train</span><span class="p">[</span><span class="n">resp</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">y_test</span><span class="p">[</span><span class="n">resp</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="s1">&#39;K Nearest Neighbour Regression Model Accuracy&#39;</span><span class="p">)</span>
+<span class="c1"># plt.subplot(223)                                              # model accuracy check</span>
+<span class="c1"># check_model(neigh_fit,X_train[sel_spred[0]],X_train[sel_spred[1]],X_test[sel_spred[0]],X_test[sel_spred[1]],ymin,ymax,</span>
+<span class="c1">#             y_train[resp[0]],y_test[resp[0]],&#39;K Nearest Neighbour Regression Model Accuracy&#39;)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">2.1</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/65f6bc9fdbf0d6345e17ec560a6d3bc7a03194f99c539a31da1e82159d6a4b3f.png" src="_images/65f6bc9fdbf0d6345e17ec560a6d3bc7a03194f99c539a31da1e82159d6a4b3f.png" />
+<img alt="_images/dd9cfeb47657661a2423dad215c8b8dd2eac3b9b797de000dfff181328be6aff.png" src="_images/dd9cfeb47657661a2423dad215c8b8dd2eac3b9b797de000dfff181328be6aff.png" />
 </div>
 </div>
 <p>The model looks good:</p>
