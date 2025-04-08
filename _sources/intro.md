@@ -12,8 +12,8 @@ Chapter of e-book "Applied Machine Learning in Python: a Hands-on Guide with Cod
 
 ```{admonition} Cite this e-Book as:
 :class: remove-from-content-only
-
-Pyrcz, M.J., 2024, Applied Machine Learning in Python: a Hands-on Guide with Code, https://geostatsguy.github.io/MachineLearningDemos_Book. 
+Pyrcz, M. J., 2024, Applied Machine Learning in Python: A Hands-on Guide with Code. GitHub repository. Zenodo. DOI: 10.5281/zenodo.15169138
+[![DOI](https://zenodo.org/badge/863274676.svg)](https://doi.org/10.5281/zenodo.15169138)
 ```
 
 The workflows in this book and more are available here:
@@ -21,7 +21,8 @@ The workflows in this book and more are available here:
 ```{admonition} Cite the MachineLearningDemos GitHub Repository as:
 :class: remove-from-content-only
 
-Pyrcz, M.J., 2024, MachineLearningDemos: Python Machine Learning Demonstration Workflows Repository (0.0.1). Zenodo. [![DOI](https://zenodo.org/badge/862519860.svg)](https://zenodo.org/doi/10.5281/zenodo.13835312)
+Pyrcz, M.J., 2024, MachineLearningDemos: Python Machine Learning Demonstration Workflows Repository (0.0.1). Zenodo. 10.5281/zenodo.13835312
+[![DOI](https://zenodo.org/badge/862519860.svg)](https://zenodo.org/doi/10.5281/zenodo.13835312)
 ```
 
 By Michael J. Pyrcz <br />
