@@ -401,6 +401,13 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-formulation">Model Formulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predictor-feature-space">Predictor Feature Space</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tree-loss-functions">Tree Loss Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-the-tree-model">Training the Tree Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-the-loss-function-with-a-new-split">Updating the Loss Function with a New Split</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuning-the-tree-model">Tuning the Tree Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-prediction-model">The Prediction Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shapley-values-from-decision-trees">Shapley Values from Decision Trees</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
@@ -472,74 +479,365 @@ document.write(`
 <h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this heading">#</a></h2>
 <p>Decision trees are not the most powerful, cutting edge method in machine learning, so why cover decision trees?</p>
 <ul class="simple">
-<li><p>one of the most understandable, interpretable predictive machine learning modeling</p></li>
-<li><p>decision trees are enhanced with random forests, bagging and boosting to be one of the best models in many cases</p></li>
+<li><p>one of the most understandable, interpretable predictive machine learning models</p></li>
+<li><p>decision trees are enhanced with random forests, bagging and boosting to be one of the best machine learning predictive models in many cases</p></li>
 </ul>
-<p>Machine learning method for supervised learning for classification and regression analysis. Let’s cover some key aspects of decision trees.</p>
+<figure style="text-align: center;">
+  <img src="_static/decision_tree/blackspruce.png" style="display: block; margin: 0 auto; width: 50%;">
+  <figcaption style="text-align: center;"> A single proud black spruce tree within the Boreal Forest in Alaska, similar to the northern region of my home province of Alberta. Crop of photo from https://www.britannica.com/plant/spruce#/media/1/561445/8933, access date May 1, 2025. 
+</figcaption>
+</figure>
+<p>Let’s cover some key aspects of decision trees.</p>
 </section>
 <section id="model-formulation">
 <h2>Model Formulation<a class="headerlink" href="#model-formulation" title="Permalink to this heading">#</a></h2>
-<p>The prediction feature space is partitioned into <span class="math notranslate nohighlight">\(J\)</span> disjoint regions <span class="math notranslate nohighlight">\(R_1, R_2, \ldots, R_J\)</span>, one for each leaf. For a given input <span class="math notranslate nohighlight">\(\mathbf{x} \in R_j\)</span>, the prediction is:</p>
-<ul class="simple">
-<li><p><strong>regression</strong> - the predicted value for input ( \mathbf{x} \in R_j ) with the average of the training data in the region</p></li>
-</ul>
+<p>The prediction feature space is partitioned into <span class="math notranslate nohighlight">\(J\)</span> exhaustive, mutually exclusive regions <span class="math notranslate nohighlight">\(R_1, R_2, \ldots, R_J\)</span>. For a given prediction case <span class="math notranslate nohighlight">\(x_1,\ldots,x_m \in R_j\)</span>, the prediction is:</p>
+<p><strong>Regression</strong> - the average of the training data in the region, <span class="math notranslate nohighlight">\(R_j\)</span></p>
 <div class="math notranslate nohighlight">
 \[
 \hat{y} = \frac{1}{|R_j|} \sum_{\mathbf{x}_i \in R_j} y_i
 \]</div>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\hat{y}\)</span> is the predicted value for input <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>,</p></li>
-<li><p><span class="math notranslate nohighlight">\(R_j\)</span> is the region (leaf node) that <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> falls into,</p></li>
-<li><p><span class="math notranslate nohighlight">\(|R_j|\)</span> is the number of training samples in region <span class="math notranslate nohighlight">\(R_j\)</span>,</p></li>
-<li><p><span class="math notranslate nohighlight">\(y_i\)</span> are the actual target values of those training samples in <span class="math notranslate nohighlight">\(R_j\)</span>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>classification</strong> - the predicted category for input <span class="math notranslate nohighlight">\(\mathbf{x} \in R_j\)</span> is the most common class among the training samples in region <span class="math notranslate nohighlight">\(R_j\)</span>:</p></li>
-</ul>
+<p>where <span class="math notranslate nohighlight">\(\hat{y}\)</span> is the predicted value for input <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, <span class="math notranslate nohighlight">\(R_j\)</span> is the region (leaf node) that <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> falls into, <span class="math notranslate nohighlight">\(|R_j|\)</span> is the number of training samples in region <span class="math notranslate nohighlight">\(R_j\)</span>, and <span class="math notranslate nohighlight">\(y_i\)</span> is the actual target values of those training samples in <span class="math notranslate nohighlight">\(R_j\)</span>.</p>
+<p><strong>Classification</strong> - category with the plurality of training cases (most common case) in region <span class="math notranslate nohighlight">\(R_j\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
 \hat{y} = \arg\max_{c \in C} \left( \frac{1}{|R_j|} \sum_{\mathbf{x}_i \in R_j} \mathbb{1}(y_i = c) \right)
 \]</div>
+<p>where <span class="math notranslate nohighlight">\(C\)</span> is the set of all possible categories, <span class="math notranslate nohighlight">\(\mathbb{1}(y_i = c)\)</span> is indicator transform, 1 if <span class="math notranslate nohighlight">\(y_i = c\)</span>, 0 otherwise, <span class="math notranslate nohighlight">\(|R_j|\)</span> is the number of training samples in region <span class="math notranslate nohighlight">\(R_j\)</span>, and <span class="math notranslate nohighlight">\(\hat{y}\)</span> is the predicted class label.</p>
+<p>The predictor space, <span class="math notranslate nohighlight">\(𝑋_1,\ldots,𝑋_𝑚\)</span>, is segmented into <span class="math notranslate nohighlight">\(J\)</span> mutually exclusive, exhaustive regions, <span class="math notranslate nohighlight">\(R_j, j = 1,\ldots,J\)</span>, where the regions are,</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(C\)</span> is the set of all possible categories,</p></li>
-<li><p><span class="math notranslate nohighlight">\(\mathbb{1}(y_i = c)\)</span> is 1 if <span class="math notranslate nohighlight">\(y_i = c\)</span>, 0 otherwise,</p></li>
-<li><p><span class="math notranslate nohighlight">\(|R_j|\)</span> is the number of training samples in region <span class="math notranslate nohighlight">\(R_j\)</span>,</p></li>
-<li><p><span class="math notranslate nohighlight">\(\hat{y}\)</span> is the predicted class label.</p></li>
+<li><p><strong>mutually exclusive</strong> – any combination of predictor features, <span class="math notranslate nohighlight">\(x_1,\ldots,x_𝑚\)</span>, only belongs to a single region, <span class="math notranslate nohighlight">\(R_j\)</span></p></li>
+<li><p><strong>exhaustive</strong> – all combinations of predictor feature values belong a region, <span class="math notranslate nohighlight">\(R_j\)</span>, i.e., all the regions, <span class="math notranslate nohighlight">\(R_j, j = 1,\ldots,J\)</span>, cover entire predictor  feature space</p></li>
 </ul>
-<p><span class="math notranslate nohighlight">\(𝑋_1,\ldots,𝑋_𝑚\)</span>, into 𝐽 mutually exclusive, exhaustive regions, <span class="math notranslate nohighlight">\(R_j, j = 1,\ldots,J\)</span>, where the regions are,</p>
+<p>All prediction cases, <span class="math notranslate nohighlight">\(x_1,\ldots,x_m\)</span> that fall in the same region, <span class="math notranslate nohighlight">\(R_j\)</span>, are estimated with the same value.</p>
 <ul class="simple">
-<li><p><strong>mutually exclusive</strong> – any combination of predictor features, <span class="math notranslate nohighlight">\(x_1,\ldots,x_𝑚\)</span>, only belongs to a single region, <span class="math notranslate nohighlight">\(R_j\)</span> - as</p></li>
-<li><p><strong>exhaustive</strong> – all combinations of predictors belong a region, <span class="math notranslate nohighlight">\(R_j\)</span>, i.e., the all the regions, <span class="math notranslate nohighlight">\(R_j, j = 1,\ldots,J\)</span>, cover entire predictor  feature space
-The same prediction in each region, mean of training data in region, 𝑌 ̂(𝑅_𝑗 )=𝑌 ̅(𝑅_𝑗)
-For example, predict production, 𝑌 ̂, from porosity, 𝑋_1,</p></li>
+<li><p>the prediction model inherently discontinuous at the region boundaries</p></li>
 </ul>
-<p><strong>Prediction</strong></p>
+<p>For example, consider this decision tree prediction model for the production response feature, <span class="math notranslate nohighlight">\(\hat{Y}\)</span> ̂from porosity, <span class="math notranslate nohighlight">\(X_1\)</span>, predictor feature,</p>
+<figure style="text-align: center;">
+  <img src="_static/decision_tree/regions.png" style="display: block; margin: 0 auto; width: 80%;">
+  <figcaption style="text-align: center;"> Four region decision tree with data and predictions, \(\hat{Y}(R_j) = \overline{Y}(R_j)\) by region, \(R_j, j=1,…,4\). For example, given a predictor feature value of 13% porosity, the model predicts about 2,000 MCFPD for production.
+</figcaption>
+</figure>
+<p>How do we segment the predictor feature space?</p>
+<p>Look at this example with predictor features porosity and brittleness to predict the production response feature.</p>
+<figure style="text-align: center;">
+  <img src="_static/decision_tree/complexboundaries.png" style="display: block; margin: 0 auto; width: 80%;">
+  <figcaption style="text-align: center;"> A very complicated segmentation of the predictor feature space with 3 regions.
+</figcaption>
+</figure>
 <ul class="simple">
-<li><p>estimate a function <span class="math notranslate nohighlight">\(\hat{f}\)</span> such that we predict a response feature <span class="math notranslate nohighlight">\(Y\)</span> from a set of predictor features <span class="math notranslate nohighlight">\(X_1,\ldots,X_m\)</span>.</p></li>
-<li><p>the prediction is of the form <span class="math notranslate nohighlight">\(\hat{Y} = \hat{f}(X_1,\ldots,X_m)\)</span></p></li>
+<li><p>these are very efficient boundaries that would capture low, mid and high production</p></li>
 </ul>
-<p><strong>Supervised Learning</strong></p>
+<p>But, this model would be quite complicated,</p>
 <ul class="simple">
-<li><p>the response feature label, <span class="math notranslate nohighlight">\(Y\)</span>, is available over the training and testing data</p></li>
+<li><p>requiring a large number of model parameters</p></li>
+<li><p>difficult to train for a large number of prediction features, i.e., high dimensionality</p></li>
 </ul>
-<p><strong>Hierachical, Binary Segmentation of the Feature Space</strong></p>
-<p>The fundamental idea is to divide the predictor space, <span class="math notranslate nohighlight">\(𝑋_1,\ldots,X_m\)</span>, into <span class="math notranslate nohighlight">\(J\)</span> mutually exclusive, exhaustive regions</p>
+<p>If I can convince you to accept these regions instead, then you would have a model that,</p>
 <ul class="simple">
-<li><p><strong>mutually exclusive</strong> – any combination of predictors only belongs to a single region, <span class="math notranslate nohighlight">\(R_j\)</span></p></li>
-<li><p><strong>exhaustive</strong> – all combinations of predictors belong a region, <span class="math notranslate nohighlight">\(R_j\)</span>, regions cover entire feature space (range of the variables being considered)</p></li>
+<li><p>is very easy to train</p></li>
+<li><p>has very few parameters</p></li>
+<li><p>very compact and interpretable</p></li>
 </ul>
-<p>For every observation in a region, <span class="math notranslate nohighlight">\(R_j\)</span>, we use the same prediction, <span class="math notranslate nohighlight">\(\hat{Y}(R_j)\)</span></p>
-<p>For example predict production, <span class="math notranslate nohighlight">\(\hat{Y}\)</span>, from porosity, <span class="math notranslate nohighlight">\({X_1}\)</span></p>
+<figure style="text-align: center;">
+  <img src="_static/decision_tree/simpleboundaries.png" style="display: block; margin: 0 auto; width: 80%;">
+  <figcaption style="text-align: center;"> A simpler segmentation of the predictor feature space with 9 regions, but much fewer parameters and easy to train for any dimensionality.
+</figcaption>
+</figure>
+<p>This is a set of regions based on hierarchical, binary segmentation. Let’s clarify the concept of predictor feature space and then explain this form of predictor feature segmentation.</p>
+</section>
+<section id="predictor-feature-space">
+<h2>Predictor Feature Space<a class="headerlink" href="#predictor-feature-space" title="Permalink to this heading">#</a></h2>
+<p>Let’s step back and establish the concept of predictor feature space. We define it as,</p>
 <ul class="simple">
-<li><p>given the data within a mD feature space, <span class="math notranslate nohighlight">\(X_1,\ldots,X_m\)</span>, find that boundary maximizes the gap between the two categories</p></li>
-<li><p>new cases are classified based on where they fall relative to this boundary</p></li>
+<li><p>the space that includes all possible estimation problems, i.e., the combination of all possible predictor feature values, <span class="math notranslate nohighlight">\(x_1, x_2,\ldots,x_m\)</span>.</p></li>
 </ul>
-<p><strong>Compact, Interpretable Model</strong></p>
-<p>Since the classification is based on a hierarchy of binary segmentations of the feature space (one feature at a time) the model can be specified in a intuitive manner as a:</p>
+<figure style="text-align: center;">
+  <img src="_static/decision_tree/predictorspace.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> Illustration of predictor feature space for the case of 3 predictor features with specified minimum and maximum values per feature resulting in a rectangular cuboid of possible predictions, $x_1, x_2, x_3$.
+</figcaption>
+</figure>
+<p>Typically this is defined by the range of possible values, <span class="math notranslate nohighlight">\(x_{\alpha} \in \left[X_{\alpha,\text{𝑚𝑖𝑛}},𝑋_{\alpha,\text{max}} \right]\)</span>​, resulting in,</p>
 <ul class="simple">
-<li><p><strong>tree with binary branches</strong>, hence the name decision tree</p></li>
-<li><p><strong>set of nested if statements</strong>, for example:</p></li>
+<li><p>1 predictor feature <span class="math notranslate nohighlight">\(\rightarrow\)</span> line segment</p></li>
+<li><p>2 predictor features <span class="math notranslate nohighlight">\(\rightarrow\)</span> rectangle</p></li>
+<li><p>3 predictor features <span class="math notranslate nohighlight">\(\rightarrow\)</span> rectangular cuboid</p></li>
+<li><p><span class="math notranslate nohighlight">\(&gt;\)</span>3 predictor features <span class="math notranslate nohighlight">\(\rightarrow\)</span> hyperrectangle</p></li>
 </ul>
+<p>While we define the predictor feature space with the ranges of the predictor features, I should provide a cautionary note.</p>
+<div class="remove-from-content-only admonition">
+<p class="admonition-title">Decision Trees have an Implicit Extrapolation Model</p>
+<p>As you will see below, the regions along the exterior extend to infinity, effectively assuming a constant extrapolation model.</p>
+</div>
+</section>
+<section id="tree-loss-functions">
+<h2>Tree Loss Functions<a class="headerlink" href="#tree-loss-functions" title="Permalink to this heading">#</a></h2>
+<p>For regression trees we minimize the residual sum of squares and for classification trees we minimize the weighted average Gini impurity.</p>
+<p>The Residual Sum of Squares (RSS) measures the total squared difference between the actual values and predicted values in a regression tree,</p>
+<div class="math notranslate nohighlight">
+\[
+\text{RSS} = \sum_{j=1}^{J} \sum_{i \in R_j} (y_i - \hat{y}_{R_j})^2
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(J\)</span> is the total number of regions in the tree, <span class="math notranslate nohighlight">\(R_j\)</span> is the <span class="math notranslate nohighlight">\(j\)</span> region, <span class="math notranslate nohighlight">\(y_i\)</span> is the truth value of the response feature at observation the <span class="math notranslate nohighlight">\(i\)</span> training data, and <span class="math notranslate nohighlight">\(\hat{y}_{R_j}\)</span> is the predicted value for region <span class="math notranslate nohighlight">\(R_j\)</span>, the mean of <span class="math notranslate nohighlight">\(y_i \; \forall \; i \in R_j\)</span>.</p>
+<p>When a parent node splits into two child nodes ( t_L ) and ( t_R ), the weighted Gini impurity is:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Gini}_{\text{total}} = \sum_{j=1}^{J} \frac{N_j}{N} \cdot \text{Gini}(j)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(J\)</span> is the total number of regions in the tree, <span class="math notranslate nohighlight">\(N\)</span> is the total number of samples in the dataset,   <span class="math notranslate nohighlight">\(N_j\)</span> is the number of samples in leaf node <span class="math notranslate nohighlight">\(j\)</span>, and <span class="math notranslate nohighlight">\(\text{Gini}(j)\)</span> is the Gini impurity of leaf node <span class="math notranslate nohighlight">\(j\)</span>.</p>
+<p>The Gini impurity for a single decision tree node is calculated as,</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Gini}(j) = 1 - \sum_{c=1}^{C} p_{j,c}^2
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(p_{j,c}\)</span> is the proportion of class <span class="math notranslate nohighlight">\(c\)</span> samples in node <span class="math notranslate nohighlight">\(j\)</span>.</p>
+<p>For classification our loss function does not compare the predictions to the truth values like our regression loss!</p>
+<ul class="simple">
+<li><p>the Gini impurity penalizes mixtures of training data categories! A region of all one category of training data will have a Gini impurity of 0 to contribute to the over all loss.</p></li>
+</ul>
+<p>Note that the by-region Gini impurity is,</p>
+<ul class="simple">
+<li><p><strong>weighted</strong> - by the number of training data in each regions, regions with more training data have greater impact on the overall loss</p></li>
+<li><p><strong>averaged</strong> - over all the regions to calculate the total Gini impurity of the decision tree</p></li>
+</ul>
+<p>These losses are calculated during,</p>
+<ul class="simple">
+<li><p><strong>tree model training</strong> - with respect to training data to grow the tree</p></li>
+<li><p><strong>tree model tuning</strong> - with respect to withheld testing data to select the optimum tree complexity.</p></li>
+</ul>
+<p>Let’s talk about tree model training first and then tree model tuning.</p>
+</section>
+<section id="training-the-tree-model">
+<h2>Training the Tree Model<a class="headerlink" href="#training-the-tree-model" title="Permalink to this heading">#</a></h2>
+<p>How do we calculate these mutually exclusive, exhaustive regions? This is accomplished through hierarchical binary segmentation of the predictor feature space.</p>
+<p>Training a decision tree model is both,</p>
+<ol class="arabic simple">
+<li><p>assigning the mutual exclusive, exhaustive regions</p></li>
+<li><p>building a decision tree, each region is a terminal node, also known as a leaf node</p></li>
+</ol>
+<p>These are the same thing! Let’s list the steps and then walk through a training a tree to demonstrate this.</p>
+<ol class="arabic simple" start="0">
+<li><p><strong>Assign All Data to a Single Region</strong> - this region covers the entire predictor feature space</p></li>
+<li><p><strong>Scan All Possible Splits</strong> - over all regions and over all features</p></li>
+<li><p><strong>Select the Best Split</strong> - this is greedy optimization, i.e., the best split minimizes the residual sum of squares of errors over all the training data <span class="math notranslate nohighlight">\(y_i\)</span> over all of the regions <span class="math notranslate nohighlight">\(j = 1,\ldots,J\)</span>.</p></li>
+<li><p><strong>Iterate Until Very Overfit</strong> - return to step 1 for the next split until the tree is very overfit.</p></li>
+</ol>
+<p>Note, this method for training a decision tree is a solution heuristic,</p>
+<ul class="simple">
+<li><p>there is no effort to jointly optimize all splits at once, for example, to select a suboptimal split to maximize training error reduction with a subsequent split</p></li>
+</ul>
+<p>Also, the decision tree is constructed from the top down.</p>
+<ul class="simple">
+<li><p>we begin with a single region that covers the entire predictor feature space and then proceed with a sequence of region splits / tree branches.</p></li>
+</ul>
+<p>Now let’s illustrate this with an example, predicting natural gas production response feature with 2 predictor features,</p>
+<ul class="simple">
+<li><p>porosity - impacting pore volume and flow</p></li>
+<li><p>brittleness - impacting the ability to induce and hold open fractures</p></li>
+</ul>
+<p>We start with all our predictor feature space in a single region with the single possible prediction as the average of all the training data.</p>
+<figure style="text-align: center;">
+  <img src="_static/decision_tree/tree_1nodes.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Initial data all in 1 region, i.e., hyperparameter number of leaf nodes of 1, predict with the global mean of the response feature.
+</figcaption>
+</figure>
+<p>Next, we scan all features to find the first best split, porosity of 16.7%. This very simple decision tree with a single decision node and 2 regions or leaf nodes is known as a stump tree, i.e., the simplest possible decision tree model.</p>
+<figure style="text-align: center;">
+  <img src="_static/decision_tree/tree_2nodes.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Hyperparameter number of leaf nodes of 2,  first best split resulting in a stump tree.
+</figcaption>
+</figure>
+<p>Now we scan over both regions and over all predictor features to find the best next split, brittleness of 36.1 in the greater than or equal to porosity of 16.7% region.</p>
+<figure style="text-align: center;">
+  <img src="_static/decision_tree/tree_3nodes.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Hyperparameter number of leaf nodes of 3.
+</figcaption>
+</figure>
+<p>Continuing, we find our next split of porosity of 18.5% in the upper right region. We now have 4 regions. Our decision tree is starting to capture the increasing production with increasing porosity along with lower production for low brittleness.</p>
+<figure style="text-align: center;">
+  <img src="_static/decision_tree/tree_4nodes.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Hyperparameter number of leaf nodes of 4.
+</figcaption>
+</figure>
+<p>Now the next best split is in the original lower porosity region from the stump tree with porosity of 13.2%.</p>
+<figure style="text-align: center;">
+  <img src="_static/decision_tree/tree_5nodes.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Hyperparameter number of leaf nodes of 5.
+</figcaption>
+</figure>
+<p>The next best split divides the region in the middle of porosity, capturing the trend of low production for low brittleness, even with high porosity.</p>
+<figure style="text-align: center;">
+  <img src="_static/decision_tree/tree_6nodes.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Hyperparameter number of leaf nodes of 6.
+</figcaption>
+</figure>
+<p>The next split is capturing the reduction in production with high brittleness, even with high porosity,</p>
+<figure style="text-align: center;">
+  <img src="_static/decision_tree/tree_7nodes.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Hyperparameter number of leaf nodes of 7.
+</figcaption>
+</figure>
+<p>and this split continues to capture this same pattern in the data.</p>
+<figure style="text-align: center;">
+  <img src="_static/decision_tree/tree_8nodes.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Hyperparameter number of leaf nodes of 8.
+</figcaption>
+</figure>
+<p>For brevity we stop here, and make these observations,</p>
+<ul class="simple">
+<li><p>hierarchical, binary segmentation is the same as sequentially building a decision tree, each split adds a new decision node and increases the number of leaf nodes by one.</p></li>
+<li><p>the simple decision trees are in the complicated decision tree, i.e., if we build an <span class="math notranslate nohighlight">\(8\)</span> leaf node model, we have the <span class="math notranslate nohighlight">\(8, 7, \ldots, 2\)</span> leaf node model by sequentially removing the decision nodes, in the order of last one is the first one to remove.</p></li>
+<li><p>the ultimate overfit model is number of leaf nodes equal to the number of training data. In this case, the training error is 0.0 as have one region for each training data a we estimate with the training data response feature values for all the at the training data cases.</p></li>
+</ul>
+</section>
+<section id="updating-the-loss-function-with-a-new-split">
+<h2>Updating the Loss Function with a New Split<a class="headerlink" href="#updating-the-loss-function-with-a-new-split" title="Permalink to this heading">#</a></h2>
+<p>To find the next best split, we must scan over all regions, and over all features with the regions. This may sound like a lot of computation, but it is quite efficient.</p>
+<ul class="simple">
+<li><p>we only need to check the midpoints between sorted training data for each feature in each region, because any split that does not change the region assignment of a training data will not change the training loss.</p></li>
+</ul>
+<p>For a region <span class="math notranslate nohighlight">\(R\)</span> split into candidate regions <span class="math notranslate nohighlight">\(R_L\)</span> and <span class="math notranslate nohighlight">\(R_R\)</span>, the RSS after the split is:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{RSS}_{\text{split}} = \sum_{i \in R_L} (y_i - \hat{y}_{R_L})^2 + \sum_{i \in R_R} (y_i - \hat{y}_{R_R})^2
+\]</div>
+<p>where, <span class="math notranslate nohighlight">\(y_i\)</span> is the actual response feature for training data observation <span class="math notranslate nohighlight">\(i\)</span>, and <span class="math notranslate nohighlight">\(\hat{y}_{R_L}\)</span>, <span class="math notranslate nohighlight">\(\hat{y}_{R_R}\)</span> is the mean of training data response feature in candidate regions <span class="math notranslate nohighlight">\(R_L\)</span> and <span class="math notranslate nohighlight">\(R_R\)</span>.</p>
+<p>Note, we add in the RSS components from all the other regions to get the total model RSS to find the best split over all the regions,</p>
+<ul class="simple">
+<li><p>the split with the lowest <span class="math notranslate nohighlight">\(\text{RSS}_{\text{split}}\)</span> is selected for the region and compared to all other best splits in the other regions to find the next best split, greedy solution.</p></li>
+</ul>
+<p>Now we are prepared for tuning a decision tree model.</p>
+</section>
+<section id="tuning-the-tree-model">
+<h2>Tuning the Tree Model<a class="headerlink" href="#tuning-the-tree-model" title="Permalink to this heading">#</a></h2>
+<p>To tune the decision tree we take the very overfit trained tree model,</p>
+<ul class="simple">
+<li><p>sequentially cut the last decision node</p></li>
+<li><p>i.e., prune the last branch of the decision tree</p></li>
+</ul>
+<p>Since the simpler trees are inside the complicated tree!</p>
+<p>We can calculate test error as we prune and select tree with minimum test error</p>
+<p>We overfit the decision tree model, with a large number of leaf nodes and then we reduce the number of leaf nodes while tracking the test error.</p>
+<ul class="simple">
+<li><p>we select the number of leaf nodes that minimize the testing error.</p></li>
+<li><p>since we are sequentially removing the last branch to simplify the tree, we call model tuning <strong>pruning</strong> for decision trees</p></li>
+</ul>
+<p>Here is an overfit decision tree with many, <span class="math notranslate nohighlight">\(100\)</span>, leaf nodes.</p>
+<figure style="text-align: center;">
+  <img src="_static/decision_tree/veryoverfit.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Very overfit decision tree, hyperparameter number of leaf nodes of 100 (left), train and test cross validation plot (center) and train and test error over number of leaf nodes (right).
+</figcaption>
+</figure>
+<p>Since this tree is calculated with my interactive Python dashboard, I am able to easily reduce the number of regions from <span class="math notranslate nohighlight">\(100, 99, 98, 96, 95, \ldots\)</span> and visualize the tree to explore complicated to simple trees.</p>
+<ul class="simple">
+<li><p>by doing this we can demonstrate that the simple trees are in the complicated tree.</p></li>
+</ul>
+<p>For example, here’s the 5 region decision tree in the overfit 100 region decision tree,</p>
+<figure style="text-align: center;">
+  <img src="_static/decision_tree/5nodetree.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> The 5 leaf node tree in the very overfit 100 leaf node tree model.
+</figcaption>
+</figure>
+<p>and here is the 10 region decision tree in the overfit 100 region decision tree,</p>
+<figure style="text-align: center;">
+  <img src="_static/decision_tree/10nodetree.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> The 10 leaf node tree in the very overfit 100 leaf node tree model.
+</figcaption>
+</figure>
+<p>and finally, here is the 20 region decision tree in the overfit 100 region decision tree,</p>
+<figure style="text-align: center;">
+  <img src="_static/decision_tree/20nodetree.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> The 20 leaf node tree in the very overfit 100 leaf node tree model.
+</figcaption>
+</figure>
+<p>You might wonder, why I didn’t just update the decision tree plot? scikit-learn’s decision tree plotting function recales the plot and the geometry changes so much it is not easy to visualize the simple trees within the complicated tree.</p>
+<ul class="simple">
+<li><p>I think this approach of visualizing the simple trees and drafting the polylines works well for educational purposes!</p></li>
+</ul>
+<p>Now let’s return to our very overfit tree and demonstrate the hyperparameter tuning by tree pruning approach,</p>
+<figure style="text-align: center;">
+  <img src="_static/decision_tree/tune100.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Very overfit decision tree, train and test error vs. model complexity (left) and decision tree (right).
+</figcaption>
+</figure>
+<p>Now, we identify the last added branch and remove it to calculate the 99 region decision tree, a slightly simpler decision tree, and we calculate the test error.</p>
+<figure style="text-align: center;">
+  <img src="_static/decision_tree/tune99.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Very overfit decision tree, train and test error vs. model complexity (left) and decision tree (right).
+</figcaption>
+</figure>
+<p>And we identify the last added branch again and remove it to calculate the 98 region decision tree, once again a slightly simpler decision tree, and we calculate the test error.</p>
+<figure style="text-align: center;">
+  <img src="_static/decision_tree/tune98.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Very overfit decision tree, train and test error vs. model complexity (left) and decision tree (right).
+</figcaption>
+</figure>
+<p>And we identify the last added branch again and remove it to calculate the 97 region decision tree, once again a slightly simpler decision tree, and we calculate the test error.</p>
+<figure style="text-align: center;">
+  <img src="_static/decision_tree/tune97.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Very overfit decision tree, train and test error vs. model complexity (left) and decision tree (right).
+</figcaption>
+</figure>
+<p>And we identify the last added branch again and remove it to calculate the 96 region decision tree, once again a slightly simpler decision tree, and we calculate the test error.</p>
+<figure style="text-align: center;">
+  <img src="_static/decision_tree/tune96.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Very overfit decision tree, train and test error vs. model complexity (left) and decision tree (right).
+</figcaption>
+</figure>
+<p>And we identify the last added branch again and remove it to calculate the 95 region decision tree, once again a slightly simpler decision tree, and we calculate the test error.</p>
+<figure style="text-align: center;">
+  <img src="_static/decision_tree/tune95.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Very overfit decision tree, train and test error vs. model complexity (left) and decision tree (right).
+</figcaption>
+</figure>
+<p>And we identify the last added branch again and remove it to calculate the 94 region decision tree, once again a slightly simpler decision tree, and we calculate the test error.</p>
+<figure style="text-align: center;">
+  <img src="_static/decision_tree/tune94.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Very overfit decision tree, train and test error vs. model complexity (left) and decision tree (right).
+</figcaption>
+</figure>
+<p>Now let’s return and look at the very overfit model and add some more information over different levels of complexity.</p>
+<figure style="text-align: center;">
+  <img src="_static/decision_tree/overfit.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Very overfit decision tree, hyperparameter number of leaf nodes of 100 (left), train and test cross validation plot (center) and train and test error over number of leaf nodes (right).
+</figcaption>
+</figure>
+<p>I include the,</p>
+<ul class="simple">
+<li><p>train and test cross validation plot with nearly perfect training prediction and very poor testing prediction for the 100 leaf node overfit decision tree</p></li>
+<li><p>train and test error versus number of leaf nodes.</p></li>
+</ul>
+<p>This demonstrates that the decision tree model is indeed very overfit, for example, see the falling training error and rising testing error.</p>
+<p>Now we prune the decision nodes until we obtain the model with the minimum testing error at about 19 leaf nodes.</p>
+<figure style="text-align: center;">
+  <img src="_static/decision_tree/tuned.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Tuned decision tree, hyperparameter number of leaf nodes of 20 (left), train and test cross validation plot (center) and train and test error over number of leaf nodes indicating that testing error is minimized (right).
+</figcaption>
+</figure>
+<p>For completeness, I have included an underfit model, i.e., if we prune our decision tree too much, with only 8 leaf nodes.</p>
+<figure style="text-align: center;">
+  <img src="_static/decision_tree/underfit.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Underfit decision tree, hyperparameter number of leaf nodes of 8 (left), train and test cross validation plot (center) and train and test error over number of leaf nodes indicating that testing error is minimized (right).
+</figcaption>
+</figure>
+<p>Note, that the train and test error are both very high with the underfit decision tree.</p>
+<p>I prefer number of leaf nodes as my decision tree hyperparameter because it provides,</p>
+<ul class="simple">
+<li><p><strong>continuous, uniform increase in complexity</strong> -  equal steps in increased complexity without jumps</p></li>
+<li><p><strong>intuitive control on complexity</strong> - we can understand and relate the <span class="math notranslate nohighlight">\(2, 3, \ldots, 100\)</span> leaf node decision trees</p></li>
+<li><p><strong>flexible complexity</strong> - the tree is free to grow in any manner to reduce training error, including highly asymmetric decision trees</p></li>
+</ul>
+<p>There are other common decision tree hyperparameters including,</p>
+<ul class="simple">
+<li><p><strong>Minimum reduction in RSS</strong> – related to the idea that incremental increase in complexity must be offset by sufficient reduction in training error. This could stop the model early, for example, a split with low reduction in training error could lead to a subsequent split with a much larger reduction in training error</p></li>
+<li><p><strong>Minimum number of training data in each region</strong> – related to the concept of accuracy of the by-region estimates, i.e., we need at least <span class="math notranslate nohighlight">\(n\)</span> data for a reliable mean and most common category</p></li>
+<li><p><strong>Maximum number of levels</strong> – forces symmetric trees, similar number of splits to get to each leaf node. There is a large change in model complexity with change in the hyperparameter.</p></li>
+</ul>
+</section>
+<section id="the-prediction-model">
+<h2>The Prediction Model<a class="headerlink" href="#the-prediction-model" title="Permalink to this heading">#</a></h2>
+<p>The decision tree prediction model is represented as <strong>set of nested if statements</strong>, for example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">porosity</span> <span class="o">&gt;</span> <span class="mf">0.15</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">brittleness</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">:</span>
         <span class="n">initial_production</span> <span class="o">=</span> <span class="mi">1000</span>
@@ -552,22 +850,88 @@ For example, predict production, 𝑌 ̂, from porosity, 𝑋_1,</p></li>
         <span class="n">initial_production</span> <span class="o">=</span> <span class="mi">3000</span>
 </pre></div>
 </div>
+<p>and the predictions as stated above are either the,</p>
 <ul class="simple">
-<li><p><strong>predicts with the average of training response features</strong> in each region <span class="math notranslate nohighlight">\(\hat{Y}(R_j)\)</span>.</p></li>
+<li><p>regression - average of the training data in the region</p></li>
+<li><p>classification - the plurality, most common category, of the training data in the region</p></li>
 </ul>
-<p><strong>Procedure for Tree Construction</strong></p>
-<p>The tree is constructed from the top down. We begin with a single region that covers the entire feature space and then proceed with a sequence of splits.</p>
+</section>
+<section id="shapley-values-from-decision-trees">
+<h2>Shapley Values from Decision Trees<a class="headerlink" href="#shapley-values-from-decision-trees" title="Permalink to this heading">#</a></h2>
+<p>Recall, we need to take a single model, for example, <span class="math notranslate nohighlight">\(f(x_1,x_2,x_3,x_4)\)</span>, and make an estimate for all possible combinations of feature subsets, for example,</p>
+<div class="math notranslate nohighlight">
+\[
+f(x_1) \quad f(x_2,x_4) \quad f(x_1,x_2,x_3)
+\]</div>
 <ul class="simple">
-<li><p><strong>Scan All Possible Splits</strong> over all regions and over all features.</p></li>
-<li><p><strong>Greedy Optimization</strong>  The method proceeds by finding the first segmentation (split) in any feature that minimizes the residual sum of squares of errors over all the training data <span class="math notranslate nohighlight">\(y_i\)</span> over all of the regions <span class="math notranslate nohighlight">\(j = 1,\ldots,J\)</span>.</p></li>
+<li><p>note, the naïve approach to calculate Shapley values is to train the full combinatorial of models with different predictor features, but we don’t want to make new models if our goal is feature importance to diagnose our specific model, <span class="math notranslate nohighlight">\(f\)</span>, to support model explainability.</p></li>
+</ul>
+<p>One solution is to apply a variety of approaches, similar to imputation methods, including,</p>
+<ul class="simple">
+<li><p>replace the excluded feature(s) with the expected value, global mean,</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
-RSS = \sum^{J}_{j=1} \sum_{i \in R_j} (y_i - \hat{y}_{R_j})^2
+f(x_1,x_2,x_3) = f(x_1,x_2,x_3,x_4=E[x_4])
 \]</div>
 <ul class="simple">
-<li><p><strong>Stopping Criteria</strong> is typically based on minimum number of training data in each region for a robust estimation and / or minimum reduction in RSS for the next split</p></li>
+<li><p>replace the excluded feature(s) with the median value, the 50th percentile,</p></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[
+f(x_1,x_2,x_3) = f(x_1,x_2,x_3,x_4=P50_{x_4})
+\]</div>
+<p>There is a more accurate, unique method with tree-based models, we can actually remove the influence of any of the features from the decision tree after the model is trained, for example,</p>
+<ul class="simple">
+<li><p>remove all <span class="math notranslate nohighlight">\(x_4\)</span> branches, and then the model does not use <span class="math notranslate nohighlight">\(x_4\)</span> to make the prediction</p></li>
+</ul>
+<p>Of course, we cannot just remove branches and ‘wood glue’ the tree back together!</p>
+<ul class="simple">
+<li><p>we must make new predictions that don’t introduce bias.</p></li>
+</ul>
+<p>Let’s demonstrate the procedure for removing a feature from a decision tree, with a couple of prediction cases,</p>
+<ol class="arabic simple">
+<li><p>Here is a prediction case that does not encounter the removed feature, <span class="math notranslate nohighlight">\(x_2\)</span> is removed and,</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+x_1=25
+\]</div>
+<ul class="simple">
+<li><p>the prediction is made as usual.</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/decision_tree/shaptree1.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> Prediction case that does not encounter the removed feature is made as usual.
+</figcaption>
+</figure>
+<div class="math notranslate nohighlight">
+\[
+f(x_1=25) = 20
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p>A prediction case that does encounter the removed feature, <span class="math notranslate nohighlight">\(x_1\)</span> is removed and,</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+x_2 = 60
+\]</div>
+<ul class="simple">
+<li><p>we effectively go down both paths, by weighting, by number of training data, the solution over both paths!</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/decision_tree/shaptree2.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> Prediction case that does encounter the removed feature is made by weighting both paths by the number of training data.
+</figcaption>
+</figure>
+<div class="math notranslate nohighlight">
+\[
+f(x_2=60) = \frac{60}{100} \left[ \frac{15}{60} \times 20 + \frac{45}{60} \times 70 \right] + \frac{40}{100} \left[130\right] = 86.5
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+f(x_2=60) = 86.5
+\]</div>
 </section>
 <section id="load-the-required-libraries">
 <h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
@@ -1586,7 +1950,7 @@ RSS = \sum^{J}_{j=1} \sum_{i \in R_j} (y_i - \hat{y}_{R_j})^2
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3d81eaa685efdfd50d8f3c2d8f2f0a9a6b72dff8a333dfb39362cbd8ee38cd16.png" src="_images/3d81eaa685efdfd50d8f3c2d8f2f0a9a6b72dff8a333dfb39362cbd8ee38cd16.png" />
+<img alt="_images/369ac9fcd4fafbdda6525feb1a0470dbaecc31c5ce0f17dc1372a5ca5520e2f8.png" src="_images/369ac9fcd4fafbdda6525feb1a0470dbaecc31c5ce0f17dc1372a5ca5520e2f8.png" />
 </div>
 </div>
 <p>The k-fold cross validation provides a smoother plot of MSE vs. the hyperparameter.</p>
@@ -1918,6 +2282,13 @@ Estimated Production for Porosity = 0.25 and Brittleness = 0.3 is 1879.2 MCFPD
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-formulation">Model Formulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predictor-feature-space">Predictor Feature Space</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tree-loss-functions">Tree Loss Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-the-tree-model">Training the Tree Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-the-loss-function-with-a-new-split">Updating the Loss Function with a New Split</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuning-the-tree-model">Tuning the Tree Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-prediction-model">The Prediction Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shapley-values-from-decision-trees">Shapley Values from Decision Trees</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
