@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Ensemble Trees, Bagging and Random Forest &#8212; Applied Machine Learning in Python</title>
+    <title>Bagging and Random Forest &#8212; Applied Machine Learning in Python</title>
   
   
   
@@ -389,7 +389,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Ensemble Trees, Bagging and Random Forest</h1>
+    <h1>Bagging and Random Forest</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -399,13 +399,20 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivations-for-ensemble-trees-bagging-and-random-forest">Motivations for Ensemble Trees, Bagging and Random Forest</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree">Decision Tree</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensemble-methods">Ensemble Methods</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tree-bagging">Tree Bagging</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest">Random Forest</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivations-for-bagging-and-random-forest">Motivations for Bagging and Random Forest</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tree-model-formulation">Tree Model Formulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tree-loss-functions">Tree Loss Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-the-tree-model">Training the Tree Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuning-the-tree-model">Tuning the Tree Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ensemble-methods">Ensemble Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bootstrap">Bootstrap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging-models">Bagging Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-and-tuning-bagging-models">Training and Tuning Bagging Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#out-of-bag-cross-validation">Out-of-Bag Cross Validation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-estimators">Number of Estimators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimator-complexity">Estimator Complexity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tree-bagging">Tree Bagging</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest">Random Forest</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the working directory</a></li>
@@ -442,8 +449,8 @@ document.write(`
   <figure style="text-align: center;">
   <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
 </figure>
-<section id="ensemble-trees-bagging-and-random-forest">
-<h1>Ensemble Trees, Bagging and Random Forest<a class="headerlink" href="#ensemble-trees-bagging-and-random-forest" title="Permalink to this heading">#</a></h1>
+<section id="bagging-and-random-forest">
+<h1>Bagging and Random Forest<a class="headerlink" href="#bagging-and-random-forest" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
 <p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
@@ -458,7 +465,7 @@ document.write(`
 </div>
 <p>By Michael J. Pyrcz <br />
 © Copyright 2024.</p>
-<p>This chapter is a tutorial for / demonstration of <strong>Ensemble Trees, Bagging and Random Forest</strong>.</p>
+<p>This chapter is a tutorial for / demonstration of <strong>Bagging and Random Forest</strong>.</p>
 <p><strong>YouTube Lecture</strong>: check out my lectures on:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://youtu.be/zOUM_AnI1DQ?si=wzWdJ35qJ9n8O6Bl">Introduction to Machine Learning</a></p></li>
@@ -467,120 +474,604 @@ document.write(`
 <li><p><a class="reference external" href="https://youtu.be/___T8_ixIwc?si=ozHR_eIuMF3SPTxJ">Gradient Boosting</a></p></li>
 </ul>
 <p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
-<section id="motivations-for-ensemble-trees-bagging-and-random-forest">
-<h2>Motivations for Ensemble Trees, Bagging and Random Forest<a class="headerlink" href="#motivations-for-ensemble-trees-bagging-and-random-forest" title="Permalink to this heading">#</a></h2>
+<section id="motivations-for-bagging-and-random-forest">
+<h2>Motivations for Bagging and Random Forest<a class="headerlink" href="#motivations-for-bagging-and-random-forest" title="Permalink to this heading">#</a></h2>
 <p>Decision tree are not the most powerful, cutting edge method in machine learning, but,</p>
 <ul class="simple">
 <li><p>one of the most understandable, interpretable predictive machine learning modeling</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/ensemble/spruce.png" style="display: block; margin: 0 auto; width: 50%;">
+  <figcaption style="text-align: center;"> Solitary black spruce tree in Hinton, Alberta, Canada, image from https://hikebiketravel.com/6-fun-things-to-do-in-hinton-alberta-in-winter.
+</figcaption>
+</figure>
+<ul class="simple">
 <li><p>decision trees are enhanced with random forests, bagging and boosting to be one of the best models in many cases</p></li>
 </ul>
-<p>Now we cover ensemble trees, tree bagging and random forest building on decision trees. First I provide some concepts for decision trees and then for ensemble methods.</p>
-<section id="decision-tree">
-<h3>Decision Tree<a class="headerlink" href="#decision-tree" title="Permalink to this heading">#</a></h3>
-<p><strong>Prediction</strong></p>
+<figure style="text-align: center;">
+  <img src="_static/ensemble/forest.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Black spruce forest near Hinton, Alberta, east of Jasper National Park, Canada, image from https://en.wikivoyage.org/wiki/Hinton.
+</figcaption>
+</figure>
+<p>Now we cover ensemble trees, tree bagging and random forest building on decision trees. First, I provide some prerequisite concepts for decision trees and then for ensemble methods.</p>
 <ul class="simple">
-<li><p>estimate a function <span class="math notranslate nohighlight">\(\hat{f}\)</span> such that we predict a response feature <span class="math notranslate nohighlight">\(Y\)</span> from a set of predictor features <span class="math notranslate nohighlight">\(X_1,\ldots,X_m\)</span>.</p></li>
-<li><p>the prediction is of the form <span class="math notranslate nohighlight">\(\hat{Y} = \hat{f}(X_1,\ldots,X_m)\)</span></p></li>
+<li><p>if you are not familiar with decision trees it may be a good idea to review the <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/MachineLearning_decision_tree.html">Decision Tree Chapter</a>.</p></li>
 </ul>
-<p><strong>Supervised Learning</strong></p>
-<ul class="simple">
-<li><p>the response feature label, <span class="math notranslate nohighlight">\(Y\)</span>, is available over the training and testing data</p></li>
-</ul>
-<p><strong>Based on an Ensemble of Decision Trees</strong></p>
-<p>These are the concepts related to decision tree.</p>
-<p><strong>Hierarchical, Binary Segmentation of the Feature Space</strong></p>
-<p>The fundamental idea is to divide the predictor space, <span class="math notranslate nohighlight">\(𝑋_1,\ldots,X_m\)</span>, into <span class="math notranslate nohighlight">\(J\)</span> mutually exclusive, exhaustive regions</p>
-<ul class="simple">
-<li><p><strong>mutually exclusive</strong> – any combination of predictors only belongs to a single region, <span class="math notranslate nohighlight">\(R_j\)</span></p></li>
-<li><p><strong>exhaustive</strong> – all combinations of predictors belong a region, <span class="math notranslate nohighlight">\(R_j\)</span>, regions cover entire feature space (range of the variables being considered)</p></li>
-</ul>
-<p>For every observation in a region, <span class="math notranslate nohighlight">\(R_j\)</span>, we use the same prediction, <span class="math notranslate nohighlight">\(\hat{Y}(R_j)\)</span></p>
-<p>For example predict production, <span class="math notranslate nohighlight">\(\hat{Y}\)</span>, from porosity, <span class="math notranslate nohighlight">\({X_1}\)</span></p>
-<ul class="simple">
-<li><p>given the data within a mD feature space, <span class="math notranslate nohighlight">\(X_1,\ldots,X_m\)</span>, find that boundary maximizes the gap between the two categories</p></li>
-<li><p>new cases are classified based on where they fall relative to this boundary</p></li>
-</ul>
-<p><strong>Procedure for Tree Construction</strong></p>
-<p>The tree is constructed from the top down.  We begin with a single region that covers the entire feature space and then proceed with a sequence of splits.</p>
-<ul class="simple">
-<li><p><strong>Scan All Possible Splits</strong> over all regions and over all features.</p></li>
-<li><p><strong>Greedy Optimization</strong>  The method proceeds by finding the first segmentation (split) in any feature that minimizes the residual sum of squares of errors over all the training data <span class="math notranslate nohighlight">\(y_i\)</span> over all of the regions <span class="math notranslate nohighlight">\(j = 1,\ldots,J\)</span>.</p></li>
-</ul>
+</section>
+<section id="tree-model-formulation">
+<h2>Tree Model Formulation<a class="headerlink" href="#tree-model-formulation" title="Permalink to this heading">#</a></h2>
+<p>The prediction feature space is partitioned into <span class="math notranslate nohighlight">\(J\)</span> exhaustive, mutually exclusive regions <span class="math notranslate nohighlight">\(R_1, R_2, \ldots, R_J\)</span>. For a given prediction case <span class="math notranslate nohighlight">\(x_1,\ldots,x_m \in R_j\)</span>, the prediction is:</p>
+<p><strong>Regression</strong> - the average of the training data in the region, <span class="math notranslate nohighlight">\(R_j\)</span></p>
 <div class="math notranslate nohighlight">
 \[
-RSS = \sum^{J}_{j=1} \sum_{i \in R_j} (y_i - \hat{y}_{R_j})^2
+\hat{y} = \frac{1}{|R_j|} \sum_{\mathbf{x}_i \in R_j} y_i
 \]</div>
+<p>where <span class="math notranslate nohighlight">\(\hat{y}\)</span> is the predicted value for input <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, <span class="math notranslate nohighlight">\(R_j\)</span> is the region (leaf node) that <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> falls into, <span class="math notranslate nohighlight">\(|R_j|\)</span> is the number of training samples in region <span class="math notranslate nohighlight">\(R_j\)</span>, and <span class="math notranslate nohighlight">\(y_i\)</span> is the actual target values of those training samples in <span class="math notranslate nohighlight">\(R_j\)</span>.</p>
+<p><strong>Classification</strong> - category with the plurality of training cases (most common case) in region <span class="math notranslate nohighlight">\(R_j\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{y} = \arg\max_{c \in C} \left( \frac{1}{|R_j|} \sum_{\mathbf{x}_i \in R_j} \mathbb{1}(y_i = c) \right)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(C\)</span> is the set of all possible categories, <span class="math notranslate nohighlight">\(\mathbb{1}(y_i = c)\)</span> is indicator transform, 1 if <span class="math notranslate nohighlight">\(y_i = c\)</span>, 0 otherwise, <span class="math notranslate nohighlight">\(|R_j|\)</span> is the number of training samples in region <span class="math notranslate nohighlight">\(R_j\)</span>, and <span class="math notranslate nohighlight">\(\hat{y}\)</span> is the predicted class label.</p>
+<p>The predictor space, <span class="math notranslate nohighlight">\(𝑋_1,\ldots,𝑋_𝑚\)</span>, is segmented into <span class="math notranslate nohighlight">\(J\)</span> mutually exclusive, exhaustive regions, <span class="math notranslate nohighlight">\(R_j, j = 1,\ldots,J\)</span>, where the regions are,</p>
 <ul class="simple">
-<li><p><strong>Stopping Criteria</strong> is typically based on minimum number of training data in each region for a robust estimation and / or minimum reduction in RSS for the next split</p></li>
+<li><p><strong>mutually exclusive</strong> – any combination of predictor features, <span class="math notranslate nohighlight">\(x_1,\ldots,x_𝑚\)</span>, only belongs to a single region, <span class="math notranslate nohighlight">\(R_j\)</span></p></li>
+<li><p><strong>exhaustive</strong> – all combinations of predictor feature values belong a region, <span class="math notranslate nohighlight">\(R_j\)</span>, i.e., all the regions, <span class="math notranslate nohighlight">\(R_j, j = 1,\ldots,J\)</span>, cover entire predictor  feature space</p></li>
+</ul>
+<p>All prediction cases, <span class="math notranslate nohighlight">\(x_1,\ldots,x_m\)</span> that fall in the same region, <span class="math notranslate nohighlight">\(R_j\)</span>, are estimated with the same value.</p>
+<ul class="simple">
+<li><p>the prediction model inherently discontinuous at the region boundaries</p></li>
+</ul>
+<p>For example, consider this decision tree prediction model for the production response feature, <span class="math notranslate nohighlight">\(\hat{Y}\)</span> ̂from porosity, <span class="math notranslate nohighlight">\(X_1\)</span>, predictor feature,</p>
+<figure style="text-align: center;">
+  <img src="_static/decision_tree/regions.png" style="display: block; margin: 0 auto; width: 80%;">
+  <figcaption style="text-align: center;"> Four region decision tree with data and predictions, \(\hat{Y}(R_j) = \overline{Y}(R_j)\) by region, \(R_j, j=1,…,4\). For example, given a predictor feature value of 13% porosity, the model predicts about 2,000 MCFPD for production.
+</figcaption>
+</figure>
+<p>How do we segment the predictor feature space?</p>
+<ul class="simple">
+<li><p>the set of regions based on hierarchical, binary segmentation.</p></li>
+</ul>
+</section>
+<section id="tree-loss-functions">
+<h2>Tree Loss Functions<a class="headerlink" href="#tree-loss-functions" title="Permalink to this heading">#</a></h2>
+<p>For regression trees we minimize the residual sum of squares and for classification trees we minimize the weighted average Gini impurity.</p>
+<p>The Residual Sum of Squares (RSS) measures the total squared difference between the actual values and predicted values in a regression tree,</p>
+<div class="math notranslate nohighlight">
+\[
+\text{RSS} = \sum_{j=1}^{J} \sum_{i \in R_j} (y_i - \hat{y}_{R_j})^2
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(J\)</span> is the total number of regions in the tree, <span class="math notranslate nohighlight">\(R_j\)</span> is the <span class="math notranslate nohighlight">\(j\)</span> region, <span class="math notranslate nohighlight">\(y_i\)</span> is the truth value of the response feature at observation the <span class="math notranslate nohighlight">\(i\)</span> training data, and <span class="math notranslate nohighlight">\(\hat{y}_{R_j}\)</span> is the predicted value for region <span class="math notranslate nohighlight">\(R_j\)</span>, the mean of <span class="math notranslate nohighlight">\(y_i \; \forall \; i \in R_j\)</span>.</p>
+<p>When a parent node splits into two child nodes ( t_L ) and ( t_R ), the weighted Gini impurity is:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Gini}_{\text{total}} = \sum_{j=1}^{J} \frac{N_j}{N} \cdot \text{Gini}(j)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(J\)</span> is the total number of regions in the tree, <span class="math notranslate nohighlight">\(N\)</span> is the total number of samples in the dataset,   <span class="math notranslate nohighlight">\(N_j\)</span> is the number of samples in leaf node <span class="math notranslate nohighlight">\(j\)</span>, and <span class="math notranslate nohighlight">\(\text{Gini}(j)\)</span> is the Gini impurity of leaf node <span class="math notranslate nohighlight">\(j\)</span>.</p>
+<p>The Gini impurity for a single decision tree node is calculated as,</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Gini}(j) = 1 - \sum_{c=1}^{C} p_{j,c}^2
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(p_{j,c}\)</span> is the proportion of class <span class="math notranslate nohighlight">\(c\)</span> samples in node <span class="math notranslate nohighlight">\(j\)</span>.</p>
+<p>For classification our loss function does not compare the predictions to the truth values like our regression loss!</p>
+<ul class="simple">
+<li><p>the Gini impurity penalizes mixtures of training data categories! A region of all one category of training data will have a Gini impurity of 0 to contribute to the over all loss.</p></li>
+</ul>
+<p>Note that the by-region Gini impurity is,</p>
+<ul class="simple">
+<li><p><strong>weighted</strong> - by the number of training data in each regions, regions with more training data have greater impact on the overall loss</p></li>
+<li><p><strong>averaged</strong> - over all the regions to calculate the total Gini impurity of the decision tree</p></li>
+</ul>
+<p>These losses are calculated during,</p>
+<ul class="simple">
+<li><p><strong>tree model training</strong> - with respect to training data to grow the tree</p></li>
+<li><p><strong>tree model tuning</strong> - with respect to withheld testing data to select the optimum tree complexity.</p></li>
+</ul>
+<p>Let’s talk about tree model training first and then tree model tuning.</p>
+</section>
+<section id="training-the-tree-model">
+<h2>Training the Tree Model<a class="headerlink" href="#training-the-tree-model" title="Permalink to this heading">#</a></h2>
+<p>How do we calculate these mutually exclusive, exhaustive regions? This is accomplished through hierarchical binary segmentation of the predictor feature space.</p>
+<p>Training a decision tree model is both,</p>
+<ol class="arabic simple">
+<li><p>assigning the mutual exclusive, exhaustive regions</p></li>
+<li><p>building a decision tree, each region is a terminal node, also known as a leaf node</p></li>
+</ol>
+<p>These are the same thing! Let’s list the steps and then walk through a training a tree to demonstrate this.</p>
+<ol class="arabic simple" start="0">
+<li><p><strong>Assign All Data to a Single Region</strong> - this region covers the entire predictor feature space</p></li>
+<li><p><strong>Scan All Possible Splits</strong> - over all regions and over all features</p></li>
+<li><p><strong>Select the Best Split</strong> - this is greedy optimization, i.e., the best split minimizes the residual sum of squares of errors over all the training data <span class="math notranslate nohighlight">\(y_i\)</span> over all of the regions <span class="math notranslate nohighlight">\(j = 1,\ldots,J\)</span>.</p></li>
+<li><p><strong>Iterate Until Very Overfit</strong> - return to step 1 for the next split until the tree is very overfit.</p></li>
+</ol>
+<p>For brevity we stop here, and make these observations,</p>
+<ul class="simple">
+<li><p>hierarchical, binary segmentation is the same as sequentially building a decision tree, each split adds a new decision node and increases the number of leaf nodes by one.</p></li>
+<li><p>the simple decision trees are in the complicated decision tree, i.e., if we build an <span class="math notranslate nohighlight">\(8\)</span> leaf node model, we have the <span class="math notranslate nohighlight">\(8, 7, \ldots, 2\)</span> leaf node model by sequentially removing the decision nodes, in the order of last one is the first one to remove.</p></li>
+<li><p>the ultimate overfit model is number of leaf nodes equal to the number of training data. In this case, the training error is 0.0 as have one region for each training data a we estimate with the training data response feature values for all the at the training data cases.</p></li>
+</ul>
+</section>
+<section id="tuning-the-tree-model">
+<h2>Tuning the Tree Model<a class="headerlink" href="#tuning-the-tree-model" title="Permalink to this heading">#</a></h2>
+<p>To tune the decision tree we take the very overfit trained tree model,</p>
+<ul class="simple">
+<li><p>sequentially cut the last decision node</p></li>
+<li><p>i.e., prune the last branch of the decision tree</p></li>
+</ul>
+<p>Since the simpler trees are inside the complicated tree!</p>
+<p>We can calculate test error as we prune and select tree with minimum test error</p>
+<p>We overfit the decision tree model, with a large number of leaf nodes and then we reduce the number of leaf nodes while tracking the test error.</p>
+<ul class="simple">
+<li><p>we select the number of leaf nodes that minimize the testing error.</p></li>
+<li><p>since we are sequentially removing the last branch to simplify the tree, we call model tuning <strong>pruning</strong> for decision trees</p></li>
+</ul>
+<p>Let’s discuss decision tree hyperparameters. I prefer number of leaf nodes as my decision tree hyperparameter because it provides,</p>
+<ul class="simple">
+<li><p><strong>continuous, uniform increase in complexity</strong> -  equal steps in increased complexity without jumps</p></li>
+<li><p><strong>intuitive control on complexity</strong> - we can understand and relate the <span class="math notranslate nohighlight">\(2, 3, \ldots, 100\)</span> leaf node decision trees</p></li>
+<li><p><strong>flexible complexity</strong> - the tree is free to grow in any manner to reduce training error, including highly asymmetric decision trees</p></li>
+</ul>
+<p>There are other common decision tree hyperparameters including,</p>
+<ul class="simple">
+<li><p><strong>Minimum reduction in RSS</strong> – related to the idea that incremental increase in complexity must be offset by sufficient reduction in training error. This could stop the model early, for example, a split with low reduction in training error could lead to a subsequent split with a much larger reduction in training error</p></li>
+<li><p><strong>Minimum number of training data in each region</strong> – related to the concept of accuracy of the by-region estimates, i.e., we need at least <span class="math notranslate nohighlight">\(n\)</span> data for a reliable mean and most common category</p></li>
+<li><p><strong>Maximum number of levels</strong> – forces symmetric trees, similar number of splits to get to each leaf node. There is a large change in model complexity with change in the hyperparameter.</p></li>
 </ul>
 </section>
 <section id="ensemble-methods">
-<h3>Ensemble Methods<a class="headerlink" href="#ensemble-methods" title="Permalink to this heading">#</a></h3>
-<p>Model testing accuracy is reduced by model variance.  Model variance may be reduced through averaging multiple good estimates.</p>
-<p>Recall that variance is reduced by averaging given independent, identically distributed sampling as predicted by standard error as:</p>
+<h2>Ensemble Methods<a class="headerlink" href="#ensemble-methods" title="Permalink to this heading">#</a></h2>
+<p>What is the Testing Accuracy of Our Predictive Machine Learning Models?</p>
+<p>Recall the equation for expected test error has three components.</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{E}\left[(y_0 - \hat{f}(x_1^0, \ldots, x_m^0))^2\right] =
+\left(\mathbb{E}[\hat{f}(x_1^0, \ldots, x_m^0)] - f(x_1^0, \ldots, x_m^0)\right)^2 +
+\mathbb{E}\left[\left(\hat{f}(x_1^0, \ldots, x_m^0) - \mathbb{E}[\hat{f}(x_1^0, \ldots, x_m^0)]\right)^2\right] +
+\sigma_\varepsilon^2
+\]</div>
+<p>There can be labeled as:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Expected Test Error} = \text{Model Bias}^2 + \text{Model Variance} + \text{Irreducible Error}
+\]</div>
+<p>where,</p>
+<ul class="simple">
+<li><p><strong>Model Variance</strong> - is the error in the model predictions due to sensitivity to the data, i.e., what if we used different training data?</p></li>
+<li><p><strong>Model Bias</strong> - is error in the model predictions due to using an approximate model / model is too simple</p></li>
+<li><p><strong>Irreducible Error</strong> - is error in the model predictions due to missing features and limited samples can’t be fixed with modeling / entire feature space is not sampled</p></li>
+</ul>
+<p>Now we can visualize the model variance and bias tradeoff as,</p>
+<figure style="text-align: center;">
+  <img src="_static/ensemble/tradeoff.png" style="display: block; margin: 0 auto; width: 50%;">
+  <figcaption style="text-align: center;"> Model variance and bias trade-off, for simple to complicated predictive machine learning models.
+</figcaption>
+</figure>
+<p>Model variance limits the complexity and text accuracy of our models.</p>
+<p><strong>How Can We Reduce Model Variance?</strong> - so that we can use more complicated and more accurate models.</p>
+<p>By standard error in the average, we observe the reduction in variance by averaging!</p>
 <div class="math notranslate nohighlight">
 \[
 \sigma_{\bar{x}}^2 = \frac{\sigma^2_s}{n}
 \]</div>
-<p>Therefore, we can reduce model variance through the utilization of an ensemble of models.</p>
+<p>where <span class="math notranslate nohighlight">\(\sigma^2_s\)</span> is the sample variance, <span class="math notranslate nohighlight">\(n\)</span> is the number of samples, and <span class="math notranslate nohighlight">\(\sigma_{\bar{x}}^2\)</span> is the variance of the average under the assumption of independent, identically distributed sampling.</p>
+<figure style="text-align: center;">
+  <img src="_static/ensemble/tradeoffensemble.png" style="display: block; margin: 0 auto; width: 50%;">
+  <figcaption style="text-align: center;"> Model variance and bias trade-off, for simple to complicated predictive machine learning models with model variance reduced by averaging.
+</figcaption>
+</figure>
+<p>We can reduce model variance by calculating many estimates and averaging them together. We will need to make <span class="math notranslate nohighlight">\(B\)</span> estimates,</p>
 <div class="math notranslate nohighlight">
 \[
-\hat{f}_{avg}(X_1,...,X_m) = \frac{1}{B} \sum_{b=1}^{B} \hat{f}^b(X_1,...,X_m)
+\hat{y}^{(b)} = \hat{f}^{(b)}(X_1, \ldots, X_m), \quad b = 1, \ldots, B
 \]</div>
-<p>This method works well with trees and is applied with the <strong>tree bagging</strong> and <strong>random forest</strong> prediction methods.</p>
+<p>where,</p>
+<p><span class="math notranslate nohighlight">\(\hat{y}^{(b)}\)</span> is the prediction made by the <span class="math notranslate nohighlight">\(b^{th}\)</span> model in the ensemble, <span class="math notranslate nohighlight">\(\hat{f}^{(b)}\)</span> is the <span class="math notranslate nohighlight">\(b^{th}\)</span> estimator, <span class="math notranslate nohighlight">\(X_1, \ldots, X_m\)</span> is the predictor features, and <span class="math notranslate nohighlight">\(B\)</span> is the total number of estimators (the multiple models).</p>
+<p>Then our ultimate estimate will be the average (regression) or plurality (classification) of our estimates,</p>
 <ul class="simple">
-<li><p>the trees are allowed to grow deep and complicated (are not pruned)</p></li>
-<li><p>each of the individual models, <span class="math notranslate nohighlight">\(\hat{f}_{avg}(X_1,...,X_m)\)</span>, are complicated resulting in low model bias, but high model variance</p></li>
-<li><p>the averaging over the ensemble of models will then mitigate this high model variance</p></li>
+<li><p>regression ensemble estimate,</p></li>
 </ul>
-<p>Therefore, overfit is not an issue as it is for decision trees.</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{y} = \frac{1}{B} \sum_{b=1}^{B} \hat{y}^{(b)}
+\]</div>
+<ul class="simple">
+<li><p>classification ensemble estimate,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\hat{y} = \arg\max_y \sum_{b=1}^{B} \mathbb{I}(\hat{y}^{(b)} = y)
+\]</div>
+<p>This requires multiple prediction models, <span class="math notranslate nohighlight">\(f^{b}, b = 1,\ldots, B\)</span> to make <span class="math notranslate nohighlight">\(B\)</span> predictions,</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{y}^{(b)} = \hat{f}^{(b)}(X_1, \ldots, X_m), \quad b = 1, \ldots, B
+\]</div>
+<figure style="text-align: center;">
+  <img src="_static/ensemble/multimodels.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Multiple models to make multiple predictions to reduce model variance by averaging over the ensemble.
+</figcaption>
+</figure>
+<p>But we only have access to a single dataset, <span class="math notranslate nohighlight">\(Y,X_1,\ldots,X_m\)</span>; therefore, every model will be the same,</p>
+<figure style="text-align: center;">
+  <img src="_static/ensemble/multimodelssame.png" style="display: block; margin: 0 auto; width: 90%;">
+  <figcaption style="text-align: center;"> Multiple models to make multiple predictions to reduce model variance by averaging over the ensemble, with the same data result in the same model and the same predictions.
+</figcaption>
+</figure>
+<p>Our models are generally deterministic, train with the same data and hyperparameters and we get the same estimate.</p>
+</section>
+<section id="bootstrap">
+<h2>Bootstrap<a class="headerlink" href="#bootstrap" title="Permalink to this heading">#</a></h2>
+<p>One source of uncertainty is the paucity of data.</p>
+<ul class="simple">
+<li><p>Do these 200 or so wells provide a precise (and accurate estimate) of the mean? standard deviation? skew? P13?</p></li>
+<li><p>What is the impact of uncertainty in the mean porosity, for example, <span class="math notranslate nohighlight">\(20\% \pm 2\%\)</span>?</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/ensemble/spatialdata.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> Samples and population, from Bootstrap chapter of Applied Geostatistics in Python e-book.
+</figcaption>
+</figure>
+<p>What if we had <span class="math notranslate nohighlight">\(L\)</span> different datasets? <span class="math notranslate nohighlight">\(L\)</span> parallel universes where we collected <span class="math notranslate nohighlight">\(n\)</span> samples from the inaccessible truth (the population).</p>
+<figure style="text-align: center;">
+  <img src="_static/ensemble/spatialdatareal.png" style="display: block; margin: 0 auto; width: 90%;">
+  <figcaption style="text-align: center;"> Multiple dataset realizations from the truth population, from Bootstrap chapter of Applied Geostatistics in Python e-book.
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>but we only exist in 1 universe <span class="math notranslate nohighlight">\(\rightarrow\)</span> this is not possible.</p></li>
+</ul>
+<p>Instead we sample <span class="math notranslate nohighlight">\(n\)</span> times from the dataset with replacement,</p>
+<ul class="simple">
+<li><p>bootstrap realizations of the data</p></li>
+</ul>
+<p>that vary by due to some samples being left out and others sampled multiple times.</p>
+<figure style="text-align: center;">
+  <img src="_static/ensemble/spatialdatarealdata.png" style="display: block; margin: 0 auto; width: 90%;">
+  <figcaption style="text-align: center;"> Multiple dataset bootstrap datasets.
+</figcaption>
+</figure>
+<p>Now, here’s a definition of bootstrap,</p>
+<ul class="simple">
+<li><p>method to assess the uncertainty in a sample statistic by repeated random sampling with replacement
+simulating the sampling process to acquire dataset realizations</p></li>
+</ul>
+<p>Under the assumptions,</p>
+<ul class="simple">
+<li><p><strong>sufficient sample</strong> - enough data to infer the population parameters. Bootstrap cannot make up for too few data!</p></li>
+<li><p><strong>representative sampling</strong> - bias in the sample will be passed to the bootstrap uncertainty model, for example, if the mean is biased in the sample, then the bootstrap uncertainty model will be centered on the biased mean from the sample. We must first debias our data.</p></li>
+</ul>
+<p>There are also various limitations for bootstrap, including,</p>
+<ul class="simple">
+<li><p><strong>stationarity</strong> - the statistics from the sample are assumed to be constant over the model space</p></li>
+<li><p><strong>one uncertainty source only</strong> - only accounts for uncertainty due to too few samples, for example, no uncertainty due to changes away from data</p></li>
+<li><p><strong>does not account for area of interest</strong> - larger model region or smaller model region, bootstrap uncertainty does not change.</p></li>
+<li><p><strong>independence between the samples</strong> - does not account for correlation, relationships between the samples</p></li>
+<li><p><strong>no local conditioning</strong> - does not account for other local information sources</p></li>
+</ul>
+<p>We could summarize all of this limitations as, bootstrap does not account for the spatial (or temporal) context of the data.</p>
+<ul class="simple">
+<li><p>there is a form of bootstrap, known as spatial bootstrap that does account for spatial context, <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0098300424000414">spatial bootstrap and bagging for ensemble machine learning</a>.</p></li>
+</ul>
+<p>Let’s visualize bootstrap for the case of calculating uncertainty in sample mean estimated ultimate recovery (EUR) given <span class="math notranslate nohighlight">\(n=10\)</span> observations from 10 wells.</p>
+<figure style="text-align: center;">
+  <img src="_static/ensemble/bootstrap1.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> \(n = 10\) samples with replacement to calculate a single realization of the sample mean.
+</figcaption>
+</figure>
+<p>Now we repeat and calculate a <span class="math notranslate nohighlight">\(2^{nd}\)</span> realization of the sample mean,</p>
+<figure style="text-align: center;">
+  <img src="_static/ensemble/bootstrap2.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> Second realization of \(n = 10\) samples with replacement to calculate the second realization of the sample mean.
+</figcaption>
+</figure>
+<p>and a third realization of the data to calculate the <span class="math notranslate nohighlight">\(3^{rd}\)</span> realization of the sample mean,</p>
+<figure style="text-align: center;">
+  <img src="_static/ensemble/bootstrap3.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> Third realization of \(n = 10\) samples with replacement to calculate the third realization of the sample mean.
+</figcaption>
+</figure>
+<p>and if we repeat <span class="math notranslate nohighlight">\(L\)</span> times we sample the complete distribution for the uncertainty in the sample mean.</p>
+<figure style="text-align: center;">
+  <img src="_static/ensemble/bootstrap4.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> $L$ realizations of the data for $L$ realizations to completely sample the uncertainty in the mean.
+</figcaption>
+</figure>
+<p>Let’s summarize bootstrap,</p>
+<ul class="simple">
+<li><p>developed by <a class="reference external" href="https://epubs.siam.org/doi/pdf/10.1137/1.9781611970319.fm">Efron, 1982</a></p></li>
+<li><p>statistical resampling procedure to calculate uncertainty in a calculated statistic from the data itself.</p></li>
+<li><p>seems impossible, but go ahead and compare it to known cases like standard error and you will see that it works,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\sigma_{\bar{x}}^2 = \frac{\sigma^2_s}{n}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\sigma^2_s\)</span> is the sample variance, <span class="math notranslate nohighlight">\(n\)</span> is the number of samples, and <span class="math notranslate nohighlight">\(\sigma_{\bar{x}}^2\)</span> is the variance of the average under the assumption of independent, identically distributed sampling.</p>
+<ul class="simple">
+<li><p>may be applied to calculate the uncertainty in any statistic, for example, <span class="math notranslate nohighlight">\(13^{th}\)</span> percentile, skew, etc.</p></li>
+<li><p>advanced forms account for spatial information and strategy (game theory).</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/ensemble/bootflow.png" style="display: block; margin: 0 auto; width: 35%;">
+  <figcaption style="text-align: center;"> The general flow chart for bootstrap.
+</figcaption>
+</figure>
+</section>
+<section id="bagging-models">
+<h2>Bagging Models<a class="headerlink" href="#bagging-models" title="Permalink to this heading">#</a></h2>
+<p>Bagging models in machine learning apply bootstrap to,</p>
+<ul class="simple">
+<li><p>calculate multiple realizations of the data</p></li>
+<li><p>train multiple realizations of the model</p></li>
+<li><p>calculate multiple realizations of the estimate</p></li>
+<li><p>average the estimates to reduce model variance</p></li>
+</ul>
+<p>Here’s the flow chart for bagging models,</p>
+<figure style="text-align: center;">
+  <img src="_static/ensemble/baggingflow.png" style="display: block; margin: 0 auto; width: 40%;">
+  <figcaption style="text-align: center;"> The bagging machine learning model flow chart.
+</figcaption>
+</figure>
+<ol class="arabic simple">
+<li><p>Apply statistical bootstrap to obtain multiple realizations of the data,</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+Y^b, X_1^b, \dots, X_m^b,\quad b = 1, \dots, B
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p>Train a prediction model (estimator) for each data realization,</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\hat{f}^b(X_1^b, \dots, X_m^b)
+\]</div>
+<ol class="arabic simple" start="3">
+<li><p>Calculate a prediction with each estimator,</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\hat{Y}^b = \hat{f}^b(X_1^b, \dots, X_m^b)
+\]</div>
+<ol class="arabic simple" start="4">
+<li><p>Aggregate the ensemble of 𝐵 predictions over the estimators,</p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>Regression</strong> – aggregate the ensemble predictions with the average,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\hat{Y} = \frac{1}{B} \sum_{b=1}^{B} \hat{Y}^b
+\]</div>
+<ul class="simple">
+<li><p><strong>Classification</strong> – aggregate the ensemble predictions with majority-rule, plurality,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\hat{Y} = \arg\max(\hat{Y}^b)
+\]</div>
+<p>I built out an interactive Python dashboard for <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_Bootstrap_Bagging.ipynb">bagging linear regression</a>.</p>
+<figure style="text-align: center;">
+  <img src="_static/ensemble/bagginglinear.png" style="display: block; margin: 0 auto; width: 80%;">
+  <figcaption style="text-align: center;"> Interactive machine learning bagging with linear regression, 16 data bootstrap, model and prediction realizations aggregated by averaging.
+</figcaption>
+</figure>
+</section>
+<section id="training-and-tuning-bagging-models">
+<h2>Training and Tuning Bagging Models<a class="headerlink" href="#training-and-tuning-bagging-models" title="Permalink to this heading">#</a></h2>
+<p>What is the Bagging Regression Model?</p>
+<p>Multiple models each trained on different bootstrap data realizations, all with the same hyperparameter(s).</p>
+<figure style="text-align: center;">
+  <img src="_static/ensemble/themodel.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> The bagging model, we train individually, but we tune the ensemble.
+</figcaption>
+</figure>
+<p>The bagging prediction, <span class="math notranslate nohighlight">\(\hat{y}\)</span>, the aggregate of the individual estimators, is the output of this model.</p>
+<figure style="text-align: center;">
+  <img src="_static/ensemble/themodelcont.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> Bagging regression predictions by averaging multiple prediction models.
+</figcaption>
+</figure>
+<p>or for classification,</p>
+<figure style="text-align: center;">
+  <img src="_static/ensemble/themodelcont.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> Bagging classification predictions by plurality of multiple prediction models.
+</figcaption>
+</figure>
+<p>Each model, known as an estimator in the ensemble of models, is trained with their respective bootstrapped data realization,
+during training each model minimizes train error of the individual estimator with the bootstrapped data realization, residual sum of squares for regression,</p>
+<div class="math notranslate nohighlight">
+\[
+\text{RSS} = \sum_{j=1}^{J} \sum_{i \in R_j} (y_i - \hat{y}_{R_j})^2
+\]</div>
+<p>and Gini impurity for classification,</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Gini}_{\text{total}} = \sum_{j=1}^{J} \frac{N_j}{N} \cdot \text{Gini}(j)
+\]</div>
+<p>each estimator is trained separately, but they all share the same hyperparameters.</p>
+<p>This provides the flexibility to build the best possible model to fit each bootstrap dataset.</p>
+<figure style="text-align: center;">
+  <img src="_static/ensemble/samehyper.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> Estimators in the ensemble of models are trained individually, but share the same hyperparameter(s).
+</figcaption>
+</figure>
+<p>We tune our bagged model with the error of the bagging estimate from aggregating the ensemble of estimates, for the case of regression,</p>
+<div class="math notranslate nohighlight">
+\[
+\text{MSE} = \sum_{i=1}^{n} (\hat{y}_i - y_i)^2
+\]</div>
+<p>where the predicted value <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{y}_i = \frac{1}{B} \sum_{b=1}^{B} \hat{y}_i^{(b)}
+\]</div>
+<p>We tune our ensemble jointly over all estimators, we do not consider the error of individual model estimators,  <span class="math notranslate nohighlight">\(\hat{y}_i^𝑏 - y_i\)</span>, within the ensemble for model tuning.</p>
+<figure style="text-align: center;">
+  <img src="_static/ensemble/tuningnodes.png" style="display: block; margin: 0 auto; width: 50%;">
+  <figcaption style="text-align: center;"> Estimators in the ensemble of models, sharing the same number of leaf nodes hyperparameter.
+</figcaption>
+</figure>
+<p>The result is a single measure of test error for each hyperparameter setting, for the case above with number of leaf nodes, we get this result,</p>
+<figure style="text-align: center;">
+  <img src="_static/ensemble/ensembletesterror.png" style="display: block; margin: 0 auto; width: 40%;">
+  <figcaption style="text-align: center;"> Ensemble test error vs. number of leaf nodes hyperparameter.
+</figcaption>
+</figure>
+<p>to select the ensemble hyperparameter to minimize test error. For clarity, let’s add the tuning to our previous training bagging models workflow,</p>
+<ul class="simple">
+<li><p>we loop over hyperparameters</p></li>
+<li><p>minimize the test error of the ensemble estimates</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/ensemble/baggingtuneflow.png" style="display: block; margin: 0 auto; width: 40%;">
+  <figcaption style="text-align: center;"> The workflow for tuning a bagging model.
+</figcaption>
+</figure>
+</section>
+<section id="out-of-bag-cross-validation">
+<h2>Out-of-Bag Cross Validation<a class="headerlink" href="#out-of-bag-cross-validation" title="Permalink to this heading">#</a></h2>
+<p>In expectation, <span class="math notranslate nohighlight">\(\frac{1}{3}\)</span> of the training data is left out of each bootstrap data realization, <span class="math notranslate nohighlight">\(b^c\)</span>; therefore, cross-validation is built in.</p>
+<ol class="arabic simple">
+<li><p>Sample with replacement <span class="math notranslate nohighlight">\(\frac{2}{3}\)</span> of the training data (in expectation), <span class="math notranslate nohighlight">\(Y^b, X_1^b, \dots, X_m^b\)</span>.</p></li>
+<li><p>Train an estimator with the <span class="math notranslate nohighlight">\(\frac{2}{3}\)</span> of training data (in expectation).</p></li>
+<li><p>Predict at the out-of-bag samples, <span class="math notranslate nohighlight">\(X_1^{b^c}, \dots, X_m^{b^c}\)</span>, <span class="math notranslate nohighlight">\(\frac{1}{3}\)</span> of the training data (in expectation).</p></li>
+</ol>
+<figure style="text-align: center;">
+  <img src="_static/ensemble/baggingoobflow.png" style="display: block; margin: 0 auto; width: 35%;">
+  <figcaption style="text-align: center;"> Out-of-bag error calculation workflow, to apply add to the hyperparameter tuning loop.
+</figcaption>
+</figure>
+<ol class="arabic simple" start="4">
+<li><p>Pool the 𝐵/3 predictions (in expectation) for each sample data from all the 𝐵 models and make an out-of-bag prediction, for regression,</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\hat{y}_\alpha^{\text{oob}} = \frac{1}{\left(\frac{B}{3}\right)} \sum_{b=1}^{\frac{B}{3}} \hat{y}_\alpha^{(b^c)}
+\]</div>
+<p>Calculate the out-of-bag error to assess model performance.</p>
+<div class="math notranslate nohighlight">
+\[
+\text{MSE}_{\text{OOB}} = \frac{1}{n} \sum_{\alpha=1}^{n} \left[\hat{y}_\alpha^{\text{oob}} - y_\alpha \right]^2
+\]</div>
+</section>
+<section id="number-of-estimators">
+<h2>Number of Estimators<a class="headerlink" href="#number-of-estimators" title="Permalink to this heading">#</a></h2>
+<p>Number of Estimators is an important hyperparameter for bagging models</p>
+<ul class="simple">
+<li><p><strong>More estimators</strong> – improve generalization up to a point, increasing the number of trees generally improves performance and reduces variance, as predictions are averaged across more models.</p></li>
+<li><p><strong>Diminishing returns</strong> - beyond a point, adding more estimators gives little or no improvement and only increases computational cost.</p></li>
+<li><p><strong>Improved stability</strong> - more trees reduce the likelihood of overfitting to random noise in the training set.</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/ensemble/numberestimators.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> Number of estimators, few (upper) and more (lower), within the ensemble model.
+</figcaption>
+</figure>
+</section>
+<section id="estimator-complexity">
+<h2>Estimator Complexity<a class="headerlink" href="#estimator-complexity" title="Permalink to this heading">#</a></h2>
+<p>The hyperparameter(s) shared by the estimators remain as important hyperparameters. Here’s guidance with a focus on tree bagging,</p>
+<ul class="simple">
+<li><p><strong>More complicated models</strong> – bagging reduces model variance, so we often train more complicated models for the ensemble.</p></li>
+<li><p><strong>Too simple models</strong> – may not see any improvement from bagging, because model variance is not an issue for simple models and does not need to be reduced.</p></li>
+<li><p><strong>Feature interactions</strong> – more complicated models capture more of the interactions between features, for example, tree bagging models with tree depth 𝑑 can capture 𝑑-way feature interactions</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/ensemble/varydepth.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> Ensembles with different tree depth hyperparameters, 2 (upper), 3 (middle) and 4 (lower).
+</figcaption>
+</figure>
 </section>
 <section id="tree-bagging">
-<h3>Tree Bagging<a class="headerlink" href="#tree-bagging" title="Permalink to this heading">#</a></h3>
-<p>To build the ensemble of models we need multiple training datasets.  This is typically not available.</p>
+<h2>Tree Bagging<a class="headerlink" href="#tree-bagging" title="Permalink to this heading">#</a></h2>
+<p>Now let’s summarize the approach,</p>
 <ul class="simple">
-<li><p>the solution is to <strong>bootstrap</strong> the entire dataset to build multiple bootstrap realizations of training data, <span class="math notranslate nohighlight">\(X_1^b,...,X_m^b\)</span></p></li>
-<li><p>a deep decision tree is fit to each realization of the training data, <span class="math notranslate nohighlight">\(\hat{f}^b(X_1^b,...,X_m^b)\)</span></p></li>
-<li><p>a prediction estimate is calculated by each tree in the ensemble <span class="math notranslate nohighlight">\(Y^b =\hat{f}^b(X_1^b,...,X_m^b)\)</span></p></li>
-<li><p>for <strong>regression</strong> the ensemble prediction is the average of the prediction from each member of the ensemble, <span class="math notranslate nohighlight">\(Y = \frac{1}{B} \sum_{b=1}^{B} Y^b\)</span></p></li>
-<li><p>for <strong>classification</strong> the ensemble prediction is the majority-rule of the ensemble classifications, <span class="math notranslate nohighlight">\(Y = argmax_k(Y^b_k)\)</span></p></li>
+<li><p>Build an ensemble of decision trees with multiple, bootstrap realizations of the data.</p></li>
 </ul>
-<p><strong>Out-of-Bag</strong></p>
-<p>With bootstrap resampling of the data, it can be shown that about 2/3 of the data will be included (in expectation) for each tree.</p>
+<p>and provide some guidance,</p>
 <ul class="simple">
-<li><p>therefore are <span class="math notranslate nohighlight">\(\frac{1}{3}\)</span> of the data (in expectation) unused in training each model realization, these are know as out-of-bag observations</p></li>
-<li><p>for every response feature observation, <span class="math notranslate nohighlight">\(y_{\alpha}\)</span>, there are <span class="math notranslate nohighlight">\(\frac{B}{3}\)</span> out-of-bag predictions, <span class="math notranslate nohighlight">\(y^{*,b}_{\alpha}\)</span></p></li>
-<li><p>we can aggregate this ensemble of prediction realizations, average for regression or mode for classification, to calculate a single out-of-bag prediction, <span class="math notranslate nohighlight">\(y^{*}_{\alpha} = \sum_{\alpha = 1}^{\frac{B}{3}} y^{*,b}_{\alpha}\)</span></p></li>
-<li><p>from these single out-of-bag predictions over all data, the out-of-bag mean square error (MSE) is calculated as,</p></li>
+<li><p>the ensemble of tree estimators reduces model variance</p></li>
+<li><p>hyperparameter tune over the entire ensemble model, i.e., All trees in the ensemble have the same hyperparameters.</p></li>
+<li><p>number of estimators is an additional, important hyperparameter in addition to the tree estimators’ complexity</p></li>
+<li><p>in expectation, $\frac{1}{3} of the data is not used for each tree, this provides the opportunity to have access to out-of-bag samples for cross validation, so we can build our model and cross validate with all the data at once, no train and test split.</p></li>
+<li><p>overgrown trees will often outperform simpler trees due to reduction in model variance with averaging over the estimators.</p></li>
+</ul>
+<p>Spoiler Alert - we want the trees to be decorrelated, diverse to maximize the reduction in model variance, this leads to random forest. More on this later.</p>
+<p>To visualize tree bagging, here’s an example of tree bagging by-hand, 6 estimators from bootstrap realizations of the data, predicting over porosity and brittleness and the average over all the estimates as the bagging model.</p>
+<figure style="text-align: center;">
+  <img src="_static/ensemble/baggingbyhand.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> 6 bootstrapped, complicated decision trees (left) and the bagging model, average of all 6 models (right).
+</figcaption>
+</figure>
+<p>Observe the impact on the prediction model with the addition of more trees – transition from a discontinuous to continuous prediction model!</p>
+<figure style="text-align: center;">
+  <img src="_static/ensemble/baggingestimators.png" style="display: block; margin: 0 auto; width: 80%;">
+  <figcaption style="text-align: center;"> 6 tree bagging prediction models and all training data with increasing number of estimators, for 1, 3, 5, 10, 30 and 500 trees.
+</figcaption>
+</figure>
+<p>Observe the improved testing accuracy in cross validation with increasing number of trees,</p>
+<figure style="text-align: center;">
+  <img src="_static/ensemble/baggingerrors.png" style="display: block; margin: 0 auto; width: 80%;">
+  <figcaption style="text-align: center;"> Cross validation with 6 tree bagging prediction models with increasing number of trees.
+</figcaption>
+</figure>
+<p>Observe the reduction in model variance with increasing number of trees,</p>
+<figure style="text-align: center;">
+  <img src="_static/ensemble/baggingreducevar.png" style="display: block; margin: 0 auto; width: 80%;">
+  <figcaption style="text-align: center;"> 3 models with 1 and 100 trees to demonstrate the reduction in model variance with increased ensemble aggregation.
+</figcaption>
+</figure>
+</section>
+<section id="random-forest">
+<h2>Random Forest<a class="headerlink" href="#random-forest" title="Permalink to this heading">#</a></h2>
+<p>A limitation with tree bagging is that the individual trees may be highly correlated.</p>
+<ul class="simple">
+<li><p>this occurs when there is a dominant predictor feature as it will always be applied to the top split(s), the result is all the trees in the ensemble are very similar (i.e., correlated)</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/ensemble/correlatedtrees.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> Highly correlated trees in a tree bagging ensemble model, trees with the same initial splits resulting in very similar predictions.
+</figcaption>
+</figure>
+<p>With highly correlated trees, there is significantly less reduction in model variance with the ensemble,</p>
+<ul class="simple">
+<li><p>consider, standard error in the mean assumes the samples 𝑛 are independent!</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
-MSE_{OOB} = \sum_{\alpha = 1}^{\frac{B}{3}} \left[ y^{*}_{\alpha} - y_{\alpha} \right]^2
+\sigma_{\bar{x}}^2 = \frac{\sigma_s^2}{n}
 \]</div>
-<p>For bagging-based ensemble predictive machine learning, there is no need to perform training and testing splits, hyperparameter tuning can be applied with out-of-bag MSE.</p>
+<p>correlation between samples reduces the 𝑛 to a 𝑛 effective, as correlation increases, <span class="math notranslate nohighlight">\(n\)</span> effectively is reduced.</p>
+<p>Random forest is tree bagging, but for each split only a subset <span class="math notranslate nohighlight">\(𝑝\)</span> of the <span class="math notranslate nohighlight">\(𝑚\)</span> available predictors are candidates for splits (selected at random).</p>
+<div class="math notranslate nohighlight">
+\[
+p \ll m
+\]</div>
+<p>This forces each tree in the ensemble to evolve in dissimilar manner,</p>
+<p>Common defaults for 𝑝 for classification,</p>
+<div class="math notranslate nohighlight">
+\[
+p = \sqrt{m} \quad \text{or} \quad \log_2(p)
+\]</div>
+<p>and for regression,</p>
+<div class="math notranslate nohighlight">
+\[
+p=\frac{m}{3}
+\]</div>
+<p>Lower <span class="math notranslate nohighlight">\(p\)</span> less correlation, better generalization, higher <span class="math notranslate nohighlight">\(p\)</span> more correlation, may overfit.
+note, too low <span class="math notranslate nohighlight">\(p\)</span> will underfit with high model bias</p>
+<p>Here’s an example random forest model for the previous prediction problem,</p>
 <ul class="simple">
-<li><p>this is equivalent to random train and test split that may not be fair, same difficulty as the planned use of the model</p></li>
-<li><p>this freezes the test proportion at about <span class="math notranslate nohighlight">\(\frac{1}{3}\)</span></p></li>
+<li><p>300 trees, trained to a maximum depth of <span class="math notranslate nohighlight">\(7\)</span>, <span class="math notranslate nohighlight">\(𝑝=1\)</span>, i.e., 1 predictor feature randomly selected for each split</p></li>
 </ul>
-<p><strong>Interpretability</strong></p>
-<p>Compared to decision trees, the ensemble methods have reduced interpretability.  One tool to improve model interpretability is feature importance.</p>
-<p>We calculate variable importance through calculating the average of:</p>
-<ul class="simple">
-<li><p>residual sum of square reduction for all splits involving each predictor feature for regression</p></li>
-<li><p>the decrease in the Gini index for all splits involving each predictor feature for classification</p></li>
-</ul>
-<p>Both are standardized to sum to 1.0 over the features.</p>
-</section>
-<section id="random-forest">
-<h3>Random Forest<a class="headerlink" href="#random-forest" title="Permalink to this heading">#</a></h3>
-<p>One issue with tree bagging is the trees in the ensemble may be highly correlated.</p>
-<ul class="simple">
-<li><p>this occurs when there is a dominant predictor feature as it will always be applied to the top split(s), the result is all the trees in the ensemble are very similar (i.e. correlated)</p></li>
-<li><p>with highly correlated trees, there is significantly less reduction in model variance with the ensemble</p></li>
-<li><p>with random forest, for each split only <span class="math notranslate nohighlight">\(\sqrt{m}\)</span> (or some other reduced set) of predictor features are candidates (selected at random)</p></li>
-<li><p>this forces each tree in the ensemble to evolve in dissimilar manner</p></li>
-</ul>
-</section>
+<figure style="text-align: center;">
+  <img src="_static/ensemble/randomforest.png" style="display: block; margin: 0 auto; width: 80%;">
+  <figcaption style="text-align: center;"> Highly correlated trees in a tree bagging ensemble model, trees with the same initial splits resulting in very similar predictions.
+</figcaption>
+</figure>
+<p>Now we are ready to demonstrate tree bagging and random forest.</p>
 </section>
 <section id="load-the-required-libraries">
 <h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
@@ -1894,13 +2385,20 @@ Estimated Production for Porosity = 0.25 and Brittleness = 0.3 is 2001.2 MCFPD
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivations-for-ensemble-trees-bagging-and-random-forest">Motivations for Ensemble Trees, Bagging and Random Forest</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree">Decision Tree</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensemble-methods">Ensemble Methods</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tree-bagging">Tree Bagging</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest">Random Forest</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivations-for-bagging-and-random-forest">Motivations for Bagging and Random Forest</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tree-model-formulation">Tree Model Formulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tree-loss-functions">Tree Loss Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-the-tree-model">Training the Tree Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuning-the-tree-model">Tuning the Tree Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ensemble-methods">Ensemble Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bootstrap">Bootstrap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging-models">Bagging Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-and-tuning-bagging-models">Training and Tuning Bagging Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#out-of-bag-cross-validation">Out-of-Bag Cross Validation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-estimators">Number of Estimators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimator-complexity">Estimator Complexity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tree-bagging">Tree Bagging</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest">Random Forest</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the working directory</a></li>
