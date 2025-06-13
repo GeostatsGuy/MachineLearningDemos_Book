@@ -201,6 +201,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_support_vector_machines.html">Support Vector Machines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ANN.html">Artificial Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_CNN.html">Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_autoencoder.html">Autoencoder Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_time_series.html">Time Series Analysis and Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
@@ -1101,7 +1102,7 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">por_min</span> <span class="o">=</span> <span class="mf">0.12</span><span class="p">;</span> <span class="n">por_max</span> <span class="o">=</span> <span class="mf">0.28</span>                                <span class="c1"># min and max values for plotting</span>
 <span class="n">AI_min</span> <span class="o">=</span> <span class="mi">1500</span><span class="p">;</span> <span class="n">AI_max</span> <span class="o">=</span> <span class="mi">6500</span>                                  
-<span class="n">K</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="n">max_iter</span> <span class="o">=</span> <span class="mi">100</span>                                         <span class="c1"># number of prototypes / categories</span>
+<span class="n">K</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="n">max_iter</span> <span class="o">=</span> <span class="mi">100</span>                                         <span class="c1"># number of prototypes / categories</span>
 <span class="n">colmap</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="mi">7</span><span class="p">:</span> <span class="s1">&#39;w&#39;</span><span class="p">}</span> <span class="c1"># color dictionary for up to 7 categories</span>
 <span class="n">prototypes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">K</span><span class="p">,</span><span class="n">max_iter</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>                         <span class="c1"># store the prototypes over iterations</span>
 <span class="n">norm_prototypes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">K</span><span class="p">,</span><span class="n">max_iter</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>                    <span class="c1"># store the prototypes for the standardized features over iterations</span>
@@ -1184,7 +1185,7 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7947cd4c6ede36299a2369be5fdecdb2d3882aebb3acdc0d8880fffd8f5ea943.png" src="_images/7947cd4c6ede36299a2369be5fdecdb2d3882aebb3acdc0d8880fffd8f5ea943.png" />
+<img alt="_images/89aa79fe89eb7252de4eaaa96655d8cab72c87945bda9896b49d5fb0e1ff3d02.png" src="_images/89aa79fe89eb7252de4eaaa96655d8cab72c87945bda9896b49d5fb0e1ff3d02.png" />
 </div>
 </div>
 </section>
@@ -1230,7 +1231,7 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/039539b983fc0e13a6e6bb5ad1c789b5dd73461aa24d7074b75c87d592c0e753.png" src="_images/039539b983fc0e13a6e6bb5ad1c789b5dd73461aa24d7074b75c87d592c0e753.png" />
+<img alt="_images/54cb330a74898631faa71c40d5e5871042e52db556b1804a0b581917e8135eb9.png" src="_images/54cb330a74898631faa71c40d5e5871042e52db556b1804a0b581917e8135eb9.png" />
 </div>
 </div>
 </section>
@@ -1294,7 +1295,7 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3025004482c07f2babb861af7587992d25ba8ea29e1464a7b09bea5272da8b85.png" src="_images/3025004482c07f2babb861af7587992d25ba8ea29e1464a7b09bea5272da8b85.png" />
+<img alt="_images/d407ac38fa40f3583c66b8c936ef6fa4d3520c2125e0c75a4033f08f6c812f5f.png" src="_images/d407ac38fa40f3583c66b8c936ef6fa4d3520c2125e0c75a4033f08f6c812f5f.png" />
 </div>
 </div>
 </section>
@@ -1334,7 +1335,7 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2597ea69d88e3c60c587d08f6e5e658fd2dc80f807ef700e2d9e2806ded7efa7.png" src="_images/2597ea69d88e3c60c587d08f6e5e658fd2dc80f807ef700e2d9e2806ded7efa7.png" />
+<img alt="_images/f940da261c3075cbde5da1809f680248e34d82d4c1e57dda341ca76265cc6242.png" src="_images/f940da261c3075cbde5da1809f680248e34d82d4c1e57dda341ca76265cc6242.png" />
 </div>
 </div>
 </section>
@@ -1392,7 +1393,7 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/260ed3268feb9216ad78e41559f115552e868098e3cdbf70362b677f3673d82c.png" src="_images/260ed3268feb9216ad78e41559f115552e868098e3cdbf70362b677f3673d82c.png" />
+<img alt="_images/ba1c9c046617e225fb4e6fcedc7cd0ccd6b4d1e017a1b4199b12b40d97b845f3.png" src="_images/ba1c9c046617e225fb4e6fcedc7cd0ccd6b4d1e017a1b4199b12b40d97b845f3.png" />
 </div>
 </div>
 </section>
@@ -1402,7 +1403,7 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 <p>Let’s repeat with the scikit-learn function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="mi">2</span>                                                         <span class="c1"># number categories / clusters </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="mi">6</span>                                                         <span class="c1"># number categories / clusters </span>
 
 <span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">K</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">n_init</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,[</span><span class="s1">&#39;Norm_Porosity&#39;</span><span class="p">,</span><span class="s1">&#39;Norm_AI&#39;</span><span class="p">]])</span> <span class="c1"># k-means clustering</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;kMeans&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">labels_</span> <span class="o">+</span> <span class="mi">1</span>
@@ -1417,7 +1418,7 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e78be07d00c4ccada7b5914d3f073c3fe4155b63472a216aea3ceef74e3769d4.png" src="_images/e78be07d00c4ccada7b5914d3f073c3fe4155b63472a216aea3ceef74e3769d4.png" />
+<img alt="_images/7ea79aef005dd9f3a663f25bfae1eae02c6acda91f6ec68ada8425a37a5afdbf.png" src="_images/7ea79aef005dd9f3a663f25bfae1eae02c6acda91f6ec68ada8425a37a5afdbf.png" />
 </div>
 </div>
 </section>

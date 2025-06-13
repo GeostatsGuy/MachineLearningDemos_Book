@@ -201,6 +201,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_support_vector_machines.html">Support Vector Machines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ANN.html">Artificial Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_CNN.html">Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_autoencoder.html">Autoencoder Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_time_series.html">Time Series Analysis and Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
@@ -1744,7 +1745,7 @@ f(x_2=60) = 86.5
 <p>Let’s use too few regions, set max_leaf_nodes too small and see the resulting decision tree model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_leaf_nodes</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="n">max_depth</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="n">min_samples_leaf</span> <span class="o">=</span> <span class="mi">1</span>      <span class="c1"># hyperparameters</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_leaf_nodes</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="n">max_depth</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="n">min_samples_leaf</span> <span class="o">=</span> <span class="mi">1</span>      <span class="c1"># hyperparameters</span>
 
 <span class="n">tree_model</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_leaf_nodes</span> <span class="o">=</span> <span class="n">max_leaf_nodes</span><span class="p">,</span><span class="n">max_depth</span> <span class="o">=</span> <span class="n">max_depth</span><span class="p">,</span><span class="n">min_samples_leaf</span> <span class="o">=</span> <span class="n">min_samples_leaf</span><span class="p">)</span>
 <span class="n">tree_model</span> <span class="o">=</span> <span class="n">tree_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
@@ -1762,7 +1763,7 @@ f(x_2=60) = 86.5
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/aabd5ad22604b26d4c40343538d80f743cf5503fd2cdc91306044f44eea3818e.png" src="_images/aabd5ad22604b26d4c40343538d80f743cf5503fd2cdc91306044f44eea3818e.png" />
+<img alt="_images/b16846b3da102d43bddf071ef32fd4ee21993f3d2ea40b79b0970c75d5d52756.png" src="_images/b16846b3da102d43bddf071ef32fd4ee21993f3d2ea40b79b0970c75d5d52756.png" />
 </div>
 </div>
 <p>This model is very much underfit, it is too simple to fit the shape of the prediction problem. Here’s some more information on the plot.</p>
@@ -1952,7 +1953,7 @@ f(x_2=60) = 86.5
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6015781e4c74b027905815a09c154da52885aa5dc088e9e361a0b18764a1f720.png" src="_images/6015781e4c74b027905815a09c154da52885aa5dc088e9e361a0b18764a1f720.png" />
+<img alt="_images/2052ad72e4922f2371d3cd12c4044d1920febf57136403dec58259c71ef1b773.png" src="_images/2052ad72e4922f2371d3cd12c4044d1920febf57136403dec58259c71ef1b773.png" />
 </div>
 </div>
 <p>The k-fold cross validation provides a smoother plot of MSE vs. the hyperparameter.</p>
