@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Ridge Regression" href="MachineLearning_ridge_regression.html" />
-    <link rel="prev" title="Random Projection" href="MachineLearning_random_projection.html" />
+    <link rel="prev" title="Predictive Machine Learning with scikit-learn" href="MachineLearning_predictive.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -188,6 +188,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_PCA.html">Principal Components Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_multidimensional_scaling.html">Multidimensional Scaling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_random_projection.html">Random Projection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_predictive.html">Prediction with scikit-learn</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Linear Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ridge_regression.html">Ridge Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_LASSO_regression.html">LASSO Regression</a></li>
@@ -422,6 +423,13 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-prediction-intervals">Model Prediction Intervals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediction">Prediction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-prediction-error">Checking Prediction Error</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-on-a-new-dataset">Practice on a New Dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-0-unconventional-multivariate-v4">Dataset 0, Unconventional Multivariate v4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-1-twelve-12">Dataset 1, Twelve, 12</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-2-reservoir-21">Dataset 2, Reservoir 21</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-and-check-model">Build and Check Model</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
@@ -732,7 +740,7 @@ r^2 = \left(\rho_{x,y} \right)^2
 <p>We will also need some standard packages. These should have been installed with Anaconda 3.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">suppress_warnings</span> <span class="o">=</span> <span class="kc">False</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">suppress_warnings</span> <span class="o">=</span> <span class="kc">False</span>                                     <span class="c1"># select to suppress warnings</span>
 <span class="kn">import</span> <span class="nn">os</span>                                                     <span class="c1"># to set current working directory </span>
 <span class="kn">import</span> <span class="nn">math</span>                                                   <span class="c1"># square root</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                                            <span class="c1"># arrays and matrix math</span>
@@ -740,6 +748,9 @@ r^2 = \left(\rho_{x,y} \right)^2
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                                           <span class="c1"># DataFrames</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>                               <span class="c1"># for plotting</span>
 <span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="p">(</span><span class="n">MultipleLocator</span><span class="p">,</span> <span class="n">AutoMinorLocator</span><span class="p">)</span> <span class="c1"># control of axes ticks</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>                <span class="c1"># min/max normalization</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>             <span class="c1"># linear regression</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>          <span class="c1"># train and test split</span>
 <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">inferno</span>                                         <span class="c1"># default color bar, no bias and friendly for color vision defeciency</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">axisbelow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                                <span class="c1"># grid behind plotting elements</span>
 <span class="k">if</span> <span class="n">suppress_warnings</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>  
@@ -756,8 +767,8 @@ r^2 = \left(\rho_{x,y} \right)^2
 <p>Let’s define a function to streamline the addition specified percentiles and major and minor gridlines to our plots.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">weighted_percentile</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">perc</span><span class="p">):</span>                 <span class="c1"># calculate weighted percentile (iambr on StackOverflow @ https://stackoverflow.com/questions/21844024/weighted-percentile-using-numpy/32216049) </span>
-    <span class="n">ix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">weighted_percentile</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">perc</span><span class="p">):</span>                 <span class="c1"># calculate weighted percentile, iambr on StackOverflow  </span>
+    <span class="n">ix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>                                     <span class="c1"># https://stackoverflow.com/questions/21844024/weighted-percentile-using-numpy/32216049</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">ix</span><span class="p">]</span> 
     <span class="n">weights</span> <span class="o">=</span> <span class="n">weights</span><span class="p">[</span><span class="n">ix</span><span class="p">]</span> 
     <span class="n">cdf</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">weights</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span> 
@@ -1405,6 +1416,343 @@ MSE = \sum_{i=1}^n\frac{(y_i - \hat{y}<em>i)^2}{n-2} = \sum</em>{i=1}^n \frac{\l
 </div>
 <p>For the demonstration case, there is no apparent conditional bias in the estimates over the range of values.</p>
 </section>
+<section id="practice-on-a-new-dataset">
+<h2>Practice on a New Dataset<a class="headerlink" href="#practice-on-a-new-dataset" title="Permalink to this heading">#</a></h2>
+<p>Ok, time to get to work. Let’s load up a dataset and build a linear regression model with,</p>
+<ul class="simple">
+<li><p>compact code</p></li>
+<li><p>basic visaulizations</p></li>
+<li><p>save the output</p></li>
+</ul>
+<p>You can select any of these datasets or modify the code and add your own to do this.</p>
+<section id="dataset-0-unconventional-multivariate-v4">
+<h3>Dataset 0, Unconventional Multivariate v4<a class="headerlink" href="#dataset-0-unconventional-multivariate-v4" title="Permalink to this heading">#</a></h3>
+<p>Let’s load the provided multivariate, dataset <a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets/blob/master/unconv_MV_v4.csv">unconv_MV.csv</a>. This dataset has variables from 1,000 unconventional wells including:</p>
+<ul class="simple">
+<li><p>well average porosity</p></li>
+<li><p>log transform of permeability (to linearize the relationships with other variables)</p></li>
+<li><p>acoustic impedance (kg/m^3 x m/s x 10^6)</p></li>
+<li><p>brittleness ratio (%)</p></li>
+<li><p>total organic carbon (%)</p></li>
+<li><p>vitrinite reflectance (%)</p></li>
+<li><p>initial production 90 day average (MCFPD).</p></li>
+</ul>
+</section>
+<section id="dataset-1-twelve-12">
+<h3>Dataset 1, Twelve, 12<a class="headerlink" href="#dataset-1-twelve-12" title="Permalink to this heading">#</a></h3>
+<p>Let’s load the provided multivariate, 2D spatial dataset <a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets/blob/master/12_sample_data.csv">12_sample_data.csv</a>. This dataset has variables from 480 unconventional wells including:</p>
+<ul class="simple">
+<li><p>X (m), Y (m) location coordinates</p></li>
+<li><p>facies (0 - shale, 1 - sand)</p></li>
+<li><p>porosity (%) after units conversion</p></li>
+<li><p>permeability (mD)</p></li>
+<li><p>acoustic impedance (kg/m^3 x m/s x 10^6)</p></li>
+</ul>
+</section>
+<section id="dataset-2-reservoir-21">
+<h3>Dataset 2, Reservoir 21<a class="headerlink" href="#dataset-2-reservoir-21" title="Permalink to this heading">#</a></h3>
+<p>Let’s load the provided multivariate, 3D spatial dataset <a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets/blob/master/res21_wells.csv">res21_wells.csv</a>. This dataset has variables from 73 vertical wells over a 10,000m x 10,000m x 50 m reservoir unit:</p>
+<ul class="simple">
+<li><p>well (ID)</p></li>
+<li><p>X (m), Y (m), Depth (m) location coordinates</p></li>
+<li><p>Porosity (%) after units conversion</p></li>
+<li><p>Permeability (mD)</p></li>
+<li><p>Acoustic Impedance (kg/m2s*10^6) after units conversion</p></li>
+<li><p>Facies (categorical) - ordinal with ordering from Shale, Sandy Shale, Shaley Sand, to Sandstone.</p></li>
+<li><p>Density (g/cm^3)</p></li>
+<li><p>Compressible velocity (m/s)</p></li>
+<li><p>Youngs modulus (GPa)</p></li>
+<li><p>Shear velocity (m/s)</p></li>
+<li><p>Shear modulus (GPa)</p></li>
+<li><p>3 year cumulative oil production (Mbbl)</p></li>
+</ul>
+<p>We load the tabular data with the pandas ‘read_csv’ function into a DataFrame we called ‘my_data’ and then preview it to make sure it loaded correctly.</p>
+<ul class="simple">
+<li><p>we also populate lists with data ranges and labels for ease of plotting</p></li>
+</ul>
+<p>Load and format the data,</p>
+<ul class="simple">
+<li><p>drop the response feature</p></li>
+<li><p>reformate the features as needed</p></li>
+<li><p>also, I like to store the metadata in lists</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">idata</span> <span class="o">=</span> <span class="mi">0</span>                                                     <span class="c1"># select the dataset</span>
+
+<span class="k">if</span> <span class="n">idata</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">df_new</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/unconv_MV_v4.csv&#39;</span><span class="p">)</span> <span class="c1"># load data from Dr. Pyrcz&#39;s GitHub repository  </span>
+    <span class="n">df_new</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Well&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                 <span class="c1"># remove well index and response feature</span>
+
+    <span class="n">features</span> <span class="o">=</span> <span class="n">df_new</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>                 <span class="c1"># store the names of the features</span>
+
+    <span class="n">xname</span> <span class="o">=</span> <span class="n">features</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">yname</span> <span class="o">=</span> <span class="p">[</span><span class="n">features</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+       
+    <span class="n">xmin_new</span> <span class="o">=</span> <span class="p">[</span><span class="mf">6.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">10.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.9</span><span class="p">];</span> <span class="n">xmax_new</span> <span class="o">=</span> <span class="p">[</span><span class="mf">24.0</span><span class="p">,</span><span class="mf">10.0</span><span class="p">,</span><span class="mf">5.0</span><span class="p">,</span><span class="mf">85.0</span><span class="p">,</span><span class="mf">2.2</span><span class="p">,</span><span class="mf">2.9</span><span class="p">]</span> <span class="c1"># set the minimum and maximum values for plotting</span>
+    <span class="n">ymin_new</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">ymax_new</span> <span class="o">=</span> <span class="mf">10000.0</span>
+    <span class="n">xlabel_new</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Porosity (%)&#39;</span><span class="p">,</span><span class="s1">&#39;Permeability (mD)&#39;</span><span class="p">,</span><span class="s1">&#39;Acoustic Impedance (kg/m2s*10^6)&#39;</span><span class="p">,</span><span class="s1">&#39;Brittleness Ratio (%)&#39;</span><span class="p">,</span> <span class="c1"># set the names for plotting</span>
+             <span class="s1">&#39;Total Organic Carbon (%)&#39;</span><span class="p">,</span><span class="s1">&#39;Vitrinite Reflectance (%)&#39;</span><span class="p">]</span>
+
+    <span class="n">ylabel_new</span> <span class="o">=</span> <span class="s1">&#39;Production (MCFPD)&#39;</span>
+    
+    <span class="n">xtitle_new</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="s1">&#39;Permeability&#39;</span><span class="p">,</span><span class="s1">&#39;Acoustic Impedance&#39;</span><span class="p">,</span><span class="s1">&#39;Brittleness Ratio&#39;</span><span class="p">,</span> <span class="c1"># set the units for plotting</span>
+             <span class="s1">&#39;Total Organic Carbon&#39;</span><span class="p">,</span><span class="s1">&#39;Vitrinite Reflectance&#39;</span><span class="p">]</span>
+
+    <span class="n">ytitle_new</span> <span class="o">=</span> <span class="s1">&#39;Production&#39;</span>
+
+    <span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df_new</span><span class="p">[</span><span class="n">yname</span><span class="p">])</span>                              <span class="c1"># extract selected features as X and y DataFrames  </span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">df_new</span><span class="p">[</span><span class="n">xname</span><span class="p">]</span>
+
+<span class="k">elif</span> <span class="n">idata</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">names</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Porosity&#39;</span><span class="p">:</span><span class="s1">&#39;Por&#39;</span><span class="p">}</span>
+    
+    <span class="n">df_new</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/12_sample_data.csv&#39;</span><span class="p">)</span> <span class="c1"># load data from Dr. Pyrcz&#39;s GitHub repository  </span>
+    <span class="n">df_new</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">,</span><span class="s1">&#39;Facies&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>   <span class="c1"># remove response feature</span>
+    <span class="n">df_new</span> <span class="o">=</span> <span class="n">df_new</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">names</span><span class="p">)</span>
+    <span class="n">df_new</span><span class="p">[</span><span class="s1">&#39;Por&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_new</span><span class="p">[</span><span class="s1">&#39;Por&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">100.0</span><span class="p">;</span> <span class="n">df_new</span><span class="p">[</span><span class="s1">&#39;AI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_new</span><span class="p">[</span><span class="s1">&#39;AI&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1000.0</span>
+    <span class="n">features</span> <span class="o">=</span> <span class="n">df_new</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>                 <span class="c1"># store the names of the features</span>
+
+    <span class="n">xname</span> <span class="o">=</span> <span class="n">features</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">yname</span> <span class="o">=</span> <span class="p">[</span><span class="n">features</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+    
+    <span class="n">xmin_new</span> <span class="o">=</span> <span class="p">[</span><span class="mf">4.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">];</span> <span class="n">xmax_new</span> <span class="o">=</span> <span class="p">[</span><span class="mf">19.0</span><span class="p">,</span><span class="mf">500.0</span><span class="p">]</span> <span class="c1"># set the minimum and maximum values for plotting</span>
+
+    <span class="n">ymin_new</span> <span class="o">=</span> <span class="mf">1.60</span><span class="p">;</span> <span class="n">ymax_new</span> <span class="o">=</span> <span class="mf">6.20</span>
+    
+    <span class="n">xlabel_new</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Porosity (fraction)&#39;</span><span class="p">,</span><span class="s1">&#39;Permeability (mD)&#39;</span><span class="p">]</span> <span class="c1"># set the names for plotting</span>
+
+    <span class="n">ylabel_new</span> <span class="o">=</span> <span class="s1">&#39;Acoustic Impedance (kg/m2s*10^6)&#39;</span>
+    
+    <span class="n">xtitle_new</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="s1">&#39;Permeability&#39;</span><span class="p">]</span>
+
+    <span class="n">ytitle_new</span> <span class="o">=</span> <span class="s1">&#39;Acoustic Impedance (kg/m2s*10^6)&#39;</span>
+
+    <span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df_new</span><span class="p">[</span><span class="n">yname</span><span class="p">])</span>                              <span class="c1"># extract selected features as X and y DataFrames  </span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">df_new</span><span class="p">[</span><span class="n">xname</span><span class="p">]</span>
+
+<span class="k">elif</span> <span class="n">idata</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>  
+    <span class="n">df_new</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/res21_2D_wells.csv&#39;</span><span class="p">)</span> <span class="c1"># load data from Dr. Pyrcz&#39;s GitHub repository  </span>
+    <span class="n">df_new</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Well_ID&#39;</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># remove Well Index, X and Y coordinates, and response feature</span>
+    <span class="n">df_new</span> <span class="o">=</span> <span class="n">df_new</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;any&#39;</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+     
+    <span class="n">features</span> <span class="o">=</span> <span class="n">df_new</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>                 <span class="c1"># store the names of the features</span>
+
+    <span class="n">xname</span> <span class="o">=</span> <span class="n">features</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">yname</span> <span class="o">=</span> <span class="p">[</span><span class="n">features</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+    
+    <span class="n">xmin_new</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">4.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">6.5</span><span class="p">,</span><span class="mf">1.4</span><span class="p">,</span><span class="mf">1600.0</span><span class="p">,</span><span class="mf">10.0</span><span class="p">,</span><span class="mf">1300.0</span><span class="p">,</span><span class="mf">1.6</span><span class="p">];</span> <span class="n">xmax_new</span> <span class="o">=</span> <span class="p">[</span><span class="mi">73</span><span class="p">,</span><span class="mf">10000.0</span><span class="p">,</span><span class="mf">10000.0</span><span class="p">,</span><span class="mf">19.0</span><span class="p">,</span><span class="mf">500.0</span><span class="p">,</span><span class="mf">8.3</span><span class="p">,</span><span class="mf">3.6</span><span class="p">,</span><span class="mf">6200.0</span><span class="p">,</span><span class="mf">50.0</span><span class="p">,</span><span class="mf">2000.0</span><span class="p">,</span><span class="mf">12.0</span><span class="p">]</span> <span class="c1"># set the minimum and maximum values for plotting</span>
+
+    <span class="n">ymin_new</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">ymax_new</span> <span class="o">=</span> <span class="mf">1600.0</span>
+    
+    <span class="n">xlabel_new</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Well (ID)&#39;</span><span class="p">,</span><span class="s1">&#39;X (m)&#39;</span><span class="p">,</span><span class="s1">&#39;Y (m)&#39;</span><span class="p">,</span><span class="s1">&#39;Depth (m)&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity (fraction)&#39;</span><span class="p">,</span><span class="s1">&#39;Permeability (mD)&#39;</span><span class="p">,</span><span class="s1">&#39;Acoustic Impedance (kg/m2s*10^6)&#39;</span><span class="p">,</span><span class="s1">&#39;Facies (categorical)&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Density (g/cm^3)&#39;</span><span class="p">,</span><span class="s1">&#39;Compressible velocity (m/s)&#39;</span><span class="p">,</span><span class="s1">&#39;Youngs modulus (GPa)&#39;</span><span class="p">,</span> <span class="s1">&#39;Shear velocity (m/s)&#39;</span><span class="p">,</span> <span class="s1">&#39;Shear modulus (GPa)&#39;</span><span class="p">]</span> <span class="c1"># set the names for plotting</span>
+
+    <span class="n">ylabel_new</span> <span class="o">=</span> <span class="s1">&#39;Production (Mbbl)&#39;</span>
+    
+    <span class="n">xtitle_new</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Well&#39;</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Depth&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="s1">&#39;Permeability&#39;</span><span class="p">,</span><span class="s1">&#39;Acoustic Impedance&#39;</span><span class="p">,</span><span class="s1">&#39;Facies&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Density&#39;</span><span class="p">,</span><span class="s1">&#39;Compressible velocity&#39;</span><span class="p">,</span><span class="s1">&#39;Youngs modulus&#39;</span><span class="p">,</span> <span class="s1">&#39;Shear velocity&#39;</span><span class="p">,</span> <span class="s1">&#39;Shear modulus&#39;</span><span class="p">]</span>
+
+    <span class="n">ytitle_new</span> <span class="o">=</span> <span class="s1">&#39;Production&#39;</span>
+
+    <span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df_new</span><span class="p">[</span><span class="n">yname</span><span class="p">])</span>                              <span class="c1"># extract selected features as X and y DataFrames  </span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">df_new</span><span class="p">[</span><span class="n">xname</span><span class="p">]</span>
+
+<span class="n">df_new</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Por</th>
+      <th>Perm</th>
+      <th>AI</th>
+      <th>Brittle</th>
+      <th>TOC</th>
+      <th>VR</th>
+      <th>Prod</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>12.08</td>
+      <td>2.92</td>
+      <td>2.80</td>
+      <td>81.40</td>
+      <td>1.16</td>
+      <td>2.31</td>
+      <td>1695.360819</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>12.38</td>
+      <td>3.53</td>
+      <td>3.22</td>
+      <td>46.17</td>
+      <td>0.89</td>
+      <td>1.88</td>
+      <td>3007.096063</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>14.02</td>
+      <td>2.59</td>
+      <td>4.01</td>
+      <td>72.80</td>
+      <td>0.89</td>
+      <td>2.72</td>
+      <td>2531.938259</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>17.67</td>
+      <td>6.75</td>
+      <td>2.63</td>
+      <td>39.81</td>
+      <td>1.08</td>
+      <td>1.88</td>
+      <td>5288.514854</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>17.52</td>
+      <td>4.57</td>
+      <td>3.18</td>
+      <td>10.94</td>
+      <td>1.51</td>
+      <td>1.90</td>
+      <td>2859.469624</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>14.53</td>
+      <td>4.81</td>
+      <td>2.69</td>
+      <td>53.60</td>
+      <td>0.94</td>
+      <td>1.67</td>
+      <td>4017.374438</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>13.49</td>
+      <td>3.60</td>
+      <td>2.93</td>
+      <td>63.71</td>
+      <td>0.80</td>
+      <td>1.85</td>
+      <td>2952.812773</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>11.58</td>
+      <td>3.03</td>
+      <td>3.25</td>
+      <td>53.00</td>
+      <td>0.69</td>
+      <td>1.93</td>
+      <td>2670.933846</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>12.52</td>
+      <td>2.72</td>
+      <td>2.43</td>
+      <td>65.77</td>
+      <td>0.95</td>
+      <td>1.98</td>
+      <td>2474.048178</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>13.25</td>
+      <td>3.94</td>
+      <td>3.71</td>
+      <td>66.20</td>
+      <td>1.14</td>
+      <td>2.65</td>
+      <td>2722.893266</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>15.04</td>
+      <td>4.39</td>
+      <td>2.22</td>
+      <td>61.11</td>
+      <td>1.08</td>
+      <td>1.77</td>
+      <td>3828.247174</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>16.19</td>
+      <td>6.30</td>
+      <td>2.29</td>
+      <td>49.10</td>
+      <td>1.53</td>
+      <td>1.86</td>
+      <td>5095.810104</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>16.82</td>
+      <td>5.42</td>
+      <td>2.80</td>
+      <td>66.65</td>
+      <td>1.17</td>
+      <td>1.98</td>
+      <td>4091.637316</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="build-and-check-model">
+<h3>Build and Check Model<a class="headerlink" href="#build-and-check-model" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_prop</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="n">test_prop</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span> <span class="c1"># train and test split</span>
+<span class="n">linear_model_new</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>    <span class="c1"># instantiate and train linear regression model, no hyperparmeters</span>
+
+<span class="n">train_pred</span> <span class="o">=</span> <span class="n">linear_model_new</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">);</span> <span class="n">test_pred</span> <span class="o">=</span> <span class="n">linear_model_new</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span> <span class="c1"># predict at train and test samples </span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span><span class="n">train_pred</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Training&#39;</span><span class="p">)</span> <span class="c1"># cross validation plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">test_pred</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Testing&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">ymin_new</span><span class="p">,</span><span class="n">ymax_new</span><span class="p">],[</span><span class="n">ymin_new</span><span class="p">,</span><span class="n">ymax_new</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">ymin_new</span><span class="p">,</span><span class="n">ymax_new</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">ymin_new</span><span class="p">,</span><span class="n">ymax_new</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">()</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Truth: &#39;</span> <span class="o">+</span> <span class="n">ylabel_new</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Estimate: &#39;</span> <span class="o">+</span> <span class="n">ylabel_new</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Linear Model Cross Validation&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3a7d23260a411f4894d7f9270056b8ff28820241bf7e6859bae42ed471f22fa3.png" src="_images/3a7d23260a411f4894d7f9270056b8ff28820241bf7e6859bae42ed471f22fa3.png" />
+</div>
+</div>
+</section>
+</section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
 <p>This was a basic treatment of linear regression. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
@@ -1472,12 +1820,12 @@ MSE = \sum_{i=1}^n\frac{(y_i - \hat{y}<em>i)^2}{n-2} = \sum</em>{i=1}^n \frac{\l
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="MachineLearning_random_projection.html"
+       href="MachineLearning_predictive.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Random Projection</p>
+        <p class="prev-next-title">Predictive Machine Learning with scikit-learn</p>
       </div>
     </a>
     <a class="right-next"
@@ -1524,6 +1872,13 @@ MSE = \sum_{i=1}^n\frac{(y_i - \hat{y}<em>i)^2}{n-2} = \sum</em>{i=1}^n \frac{\l
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-prediction-intervals">Model Prediction Intervals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediction">Prediction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-prediction-error">Checking Prediction Error</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-on-a-new-dataset">Practice on a New Dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-0-unconventional-multivariate-v4">Dataset 0, Unconventional Multivariate v4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-1-twelve-12">Dataset 1, Twelve, 12</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-2-reservoir-21">Dataset 2, Reservoir 21</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-and-check-model">Build and Check Model</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>

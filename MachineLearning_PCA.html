@@ -188,6 +188,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Principal Components Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_multidimensional_scaling.html">Multidimensional Scaling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_random_projection.html">Random Projection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_predictive.html">Prediction with scikit-learn</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_linear_regression.html">Linear Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ridge_regression.html">Ridge Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_LASSO_regression.html">LASSO Regression</a></li>
@@ -436,6 +437,15 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduced-dimensionality-impact-on-a-2-feature-relationship">Reduced Dimensionality Impact on a 2 Feature Relationship</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduced-dimensionality-impact-on-matrix-scatter-plots-of-all-features">Reduced Dimensionality Impact on Matrix Scatter Plots of All Features</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-components-analysis-on-uncorrelated-data">Principal Components Analysis on Uncorrelated Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-on-a-new-dataset">Practice on a New Dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-0-unconventional-multivariate-v4">Dataset 0, Unconventional Multivariate v4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-1-twelve-12">Dataset 1, Twelve, 12</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-2-reservoir-21">Dataset 2, Reservoir 21</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-principal-components-analysis">Perform Principal Components Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-cumulative-variance-explained">Check the Cumulative Variance Explained</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-the-principal-components">Save the Principal Components</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
@@ -806,6 +816,7 @@ C = \begin{bmatrix}
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ignore_warnings</span> <span class="o">=</span> <span class="kc">True</span>                                        <span class="c1"># ignore warnings?</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>                <span class="c1"># min/max normalization</span>
 <span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>                         <span class="c1"># PCA program from scikit learn (package for machine learning)</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>              <span class="c1"># standardize variables to mean of 0.0 and variance of 1.0</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                                            <span class="c1"># ndarrays for gridded data</span>
@@ -816,6 +827,7 @@ C = \begin{bmatrix}
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>                               <span class="c1"># for plotting</span>
 <span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="p">(</span><span class="n">MultipleLocator</span><span class="p">,</span> <span class="n">AutoMinorLocator</span><span class="p">)</span> <span class="c1"># control of axes ticks</span>
 <span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="k">as</span> <span class="nn">mtick</span>                             <span class="c1"># control tick label formatting</span>
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">PercentFormatter</span>                <span class="c1"># percentage axis label formatting</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>                                         <span class="c1"># advanced plotting</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">axisbelow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                                <span class="c1"># plot all grids below the plot elements</span>
 <span class="k">if</span> <span class="n">ignore_warnings</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>                                   
@@ -873,7 +885,7 @@ C = \begin{bmatrix}
 <p>I always like to do this so I don’t lose files and to simplify subsequent read and writes (avoid including the full address each time).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#os.chdir(&quot;c:/PGE383&quot;)                                 # set the working directory</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#os.chdir(&quot;c:/Local&quot;)                                 # set the working directory</span>
 </pre></div>
 </div>
 </div>
@@ -2336,29 +2348,29 @@ Correlation Matrix of the 6 principle components&#39; scores:
 Proportion of variance of original features:  [0.2 0.2 0.2 0.2 0.2]
 Correlation Matrix of original features:
 
-[[ 0.08 -0.    0.   -0.    0.  ]
- [-0.    0.08  0.   -0.    0.  ]
- [ 0.    0.    0.08 -0.   -0.  ]
- [-0.   -0.   -0.    0.08  0.  ]
- [ 0.    0.   -0.    0.    0.08]]
+[[ 0.08  0.    0.    0.   -0.  ]
+ [ 0.    0.08  0.    0.   -0.  ]
+ [ 0.    0.    0.08  0.   -0.  ]
+ [ 0.    0.    0.    0.08 -0.  ]
+ [-0.   -0.   -0.   -0.    0.08]]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PCA Variance Explained  [0.21 0.2  0.2  0.2  0.19]
 
 Correlation Matrix of scores:
 
-[[ 0.09 -0.    0.    0.    0.  ]
- [-0.    0.08  0.   -0.   -0.  ]
- [ 0.    0.    0.08 -0.    0.  ]
- [ 0.   -0.   -0.    0.08  0.  ]
- [ 0.   -0.    0.    0.    0.08]]
+[[ 0.09  0.   -0.   -0.   -0.  ]
+ [ 0.    0.08 -0.    0.   -0.  ]
+ [-0.   -0.    0.08 -0.    0.  ]
+ [-0.    0.   -0.    0.08 -0.  ]
+ [-0.   -0.    0.   -0.    0.08]]
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.98, &#39;Principal Component Scores&#39;)
 </pre></div>
 </div>
-<img alt="_images/a6aab068b256c47de46f61b9eecabe7abf14102680b6ee57967cb0121a8929f8.png" src="_images/a6aab068b256c47de46f61b9eecabe7abf14102680b6ee57967cb0121a8929f8.png" />
-<img alt="_images/c67bb47eddb65f56b7fc2ce134c260a65581f50efb5ed71e80501062a3996e6d.png" src="_images/c67bb47eddb65f56b7fc2ce134c260a65581f50efb5ed71e80501062a3996e6d.png" />
+<img alt="_images/5522280468341c636d452d07dab8a37e850de0c8ae62cbb06a6a5f19162f64cd.png" src="_images/5522280468341c636d452d07dab8a37e850de0c8ae62cbb06a6a5f19162f64cd.png" />
+<img alt="_images/d0e3c5b709cf41589708c165c1c07022ca534eb8497159e76f1cf3635f433ad4.png" src="_images/d0e3c5b709cf41589708c165c1c07022ca534eb8497159e76f1cf3635f433ad4.png" />
 </div>
 </div>
 <p>What happens when principal component analysis is applied to uncorrelated, uniformly distributed features?</p>
@@ -2367,6 +2379,344 @@ Correlation Matrix of scores:
 <li><p>there is no opportunity for dimensionality reduction through feature projection</p></li>
 <li><p>the linear combination of independent random variables invokes the central limit theorem, the principle component scores tend to a Gaussian distribution (see the rounding of the points in the matrix scatter plots above)</p></li>
 </ul>
+</section>
+<section id="practice-on-a-new-dataset">
+<h2>Practice on a New Dataset<a class="headerlink" href="#practice-on-a-new-dataset" title="Permalink to this heading">#</a></h2>
+<p>Ok, time to get to work. Let’s load up a dataset and perform PCA with,</p>
+<ul class="simple">
+<li><p>compact code</p></li>
+<li><p>basic visaulizations</p></li>
+<li><p>save the output</p></li>
+</ul>
+<p>You can select any of these datasets or modify the code and add your own to do this.</p>
+<section id="dataset-0-unconventional-multivariate-v4">
+<h3>Dataset 0, Unconventional Multivariate v4<a class="headerlink" href="#dataset-0-unconventional-multivariate-v4" title="Permalink to this heading">#</a></h3>
+<p>Let’s load the provided multivariate, dataset <a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets/blob/master/unconv_MV_v4.csv">unconv_MV.csv</a>. This dataset has variables from 1,000 unconventional wells including:</p>
+<ul class="simple">
+<li><p>well average porosity</p></li>
+<li><p>log transform of permeability (to linearize the relationships with other variables)</p></li>
+<li><p>acoustic impedance (kg/m^3 x m/s x 10^6)</p></li>
+<li><p>brittleness ratio (%)</p></li>
+<li><p>total organic carbon (%)</p></li>
+<li><p>vitrinite reflectance (%)</p></li>
+<li><p>initial production 90 day average (MCFPD).</p></li>
+</ul>
+</section>
+<section id="dataset-1-twelve-12">
+<h3>Dataset 1, Twelve, 12<a class="headerlink" href="#dataset-1-twelve-12" title="Permalink to this heading">#</a></h3>
+<p>Let’s load the provided multivariate, 2D spatial dataset <a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets/blob/master/12_sample_data.csv">12_sample_data.csv</a>. This dataset has variables from 480 unconventional wells including:</p>
+<ul class="simple">
+<li><p>X (m), Y (m) location coordinates</p></li>
+<li><p>facies (0 - shale, 1 - sand)</p></li>
+<li><p>porosity (%) after units conversion</p></li>
+<li><p>permeability (mD)</p></li>
+<li><p>acoustic impedance (kg/m^3 x m/s x 10^6)</p></li>
+</ul>
+</section>
+<section id="dataset-2-reservoir-21">
+<h3>Dataset 2, Reservoir 21<a class="headerlink" href="#dataset-2-reservoir-21" title="Permalink to this heading">#</a></h3>
+<p>Let’s load the provided multivariate, 3D spatial dataset <a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets/blob/master/res21_wells.csv">res21_wells.csv</a>. This dataset has variables from 73 vertical wells over a 10,000m x 10,000m x 50 m reservoir unit:</p>
+<ul class="simple">
+<li><p>well (ID)</p></li>
+<li><p>X (m), Y (m), Depth (m) location coordinates</p></li>
+<li><p>Porosity (%) after units conversion</p></li>
+<li><p>Permeability (mD)</p></li>
+<li><p>Acoustic Impedance (kg/m2s*10^6) after units conversion</p></li>
+<li><p>Facies (categorical) - ordinal with ordering from Shale, Sandy Shale, Shaley Sand, to Sandstone.</p></li>
+<li><p>Density (g/cm^3)</p></li>
+<li><p>Compressible velocity (m/s)</p></li>
+<li><p>Youngs modulus (GPa)</p></li>
+<li><p>Shear velocity (m/s)</p></li>
+<li><p>Shear modulus (GPa)</p></li>
+</ul>
+<p>We load the tabular data with the pandas ‘read_csv’ function into a DataFrame we called ‘my_data’ and then preview it to make sure it loaded correctly.</p>
+<ul class="simple">
+<li><p>we also populate lists with data ranges and labels for ease of plotting</p></li>
+</ul>
+<p>Load and format the data,</p>
+<ul class="simple">
+<li><p>drop the response feature</p></li>
+<li><p>reformate the features as needed</p></li>
+<li><p>also, I like to store the metadata in lists</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">idata</span> <span class="o">=</span> <span class="mi">0</span>                                                     <span class="c1"># select the dataset</span>
+
+<span class="k">if</span> <span class="n">idata</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">df_new</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/unconv_MV_v4.csv&#39;</span><span class="p">)</span> <span class="c1"># load data from Dr. Pyrcz&#39;s GitHub repository  </span>
+    <span class="n">df_new</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Well&#39;</span><span class="p">,</span><span class="s1">&#39;Prod&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>          <span class="c1"># remove well index and response feature</span>
+
+    <span class="n">features</span> <span class="o">=</span> <span class="n">df_new</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>                 <span class="c1"># store the names of the features</span>
+    
+    <span class="n">xmin_new</span> <span class="o">=</span> <span class="p">[</span><span class="mf">6.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">10.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.9</span><span class="p">];</span> <span class="n">xmax_new</span> <span class="o">=</span> <span class="p">[</span><span class="mf">24.0</span><span class="p">,</span><span class="mf">10.0</span><span class="p">,</span><span class="mf">5.0</span><span class="p">,</span><span class="mf">85.0</span><span class="p">,</span><span class="mf">2.2</span><span class="p">,</span><span class="mf">2.9</span><span class="p">]</span> <span class="c1"># set the minimum and maximum values for plotting</span>
+
+    <span class="n">flabel_new</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Porosity (%)&#39;</span><span class="p">,</span><span class="s1">&#39;Permeability (mD)&#39;</span><span class="p">,</span><span class="s1">&#39;Acoustic Impedance (kg/m2s*10^6)&#39;</span><span class="p">,</span><span class="s1">&#39;Brittleness Ratio (%)&#39;</span><span class="p">,</span> <span class="c1"># set the names for plotting</span>
+             <span class="s1">&#39;Total Organic Carbon (%)&#39;</span><span class="p">,</span><span class="s1">&#39;Vitrinite Reflectance (%)&#39;</span><span class="p">]</span>
+
+    <span class="n">ftitle_new</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="s1">&#39;Permeability&#39;</span><span class="p">,</span><span class="s1">&#39;Acoustic Impedance&#39;</span><span class="p">,</span><span class="s1">&#39;Brittleness Ratio&#39;</span><span class="p">,</span> <span class="c1"># set the units for plotting</span>
+             <span class="s1">&#39;Total Organic Carbon&#39;</span><span class="p">,</span><span class="s1">&#39;Vitrinite Reflectance&#39;</span><span class="p">]</span>
+
+<span class="k">elif</span> <span class="n">idata</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">names</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Porosity&#39;</span><span class="p">:</span><span class="s1">&#39;Por&#39;</span><span class="p">}</span>
+    
+    <span class="n">df_new</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/12_sample_data.csv&#39;</span><span class="p">)</span> <span class="c1"># load data from Dr. Pyrcz&#39;s GitHub repository  </span>
+    <span class="n">df_new</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>   <span class="c1"># remove response feature</span>
+    <span class="n">df_new</span> <span class="o">=</span> <span class="n">df_new</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">names</span><span class="p">)</span>
+
+    <span class="n">features</span> <span class="o">=</span> <span class="n">df_new</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>                 <span class="c1"># store the names of the features</span>
+
+    <span class="n">xmin_new</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">4.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">6.5</span><span class="p">,</span><span class="mf">1.4</span><span class="p">,</span><span class="mf">1600.0</span><span class="p">,</span><span class="mf">10.0</span><span class="p">,</span><span class="mf">1300.0</span><span class="p">,</span><span class="mf">1.6</span><span class="p">];</span> <span class="n">xmax_new</span> <span class="o">=</span> <span class="p">[</span><span class="mf">10000.0</span><span class="p">,</span><span class="mf">10000.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">19.0</span><span class="p">,</span><span class="mf">500.0</span><span class="p">,</span><span class="mf">8.3</span><span class="p">,</span><span class="mf">3.6</span><span class="p">,</span><span class="mf">6200.0</span><span class="p">,</span><span class="mf">50.0</span><span class="p">,</span><span class="mf">2000.0</span><span class="p">,</span><span class="mf">12.0</span><span class="p">]</span> <span class="c1"># set the minimum and maximum values for plotting</span>
+    
+    <span class="n">flabel_new</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Well (ID)&#39;</span><span class="p">,</span><span class="s1">&#39;X (m)&#39;</span><span class="p">,</span><span class="s1">&#39;Y (m)&#39;</span><span class="p">,</span><span class="s1">&#39;Depth (m)&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity (fraction)&#39;</span><span class="p">,</span><span class="s1">&#39;Permeability (mD)&#39;</span><span class="p">,</span><span class="s1">&#39;Acoustic Impedance (kg/m2s*10^6)&#39;</span><span class="p">,</span><span class="s1">&#39;Facies (categorical)&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Density (g/cm^3)&#39;</span><span class="p">,</span><span class="s1">&#39;Compressible velocity (m/s)&#39;</span><span class="p">,</span><span class="s1">&#39;Youngs modulus (GPa)&#39;</span><span class="p">,</span> <span class="s1">&#39;Shear velocity (m/s)&#39;</span><span class="p">,</span> <span class="s1">&#39;Shear modulus (GPa)&#39;</span><span class="p">]</span> <span class="c1"># set the names for plotting</span>
+
+    <span class="n">ftitle_new</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Well&#39;</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Depth&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="s1">&#39;Permeability&#39;</span><span class="p">,</span><span class="s1">&#39;Acoustic Impedance&#39;</span><span class="p">,</span><span class="s1">&#39;Facies&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Density&#39;</span><span class="p">,</span><span class="s1">&#39;Compressible velocity&#39;</span><span class="p">,</span><span class="s1">&#39;Youngs modulus&#39;</span><span class="p">,</span> <span class="s1">&#39;Shear velocity&#39;</span><span class="p">,</span> <span class="s1">&#39;Shear modulus&#39;</span><span class="p">]</span>
+
+<span class="k">elif</span> <span class="n">idata</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>  
+    <span class="n">df_new</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/res21_2D_wells.csv&#39;</span><span class="p">)</span> <span class="c1"># load data from Dr. Pyrcz&#39;s GitHub repository  </span>
+    <span class="n">df_new</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Well_ID&#39;</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;CumulativeOil&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># remove Well Index, X and Y coordinates, and response feature</span>
+    <span class="n">df_new</span> <span class="o">=</span> <span class="n">df_new</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;any&#39;</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+     
+    <span class="n">features</span> <span class="o">=</span> <span class="n">df_new</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>                 <span class="c1"># store the names of the features</span>
+
+    <span class="n">xmin_new</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">4.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">6.5</span><span class="p">,</span><span class="mf">1.4</span><span class="p">,</span><span class="mf">1600.0</span><span class="p">,</span><span class="mf">10.0</span><span class="p">,</span><span class="mf">1300.0</span><span class="p">,</span><span class="mf">1.6</span><span class="p">];</span> <span class="n">xmax_new</span> <span class="o">=</span> <span class="p">[</span><span class="mi">73</span><span class="p">,</span><span class="mf">10000.0</span><span class="p">,</span><span class="mf">10000.0</span><span class="p">,</span><span class="mf">19.0</span><span class="p">,</span><span class="mf">500.0</span><span class="p">,</span><span class="mf">8.3</span><span class="p">,</span><span class="mf">3.6</span><span class="p">,</span><span class="mf">6200.0</span><span class="p">,</span><span class="mf">50.0</span><span class="p">,</span><span class="mf">2000.0</span><span class="p">,</span><span class="mf">12.0</span><span class="p">]</span> <span class="c1"># set the minimum and maximum values for plotting</span>
+    
+    <span class="n">flabel_new</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Well (ID)&#39;</span><span class="p">,</span><span class="s1">&#39;X (m)&#39;</span><span class="p">,</span><span class="s1">&#39;Y (m)&#39;</span><span class="p">,</span><span class="s1">&#39;Depth (m)&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity (fraction)&#39;</span><span class="p">,</span><span class="s1">&#39;Permeability (mD)&#39;</span><span class="p">,</span><span class="s1">&#39;Acoustic Impedance (kg/m2s*10^6)&#39;</span><span class="p">,</span><span class="s1">&#39;Facies (categorical)&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Density (g/cm^3)&#39;</span><span class="p">,</span><span class="s1">&#39;Compressible velocity (m/s)&#39;</span><span class="p">,</span><span class="s1">&#39;Youngs modulus (GPa)&#39;</span><span class="p">,</span> <span class="s1">&#39;Shear velocity (m/s)&#39;</span><span class="p">,</span> <span class="s1">&#39;Shear modulus (GPa)&#39;</span><span class="p">]</span> <span class="c1"># set the names for plotting</span>
+
+    <span class="n">ftitle_new</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Well&#39;</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Depth&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="s1">&#39;Permeability&#39;</span><span class="p">,</span><span class="s1">&#39;Acoustic Impedance&#39;</span><span class="p">,</span><span class="s1">&#39;Facies&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Density&#39;</span><span class="p">,</span><span class="s1">&#39;Compressible velocity&#39;</span><span class="p">,</span><span class="s1">&#39;Youngs modulus&#39;</span><span class="p">,</span> <span class="s1">&#39;Shear velocity&#39;</span><span class="p">,</span> <span class="s1">&#39;Shear modulus&#39;</span><span class="p">]</span>
+
+<span class="n">df_new</span><span class="p">[</span><span class="n">df_new</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_new</span><span class="p">)</span> <span class="c1"># min/max normalize all the features</span>
+<span class="n">df_new</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Por</th>
+      <th>Perm</th>
+      <th>AI</th>
+      <th>Brittle</th>
+      <th>TOC</th>
+      <th>VR</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.325294</td>
+      <td>0.204805</td>
+      <td>0.453731</td>
+      <td>0.960076</td>
+      <td>0.569620</td>
+      <td>0.711340</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.342941</td>
+      <td>0.274600</td>
+      <td>0.579104</td>
+      <td>0.480038</td>
+      <td>0.455696</td>
+      <td>0.489691</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.439412</td>
+      <td>0.167048</td>
+      <td>0.814925</td>
+      <td>0.842894</td>
+      <td>0.455696</td>
+      <td>0.922680</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.654118</td>
+      <td>0.643021</td>
+      <td>0.402985</td>
+      <td>0.393378</td>
+      <td>0.535865</td>
+      <td>0.489691</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.645294</td>
+      <td>0.393593</td>
+      <td>0.567164</td>
+      <td>0.000000</td>
+      <td>0.717300</td>
+      <td>0.500000</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.469412</td>
+      <td>0.421053</td>
+      <td>0.420896</td>
+      <td>0.581278</td>
+      <td>0.476793</td>
+      <td>0.381443</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.408235</td>
+      <td>0.282609</td>
+      <td>0.492537</td>
+      <td>0.719035</td>
+      <td>0.417722</td>
+      <td>0.474227</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.295882</td>
+      <td>0.217391</td>
+      <td>0.588060</td>
+      <td>0.573103</td>
+      <td>0.371308</td>
+      <td>0.515464</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.351176</td>
+      <td>0.181922</td>
+      <td>0.343284</td>
+      <td>0.747105</td>
+      <td>0.481013</td>
+      <td>0.541237</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.394118</td>
+      <td>0.321510</td>
+      <td>0.725373</td>
+      <td>0.752964</td>
+      <td>0.561181</td>
+      <td>0.886598</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>0.499412</td>
+      <td>0.372998</td>
+      <td>0.280597</td>
+      <td>0.683608</td>
+      <td>0.535865</td>
+      <td>0.432990</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>0.567059</td>
+      <td>0.591533</td>
+      <td>0.301493</td>
+      <td>0.519962</td>
+      <td>0.725738</td>
+      <td>0.479381</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>0.604118</td>
+      <td>0.490847</td>
+      <td>0.453731</td>
+      <td>0.759095</td>
+      <td>0.573840</td>
+      <td>0.541237</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="perform-principal-components-analysis">
+<h3>Perform Principal Components Analysis<a class="headerlink" href="#perform-principal-components-analysis" title="Permalink to this heading">#</a></h3>
+<p>Perform principal components analysis,</p>
+<ol class="arabic simple">
+<li><p>Calculate the principal component loadings</p></li>
+<li><p>Select the number of principal components to describe a target variance explained</p></li>
+<li><p>Make a new DataFrame with the principal component scores</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">var_explained</span> <span class="o">=</span> <span class="mf">0.95</span>                                          <span class="c1"># select the minimum variance explained</span>
+
+<span class="n">n_components</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df_new</span><span class="o">.</span><span class="n">columns</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">df_new</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>         <span class="c1"># max components is min of number of features or number of data - 1</span>
+<span class="n">pca_new</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">n_components</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df_new</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>   <span class="c1"># calculate PCA</span>
+<span class="n">pca_scores</span> <span class="o">=</span> <span class="n">pca_new</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_new</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+
+<span class="n">cumulative_variance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">pca_new</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">)</span> <span class="c1"># calculate cumulative explained variance</span>
+
+<span class="n">n_selected</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">cumulative_variance</span> <span class="o">&gt;=</span> <span class="n">var_explained</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="c1"># find number of components to retain 95% variance</span>
+
+<span class="n">df_new_projected</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pca_scores</span><span class="p">[:,</span> <span class="p">:</span><span class="n">n_selected</span><span class="p">],</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;PC</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_selected</span><span class="p">)],</span>
+            <span class="n">index</span><span class="o">=</span><span class="n">df_new</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>                               <span class="c1"># project data to that many principal components</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df_new_projected</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:],</span> <span class="n">plot_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;alpha&#39;</span><span class="p">:</span><span class="mf">1.0</span><span class="p">,</span><span class="s1">&#39;s&#39;</span><span class="p">:</span><span class="mi">50</span><span class="p">},</span> <span class="n">palette</span> <span class="o">=</span> <span class="s1">&#39;colorblind&#39;</span><span class="p">,</span> <span class="n">corner</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># matrix scatter plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c849a0643237d2cfdd80d77be1638fac7ede9092059c7cf673a61db49ae9519a.png" src="_images/c849a0643237d2cfdd80d77be1638fac7ede9092059c7cf673a61db49ae9519a.png" />
+</div>
+</div>
+</section>
+<section id="check-the-cumulative-variance-explained">
+<h3>Check the Cumulative Variance Explained<a class="headerlink" href="#check-the-cumulative-variance-explained" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">pca_new</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">pca_new</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="o">*</span><span class="mi">100</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">pca_new</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">pca_new</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="o">*</span><span class="mi">100</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">df_new</span><span class="o">.</span><span class="n">columns</span><span class="p">)],[</span><span class="mi">95</span><span class="p">,</span><span class="mi">95</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">n_selected</span><span class="p">,</span><span class="n">n_selected</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Selected Number of Components = &#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n_selected</span><span class="p">),[</span><span class="n">n_selected</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span><span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Principal Component&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cumulative Variance Explained&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Cumulative Variance Explained by Principal Component&#39;</span><span class="p">)</span>
+<span class="n">fmt</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%.0f%%</span><span class="s1">&#39;</span> <span class="c1"># Format you want the ticks</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">cumulative_variance</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">yticks</span> <span class="o">=</span> <span class="n">mtick</span><span class="o">.</span><span class="n">FormatStrFormatter</span><span class="p">(</span><span class="n">fmt</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">pca_new</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">));</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">100.0</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;95% variance explained&#39;</span><span class="p">,[</span><span class="mf">4.05</span><span class="p">,</span><span class="mi">90</span><span class="p">]);</span> <span class="n">add_grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">PercentFormatter</span><span class="p">(</span><span class="mf">100.0</span><span class="p">))</span>  <span class="c1"># 1.0 = 100%</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/2ff3b417eb8d29bf00f83b4ed697d6e6112a30ee3d2545d1079c3b838c4d2933.png" src="_images/2ff3b417eb8d29bf00f83b4ed697d6e6112a30ee3d2545d1079c3b838c4d2933.png" />
+</div>
+</div>
+</section>
+<section id="save-the-principal-components">
+<h3>Save the Principal Components<a class="headerlink" href="#save-the-principal-components" title="Permalink to this heading">#</a></h3>
+<p>Now we can choose to write out the DataFrame with the reduced dimensionality principal component scores.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">save_PCA</span> <span class="o">=</span> <span class="kc">True</span>                                        <span class="c1"># save the imputed DataFrame?</span>
+ 
+<span class="k">if</span> <span class="n">save_PCA</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">folder</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:\Local&#39;</span>
+    <span class="n">file_name</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;dataframe_PCA.csv&#39;</span>
+
+    <span class="n">df_new_projected</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">folder</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
@@ -2501,6 +2851,15 @@ Correlation Matrix of scores:
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduced-dimensionality-impact-on-a-2-feature-relationship">Reduced Dimensionality Impact on a 2 Feature Relationship</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduced-dimensionality-impact-on-matrix-scatter-plots-of-all-features">Reduced Dimensionality Impact on Matrix Scatter Plots of All Features</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-components-analysis-on-uncorrelated-data">Principal Components Analysis on Uncorrelated Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-on-a-new-dataset">Practice on a New Dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-0-unconventional-multivariate-v4">Dataset 0, Unconventional Multivariate v4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-1-twelve-12">Dataset 1, Twelve, 12</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-2-reservoir-21">Dataset 2, Reservoir 21</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-principal-components-analysis">Perform Principal Components Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-cumulative-variance-explained">Check the Cumulative Variance Explained</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-the-principal-components">Save the Principal Components</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
