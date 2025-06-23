@@ -649,7 +649,7 @@ y = f(X_1,\ldots,X_m)
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">idata</span> <span class="o">=</span> <span class="mi">2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">idata</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="k">if</span> <span class="n">idata</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/unconv_MV_v4.csv&#39;</span><span class="p">)</span> <span class="c1"># load data from Dr. Pyrcz&#39;s GitHub repository  </span>
@@ -744,215 +744,145 @@ Pormax = np.max(df[&#39;Por&#39;].values)                             # and calc
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Well_ID</th>
-      <th>X</th>
-      <th>Y</th>
+      <th>Well</th>
       <th>Por</th>
       <th>Perm</th>
       <th>AI</th>
-      <th>Density</th>
-      <th>PVel</th>
-      <th>Youngs</th>
-      <th>SVel</th>
-      <th>Shear</th>
-      <th>CumulativeOil</th>
+      <th>Brittle</th>
+      <th>TOC</th>
+      <th>VR</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
       <td>1</td>
-      <td>7325.0</td>
-      <td>7175.0</td>
-      <td>13.564033</td>
-      <td>NaN</td>
-      <td>7.214987</td>
-      <td>2.153530</td>
-      <td>3379.255305</td>
-      <td>25.875998</td>
-      <td>1658.612455</td>
-      <td>NaN</td>
-      <td>847.33</td>
+      <td>12.08</td>
+      <td>2.92</td>
+      <td>2.80</td>
+      <td>81.40</td>
+      <td>1.16</td>
+      <td>2.31</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2</td>
-      <td>4225.0</td>
-      <td>3525.0</td>
-      <td>12.907730</td>
-      <td>133.910637</td>
-      <td>7.308846</td>
-      <td>2.146360</td>
-      <td>3563.549461</td>
-      <td>25.688560</td>
-      <td>1673.770439</td>
-      <td>6.429229</td>
-      <td>1201.20</td>
+      <td>12.38</td>
+      <td>3.53</td>
+      <td>3.22</td>
+      <td>46.17</td>
+      <td>0.89</td>
+      <td>1.88</td>
     </tr>
     <tr>
       <th>2</th>
       <td>3</td>
-      <td>7725.0</td>
-      <td>8275.0</td>
-      <td>12.110566</td>
-      <td>104.059282</td>
-      <td>7.366451</td>
-      <td>1.919698</td>
-      <td>3882.442911</td>
-      <td>NaN</td>
-      <td>1675.645601</td>
-      <td>5.674798</td>
-      <td>781.40</td>
+      <td>14.02</td>
+      <td>2.59</td>
+      <td>4.01</td>
+      <td>72.80</td>
+      <td>0.89</td>
+      <td>2.72</td>
     </tr>
     <tr>
       <th>3</th>
       <td>4</td>
-      <td>4425.0</td>
-      <td>6475.0</td>
-      <td>13.990654</td>
-      <td>139.915993</td>
-      <td>7.286771</td>
-      <td>1.980721</td>
-      <td>3688.351168</td>
-      <td>27.125611</td>
-      <td>NaN</td>
-      <td>5.408664</td>
-      <td>1573.20</td>
+      <td>17.67</td>
+      <td>6.75</td>
+      <td>2.63</td>
+      <td>39.81</td>
+      <td>1.08</td>
+      <td>1.88</td>
     </tr>
     <tr>
       <th>4</th>
       <td>5</td>
-      <td>2125.0</td>
-      <td>1225.0</td>
-      <td>12.982720</td>
-      <td>NaN</td>
-      <td>7.333877</td>
-      <td>1.928716</td>
-      <td>3777.566423</td>
-      <td>28.133694</td>
-      <td>NaN</td>
-      <td>5.265054</td>
-      <td>548.68</td>
+      <td>17.52</td>
+      <td>4.57</td>
+      <td>3.18</td>
+      <td>10.94</td>
+      <td>1.51</td>
+      <td>1.90</td>
     </tr>
     <tr>
       <th>5</th>
       <td>6</td>
-      <td>2675.0</td>
-      <td>4525.0</td>
-      <td>12.225615</td>
-      <td>NaN</td>
-      <td>7.383836</td>
-      <td>1.954708</td>
-      <td>3833.161295</td>
-      <td>28.111036</td>
-      <td>1686.523463</td>
-      <td>5.358138</td>
-      <td>668.02</td>
+      <td>14.53</td>
+      <td>4.81</td>
+      <td>2.69</td>
+      <td>53.60</td>
+      <td>0.94</td>
+      <td>1.67</td>
     </tr>
     <tr>
       <th>6</th>
       <td>7</td>
-      <td>6725.0</td>
-      <td>8025.0</td>
-      <td>13.686401</td>
-      <td>144.622330</td>
-      <td>NaN</td>
-      <td>2.190057</td>
-      <td>3430.393579</td>
-      <td>25.010300</td>
-      <td>1662.280505</td>
-      <td>6.184601</td>
-      <td>823.89</td>
+      <td>13.49</td>
+      <td>3.60</td>
+      <td>2.93</td>
+      <td>63.71</td>
+      <td>0.80</td>
+      <td>1.85</td>
     </tr>
     <tr>
       <th>7</th>
       <td>8</td>
-      <td>3975.0</td>
-      <td>8675.0</td>
-      <td>12.647965</td>
-      <td>114.359667</td>
-      <td>7.343836</td>
-      <td>2.188597</td>
-      <td>3570.094553</td>
-      <td>25.444064</td>
-      <td>1670.043495</td>
-      <td>6.100984</td>
-      <td>683.92</td>
+      <td>11.58</td>
+      <td>3.03</td>
+      <td>3.25</td>
+      <td>53.00</td>
+      <td>0.69</td>
+      <td>1.93</td>
     </tr>
     <tr>
       <th>8</th>
       <td>9</td>
-      <td>5625.0</td>
-      <td>5475.0</td>
-      <td>13.127007</td>
-      <td>113.381589</td>
-      <td>7.288805</td>
-      <td>2.101103</td>
-      <td>3529.012023</td>
-      <td>NaN</td>
-      <td>1701.601836</td>
-      <td>6.263304</td>
-      <td>1314.40</td>
+      <td>12.52</td>
+      <td>2.72</td>
+      <td>2.43</td>
+      <td>65.77</td>
+      <td>0.95</td>
+      <td>1.98</td>
     </tr>
     <tr>
       <th>9</th>
       <td>10</td>
-      <td>3725.0</td>
-      <td>1575.0</td>
-      <td>11.321518</td>
-      <td>NaN</td>
-      <td>7.495025</td>
-      <td>1.841494</td>
-      <td>4051.479491</td>
-      <td>NaN</td>
-      <td>1658.384762</td>
-      <td>5.580420</td>
-      <td>518.27</td>
+      <td>13.25</td>
+      <td>3.94</td>
+      <td>3.71</td>
+      <td>66.20</td>
+      <td>1.14</td>
+      <td>2.65</td>
     </tr>
     <tr>
       <th>10</th>
       <td>11</td>
-      <td>4275.0</td>
-      <td>5675.0</td>
-      <td>12.998469</td>
-      <td>129.332122</td>
-      <td>7.282051</td>
-      <td>2.131121</td>
-      <td>3524.448615</td>
-      <td>25.985734</td>
-      <td>1681.960101</td>
-      <td>6.203527</td>
-      <td>978.14</td>
+      <td>15.04</td>
+      <td>4.39</td>
+      <td>2.22</td>
+      <td>61.11</td>
+      <td>1.08</td>
+      <td>1.77</td>
     </tr>
     <tr>
       <th>11</th>
       <td>12</td>
-      <td>1625.0</td>
-      <td>3775.0</td>
-      <td>12.590427</td>
-      <td>107.059643</td>
-      <td>7.321879</td>
-      <td>1.915093</td>
-      <td>3848.969923</td>
-      <td>NaN</td>
-      <td>1650.131546</td>
-      <td>5.263840</td>
-      <td>840.47</td>
+      <td>16.19</td>
+      <td>6.30</td>
+      <td>2.29</td>
+      <td>49.10</td>
+      <td>1.53</td>
+      <td>1.86</td>
     </tr>
     <tr>
       <th>12</th>
       <td>13</td>
-      <td>5175.0</td>
-      <td>8875.0</td>
-      <td>13.115301</td>
-      <td>123.305789</td>
-      <td>7.319753</td>
-      <td>2.129625</td>
-      <td>3676.807941</td>
-      <td>NaN</td>
-      <td>1673.114395</td>
-      <td>6.008512</td>
-      <td>732.29</td>
+      <td>16.82</td>
+      <td>5.42</td>
+      <td>2.80</td>
+      <td>66.65</td>
+      <td>1.17</td>
+      <td>1.98</td>
     </tr>
   </tbody>
 </table>
@@ -1008,7 +938,8 @@ Pormax = np.max(df[&#39;Por&#39;].values)                             # and calc
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fraction of nan values in the DataFrame = 0.105.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fraction of removed values in mask ndarray = 0.093.
+Fraction of nan values in the DataFrame = 0.093.
 </pre></div>
 </div>
 </div>
@@ -1042,215 +973,145 @@ Pormax = np.max(df[&#39;Por&#39;].values)                             # and calc
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Well_ID</th>
-      <th>X</th>
-      <th>Y</th>
+      <th>Well</th>
       <th>Por</th>
       <th>Perm</th>
       <th>AI</th>
-      <th>Density</th>
-      <th>PVel</th>
-      <th>Youngs</th>
-      <th>SVel</th>
-      <th>Shear</th>
-      <th>CumulativeOil</th>
+      <th>Brittle</th>
+      <th>TOC</th>
+      <th>VR</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>1</td>
-      <td>7325.0</td>
-      <td>7175.0</td>
-      <td>13.564033</td>
-      <td>NaN</td>
-      <td>7.214987</td>
-      <td>2.153530</td>
-      <td>3379.255305</td>
-      <td>25.875998</td>
-      <td>1658.612455</td>
-      <td>NaN</td>
-      <td>847.33</td>
+      <td>1.0</td>
+      <td>12.08</td>
+      <td>2.92</td>
+      <td>2.80</td>
+      <td>81.40</td>
+      <td>1.16</td>
+      <td>2.31</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2</td>
-      <td>4225.0</td>
-      <td>3525.0</td>
-      <td>12.907730</td>
-      <td>133.910637</td>
-      <td>7.308846</td>
-      <td>2.146360</td>
-      <td>3563.549461</td>
-      <td>25.688560</td>
-      <td>1673.770439</td>
-      <td>6.429229</td>
-      <td>1201.20</td>
+      <td>2.0</td>
+      <td>12.38</td>
+      <td>3.53</td>
+      <td>NaN</td>
+      <td>46.17</td>
+      <td>0.89</td>
+      <td>1.88</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>3</td>
-      <td>7725.0</td>
-      <td>8275.0</td>
-      <td>12.110566</td>
-      <td>104.059282</td>
-      <td>7.366451</td>
-      <td>1.919698</td>
-      <td>3882.442911</td>
       <td>NaN</td>
-      <td>1675.645601</td>
-      <td>5.674798</td>
-      <td>781.40</td>
+      <td>14.02</td>
+      <td>2.59</td>
+      <td>4.01</td>
+      <td>72.80</td>
+      <td>0.89</td>
+      <td>2.72</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>4</td>
-      <td>4425.0</td>
-      <td>6475.0</td>
-      <td>13.990654</td>
-      <td>139.915993</td>
-      <td>7.286771</td>
-      <td>1.980721</td>
-      <td>3688.351168</td>
-      <td>27.125611</td>
-      <td>NaN</td>
-      <td>5.408664</td>
-      <td>1573.20</td>
+      <td>4.0</td>
+      <td>17.67</td>
+      <td>6.75</td>
+      <td>2.63</td>
+      <td>39.81</td>
+      <td>1.08</td>
+      <td>1.88</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>5</td>
-      <td>2125.0</td>
-      <td>1225.0</td>
-      <td>12.982720</td>
-      <td>NaN</td>
-      <td>7.333877</td>
-      <td>1.928716</td>
-      <td>3777.566423</td>
-      <td>28.133694</td>
-      <td>NaN</td>
-      <td>5.265054</td>
-      <td>548.68</td>
+      <td>5.0</td>
+      <td>17.52</td>
+      <td>4.57</td>
+      <td>3.18</td>
+      <td>10.94</td>
+      <td>1.51</td>
+      <td>1.90</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>6</td>
-      <td>2675.0</td>
-      <td>4525.0</td>
-      <td>12.225615</td>
-      <td>NaN</td>
-      <td>7.383836</td>
-      <td>1.954708</td>
-      <td>3833.161295</td>
-      <td>28.111036</td>
-      <td>1686.523463</td>
-      <td>5.358138</td>
-      <td>668.02</td>
+      <td>6.0</td>
+      <td>14.53</td>
+      <td>4.81</td>
+      <td>2.69</td>
+      <td>53.60</td>
+      <td>0.94</td>
+      <td>1.67</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>7</td>
-      <td>6725.0</td>
-      <td>8025.0</td>
-      <td>13.686401</td>
-      <td>144.622330</td>
+      <td>7.0</td>
+      <td>13.49</td>
+      <td>3.60</td>
       <td>NaN</td>
-      <td>2.190057</td>
-      <td>3430.393579</td>
-      <td>25.010300</td>
-      <td>1662.280505</td>
-      <td>6.184601</td>
-      <td>823.89</td>
+      <td>63.71</td>
+      <td>0.80</td>
+      <td>1.85</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>8</td>
-      <td>3975.0</td>
-      <td>8675.0</td>
-      <td>12.647965</td>
-      <td>114.359667</td>
-      <td>7.343836</td>
-      <td>2.188597</td>
-      <td>3570.094553</td>
-      <td>25.444064</td>
-      <td>1670.043495</td>
-      <td>6.100984</td>
-      <td>683.92</td>
+      <td>8.0</td>
+      <td>11.58</td>
+      <td>3.03</td>
+      <td>NaN</td>
+      <td>53.00</td>
+      <td>0.69</td>
+      <td>1.93</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>9</td>
-      <td>5625.0</td>
-      <td>5475.0</td>
-      <td>13.127007</td>
-      <td>113.381589</td>
-      <td>7.288805</td>
-      <td>2.101103</td>
-      <td>3529.012023</td>
+      <td>9.0</td>
       <td>NaN</td>
-      <td>1701.601836</td>
-      <td>6.263304</td>
-      <td>1314.40</td>
+      <td>2.72</td>
+      <td>NaN</td>
+      <td>65.77</td>
+      <td>0.95</td>
+      <td>1.98</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>10</td>
-      <td>3725.0</td>
-      <td>1575.0</td>
-      <td>11.321518</td>
+      <td>10.0</td>
       <td>NaN</td>
-      <td>7.495025</td>
-      <td>1.841494</td>
-      <td>4051.479491</td>
-      <td>NaN</td>
-      <td>1658.384762</td>
-      <td>5.580420</td>
-      <td>518.27</td>
+      <td>3.94</td>
+      <td>3.71</td>
+      <td>66.20</td>
+      <td>1.14</td>
+      <td>2.65</td>
     </tr>
     <tr>
       <th>10</th>
-      <td>11</td>
-      <td>4275.0</td>
-      <td>5675.0</td>
-      <td>12.998469</td>
-      <td>129.332122</td>
-      <td>7.282051</td>
-      <td>2.131121</td>
-      <td>3524.448615</td>
-      <td>25.985734</td>
-      <td>1681.960101</td>
-      <td>6.203527</td>
-      <td>978.14</td>
+      <td>11.0</td>
+      <td>15.04</td>
+      <td>4.39</td>
+      <td>2.22</td>
+      <td>NaN</td>
+      <td>1.08</td>
+      <td>1.77</td>
     </tr>
     <tr>
       <th>11</th>
-      <td>12</td>
-      <td>1625.0</td>
-      <td>3775.0</td>
-      <td>12.590427</td>
-      <td>107.059643</td>
-      <td>7.321879</td>
-      <td>1.915093</td>
-      <td>3848.969923</td>
       <td>NaN</td>
-      <td>1650.131546</td>
-      <td>5.263840</td>
-      <td>840.47</td>
+      <td>16.19</td>
+      <td>6.30</td>
+      <td>2.29</td>
+      <td>49.10</td>
+      <td>1.53</td>
+      <td>1.86</td>
     </tr>
     <tr>
       <th>12</th>
-      <td>13</td>
-      <td>5175.0</td>
-      <td>8875.0</td>
-      <td>13.115301</td>
-      <td>123.305789</td>
-      <td>7.319753</td>
-      <td>2.129625</td>
-      <td>3676.807941</td>
+      <td>13.0</td>
       <td>NaN</td>
-      <td>1673.114395</td>
-      <td>6.008512</td>
-      <td>732.29</td>
+      <td>5.42</td>
+      <td>2.80</td>
+      <td>66.65</td>
+      <td>1.17</td>
+      <td>1.98</td>
     </tr>
   </tbody>
 </table>
@@ -1297,136 +1158,81 @@ Pormax = np.max(df[&#39;Por&#39;].values)                             # and calc
   </thead>
   <tbody>
     <tr>
-      <th>Well_ID</th>
-      <td>73.0</td>
-      <td>37.000000</td>
-      <td>21.217131</td>
-      <td>1.000000</td>
-      <td>19.000000</td>
-      <td>37.000000</td>
-      <td>55.000000</td>
-      <td>73.000000</td>
-    </tr>
-    <tr>
-      <th>X</th>
-      <td>73.0</td>
-      <td>4188.698630</td>
-      <td>1783.143687</td>
-      <td>1175.000000</td>
-      <td>2925.000000</td>
-      <td>3875.000000</td>
-      <td>5325.000000</td>
-      <td>7975.000000</td>
-    </tr>
-    <tr>
-      <th>Y</th>
-      <td>73.0</td>
-      <td>5770.890411</td>
-      <td>2405.487844</td>
-      <td>775.000000</td>
-      <td>3825.000000</td>
-      <td>6125.000000</td>
-      <td>7625.000000</td>
-      <td>9775.000000</td>
+      <th>Well</th>
+      <td>182.0</td>
+      <td>102.653846</td>
+      <td>58.078019</td>
+      <td>1.00</td>
+      <td>53.2500</td>
+      <td>104.000</td>
+      <td>153.7500</td>
+      <td>200.00</td>
     </tr>
     <tr>
       <th>Por</th>
-      <td>69.0</td>
-      <td>12.822361</td>
-      <td>1.069242</td>
-      <td>10.449132</td>
-      <td>12.122789</td>
-      <td>12.842228</td>
-      <td>13.532038</td>
-      <td>15.837603</td>
+      <td>184.0</td>
+      <td>14.935978</td>
+      <td>3.002142</td>
+      <td>6.55</td>
+      <td>12.8900</td>
+      <td>15.055</td>
+      <td>17.4225</td>
+      <td>23.55</td>
     </tr>
     <tr>
       <th>Perm</th>
-      <td>53.0</td>
-      <td>119.292589</td>
-      <td>23.003770</td>
-      <td>85.457752</td>
-      <td>101.821216</td>
-      <td>116.341824</td>
-      <td>130.554974</td>
-      <td>184.753428</td>
+      <td>172.0</td>
+      <td>4.319419</td>
+      <td>1.684672</td>
+      <td>1.13</td>
+      <td>3.1300</td>
+      <td>4.010</td>
+      <td>5.1850</td>
+      <td>9.78</td>
     </tr>
     <tr>
       <th>AI</th>
-      <td>69.0</td>
-      <td>7.319194</td>
-      <td>0.096761</td>
-      <td>7.062172</td>
-      <td>7.280405</td>
-      <td>7.333877</td>
-      <td>7.379185</td>
-      <td>7.499137</td>
+      <td>184.0</td>
+      <td>2.991630</td>
+      <td>0.571569</td>
+      <td>1.28</td>
+      <td>2.5675</td>
+      <td>2.975</td>
+      <td>3.3950</td>
+      <td>4.63</td>
     </tr>
     <tr>
-      <th>Density</th>
-      <td>70.0</td>
-      <td>2.043288</td>
-      <td>0.138222</td>
-      <td>1.793870</td>
-      <td>1.921390</td>
-      <td>2.039170</td>
-      <td>2.162651</td>
-      <td>2.301552</td>
+      <th>Brittle</th>
+      <td>186.0</td>
+      <td>47.793817</td>
+      <td>13.781815</td>
+      <td>10.94</td>
+      <td>37.7450</td>
+      <td>48.830</td>
+      <td>58.0150</td>
+      <td>81.40</td>
     </tr>
     <tr>
-      <th>PVel</th>
-      <td>69.0</td>
-      <td>3696.762373</td>
-      <td>276.382117</td>
-      <td>3229.902892</td>
-      <td>3463.035301</td>
-      <td>3688.453880</td>
-      <td>3897.219799</td>
-      <td>4327.857887</td>
+      <th>TOC</th>
+      <td>186.0</td>
+      <td>0.991882</td>
+      <td>0.481896</td>
+      <td>-0.19</td>
+      <td>0.6225</td>
+      <td>1.020</td>
+      <td>1.3500</td>
+      <td>2.18</td>
     </tr>
     <tr>
-      <th>Youngs</th>
-      <td>49.0</td>
-      <td>27.173417</td>
-      <td>2.164984</td>
-      <td>23.516002</td>
-      <td>25.378138</td>
-      <td>26.801655</td>
-      <td>28.641350</td>
-      <td>31.463424</td>
-    </tr>
-    <tr>
-      <th>SVel</th>
-      <td>65.0</td>
-      <td>1676.908144</td>
-      <td>19.277228</td>
-      <td>1637.806458</td>
-      <td>1662.280505</td>
-      <td>1676.458624</td>
-      <td>1688.682882</td>
-      <td>1721.987891</td>
-    </tr>
-    <tr>
-      <th>Shear</th>
-      <td>48.0</td>
-      <td>5.793693</td>
-      <td>0.474087</td>
-      <td>4.937921</td>
-      <td>5.397281</td>
-      <td>5.769809</td>
-      <td>6.208277</td>
-      <td>6.714150</td>
-    </tr>
-    <tr>
-      <th>CumulativeOil</th>
-      <td>73.0</td>
-      <td>940.976027</td>
-      <td>429.622150</td>
-      <td>307.120000</td>
-      <td>643.140000</td>
-      <td>819.490000</td>
-      <td>1185.400000</td>
-      <td>2514.500000</td>
+      <th>VR</th>
+      <td>176.0</td>
+      <td>1.969602</td>
+      <td>0.293877</td>
+      <td>0.93</td>
+      <td>1.7775</td>
+      <td>1.970</td>
+      <td>2.1100</td>
+      <td>2.87</td>
     </tr>
   </tbody>
 </table>
@@ -1448,7 +1254,7 @@ Pormax = np.max(df[&#39;Por&#39;].values)                             # and calc
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7cbedd145e0294d44a11ee122adbaf77589751491540455c84f2c4fdb085da1f.png" src="_images/7cbedd145e0294d44a11ee122adbaf77589751491540455c84f2c4fdb085da1f.png" />
+<img alt="_images/6ed9df1de493bc38166372b4dd6106367dd7d5e2888e1c4ef601987fcd269bdd.png" src="_images/6ed9df1de493bc38166372b4dd6106367dd7d5e2888e1c4ef601987fcd269bdd.png" />
 </div>
 </div>
 <p>This leads to the first data imputation method, feature selection.</p>
@@ -1484,7 +1290,7 @@ Pormax = np.max(df[&#39;Por&#39;].values)                             # and calc
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8f3195aa0aa2b70917e09178b117e6af77421be1505774b68d9d42f88151e8c2.png" src="_images/8f3195aa0aa2b70917e09178b117e6af77421be1505774b68d9d42f88151e8c2.png" />
+<img alt="_images/4edcc8d4408f594794b18e3efca86c01b48c54a31a361f738633733dd7fdd54d.png" src="_images/4edcc8d4408f594794b18e3efca86c01b48c54a31a361f738633733dd7fdd54d.png" />
 </div>
 </div>
 </section>
@@ -1511,7 +1317,7 @@ Pormax = np.max(df[&#39;Por&#39;].values)                             # and calc
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1dbd2d92fc213211ebc8e0083df1050957777fcbb911796fb2408910c93504b1.png" src="_images/1dbd2d92fc213211ebc8e0083df1050957777fcbb911796fb2408910c93504b1.png" />
+<img alt="_images/1094c196d3204ba769ef70b04f78bd37049a2213377b9a61c94ba44b5e208fac.png" src="_images/1094c196d3204ba769ef70b04f78bd37049a2213377b9a61c94ba44b5e208fac.png" />
 </div>
 </div>
 <p>If we identified samples with low data completeness, high percentage of missing samples, for a sample then the sample may be removed.</p>
@@ -1558,7 +1364,7 @@ Pormax = np.max(df[&#39;Por&#39;].values)                             # and calc
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a232a04eb7368d2c67386e434fb01cb868e388976a45a91e04e84eee99b591ca.png" src="_images/a232a04eb7368d2c67386e434fb01cb868e388976a45a91e04e84eee99b591ca.png" />
+<img alt="_images/06a69f6e87268ae712b6a84cba7292734f89c46eafd1791c71fe0503461516dd.png" src="_images/06a69f6e87268ae712b6a84cba7292734f89c46eafd1791c71fe0503461516dd.png" />
 </div>
 </div>
 </section>
@@ -1597,7 +1403,7 @@ Pormax = np.max(df[&#39;Por&#39;].values)                             # and calc
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8f86eb4be8d822797f5102686fc3640bf9a2345ae4c046b39f6e29c8f4bac06f.png" src="_images/8f86eb4be8d822797f5102686fc3640bf9a2345ae4c046b39f6e29c8f4bac06f.png" />
+<img alt="_images/cd0f355d1b0b99db0bc0bdfc15b85d7c71f1e6e72bd6b0586bd0bdcc738b14c8.png" src="_images/cd0f355d1b0b99db0bc0bdfc15b85d7c71f1e6e72bd6b0586bd0bdcc738b14c8.png" />
 </div>
 </div>
 </section>
@@ -1642,101 +1448,71 @@ Pormax = np.max(df[&#39;Por&#39;].values)                             # and calc
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Well_ID</th>
-      <th>X</th>
-      <th>Y</th>
+      <th>Well</th>
       <th>Por</th>
       <th>Perm</th>
       <th>AI</th>
-      <th>Density</th>
-      <th>PVel</th>
-      <th>Youngs</th>
-      <th>SVel</th>
-      <th>Shear</th>
-      <th>CumulativeOil</th>
+      <th>Brittle</th>
+      <th>TOC</th>
+      <th>VR</th>
       <th>Imputed</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>1</td>
-      <td>7325.0</td>
-      <td>7175.0</td>
-      <td>13.564033</td>
-      <td>NaN</td>
-      <td>7.214987</td>
-      <td>2.153530</td>
-      <td>3379.255305</td>
-      <td>25.875998</td>
-      <td>1658.612455</td>
-      <td>NaN</td>
-      <td>847.33</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>4225.0</td>
-      <td>3525.0</td>
-      <td>12.907730</td>
-      <td>133.910637</td>
-      <td>7.308846</td>
-      <td>2.146360</td>
-      <td>3563.549461</td>
-      <td>25.688560</td>
-      <td>1673.770439</td>
-      <td>6.429229</td>
-      <td>1201.20</td>
+      <td>1.0</td>
+      <td>12.08</td>
+      <td>2.92</td>
+      <td>2.80</td>
+      <td>81.40</td>
+      <td>1.16</td>
+      <td>2.31</td>
       <td>False</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>3</td>
-      <td>7725.0</td>
-      <td>8275.0</td>
-      <td>12.110566</td>
-      <td>104.059282</td>
-      <td>7.366451</td>
-      <td>1.919698</td>
-      <td>3882.442911</td>
+      <th>1</th>
+      <td>2.0</td>
+      <td>12.38</td>
+      <td>3.53</td>
       <td>NaN</td>
-      <td>1675.645601</td>
-      <td>5.674798</td>
-      <td>781.40</td>
+      <td>46.17</td>
+      <td>0.89</td>
+      <td>1.88</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NaN</td>
+      <td>14.02</td>
+      <td>2.59</td>
+      <td>4.01</td>
+      <td>72.80</td>
+      <td>0.89</td>
+      <td>2.72</td>
       <td>True</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>4</td>
-      <td>4425.0</td>
-      <td>6475.0</td>
-      <td>13.990654</td>
-      <td>139.915993</td>
-      <td>7.286771</td>
-      <td>1.980721</td>
-      <td>3688.351168</td>
-      <td>27.125611</td>
-      <td>NaN</td>
-      <td>5.408664</td>
-      <td>1573.20</td>
-      <td>True</td>
+      <td>4.0</td>
+      <td>17.67</td>
+      <td>6.75</td>
+      <td>2.63</td>
+      <td>39.81</td>
+      <td>1.08</td>
+      <td>1.88</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>5</td>
-      <td>2125.0</td>
-      <td>1225.0</td>
-      <td>12.982720</td>
-      <td>NaN</td>
-      <td>7.333877</td>
-      <td>1.928716</td>
-      <td>3777.566423</td>
-      <td>28.133694</td>
-      <td>NaN</td>
-      <td>5.265054</td>
-      <td>548.68</td>
-      <td>True</td>
+      <td>5.0</td>
+      <td>17.52</td>
+      <td>4.57</td>
+      <td>3.18</td>
+      <td>10.94</td>
+      <td>1.51</td>
+      <td>1.90</td>
+      <td>False</td>
     </tr>
   </tbody>
 </table>
@@ -1781,105 +1557,75 @@ Pormax = np.max(df[&#39;Por&#39;].values)                             # and calc
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Well_ID</th>
-      <th>X</th>
-      <th>Y</th>
+      <th>Well</th>
       <th>Por</th>
       <th>Perm</th>
       <th>AI</th>
-      <th>Density</th>
-      <th>PVel</th>
-      <th>Youngs</th>
-      <th>SVel</th>
-      <th>Shear</th>
-      <th>CumulativeOil</th>
+      <th>Brittle</th>
+      <th>TOC</th>
+      <th>VR</th>
       <th>Imputed</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>1</td>
-      <td>7325.0</td>
-      <td>7175.0</td>
-      <td>13.564033</td>
-      <td>0.010000</td>
-      <td>7.214987</td>
-      <td>2.153530</td>
-      <td>3379.255305</td>
-      <td>25.875998</td>
-      <td>1658.612455</td>
-      <td>0.010000</td>
-      <td>847.33</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>4225.0</td>
-      <td>3525.0</td>
-      <td>12.907730</td>
-      <td>133.910637</td>
-      <td>7.308846</td>
-      <td>2.146360</td>
-      <td>3563.549461</td>
-      <td>25.688560</td>
-      <td>1673.770439</td>
-      <td>6.429229</td>
-      <td>1201.20</td>
+      <td>1.00</td>
+      <td>12.08</td>
+      <td>2.92</td>
+      <td>2.80</td>
+      <td>81.40</td>
+      <td>1.16</td>
+      <td>2.31</td>
       <td>0.0</td>
     </tr>
     <tr>
+      <th>1</th>
+      <td>2.00</td>
+      <td>12.38</td>
+      <td>3.53</td>
+      <td>0.01</td>
+      <td>46.17</td>
+      <td>0.89</td>
+      <td>1.88</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
       <th>2</th>
-      <td>3</td>
-      <td>7725.0</td>
-      <td>8275.0</td>
-      <td>12.110566</td>
-      <td>104.059282</td>
-      <td>7.366451</td>
-      <td>1.919698</td>
-      <td>3882.442911</td>
-      <td>0.010000</td>
-      <td>1675.645601</td>
-      <td>5.674798</td>
-      <td>781.40</td>
+      <td>0.01</td>
+      <td>14.02</td>
+      <td>2.59</td>
+      <td>4.01</td>
+      <td>72.80</td>
+      <td>0.89</td>
+      <td>2.72</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>4</td>
-      <td>4425.0</td>
-      <td>6475.0</td>
-      <td>13.990654</td>
-      <td>139.915993</td>
-      <td>7.286771</td>
-      <td>1.980721</td>
-      <td>3688.351168</td>
-      <td>27.125611</td>
-      <td>0.010000</td>
-      <td>5.408664</td>
-      <td>1573.20</td>
-      <td>1.0</td>
+      <td>4.00</td>
+      <td>17.67</td>
+      <td>6.75</td>
+      <td>2.63</td>
+      <td>39.81</td>
+      <td>1.08</td>
+      <td>1.88</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>5</td>
-      <td>2125.0</td>
-      <td>1225.0</td>
-      <td>12.982720</td>
-      <td>0.010000</td>
-      <td>7.333877</td>
-      <td>1.928716</td>
-      <td>3777.566423</td>
-      <td>28.133694</td>
-      <td>0.010000</td>
-      <td>5.265054</td>
-      <td>548.68</td>
-      <td>1.0</td>
+      <td>5.00</td>
+      <td>17.52</td>
+      <td>4.57</td>
+      <td>3.18</td>
+      <td>10.94</td>
+      <td>1.51</td>
+      <td>1.90</td>
+      <td>0.0</td>
     </tr>
   </tbody>
 </table>
-</div></div><img alt="_images/cfc8bac7aba8b9986c096087a86fb91b4bb25fb91adbf2010b5c3ee3ff7fc93c.png" src="_images/cfc8bac7aba8b9986c096087a86fb91b4bb25fb91adbf2010b5c3ee3ff7fc93c.png" />
+</div></div><img alt="_images/26d51c63231cad2ab6a81f7ea33532841237c36c4d2ed2eadd7cc2d187de5b42.png" src="_images/26d51c63231cad2ab6a81f7ea33532841237c36c4d2ed2eadd7cc2d187de5b42.png" />
 </div>
 </div>
 </section>
@@ -1925,105 +1671,75 @@ Pormax = np.max(df[&#39;Por&#39;].values)                             # and calc
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Well_ID</th>
-      <th>X</th>
-      <th>Y</th>
+      <th>Well</th>
       <th>Por</th>
       <th>Perm</th>
       <th>AI</th>
-      <th>Density</th>
-      <th>PVel</th>
-      <th>Youngs</th>
-      <th>SVel</th>
-      <th>Shear</th>
-      <th>CumulativeOil</th>
+      <th>Brittle</th>
+      <th>TOC</th>
+      <th>VR</th>
       <th>Imputed</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>1</td>
-      <td>7325.0</td>
-      <td>7175.0</td>
-      <td>13.564033</td>
-      <td>119.292589</td>
-      <td>7.214987</td>
-      <td>2.153530</td>
-      <td>3379.255305</td>
-      <td>25.875998</td>
-      <td>1658.612455</td>
-      <td>5.793693</td>
-      <td>847.33</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>4225.0</td>
-      <td>3525.0</td>
-      <td>12.907730</td>
-      <td>133.910637</td>
-      <td>7.308846</td>
-      <td>2.146360</td>
-      <td>3563.549461</td>
-      <td>25.688560</td>
-      <td>1673.770439</td>
-      <td>6.429229</td>
-      <td>1201.20</td>
+      <td>1.000000</td>
+      <td>12.08</td>
+      <td>2.92</td>
+      <td>2.80000</td>
+      <td>81.40</td>
+      <td>1.16</td>
+      <td>2.31</td>
       <td>0.0</td>
     </tr>
     <tr>
+      <th>1</th>
+      <td>2.000000</td>
+      <td>12.38</td>
+      <td>3.53</td>
+      <td>2.99163</td>
+      <td>46.17</td>
+      <td>0.89</td>
+      <td>1.88</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
       <th>2</th>
-      <td>3</td>
-      <td>7725.0</td>
-      <td>8275.0</td>
-      <td>12.110566</td>
-      <td>104.059282</td>
-      <td>7.366451</td>
-      <td>1.919698</td>
-      <td>3882.442911</td>
-      <td>27.173417</td>
-      <td>1675.645601</td>
-      <td>5.674798</td>
-      <td>781.40</td>
+      <td>102.653846</td>
+      <td>14.02</td>
+      <td>2.59</td>
+      <td>4.01000</td>
+      <td>72.80</td>
+      <td>0.89</td>
+      <td>2.72</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>4</td>
-      <td>4425.0</td>
-      <td>6475.0</td>
-      <td>13.990654</td>
-      <td>139.915993</td>
-      <td>7.286771</td>
-      <td>1.980721</td>
-      <td>3688.351168</td>
-      <td>27.125611</td>
-      <td>1676.908144</td>
-      <td>5.408664</td>
-      <td>1573.20</td>
-      <td>1.0</td>
+      <td>4.000000</td>
+      <td>17.67</td>
+      <td>6.75</td>
+      <td>2.63000</td>
+      <td>39.81</td>
+      <td>1.08</td>
+      <td>1.88</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>5</td>
-      <td>2125.0</td>
-      <td>1225.0</td>
-      <td>12.982720</td>
-      <td>119.292589</td>
-      <td>7.333877</td>
-      <td>1.928716</td>
-      <td>3777.566423</td>
-      <td>28.133694</td>
-      <td>1676.908144</td>
-      <td>5.265054</td>
-      <td>548.68</td>
-      <td>1.0</td>
+      <td>5.000000</td>
+      <td>17.52</td>
+      <td>4.57</td>
+      <td>3.18000</td>
+      <td>10.94</td>
+      <td>1.51</td>
+      <td>1.90</td>
+      <td>0.0</td>
     </tr>
   </tbody>
 </table>
-</div></div><img alt="_images/4c355aa85c30292bc8eb1bef0ff462d5f371d395ce0441734d99c83fa83ee02f.png" src="_images/4c355aa85c30292bc8eb1bef0ff462d5f371d395ce0441734d99c83fa83ee02f.png" />
+</div></div><img alt="_images/528e09249ebb432ddad9b71a908196dda11a47ea01b66b45c85c7f762352afbf.png" src="_images/528e09249ebb432ddad9b71a908196dda11a47ea01b66b45c85c7f762352afbf.png" />
 </div>
 </div>
 </section>
@@ -2065,105 +1781,75 @@ Pormax = np.max(df[&#39;Por&#39;].values)                             # and calc
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Well_ID</th>
-      <th>X</th>
-      <th>Y</th>
+      <th>Well</th>
       <th>Por</th>
       <th>Perm</th>
       <th>AI</th>
-      <th>Density</th>
-      <th>PVel</th>
-      <th>Youngs</th>
-      <th>SVel</th>
-      <th>Shear</th>
-      <th>CumulativeOil</th>
+      <th>Brittle</th>
+      <th>TOC</th>
+      <th>VR</th>
       <th>Imputed</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>1</td>
-      <td>7325.0</td>
-      <td>7175.0</td>
-      <td>13.564033</td>
-      <td>85.457752</td>
-      <td>7.214987</td>
-      <td>2.153530</td>
-      <td>3379.255305</td>
-      <td>25.875998</td>
-      <td>1658.612455</td>
-      <td>4.937921</td>
-      <td>847.33</td>
       <td>1.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>4225.0</td>
-      <td>3525.0</td>
-      <td>12.907730</td>
-      <td>133.910637</td>
-      <td>7.308846</td>
-      <td>2.146360</td>
-      <td>3563.549461</td>
-      <td>25.688560</td>
-      <td>1673.770439</td>
-      <td>6.429229</td>
-      <td>1201.20</td>
+      <td>12.08</td>
+      <td>2.92</td>
+      <td>2.80</td>
+      <td>81.40</td>
+      <td>1.16</td>
+      <td>2.31</td>
       <td>0.0</td>
     </tr>
     <tr>
+      <th>1</th>
+      <td>2.0</td>
+      <td>12.38</td>
+      <td>3.53</td>
+      <td>2.45</td>
+      <td>46.17</td>
+      <td>0.89</td>
+      <td>1.88</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
       <th>2</th>
-      <td>3</td>
-      <td>7725.0</td>
-      <td>8275.0</td>
-      <td>12.110566</td>
-      <td>104.059282</td>
-      <td>7.366451</td>
-      <td>1.919698</td>
-      <td>3882.442911</td>
-      <td>23.516002</td>
-      <td>1675.645601</td>
-      <td>5.674798</td>
-      <td>781.40</td>
+      <td>1.0</td>
+      <td>14.02</td>
+      <td>2.59</td>
+      <td>4.01</td>
+      <td>72.80</td>
+      <td>0.89</td>
+      <td>2.72</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>4</td>
-      <td>4425.0</td>
-      <td>6475.0</td>
-      <td>13.990654</td>
-      <td>139.915993</td>
-      <td>7.286771</td>
-      <td>1.980721</td>
-      <td>3688.351168</td>
-      <td>27.125611</td>
-      <td>1637.806458</td>
-      <td>5.408664</td>
-      <td>1573.20</td>
-      <td>1.0</td>
+      <td>4.0</td>
+      <td>17.67</td>
+      <td>6.75</td>
+      <td>2.63</td>
+      <td>39.81</td>
+      <td>1.08</td>
+      <td>1.88</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>5</td>
-      <td>2125.0</td>
-      <td>1225.0</td>
-      <td>12.982720</td>
-      <td>85.457752</td>
-      <td>7.333877</td>
-      <td>1.928716</td>
-      <td>3777.566423</td>
-      <td>28.133694</td>
-      <td>1637.806458</td>
-      <td>5.265054</td>
-      <td>548.68</td>
-      <td>1.0</td>
+      <td>5.0</td>
+      <td>17.52</td>
+      <td>4.57</td>
+      <td>3.18</td>
+      <td>10.94</td>
+      <td>1.51</td>
+      <td>1.90</td>
+      <td>0.0</td>
     </tr>
   </tbody>
 </table>
-</div></div><img alt="_images/cc218a5e443162a3b77fecfe966e5200f03b2c6802dd551c7032bc9561c4d271.png" src="_images/cc218a5e443162a3b77fecfe966e5200f03b2c6802dd551c7032bc9561c4d271.png" />
+</div></div><img alt="_images/5eaf7ed5b2d8fcf4a6bb53f0d7efe3463b5e18b51a7c7f09b044e579fb936aca.png" src="_images/5eaf7ed5b2d8fcf4a6bb53f0d7efe3463b5e18b51a7c7f09b044e579fb936aca.png" />
 </div>
 </div>
 </section>
@@ -2211,105 +1897,75 @@ Pormax = np.max(df[&#39;Por&#39;].values)                             # and calc
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Well_ID</th>
-      <th>X</th>
-      <th>Y</th>
+      <th>Well</th>
       <th>Por</th>
       <th>Perm</th>
       <th>AI</th>
-      <th>Density</th>
-      <th>PVel</th>
-      <th>Youngs</th>
-      <th>SVel</th>
-      <th>Shear</th>
-      <th>CumulativeOil</th>
+      <th>Brittle</th>
+      <th>TOC</th>
+      <th>VR</th>
       <th>Imputed</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>1</td>
-      <td>7325.0</td>
-      <td>7175.0</td>
-      <td>13.564033</td>
-      <td>85.457752</td>
-      <td>7.214987</td>
-      <td>2.153530</td>
-      <td>3379.255305</td>
-      <td>25.875998</td>
-      <td>1658.612455</td>
-      <td>4.937921</td>
-      <td>847.33</td>
       <td>1.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>4225.0</td>
-      <td>3525.0</td>
-      <td>12.907730</td>
-      <td>133.910637</td>
-      <td>7.308846</td>
-      <td>2.146360</td>
-      <td>3563.549461</td>
-      <td>25.688560</td>
-      <td>1673.770439</td>
-      <td>6.429229</td>
-      <td>1201.20</td>
+      <td>12.08</td>
+      <td>2.92</td>
+      <td>2.80</td>
+      <td>81.40</td>
+      <td>1.16</td>
+      <td>2.31</td>
       <td>0.0</td>
     </tr>
     <tr>
+      <th>1</th>
+      <td>2.0</td>
+      <td>12.38</td>
+      <td>3.53</td>
+      <td>2.45</td>
+      <td>46.17</td>
+      <td>0.89</td>
+      <td>1.88</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
       <th>2</th>
-      <td>3</td>
-      <td>7725.0</td>
-      <td>8275.0</td>
-      <td>12.110566</td>
-      <td>104.059282</td>
-      <td>7.366451</td>
-      <td>1.919698</td>
-      <td>3882.442911</td>
-      <td>23.516002</td>
-      <td>1675.645601</td>
-      <td>5.674798</td>
-      <td>781.40</td>
+      <td>1.0</td>
+      <td>14.02</td>
+      <td>2.59</td>
+      <td>4.01</td>
+      <td>72.80</td>
+      <td>0.89</td>
+      <td>2.72</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>4</td>
-      <td>4425.0</td>
-      <td>6475.0</td>
-      <td>13.990654</td>
-      <td>139.915993</td>
-      <td>7.286771</td>
-      <td>1.980721</td>
-      <td>3688.351168</td>
-      <td>27.125611</td>
-      <td>1637.806458</td>
-      <td>5.408664</td>
-      <td>1573.20</td>
-      <td>1.0</td>
+      <td>4.0</td>
+      <td>17.67</td>
+      <td>6.75</td>
+      <td>2.63</td>
+      <td>39.81</td>
+      <td>1.08</td>
+      <td>1.88</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>5</td>
-      <td>2125.0</td>
-      <td>1225.0</td>
-      <td>12.982720</td>
-      <td>85.457752</td>
-      <td>7.333877</td>
-      <td>1.928716</td>
-      <td>3777.566423</td>
-      <td>28.133694</td>
-      <td>1637.806458</td>
-      <td>5.265054</td>
-      <td>548.68</td>
-      <td>1.0</td>
+      <td>5.0</td>
+      <td>17.52</td>
+      <td>4.57</td>
+      <td>3.18</td>
+      <td>10.94</td>
+      <td>1.51</td>
+      <td>1.90</td>
+      <td>0.0</td>
     </tr>
   </tbody>
 </table>
-</div></div><img alt="_images/102733595f8464cbf262199beb89612f87beeefebc19517f9de38b303f43aed9.png" src="_images/102733595f8464cbf262199beb89612f87beeefebc19517f9de38b303f43aed9.png" />
+</div></div><img alt="_images/8f2542fc3c97e9623022bacaddaa28bf89c6d3f36b68ff0c6b0be81b5ade76b2.png" src="_images/8f2542fc3c97e9623022bacaddaa28bf89c6d3f36b68ff0c6b0be81b5ade76b2.png" />
 </div>
 </div>
 </section>
@@ -2358,105 +2014,75 @@ Pormax = np.max(df[&#39;Por&#39;].values)                             # and calc
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Well_ID</th>
-      <th>X</th>
-      <th>Y</th>
+      <th>Well</th>
       <th>Por</th>
       <th>Perm</th>
       <th>AI</th>
-      <th>Density</th>
-      <th>PVel</th>
-      <th>Youngs</th>
-      <th>SVel</th>
-      <th>Shear</th>
-      <th>CumulativeOil</th>
+      <th>Brittle</th>
+      <th>TOC</th>
+      <th>VR</th>
       <th>Imputed</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>1</td>
-      <td>7325.0</td>
-      <td>7175.0</td>
-      <td>13.564033</td>
-      <td>85.457752</td>
-      <td>7.214987</td>
-      <td>2.153530</td>
-      <td>3379.255305</td>
-      <td>25.875998</td>
-      <td>1658.612455</td>
-      <td>4.937921</td>
-      <td>847.33</td>
       <td>1.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>4225.0</td>
-      <td>3525.0</td>
-      <td>12.907730</td>
-      <td>133.910637</td>
-      <td>7.308846</td>
-      <td>2.146360</td>
-      <td>3563.549461</td>
-      <td>25.688560</td>
-      <td>1673.770439</td>
-      <td>6.429229</td>
-      <td>1201.20</td>
+      <td>12.08</td>
+      <td>2.92</td>
+      <td>2.80</td>
+      <td>81.40</td>
+      <td>1.16</td>
+      <td>2.31</td>
       <td>0.0</td>
     </tr>
     <tr>
+      <th>1</th>
+      <td>2.0</td>
+      <td>12.38</td>
+      <td>3.53</td>
+      <td>2.45</td>
+      <td>46.17</td>
+      <td>0.89</td>
+      <td>1.88</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
       <th>2</th>
-      <td>3</td>
-      <td>7725.0</td>
-      <td>8275.0</td>
-      <td>12.110566</td>
-      <td>104.059282</td>
-      <td>7.366451</td>
-      <td>1.919698</td>
-      <td>3882.442911</td>
-      <td>23.516002</td>
-      <td>1675.645601</td>
-      <td>5.674798</td>
-      <td>781.40</td>
+      <td>1.0</td>
+      <td>14.02</td>
+      <td>2.59</td>
+      <td>4.01</td>
+      <td>72.80</td>
+      <td>0.89</td>
+      <td>2.72</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>4</td>
-      <td>4425.0</td>
-      <td>6475.0</td>
-      <td>13.990654</td>
-      <td>139.915993</td>
-      <td>7.286771</td>
-      <td>1.980721</td>
-      <td>3688.351168</td>
-      <td>27.125611</td>
-      <td>1637.806458</td>
-      <td>5.408664</td>
-      <td>1573.20</td>
-      <td>1.0</td>
+      <td>4.0</td>
+      <td>17.67</td>
+      <td>6.75</td>
+      <td>2.63</td>
+      <td>39.81</td>
+      <td>1.08</td>
+      <td>1.88</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>5</td>
-      <td>2125.0</td>
-      <td>1225.0</td>
-      <td>12.982720</td>
-      <td>85.457752</td>
-      <td>7.333877</td>
-      <td>1.928716</td>
-      <td>3777.566423</td>
-      <td>28.133694</td>
-      <td>1637.806458</td>
-      <td>5.265054</td>
-      <td>548.68</td>
-      <td>1.0</td>
+      <td>5.0</td>
+      <td>17.52</td>
+      <td>4.57</td>
+      <td>3.18</td>
+      <td>10.94</td>
+      <td>1.51</td>
+      <td>1.90</td>
+      <td>0.0</td>
     </tr>
   </tbody>
 </table>
-</div></div><img alt="_images/13f654ca1a68372b77fe944f875eeb87ddad1439067e5fa175e00fc0ea720a55.png" src="_images/13f654ca1a68372b77fe944f875eeb87ddad1439067e5fa175e00fc0ea720a55.png" />
+</div></div><img alt="_images/d930c573190c546f174a877996c13fd81fc9cbda6474c27840ba3b35e15b348d.png" src="_images/d930c573190c546f174a877996c13fd81fc9cbda6474c27840ba3b35e15b348d.png" />
 </div>
 </div>
 </section>

@@ -447,6 +447,17 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Visualize the Dataset</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-reservoir-21">Dataset: Reservoir 21</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Depositional Setting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#well-logs">Well Logs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#map-data">Map Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-vertically-averaged-data">2D Vertically Averaged Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Load the Dataset and Truth Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-histograms-for-each-feature">Calculate Histograms for Each Feature</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Visualize the Dataset</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plots">Scatter Plots</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
@@ -611,8 +622,8 @@ document.write(`
 <p>The following code loads the required libraries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geostatspy.GSLIB</span> <span class="k">as</span> <span class="nn">GSLIB</span>          <span class="c1"># GSLIB utilies, visualization and wrapper</span>
-<span class="kn">import</span> <span class="nn">geostatspy.geostats</span> <span class="k">as</span> <span class="nn">geostats</span>    <span class="c1"># GSLIB methods convert to Python        </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geostatspy.GSLIB</span> <span class="k">as</span> <span class="nn">GSLIB</span>                              <span class="c1"># GSLIB utilies, visualization and wrapper</span>
+<span class="kn">import</span> <span class="nn">geostatspy.geostats</span> <span class="k">as</span> <span class="nn">geostats</span>                        <span class="c1"># GSLIB methods convert to Python        </span>
 </pre></div>
 </div>
 </div>
@@ -636,6 +647,8 @@ document.write(`
 <span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="kn">import</span> <span class="n">convolve2d</span>                           <span class="c1"># convolution</span>
 <span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">griddata</span>
 <span class="kn">from</span> <span class="nn">scipy.ndimage</span> <span class="kn">import</span> <span class="n">gaussian_filter</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
 <span class="kn">import</span> <span class="nn">math</span>                                                   <span class="c1"># trig etc.</span>
 <span class="kn">import</span> <span class="nn">random</span>
 <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">inferno</span>
@@ -869,7 +882,7 @@ document.write(`
 <p>Now we can load and visualize the synthetic dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">ifeature</span><span class="p">,</span> <span class="n">feature</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">twelve</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">ifeature</span><span class="p">,</span> <span class="n">feature</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">twelve</span><span class="p">):</span>                   <span class="c1"># loop over features</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">twelve</span><span class="p">),</span><span class="mi">2</span><span class="p">,(</span><span class="n">ifeature</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">feature</span> <span class="o">==</span> <span class="s1">&#39;Facies&#39;</span><span class="p">:</span>
         <span class="n">locmap_facies</span><span class="p">(</span><span class="n">df_12</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="n">twelve</span><span class="p">[</span><span class="n">feature</span><span class="p">][</span><span class="s2">&quot;fname&quot;</span><span class="p">],</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">twelve</span><span class="p">[</span><span class="n">feature</span><span class="p">][</span><span class="s2">&quot;min&quot;</span><span class="p">],</span><span class="n">twelve</span><span class="p">[</span><span class="n">feature</span><span class="p">][</span><span class="s2">&quot;max&quot;</span><span class="p">],</span>
@@ -1460,6 +1473,594 @@ document.write(`
 </div>
 </section>
 </section>
+<section id="dataset-reservoir-21">
+<h2>Dataset: Reservoir 21<a class="headerlink" href="#dataset-reservoir-21" title="Permalink to this heading">#</a></h2>
+<p>Reservoir 21 is a large, isolated reservoir unit with good porosity and permeability.</p>
+<section id="id15">
+<h3>Depositional Setting<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h3>
+<p>The reservoir sediments was transported by submarine turbidity currents and deposited lithified to become turbidites. The turbidites are separated into 4 ordinal facies,</p>
+<ol class="arabic simple">
+<li><p>shalestone</p></li>
+<li><p>sandy-shalestone</p></li>
+<li><p>shaly-sandstone</p></li>
+<li><p>sandstone</p></li>
+</ol>
+<p>with increase rock quality, porosity and permeability over the above indicated categories from worst = 1 (shalestone) to best = 4 (sandstone). Postdepositional the turbidite formation’s pore space was filled by migrating hydrocarbons that were trapped by a thick shale above the unit.</p>
+<p>The transport and depositional mechanisms of turbidites are explained in <a class="reference external" href="https://en.wikipedia.org/wiki/Turbidite">Wikipedia’s Turbidtes Article</a> and a good overview of modeling turbidite reservoirs is available in <a class="reference external" href="https://en.wikipedia.org/wiki/Turbidite">McHarge et al., 2011</a>.</p>
+<p>A schematic of turbidite transport and demposition is available in Wikipedia Turbidite article (Figure 1).</p>
+<figure style="text-align: center;">
+  <img src="_static/data/turbidite_deposition.gif" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;">Type of sediment source and sediment and the resulting types of turbidite deposits (image from Stow and Mayall, 2000).</figcaption>
+</figure>
+<p>A good model for is a submarine avalanche, known as a turbidity current, traveling from the shelf break down the slope to the deep ocean basins</p>
+<ul class="simple">
+<li><p>the driving force is a apparent increase in density due to the mixing of water and grains</p></li>
+<li><p>the gradient of the slope is typically between 1 and 2 degrees (1% - 4% gradient)</p></li>
+<li><p>these turbidity current can travel 100s to 1,500 km (Bay of Biscay to the Atlantic abyssal plain)</p></li>
+<li><p>common speeds are 5 - 20 m/s (20 - 70 km/h)</p></li>
+<li><p>to visualize this in the laboratory, see this short <a class="reference external" href="https://youtu.be/y7BbYg1sDnU?si=wUjMEh5xSxfQFM_L">Turbidity Current YouTube Video</a>.</p></li>
+</ul>
+<p>Turbidity currents result in formation of extensive high porosity and moderate permeability reservoirs in deep water settings.</p>
+<p>Here’s some more important details about this dataset,</p>
+<ul class="simple">
+<li><p><strong>Volume of Interest</strong>: clastic deepwater turbidite reservoir unit with extents 10 km by 10 km by 50 m (thickness)</p></li>
+<li><p><strong>Fluids</strong>: initial oil water contact is at the depth of 3067.4m and the average connate water saturation is about 20.3%</p></li>
+<li><p><strong>Structure</strong>: Anticline structure with a major vertical fault that crosses the reservoir (see location and equation on the image below). It is unknown if there is translation (discontinuity) across the fault.</p></li>
+<li><p><strong>Grids</strong>: the 2D maps conform to the standard Python convention, origin on Top Left (see the image below).</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/data/res21_planview.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;">Plan view of Reservoir 21.</figcaption>
+</figure>
+<p><strong>Figure 2:</strong> Plan view of Reservoir 21.</p>
+<ul class="simple">
+<li><p><strong>Wells</strong>: 83 vertical wells were drilled across the reservoir and completed throughout the reservoir unit. Due to the field management constraints, only 73 wells were open to produce oil for the first three years, while the remaining 10 wells were kept shut-in. At the end of the third year, the remaining 10 unproduced wells are planned to be opened.</p></li>
+</ul>
+</section>
+<section id="well-logs">
+<h3>Well Logs<a class="headerlink" href="#well-logs" title="Permalink to this heading">#</a></h3>
+<p>The well logs for the 73 wells are available at,</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets/blob/master/res21_wells.csv">res21_well.csv</a> a</p></li>
+</ul>
+<p>and the associated 1, 2 and 3 year cumulative oil and water production are available at,</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets/blob/master/res21_production_history.csv">res21_production_history.csv</a> a</p></li>
+</ul>
+<p>while the new 10 wells (prior to production) well logs are available at,</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets/blob/master/res21_new_wells.csv">res21_new_wells.csv</a></p></li>
+</ul>
+<p>Comments:</p>
+<ul class="simple">
+<li><p>all the well names are masked (replaced with simple indices from 1 to 83) and coordinates transformed to the area of interest to conceal the actual reservoir.</p></li>
+<li><p>available petrophysical and geomechanical properties are listed.</p></li>
+<li><p>blank entries in the file indicate missing data at those locations.</p></li>
+</ul>
+<p>Predictor features:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Well ID</p></td>
+<td><p>Integer</p></td>
+<td><p>Unique well identifier, anonymized, random integer</p></td>
+</tr>
+<tr class="row-odd"><td><p>X, Y</p></td>
+<td><p><span class="math notranslate nohighlight">\(m\)</span></p></td>
+<td><p>Well location in area of interest (0 - 10,000 in X and Y)</p></td>
+</tr>
+<tr class="row-even"><td><p>Facies</p></td>
+<td><p>ordinal category</p></td>
+<td><p>1 = shalestone, 2 = sandy-shalestone, 3 shaly-sandstone, 4 sandstone.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Porosity</p></td>
+<td><p>%</p></td>
+<td><p>Measure of the void spaces in a material, expressed as a percentage.</p></td>
+</tr>
+<tr class="row-even"><td><p>Permeability</p></td>
+<td><p><span class="math notranslate nohighlight">\(mD\)</span></p></td>
+<td><p>Ability of a material to allow fluids to pass through its pore spaces im milliDarcies.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Acoustic Impedance</p></td>
+<td><p><span class="math notranslate nohighlight">\(kg/m^2 \cdot s x 10^6\)</span></p></td>
+<td><p>Product of a material’s density and sound velocity, affecting wave behavior.</p></td>
+</tr>
+<tr class="row-even"><td><p>Rock Density</p></td>
+<td><p><span class="math notranslate nohighlight">\(g/cm^3\)</span></p></td>
+<td><p>Mass of a rock per unit volume.</p></td>
+</tr>
+<tr class="row-odd"><td><p>P-wave Velocity</p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{m}{s}\)</span></p></td>
+<td><p>Speed of compressional seismic waves through a material.</p></td>
+</tr>
+<tr class="row-even"><td><p>S-wave Velocity</p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{m}{s}\)</span></p></td>
+<td><p>Speed of shear seismic waves through a material.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Young’s Modulus</p></td>
+<td><p><span class="math notranslate nohighlight">\(GPa\)</span></p></td>
+<td><p>Ratio of stress to strain in the elastic region; measures stiffness in gigapascals.</p></td>
+</tr>
+<tr class="row-even"><td><p>Shear Modulus</p></td>
+<td><p><span class="math notranslate nohighlight">\(GPa\)</span></p></td>
+<td><p>Ratio of shear stress to shear strain; measures resistance to shear in gigapascals.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Response Feature:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Cumul. Oil 1 year</p></td>
+<td><p>Mbbls</p></td>
+<td><p>Total oil produced by the well over one year in 1000s of barrels</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cumul. Oil 2 year</p></td>
+<td><p>Mbbls</p></td>
+<td><p>Total oil produced by the well over two years in 1000s of barrels</p></td>
+</tr>
+<tr class="row-even"><td><p>Cumul. Oil 3 year</p></td>
+<td><p>Mbbls</p></td>
+<td><p>Total oil produced by the well over three years in 1000s of barrels</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cumul. Water 1 year</p></td>
+<td><p>Mbbls</p></td>
+<td><p>Total water produced by the well over one year in 1000s of barrels</p></td>
+</tr>
+<tr class="row-even"><td><p>Cumul. Water 2 year</p></td>
+<td><p>Mbbls</p></td>
+<td><p>Total water produced by the well over two years in 1000s of barrels</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cumul. Water 3 year</p></td>
+<td><p>Mbbls</p></td>
+<td><p>Total water produced by the well over three year in 1000s of barrels</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="map-data">
+<h3>Map Data<a class="headerlink" href="#map-data" title="Permalink to this heading">#</a></h3>
+<p>The following map data are available,</p>
+<p>Acoustic impedance (AI) inverted from geophysical amplitudes and interpretations,</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets/blob/master/res21_ai_map.npy"><strong>res21_ai_map.npy</strong></a></p></li>
+</ul>
+<p>Proportion of facies, sandstone, shaly-sandstone, sandy-shalestone and shalestone are available at,</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets/blob/master/res21_2d_sand_prop_map.npy">res21_2d_sand_prop_map.npy</a></p></li>
+<li><p><a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets/blob/master/res21_shaly_sand_prop_map.npy">res21_shaly_sand_prop_map.npy</a></p></li>
+<li><p><a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets/blob/master/res21_sandy_shale_prop_map.npy">res21_sandy_shale_prop_map.npy</a></p></li>
+<li><p><a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets/blob/master/res21_shale_prop_map.npy">res21_shale_prop_map.npy</a></p></li>
+</ul>
+<p>Note, the facies proportions are calculated by a well calibrated model with well data and acoustic impedance and the 4 proportions sum to 1.0 (honor probability closure). The top of the formation map is available at,</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets/blob/master/res21_top_depth_map.npy">res21_top_depth_map.npy</a></p></li>
+</ul>
+<p>Comments on the 2D map, gridded data format,</p>
+<ul class="simple">
+<li><p>2D maps are regular grids 200 by 200 cells, cell extents are 50m by 50m, extending over the reservoir</p></li>
+<li><p>values indicate the vertically averaged property, vertical resolution is the entire reservoir unit</p></li>
+<li><p>the indices follow standard Python convention, original is top left corner, indices are from 0, 1, …, n-1 and the first index is the row (from the top) and the second index is the column from the left</p></li>
+<li><p>e.g. to select the 5th grid cell in x (column) and the 10th grid cell in y (rows), use ndarray[9,4] in Python (aside, array[10,5] in Matlab)</p></li>
+<li><p>the origin of the 2D data (e.g., array[0,0]) is the center of the top left cell, 25m and 25m along y and x direction (refer to the image above)</p></li>
+</ul>
+</section>
+<section id="d-vertically-averaged-data">
+<h3>2D Vertically Averaged Data<a class="headerlink" href="#d-vertically-averaged-data" title="Permalink to this heading">#</a></h3>
+<p>For simplified workflow testing, a vertically averaged 2D variant of the dataset was made by,</p>
+<ul class="simple">
+<li><p>averaging all the continuous well log features over the entire reservoir unit</p></li>
+<li><p>combining a single response feature (3 year cumulative oil production) with the predictor features</p></li>
+<li><p>removing facies to avoid the issue of upscaling the categorical ordinal feature</p></li>
+</ul>
+<p>These two files contain the predictor features, well log data, averaged over the entire well bore for all 73 wells, i.e., one value per well for each feature, and the one response feature, 3 year cumulative oil production,</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets/blob/master/res21_2D_wells.csv"><strong>res21_2D_wells.csv</strong></a> - 2D averaged well data and 3 year cumulative oil production for the previous production wells, well indices from 1 to 73</p></li>
+</ul>
+<p>and well log data averaged over the entire well bore for all 10 test wells,</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets/blob/master/res21_2D_wells_test.csv"><strong>res21_2D_wells_test.csv</strong></a> - 2D averaged well data for the remaining, preproduction wells, well indices from 74 to 83</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res21</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;X&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mf">10000.0</span><span class="p">,</span>
+        <span class="s2">&quot;colormap&quot;</span><span class="p">:</span> <span class="s2">&quot;inferno&quot;</span><span class="p">,</span>       
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;X&quot;</span><span class="p">,</span><span class="s2">&quot;fname&quot;</span><span class="p">:</span> <span class="s2">&quot;X&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;map&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span><span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;small&#39;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;Y&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mf">10000.0</span><span class="p">,</span>
+        <span class="s2">&quot;colormap&quot;</span><span class="p">:</span> <span class="s2">&quot;inferno&quot;</span><span class="p">,</span>       
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Y&quot;</span><span class="p">,</span><span class="s2">&quot;fname&quot;</span><span class="p">:</span> <span class="s2">&quot;Y&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;map&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span><span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;small&#39;</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;Por&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">,</span>
+        <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mf">17.0</span><span class="p">,</span>
+        <span class="s2">&quot;colormap&quot;</span><span class="p">:</span> <span class="s2">&quot;inferno&quot;</span><span class="p">,</span>       
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Porosity&quot;</span><span class="p">,</span><span class="s2">&quot;fname&quot;</span><span class="p">:</span> <span class="s2">&quot;Por&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="s2">&quot;%&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;map&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span><span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;small&#39;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;Perm&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mf">70.0</span><span class="p">,</span>
+        <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mf">200.0</span><span class="p">,</span>
+        <span class="s2">&quot;colormap&quot;</span><span class="p">:</span> <span class="s2">&quot;inferno&quot;</span><span class="p">,</span>       
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Permeability&quot;</span><span class="p">,</span><span class="s2">&quot;fname&quot;</span><span class="p">:</span> <span class="s2">&quot;Perm&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="s2">&quot;mD&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;map&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span><span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;large&#39;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;AI&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mf">6.9</span><span class="p">,</span>
+        <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mf">7.6</span><span class="p">,</span>
+        <span class="s2">&quot;colormap&quot;</span><span class="p">:</span> <span class="s2">&quot;inferno&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Acoustic Impedance&quot;</span><span class="p">,</span><span class="s2">&quot;fname&quot;</span><span class="p">:</span> <span class="s2">&quot;AI&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;$\frac</span><span class="si">{kg}</span><span class="s2">{m^2 \cdot s} \times 10^3$&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;map&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span><span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;small&#39;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;Density&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mf">1.6</span><span class="p">,</span>
+        <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mf">2.6</span><span class="p">,</span>
+        <span class="s2">&quot;colormap&quot;</span><span class="p">:</span> <span class="s2">&quot;inferno&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Density&quot;</span><span class="p">,</span><span class="s2">&quot;fname&quot;</span><span class="p">:</span> <span class="s2">&quot;Density&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;\frac</span><span class="si">{g}</span><span class="s2">{cm^2}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;map&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span><span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;small&#39;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;PVel&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mf">3200.0</span><span class="p">,</span>
+        <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mf">4500.0</span><span class="p">,</span>
+        <span class="s2">&quot;colormap&quot;</span><span class="p">:</span> <span class="s2">&quot;inferno&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;P-wave Velocity&quot;</span><span class="p">,</span><span class="s2">&quot;fname&quot;</span><span class="p">:</span> <span class="s2">&quot;PVel&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;$\frac</span><span class="si">{m}{s}</span><span class="s2">$&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;map&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span><span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;small&#39;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;Youngs&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mf">22.0</span><span class="p">,</span>
+        <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mf">32.0</span><span class="p">,</span>
+        <span class="s2">&quot;colormap&quot;</span><span class="p">:</span> <span class="s2">&quot;inferno&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Youngs Modulas&quot;</span><span class="p">,</span><span class="s2">&quot;fname&quot;</span><span class="p">:</span> <span class="s2">&quot;Youngs&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;$GPA$&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;map&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span><span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;small&#39;</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;SVel&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mf">1600.0</span><span class="p">,</span>
+        <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mf">1750.0</span><span class="p">,</span>
+        <span class="s2">&quot;colormap&quot;</span><span class="p">:</span> <span class="s2">&quot;inferno&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;S-wave Velocity&quot;</span><span class="p">,</span><span class="s2">&quot;fname&quot;</span><span class="p">:</span> <span class="s2">&quot;SVel&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;$\frac</span><span class="si">{m}{s}</span><span class="s2">$&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;map&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span><span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;small&#39;</span>
+    <span class="p">},</span>    
+    <span class="s2">&quot;Shear&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mf">4.5</span><span class="p">,</span>
+        <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mf">7.0</span><span class="p">,</span>
+        <span class="s2">&quot;colormap&quot;</span><span class="p">:</span> <span class="s2">&quot;inferno&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Shear Modulus&quot;</span><span class="p">,</span><span class="s2">&quot;fname&quot;</span><span class="p">:</span> <span class="s2">&quot;Shear&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;$GPA$&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;map&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span><span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;small&#39;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;CumulativeOil&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mf">3000.0</span><span class="p">,</span>
+        <span class="s2">&quot;colormap&quot;</span><span class="p">:</span> <span class="s2">&quot;inferno&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Cumulative Oil Production&quot;</span><span class="p">,</span><span class="s2">&quot;fname&quot;</span><span class="p">:</span> <span class="s2">&quot;CumulativeOil&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;$Mbbls$&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;map&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span><span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;large&#39;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id16">
+<h3>Load the Dataset and Truth Model<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h3>
+<p>Let’s load the 2D dataset and visualize it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_res21_2D</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/refs/heads/master/res21_2D_wells.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;Well_ID&#39;</span><span class="p">)</span> <span class="c1"># load the data from Dr. Pyrcz&#39;s GitHub repository</span>
+<span class="n">df_res21_2D_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/refs/heads/master/res21_2D_wells_test.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;Well_ID&#39;</span><span class="p">)</span> <span class="c1"># load the data from Dr. Pyrcz&#39;s GitHub repository</span>
+<span class="c1">#df_res21_2D.head()                                           # vizualize dataframe with 73 wells without production </span>
+<span class="c1">#df_res21_2D_test.head()                                      # visualize dataframe with 10 wells with production</span>
+<span class="n">df_res21_2D</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>                            <span class="c1"># check summary statistics</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>X</th>
+      <td>73.0</td>
+      <td>4188.698630</td>
+      <td>1783.143687</td>
+      <td>1175.000000</td>
+      <td>2925.000000</td>
+      <td>3875.000000</td>
+      <td>5325.000000</td>
+      <td>7975.000000</td>
+    </tr>
+    <tr>
+      <th>Y</th>
+      <td>73.0</td>
+      <td>5770.890411</td>
+      <td>2405.487844</td>
+      <td>775.000000</td>
+      <td>3825.000000</td>
+      <td>6125.000000</td>
+      <td>7625.000000</td>
+      <td>9775.000000</td>
+    </tr>
+    <tr>
+      <th>Por</th>
+      <td>69.0</td>
+      <td>12.822361</td>
+      <td>1.069242</td>
+      <td>10.449132</td>
+      <td>12.122789</td>
+      <td>12.842228</td>
+      <td>13.532038</td>
+      <td>15.837603</td>
+    </tr>
+    <tr>
+      <th>Perm</th>
+      <td>53.0</td>
+      <td>119.292589</td>
+      <td>23.003770</td>
+      <td>85.457752</td>
+      <td>101.821216</td>
+      <td>116.341824</td>
+      <td>130.554974</td>
+      <td>184.753428</td>
+    </tr>
+    <tr>
+      <th>AI</th>
+      <td>69.0</td>
+      <td>7.319194</td>
+      <td>0.096761</td>
+      <td>7.062172</td>
+      <td>7.280405</td>
+      <td>7.333877</td>
+      <td>7.379185</td>
+      <td>7.499137</td>
+    </tr>
+    <tr>
+      <th>Density</th>
+      <td>70.0</td>
+      <td>2.043288</td>
+      <td>0.138222</td>
+      <td>1.793870</td>
+      <td>1.921390</td>
+      <td>2.039170</td>
+      <td>2.162651</td>
+      <td>2.301552</td>
+    </tr>
+    <tr>
+      <th>PVel</th>
+      <td>69.0</td>
+      <td>3696.762373</td>
+      <td>276.382117</td>
+      <td>3229.902892</td>
+      <td>3463.035301</td>
+      <td>3688.453880</td>
+      <td>3897.219799</td>
+      <td>4327.857887</td>
+    </tr>
+    <tr>
+      <th>Youngs</th>
+      <td>49.0</td>
+      <td>27.173417</td>
+      <td>2.164984</td>
+      <td>23.516002</td>
+      <td>25.378138</td>
+      <td>26.801655</td>
+      <td>28.641350</td>
+      <td>31.463424</td>
+    </tr>
+    <tr>
+      <th>SVel</th>
+      <td>65.0</td>
+      <td>1676.908144</td>
+      <td>19.277228</td>
+      <td>1637.806458</td>
+      <td>1662.280505</td>
+      <td>1676.458624</td>
+      <td>1688.682882</td>
+      <td>1721.987891</td>
+    </tr>
+    <tr>
+      <th>Shear</th>
+      <td>48.0</td>
+      <td>5.793693</td>
+      <td>0.474087</td>
+      <td>4.937921</td>
+      <td>5.397281</td>
+      <td>5.769809</td>
+      <td>6.208277</td>
+      <td>6.714150</td>
+    </tr>
+    <tr>
+      <th>CumulativeOil</th>
+      <td>73.0</td>
+      <td>940.976027</td>
+      <td>429.622150</td>
+      <td>307.120000</td>
+      <td>643.140000</td>
+      <td>819.490000</td>
+      <td>1185.400000</td>
+      <td>2514.500000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Now let’s load two of the 2D maps,</p>
+<ul class="simple">
+<li><p>average sand proportion</p></li>
+<li><p>acoustic impedance</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sand_prop_map_url</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/refs/heads/master/res21_2d_sand_prop_map.npy&#39;</span><span class="p">)</span>
+<span class="n">sand_prop_map_url</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>                          <span class="c1"># Raise an error if the download fails</span>
+<span class="n">sand_prop_map</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">sand_prop_map_url</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>   <span class="c1"># load the .npy file from the downloaded bytes</span>
+
+<span class="n">AI_map_url</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/refs/heads/master/res21_ai_map.npy&#39;</span><span class="p">)</span>
+<span class="n">AI_map_url</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>                                 <span class="c1"># Raise an error if the download fails</span>
+<span class="n">AI_map</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">AI_map_url</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>                 <span class="c1"># load the .npy file from the downloaded bytes</span>
+<span class="n">AI_map</span> <span class="o">=</span> <span class="n">AI_map</span><span class="o">/</span><span class="mf">1000000.0</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="calculate-histograms-for-each-feature">
+<h3>Calculate Histograms for Each Feature<a class="headerlink" href="#calculate-histograms-for-each-feature" title="Permalink to this heading">#</a></h3>
+<p>Let’s use the dictionary above to make histograms for each feature.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">ifeat</span><span class="p">,</span><span class="n">feature</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">df_res21_2D</span><span class="o">.</span><span class="n">columns</span><span class="p">):</span>          <span class="c1"># loop over all features in the dataframe with 73 wells with production</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">ifeat</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>                                  <span class="c1"># subplot</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df_res21_2D</span><span class="p">[</span><span class="n">res21</span><span class="p">[</span><span class="n">feature</span><span class="p">][</span><span class="s1">&#39;fname&#39;</span><span class="p">]],</span><span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">res21</span><span class="p">[</span><span class="n">feature</span><span class="p">][</span><span class="s1">&#39;min&#39;</span><span class="p">],</span><span class="n">res21</span><span class="p">[</span><span class="n">feature</span><span class="p">][</span><span class="s1">&#39;max&#39;</span><span class="p">],</span><span class="n">nbin</span><span class="p">),</span> <span class="c1"># histogram</span>
+             <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">res21</span><span class="p">[</span><span class="n">feature</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; (&#39;</span> <span class="o">+</span> <span class="n">res21</span><span class="p">[</span><span class="n">feature</span><span class="p">][</span><span class="s1">&#39;units&#39;</span><span class="p">]</span> <span class="o">+</span><span class="s1">&#39;)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">feature</span> <span class="o">+</span> <span class="s1">&#39; Histogram&#39;</span><span class="p">)</span> <span class="c1"># labels </span>
+    <span class="n">add_grid2</span><span class="p">()</span>                                               <span class="c1"># major and minor gridlines function</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">3.1</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.25</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b4761de96b21bc454ebeacf66cc850f374aa90d60414d5e118476081f8c2d2e5.png" src="_images/b4761de96b21bc454ebeacf66cc850f374aa90d60414d5e118476081f8c2d2e5.png" />
+</div>
+</div>
+</section>
+<section id="id17">
+<h3>Visualize the Dataset<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h3>
+<p>Now we can visualize the synthetic dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ifeat</span> <span class="o">=</span> <span class="mi">4</span>                                                    <span class="c1"># select feature for scatter plot, 0 - 10</span>
+<span class="n">feature</span> <span class="o">=</span>  <span class="nb">list</span><span class="p">(</span><span class="n">res21</span><span class="p">)[</span><span class="n">ifeat</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">sand_prop_map</span><span class="p">,</span><span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">10000</span><span class="p">,</span><span class="mi">10000</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mf">0.50</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span> <span class="c1"># 2D map</span>
+<span class="n">cb1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.036</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.18</span><span class="p">)</span>                         <span class="c1"># colorbar for 2D map</span>
+<span class="n">cb1</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s2">&quot;Proportion of Sand (fraction)&quot;</span><span class="p">)</span>                           <span class="c1"># colorbar label for 2D map</span>
+
+<span class="n">sc</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_res21_2D</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span><span class="n">df_res21_2D</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">df_res21_2D</span><span class="p">[</span><span class="n">res21</span><span class="p">[</span><span class="n">feature</span><span class="p">][</span><span class="s1">&#39;fname&#39;</span><span class="p">]],</span><span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span>
+            <span class="n">vmin</span><span class="o">=</span><span class="n">res21</span><span class="p">[</span><span class="n">feature</span><span class="p">][</span><span class="s1">&#39;min&#39;</span><span class="p">],</span><span class="n">vmax</span><span class="o">=</span><span class="n">res21</span><span class="p">[</span><span class="n">feature</span><span class="p">][</span><span class="s1">&#39;max&#39;</span><span class="p">],</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;current wells&#39;</span><span class="p">)</span>       <span class="c1"># wells with production scatter plot</span>
+<span class="n">cb2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.02</span><span class="p">)</span>                         <span class="c1"># colorbar for scatter plot</span>
+<span class="n">cb2</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">res21</span><span class="p">[</span><span class="n">feature</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; (&#39;</span> <span class="o">+</span> <span class="n">res21</span><span class="p">[</span><span class="n">feature</span><span class="p">][</span><span class="s1">&#39;units&#39;</span><span class="p">]</span> <span class="o">+</span><span class="s1">&#39;)&#39;</span><span class="p">)</span> <span class="c1"># colorbar label for scatter plot</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_res21_2D_test</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span><span class="n">df_res21_2D_test</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;new wells&#39;</span><span class="p">)</span> <span class="c1"># wells without production</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X (m)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y (m)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">res21</span><span class="p">[</span><span class="n">feature</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; and Sand Proportion Map&#39;</span><span class="p">)</span> <span class="c1"># labels for axes and title</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">AI_map</span><span class="p">,</span><span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">10000</span><span class="p">,</span><span class="mi">10000</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">vmin</span><span class="o">=</span><span class="n">res21</span><span class="p">[</span><span class="s1">&#39;AI&#39;</span><span class="p">][</span><span class="s1">&#39;min&#39;</span><span class="p">],</span><span class="n">vmax</span><span class="o">=</span><span class="n">res21</span><span class="p">[</span><span class="s1">&#39;AI&#39;</span><span class="p">][</span><span class="s1">&#39;max&#39;</span><span class="p">],</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span> <span class="c1"># 2D map</span>
+<span class="n">cb1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.036</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.18</span><span class="p">)</span>                         <span class="c1"># colorbar for 2D map</span>
+<span class="n">cb1</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">res21</span><span class="p">[</span><span class="s1">&#39;AI&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; (&#39;</span> <span class="o">+</span> <span class="n">res21</span><span class="p">[</span><span class="s1">&#39;AI&#39;</span><span class="p">][</span><span class="s1">&#39;units&#39;</span><span class="p">]</span> <span class="o">+</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>                           <span class="c1"># colorbar label for 2D map</span>
+
+<span class="n">sc</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_res21_2D</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span><span class="n">df_res21_2D</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">df_res21_2D</span><span class="p">[</span><span class="n">res21</span><span class="p">[</span><span class="n">feature</span><span class="p">][</span><span class="s1">&#39;fname&#39;</span><span class="p">]],</span><span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span>
+            <span class="n">vmin</span><span class="o">=</span><span class="n">res21</span><span class="p">[</span><span class="n">feature</span><span class="p">][</span><span class="s1">&#39;min&#39;</span><span class="p">],</span><span class="n">vmax</span><span class="o">=</span><span class="n">res21</span><span class="p">[</span><span class="n">feature</span><span class="p">][</span><span class="s1">&#39;max&#39;</span><span class="p">],</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;current wells&#39;</span><span class="p">)</span> <span class="c1"># wells with production scatter plot</span>
+<span class="n">cb2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.02</span><span class="p">)</span>                         <span class="c1"># colorbar for scatter plot</span>
+<span class="n">cb2</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">res21</span><span class="p">[</span><span class="n">feature</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; (&#39;</span> <span class="o">+</span> <span class="n">res21</span><span class="p">[</span><span class="n">feature</span><span class="p">][</span><span class="s1">&#39;units&#39;</span><span class="p">]</span> <span class="o">+</span><span class="s1">&#39;)&#39;</span><span class="p">)</span> <span class="c1"># colorbar label for scatter plot</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_res21_2D_test</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span><span class="n">df_res21_2D_test</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;new wells&#39;</span><span class="p">)</span> <span class="c1"># wells without production</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X (m)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y (m)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">res21</span><span class="p">[</span><span class="n">feature</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; and Acoustic Impedance Map&#39;</span><span class="p">)</span> <span class="c1"># labels for axes and title</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.25</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/124ec120233d26da8692b8d6959cc2235528e45cbad7fbb44ac2e4635874d7bc.png" src="_images/124ec120233d26da8692b8d6959cc2235528e45cbad7fbb44ac2e4635874d7bc.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="scatter-plots">
+<h2>Scatter Plots<a class="headerlink" href="#scatter-plots" title="Permalink to this heading">#</a></h2>
+<p>Let’s check the relationships between the features.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;fname&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">res21</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+<span class="n">keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">res21</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; (&#39;</span> <span class="o">+</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">res21</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+<span class="n">pp_res21</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">PairGrid</span><span class="p">(</span><span class="n">df_res21_2D</span><span class="p">,</span><span class="nb">vars</span><span class="o">=</span><span class="n">features</span><span class="p">)</span>
+<span class="n">pp_res21</span> <span class="o">=</span> <span class="n">pp_res21</span><span class="o">.</span><span class="n">map_upper</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;darkorange&#39;</span><span class="p">,</span> <span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">pp_res21</span> <span class="o">=</span> <span class="n">pp_res21</span><span class="o">.</span><span class="n">map_diag</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span><span class="c1"># Map a density plot to the lower triangle</span>
+<span class="n">pp_res21</span> <span class="o">=</span> <span class="n">pp_res21</span><span class="o">.</span><span class="n">map_lower</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">inferno</span><span class="p">,</span> 
+                              <span class="n">shade</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">shade_lowest</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">n_levels</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Draw everything first so axes exist and are not overridden</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pp_res21</span><span class="o">.</span><span class="n">axes</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]):</span>  <span class="c1"># First column =&gt; leftmost Y axes</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">labels</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pp_res21</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]):</span>  <span class="c1"># First column =&gt; leftmost Y axes</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">labels</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pp_res21</span><span class="o">.</span><span class="n">axes</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pp_res21</span><span class="o">.</span><span class="n">axes</span><span class="p">)):</span>
+        <span class="c1"># print(i,j)</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">pp_res21</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">res21</span><span class="p">[</span><span class="n">keys</span><span class="p">[</span><span class="n">j</span><span class="p">]][</span><span class="s2">&quot;min&quot;</span><span class="p">],</span><span class="n">res21</span><span class="p">[</span><span class="n">keys</span><span class="p">[</span><span class="n">j</span><span class="p">]][</span><span class="s2">&quot;max&quot;</span><span class="p">])</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">res21</span><span class="p">[</span><span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="s2">&quot;min&quot;</span><span class="p">],</span><span class="n">res21</span><span class="p">[</span><span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="s2">&quot;max&quot;</span><span class="p">])</span>
+        <span class="n">add_grid</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/fa135c61b6588c2120847525066aea2a388909a11f08edafd0f73a54b214c2a9.png" src="_images/fa135c61b6588c2120847525066aea2a388909a11f08edafd0f73a54b214c2a9.png" />
+</div>
+</div>
+</section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
 <p>This is a summary of some of the synthetic datasets that I have generated for the demonstrations in the e-book and my other course content. I hope this,</p>
@@ -1607,6 +2208,17 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Visualize the Dataset</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-reservoir-21">Dataset: Reservoir 21</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Depositional Setting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#well-logs">Well Logs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#map-data">Map Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-vertically-averaged-data">2D Vertically Averaged Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Load the Dataset and Truth Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-histograms-for-each-feature">Calculate Histograms for Each Feature</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Visualize the Dataset</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plots">Scatter Plots</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
