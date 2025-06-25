@@ -204,6 +204,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_CNN.html">Convolutional Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_autoencoder.html">Autoencoder Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_time_series.html">Time Series Analysis and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_python.html">Python Code Snippets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary.html">Glossary</a></li>
@@ -1752,7 +1753,7 @@ f(x_2=60) = 86.5
 <p>Let’s use too few regions, set max_leaf_nodes too small and see the resulting decision tree model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_leaf_nodes</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="n">max_depth</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="n">min_samples_leaf</span> <span class="o">=</span> <span class="mi">1</span>      <span class="c1"># hyperparameters</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_leaf_nodes</span> <span class="o">=</span> <span class="mi">140</span><span class="p">;</span> <span class="n">max_depth</span> <span class="o">=</span><span class="mi">99</span><span class="p">;</span> <span class="n">min_samples_leaf</span> <span class="o">=</span> <span class="mi">1</span>      <span class="c1"># hyperparameters</span>
 
 <span class="n">tree_model</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_leaf_nodes</span> <span class="o">=</span> <span class="n">max_leaf_nodes</span><span class="p">,</span><span class="n">max_depth</span> <span class="o">=</span> <span class="n">max_depth</span><span class="p">,</span><span class="n">min_samples_leaf</span> <span class="o">=</span> <span class="n">min_samples_leaf</span><span class="p">)</span>
 <span class="n">tree_model</span> <span class="o">=</span> <span class="n">tree_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
@@ -1770,7 +1771,7 @@ f(x_2=60) = 86.5
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b16846b3da102d43bddf071ef32fd4ee21993f3d2ea40b79b0970c75d5d52756.png" src="_images/b16846b3da102d43bddf071ef32fd4ee21993f3d2ea40b79b0970c75d5d52756.png" />
+<img alt="_images/2ec5d4e4ee50ea36f3f516a898a2218f559629d76ad527013aff3694e3bff80b.png" src="_images/2ec5d4e4ee50ea36f3f516a898a2218f559629d76ad527013aff3694e3bff80b.png" />
 </div>
 </div>
 <p>This model is very much underfit, it is too simple to fit the shape of the prediction problem. Here’s some more information on the plot.</p>
@@ -1960,7 +1961,7 @@ f(x_2=60) = 86.5
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/61c26b0d70de45c6a020b08437c6a8981edd65bf19903766f0504bc58fed32df.png" src="_images/61c26b0d70de45c6a020b08437c6a8981edd65bf19903766f0504bc58fed32df.png" />
+<img alt="_images/51c4cec2d89f3a46ca4294d8e68ef8b3d1b3965377d8ca23668945e187e86e44.png" src="_images/51c4cec2d89f3a46ca4294d8e68ef8b3d1b3965377d8ca23668945e187e86e44.png" />
 </div>
 </div>
 <p>The k-fold cross validation provides a smoother plot of MSE vs. the hyperparameter.</p>
@@ -2242,7 +2243,7 @@ Estimated Production for Porosity = 0.25 and Brittleness = 0.3 is 1879.2 MCFPD
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">idata</span> <span class="o">=</span> <span class="mi">0</span>                                                     <span class="c1"># select the dataset</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">idata</span> <span class="o">=</span> <span class="mi">2</span>                                                    <span class="c1"># select the dataset</span>
 
 <span class="k">if</span> <span class="n">idata</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
     <span class="n">df_new</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/unconv_MV_v4.csv&#39;</span><span class="p">)</span> <span class="c1"># load data from Dr. Pyrcz&#39;s GitHub repository  </span>
@@ -2348,142 +2349,122 @@ Estimated Production for Porosity = 0.25 and Brittleness = 0.3 is 1879.2 MCFPD
       <th>Por</th>
       <th>Perm</th>
       <th>AI</th>
-      <th>Brittle</th>
-      <th>TOC</th>
-      <th>VR</th>
-      <th>Prod</th>
+      <th>Density</th>
+      <th>PVel</th>
+      <th>Youngs</th>
+      <th>SVel</th>
+      <th>Shear</th>
+      <th>CumulativeOil</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>12.08</td>
-      <td>2.92</td>
-      <td>2.80</td>
-      <td>81.40</td>
-      <td>1.16</td>
-      <td>2.31</td>
-      <td>1695.360819</td>
-    </tr>
-    <tr>
       <th>1</th>
-      <td>12.38</td>
-      <td>3.53</td>
-      <td>3.22</td>
-      <td>46.17</td>
-      <td>0.89</td>
-      <td>1.88</td>
-      <td>3007.096063</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>14.02</td>
-      <td>2.59</td>
-      <td>4.01</td>
-      <td>72.80</td>
-      <td>0.89</td>
-      <td>2.72</td>
-      <td>2531.938259</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>17.67</td>
-      <td>6.75</td>
-      <td>2.63</td>
-      <td>39.81</td>
-      <td>1.08</td>
-      <td>1.88</td>
-      <td>5288.514854</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>17.52</td>
-      <td>4.57</td>
-      <td>3.18</td>
-      <td>10.94</td>
-      <td>1.51</td>
-      <td>1.90</td>
-      <td>2859.469624</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>14.53</td>
-      <td>4.81</td>
-      <td>2.69</td>
-      <td>53.60</td>
-      <td>0.94</td>
-      <td>1.67</td>
-      <td>4017.374438</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>13.49</td>
-      <td>3.60</td>
-      <td>2.93</td>
-      <td>63.71</td>
-      <td>0.80</td>
-      <td>1.85</td>
-      <td>2952.812773</td>
+      <td>12.907730</td>
+      <td>133.910637</td>
+      <td>7.308846</td>
+      <td>2.146360</td>
+      <td>3563.549461</td>
+      <td>25.688560</td>
+      <td>1673.770439</td>
+      <td>6.429229</td>
+      <td>1201.20</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>11.58</td>
-      <td>3.03</td>
-      <td>3.25</td>
-      <td>53.00</td>
-      <td>0.69</td>
-      <td>1.93</td>
-      <td>2670.933846</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>12.52</td>
-      <td>2.72</td>
-      <td>2.43</td>
-      <td>65.77</td>
-      <td>0.95</td>
-      <td>1.98</td>
-      <td>2474.048178</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>13.25</td>
-      <td>3.94</td>
-      <td>3.71</td>
-      <td>66.20</td>
-      <td>1.14</td>
-      <td>2.65</td>
-      <td>2722.893266</td>
+      <td>12.647965</td>
+      <td>114.359667</td>
+      <td>7.343836</td>
+      <td>2.188597</td>
+      <td>3570.094553</td>
+      <td>25.444064</td>
+      <td>1670.043495</td>
+      <td>6.100984</td>
+      <td>683.92</td>
     </tr>
     <tr>
       <th>10</th>
-      <td>15.04</td>
-      <td>4.39</td>
-      <td>2.22</td>
-      <td>61.11</td>
-      <td>1.08</td>
-      <td>1.77</td>
-      <td>3828.247174</td>
+      <td>12.998469</td>
+      <td>129.332122</td>
+      <td>7.282051</td>
+      <td>2.131121</td>
+      <td>3524.448615</td>
+      <td>25.985734</td>
+      <td>1681.960101</td>
+      <td>6.203527</td>
+      <td>978.14</td>
     </tr>
     <tr>
-      <th>11</th>
-      <td>16.19</td>
-      <td>6.30</td>
-      <td>2.29</td>
-      <td>49.10</td>
-      <td>1.53</td>
-      <td>1.86</td>
-      <td>5095.810104</td>
+      <th>15</th>
+      <td>12.426141</td>
+      <td>123.227677</td>
+      <td>7.351795</td>
+      <td>2.203026</td>
+      <td>3417.596818</td>
+      <td>25.976462</td>
+      <td>1675.355860</td>
+      <td>6.288040</td>
+      <td>608.09</td>
     </tr>
     <tr>
-      <th>12</th>
-      <td>16.82</td>
-      <td>5.42</td>
-      <td>2.80</td>
-      <td>66.65</td>
-      <td>1.17</td>
-      <td>1.98</td>
-      <td>4091.637316</td>
+      <th>16</th>
+      <td>13.507371</td>
+      <td>147.562087</td>
+      <td>7.300360</td>
+      <td>2.210916</td>
+      <td>3476.167397</td>
+      <td>24.817767</td>
+      <td>1656.890690</td>
+      <td>6.222528</td>
+      <td>1062.10</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>13.309477</td>
+      <td>122.818961</td>
+      <td>7.345220</td>
+      <td>2.178749</td>
+      <td>3346.347661</td>
+      <td>25.436579</td>
+      <td>1651.679529</td>
+      <td>6.334308</td>
+      <td>539.98</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>11.822910</td>
+      <td>98.168307</td>
+      <td>7.386212</td>
+      <td>2.301552</td>
+      <td>3250.020705</td>
+      <td>24.340656</td>
+      <td>1662.438742</td>
+      <td>6.617267</td>
+      <td>1095.30</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>13.986616</td>
+      <td>132.575456</td>
+      <td>7.194749</td>
+      <td>2.108986</td>
+      <td>3415.255945</td>
+      <td>26.253236</td>
+      <td>1712.017629</td>
+      <td>5.583251</td>
+      <td>805.49</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>14.735895</td>
+      <td>128.201000</td>
+      <td>7.172693</td>
+      <td>1.841786</td>
+      <td>3886.950307</td>
+      <td>28.289950</td>
+      <td>1672.370150</td>
+      <td>5.044439</td>
+      <td>1146.00</td>
     </tr>
   </tbody>
 </table>
@@ -2538,7 +2519,7 @@ Estimated Production for Porosity = 0.25 and Brittleness = 0.3 is 1879.2 MCFPD
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f3c27bf9b79b1f835eb1ff16dfdf066730ebd0d410454e2c3f99709dff3b7929.png" src="_images/f3c27bf9b79b1f835eb1ff16dfdf066730ebd0d410454e2c3f99709dff3b7929.png" />
+<img alt="_images/800e93156a21d23fb27ec3b349cbd0c234a2789e27a8582567a80abbbf0e08b0.png" src="_images/800e93156a21d23fb27ec3b349cbd0c234a2789e27a8582567a80abbbf0e08b0.png" />
 </div>
 </div>
 </section>

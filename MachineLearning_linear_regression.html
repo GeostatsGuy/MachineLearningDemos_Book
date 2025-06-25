@@ -204,6 +204,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_CNN.html">Convolutional Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_autoencoder.html">Autoencoder Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_time_series.html">Time Series Analysis and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_python.html">Python Code Snippets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary.html">Glossary</a></li>
@@ -842,6 +843,200 @@ r^2 = \left(\rho_{x,y} \right)^2
 </pre></div>
 </div>
 </div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Density</th>
+      <th>Porosity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.906634</td>
+      <td>12.845691</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.404932</td>
+      <td>13.668073</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.795190</td>
+      <td>11.015021</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.705466</td>
+      <td>17.185360</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1.821963</td>
+      <td>8.190405</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1.708322</td>
+      <td>10.728462</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1.897087</td>
+      <td>11.245838</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1.864561</td>
+      <td>11.357547</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2.119652</td>
+      <td>8.614564</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1.301057</td>
+      <td>15.280571</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>1.774021</td>
+      <td>9.489298</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>1.410996</td>
+      <td>14.371990</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>1.697005</td>
+      <td>10.495092</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>0.996736</td>
+      <td>20.964941</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>1.783736</td>
+      <td>13.393518</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>1.743519</td>
+      <td>14.758068</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>1.348847</td>
+      <td>15.877907</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>2.331653</td>
+      <td>4.968240</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>1.438900</td>
+      <td>16.529857</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>1.766823</td>
+      <td>10.485052</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>1.802992</td>
+      <td>10.120258</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>1.750352</td>
+      <td>11.325941</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>1.885087</td>
+      <td>9.242607</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>2.044451</td>
+      <td>8.936061</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>1.778580</td>
+      <td>11.426343</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>1.552689</td>
+      <td>14.157303</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>2.022877</td>
+      <td>10.672887</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>1.530699</td>
+      <td>16.476751</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>1.753578</td>
+      <td>10.826057</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>1.791432</td>
+      <td>14.506748</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>1.830085</td>
+      <td>10.561222</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>1.479878</td>
+      <td>14.443138</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="visualize-the-dataframe">
@@ -1725,6 +1920,109 @@ MSE = \sum_{i=1}^n\frac{(y_i - \hat{y}<em>i)^2}{n-2} = \sum</em>{i=1}^n \frac{\l
 </table>
 </div></div></div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_select</span> <span class="o">=</span> <span class="n">df_new</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,[</span><span class="s1">&#39;Por&#39;</span><span class="p">,</span><span class="s1">&#39;Perm&#39;</span><span class="p">,</span><span class="s1">&#39;AI&#39;</span><span class="p">]]</span>
+<span class="n">df_select</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Por</th>
+      <th>Perm</th>
+      <th>AI</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>12.08</td>
+      <td>2.92</td>
+      <td>2.80</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>12.38</td>
+      <td>3.53</td>
+      <td>3.22</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>14.02</td>
+      <td>2.59</td>
+      <td>4.01</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>17.67</td>
+      <td>6.75</td>
+      <td>2.63</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>17.52</td>
+      <td>4.57</td>
+      <td>3.18</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>195</th>
+      <td>11.95</td>
+      <td>3.13</td>
+      <td>2.97</td>
+    </tr>
+    <tr>
+      <th>196</th>
+      <td>17.99</td>
+      <td>9.87</td>
+      <td>3.38</td>
+    </tr>
+    <tr>
+      <th>197</th>
+      <td>12.12</td>
+      <td>2.27</td>
+      <td>3.52</td>
+    </tr>
+    <tr>
+      <th>198</th>
+      <td>15.55</td>
+      <td>4.48</td>
+      <td>2.48</td>
+    </tr>
+    <tr>
+      <th>199</th>
+      <td>20.89</td>
+      <td>7.54</td>
+      <td>3.23</td>
+    </tr>
+  </tbody>
+</table>
+<p>200 rows × 3 columns</p>
+</div></div></div>
+</div>
 </section>
 <section id="build-and-check-model">
 <h3>Build and Check Model<a class="headerlink" href="#build-and-check-model" title="Permalink to this heading">#</a></h3>
@@ -1750,6 +2048,144 @@ MSE = \sum_{i=1}^n\frac{(y_i - \hat{y}<em>i)^2}{n-2} = \sum</em>{i=1}^n \frac{\l
 <div class="cell_output docutils container">
 <img alt="_images/3a7d23260a411f4894d7f9270056b8ff28820241bf7e6859bae42ed471f22fa3.png" src="_images/3a7d23260a411f4894d7f9270056b8ff28820241bf7e6859bae42ed471f22fa3.png" />
 </div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Por</th>
+      <th>Perm</th>
+      <th>AI</th>
+      <th>Brittle</th>
+      <th>TOC</th>
+      <th>VR</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>16</th>
+      <td>19.55</td>
+      <td>8.41</td>
+      <td>3.08</td>
+      <td>35.49</td>
+      <td>1.34</td>
+      <td>1.95</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>11.34</td>
+      <td>2.72</td>
+      <td>3.43</td>
+      <td>58.03</td>
+      <td>0.57</td>
+      <td>2.15</td>
+    </tr>
+    <tr>
+      <th>179</th>
+      <td>7.22</td>
+      <td>1.42</td>
+      <td>3.60</td>
+      <td>63.09</td>
+      <td>-0.03</td>
+      <td>1.67</td>
+    </tr>
+    <tr>
+      <th>109</th>
+      <td>15.19</td>
+      <td>5.05</td>
+      <td>3.11</td>
+      <td>57.97</td>
+      <td>1.15</td>
+      <td>2.16</td>
+    </tr>
+    <tr>
+      <th>134</th>
+      <td>12.83</td>
+      <td>2.69</td>
+      <td>3.67</td>
+      <td>17.20</td>
+      <td>0.61</td>
+      <td>2.01</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>12.55</td>
+      <td>3.22</td>
+      <td>3.43</td>
+      <td>56.93</td>
+      <td>0.79</td>
+      <td>2.27</td>
+    </tr>
+    <tr>
+      <th>182</th>
+      <td>9.88</td>
+      <td>2.72</td>
+      <td>3.64</td>
+      <td>55.19</td>
+      <td>0.52</td>
+      <td>2.16</td>
+    </tr>
+    <tr>
+      <th>71</th>
+      <td>14.17</td>
+      <td>3.94</td>
+      <td>2.92</td>
+      <td>59.30</td>
+      <td>0.91</td>
+      <td>1.91</td>
+    </tr>
+    <tr>
+      <th>112</th>
+      <td>18.24</td>
+      <td>4.31</td>
+      <td>2.85</td>
+      <td>44.53</td>
+      <td>1.39</td>
+      <td>2.06</td>
+    </tr>
+    <tr>
+      <th>163</th>
+      <td>11.60</td>
+      <td>1.73</td>
+      <td>2.18</td>
+      <td>53.54</td>
+      <td>0.60</td>
+      <td>1.50</td>
+    </tr>
+  </tbody>
+</table>
+<p>160 rows × 6 columns</p>
+</div></div></div>
 </div>
 </section>
 </section>

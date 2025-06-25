@@ -204,6 +204,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_CNN.html">Convolutional Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_autoencoder.html">Autoencoder Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_time_series.html">Time Series Analysis and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_python.html">Python Code Snippets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary.html">Glossary</a></li>
@@ -649,7 +650,7 @@ y = f(X_1,\ldots,X_m)
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">idata</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">idata</span> <span class="o">=</span> <span class="mi">1</span>
 
 <span class="k">if</span> <span class="n">idata</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/unconv_MV_v4.csv&#39;</span><span class="p">)</span> <span class="c1"># load data from Dr. Pyrcz&#39;s GitHub repository  </span>
@@ -744,145 +745,131 @@ Pormax = np.max(df[&#39;Por&#39;].values)                             # and calc
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Well</th>
+      <th>X</th>
+      <th>Y</th>
+      <th>Facies</th>
       <th>Por</th>
       <th>Perm</th>
       <th>AI</th>
-      <th>Brittle</th>
-      <th>TOC</th>
-      <th>VR</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
+      <td>502.929859</td>
+      <td>9008.972357</td>
       <td>1</td>
-      <td>12.08</td>
-      <td>2.92</td>
-      <td>2.80</td>
-      <td>81.40</td>
-      <td>1.16</td>
-      <td>2.31</td>
+      <td>22.076146</td>
+      <td>140.021266</td>
+      <td>3.413064</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2</td>
-      <td>12.38</td>
-      <td>3.53</td>
-      <td>3.22</td>
-      <td>46.17</td>
-      <td>0.89</td>
-      <td>1.88</td>
+      <td>508.696361</td>
+      <td>8505.744515</td>
+      <td>1</td>
+      <td>23.715447</td>
+      <td>39.837129</td>
+      <td>3.074563</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>3</td>
-      <td>14.02</td>
-      <td>2.59</td>
-      <td>4.01</td>
-      <td>72.80</td>
-      <td>0.89</td>
-      <td>2.72</td>
+      <td>503.892888</td>
+      <td>8003.429847</td>
+      <td>1</td>
+      <td>23.435152</td>
+      <td>84.992437</td>
+      <td>2.292783</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>4</td>
-      <td>17.67</td>
-      <td>6.75</td>
-      <td>2.63</td>
-      <td>39.81</td>
-      <td>1.08</td>
-      <td>1.88</td>
+      <td>508.230145</td>
+      <td>7509.751406</td>
+      <td>1</td>
+      <td>24.455309</td>
+      <td>90.632307</td>
+      <td>2.494849</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>5</td>
-      <td>17.52</td>
-      <td>4.57</td>
-      <td>3.18</td>
-      <td>10.94</td>
-      <td>1.51</td>
-      <td>1.90</td>
+      <td>500.611637</td>
+      <td>7000.684230</td>
+      <td>1</td>
+      <td>23.178662</td>
+      <td>811.547979</td>
+      <td>2.522064</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>6</td>
-      <td>14.53</td>
-      <td>4.81</td>
-      <td>2.69</td>
-      <td>53.60</td>
-      <td>0.94</td>
-      <td>1.67</td>
+      <td>506.402291</td>
+      <td>6508.472882</td>
+      <td>1</td>
+      <td>23.327956</td>
+      <td>426.992456</td>
+      <td>3.964186</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>7</td>
-      <td>13.49</td>
-      <td>3.60</td>
-      <td>2.93</td>
-      <td>63.71</td>
-      <td>0.80</td>
-      <td>1.85</td>
+      <td>507.369440</td>
+      <td>5502.400577</td>
+      <td>1</td>
+      <td>23.442340</td>
+      <td>2398.406492</td>
+      <td>3.318886</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>8</td>
-      <td>11.58</td>
-      <td>3.03</td>
-      <td>3.25</td>
-      <td>53.00</td>
-      <td>0.69</td>
-      <td>1.93</td>
+      <td>501.912508</td>
+      <td>5009.004277</td>
+      <td>1</td>
+      <td>21.965671</td>
+      <td>1637.224971</td>
+      <td>3.030874</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>9</td>
-      <td>12.52</td>
-      <td>2.72</td>
-      <td>2.43</td>
-      <td>65.77</td>
-      <td>0.95</td>
-      <td>1.98</td>
+      <td>505.307673</td>
+      <td>4503.042048</td>
+      <td>1</td>
+      <td>20.038883</td>
+      <td>265.636019</td>
+      <td>3.454389</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>10</td>
-      <td>13.25</td>
-      <td>3.94</td>
-      <td>3.71</td>
-      <td>66.20</td>
-      <td>1.14</td>
-      <td>2.65</td>
+      <td>507.287139</td>
+      <td>3507.277503</td>
+      <td>0</td>
+      <td>16.590753</td>
+      <td>7.951511</td>
+      <td>5.025286</td>
     </tr>
     <tr>
       <th>10</th>
-      <td>11</td>
-      <td>15.04</td>
-      <td>4.39</td>
-      <td>2.22</td>
-      <td>61.11</td>
-      <td>1.08</td>
-      <td>1.77</td>
+      <td>503.937510</td>
+      <td>3001.029478</td>
+      <td>0</td>
+      <td>15.519891</td>
+      <td>1.476967</td>
+      <td>4.939313</td>
     </tr>
     <tr>
       <th>11</th>
-      <td>12</td>
-      <td>16.19</td>
-      <td>6.30</td>
-      <td>2.29</td>
-      <td>49.10</td>
-      <td>1.53</td>
-      <td>1.86</td>
+      <td>500.321976</td>
+      <td>1507.815045</td>
+      <td>0</td>
+      <td>17.510306</td>
+      <td>5.476548</td>
+      <td>4.770744</td>
     </tr>
     <tr>
       <th>12</th>
-      <td>13</td>
-      <td>16.82</td>
-      <td>5.42</td>
-      <td>2.80</td>
-      <td>66.65</td>
-      <td>1.17</td>
-      <td>1.98</td>
+      <td>1002.581100</td>
+      <td>9505.839161</td>
+      <td>1</td>
+      <td>20.212395</td>
+      <td>357.481641</td>
+      <td>3.383119</td>
     </tr>
   </tbody>
 </table>
@@ -938,8 +925,8 @@ Pormax = np.max(df[&#39;Por&#39;].values)                             # and calc
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fraction of removed values in mask ndarray = 0.093.
-Fraction of nan values in the DataFrame = 0.093.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fraction of removed values in mask ndarray = 0.076.
+Fraction of nan values in the DataFrame = 0.076.
 </pre></div>
 </div>
 </div>
@@ -973,145 +960,131 @@ Fraction of nan values in the DataFrame = 0.093.
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Well</th>
+      <th>X</th>
+      <th>Y</th>
+      <th>Facies</th>
       <th>Por</th>
       <th>Perm</th>
       <th>AI</th>
-      <th>Brittle</th>
-      <th>TOC</th>
-      <th>VR</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>1.0</td>
-      <td>12.08</td>
-      <td>2.92</td>
-      <td>2.80</td>
-      <td>81.40</td>
-      <td>1.16</td>
-      <td>2.31</td>
+      <td>502.929859</td>
+      <td>9008.972357</td>
+      <td>1</td>
+      <td>22.076146</td>
+      <td>140.021266</td>
+      <td>3.413064</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2.0</td>
-      <td>12.38</td>
-      <td>3.53</td>
+      <td>508.696361</td>
+      <td>8505.744515</td>
+      <td>1</td>
+      <td>23.715447</td>
       <td>NaN</td>
-      <td>46.17</td>
-      <td>0.89</td>
-      <td>1.88</td>
+      <td>3.074563</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>NaN</td>
-      <td>14.02</td>
-      <td>2.59</td>
-      <td>4.01</td>
-      <td>72.80</td>
-      <td>0.89</td>
-      <td>2.72</td>
+      <td>503.892888</td>
+      <td>8003.429847</td>
+      <td>1</td>
+      <td>23.435152</td>
+      <td>84.992437</td>
+      <td>2.292783</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>4.0</td>
-      <td>17.67</td>
-      <td>6.75</td>
-      <td>2.63</td>
-      <td>39.81</td>
-      <td>1.08</td>
-      <td>1.88</td>
+      <td>508.230145</td>
+      <td>7509.751406</td>
+      <td>1</td>
+      <td>24.455309</td>
+      <td>90.632307</td>
+      <td>2.494849</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>5.0</td>
-      <td>17.52</td>
-      <td>4.57</td>
-      <td>3.18</td>
-      <td>10.94</td>
-      <td>1.51</td>
-      <td>1.90</td>
+      <td>500.611637</td>
+      <td>7000.684230</td>
+      <td>1</td>
+      <td>23.178662</td>
+      <td>811.547979</td>
+      <td>2.522064</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>6.0</td>
-      <td>14.53</td>
-      <td>4.81</td>
-      <td>2.69</td>
-      <td>53.60</td>
-      <td>0.94</td>
-      <td>1.67</td>
+      <td>506.402291</td>
+      <td>6508.472882</td>
+      <td>1</td>
+      <td>23.327956</td>
+      <td>426.992456</td>
+      <td>3.964186</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>7.0</td>
-      <td>13.49</td>
-      <td>3.60</td>
-      <td>NaN</td>
-      <td>63.71</td>
-      <td>0.80</td>
-      <td>1.85</td>
+      <td>507.369440</td>
+      <td>5502.400577</td>
+      <td>1</td>
+      <td>23.442340</td>
+      <td>2398.406492</td>
+      <td>3.318886</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>8.0</td>
-      <td>11.58</td>
-      <td>3.03</td>
+      <td>501.912508</td>
+      <td>5009.004277</td>
+      <td>1</td>
       <td>NaN</td>
-      <td>53.00</td>
-      <td>0.69</td>
-      <td>1.93</td>
+      <td>1637.224971</td>
+      <td>3.030874</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>9.0</td>
+      <td>505.307673</td>
+      <td>4503.042048</td>
+      <td>1</td>
+      <td>20.038883</td>
       <td>NaN</td>
-      <td>2.72</td>
-      <td>NaN</td>
-      <td>65.77</td>
-      <td>0.95</td>
-      <td>1.98</td>
+      <td>3.454389</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>10.0</td>
+      <td>507.287139</td>
+      <td>3507.277503</td>
+      <td>0</td>
       <td>NaN</td>
-      <td>3.94</td>
-      <td>3.71</td>
-      <td>66.20</td>
-      <td>1.14</td>
-      <td>2.65</td>
+      <td>7.951511</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>10</th>
-      <td>11.0</td>
-      <td>15.04</td>
-      <td>4.39</td>
-      <td>2.22</td>
+      <td>503.937510</td>
+      <td>3001.029478</td>
+      <td>0</td>
+      <td>15.519891</td>
       <td>NaN</td>
-      <td>1.08</td>
-      <td>1.77</td>
+      <td>4.939313</td>
     </tr>
     <tr>
       <th>11</th>
-      <td>NaN</td>
-      <td>16.19</td>
-      <td>6.30</td>
-      <td>2.29</td>
-      <td>49.10</td>
-      <td>1.53</td>
-      <td>1.86</td>
+      <td>500.321976</td>
+      <td>1507.815045</td>
+      <td>0</td>
+      <td>17.510306</td>
+      <td>5.476548</td>
+      <td>4.770744</td>
     </tr>
     <tr>
       <th>12</th>
-      <td>13.0</td>
+      <td>1002.581100</td>
+      <td>9505.839161</td>
+      <td>1</td>
+      <td>20.212395</td>
+      <td>357.481641</td>
       <td>NaN</td>
-      <td>5.42</td>
-      <td>2.80</td>
-      <td>66.65</td>
-      <td>1.17</td>
-      <td>1.98</td>
     </tr>
   </tbody>
 </table>
@@ -1158,85 +1131,86 @@ Fraction of nan values in the DataFrame = 0.093.
   </thead>
   <tbody>
     <tr>
-      <th>Well</th>
-      <td>182.0</td>
-      <td>102.653846</td>
-      <td>58.078019</td>
-      <td>1.00</td>
-      <td>53.2500</td>
-      <td>104.000</td>
-      <td>153.7500</td>
-      <td>200.00</td>
+      <th>X</th>
+      <td>441.0</td>
+      <td>4257.895977</td>
+      <td>2625.238412</td>
+      <td>3.291422</td>
+      <td>2008.013245</td>
+      <td>3804.098073</td>
+      <td>6009.596137</td>
+      <td>9804.934317</td>
+    </tr>
+    <tr>
+      <th>Y</th>
+      <td>441.0</td>
+      <td>5213.526395</td>
+      <td>2826.165910</td>
+      <td>191.894843</td>
+      <td>2792.724193</td>
+      <td>5390.333988</td>
+      <td>7591.061290</td>
+      <td>9995.745011</td>
+    </tr>
+    <tr>
+      <th>Facies</th>
+      <td>480.0</td>
+      <td>0.616667</td>
+      <td>0.486706</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
     </tr>
     <tr>
       <th>Por</th>
-      <td>184.0</td>
-      <td>14.935978</td>
-      <td>3.002142</td>
-      <td>6.55</td>
-      <td>12.8900</td>
-      <td>15.055</td>
-      <td>17.4225</td>
-      <td>23.55</td>
+      <td>438.0</td>
+      <td>18.900896</td>
+      <td>3.146932</td>
+      <td>11.756196</td>
+      <td>16.574370</td>
+      <td>18.538435</td>
+      <td>21.507075</td>
+      <td>26.109068</td>
     </tr>
     <tr>
       <th>Perm</th>
-      <td>172.0</td>
-      <td>4.319419</td>
-      <td>1.684672</td>
-      <td>1.13</td>
-      <td>3.1300</td>
-      <td>4.010</td>
-      <td>5.1850</td>
-      <td>9.78</td>
+      <td>433.0</td>
+      <td>536.754984</td>
+      <td>1260.408227</td>
+      <td>0.005776</td>
+      <td>6.954102</td>
+      <td>57.115903</td>
+      <td>400.298484</td>
+      <td>10319.904850</td>
     </tr>
     <tr>
       <th>AI</th>
-      <td>184.0</td>
-      <td>2.991630</td>
-      <td>0.571569</td>
-      <td>1.28</td>
-      <td>2.5675</td>
-      <td>2.975</td>
-      <td>3.3950</td>
-      <td>4.63</td>
-    </tr>
-    <tr>
-      <th>Brittle</th>
-      <td>186.0</td>
-      <td>47.793817</td>
-      <td>13.781815</td>
-      <td>10.94</td>
-      <td>37.7450</td>
-      <td>48.830</td>
-      <td>58.0150</td>
-      <td>81.40</td>
-    </tr>
-    <tr>
-      <th>TOC</th>
-      <td>186.0</td>
-      <td>0.991882</td>
-      <td>0.481896</td>
-      <td>-0.19</td>
-      <td>0.6225</td>
-      <td>1.020</td>
-      <td>1.3500</td>
-      <td>2.18</td>
-    </tr>
-    <tr>
-      <th>VR</th>
-      <td>176.0</td>
-      <td>1.969602</td>
-      <td>0.293877</td>
-      <td>0.93</td>
-      <td>1.7775</td>
-      <td>1.970</td>
-      <td>2.1100</td>
-      <td>2.87</td>
+      <td>428.0</td>
+      <td>3.757034</td>
+      <td>0.781976</td>
+      <td>1.746388</td>
+      <td>3.212900</td>
+      <td>3.697623</td>
+      <td>4.222997</td>
+      <td>6.194574</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">df_mask</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>480
+</pre></div>
+</div>
+</div>
 </div>
 <p>We can see the counts of available values for each feature, less than the total number of samples due to missing values.</p>
 <p>Let’s make a plot to indicate data completeness for each feature</p>
@@ -1254,7 +1228,7 @@ Fraction of nan values in the DataFrame = 0.093.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6ed9df1de493bc38166372b4dd6106367dd7d5e2888e1c4ef601987fcd269bdd.png" src="_images/6ed9df1de493bc38166372b4dd6106367dd7d5e2888e1c4ef601987fcd269bdd.png" />
+<img alt="_images/30098900607a45f049333d65efcb5a60e570b6becd70041b8a98cda7dcf0a8a9.png" src="_images/30098900607a45f049333d65efcb5a60e570b6becd70041b8a98cda7dcf0a8a9.png" />
 </div>
 </div>
 <p>This leads to the first data imputation method, feature selection.</p>
@@ -1290,7 +1264,7 @@ Fraction of nan values in the DataFrame = 0.093.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4edcc8d4408f594794b18e3efca86c01b48c54a31a361f738633733dd7fdd54d.png" src="_images/4edcc8d4408f594794b18e3efca86c01b48c54a31a361f738633733dd7fdd54d.png" />
+<img alt="_images/30098900607a45f049333d65efcb5a60e570b6becd70041b8a98cda7dcf0a8a9.png" src="_images/30098900607a45f049333d65efcb5a60e570b6becd70041b8a98cda7dcf0a8a9.png" />
 </div>
 </div>
 </section>
@@ -1317,7 +1291,7 @@ Fraction of nan values in the DataFrame = 0.093.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1094c196d3204ba769ef70b04f78bd37049a2213377b9a61c94ba44b5e208fac.png" src="_images/1094c196d3204ba769ef70b04f78bd37049a2213377b9a61c94ba44b5e208fac.png" />
+<img alt="_images/2c52655dbef3389041f2619c32fde664c53e8c66019823b24f0080cdbf78dbb7.png" src="_images/2c52655dbef3389041f2619c32fde664c53e8c66019823b24f0080cdbf78dbb7.png" />
 </div>
 </div>
 <p>If we identified samples with low data completeness, high percentage of missing samples, for a sample then the sample may be removed.</p>
@@ -1364,7 +1338,19 @@ Fraction of nan values in the DataFrame = 0.093.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06a69f6e87268ae712b6a84cba7292734f89c46eafd1791c71fe0503461516dd.png" src="_images/06a69f6e87268ae712b6a84cba7292734f89c46eafd1791c71fe0503461516dd.png" />
+<img alt="_images/8003c6b0afb4592fcc201573d4429a06d8f609bce22c5881a3be844e0fdce0ef.png" src="_images/8003c6b0afb4592fcc201573d4429a06d8f609bce22c5881a3be844e0fdce0ef.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">df_test2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>446
+</pre></div>
+</div>
 </div>
 </div>
 </section>
@@ -1403,7 +1389,19 @@ Fraction of nan values in the DataFrame = 0.093.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/cd0f355d1b0b99db0bc0bdfc15b85d7c71f1e6e72bd6b0586bd0bdcc738b14c8.png" src="_images/cd0f355d1b0b99db0bc0bdfc15b85d7c71f1e6e72bd6b0586bd0bdcc738b14c8.png" />
+<img alt="_images/6e904196e523789d189747fe9c0cb28bbbbea4fe9ec01a2cd723c49619d032da.png" src="_images/6e904196e523789d189747fe9c0cb28bbbbea4fe9ec01a2cd723c49619d032da.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">df_listwise</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>298
+</pre></div>
+</div>
 </div>
 </div>
 </section>
@@ -1448,70 +1446,64 @@ Fraction of nan values in the DataFrame = 0.093.
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Well</th>
+      <th>X</th>
+      <th>Y</th>
+      <th>Facies</th>
       <th>Por</th>
       <th>Perm</th>
       <th>AI</th>
-      <th>Brittle</th>
-      <th>TOC</th>
-      <th>VR</th>
       <th>Imputed</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>1.0</td>
-      <td>12.08</td>
-      <td>2.92</td>
-      <td>2.80</td>
-      <td>81.40</td>
-      <td>1.16</td>
-      <td>2.31</td>
+      <td>502.929859</td>
+      <td>9008.972357</td>
+      <td>1</td>
+      <td>22.076146</td>
+      <td>140.021266</td>
+      <td>3.413064</td>
       <td>False</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2.0</td>
-      <td>12.38</td>
-      <td>3.53</td>
+      <td>508.696361</td>
+      <td>8505.744515</td>
+      <td>1</td>
+      <td>23.715447</td>
       <td>NaN</td>
-      <td>46.17</td>
-      <td>0.89</td>
-      <td>1.88</td>
+      <td>3.074563</td>
       <td>True</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>NaN</td>
-      <td>14.02</td>
-      <td>2.59</td>
-      <td>4.01</td>
-      <td>72.80</td>
-      <td>0.89</td>
-      <td>2.72</td>
-      <td>True</td>
+      <td>503.892888</td>
+      <td>8003.429847</td>
+      <td>1</td>
+      <td>23.435152</td>
+      <td>84.992437</td>
+      <td>2.292783</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>4.0</td>
-      <td>17.67</td>
-      <td>6.75</td>
-      <td>2.63</td>
-      <td>39.81</td>
-      <td>1.08</td>
-      <td>1.88</td>
+      <td>508.230145</td>
+      <td>7509.751406</td>
+      <td>1</td>
+      <td>24.455309</td>
+      <td>90.632307</td>
+      <td>2.494849</td>
       <td>False</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>5.0</td>
-      <td>17.52</td>
-      <td>4.57</td>
-      <td>3.18</td>
-      <td>10.94</td>
-      <td>1.51</td>
-      <td>1.90</td>
+      <td>500.611637</td>
+      <td>7000.684230</td>
+      <td>1</td>
+      <td>23.178662</td>
+      <td>811.547979</td>
+      <td>2.522064</td>
       <td>False</td>
     </tr>
   </tbody>
@@ -1557,75 +1549,69 @@ Fraction of nan values in the DataFrame = 0.093.
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Well</th>
+      <th>X</th>
+      <th>Y</th>
+      <th>Facies</th>
       <th>Por</th>
       <th>Perm</th>
       <th>AI</th>
-      <th>Brittle</th>
-      <th>TOC</th>
-      <th>VR</th>
       <th>Imputed</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>1.00</td>
-      <td>12.08</td>
-      <td>2.92</td>
-      <td>2.80</td>
-      <td>81.40</td>
-      <td>1.16</td>
-      <td>2.31</td>
+      <td>502.929859</td>
+      <td>9008.972357</td>
+      <td>1</td>
+      <td>22.076146</td>
+      <td>140.021266</td>
+      <td>3.413064</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2.00</td>
-      <td>12.38</td>
-      <td>3.53</td>
-      <td>0.01</td>
-      <td>46.17</td>
-      <td>0.89</td>
-      <td>1.88</td>
+      <td>508.696361</td>
+      <td>8505.744515</td>
+      <td>1</td>
+      <td>23.715447</td>
+      <td>0.010000</td>
+      <td>3.074563</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.01</td>
-      <td>14.02</td>
-      <td>2.59</td>
-      <td>4.01</td>
-      <td>72.80</td>
-      <td>0.89</td>
-      <td>2.72</td>
-      <td>1.0</td>
+      <td>503.892888</td>
+      <td>8003.429847</td>
+      <td>1</td>
+      <td>23.435152</td>
+      <td>84.992437</td>
+      <td>2.292783</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>4.00</td>
-      <td>17.67</td>
-      <td>6.75</td>
-      <td>2.63</td>
-      <td>39.81</td>
-      <td>1.08</td>
-      <td>1.88</td>
+      <td>508.230145</td>
+      <td>7509.751406</td>
+      <td>1</td>
+      <td>24.455309</td>
+      <td>90.632307</td>
+      <td>2.494849</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>5.00</td>
-      <td>17.52</td>
-      <td>4.57</td>
-      <td>3.18</td>
-      <td>10.94</td>
-      <td>1.51</td>
-      <td>1.90</td>
+      <td>500.611637</td>
+      <td>7000.684230</td>
+      <td>1</td>
+      <td>23.178662</td>
+      <td>811.547979</td>
+      <td>2.522064</td>
       <td>0.0</td>
     </tr>
   </tbody>
 </table>
-</div></div><img alt="_images/26d51c63231cad2ab6a81f7ea33532841237c36c4d2ed2eadd7cc2d187de5b42.png" src="_images/26d51c63231cad2ab6a81f7ea33532841237c36c4d2ed2eadd7cc2d187de5b42.png" />
+</div></div><img alt="_images/9dc5b8dc04fbbcda74c1ea22de5ac164f6a1f12c25e48cef39364f5c32b62832.png" src="_images/9dc5b8dc04fbbcda74c1ea22de5ac164f6a1f12c25e48cef39364f5c32b62832.png" />
 </div>
 </div>
 </section>
@@ -1671,75 +1657,69 @@ Fraction of nan values in the DataFrame = 0.093.
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Well</th>
+      <th>X</th>
+      <th>Y</th>
+      <th>Facies</th>
       <th>Por</th>
       <th>Perm</th>
       <th>AI</th>
-      <th>Brittle</th>
-      <th>TOC</th>
-      <th>VR</th>
       <th>Imputed</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>1.000000</td>
-      <td>12.08</td>
-      <td>2.92</td>
-      <td>2.80000</td>
-      <td>81.40</td>
-      <td>1.16</td>
-      <td>2.31</td>
+      <td>502.929859</td>
+      <td>9008.972357</td>
+      <td>1</td>
+      <td>22.076146</td>
+      <td>140.021266</td>
+      <td>3.413064</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2.000000</td>
-      <td>12.38</td>
-      <td>3.53</td>
-      <td>2.99163</td>
-      <td>46.17</td>
-      <td>0.89</td>
-      <td>1.88</td>
+      <td>508.696361</td>
+      <td>8505.744515</td>
+      <td>1</td>
+      <td>23.715447</td>
+      <td>536.754984</td>
+      <td>3.074563</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>102.653846</td>
-      <td>14.02</td>
-      <td>2.59</td>
-      <td>4.01000</td>
-      <td>72.80</td>
-      <td>0.89</td>
-      <td>2.72</td>
-      <td>1.0</td>
+      <td>503.892888</td>
+      <td>8003.429847</td>
+      <td>1</td>
+      <td>23.435152</td>
+      <td>84.992437</td>
+      <td>2.292783</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>4.000000</td>
-      <td>17.67</td>
-      <td>6.75</td>
-      <td>2.63000</td>
-      <td>39.81</td>
-      <td>1.08</td>
-      <td>1.88</td>
+      <td>508.230145</td>
+      <td>7509.751406</td>
+      <td>1</td>
+      <td>24.455309</td>
+      <td>90.632307</td>
+      <td>2.494849</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>5.000000</td>
-      <td>17.52</td>
-      <td>4.57</td>
-      <td>3.18000</td>
-      <td>10.94</td>
-      <td>1.51</td>
-      <td>1.90</td>
+      <td>500.611637</td>
+      <td>7000.684230</td>
+      <td>1</td>
+      <td>23.178662</td>
+      <td>811.547979</td>
+      <td>2.522064</td>
       <td>0.0</td>
     </tr>
   </tbody>
 </table>
-</div></div><img alt="_images/528e09249ebb432ddad9b71a908196dda11a47ea01b66b45c85c7f762352afbf.png" src="_images/528e09249ebb432ddad9b71a908196dda11a47ea01b66b45c85c7f762352afbf.png" />
+</div></div><img alt="_images/b79fcbc6252f3d8551888e77e1f899cbe109e71026d6301bea15006e570d2ef2.png" src="_images/b79fcbc6252f3d8551888e77e1f899cbe109e71026d6301bea15006e570d2ef2.png" />
 </div>
 </div>
 </section>
@@ -1781,75 +1761,69 @@ Fraction of nan values in the DataFrame = 0.093.
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Well</th>
+      <th>X</th>
+      <th>Y</th>
+      <th>Facies</th>
       <th>Por</th>
       <th>Perm</th>
       <th>AI</th>
-      <th>Brittle</th>
-      <th>TOC</th>
-      <th>VR</th>
       <th>Imputed</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>1.0</td>
-      <td>12.08</td>
-      <td>2.92</td>
-      <td>2.80</td>
-      <td>81.40</td>
-      <td>1.16</td>
-      <td>2.31</td>
+      <td>502.929859</td>
+      <td>9008.972357</td>
+      <td>1</td>
+      <td>22.076146</td>
+      <td>140.021266</td>
+      <td>3.413064</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2.0</td>
-      <td>12.38</td>
-      <td>3.53</td>
-      <td>2.45</td>
-      <td>46.17</td>
-      <td>0.89</td>
-      <td>1.88</td>
+      <td>508.696361</td>
+      <td>8505.744515</td>
+      <td>1</td>
+      <td>23.715447</td>
+      <td>0.347182</td>
+      <td>3.074563</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1.0</td>
-      <td>14.02</td>
-      <td>2.59</td>
-      <td>4.01</td>
-      <td>72.80</td>
-      <td>0.89</td>
-      <td>2.72</td>
-      <td>1.0</td>
+      <td>503.892888</td>
+      <td>8003.429847</td>
+      <td>1</td>
+      <td>23.435152</td>
+      <td>84.992437</td>
+      <td>2.292783</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>4.0</td>
-      <td>17.67</td>
-      <td>6.75</td>
-      <td>2.63</td>
-      <td>39.81</td>
-      <td>1.08</td>
-      <td>1.88</td>
+      <td>508.230145</td>
+      <td>7509.751406</td>
+      <td>1</td>
+      <td>24.455309</td>
+      <td>90.632307</td>
+      <td>2.494849</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>5.0</td>
-      <td>17.52</td>
-      <td>4.57</td>
-      <td>3.18</td>
-      <td>10.94</td>
-      <td>1.51</td>
-      <td>1.90</td>
+      <td>500.611637</td>
+      <td>7000.684230</td>
+      <td>1</td>
+      <td>23.178662</td>
+      <td>811.547979</td>
+      <td>2.522064</td>
       <td>0.0</td>
     </tr>
   </tbody>
 </table>
-</div></div><img alt="_images/5eaf7ed5b2d8fcf4a6bb53f0d7efe3463b5e18b51a7c7f09b044e579fb936aca.png" src="_images/5eaf7ed5b2d8fcf4a6bb53f0d7efe3463b5e18b51a7c7f09b044e579fb936aca.png" />
+</div></div><img alt="_images/985cdee55fcc24ab219f2dae613e13f225d297367dc6a53e1814e8f5174bea30.png" src="_images/985cdee55fcc24ab219f2dae613e13f225d297367dc6a53e1814e8f5174bea30.png" />
 </div>
 </div>
 </section>
@@ -1897,75 +1871,69 @@ Fraction of nan values in the DataFrame = 0.093.
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Well</th>
+      <th>X</th>
+      <th>Y</th>
+      <th>Facies</th>
       <th>Por</th>
       <th>Perm</th>
       <th>AI</th>
-      <th>Brittle</th>
-      <th>TOC</th>
-      <th>VR</th>
       <th>Imputed</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>1.0</td>
-      <td>12.08</td>
-      <td>2.92</td>
-      <td>2.80</td>
-      <td>81.40</td>
-      <td>1.16</td>
-      <td>2.31</td>
+      <td>502.929859</td>
+      <td>9008.972357</td>
+      <td>1</td>
+      <td>22.076146</td>
+      <td>140.021266</td>
+      <td>3.413064</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2.0</td>
-      <td>12.38</td>
-      <td>3.53</td>
-      <td>2.45</td>
-      <td>46.17</td>
-      <td>0.89</td>
-      <td>1.88</td>
+      <td>508.696361</td>
+      <td>8505.744515</td>
+      <td>1</td>
+      <td>23.715447</td>
+      <td>0.347182</td>
+      <td>3.074563</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1.0</td>
-      <td>14.02</td>
-      <td>2.59</td>
-      <td>4.01</td>
-      <td>72.80</td>
-      <td>0.89</td>
-      <td>2.72</td>
-      <td>1.0</td>
+      <td>503.892888</td>
+      <td>8003.429847</td>
+      <td>1</td>
+      <td>23.435152</td>
+      <td>84.992437</td>
+      <td>2.292783</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>4.0</td>
-      <td>17.67</td>
-      <td>6.75</td>
-      <td>2.63</td>
-      <td>39.81</td>
-      <td>1.08</td>
-      <td>1.88</td>
+      <td>508.230145</td>
+      <td>7509.751406</td>
+      <td>1</td>
+      <td>24.455309</td>
+      <td>90.632307</td>
+      <td>2.494849</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>5.0</td>
-      <td>17.52</td>
-      <td>4.57</td>
-      <td>3.18</td>
-      <td>10.94</td>
-      <td>1.51</td>
-      <td>1.90</td>
+      <td>500.611637</td>
+      <td>7000.684230</td>
+      <td>1</td>
+      <td>23.178662</td>
+      <td>811.547979</td>
+      <td>2.522064</td>
       <td>0.0</td>
     </tr>
   </tbody>
 </table>
-</div></div><img alt="_images/8f2542fc3c97e9623022bacaddaa28bf89c6d3f36b68ff0c6b0be81b5ade76b2.png" src="_images/8f2542fc3c97e9623022bacaddaa28bf89c6d3f36b68ff0c6b0be81b5ade76b2.png" />
+</div></div><img alt="_images/8c554fd635c411603cb905d426dc1c011391097be5671469f149f0edbc4b94c2.png" src="_images/8c554fd635c411603cb905d426dc1c011391097be5671469f149f0edbc4b94c2.png" />
 </div>
 </div>
 </section>
@@ -2014,75 +1982,69 @@ Fraction of nan values in the DataFrame = 0.093.
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Well</th>
+      <th>X</th>
+      <th>Y</th>
+      <th>Facies</th>
       <th>Por</th>
       <th>Perm</th>
       <th>AI</th>
-      <th>Brittle</th>
-      <th>TOC</th>
-      <th>VR</th>
       <th>Imputed</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>1.0</td>
-      <td>12.08</td>
-      <td>2.92</td>
-      <td>2.80</td>
-      <td>81.40</td>
-      <td>1.16</td>
-      <td>2.31</td>
+      <td>502.929859</td>
+      <td>9008.972357</td>
+      <td>1</td>
+      <td>22.076146</td>
+      <td>140.021266</td>
+      <td>3.413064</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2.0</td>
-      <td>12.38</td>
-      <td>3.53</td>
-      <td>2.45</td>
-      <td>46.17</td>
-      <td>0.89</td>
-      <td>1.88</td>
+      <td>508.696361</td>
+      <td>8505.744515</td>
+      <td>1</td>
+      <td>23.715447</td>
+      <td>0.347182</td>
+      <td>3.074563</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1.0</td>
-      <td>14.02</td>
-      <td>2.59</td>
-      <td>4.01</td>
-      <td>72.80</td>
-      <td>0.89</td>
-      <td>2.72</td>
-      <td>1.0</td>
+      <td>503.892888</td>
+      <td>8003.429847</td>
+      <td>1</td>
+      <td>23.435152</td>
+      <td>84.992437</td>
+      <td>2.292783</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>4.0</td>
-      <td>17.67</td>
-      <td>6.75</td>
-      <td>2.63</td>
-      <td>39.81</td>
-      <td>1.08</td>
-      <td>1.88</td>
+      <td>508.230145</td>
+      <td>7509.751406</td>
+      <td>1</td>
+      <td>24.455309</td>
+      <td>90.632307</td>
+      <td>2.494849</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>5.0</td>
-      <td>17.52</td>
-      <td>4.57</td>
-      <td>3.18</td>
-      <td>10.94</td>
-      <td>1.51</td>
-      <td>1.90</td>
+      <td>500.611637</td>
+      <td>7000.684230</td>
+      <td>1</td>
+      <td>23.178662</td>
+      <td>811.547979</td>
+      <td>2.522064</td>
       <td>0.0</td>
     </tr>
   </tbody>
 </table>
-</div></div><img alt="_images/d930c573190c546f174a877996c13fd81fc9cbda6474c27840ba3b35e15b348d.png" src="_images/d930c573190c546f174a877996c13fd81fc9cbda6474c27840ba3b35e15b348d.png" />
+</div></div><img alt="_images/e3dae974a10a40a22e98fa7d2cc122dd9f72f6c6dbdc6b0204d61299a635a59b.png" src="_images/e3dae974a10a40a22e98fa7d2cc122dd9f72f6c6dbdc6b0204d61299a635a59b.png" />
 </div>
 </div>
 </section>
@@ -2100,7 +2062,7 @@ Fraction of nan values in the DataFrame = 0.093.
     <span class="n">folder</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:\Local&#39;</span>
     <span class="n">file_name</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;dataframe_imputed.csv&#39;</span>
 
-    <span class="n">df_imputed</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">folder</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">df_imputed</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

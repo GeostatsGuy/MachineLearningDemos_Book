@@ -204,6 +204,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_CNN.html">Convolutional Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_autoencoder.html">Autoencoder Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_time_series.html">Time Series Analysis and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_python.html">Python Code Snippets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary.html">Glossary</a></li>
@@ -1415,7 +1416,7 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 <p>Let’s repeat with the scikit-learn function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="mi">6</span>                                                         <span class="c1"># number categories / clusters </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="mi">2</span>                                                         <span class="c1"># number categories / clusters </span>
 
 <span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">K</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">n_init</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,[</span><span class="s1">&#39;Norm_Porosity&#39;</span><span class="p">,</span><span class="s1">&#39;Norm_AI&#39;</span><span class="p">]])</span> <span class="c1"># k-means clustering</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;kMeans&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">labels_</span> <span class="o">+</span> <span class="mi">1</span>
@@ -1430,7 +1431,7 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7ea79aef005dd9f3a663f25bfae1eae02c6acda91f6ec68ada8425a37a5afdbf.png" src="_images/7ea79aef005dd9f3a663f25bfae1eae02c6acda91f6ec68ada8425a37a5afdbf.png" />
+<img alt="_images/e78be07d00c4ccada7b5914d3f073c3fe4155b63472a216aea3ceef74e3769d4.png" src="_images/e78be07d00c4ccada7b5914d3f073c3fe4155b63472a216aea3ceef74e3769d4.png" />
 </div>
 </div>
 </section>

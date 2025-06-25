@@ -204,6 +204,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_CNN.html">Convolutional Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_autoencoder.html">Autoencoder Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_time_series.html">Time Series Analysis and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_python.html">Python Code Snippets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary.html">Glossary</a></li>
@@ -1540,7 +1541,7 @@ Response Feature: [[&#39;Prod&#39;]]
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_neighbours</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">weights</span> <span class="o">=</span> <span class="s1">&#39;distance&#39;</span>                 <span class="c1"># model hyperparameters</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_neighbours</span> <span class="o">=</span> <span class="mi">150</span><span class="p">;</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">weights</span> <span class="o">=</span> <span class="s1">&#39;uniform&#39;</span>                 <span class="c1"># model hyperparameters</span>
 <span class="n">neigh</span> <span class="o">=</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">weights</span> <span class="o">=</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="n">n_neighbours</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="p">)</span> <span class="c1"># instantiate the prediction model</span>
 </pre></div>
 </div>
@@ -1581,7 +1582,7 @@ Response Feature: [[&#39;Prod&#39;]]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3cc5f468cb9d41b233cdc585d18ef36a2726678977fd09599221d7805d18c92d.png" src="_images/3cc5f468cb9d41b233cdc585d18ef36a2726678977fd09599221d7805d18c92d.png" />
+<img alt="_images/dd9cfeb47657661a2423dad215c8b8dd2eac3b9b797de000dfff181328be6aff.png" src="_images/dd9cfeb47657661a2423dad215c8b8dd2eac3b9b797de000dfff181328be6aff.png" />
 </div>
 </div>
 <p>The model looks good:</p>
@@ -1594,7 +1595,7 @@ Response Feature: [[&#39;Prod&#39;]]
 <p>Let’s try to overfit the model by using a very large k hyperparameter.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_neighbours</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">weights</span> <span class="o">=</span> <span class="s1">&#39;uniform&#39;</span>                <span class="c1"># model hyperparameters</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_neighbours</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">weights</span> <span class="o">=</span> <span class="s1">&#39;uniform&#39;</span>                <span class="c1"># model hyperparameters</span>
 <span class="n">neigh</span> <span class="o">=</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">weights</span> <span class="o">=</span> <span class="n">weights</span><span class="p">,</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">n_neighbours</span><span class="p">,</span><span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="p">)</span> <span class="c1"># instantiate the prediction model</span>
 
 <span class="n">neigh_fit</span> <span class="o">=</span> <span class="n">neigh</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>                        <span class="c1"># train the model with the training data</span>
@@ -1620,7 +1621,7 @@ Response Feature: [[&#39;Prod&#39;]]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/36151afeb7ee7ec97d8f9695513890616f1d619cbc81c9e9a734492d90c1e86f.png" src="_images/36151afeb7ee7ec97d8f9695513890616f1d619cbc81c9e9a734492d90c1e86f.png" />
+<img alt="_images/d086186b363fc6f141a05f399838bcfb908de59fb18e692b839b79980263970e.png" src="_images/d086186b363fc6f141a05f399838bcfb908de59fb18e692b839b79980263970e.png" />
 </div>
 </div>
 <p>Note that this smoothed out the response, and the predictions are approaching the global mean.</p>
