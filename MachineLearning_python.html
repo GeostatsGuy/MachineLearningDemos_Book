@@ -63,6 +63,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'MachineLearning_python';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -408,19 +410,21 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-a-couple-datasets">Load a Couple Datasets</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-some-basic-operations">Complete Some Basic Operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beta-beta-coefficients">Beta, <span class="math notranslate nohighlight">\(\beta\)</span>, Coefficients</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-pearson-product-momment">Correlation (Pearson product momment)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-spearman-rank">Correlation (Spearman rank)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation-plot-training-and-testing">Cross Validation Plot (training and testing)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation-plot-testing">Cross Validation Plot (testing)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation-plot-training">Cross Validation Plot (training)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe-add-noise-to-a-feature">DataFrame (add noise to a feature)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe-make-new">DataFrame (make new)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe-add-a-new-feature-column">DataFrame (add a new feature/column)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe-make-new">DataFrame (make new)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe-preview">DataFrame (preview)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe-rename-a-feature-column">DataFrame (rename a feature/column)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe-remove-features-columns">DataFrame (remove features/columns)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe-remove-samples-rows">DataFrame (remove samples/rows)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe-remove-samples-rows-by-condition">DataFrame (remove samples/rows by condition)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-feature-importance">Decision Tree (feature importance)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-prediction-at-testing-data">Decision Tree (prediction at testing data)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-prediction-at-training-data">Decision Tree (prediction at training data)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-train">Decision Tree (train)</a></li>
@@ -433,6 +437,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram">Histogram</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-normalized">Histogram (normalized)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-plot">Image Plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-plot-combined-with-location-map">Image Plot (combined with location map)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbours-feature-imputation">K-Nearest Neighbours (feature imputation)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbours-prediction-at-testing-data">K-Nearest Neighbours (prediction at testing data)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbours-prediction-at-training-data">K-Nearest Neighbours (prediction at training data)</a></li>
@@ -444,6 +449,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression-model-prediction-train">Linear Regression Model (prediction train)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression-model-train">Linear Regression Model (train)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listwise-deletion">Listwise Deletion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#location-map">Location Map</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-imputation">Mean (imputation)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-and-maximum-dataframe">Minimum and Maximum (dataframe)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-and-maximum-ndarray">Minimum and Maximum (ndarray)</a></li>
@@ -457,8 +463,12 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mutual-information">Mutual Information</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mutual-information-normalized">Mutual Information (normalized)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalize-predictor-features">Normalize Predictor Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-retrain-tuned-model">Random Forest (retrain tuned model)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-train">Random Forest (train)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-tune">Random Forest (tune)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot">Scatter Plot</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standardize-predictor-features">Standardize Predictor Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shapley-values-feature-ranking">Shapley Values (feature ranking)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-statistics-dataframe">Summary Statistics (DataFrame)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train-and-test-split">Train and Test Split</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-inflation-factor">Variance Inflation Factor</a></li>
@@ -554,17 +564,25 @@ document.write(`
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>                <span class="c1"># min and max normalization</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">KBinsDiscretizer</span>            <span class="c1"># k-bin discretizer</span>
 <span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsRegressor</span>             <span class="c1"># K-nearest neighbours</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span>            <span class="c1"># random forest method</span>
 <span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">mutual_info_regression</span>  <span class="c1"># mutual information</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_absolute_error</span>               <span class="c1"># mean absolute error</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">normalized_mutual_info_score</span>      <span class="c1"># normalized mutual information</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>                                      <span class="c1"># decision tree</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>                <span class="c1"># regression tree</span>
 <span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">plot_tree</span>                            <span class="c1"># plot the decision tree</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>                                   <span class="c1"># measures to check our models</span>
+<span class="kn">import</span> <span class="nn">shap</span>                                                   <span class="c1"># Shapley values for feature ranking</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">axisbelow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                                <span class="c1"># set axes and grids in the background for all plots</span>
 <span class="kn">import</span> <span class="nn">math</span>                                                  
 <span class="n">seed</span> <span class="o">=</span> <span class="mi">13</span>
 <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">inferno</span>                                         <span class="c1"># a good colormap for folks with color perception issues</span>
 <span class="n">utcolor</span> <span class="o">=</span> <span class="s1">&#39;#BF5700&#39;</span>                                           <span class="c1"># burnt orange, Hook&#39;em!</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
 </pre></div>
 </div>
 </div>
@@ -598,7 +616,8 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/unconv_MV_v4.csv&quot;</span><span class="p">)</span> <span class="c1"># load the data from my github repo</span>
 <span class="n">df_missing</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/unconv_MV_missing.csv&quot;</span><span class="p">)</span> 
-<span class="n">ndarray_2D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/spatial_nonlinear_MV_facies_v13_truth_AI.csv&quot;</span><span class="p">,</span> 
+<span class="n">df_spatial</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/12_sample_data.csv&quot;</span><span class="p">)</span> 
+<span class="n">ndarray_2D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/12_AI.csv&quot;</span><span class="p">,</span> 
                      <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="o">+</span><span class="mi">7</span><span class="p">)</span>                                     <span class="c1"># set random number seed for reproducibility</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Prod&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Prod&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="mf">600.0</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span> <span class="c1"># add noise to demonstrate overfit and hyperparameter tuning</span>
@@ -627,18 +646,38 @@ document.write(`
 </div>
 <p>OK, now we are ready to walk thorugh our alphabetically ordered code snippets.</p>
 </section>
+<section id="beta-beta-coefficients">
+<h2>Beta, <span class="math notranslate nohighlight">\(\beta\)</span>, Coefficients<a class="headerlink" href="#beta-beta-coefficients" title="Permalink to this heading">#</a></h2>
+<p>Feature importance based on the multilinear regression coefficients of the normalized features.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">normalizer</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>                                   <span class="c1"># instantiate the min/max normalizer</span>
+<span class="n">norm_array</span> <span class="o">=</span> <span class="n">normalizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>                      <span class="c1"># normalize the predictor features                 </span>
+<span class="n">X_norm</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">norm_array</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>          <span class="c1"># convert output to a DataFrame</span>
+<span class="n">beta_linear_model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_norm</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>   <span class="c1"># instantiate and train linear regression model, no hyperparmeters</span>
+<span class="n">beta_coef_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Feature&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">),</span><span class="s1">&#39;Beta Coefficient&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">linear_model</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">ravel</span><span class="p">()))})</span>
+<span class="n">beta_coef_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">utcolor</span><span class="p">,</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predictor Features&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Beta Coefficient (normalized)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Feature Ranking: Beta Coefficients&#39;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/0242c4c943789f3508ddcdf0f54466db0571605cbffc4694f303c5b6f867cfec.png" src="_images/0242c4c943789f3508ddcdf0f54466db0571605cbffc4694f303c5b6f867cfec.png" />
+</div>
+</div>
+</section>
 <section id="correlation-pearson-product-momment">
 <h2>Correlation (Pearson product momment)<a class="headerlink" href="#correlation-pearson-product-momment" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">correlations</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>         <span class="c1"># calculate correlation matrix and extract the pred. rows for the response column</span>
-<span class="n">correlations</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">utcolor</span><span class="p">,</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predictor Features&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Correlation Coefficient&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span> 
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">correlations</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">utcolor</span><span class="p">,</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predictor Features&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Correlation Coefficient&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Feature Ranking: Correlation Coefficients&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/03bd5e6f1e90a6de8957ca770a58b9456b3dd94babaf7f391cac2ad2442abd40.png" src="_images/03bd5e6f1e90a6de8957ca770a58b9456b3dd94babaf7f391cac2ad2442abd40.png" />
+<img alt="_images/01b6c1f90ba99386369f74ed5c07b22976da6c3ab67393586c8e9287e428c995.png" src="_images/01b6c1f90ba99386369f74ed5c07b22976da6c3ab67393586c8e9287e428c995.png" />
 </div>
 </div>
 </section>
@@ -646,14 +685,14 @@ document.write(`
 <h2>Correlation (Spearman rank)<a class="headerlink" href="#correlation-spearman-rank" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">correlations</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>         <span class="c1"># calculate Spearman correlation with same method as Pearson above</span>
-<span class="n">correlations</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">utcolor</span><span class="p">,</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predictor Features&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Correlation Coefficient&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span> 
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rank_correlations</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;spearman&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="c1"># calculate Spearman correlation with same method as Pearson above</span>
+<span class="n">rank_correlations</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">utcolor</span><span class="p">,</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predictor Features&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Rank Correlation Coefficient&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Feature Ranking: Rank Correlation Coefficients&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/03bd5e6f1e90a6de8957ca770a58b9456b3dd94babaf7f391cac2ad2442abd40.png" src="_images/03bd5e6f1e90a6de8957ca770a58b9456b3dd94babaf7f391cac2ad2442abd40.png" />
+<img alt="_images/793c62c2e433f3d5824617e6404b5a63fc9fa91f3ffb1a23e5f11b6aef582fd6.png" src="_images/793c62c2e433f3d5824617e6404b5a63fc9fa91f3ffb1a23e5f11b6aef582fd6.png" />
 </div>
 </div>
 </section>
@@ -663,13 +702,13 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span><span class="n">y_hat_train</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;Training Data&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># scatter plot</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_hat_test</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">utcolor</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;Testing Data&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Estimated&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Truth&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Cross Validation Plot&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Estimated Production (MCFPD)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Truth Production (MCFPD)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Cross Validation Plot&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">8000</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">8000</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8000</span><span class="p">,);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8000</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">();</span> 
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/bdd4d8bcc7cbbe171b08ff6da5ca33e39c214c2b8009cd2311fc185773070f67.png" src="_images/bdd4d8bcc7cbbe171b08ff6da5ca33e39c214c2b8009cd2311fc185773070f67.png" />
+<img alt="_images/9dd5b2ef7db8189250200c8fda4684707fd265c686f3d344fd988859b056f10c.png" src="_images/9dd5b2ef7db8189250200c8fda4684707fd265c686f3d344fd988859b056f10c.png" />
 </div>
 </div>
 </section>
@@ -678,13 +717,13 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_hat_test</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">utcolor</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;Testing Data&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># scatter plot</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Estimated&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Truth&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Cross Validation Plot&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Estimated Production (MCFPD)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Truth Production (MCFPD)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Cross Validation Plot&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">8000</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">8000</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8000</span><span class="p">,);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8000</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/602e65aed2db653f6c1badf82f77f284af9d1b94949147b3d56e3746928447cd.png" src="_images/602e65aed2db653f6c1badf82f77f284af9d1b94949147b3d56e3746928447cd.png" />
+<img alt="_images/46b7748af289cbd304af34994fe959c5a2f18d75bc1f14f21555bf54972513bf.png" src="_images/46b7748af289cbd304af34994fe959c5a2f18d75bc1f14f21555bf54972513bf.png" />
 </div>
 </div>
 </section>
@@ -693,13 +732,13 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span><span class="n">y_hat_train</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">utcolor</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;Training Data&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># scatter plot</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Estimated&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Truth&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Cross Validation Plot&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Estimated Production (MCFPD)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Truth Production (MCFPD)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Cross Validation Plot&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">8000</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">8000</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8000</span><span class="p">,);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8000</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">();</span> 
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/476f4ffa237fd25ebca27fb37613867686d3b42ddc6d916344be16fb9cef9409.png" src="_images/476f4ffa237fd25ebca27fb37613867686d3b42ddc6d916344be16fb9cef9409.png" />
+<img alt="_images/e9004125ee8191a22a71ca31d0c303276bc944bdac42e6a5baa00e5f1de1320d.png" src="_images/e9004125ee8191a22a71ca31d0c303276bc944bdac42e6a5baa00e5f1de1320d.png" />
 </div>
 </div>
 </section>
@@ -799,69 +838,6 @@ document.write(`
       <td>1.51</td>
       <td>1.90</td>
       <td>2343.080242</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-</section>
-<section id="dataframe-make-new">
-<h2>DataFrame (make new)<a class="headerlink" href="#dataframe-make-new" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_new</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Ones&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">100</span><span class="p">)),</span><span class="s1">&#39;Zeros&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">100</span><span class="p">))})</span> <span class="c1"># make new DataFrame</span>
-<span class="n">df_new</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Ones</th>
-      <th>Zeros</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>1.0</td>
-      <td>0.0</td>
     </tr>
   </tbody>
 </table>
@@ -968,6 +944,69 @@ document.write(`
       <td>1.90</td>
       <td>2208.570072</td>
       <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="dataframe-make-new">
+<h2>DataFrame (make new)<a class="headerlink" href="#dataframe-make-new" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_new</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Ones&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">100</span><span class="p">)),</span><span class="s1">&#39;Zeros&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">100</span><span class="p">))})</span> <span class="c1"># make new DataFrame</span>
+<span class="n">df_new</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Ones</th>
+      <th>Zeros</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1.0</td>
+      <td>0.0</td>
     </tr>
   </tbody>
 </table>
@@ -1543,6 +1582,24 @@ document.write(`
 </div></div></div>
 </div>
 </section>
+<section id="decision-tree-feature-importance">
+<h2>Decision Tree (feature importance)<a class="headerlink" href="#decision-tree-feature-importance" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">leaf_node</span> <span class="o">=</span> <span class="mi">5</span>                                                 <span class="c1"># decision tree model hyperparameters</span>
+<span class="n">tree_model</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_leaf_nodes</span><span class="o">=</span><span class="n">leaf_node</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span> <span class="c1"># instantiate the prediction model</span>
+
+<span class="n">beta_coef_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Feature&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">),</span><span class="s1">&#39;Tree-based Feature Importance&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">tree_model</span><span class="o">.</span><span class="n">feature_importances_</span><span class="o">.</span><span class="n">ravel</span><span class="p">())})</span>
+<span class="n">beta_coef_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">utcolor</span><span class="p">,</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predictor Features&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Feature Importance&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Feature Ranking: Decision Tree Feature Importance&#39;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/498e717d8cd4f6a6f673071a88cbd7a4b3370249d7bdd3b4c0506fede88353ca.png" src="_images/498e717d8cd4f6a6f673071a88cbd7a4b3370249d7bdd3b4c0506fede88353ca.png" />
+</div>
+</div>
+</section>
 <section id="decision-tree-prediction-at-testing-data">
 <h2>Decision Tree (prediction at testing data)<a class="headerlink" href="#decision-tree-prediction-at-testing-data" title="Permalink to this heading">#</a></h2>
 <p>Apply our model to predict at withheld testing data.</p>
@@ -1748,13 +1805,13 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">leaf_node_list</span><span class="p">,</span><span class="n">MSE_tree_list</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">utcolor</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span> <span class="c1"># plot testing MSE vs. hyperparameter</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">tuned_leaf_nodes</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span> 
 <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Tuned Leaf Nodes = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">tuned_leaf_nodes</span><span class="p">),[</span><span class="n">tuned_leaf_nodes</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.8e6</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">rotation</span><span class="o">=</span> <span class="mi">90</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Tree: Testing Error vs. Number of Leaf Nodes&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of Leaf Nodes&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Testing Mean Square Error&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Tree: Withheld Testing Error vs. Number of Leaf Nodes&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of Leaf Nodes&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Test Mean Square Error&#39;</span><span class="p">)</span>
 <span class="n">add_grid</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4b8e60b8f13e3f26b71ad6cb6f3b3d1008296ea4a63875c64cf14d6a1d0775f3.png" src="_images/4b8e60b8f13e3f26b71ad6cb6f3b3d1008296ea4a63875c64cf14d6a1d0775f3.png" />
+<img alt="_images/b60aa2eac0a1291d28f8028ee5949559b2cb770db7315a469587f57d0769aaa3.png" src="_images/b60aa2eac0a1291d28f8028ee5949559b2cb770db7315a469587f57d0769aaa3.png" />
 </div>
 </div>
 </section>
@@ -1990,12 +2047,12 @@ Response feature: Prod
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Por&#39;</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Porosity (%)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span> <span class="c1"># histogram</span>
-<span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Porosity Distribution&#39;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a8af2a25400f3ad414fbe2084f2fdbf29a1cd1cc72fcc5db3107da0f1a746804.png" src="_images/a8af2a25400f3ad414fbe2084f2fdbf29a1cd1cc72fcc5db3107da0f1a746804.png" />
+<img alt="_images/0ff41b2a04299239a5787ea06ee741abd39a85b84705e042e481757fa761783f.png" src="_images/0ff41b2a04299239a5787ea06ee741abd39a85b84705e042e481757fa761783f.png" />
 </div>
 </div>
 </section>
@@ -2005,12 +2062,12 @@ Response feature: Prod
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Por&#39;</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">),</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> <span class="c1"># normalized histogram</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Porosity (%)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability&#39;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Porosity Distribution&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Porosity (%)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability&#39;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/bfab10420645d53f7aa89ed61233089b838ff81524eb7300347e06578ad3eb92.png" src="_images/bfab10420645d53f7aa89ed61233089b838ff81524eb7300347e06578ad3eb92.png" />
+<img alt="_images/418e0e90a2846168a380bc4e0ecbfdc630e06e4d53b06e01a518f9cf2dbe00a1.png" src="_images/418e0e90a2846168a380bc4e0ecbfdc630e06e4d53b06e01a518f9cf2dbe00a1.png" />
 </div>
 </div>
 </section>
@@ -2018,14 +2075,37 @@ Response feature: Prod
 <h2>Image Plot<a class="headerlink" href="#image-plot" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ndarray_2D</span><span class="p">,</span> <span class="n">origin</span> <span class="o">=</span> <span class="s1">&#39;lower&#39;</span><span class="p">,</span><span class="n">extent</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">],</span><span class="n">vmin</span><span class="o">=</span><span class="mi">2500</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">7500</span><span class="p">,</span><span class="n">cmap</span> <span class="o">=</span> <span class="n">cmap</span><span class="p">)</span> <span class="c1"># plot of 2D ndarray, image or map feature</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ndarray_2D</span><span class="p">,</span><span class="n">extent</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">10000</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10000</span><span class="p">],</span><span class="n">vmin</span><span class="o">=</span><span class="mi">1500</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">6500</span><span class="p">,</span><span class="n">cmap</span> <span class="o">=</span> <span class="n">cmap</span><span class="p">)</span> <span class="c1"># plot of 2D ndarray, image or map feature</span>
 <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s2">&quot;vertical&quot;</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">2500</span><span class="p">,</span> <span class="mi">7500</span><span class="p">,</span> <span class="mi">10</span><span class="p">));</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X (m)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y (m)&#39;</span><span class="p">)</span>
 <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Acoustic Impedence ($\frac</span><span class="si">{kg}</span><span class="s1">{m^3} \cdot \frac</span><span class="si">{m}{s}</span><span class="s1"> \cdot 10^3$)&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Acoustic Impedance&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/48f8f7861ed5e4f5c1dc06b959fc0eca57af16c71c9c96ad6a647f69c2815ce6.png" src="_images/48f8f7861ed5e4f5c1dc06b959fc0eca57af16c71c9c96ad6a647f69c2815ce6.png" />
+<img alt="_images/c86ec564386d943eec0c63d05909805d2ef77161ec97f54666f8f4014aa78cd5.png" src="_images/c86ec564386d943eec0c63d05909805d2ef77161ec97f54666f8f4014aa78cd5.png" />
+</div>
+</div>
+</section>
+<section id="image-plot-combined-with-location-map">
+<h2>Image Plot (combined with location map)<a class="headerlink" href="#image-plot-combined-with-location-map" title="Permalink to this heading">#</a></h2>
+<p>Superimpose multiple plots on top of each other,</p>
+<ul class="simple">
+<li><p>use ‘zorder’ to place object in front of other objects, higher number is in front</p></li>
+<li><p>make sure all objects are in the same plot space</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ndarray_2D</span><span class="p">,</span><span class="n">extent</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">10000</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10000</span><span class="p">],</span><span class="n">vmin</span><span class="o">=</span><span class="mi">1500</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">6500</span><span class="p">,</span><span class="n">cmap</span> <span class="o">=</span> <span class="n">cmap</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">zorder</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># plot of 2D ndarray, image or map feature</span>
+<span class="n">sc</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_spatial</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span><span class="n">df_spatial</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">df_spatial</span><span class="p">[</span><span class="s1">&#39;AI&#39;</span><span class="p">],</span><span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mi">1500</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">6500</span><span class="p">,</span><span class="n">cmap</span> <span class="o">=</span> <span class="n">cmap</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s2">&quot;vertical&quot;</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">2500</span><span class="p">,</span> <span class="mi">7500</span><span class="p">,</span> <span class="mi">10</span><span class="p">));</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X (m)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y (m)&#39;</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Acoustic Impedence ($\frac</span><span class="si">{kg}</span><span class="s1">{m^3} \cdot \frac</span><span class="si">{m}{s}</span><span class="s1"> \cdot 10^3$)&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Acoustic Impedance Image and Samples at Wells&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e209044ada9e1ec85d74ec9b44724049f126863a34e47f23e678d71f469c2e3d.png" src="_images/e209044ada9e1ec85d74ec9b44724049f126863a34e47f23e678d71f469c2e3d.png" />
 </div>
 </div>
 </section>
@@ -2786,6 +2866,24 @@ Response feature: Prod
 </div></div></div>
 </div>
 </section>
+<section id="location-map">
+<h2>Location Map<a class="headerlink" href="#location-map" title="Permalink to this heading">#</a></h2>
+<p>For plotting sparsely sampled features with X and Y sample locations to inspect the spatial structures.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xmin</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">xmax</span><span class="o">=</span><span class="mi">10000</span><span class="p">;</span> <span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">ymax</span><span class="o">=</span><span class="mi">10000</span><span class="p">;</span> <span class="n">vmin</span><span class="o">=</span><span class="mf">0.1</span><span class="p">;</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.27</span>   <span class="c1"># set plot limits and feature limits</span>
+<span class="n">sc</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_spatial</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span><span class="n">df_spatial</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">df_spatial</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">],</span><span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span><span class="n">cmap</span> <span class="o">=</span> <span class="n">cmap</span><span class="p">)</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s2">&quot;vertical&quot;</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">vmin</span><span class="p">,</span><span class="n">vmax</span><span class="p">,</span><span class="mi">10</span><span class="p">));</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X (m)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y (m)&#39;</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Porosity (fraction)&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10000</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10000</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Location Map: Porosity&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a7838f0acb4fea58f25cb89ea2238304b6fc709f5438bc9fdbc9d89c96544a0e.png" src="_images/a7838f0acb4fea58f25cb89ea2238304b6fc709f5438bc9fdbc9d89c96544a0e.png" />
+</div>
+</div>
+</section>
 <section id="mean-imputation">
 <h2>Mean (imputation)<a class="headerlink" href="#mean-imputation" title="Permalink to this heading">#</a></h2>
 <p>A very simple approach for feature imputation, replace the missing values with the mean of the feature,</p>
@@ -2954,10 +3052,10 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2D ndarray Minimum:
-2524.3764903966144
+1516.949331702811
 
 2D ndarray Maximum:
-7852.92310081411
+6735.039007281679
 </pre></div>
 </div>
 </div>
@@ -3020,7 +3118,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Training MAE: 687.6450771907463
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Training MAE: 679.7220485741077
 </pre></div>
 </div>
 </div>
@@ -3052,7 +3150,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Training MSE: 725519.4904639189
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Training MSE: 731861.1594257785
 </pre></div>
 </div>
 </div>
@@ -3227,16 +3325,16 @@ dtype: float64
 </table>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mi</span> <span class="o">=</span> <span class="n">mutual_info_regression</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># calculuate mutual information</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mi</span> <span class="o">=</span> <span class="n">mutual_info_regression</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># calculuate mutual information</span>
 <span class="n">mi_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">mi</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>                    <span class="c1"># convert ndarray to pandas series (column of a DataFrame) for ease of plotting</span>
 <span class="n">mi_series</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">utcolor</span><span class="p">,</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">);</span> 
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predictor Features&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Mutual Information&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predictor Features&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Mutual Information&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.5</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Feature Ranking: Mutual Information&#39;</span><span class="p">)</span>
 <span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/17eefa9c08f355a25eccfd8d620adc67218aeb0a4a89aa76a569c93769d76066.png" src="_images/17eefa9c08f355a25eccfd8d620adc67218aeb0a4a89aa76a569c93769d76066.png" />
+<img alt="_images/644b6fbdbf03216167f1baad977206f250ff2b88264e2e989d89465218f4edd7.png" src="_images/644b6fbdbf03216167f1baad977206f250ff2b88264e2e989d89465218f4edd7.png" />
 </div>
 </div>
 </section>
@@ -3283,6 +3381,7 @@ dtype: float64
     <span class="n">nmi_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nmi</span><span class="p">)</span>
 <span class="n">nmi_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">nmi_scores</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
 <span class="n">nmi_series</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">utcolor</span><span class="p">,</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predictor Features&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Normalized Mutual Information&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Feature Ranking: Normalized Mutual Information&#39;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">yvalue</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.2</span><span class="p">):</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">yvalue</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>      <span class="c1"># add interpretation lines</span>
 <span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -3290,7 +3389,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/be9b133f51d6e1355d15e928694a32e187e9bfd152e256f6337bb44c0dcb992a.png" src="_images/be9b133f51d6e1355d15e928694a32e187e9bfd152e256f6337bb44c0dcb992a.png" />
+<img alt="_images/0e31eacf7d15566196b691c4dfa7fef7850043fa2b7a438b1ff8cc6a68987be8.png" src="_images/0e31eacf7d15566196b691c4dfa7fef7850043fa2b7a438b1ff8cc6a68987be8.png" />
 </div>
 </div>
 </section>
@@ -3415,17 +3514,101 @@ dtype: float64
 </div></div></div>
 </div>
 </section>
+<section id="random-forest-retrain-tuned-model">
+<h2>Random Forest (retrain tuned model)<a class="headerlink" href="#random-forest-retrain-tuned-model" title="Permalink to this heading">#</a></h2>
+<p>Apply tuned hyperparameters and retrain the model.</p>
+<ul class="simple">
+<li><p>this is the model that we will use for future predictions, real-world use</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_leaf_node_tuned</span> <span class="o">=</span> <span class="mi">40</span><span class="p">;</span> <span class="n">num_tree</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="n">max_features</span> <span class="o">=</span> <span class="mi">2</span>                <span class="c1"># random forest model hyperparameters</span>
+<span class="n">random_forest</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">max_leaf_nodes</span><span class="o">=</span><span class="n">max_leaf_node_tuned</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span><span class="n">n_estimators</span><span class="o">=</span><span class="n">num_tree</span><span class="p">,</span><span class="n">max_features</span><span class="o">=</span><span class="n">max_features</span><span class="p">,</span>
+                                       <span class="n">oob_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">bootstrap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">random_forest</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+<span class="n">y_rf_hat</span> <span class="o">=</span> <span class="n">random_forest</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>                      <span class="c1"># predict over the testing cases</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">y_rf_hat</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;All Data&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># scatter plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Estimated&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Truth&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Tuned Random Forest: Cross Validation Plot&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">8000</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">8000</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8000</span><span class="p">,);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8000</span><span class="p">)</span> 
+<span class="n">add_grid</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e9fcd5f031e201181841d77931510c34d15f80eaae16df3fb6f993b0b29e18d1.png" src="_images/e9fcd5f031e201181841d77931510c34d15f80eaae16df3fb6f993b0b29e18d1.png" />
+</div>
+</div>
+</section>
+<section id="random-forest-train">
+<h2>Random Forest (train)<a class="headerlink" href="#random-forest-train" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_leaf_node</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="n">num_tree</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="n">max_features</span> <span class="o">=</span> <span class="mi">2</span>                <span class="c1"># random forest model hyperparameters</span>
+<span class="n">random_forest</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">max_leaf_nodes</span><span class="o">=</span><span class="n">max_leaf_node</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span><span class="n">n_estimators</span><span class="o">=</span><span class="n">num_tree</span><span class="p">,</span><span class="n">max_features</span><span class="o">=</span><span class="n">max_features</span><span class="p">,</span>
+                                       <span class="n">oob_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">bootstrap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">random_forest</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+<span class="n">y_rf_hat</span> <span class="o">=</span> <span class="n">random_forest</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>                      <span class="c1"># predict over the testing cases</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">y_rf_hat</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;All Data&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># scatter plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Estimated&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Truth&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Random Forest: Cross Validation Plot&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">8000</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">8000</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8000</span><span class="p">,);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8000</span><span class="p">)</span> 
+<span class="n">add_grid</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d4f91ebd10926c4f96b51e807a79e5bae0107950b77cdbfce9b17f8a524c1300.png" src="_images/d4f91ebd10926c4f96b51e807a79e5bae0107950b77cdbfce9b17f8a524c1300.png" />
+</div>
+</div>
+</section>
+<section id="random-forest-tune">
+<h2>Random Forest (tune)<a class="headerlink" href="#random-forest-tune" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_leaf_node_mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>                        <span class="c1"># set the random forest hyperparameters</span>
+<span class="n">max_features</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">trained_forests</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">MSE_oob_list</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">node_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">index</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">max_leaf_node</span> <span class="ow">in</span> <span class="n">max_leaf_node_mat</span><span class="p">:</span>                       <span class="c1"># loop over number of trees in our random forest</span>
+    <span class="n">trained_forest</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">max_leaf_nodes</span><span class="o">=</span><span class="n">max_leaf_node</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span><span class="n">n_estimators</span><span class="o">=</span><span class="n">num_tree</span><span class="p">,</span>
+            <span class="n">oob_score</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span><span class="n">bootstrap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">max_features</span><span class="o">=</span><span class="n">max_features</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+    <span class="n">trained_forests</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">trained_forest</span><span class="p">)</span>
+    <span class="n">oob_y_hat</span> <span class="o">=</span> <span class="n">trained_forest</span><span class="o">.</span><span class="n">oob_prediction_</span>
+    <span class="n">oob_y</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">oob_y_hat</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">];</span> <span class="n">oob_y_hat</span> <span class="o">=</span> <span class="n">oob_y_hat</span><span class="p">[</span><span class="n">oob_y_hat</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">];</span> <span class="c1"># remove if not estimated</span>
+    <span class="n">MSE_oob_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">oob_y</span><span class="p">,</span><span class="n">oob_y_hat</span><span class="p">));</span> <span class="n">node_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">max_leaf_node</span><span class="p">)</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="n">tuned_node</span> <span class="o">=</span> <span class="n">node_list</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">MSE_oob_list</span><span class="p">)]</span>               <span class="c1"># get the k that minimizes the testing MSE</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">node_list</span><span class="p">,</span><span class="n">MSE_oob_list</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">node_list</span><span class="p">,</span><span class="n">MSE_oob_list</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">tuned_node</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Tuned Max Leaf Nodes = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">tuned_node</span><span class="p">),[</span><span class="n">tuned_node</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.2e6</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">rotation</span><span class="o">=</span> <span class="mi">90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of Leaf Nodes&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Mean Square Error&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Out-of-Bag Mean Square Error vs Maximum Number of Leaf Nodes&#39;</span><span class="p">)</span>
+<span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a4378ef7e741036b57b87da2bfebdaca422f740e5e57a7c80830378ffb2a97e5.png" src="_images/a4378ef7e741036b57b87da2bfebdaca422f740e5e57a7c80830378ffb2a97e5.png" />
+</div>
+</div>
+</section>
 <section id="scatter-plot">
 <h2>Scatter Plot<a class="headerlink" href="#scatter-plot" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;Por&#39;</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="s1">&#39;Prod&#39;</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Porosity (%)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Permeability (mD)&#39;</span><span class="p">)</span>
-<span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span> 
+<span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Permeability vs. Porosity&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span> 
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b959e9f2828243b498fb44dd88322c4c1724857beff9b0e03eed6286a79e6c55.png" src="_images/b959e9f2828243b498fb44dd88322c4c1724857beff9b0e03eed6286a79e6c55.png" />
+<img alt="_images/4aeafcadb98fdfb83173ccc394603ab43273c3b50a994399068a5faebea04ac0.png" src="_images/4aeafcadb98fdfb83173ccc394603ab43273c3b50a994399068a5faebea04ac0.png" />
 </div>
 </div>
 </section>
@@ -3548,6 +3731,26 @@ dtype: float64
   </tbody>
 </table>
 </div></div></div>
+</div>
+</section>
+<section id="shapley-values-feature-ranking">
+<h2>Shapley Values (feature ranking)<a class="headerlink" href="#shapley-values-feature-ranking" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_leaf_nodes</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">tree_shap_model</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_leaf_nodes</span> <span class="o">=</span> <span class="n">max_leaf_nodes</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">Explainer</span><span class="p">(</span><span class="n">tree_shap_model</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>                          <span class="c1"># Explain the model with SHAP</span>
+<span class="n">shap_values</span> <span class="o">=</span> <span class="n">explainer</span><span class="o">.</span><span class="n">shap_values</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">shap_avg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">shap_values</span><span class="p">),</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">shap_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Feature&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">),</span><span class="s1">&#39;Shapley Values&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">shap_avg</span><span class="p">)});</span> <span class="n">shap_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Feature&#39;</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">shap_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">utcolor</span><span class="p">,</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predictor Features&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Shapley Values (average, absolute)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Feature Ranking: Global Shapley Values&#39;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b3537b09e57d634463cb4d12485c10ea473a4bdc2f13c5a57bff20c0c1ddcca9.png" src="_images/b3537b09e57d634463cb4d12485c10ea473a4bdc2f13c5a57bff20c0c1ddcca9.png" />
+</div>
 </div>
 </section>
 <section id="summary-statistics-dataframe">
@@ -3707,12 +3910,12 @@ dtype: float64
     <span class="n">index</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
 <span class="n">vif_data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">utcolor</span><span class="p">,</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predictor Features&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Variance Inflation Factor (unitless)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">);</span>
-<span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Feature Ranking: Variance Inflation Factor&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/63684ce171232fe7d7c92084cf52168dae0b2757615a21324b480f1851f5c3ab.png" src="_images/63684ce171232fe7d7c92084cf52168dae0b2757615a21324b480f1851f5c3ab.png" />
+<img alt="_images/e86fe7cffabcf6080b3ed4c7a671ff49b6e2b59355c6e39c654f7ab12292fe8b.png" src="_images/e86fe7cffabcf6080b3ed4c7a671ff49b6e2b59355c6e39c654f7ab12292fe8b.png" />
 </div>
 </div>
 </section>
@@ -3821,19 +4024,21 @@ dtype: float64
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-a-couple-datasets">Load a Couple Datasets</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-some-basic-operations">Complete Some Basic Operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beta-beta-coefficients">Beta, <span class="math notranslate nohighlight">\(\beta\)</span>, Coefficients</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-pearson-product-momment">Correlation (Pearson product momment)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-spearman-rank">Correlation (Spearman rank)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation-plot-training-and-testing">Cross Validation Plot (training and testing)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation-plot-testing">Cross Validation Plot (testing)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation-plot-training">Cross Validation Plot (training)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe-add-noise-to-a-feature">DataFrame (add noise to a feature)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe-make-new">DataFrame (make new)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe-add-a-new-feature-column">DataFrame (add a new feature/column)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe-make-new">DataFrame (make new)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe-preview">DataFrame (preview)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe-rename-a-feature-column">DataFrame (rename a feature/column)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe-remove-features-columns">DataFrame (remove features/columns)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe-remove-samples-rows">DataFrame (remove samples/rows)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe-remove-samples-rows-by-condition">DataFrame (remove samples/rows by condition)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-feature-importance">Decision Tree (feature importance)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-prediction-at-testing-data">Decision Tree (prediction at testing data)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-prediction-at-training-data">Decision Tree (prediction at training data)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-train">Decision Tree (train)</a></li>
@@ -3846,6 +4051,7 @@ dtype: float64
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram">Histogram</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-normalized">Histogram (normalized)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-plot">Image Plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-plot-combined-with-location-map">Image Plot (combined with location map)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbours-feature-imputation">K-Nearest Neighbours (feature imputation)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbours-prediction-at-testing-data">K-Nearest Neighbours (prediction at testing data)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbours-prediction-at-training-data">K-Nearest Neighbours (prediction at training data)</a></li>
@@ -3857,6 +4063,7 @@ dtype: float64
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression-model-prediction-train">Linear Regression Model (prediction train)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression-model-train">Linear Regression Model (train)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listwise-deletion">Listwise Deletion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#location-map">Location Map</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-imputation">Mean (imputation)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-and-maximum-dataframe">Minimum and Maximum (dataframe)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-and-maximum-ndarray">Minimum and Maximum (ndarray)</a></li>
@@ -3870,8 +4077,12 @@ dtype: float64
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mutual-information">Mutual Information</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mutual-information-normalized">Mutual Information (normalized)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalize-predictor-features">Normalize Predictor Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-retrain-tuned-model">Random Forest (retrain tuned model)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-train">Random Forest (train)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-tune">Random Forest (tune)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot">Scatter Plot</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standardize-predictor-features">Standardize Predictor Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shapley-values-feature-ranking">Shapley Values (feature ranking)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-statistics-dataframe">Summary Statistics (DataFrame)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train-and-test-split">Train and Test Split</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-inflation-factor">Variance Inflation Factor</a></li>
