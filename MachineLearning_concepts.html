@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
@@ -407,7 +408,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-for-machine-learning-concepts">Motivation for Machine Learning Concepts</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#big-data">Big Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics-geostatistics-and-data-analytics">Statistics, Geostatistics and Data Analytics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-science">Data Science</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scientific-paradigms-and-the-fourth-paradigm">Scientific Paradigms and the Fourth Paradigm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#foundations-and-enablers-of-the-fourth-scientific-paradigm">Foundations and Enablers of the Fourth Scientific Paradigm</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cheap-and-available-compute">Cheap and Available Compute</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#availability-of-big-data">Availability of Big Data</a></li>
 </ul>
@@ -417,18 +419,26 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-prerequisite-definitions">Machine Learning Prerequisite Definitions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#population">Population</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample">Sample</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-feature">Variable / Feature</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-or-feature">Variable or Feature</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predictor-and-response-features">Predictor and Response Features</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inference">Inference</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prediction">Prediction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inference-vs-prediction-in-machine-learning">Inference vs. Prediction in Machine Learning</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-and-tuning-machine-learning-models">Training and Tuning Machine Learning Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-and-tuning-predictive-machine-learning-models">Training and Tuning Predictive Machine Learning Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-questions-about-the-model-training-and-tuning-workflow">Common Questions About the Model Training and Tuning Workflow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parameters-and-model-hyperparameters">Model Parameters and Model Hyperparameters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-and-classification">Regression and Classification</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-of-predictive-machine-learning-testing-error">Sources of Predictive Machine Learning Testing Error</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#underfit-and-overfit-models">Underfit and Overfit Models</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-about-training-and-testing-splits">More About Training and Testing Splits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-about-training-and-testing-splits">More About Training and Testing Splits</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proportion-withheld-for-testing">Proportion Withheld for Testing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-cross-validation-methods">Other Cross Validation Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#train-validate-and-test-split">Train, Validate and Test Split</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-fair-train-and-test-splits">Spatial Fair Train and Test Splits</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ethical-and-professional-practice-concerns-with-data-science">Ethical and Professional Practice Concerns with Data Science</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
@@ -513,16 +523,16 @@ document.write(`
 <li><p><strong>Variability</strong>: data acquisition changes during the project</p></li>
 <li><p><strong>Veracity</strong>: data has various levels of accuracy</p></li>
 </ul>
-<p>In my experience, most subsurface engineers and geoscientists answer yes to all of these questions.</p>
+<p>In my experience, most subsurface engineers and geoscientists answer “yes” to all of these ‘v’ criteria.</p>
 <ul class="simple">
 <li><p>so I proudly say that we in the subsurface have been big data long before the tech sector learned about big data</p></li>
 </ul>
-<p>In fact, I state that we in the subsurface resource industries are the original data scientists.</p>
+<p>In fact, I often state that we in the subsurface resource industries are the original data scientists.</p>
 <ul class="simple">
 <li><p>I’m getting ahead of myself, more on this in a bit. Don’t worry if I get carried away in hubris, rest assured this e-book is written for anyone interested to learn about machine learning.</p></li>
 <li><p>you can skip the short sections on subsurface data science or read along if interested.</p></li>
 </ul>
-<p>Now that we know big data, let’s talk about the big topics.</p>
+<p>Now that we know big data, let’s talk about the big data related topics, statistics, geostatistics and data analytics.</p>
 </section>
 <section id="statistics-geostatistics-and-data-analytics">
 <h2>Statistics, Geostatistics and Data Analytics<a class="headerlink" href="#statistics-geostatistics-and-data-analytics" title="Permalink to this heading">#</a></h2>
@@ -534,6 +544,11 @@ document.write(`
 <li><p>drawing conclusions from data</p></li>
 <li><p>making decisions with data</p></li>
 </ol>
+<p>It is all about moving from data to decision.</p>
+<div class="remove-from-content-only admonition">
+<p class="admonition-title">The importance of decision making in statistics.</p>
+<p>If your work does not impact the decision, you do not add value!</p>
+</div>
 <p>If you look up the definition of data analytics, you will find criteria that include, statistical analysis, and data visualization to support decision making.</p>
 <ul class="simple">
 <li><p>I call it, data analytics and statistics are the same thing.</p></li>
@@ -561,242 +576,695 @@ document.write(`
   <figcaption style="text-align: center;">Venn diagram for statistics and geostatistics with big data added.</figcaption>
 </figure>
 </section>
-<section id="data-science">
-<h2>Data Science<a class="headerlink" href="#data-science" title="Permalink to this heading">#</a></h2>
-<p>If no one else has said this to you, let me have the honor of,</p>
+<section id="scientific-paradigms-and-the-fourth-paradigm">
+<h2>Scientific Paradigms and the Fourth Paradigm<a class="headerlink" href="#scientific-paradigms-and-the-fourth-paradigm" title="Permalink to this heading">#</a></h2>
+<p>If no one else has said this to you, let me have the honor of saying,</p>
+<div class="remove-from-content-only admonition">
+<p class="admonition-title">Welcome</p>
+<p>to the fourth paradigm of scientific discovery, data-driven scientific discovery or we can just call it data science.</p>
+</div>
+<p>The paradigms of scientific discovery are distinct approaches for humanity to apply science to expand human knowledge, discover and develop new technologies that impact society. These paradigms include,</p>
 <ul class="simple">
-<li><p>welcoming you to the fourth paradigm for scientific discovery, data-driven scientific discovery or just call it data science.</p></li>
-</ul>
-<p>The paradigms for scientific discovery are distinct stages or approaches for humanity to develop science.</p>
-<ul class="simple">
-<li><p>to understand the fourth paradigm let’s first consider the previous three paradigms</p></li>
+<li><p><strong>First Paradigm</strong> - logical reasoning with physical experiment and observation</p></li>
+<li><p><strong>Second Paradigm</strong> - theory-driven, where mathematical models and laws are used to explain and predict natural phenomena</p></li>
+<li><p><strong>Third Paradigm</strong> - computer-based numerical simulations and models to study complex systems that are too difficult or impossible to solve analytically or test experimentally</p></li>
+<li><p><strong>Fourth Paradigm</strong> - analysis of massive datasets with tools such as data analytics, machine learning, cloud computing and AI, patterns in the data guide insights.</p></li>
 </ul>
 <p>Here’s all of the four paradigms with dates for important developments with each,</p>
 <table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>1st Paradigm Empirical Science</p></th>
-<th class="head"><p>2nd Paradigm Theoretical Science</p></th>
-<th class="head"><p>3rd Paradigm Computational Science</p></th>
-<th class="head"><p>4th Paradigm Data Science</p></th>
+<tr class="row-odd"><th class="head text-left"><p>1st Paradigm Empirical Science</p></th>
+<th class="head text-left"><p>2nd Paradigm Theoretical Science</p></th>
+<th class="head text-left"><p>3rd Paradigm Computational Science</p></th>
+<th class="head text-left"><p>4th Paradigm Data Science</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Experiments</p></td>
-<td><p>Models and Laws</p></td>
-<td><p>Numerical Simulation</p></td>
-<td><p>Learning from Data</p></td>
+<tr class="row-even"><td class="text-left"><p>Logic and Experiments</p></td>
+<td class="text-left"><p>Theory and Models</p></td>
+<td class="text-left"><p>Numerical Simulation</p></td>
+<td class="text-left"><p>Learning from Data</p></td>
 </tr>
-<tr class="row-odd"><td><p>430 BC Empedocles proved air has substance</p></td>
-<td><p>1011 AD al-Haytham Book of Optics</p></td>
-<td><p>1942 Manhattan Project</p></td>
-<td><p>2009 Hey et al. Data-Intensive Book</p></td>
+<tr class="row-odd"><td class="text-left"><p><span class="math notranslate nohighlight">\(\approx\)</span> 600 BC Thales of Miletus predicted a solar ecplipse</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\approx\)</span> 300 BC Euclid - Elements</p></td>
+<td class="text-left"><p>1946 von Neumann weather simulation</p></td>
+<td class="text-left"><p>1990s Human Genome Project</p></td>
 </tr>
-<tr class="row-even"><td><p>230 BC Eratosthenes measure Earth’s diameter</p></td>
-<td><p>1687 AD Newton Principia</p></td>
-<td><p>1980 – Global Forecast System (GFS)</p></td>
-<td><p>2015 AlphaGo beats a professional Go player</p></td>
+<tr class="row-even"><td class="text-left"><p><span class="math notranslate nohighlight">\(\approx\)</span> 400 BC Hippocrates natural causes for diseases</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\approx\)</span> 150 AD Ptolemy planetary motion model</p></td>
+<td class="text-left"><p>1952 Fermi simulated nonlinear systems</p></td>
+<td class="text-left"><p>2008 Large Hadron Collider</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>430 BC Empedocles proved air has substance</p></td>
+<td class="text-left"><p>1011 AD al-Haytham Book of Optics</p></td>
+<td class="text-left"><p>1957 Lorenz demonstrates chaos</p></td>
+<td class="text-left"><p>2009 Hey et al. Data-Intensive Book</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>230 BC Eratosthenes measures Earth’s diameter</p></td>
+<td class="text-left"><p>1687 AD Newton Principia</p></td>
+<td class="text-left"><p>1980s Mandelbrot simulating fractals</p></td>
+<td class="text-left"><p>2015 AlphaGo beats a professional Go player</p></td>
 </tr>
 </tbody>
 </table>
-<p>Of course, we can argue about the boundaries between the paradigms for scientific discovery, i.e., when did a specific paradigm begin?</p>
+<p>Of course, we can argue about the boundaries between the paradigms for scientific discovery, i.e., when did a specific paradigm begin? For example, consider these examples of the application of the first paradigm that push the start of the first paradigm deep into antiquity!</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Field</p></th>
+<th class="head text-left"><p>Example</p></th>
+<th class="head text-left"><p>Approx. Date</p></th>
+<th class="head text-left"><p>Why It Fits 1st Paradigm</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Agriculture</p></td>
+<td class="text-left"><p>Irrigation systems using canals, gates, and timing</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\approx\)</span> 3000 BC</p></td>
+<td class="text-left"><p>Empirical understanding of water flow, soil, and seasonal timing</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Astronomy</p></td>
+<td class="text-left"><p>Babylonian star charts; lunar calendars</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\approx\)</span> 1800 BC</p></td>
+<td class="text-left"><p>Systematic observations for predicting celestial events</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Engineering</p></td>
+<td class="text-left"><p>The wheel (transport, pottery)</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\approx\)</span> 3500 BC</p></td>
+<td class="text-left"><p>Developed through trial-and-error and practical refinement</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Medicine</p></td>
+<td class="text-left"><p>Herbal remedies, surgical procedures</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\approx\)</span> 2000 BC</p></td>
+<td class="text-left"><p>Based on observation and accumulated case knowledge</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Mathematics</p></td>
+<td class="text-left"><p>Base-60 system; geometric calculation tablets</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(\approx\)</span> 2000 BC</p></td>
+<td class="text-left"><p>Used for land division, architecture, and astronomy; empirically tested</p></td>
+</tr>
+</tbody>
+</table>
 <ul class="simple">
-<li><p>certainly the Mesopotamians (4000 BC - 3500 BC) conducted many first paradigm experiments that supported their development of the wheel, plow, chariot, weaving loom, and irrigation</p></li>
-<li><p>and on the other side, we can trace the development of artificial neural networks to McColloch and Pitts in 1943.</p></li>
+<li><p>certainly the Mesopotamians (4000 BC - 3500 BC) applied the first paradigm with their experiments that supported the development of the wheel, plow, chariot, weaving loom, and irrigation. Aside, I wanted to give a shout out to the ancient peoples, because I’m quite fascinated by the development of human societies and their technologies over time.</p></li>
 </ul>
-<p>Also, the adoption of a new scientific paradigm is a major societal shift that does not occur uniformly around the globe.</p>
-<p>So what caused the fourth paradigm to start some time between 1943 and 2009? The fundamental mathematics of data driven models has been available for a long time considering the following mathematical and statistical developments in history,</p>
+<p>On the other side, we can trace the development of fourth paradigm approaches, for example the artificial neural networks to McColloch and Pitts in 1943 and consider these early examples of learning by distilling patterns from large datasets,</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Year</p></th>
+<th class="head text-left"><p>Field</p></th>
+<th class="head text-left"><p>Example / Person</p></th>
+<th class="head text-left"><p>Why It Fits 4th Paradigm Traits</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><span class="math notranslate nohighlight">\(\approx\)</span>100 AD</p></td>
+<td class="text-left"><p>Astronomy</p></td>
+<td class="text-left"><p>Ptolemy’s star catalog</p></td>
+<td class="text-left"><p>Massive empirical data used to predict celestial motion</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>1086</p></td>
+<td class="text-left"><p>Economics</p></td>
+<td class="text-left"><p>Domesday Book (England)</p></td>
+<td class="text-left"><p>Large-scale data census for administrative, economic decisions</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>1700s</p></td>
+<td class="text-left"><p>Natural history</p></td>
+<td class="text-left"><p>Carl Linnaeus – taxonomy</p></td>
+<td class="text-left"><p>Classification of species based on observable traits; data-first approach</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>1801</p></td>
+<td class="text-left"><p>Statistics</p></td>
+<td class="text-left"><p>Adolphe Quetelet – social physics</p></td>
+<td class="text-left"><p>Used statistics to analyze human behavior from large datasets</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>1830s</p></td>
+<td class="text-left"><p>Astronomy</p></td>
+<td class="text-left"><p>John Herschel’s sky surveys</p></td>
+<td class="text-left"><p>Cataloged thousands of stars and nebulae; data-driven sky classification</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>1859</p></td>
+<td class="text-left"><p>Biology</p></td>
+<td class="text-left"><p>Darwin – <em>Origin of Species</em></p></td>
+<td class="text-left"><p>Synthesized global species data to uncover evolutionary patterns</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>1890</p></td>
+<td class="text-left"><p>Public health</p></td>
+<td class="text-left"><p>Florence Nightingale</p></td>
+<td class="text-left"><p>Used mortality data visualization to influence hospital reform</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>1890</p></td>
+<td class="text-left"><p>Census, Computing</p></td>
+<td class="text-left"><p>Hollerith punch cards (U.S. Census)</p></td>
+<td class="text-left"><p>First automated analysis of large datasets; mechanical data processing</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>1910s–30s</p></td>
+<td class="text-left"><p>Genetics</p></td>
+<td class="text-left"><p>Morgan lab – Drosophila studies</p></td>
+<td class="text-left"><p>Mapped gene traits from thousands of fruit fly crosses</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>1920s</p></td>
+<td class="text-left"><p>Economics</p></td>
+<td class="text-left"><p>Kondratiev, Kuznets</p></td>
+<td class="text-left"><p>Identified economic patterns using historical data series</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>1937</p></td>
+<td class="text-left"><p>Ecology</p></td>
+<td class="text-left"><p>Arthur Tansley – ecosystem concept</p></td>
+<td class="text-left"><p>Integrated large-scale field data into systemic ecological frameworks</p></td>
+</tr>
+</tbody>
+</table>
+<p>Finally, the adoption of a new scientific paradigm represents a significant societal shift that unfolds unevenly across the globe. While I aim to summarize the chronology, it’s important to acknowledge its complexity.</p>
+</section>
+<section id="foundations-and-enablers-of-the-fourth-scientific-paradigm">
+<h2>Foundations and Enablers of the Fourth Scientific Paradigm<a class="headerlink" href="#foundations-and-enablers-of-the-fourth-scientific-paradigm" title="Permalink to this heading">#</a></h2>
+<p>What caused the fourth paradigm to start some time between 1943 and 2009? Is it the development of new math?</p>
 <ul class="simple">
-<li><p><strong>Calculus</strong> - Isaac Newton and Gottfried Wilhelm Leibniz independently developed the math to find minimums and maximums during the 1600s with “Methods of Fluxions” 1671 (published posthumously in 1736), and with “Nova Methodus pro Maximis et Minimis” published in 1684.</p></li>
-<li><p><strong>Bayesian Probability</strong> - introduced by Reverend Thomas Bayes with Bayes’ Theorem enshrined in “An Essay Towards Solving a Problem in the Doctrine of Chances” published posthumously in 1763</p></li>
-<li><p><strong>Linear Regression</strong> - formalized by Marie Legendre in 1805</p></li>
-<li><p><strong>Discriminant Analysis</strong> - developed by Ronald Fisher in his 1939 paper “The Use of Multiple Measurements in Taxonomic Problems”</p></li>
-<li><p><strong>Monte Carlo Simulation</strong> - pioneered by Stanislaw Ulam and John von Neumann in the early 1940’s as part of the Manhattan Project</p></li>
+<li><p>the foundational mathematics behind data-driven models has been available for decades and even centuries. Consider the following examples of mathematical and statistical developments that underpin modern data science,</p></li>
 </ul>
-<p>Upon reflection, one could ask, why didn’t the fourth paradigm start before the 1940’s and even in the 1800s? What changed? The answer is that other critical developments provided the fertile ground for data science, including cheap and available compute and big data.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Technique</p></th>
+<th class="head text-left"><p>Key Contributor(s)</p></th>
+<th class="head text-left"><p>Date / Publication</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Calculus</strong></p></td>
+<td class="text-left"><p>Isaac Newton, Gottfried Wilhelm Leibniz</p></td>
+<td class="text-left"><p>Newton: <em>Methods of Fluxions</em> (1671, pub. 1736); Leibniz: <em>Nova Methodus</em> (1684)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Bayesian Probability</strong></p></td>
+<td class="text-left"><p>Reverend Thomas Bayes</p></td>
+<td class="text-left"><p><em>An Essay Towards Solving a Problem in the Doctrine of Chances</em> (posthumous, 1763)</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Linear Regression</strong></p></td>
+<td class="text-left"><p>Marie Legendre</p></td>
+<td class="text-left"><p>Formalized in 1805</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Discriminant Analysis</strong></p></td>
+<td class="text-left"><p>Ronald Fisher</p></td>
+<td class="text-left"><p><em>The Use of Multiple Measurements in Taxonomic Problems</em> (1939)</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Monte Carlo Simulation</strong></p></td>
+<td class="text-left"><p>Stanislaw Ulam, John von Neumann</p></td>
+<td class="text-left"><p>Developed in early 1940s during the Manhattan Project</p></td>
+</tr>
+</tbody>
+</table>
+<p>Upon reflection, one might ask: why didn’t the fourth scientific paradigm emerge earlier—say, in the 1800s or even before the 1940s? What changed? The answer lies in the fact that several key developments were still needed to create the fertile ground for data science to take root.</p>
+<p>Specifically:</p>
+<ul class="simple">
+<li><p>the availability of inexpensive, accessible computing power</p></li>
+<li><p>the emergence of massive, high-volume datasets (big data)</p></li>
+</ul>
+<p>Let’s explore each of these in more detail.</p>
 <section id="cheap-and-available-compute">
 <h3>Cheap and Available Compute<a class="headerlink" href="#cheap-and-available-compute" title="Permalink to this heading">#</a></h3>
-<p>Consider the following developments in computers.</p>
+<p>Learning from big data is not feasible without affordable and widely available computing and storage resources. Consider the following computational advancements that paved the way for the emergence of the fourth scientific paradigm,</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Year</p></th>
+<th class="head text-left"><p>Milestone</p></th>
+<th class="head text-left"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>1837</strong></p></td>
+<td class="text-left"><p>Babbage’s Analytical Engine</p></td>
+<td class="text-left"><p>First design of a mechanical computer with concepts like memory and control flow (not built).</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>1941–45</strong></p></td>
+<td class="text-left"><p>Zuse’s Z3, ENIAC</p></td>
+<td class="text-left"><p>First programmable digital computers; rewired plugboards, limited memory, slow and unreliable.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>1947</strong></p></td>
+<td class="text-left"><p>Transistor Invented</p></td>
+<td class="text-left"><p>Replaced vacuum tubes; enabled faster, smaller, more reliable second-gen computers (e.g., IBM 7090).</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>1960s</strong></p></td>
+<td class="text-left"><p>Integrated Circuits</p></td>
+<td class="text-left"><p>Multiple transistors on a single chip; led to third-generation computers.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>1971</strong></p></td>
+<td class="text-left"><p>Microprocessor Developed</p></td>
+<td class="text-left"><p>Integrated CPU on a chip; enabled personal computers like Apple II (1977) and IBM PC (1981).</p></td>
+</tr>
+</tbody>
+</table>
+<p>Yes, when I was in grade 1 of my elementary school education we had the first computers in classrooms (Apple IIe), and it amazed all of us with the monochrome (orange and black pixels) monitor, 5 1/4 inch floppy disk loaded programs (there was no hard drive) and the beeps and clicks from the computer (no dedicated sound chip)!</p>
+<p>We live in a society with more compute power in our pockets, i.e., our cell phones, than used to send the first astronauts to the moon and a SETI screen saver that uses home computers’ idle time to search for extraterrestrial life!</p>
 <ul class="simple">
-<li><p><strong>Charles Babbage’s Analytical Engine</strong> (1837) is often credited as the first computer, yet is was a mechanical device the attempted to implement many modern concepts such as arithmetic logic, control flow and memory, but it was never completed given the challenges with the available technology.</p></li>
-<li><p><strong>Konrad Zuse’s Z3</strong> (1941) and <strong>ENIAC</strong> (1945) the first digital, programmable computers, but they were programmed by labor-intensive and time-consuming rewiring of plug boards with machine language as there was no high level programming language, the memory could fit 1,000 words limiting the program complexity and with 1000s of vacuum tubes cooling and maintenance was a big challenge. These unreliable machines were very slow with only about 5,000 additions per second.</p></li>
-<li><p><strong>Transistors</strong> were invented in 1947 the transistor replaced the vacuum tubes greatly improving energy-efficiency, miniaturization, speed and reliability. Resulting in the second generation computers such as <strong>IBM 7090</strong> and <strong>UNIVAC 1108</strong>.</p></li>
-<li><p><strong>Integrated Circuits</strong> were developed in the 1960s allowed for multiple transistors to be placed on a single chip leading to third generation computers.</p></li>
-<li><p><strong>Microprocessors</strong> - developed in 1971 integrated the functions of a computer’s central processing unit (CPU) enabling smaller, cheaper computers, resulting in the personal, home computer revolution including the <strong>Apple II</strong> (1977) and <strong>IBM PC</strong> (1981). Yes, when I was in grade 1 in elementary school we had a Apple II in my classroom, and it amazed all of us with the monochrome (orange and black pixels) monitor, floppy disk loaded programs (there was no hard drive) and beeps and clicks from the speaker!</p></li>
+<li><p><a class="reference external" href="https://setiathome.berkeley.edu/">SETI&#64;home</a> - search for extraterrestrial intelligence. Note the &#64;home component is now in hibernation while the team continuous the analysis the data.</p></li>
 </ul>
-<p>We live in a society with more compute power in our pockets (cell phones) than used to send the first astronauts to the moon and a SETI screen saver that uses home computers’ idle time to search for extraterrestrial life! Now we are surrounded by cheap and reliable compute that our grandparents (and perhaps parents) could never have imagined.</p>
-<p>As you will learn in this e-book, machine learning methods requires a lot of compute. In fact, training most of these machine learning methods rely on a large number of iterations, matrix or parallel operations, bootstrapping models, stochastic descent, and tuning the models requires a lot of trained models requiring even another loop of iteration. Cheap and available compute is an essential prerequisite for the fourth paradigm. Now consider the development of data science has been largely a crowd-source, open-source effort. There cannot be data science without many people having easy access to compute.</p>
+<p>Also check out these ways to put your computer’s idle time to good use,</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://foldingathome.org/">Folding&#64;home</a> - simulate protein dynamics, including the process of protein folding and the movements of proteins to develop therapeutics for treating disease.</p></li>
+<li><p><a class="reference external" href="https://einsteinathome.org/">Einstein&#64;home</a> - search for weak astrophysical signals from spinning neutron stars, with big data from the LIGO gravitational-wave detectors, the MeerKAT radio telescope, the Fermi gamma-ray satellite, and the archival data from the Arecibo radio telescope.</p></li>
+</ul>
+<p>Now we are surrounded by cheap and reliable compute that our grandparents (and perhaps even our parents) could scarcely have imagined.</p>
+<p>As you will learn in this e-book, machine learning methods requires a lot of compute, because training most of these methods relies on,</p>
+<ul class="simple">
+<li><p>numerous iterations</p></li>
+<li><p>matrix or parallel computations</p></li>
+<li><p>bootstrapping techniques</p></li>
+<li><p>stochastic gradient descent</p></li>
+<li><p>extensive model tuning, which may involve training many versions in nested loops</p></li>
+</ul>
+<p>Affordable and accessible computing is a fundamental prerequisite for the fourth scientific paradigm.</p>
+<ul class="simple">
+<li><p>the development of data science has been largely driven by crowd-sourced and open-source contributions—efforts that rely on widespread access to computing power</p></li>
+</ul>
+<p>In the era of Babbage’s Analytical Engine or the ENIAC, data science at scale would have been simply impossible.</p>
 </section>
 <section id="availability-of-big-data">
 <h3>Availability of Big Data<a class="headerlink" href="#availability-of-big-data" title="Permalink to this heading">#</a></h3>
-<p>With small data we tend to rely on other sources of information such as physics, engineering and geoscience principals and then calibrate these models to the few available observations, as is common in applications of the second and third paradigm for scientific discovery. With big data we can learn the full range of behaviors of natural systems from the data itself. In fact, with big data we often see the limitations of the second and third paradigm models due to missing complexity in our solutions.</p>
-<p>Therefore, big data:</p>
+<p>With small data, we often rely on external sources of knowledge such as:</p>
+<ol class="arabic simple">
+<li><p>Physics</p></li>
+<li><p>Engineering and geoscience principles</p></li>
+</ol>
+<p>These models are then calibrated using the limited available observations—a common approach in the second and third scientific paradigms.</p>
+<p>In contrast, big data allows us to learn the full range of behaviors of natural systems directly from the data itself. In fact, big data often reveals the limitations of second and third paradigm models, exposing missing complexities in our traditional solutions.</p>
+<p>Therefore, big data is essential to:</p>
 <ul class="simple">
-<li><p>provides sufficient sampling to support the data-driven fourth paradigm</p></li>
-<li><p>and may actually preclude exclusive use of the second and third paradigm.</p></li>
+<li><p>provide sufficient sampling to support the data-driven fourth paradigm</p></li>
 </ul>
-<p>These days big data is everywhere, with so much data now open-source and available online. Here’s some great examples:</p>
+<p>It may even challenge the exclusive reliance on second and third paradigm models, as the complexity of large datasets uncovers the boundaries of our existing theoretical frameworks.</p>
+<p>Today, big data is everywhere! Consider all the open-source and publically available data online. Here’s some great examples,</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Resource</p></th>
+<th class="head text-left"><p>Description</p></th>
+<th class="head text-left"><p>Link</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Google Earth (Timelapse)</strong></p></td>
+<td class="text-left"><p>Satellite imagery (not highest res, but useful for land use, geomorphology, and surface evolution studies). Used by research teams.</p></td>
+<td class="text-left"><p><a class="reference external" href="https://www.google.com/maps">Google Earth</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>USGS River Gage Data</strong></p></td>
+<td class="text-left"><p>Public streamflow and hydrology data; useful for analysis and recreational planning (e.g., paddling).</p></td>
+<td class="text-left"><p><a class="reference external" href="https://waterdata.usgs.gov/nwis">USGS NWIS</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Government Databases</strong></p></td>
+<td class="text-left"><p>Includes U.S. Census and oil &amp; gas production statistics. Open for public and research use.</p></td>
+<td class="text-left"><p><a class="reference external" href="https://data.census.gov/">U.S. Census</a>, <a class="reference external" href="https://www.rrc.texas.gov/oil-and-gas/research-and-statistics/production-data/">Texas Oil &amp; Gas Data</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>NASA Moon Trek</strong></p></td>
+<td class="text-left"><p>High-res lunar surface imagery from LRO, SELENE, and Clementine; interactive visualization and downloads.</p></td>
+<td class="text-left"><p><a class="reference external" href="https://trek.nasa.gov/moon/">Moon Trek</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Landsat Satellite Archive</strong></p></td>
+<td class="text-left"><p>50+ years of medium-resolution Earth observation data (since 1972); invaluable for land cover change.</p></td>
+<td class="text-left"><p><a class="reference external" href="https://earthexplorer.usgs.gov/">USGS EarthExplorer</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Copernicus Open Access Hub</strong></p></td>
+<td class="text-left"><p>European Space Agency’s Sentinel satellite data (e.g., radar, multispectral imagery).</p></td>
+<td class="text-left"><p><a class="reference external" href="https://scihub.copernicus.eu/">Copernicus Hub</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Global Biodiversity Information Facility (GBIF)</strong></p></td>
+<td class="text-left"><p>Open biodiversity data: species distributions, observations, and ecological records from around the world.</p></td>
+<td class="text-left"><p><a class="reference external" href="https://www.gbif.org/">GBIF</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>National Oceanic and Atmospheric Administration (NOAA)</strong></p></td>
+<td class="text-left"><p>Huge archive of weather, ocean, and climate data, including radar, reanalysis, and forecasts.</p></td>
+<td class="text-left"><p><a class="reference external" href="https://www.ncei.noaa.gov/">NOAA Data</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>World Bank Open Data</strong></p></td>
+<td class="text-left"><p>Economic, development, demographic, and environmental indicators for all countries.</p></td>
+<td class="text-left"><p><a class="reference external" href="https://data.worldbank.org/">World Bank Data</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Our World in Data</strong></p></td>
+<td class="text-left"><p>Curated global datasets on health, population, energy, CO₂, education, and more.</p></td>
+<td class="text-left"><p><a class="reference external" href="https://ourworldindata.org/">Our World in Data</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>OpenStreetMap (OSM)</strong></p></td>
+<td class="text-left"><p>Crowdsourced global geospatial data including roads, buildings, and land use.</p></td>
+<td class="text-left"><p><a class="reference external" href="https://www.openstreetmap.org/">OpenStreetMap</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Google Dataset Search</strong></p></td>
+<td class="text-left"><p>Meta-search engine indexing datasets across disciplines and repositories.</p></td>
+<td class="text-left"><p><a class="reference external" href="https://datasetsearch.research.google.com/">Dataset Search</a></p></td>
+</tr>
+</tbody>
+</table>
+<p>While open data is rapidly expanding, proprietary data is also growing quickly across many industries, driven by the adoption of smart, connected systems with advanced monitoring and control.</p>
+<p>The result of all of this is a massive explosion of data, supported by faster, more affordable computing, processing, and storage. We are now immersed in a sea of data that previous generations could never have imagined.</p>
 <ul class="simple">
-<li><p>satellite data with time lapse is widely available on <a class="reference external" href="https://www.google.com/maps">Google Earth</a> and other platforms. Yes, this isn’t the most up to date and highest resolution, but it is certainly sufficient for many land use, geomorphology and surface evolution studies. My team of graduate students use it.</p></li>
-<li><p>river gages data over your state are generally available to the public. We use it for hydrologic analysis and also to determine great locations and times to paddle! Check out the <a class="reference external" href="https://waterdata.usgs.gov/nwis">USGS’s National Water Information System</a></p></li>
-<li><p>government databases, including the <a class="reference external" href="https://data.census.gov/">United States Census</a> to <a class="reference external" href="https://www.rrc.texas.gov/oil-and-gas/research-and-statistics/production-data/">oil and gas production data</a> are available to all</p></li>
-<li><p><a class="reference external" href="https://trek.nasa.gov/moon/#v=0.1&amp;x=0&amp;y=0&amp;z=1&amp;p=urn%3Aogc%3Adef%3Acrs%3AEPSG%3A%3A104903&amp;d=&amp;locale=&amp;b=moon&amp;e=-337.4999937044213%2C-167.87109061860536%2C337.4999937044213%2C167.87109061860536&amp;sfz=&amp;w=">Moon Trek</a>: online portal to visualize and download digital images from Lunar Reconnaissance Orbiter (LRO), SELENE and Clementine.</p></li>
+<li><p>Note, we could also talk about improved algorithms and hardware architectures optimized for data science, but I’ll leave that out of scope for this e-book.</p></li>
 </ul>
-<p>This is open, public data, but consider the fact that many industries are embracing smart, intelligent systems with enhanced connectivity, monitoring and control. The result is an explosion of data supported by faster and cheaper computation, processing and storage. We are all swimming in data that the generation before us could not have imagined.</p>
-<p>We could also talk about improved algorithms and hardware architectures optimized for data science, but I’ll leave that out of scope for this e-book. All of these developments have provided the fertile ground for the seeds of data science to impact all sectors or our economy and society.</p>
+<p>Here’s a local example of freely available big data. I downloaded the daily water level of our local Lake Travis from <a class="reference external" href="https://waterdatafortexas.org/reservoirs/individual/travis">Water Data for Texas</a>. Note the data is collected and provided by Lower Colorado Water Authority <a class="reference external" href="https://www.lcra.org/">LRCA</a>.</p>
+<p>I made a plot of the daily plot and added useful information such as,</p>
+<ul class="simple">
+<li><p>water height - in feet above mean sea level</p></li>
+<li><p>percentage full - the ratio of the current volume of water stored in a reservoir to its total storage capacity, expressed as a percentage, accounting for the shape of the reservoir</p></li>
+<li><p>max pool - maximum conservation pool, the top of the reservoir used for water supply, irrigation, hydropower and recreation and not including flood storage.</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/concepts/laketravis_historical.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;">Historical Lake Austin daily water level and percentage full.</figcaption>
+</figure>
+<p>And before you even ask - yes! I did calculate the semivariogram of water level and I was surprised that there was no significant nuggest effect.</p>
+<figure style="text-align: center;">
+  <img src="_static/concepts/laketravis_variogram.png" style="display: block; margin: 0 auto; width: 50%;">
+  <figcaption style="text-align: center;">Historical Lake Austin daily water level variogram.</figcaption>
+</figure>
+<div class="remove-from-content-only admonition">
+<p class="admonition-title">To become a good data scientists!</p>
+<p>Find and play with data!</p>
+</div>
+<p>All of these developments have provided the fertile ground for the seeds of data science to impact all sectors or our economy and society.</p>
 </section>
 </section>
 <section id="data-science-and-subsurface-resources">
 <h2>Data Science and Subsurface Resources<a class="headerlink" href="#data-science-and-subsurface-resources" title="Permalink to this heading">#</a></h2>
-<p>Spoiler alert, I’m going to boast a bit in the section. I often hear students say, “I can’t believe this data science course is in the <a class="reference external" href="https://pge.utexas.edu/">Hildebrand Department of Petroleum and Geosystems Engineering</a>!” or “Why are you teaching machine learning in <a class="reference external" href="https://eps.jsg.utexas.edu/">Department of Earth and Planetary Sciences</a>?” My response is,</p>
+<p>Spoiler alert, I’m going to boast a bit in the section. I often hear students say,</p>
+<ul class="simple">
+<li><p>“I can’t believe this data science course is in the <a class="reference external" href="https://pge.utexas.edu/">Hildebrand Department of Petroleum and Geosystems Engineering</a>!”</p></li>
+<li><p>“Why are you teaching machine learning in <a class="reference external" href="https://eps.jsg.utexas.edu/">Department of Earth and Planetary Sciences</a>?”</p></li>
+</ul>
+<p>Once again, my response is,</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">We in the subsurface are the original data scientists!</p>
-<p>We are the original data-driven scientists, we have been big data long before tech learned about big data!</p>
+<p>We have been big data long before tech learned about big data!</p>
 </div>
-<p>This may sound a bit arrogant, but let me back this up with this timeline:</p>
+<p>This may sound a bit arrogant, but let me back this statement up with this timeline,</p>
 <figure style="text-align: center;">
   <img src="_static/concepts/history.png" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;">Timeline of data science development from the perspective of subsurface engineering and geoscience.</figcaption>
 </figure>
 <p>Shortly after Kolmogorov developed the fundamental probability axioms, Danie Krige developed a set of statistical, spatial, i.e., data-driven tools for making estimates in space while accounting for spatial continuity and scale. These tools were formalized with theory developed by Professor Matheron during the 1960s in a new science called geostatistics. Over the 1970s - 1990s the geostatistical methods and applications expanded from mining to address oil and gas, environmental, agriculture, fisheries, etc. with many important open source developments.</p>
-<p>Why was subsurface engineering and geoscience earlier in the development of data science? Because, necessity is the mother of invention! Complicated, heterogeneous, sparsely sampled, vast systems with complicated physics and high value decisions drove us to data-driven methods. There are many other engineering fields that:</p>
+<p>Why was subsurface engineering and geoscience earlier in the development of data science?</p>
 <ul class="simple">
-<li><p>work with homogeneous phenomenon that does not have significant spatial heterogeneity, continuity, nor uncertainty</p></li>
-<li><p>have exhaustive sampling of the population relative to the modeling purpose and do not need an estimation model with uncertainty</p></li>
-<li><p>have well understood physics and can model the entire system with second and third paradigm phenomenon</p></li>
+<li><p>because, necessity is the mother of invention! Complicated, heterogeneous, sparsely sampled, vast systems with complicated physics and high value decisions drove us to data-driven methods.</p></li>
 </ul>
-<p>As a result, many of us subsurface engineers and geoscientists are learning, applying and teaching data science.</p>
+<p>There are many other engineering fields that had little motivation to develop and apply data science due to,</p>
+<ul class="simple">
+<li><p>homogeneous phenomenon that does not have significant spatial heterogeneity, continuity, nor uncertainty - with few samples the phenomenon is sufficiently understood, for example, sheet aluminum used for aircraft or cement used in structures</p></li>
+<li><p>exhaustive sampling of the population relative to the modeling purpose and do not need an estimation model with uncertainty - the phenomenon’s properties are known and the performance can be simulated in a finite element model, for example, radiographic testing for cracks in a machine housing</p></li>
+<li><p>have well understood physics and can model the entire system with second and third paradigm phenomenon - the (coupled) physics is known and can be modeled, for example, the Boeing 777 was the first commerical airliner designed entirely using computed-aided design (CAD)</p></li>
+</ul>
+<p>Compare this to the typical context of subsurface engineering and geoscience, where data challenges are both unique and substantial:</p>
+<ul class="simple">
+<li><p><strong>Sparsely sampled datasets</strong> – we often sample only a minuscule fraction—sometimes as little as one hundred-billionth—of the subsurface volume of interest. This leads to significant uncertainty and a heavy reliance on statistical and data-driven models.</p></li>
+<li><p><strong>Massively multivariate datasets</strong> – integrating diverse data types (e.g., seismic, well logs, core data) poses a major challenge, requiring robust multivariate statistical and machine learning techniques.</p></li>
+<li><p><strong>Complex, heterogeneous earth systems</strong> – subsurface geology is highly variable and location-dependent. These open systems often behave unpredictably, demanding flexible and adaptive modeling approaches.</p></li>
+<li><p><strong>High-stakes, high-cost decisions</strong> – The need to support critical, high-value decisions drives innovation in methods, workflows, and the adoption of advanced analytics.</p></li>
+</ul>
+<p>As a result, many of us in subsurface engineering and geoscience have a lot of experience learning, applying, and teaching data science to better understand and manage these complexities.</p>
 </section>
 <section id="machine-learning">
 <h2>Machine Learning<a class="headerlink" href="#machine-learning" title="Permalink to this heading">#</a></h2>
-<p>Now we are ready to define machine learning, a <a class="reference external" href="https://en.wikipedia.org/wiki/Machine_learning">Machine Learning from Wikipedia</a> article definition may be summarized and dissected as follows. Machine learning is the study of a:</p>
+<p>Now we are ready to define machine learning, a <a class="reference external" href="https://en.wikipedia.org/wiki/Machine_learning">Wikipedia artical on Machine Learning</a> can be summarized and broken down as follows, machine learning has these aspects,</p>
 <ol class="arabic simple">
-<li><p><strong>toolbox</strong> - algorithms and mathematical models that computer systems use</p></li>
-<li><p><strong>learning</strong> - to progressively improve their performance on a specific task with</p></li>
-<li><p><strong>training data</strong> - machine learning algorithms train a mathematical model to sample data,</p></li>
-<li><p><strong>general</strong> - in order to make predictions or decisions without being explicitly programmed to perform the task.</p></li>
+<li><p><strong>toolbox</strong> - a collections of algorithms and mathematical models used by computer systems</p></li>
+<li><p><strong>learning</strong> - that improve their performance progressively on a specific task</p></li>
+<li><p><strong>training data</strong> - by learning patterns from sample data</p></li>
+<li><p><strong>general</strong> - to make predictions or decisions without being explicitly programmed for the specific task</p></li>
 </ol>
-<p>Let’s highlight some important concepts. Machine learning is a large set of algorithms, (a numerical toolbox), that adapt to the problem (learning), these algorithms learn from training data (training data) and a single algorithm may be trained to and applied to many problems (general).</p>
-<p>Near the end of the article there is an important statement that many stop short and miss.</p>
-<div class="remove-from-content-only admonition">
-<p class="admonition-title">Use machine learning,</p>
-<p>Where it is infeasible to develop an algorithm of specific instructions for performing the task</p>
-</div>
-<p>In other words, if you know the engineering theory, the geoscience principals, the physics, the chemical reaction, the free body diagram, etc. use that and don’t jump to use data science as a crutch instead of learning the fundamental concepts (paraphrased from personal communication with Professor Carlos Torres-Verdin).</p>
+<p>Let’s highlight some key ideas:</p>
+<ul class="simple">
+<li><p>machine learning is a numerical toolbox, a broad set of algorithms designed to adapt to different problems (toolbox)</p></li>
+<li><p>these algorithms improve by learning from or fitting to training data (learning from training data)</p></li>
+<li><p>a single algorithm can often be trained and applied across many different domains (generalization)</p></li>
+</ul>
+<p>An especially important point, often overlooked is found near the end of the article:</p>
+<p>This underscores that machine learning is most valuable when traditional rule-based programming becomes too complex, impractical, or infeasible, often due to the scale or variability of the task.</p>
+<p>In other words, if the underlying theory is well understood, be it engineering principles, geoscience fundamentals, physics, chemical reactions, or mechanical systems, then use that knowledge first.</p>
+<ul class="simple">
+<li><p>don’t rely on data science as a replacement for foundational understanding of science and engineering (Paraphrased from personal communication with Professor Carlos Torres-Verdin, 2024)</p></li>
+</ul>
 </section>
 <section id="machine-learning-prerequisite-definitions">
 <h2>Machine Learning Prerequisite Definitions<a class="headerlink" href="#machine-learning-prerequisite-definitions" title="Permalink to this heading">#</a></h2>
-<p>To understand data science we need to first differentiate between the population and the sample.</p>
+<p>To understand machine learning and in general, data science we need to first differentiate between the population and the sample.</p>
 <section id="population">
 <h3>Population<a class="headerlink" href="#population" title="Permalink to this heading">#</a></h3>
-<p>Exhaustive, finite list of property of interest over area of interest. Generally the entire population is not accessible, e.g. exhaustive set of porosity at each location within a gas reservoir</p>
+<p>The population is all possible information of our spatial phenomenon of interest. Exhaustive, finite list of feature of interest over area of interest at the resolution of the data. For example,</p>
+<ul class="simple">
+<li><p>exhaustive set of porosity at every location within a gas reservoir at the scale of a core sample, i.e., imagine the entire reservoir drilled, extracted and analyzed core by core!</p></li>
+<li><p>for every tree in a forest the species, diameter at breast height (DBH), crown diameter, age, tree health status, wood volume and location, i.e., perfectly knowledge of our forest!</p></li>
+</ul>
+<p>Generally the entire population is not accessible due to,</p>
+<ul class="simple">
+<li><p>technology limits - sampling methods that provide improved coverage generally have reduced resolution and accuracy</p></li>
+<li><p>practicallity - removing too much reservoir will impact geomechanical stability</p></li>
+<li><p>cost - wells cost 10s - 100s of millions of dollars each</p></li>
+</ul>
 </section>
 <section id="sample">
 <h3>Sample<a class="headerlink" href="#sample" title="Permalink to this heading">#</a></h3>
-<p>The set of values, locations that have been measured, e.g. porosity data from well-logs within a reservoir.</p>
-<p>What are we measuring in our samples? Each distinct type of measure is called a variable or feature.</p>
+<p>The limited set of values, at specific locations that have been measured. For example,</p>
+<ul class="simple">
+<li><p>limited set of porosity values measured from extracted core sample and callibrated from well-logs within a reservoir</p></li>
+<li><p>1,000 randomly selected trees over an management unit, with species, diameter at breast height (DBH), crown diameter, age, tree health status, wood volume and location</p></li>
+</ul>
+<p>There is so much that I could mention about sampling! For example,</p>
+<ul class="simple">
+<li><p>methods for representative sample selection</p></li>
+<li><p>impact of sample frequency or coverage on uncertainty and required levels of sampling</p></li>
+<li><p>methods to debias biased spatial samples (see <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/GeostatsPy_declustering.html">Declustering to Debias Data</a> from my <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python e-book</a></p></li>
+</ul>
+<p>For brevity I will not cover these topics here, but let’s now dive into,</p>
+<ul class="simple">
+<li><p>What are we measuring from our population in our samples?</p></li>
+</ul>
+<p>Each distinct type of measure is called a variable or feature.</p>
 </section>
-<section id="variable-feature">
-<h3>Variable / Feature<a class="headerlink" href="#variable-feature" title="Permalink to this heading">#</a></h3>
-<p>Any property measured / observed in a study, and in data science only the term feature is used. Note, all of us statisticians we are more accustomed with the term “variable”, but it is the same. Here’s some examples of features:</p>
+<section id="variable-or-feature">
+<h3>Variable or Feature<a class="headerlink" href="#variable-or-feature" title="Permalink to this heading">#</a></h3>
+<p>In any scientific or engineering study, a property that is measured or observed is typically referred to as a variable.</p>
+<ul class="simple">
+<li><p>however, in data science and machine learning, we use the term feature almost exclusively.</p></li>
+</ul>
+<p>While the terminology differs, the concept is the same: both refer to quantitative or categorical information about an object or system.</p>
+<p>To illustrate what constitutes a feature, consider the following examples drawn from real-world geoscience, oil adn gas, and mining contexts,</p>
 <ul class="simple">
 <li><p>porosity measured from 1.5 inch diameter, 2 inch long core plugs extracted from the Miocene-aged Tahiti field in the Gulf of Mexico</p></li>
 <li><p>permeability modeled from porosity (neutron density well log) and rock facies (interpreted fraction of shale logs) at 0.5 foot resolution along the well bore in the Late Devonian Leduc formation in the Western Canadian Sedimentary Basin.</p></li>
 <li><p>blast hole cuttings nickel grade aggregated over 8 inch diameter 10 meter blast holes at Voisey’s Bay Mine, Proterozoic gneissic complex.</p></li>
 </ul>
-<p>Did you see what I did? I specified what was measured, how it was measured, and over what scale was it measured. This is important because how the measure is made changes the veracity (level of certainty in the measure) and different methods actually may results in different results so we may need to reconcile multiple measurement methods of the same thing, so we store each vintage as separate features. Also, the scale is very important due to volume variance effect, with increasing support volume (sample size) the variance reduces due to volumetric averaging resulting in regression to the mean. I have a <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/GeostatsPy_volume_variance.html">chapter on volume-variance</a> in my Applied Geostatistics in Python e-book for those interested in more details.</p>
-<p>Additionally, our subsurface measures often requires significant analysis, interpretation, etc. We don’t just hold a tool up to the rock and get the number, we have a thick layer of engineering and geoscience interpretation to map from measurement to a useable feature. Consider this carbonate thin section from Bureau of Economic Geology, The University of Texas at Austin from <a class="reference external" href="http://www.beg.utexas.edu/lmod/_IOL-CM07/old-4.29.03/cm07-step05.htm">geoscience course</a> by F. Jerry Lucia.</p>
+<p>Did you see what I did?</p>
+<ul class="simple">
+<li><p>I specified what was measured, how it was measured, and over what scale was it measured.</p></li>
+</ul>
+<p>This is important because,</p>
+<ul class="simple">
+<li><p><strong>how the measurement is made?</strong> - changes the feature’s veracity (level of certainty in the measure) and different methods actually may change the shift the feature’s values so we may need to reconcile multiple measurement methods of the same feature.</p></li>
+<li><p><strong>what is the scale of the measurement?</strong> - is very important due to volume-variance effect, with increasing support volume, sample scale, the variance reduces due to volumetric averaging resulting in regression to the mean. I have a <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/GeostatsPy_volume_variance.html">chapter on volume-variance</a> in my Applied Geostatistics in Python e-book for those interested in more details.</p></li>
+</ul>
+<p>Additionally, our subsurface measurements often requires significant analysis, interpretation, etc.</p>
+<ul class="simple">
+<li><p>we don’t just hold a tool up to the rock and get the number</p></li>
+<li><p>we have a “thick layer” of engineering and geoscience interpretation to map from measurement to a useable feature.</p></li>
+</ul>
+<p>Consider this carbonate thin section from Bureau of Economic Geology, The University of Texas at Austin from <a class="reference external" href="http://www.beg.utexas.edu/lmod/_IOL-CM07/old-4.29.03/cm07-step05.htm">geoscience course</a> by F. Jerry Lucia.</p>
 <figure style="text-align: center;">
   <img src="_static/concepts/thin_section.png" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;">Carbonate thin section image (from <a href="http://www.beg.utexas.edu/lmod/_IOL-CM07/old-4.29.03/cm07-step05.htm">this link</a> by F. Jerry Lucia).</figcaption>
 </figure>
-<p>Note, the blue dye indicates the void space in the rock, but is porosity the blue area divided by the total area of the sample? That would be the “total porosity” and not all of it may contribute to fluid flow in the rock as it is not sufficiently connected; therefore, we need to go from total porosity to “effective porosity”, requiring interpretation. Even porosity one of the most simple (observable in well logs and linearly averaging) features doesn’t escape this necessary interpretation.</p>
+<p>Note: the blue dye in core samples visually indicates void space—the pores in the rock. But is the porosity feature simply the blue area divided by the total area of the sample?</p>
+<ul class="simple">
+<li><p>that would give us total porosity, which is the ratio of total void volume to bulk volume</p></li>
+<li><p>however, not all pore space contributes to fluid flow. Some pores are isolated or poorly connected, especially in low-permeability rocks</p></li>
+</ul>
+<p>To estimate the porosity that actually matters for flow, we need to interpret connectivity. This gives us effective porosity, a more useful feature for modeling fluid transport, permeability, and reservoir performance.</p>
+<ul class="simple">
+<li><p>so even porosity, often seen as a “simple” feature that’s observable in well logs and suitable for linear averaging, doesn’t escape an essential interpretation step. Estimating effective porosity involves assumptions, thresholds, or models about pore geometry and connectivity.</p></li>
+</ul>
+<p>This is a critical reminder, our features generally require interpretation, even when they appear directly measurable. Measurement scale, observation method, and intended use all influence how we define and derive a useful feature for our data science models.</p>
 </section>
 <section id="predictor-and-response-features">
 <h3>Predictor and Response Features<a class="headerlink" href="#predictor-and-response-features" title="Permalink to this heading">#</a></h3>
-<p>To understand the difference between predictor and response features let’s look at the most concise, simple expression of a machine learning model.</p>
+<p>To understand the difference between predictor and response features let’s look at the most concise expression of a machine learning model.</p>
 <figure style="text-align: center;">
   <img src="_static/concepts/ML_equation.png" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;">The fundamental predictive machine learning model that maps from predictor to response features.</figcaption>
 </figure>
-<p>The predictors (or independent) features (or variables) the model inputs, i.e., the <span class="math notranslate nohighlight">\(X_1,\ldots,X_m\)</span>, response (or dependent) feature(s) (or variable(s)) are the model output, <span class="math notranslate nohighlight">\(y\)</span>, and there is an error term, <span class="math notranslate nohighlight">\(\epsilon\)</span>.</p>
+<ul class="simple">
+<li><p>the predictors (or independent) features (or variables) the model inputs, i.e., the <span class="math notranslate nohighlight">\(X_1,\ldots,X_m\)</span></p></li>
+<li><p>response (or dependent) feature(s) (or variable(s)) are the model output, <span class="math notranslate nohighlight">\(y\)</span>,</p></li>
+</ul>
+<p>and there is an error term, <span class="math notranslate nohighlight">\(\epsilon\)</span>.</p>
 <p>Machine Learning is all about estimating such models, <span class="math notranslate nohighlight">\(\hat{𝑓}\)</span>, for two purposes, inference or prediction.</p>
 </section>
 <section id="inference">
 <h3>Inference<a class="headerlink" href="#inference" title="Permalink to this heading">#</a></h3>
-<p>Inference must precede prediction, because inference is going from the limited sample to a model of the population. Inference is learning about the system, <span class="math notranslate nohighlight">\(\hat{f}\)</span>, for example,</p>
+<p>Before we can make reliable predictions, we must first perform inference—that is, we must learn about the underlying system from a limited sample in order to model the broader population. Inference is the process of building an understanding of the system, denoted as <span class="math notranslate nohighlight">\(\hat{f}\)</span>, based on observed data.</p>
+<p>Through inference, we seek to answer questions like:</p>
 <ul class="simple">
-<li><p>what is the relationship between the features?</p></li>
-<li><p>what feature are most important?</p></li>
-<li><p>what are the complicated interactions between all the features?</p></li>
+<li><p>What are the relationships between features?</p></li>
+<li><p>Which features are most important?</p></li>
+<li><p>Are there complicated or nonlinear interactions between features?</p></li>
 </ul>
-<p>A good example of a inferential problem is imagine if I walk in the room and pull a coin out of my pocket and flip it 10 times and get 3 heads and 7 tails and then ask you, “Is this is a fair coin?”.</p>
+<p>These insights are prerequisites for making any predictions, because they form the foundation of the model that will eventually be used for forecasting, classification, or decision-making.</p>
+<p>For example, imagine I walk into a room, pull a coin from my pocket, and flip it 10 times, observing 3 heads and 7 tails. Then I ask, “Is this a fair coin?”.</p>
+<p>This is a classic inferential problem.</p>
 <ul class="simple">
-<li><p>you take the sample, the results from 10 coin tosses, to make an inference about the population, i.e., whether the coin is fair or not? Note, in this example the coin is the population!</p></li>
+<li><p>you’re using a limited sample (the 10 flips) to make an inference about the population—in this case, the probability distribution governing the coin</p></li>
+<li><p>and here’s the key twist: in this example, the coin itself is the population!</p></li>
 </ul>
+<p>You’re not just summarizing the sample, you’re trying to learn something general about the system that generated the sample.</p>
 </section>
 <section id="prediction">
 <h3>Prediction<a class="headerlink" href="#prediction" title="Permalink to this heading">#</a></h3>
-<p>Once we have completed our inference to model the population from the sample, we are ready to use the model of the population to predict future samples. This is prediction, going from a model of the population to estimating new samples.</p>
+<p>Once we’ve completed inference—learning from a sample to build a model of the underlying population—we’re ready to use that model for prediction. Prediction is the process of applying what we’ve learned to estimate the outcomes of new or future observations.</p>
 <ul class="simple">
-<li><p>the focus of prediction is to get the most accurate estimates of future samples.</p></li>
+<li><p>in short, inference goes from sample to the population, while prediction goes from population model to the new sample</p></li>
+<li><p>the goal of prediction is to produce the most accurate estimates of unknown or future outcomes</p></li>
 </ul>
-<p>Carrying on with our coin example, if you declare that my coin was biased towards tails, now you are able to predict the outcome for the next 10 coin tosses, before I toss the coin again. This is prediction.</p>
-<p>How do you know if you are doing inferential or predictive machine learning. In general, inferential machine learning is conducted only with the predictor features, also known as unsupervised machine learning (because there are no response labels). This includes:</p>
+<p>Let’s return to our earlier coin example,</p>
 <ul class="simple">
-<li><p><strong>cluster analysis</strong> - that learns ways to split the data into multiple distinct populations to improve the subsequent models</p></li>
-<li><p><strong>dimensionality reduction</strong> - that projects the predictor features to a small number of new features that better describe the system with less noise</p></li>
+<li><p>you observe me flip a coin 10 times and see 3 heads and 7 tails. Based on this, you infer that the coin is likely biased toward tails.</p></li>
 </ul>
-<p>When you’re doing predictive machine learning you have both the predictor and the response feature(s), also known as supervised learning, and the model is trained and tuned to predict new samples.</p>
+<p>Now, before I flip it again, you predict that the next 10 tosses will likely result in more tails than heads. That’s prediction, using your inferred model of the coin (i.e., the population) to estimate future data.</p>
+</section>
+<section id="inference-vs-prediction-in-machine-learning">
+<h3>Inference vs. Prediction in Machine Learning<a class="headerlink" href="#inference-vs-prediction-in-machine-learning" title="Permalink to this heading">#</a></h3>
+<p>So, how do you know whether you’re doing inference or prediction in the machine learning context?</p>
+<ul class="simple">
+<li><p>it depends on whether you’re modeling structure or estimating outcomes</p></li>
+</ul>
+<p><strong>Inferential Machine Learning</strong>, also called unsupervised learning, involves only predictor features (no known outcomes or labels). The aim is to learn structure in the data and improve understanding of the system.</p>
+<p>Examples of machine learning inferential methods include,</p>
+<ul class="simple">
+<li><p>Cluster analysis – groups observations into distinct clusters (potential sub-populations), often as a preprocessing step for modeling.</p></li>
+<li><p>Dimensionality reduction – reduces the number of features by finding combinations that best preserve information while minimizing noise, for example, princpal components analysis (PCA), t-distributed Stochastic Neighbor Embedding (t-SNE) or multidimensional scaling (MDS).</p></li>
+</ul>
+<p>These techniques help reveal relationships, patterns, or latent variables in the data—crucial for good modeling, but are not designed to make direct predictions.</p>
+<p>Some may push back on my definition of inferential machine learning and the inclusion of cluster analysis, because they include in statistical inference quantification of uncertainty and testing hypotheses that is not available in cluster analysis.</p>
+<ul class="simple">
+<li><p>I defend my choice by the difficulty and importance of identifying groups in subsurface and spatial datasets.</p></li>
+<li><p>For example, depofacies for reservoir models commonly describe 80% of heterogeneity, i.e., the deposfacies are the most important inference for many reservoirs!</p></li>
+<li><p>Also, I have a very broad view of uncertainty modeling and model checking that includes various types of resampling, for example, bootstrap and spatial boostrap and in the subsurface we can only rarely use analytical confidence intervals and hypothesis testing.</p></li>
+</ul>
+<p><strong>Predictive Machine Learning</strong>, also called supervised learning, this involves both predictor features and response features (labels). The model is trained to predict the response for new samples.</p>
+<p>Examples of machine learning predictive methods include,</p>
+<ul class="simple">
+<li><p>Linear regression - estimating the response feature as a linear combination of the predictor features</p></li>
+<li><p>Naive Bayes classifier - estimating the probability of each possible categorical result for a response feature from the product sum of the prior probability and each likelihood conditional probability</p></li>
+</ul>
+<p>The model is optimized to minimize prediction error, often evaluated through cross-validation or test data. Let’s talk about how to make predictive machine learning models.</p>
 </section>
 </section>
-<section id="training-and-tuning-machine-learning-models">
-<h2>Training and Tuning Machine Learning Models<a class="headerlink" href="#training-and-tuning-machine-learning-models" title="Permalink to this heading">#</a></h2>
-<p>The predictive machine learning we apply a general model training and testing workflow that is illustrated here.</p>
+<section id="training-and-tuning-predictive-machine-learning-models">
+<h2>Training and Tuning Predictive Machine Learning Models<a class="headerlink" href="#training-and-tuning-predictive-machine-learning-models" title="Permalink to this heading">#</a></h2>
+<p>In predictive machine learning, we follow a standard model training and testing workflow. This process ensures that our model generalizes well to new data, rather than just fitting the training data perfectly.</p>
 <figure style="text-align: center;">
-  <img src="_static/concepts/ML_workflow.png" style="display: block; margin: 0 auto; width: 100%;">
+  <img src="_static/concepts/ML_workflow_portrait.png" style="display: block; margin: 0 auto; width: 100%;">
   <figcaption style="text-align: center;">Standard predictive machine learning modeling workflow.</figcaption>
 </figure>
-<p>Let’s walk through the steps,</p>
+<p>Let’s walk through the key steps,</p>
 <ol class="arabic simple">
-<li><p><strong>Train and Test Split</strong> the available data into train and test mutually exclusive, exhaustive subsets. Typically 15% - 30% of the data are withheld and assigned to test and the remainder to the train.</p></li>
-<li><p><strong>Remove the Test Split</strong> from the analysis. The test data cannot be used to train the predictive model. Any information from test data to inform the model training is considered information leakage and compromises the accuracy of the model.</p></li>
-<li><p><strong>Train a Very Simple Model</strong> with the training data. Set the hyperparameters such that the model is as simple as reasonable and then train the model parameters with the available training data.</p></li>
-<li><p><strong>Train Models from Simple to Complicated</strong> by repeating the previous step with the model hyperparameters incrementally increasing the model complexity. The result is a suite of models of variable complexity all fit, trained model parameters to minimize misfit with the training data.</p></li>
-<li><p><strong>Access Performance with the Withheld Testing Data</strong> by retrieving the testing data and summarizing the error over all these withheld data.</p></li>
-<li><p><strong>Select the Hyperparameters</strong> that minimize the testing error by picking the model from the previous step with the minimum testing error. The associated hyperparameters are known as the tuned hyperparameters.</p></li>
-<li><p><strong>Retrain the Model</strong> with all of the data (train and test combined) with the tuned hyperparameters.</p></li>
+<li><p><strong>Train and Test Split</strong> - divide the available data into mutually exclusive, exhaustive subsets: a training set and a testing set.</p></li>
 </ol>
-<p>You may have some questions, let’s anticipate and answer them to better defend and explain this workflow.</p>
-<p><strong>What is the outcome from the empirical approach expressed in steps 1 through 6?</strong> Just the tuned hyperparameters. We would never use the selected model in step 6 as it would omit valuable data used for testing.</p>
-<p><strong>Why not just train the model with all of the data?</strong> We can always minimize the training error by selecting hyperparameters that result in a very complicated model. More complicated models are more flexible, and with enough flexibility will be able to perfectly fit all of the training data, but that model would not do a very good job with making predictions for predictor feature values not used to train the model. The most complicated, overfit model would always win (more on overfit soon).</p>
-<p>In other words, this approach is an attempt to simulate the model use, a form of dress rehearsal, to find the level of complexity that does the best job making new predictions. I’ve said model parameters and model hyperparameters a bunch of times, so I owe you their definitions.</p>
+<ul class="simple">
+<li><p>typically, 15%–30% of the data is held out for testing</p></li>
+<li><p>the remaining 70%–85% is used for training the model</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p><strong>Define a range of hyperparameter(s)</strong> values to explore, ranging from,</p></li>
+</ol>
+<ul class="simple">
+<li><p>simple models with low flexibility</p></li>
+<li><p>to complex models with high flexibility</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> This step may involve tuning multiple hyperparameters, in which case efficient sampling methods (e.g., grid search, random search, or Bayesian optimization) are often used.</p>
+<ol class="arabic simple" start="3">
+<li><p><strong>Train Model Parameters for Each Hyperparameter Setting</strong> - for each set of hyperparameters, train a model on the training data. This yields:</p></li>
+</ol>
+<ul class="simple">
+<li><p>a suite of trained models, each with different complexity</p></li>
+<li><p>each model has parameters optimized to minimize error on the training data</p></li>
+</ul>
+<ol class="arabic simple" start="4">
+<li><p><strong>Evaluate Each Model on the Withheld Testing Data</strong> - using the testing data,</p></li>
+</ol>
+<ul class="simple">
+<li><p>evaluate how each trained model performs on unseen data</p></li>
+<li><p>summarize prediction error (for example, root mean square error (RMSE), mean absolute error (MAE), classification accuracy) for each model</p></li>
+</ul>
+<ol class="arabic simple" start="5">
+<li><p><strong>Select the Hyperparameters That Minimize Test Error</strong> - this is the hyperparameter tuning step:</p></li>
+</ol>
+<ul class="simple">
+<li><p>choose the model hyperparaemter(s) that performs best on the test data</p></li>
+<li><p>these are your tuned hyperparameters</p></li>
+</ul>
+<ol class="arabic simple" start="6">
+<li><p><strong>Retrain the Final Model on All Data Using Tuned Hyperparameters</strong> - now that the best model complexity has been identified,</p></li>
+</ol>
+<ul class="simple">
+<li><p>retrain the model using both the training and test sets</p></li>
+<li><p>this maximizes the amount of data used for final model parameter estimation</p></li>
+<li><p>the resulting model is the one you deploy in real-world applications</p></li>
+</ul>
+</section>
+<section id="common-questions-about-the-model-training-and-tuning-workflow">
+<h2>Common Questions About the Model Training and Tuning Workflow<a class="headerlink" href="#common-questions-about-the-model-training-and-tuning-workflow" title="Permalink to this heading">#</a></h2>
+<p>As a professor, I often hear these questions when I introduce the above machine learning model training and tuning workflow.</p>
+<ul class="simple">
+<li><p><strong>What is the main outcome of steps 1–5?</strong> - the only reliable outcome is the tuned hyperparameters.</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> we do not use the model trained in step 3 or 4 directly, because it was trained without access to all available data. Instead, we retrain the final model using all data with the selected hyperparameters.</p>
+<ul class="simple">
+<li><p><strong>Why not train the model on all the data from the beginning?</strong> - because if we do that, we have no independent way to evaluate the model’s generalization. A very complex model can easily overfit—fitting the training data perfectly, but performing poorly on new, unseen data.</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> overfitting happens when model flexibility is too high—it captures noise instead of the underlying pattern. Without a withheld test set, we can’t detect this.</p>
+<p>This workflow for training and tuning predictive machine learning models is,</p>
+<ul class="simple">
+<li><p>an empirical, cross-validation-based process</p></li>
+<li><p>a practical simulation of real-world model use</p></li>
+<li><p>a method to identify the model complexity that best balances fit and generalization</p></li>
+</ul>
+<p>I’ve said model parameters and model hyperparameters a bunch of times, so I owe you their definitions.</p>
 </section>
 <section id="model-parameters-and-model-hyperparameters">
 <h2>Model Parameters and Model Hyperparameters<a class="headerlink" href="#model-parameters-and-model-hyperparameters" title="Permalink to this heading">#</a></h2>
-<p>Model parameters are fit during training phase to minimize error at the training data, i.e., model parameters are trained with training data and control model fit to the data. For the polynomial predictive machine learning model from the machine learning workflow example above, the model parameters are the polynomial coefficients, e.g., <span class="math notranslate nohighlight">\(b_3\)</span>, <span class="math notranslate nohighlight">\(b_2\)</span>, <span class="math notranslate nohighlight">\(b_1\)</span> and <span class="math notranslate nohighlight">\(c\)</span> (often called <span class="math notranslate nohighlight">\(b_0\)</span>) for the third order polynomial model.</p>
+<p><strong>Model parameters</strong> are fit during training phase to minimize error at the training data, i.e., model parameters are trained with training data and control model fit to the data. For example,</p>
+<ul class="simple">
+<li><p>for the polynomial predictive machine learning model from the machine learning workflow example above, the model parameters are the polynomial coefficients, e.g., <span class="math notranslate nohighlight">\(b_3\)</span>, <span class="math notranslate nohighlight">\(b_2\)</span>, <span class="math notranslate nohighlight">\(b_1\)</span> and <span class="math notranslate nohighlight">\(c\)</span> (often called <span class="math notranslate nohighlight">\(b_0\)</span>) for the third order polynomial model.</p></li>
+</ul>
 <figure style="text-align: center;">
   <img src="_static/concepts/parameters.png" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;">Model parameters are adjusted to fit of the model to the data, i.e., model parameters are trained to minimize error over the training data (x markers).</figcaption>
 </figure>
-<p>Model hyperparameters are very different. They do not constrain the model fit to the data directly, instead they constrain the model complexity.
+<p><strong>Model hyperparameters</strong> are very different. They do not constrain the model fit to the data directly, instead they constrain the model complexity.
 The model hyperparameters are selected (call tuning) to minimize error at the withheld testing data. Going back to our polynomial predictive machine learning example, the choice of polynomial order is the model hyperparameter.</p>
 <figure style="text-align: center;">
   <img src="_static/concepts/hyperparameters.png" style="display: block; margin: 0 auto; width: 100%;">
   <figcaption style="text-align: center;">Model hyperparameters are adjusted to change the model complexity / flexibility, i.e., model hyperparameters are tuned to minimize error over the withheld testing data (solid circles).</figcaption>
 </figure>
+<div class="remove-from-content-only admonition">
+<p class="admonition-title">Model parameters vs. model hyperparameters</p>
+<p>Model parameters control the model fit and are trained with training data. Model hyperparameters control the model complexity and are tuned with testing data.</p>
+</div>
 </section>
 <section id="regression-and-classification">
 <h2>Regression and Classification<a class="headerlink" href="#regression-and-classification" title="Permalink to this heading">#</a></h2>
-<p>Before we proceed we need to define regression and classification.</p>
+<p>Before we proceed, we need to define regression and classification.</p>
 <ul class="simple">
 <li><p><strong>Regression</strong> - a predictive machine learning model where the response feature(s) is continuous.</p></li>
 <li><p><strong>Classification</strong> - a predictive machine learning model where the response feature(s) is categorical.</p></li>
 </ul>
-<p>It turns out that for each of these we need to build different models and use different methods to score these models. For the remainder of this discussion we will focus on regression, but in later chapters we introduce classification models as well. Now, to better understand predictive machine learning model tuning we need to understand the sources of testing error.</p>
+<p>It turns out that for each of these we need to build different models and use different methods to score these models.</p>
+<ul class="simple">
+<li><p>for the remainder of this discussion we will focus on regression, but in later chapters we introduce classification models as well.</p></li>
+</ul>
+<p>Now, to better understand predictive machine learning model tuning, i.e., the empirical approach to tune model complexity to minimize testing error, we need to understand the sources of testing error.</p>
+<ul class="simple">
+<li><p>the causes of the thing that we are attempting to minimize!</p></li>
+</ul>
 </section>
 <section id="sources-of-predictive-machine-learning-testing-error">
 <h2>Sources of Predictive Machine Learning Testing Error<a class="headerlink" href="#sources-of-predictive-machine-learning-testing-error" title="Permalink to this heading">#</a></h2>
-<p>Mean square error (MSE) is a standard way to express error. Mean squared error is known as a norm because we at taking a vector of error (over all of the data) and summarizing with a single, non-negative value, and specifically as the L2 norm because the errors are squared before they are summed,</p>
+<p>Mean square error (MSE) is a standard way to express error. Mean squared error is known as a norm because we at taking a vector of error (over all of the data) and summarizing with a single, non-negative value.</p>
+<ul class="simple">
+<li><p>specifically MSER is the L2 norm because the errors are squared before they are summed,</p></li>
+<li><p>the L2 norm has a lot of nice properties including a continuous error function that can be differentiated over all values of error, but it is sensitive to data outliers that may have a disproportionate impact on the sum of the squares. More about this later.</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[
 MSE = \frac{1}{n} \sum_{i=1}^{n} \left( y_i - \hat{y}_i \right)^2
@@ -812,13 +1280,13 @@ MSE = \frac{1}{n} \sum_{i=1}^{n} \left( y_i - \hat{y}_i \right)^2
 \[
 MSE_{train} = \frac{1}{n_{train}} \sum_{i=1}^{n_{train}} \left( y_i - \hat{y}_i \right)^2
 \]</div>
-<p>and MSE can be calculated over the withheld testing data for hyperparameter tuning of regression models. Note, the L2 norm has a lot of nice properties including a continuous error function that can be differentiated over all values of error, but it is sensitive to data outliers that may have a disproportionate impact on the sum of the squares.</p>
+<p>and MSE can be calculated over the withheld testing data for hyperparameter tuning of regression models.</p>
 <p>If we take the <span class="math notranslate nohighlight">\(MSE_{test}\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
 MSE_{test} = \frac{1}{n_{test}} \sum_{i=1}^{n_{test}} \left( y_i - \hat{f}(x^1_i, \ldots , x^m_i) \right)^2
 \]</div>
-<p>but we pose it as the expected test square error we get this form,</p>
+<p>but we pose it as the expected test square error we get this expectation form,</p>
 <div class="math notranslate nohighlight">
 \[
 E \left[ \left( y_0 - \hat{f}(x^1_0, \ldots , x^m_0) \right)^2 \right]
@@ -828,59 +1296,137 @@ E \left[ \left( y_0 - \hat{f}(x^1_0, \ldots , x^m_0) \right)^2 \right]
   <img src="_static/concepts/three_error.png" style="display: block; margin: 0 auto; width: 90%;">
   <figcaption style="text-align: center;">Model error in testing with three additive components, model variance, model bias and irreducible error.</figcaption>
 </figure>
-<p>Let’s explain these three additive sources of error over test data, i.e., the error we expect in the real-world use of our model to predict for cases not used to train the model,</p>
+<p>Let’s explain these three additive sources of error over test data, i.e., our best representation of the error we expect in the real-world use of our model to predict for cases not used to train the model,</p>
 <ol class="arabic simple">
-<li><p><strong>Model Variance</strong> - is error due to sensitivity to the dataset, for example a simple model like linear regression does not change much if we change the training data, but a more complicated model like a fifth order polynomial model will jump around a lot as we change the training data. More model complexity tends to increase model variance.</p></li>
+<li><p><strong>Model Variance</strong> - is error due to sensitivity to the dataset, for example a simple model like linear regression does not change much if we change the training data, but a more complicated model like a fifth order polynomial model will jump around a lot as we change the training data.</p></li>
+</ol>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> More model complexity tends to increase model variance.</p>
+<ol class="arabic simple" start="2">
 <li><p><strong>Model Bias</strong> -  is error due to using an approximate model, i.e., the model is too simple to fit the natural phenomenon. A very simple model is inflexible and will generally have higher model bias while a more complicated model is flexible enough to fit the data and will have lower model bias.</p></li>
+</ol>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> More model complexity tends to descrease model bias.</p>
+<ol class="arabic simple" start="3">
 <li><p><strong>Irreducible Error</strong> - is due to missing and incomplete data. There may be important features that were not sampled, or ranges of feature values that were not sampled. This is the error due to data limitations that cannot be address by the machine learning model hyperparameter tuning for optimum complexity; therefore, irreducible error is constant over the range of model complexity.</p></li>
 </ol>
-<p>Now we can take these three additive sources of error and produce an instructive plot,</p>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> More model complexity should not change irreducible error.</p>
+<p>Now we can take these three additive sources of error and produce an instructive, schematic plot,</p>
 <figure style="text-align: center;">
   <img src="_static/concepts/variance_bias_tradeoff.png" style="display: block; margin: 0 auto; width: 60%;">
   <figcaption style="text-align: center;">Model error in testing vs. model complexity with three additive error components, model variance, model bias and irreducible error.</figcaption>
 </figure>
-<p>showing hyperparameter tuning is an optimization of the model variance and bias trade off. We select the model complexity via hyperparameters that results in a model that is not too simple (too inflexible) is underfit or not too complicated (too flexible) is overfit. Now, let’s talk a bit more about under and overfit.</p>
+<p>From this plot we can observe, the <strong>model bias-variance trade off</strong>,</p>
+<ul class="simple">
+<li><p>testing error is high for low complexity models due to high model bias</p></li>
+<li><p>testing error is high for high complexity models due to high model variance</p></li>
+</ul>
+<p>So hyperparameter tuning is an optimization of the model bias-variance trade off. Wwe select the model complexity via hyperparameters that results in a model that is not,</p>
+<ul class="simple">
+<li><p><strong>underfit</strong> - too simple, too inflexible to fit the natural phenomenon</p></li>
+<li><p><strong>overfit</strong> - too complicated, too flexible and is too sensitive to the data</p></li>
+</ul>
+<p>Now, let’s get into more details about under and overfit machine learning models.</p>
 </section>
 <section id="underfit-and-overfit-models">
 <h2>Underfit and Overfit Models<a class="headerlink" href="#underfit-and-overfit-models" title="Permalink to this heading">#</a></h2>
-<p>First visualize under- and overfit first with a simple prediction problem with one predictor feature and one response feature, here’s a model that is too simple beside a model that is too complicated.</p>
+<p>First visualize underfit and overfit first with a simple prediction problem with one predictor feature and one response feature, here’s a model that is too simple (left) and a model that is too complicated (right).</p>
 <figure style="text-align: center;">
   <img src="_static/concepts/under_overfit.png" style="display: block; margin: 0 auto; width: 100%;">
   <figcaption style="text-align: center;">Example underfit model (left), a model that is too simple / inflexible and overfit model (right), a model that is too complicated / flexible.</figcaption>
 </figure>
-<p>It is clear that this simple model is not sufficiently flexible to fit the data, this is likely an underfit model while the overfit model perfectly fits all of the training data and is likely overfit. To better understand the difference, let’s plot the train error with the test error we showed previously.</p>
+<p>Some observations,</p>
+<ul class="simple">
+<li><p>the simple model is not sufficiently flexible to fit the data, this is likely an underfit model</p></li>
+<li><p>the overfit model perfectly fits all of the training data but is too noisy away from the training data and is likely an overfit model</p></li>
+</ul>
+<p>To better understand the difference, we can now plot the training error alongside the previously shown testing error curve, illustrating how both change with model complexity.</p>
 <figure style="text-align: center;">
   <img src="_static/concepts/overfit.png" style="display: block; margin: 0 auto; width: 60%;">
   <figcaption style="text-align: center;">Model error in training and testing vs. model complexity with illustration of under- and overfit model regions.</figcaption>
 </figure>
+<p>From the plot, we can make the following observations:</p>
 <ul class="simple">
-<li><p><strong>Train Error</strong> - as we increase model complexity it will continue to decrease and at some point reach zero when the model is flexible enough to perfectly fit the training data.</p></li>
-<li><p><strong>Test Error</strong> - as shown above is the result of model variance, model bias and irreducible error, and we expect the model variance-bias trade-off to result in an optimum model complexity that minimizes the error.</p></li>
+<li><p><strong>Training Error</strong> – as model complexity increases, training error consistently decreases. With sufficient flexibility, the model can eventually fit the training data perfectly, driving training error to zero.</p></li>
+<li><p><strong>Testing Error</strong> – testing error is composed of bias, variance, and irreducible error. The interplay between bias and variance leads to a trade-off, resulting in an optimal model complexity that minimizes testing error.</p></li>
 </ul>
-<p>From these observations we can define underfit and overfit as follows,</p>
+<p>Based on these observations, we can characterize underfitting and overfitting as follows:</p>
 <ul class="simple">
-<li><p><strong>underfit</strong> models are too simple and continue to reduce testing error as complexity increases. These models are too conservative and lack the flexibility to fit the natural phenomenon.</p></li>
-<li><p><strong>overfit</strong> models are too complicated and although they continue to reduce training error as complexity increases the testing error is actually increasing. These models may deceive us into believing that we know more than we actually do.</p></li>
+<li><p><strong>Underfitting</strong> - occurs when a model is too simple to capture the underlying patterns in the data. Such models fail to generalize well and tend to show high training and testing errors. As complexity increases, testing error decreases.</p></li>
+<li><p><strong>Overfitting</strong> - occurs when a model is too complex and captures not only the underlying data patterns but also the noise. While training error continues to decrease, testing error starts to increase due to poor generalization. These models can give a false impression of strong performance, misleading us into thinking we understand the system better than we do.</p></li>
 </ul>
 </section>
 <section id="more-about-training-and-testing-splits">
 <h2>More About Training and Testing Splits<a class="headerlink" href="#more-about-training-and-testing-splits" title="Permalink to this heading">#</a></h2>
-<p>Here are some more information on training and testing splits,</p>
+<p>A critical part of the machine learning training and tuning workflow is the training and testing data split. Here is some more considerations about training and testing data splits,</p>
+<section id="proportion-withheld-for-testing">
+<h3>Proportion Withheld for Testing<a class="headerlink" href="#proportion-withheld-for-testing" title="Permalink to this heading">#</a></h3>
+<p>Meta studies have identified that between 15% and 30% withheld for testing is typically optimum. To understand the underlying trade-off imagine these end members,</p>
 <ul class="simple">
-<li><p><strong>Proportion withheld for testing</strong> - meta studies have identified that between 15% and 30% is typically optimum. To understand the underlying trade-off imagine if we only withhold 2% of the data for test, then we will have a lot of training data to train the model as well as possible, but the model will not be well-tested over a wide range of prediction cases. Now image we withhold 70% of the data for test, then with only 30% of the data available for training we will do a very good job testing our somewhat poor model. It is a trade off between build a good model and testing this model well.</p></li>
-<li><p><strong>k-fold Cross Validation</strong> - the train and test workflow above known as a cross validation approach, but there are many other methods. With k-fold cross validation we divide the data into k mutually exclusive, exhaustive equal size sets (called folds) for repeat the model train and test k times with each fold having a turn being withheld. Then we average the error norm over the folds to provide a single error for hyperparameter tuning. This method removes the sensitivity to the exact train and test split so it is often seen as more robust. The proportion of testing is implicit to the choice of k, for k = 3, 33% of data are withheld for each fold and for k=5, 20% of data are withheld for each fold.</p></li>
-<li><p><strong>Train, validate and test</strong> - there is an alternative approach with three exhaustive, mutually exclusive segments. The train data subset is the same as train above and is used to train the model parameters, validate is like test above and is used to tune the model hyperparameters, and the test data subset is applied to check the model trained on all the data with the tuned hyperparameters. The philosophy is that this final check is performed with data that was not at all involved with model construction, including training model parameters nor tuning model hyperparameters. There’s two reasons that I push back on this method. Firstly, what do we do if we don’t quite like the performance in this testing phase, do we have a fourth subset for another test? Also, we can never deploy a model that is not trained with all available data; therefore, we will still have to train with the test subset.</p></li>
-<li><p><strong>Spatial Fair Train and Test Splits</strong> - Dr. Julian Salazar suggested that for spatial prediction problems that random train and test split may not fair. He proposed a <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0920410521015023">fair train and test split method</a> for spatial prediction models that splits the data based on the difficulty of the planned use of the model. Prediction difficulty is related to kriging variance that accounts for spatial continuity and distance offset. If the model will be used to impute data with small offsets from available data then construct a train and test split with train data close to test data, and if the model will be used to predict a large distance offsets then perform splits the result is large offsets between train and test data. With this method the tuned model may vary based on the planned use for the model.</p></li>
+<li><p>withhold 2% of the data for testing, then we will have a lot of training data to train the model very well, but too few testing data to test our model over a range of prediction cases.</p></li>
+<li><p>withhold 98% of the data for test, then with only 2% of the data available for training we will do a very good job testing our very poor model.</p></li>
 </ul>
+<p>The proportion to withhold for testing is a trade off between building a good model and testing this model well with a wide range of prediction cases.</p>
+</section>
+<section id="other-cross-validation-methods">
+<h3>Other Cross Validation Methods<a class="headerlink" href="#other-cross-validation-methods" title="Permalink to this heading">#</a></h3>
+<p>The train and test workflow above known as a cross validation or hold out approach, but there are many other methods for model training and testing,</p>
+<ul class="simple">
+<li><p><strong>k-fold Cross Validation (K-fold CV)</strong> - we divide the data into k mutually exclusive, exhaustive equal size sets (called folds) for repeat the model train and test k times with each fold having a turn being withheld testing data while the remainder is training data.</p></li>
+<li><p><strong>Leave-One-Out Cross Validation (LOO CV)</strong> - we loop over all data, each time we assign the one datum as the testing data and train on the remainder n-1 data.</p></li>
+<li><p><strong>Leave-p-Out Cross Validation (LpO-CV)</strong> - we assign a integer p &lt; n and then loop over the combinatorial of possible cases with p withheld testing data. Since we consider all possible cases, this is an exhaustive cross validation approach.</p></li>
+</ul>
+<p>For each of the above folds or in general, training and testing dataset combinations, we calculate the error norm</p>
+<ul class="simple">
+<li><p>then we average the error norm over the folds to provide a single error for hyperparameter tuning</p></li>
+<li><p>this method removes the sensitivity to the exact train and test split so it is often seen as more robust than regular hold out methods.</p></li>
+</ul>
+<p>The choice of proportion of the data to withhold for testing varies by the the cross validation method,</p>
+<ul class="simple">
+<li><p>for k-fold cross validation the proportion of testing is implicit to the choice of k, for k = 3, 33% of data are withheld for each fold and for k=5, 20% of data are withheld for each fold</p></li>
+<li><p>for leave-one-out cross validation the proportion of testing is <span class="math notranslate nohighlight">\(\frac{1}{n}\)</span></p></li>
+<li><p>for leave-p-out cross validation the proportion of testing is <span class="math notranslate nohighlight">\(\frac{p}{n}\)</span></p></li>
+</ul>
+</section>
+<section id="train-validate-and-test-split">
+<h3>Train, Validate and Test Split<a class="headerlink" href="#train-validate-and-test-split" title="Permalink to this heading">#</a></h3>
+<p>There is an alternative approach with three exhaustive, mutually exclusive subsets of the data</p>
+<ul class="simple">
+<li><p><strong>training data</strong> - subset is the same as train above and is used to train the model parameters</p></li>
+<li><p><strong>validate data</strong> - subset is like testing subset for the train and test split method above and is used to tune the model hyperparameters</p></li>
+<li><p><strong>testing data</strong> - subset is applied to check the final model trained on all the data with the tuned hyperparameters</p></li>
+</ul>
+<p>The train, validate and test split philosophy is that this final model check is performed with data that was not involved with model construction, including training model parameters nor tuning model hyperparameters. There are two reasons that I push back on this method,</p>
+<ol class="arabic simple">
+<li><p><strong>circular quest of perfect model validation</strong> - what do we do if we don’t quite like the performance in this testing phase, do we have a fourth subset for another test? and a fifth subset? and a sixth subset? ad infinitum?</p></li>
+<li><p><strong>we must train the deployed model with all data</strong> - we can never deploy a model that is not trained with all available data; therefore, we will still have to train with the test subset to get our final model?</p></li>
+<li><p><strong>reducing modeling training and tuning performance</strong> - the third data split for the testing phase reduces the data available for model training and tuning reducing the perforamnce of these critical steps.</p></li>
+</ol>
+</section>
+<section id="spatial-fair-train-and-test-splits">
+<h3>Spatial Fair Train and Test Splits<a class="headerlink" href="#spatial-fair-train-and-test-splits" title="Permalink to this heading">#</a></h3>
+<p>Dr. Julian Salazar suggested that for spatial prediction problems that random train and test split may not fair. He proposed a <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0920410521015023">fair train and test split method</a> for spatial prediction models that splits the data based on the difficulty of the planned use of the model. Prediction difficulty is related to kriging variance that accounts for spatial continuity and distance offset. For example,</p>
+<ul class="simple">
+<li><p>if the model will be used to impute data with small offsets from available data then construct a train and test split with train data close to test data</p></li>
+<li><p>if the model will be used to predict a large distance offsets then perform splits the result is large offsets between train and test data.</p></li>
+</ul>
+<p>With this method the tuned model may vary based on the planned real-world use for the model.</p>
+</section>
 </section>
 <section id="ethical-and-professional-practice-concerns-with-data-science">
 <h2>Ethical and Professional Practice Concerns with Data Science<a class="headerlink" href="#ethical-and-professional-practice-concerns-with-data-science" title="Permalink to this heading">#</a></h2>
-<p><a class="reference external" href="https://arxiv.org/pdf/1602.04938.pdf">Rideiro et al. (2016)</a> trained a logistic regression classifier with 20 wolf and dog images to detect the difference between wolves and dogs. The input is a photo of a dog or wolf and the output is the probability of dog and the compliment, the probability of wolf. The model worked well until this example here (see the left side below),</p>
+<p>To demonstrate concerns with data science consider this example, <a class="reference external" href="https://arxiv.org/pdf/1602.04938.pdf">Rideiro et al. (2016)</a> trained a logistic regression classifier with 20 wolf and dog images to detect the difference between wolves and dogs.</p>
+<ul class="simple">
+<li><p>the input is a photo of a dog or wolf and the output is the probability of dog and the compliment, the probability of wolf</p></li>
+<li><p>the model worked well until this example here (see the left side below),</p></li>
+</ul>
 <figure style="text-align: center;">
   <img src="_static/concepts/dog_and_wolf.png" style="display: block; margin: 0 auto; width: 100%;">
   <figcaption style="text-align: center;">Example dog misclassified as a wolf (left) and pixels that resulted in this misclassification (right), image taken from Rideiro et al. (2016).</figcaption>
 </figure>
-<p>where this results in a high probability of wolf. Fortunately the authors were able to interrogate the model and determine the pixels that had the greatest influence of the model’s determination of wolf (see the right side above). What happened? They trained a model to check for snow in the background. As a Canadian I can assure you that many photos of wolves are in our snow filled northern regions of our country, while many dogs are photographed in grassy yards. The problem with machine learning is:</p>
+<p>where this results in a high probability of wolf. Fortunately the authors were able to interrogate the model and determine the pixels that had the greatest influence of the model’s determination of wolf (see the right side above). What happened?</p>
+<ul class="simple">
+<li><p>they trained a model to check for snow in the background. As a Canadian, I can assure you that many photos of wolves are in our snow filled northern regions of our country, while many dogs are photographed in grassy yards.</p></li>
+</ul>
+<p>The problems with machine learning are,</p>
 <ul class="simple">
 <li><p>interpretability may be low with complicated models</p></li>
 <li><p>application of machine learning may become routine and trusted</p></li>
@@ -1001,7 +1547,8 @@ E \left[ \left( y_0 - \hat{f}(x^1_0, \ldots , x^m_0) \right)^2 \right]
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-for-machine-learning-concepts">Motivation for Machine Learning Concepts</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#big-data">Big Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics-geostatistics-and-data-analytics">Statistics, Geostatistics and Data Analytics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-science">Data Science</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scientific-paradigms-and-the-fourth-paradigm">Scientific Paradigms and the Fourth Paradigm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#foundations-and-enablers-of-the-fourth-scientific-paradigm">Foundations and Enablers of the Fourth Scientific Paradigm</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cheap-and-available-compute">Cheap and Available Compute</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#availability-of-big-data">Availability of Big Data</a></li>
 </ul>
@@ -1011,18 +1558,26 @@ E \left[ \left( y_0 - \hat{f}(x^1_0, \ldots , x^m_0) \right)^2 \right]
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-prerequisite-definitions">Machine Learning Prerequisite Definitions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#population">Population</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample">Sample</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-feature">Variable / Feature</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-or-feature">Variable or Feature</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predictor-and-response-features">Predictor and Response Features</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inference">Inference</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prediction">Prediction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inference-vs-prediction-in-machine-learning">Inference vs. Prediction in Machine Learning</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-and-tuning-machine-learning-models">Training and Tuning Machine Learning Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-and-tuning-predictive-machine-learning-models">Training and Tuning Predictive Machine Learning Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-questions-about-the-model-training-and-tuning-workflow">Common Questions About the Model Training and Tuning Workflow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parameters-and-model-hyperparameters">Model Parameters and Model Hyperparameters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-and-classification">Regression and Classification</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-of-predictive-machine-learning-testing-error">Sources of Predictive Machine Learning Testing Error</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#underfit-and-overfit-models">Underfit and Overfit Models</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-about-training-and-testing-splits">More About Training and Testing Splits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-about-training-and-testing-splits">More About Training and Testing Splits</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proportion-withheld-for-testing">Proportion Withheld for Testing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-cross-validation-methods">Other Cross Validation Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#train-validate-and-test-split">Train, Validate and Test Split</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-fair-train-and-test-splits">Spatial Fair Train and Test Splits</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ethical-and-professional-practice-concerns-with-data-science">Ethical and Professional Practice Concerns with Data Science</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
@@ -1051,7 +1606,7 @@ By Michael J. Pyrcz
 
   <p class="copyright">
     
-      © Copyright 2024 CC-BY-SA 4.0.
+      © Copyright 2024 CC BY-NC-ND 4.0.
       <br/>
     
   </p>

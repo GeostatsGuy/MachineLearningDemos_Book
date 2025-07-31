@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
@@ -1541,7 +1542,7 @@ Response Feature: [[&#39;Prod&#39;]]
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_neighbours</span> <span class="o">=</span> <span class="mi">150</span><span class="p">;</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">weights</span> <span class="o">=</span> <span class="s1">&#39;uniform&#39;</span>                 <span class="c1"># model hyperparameters</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_neighbours</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">weights</span> <span class="o">=</span> <span class="s1">&#39;uniform&#39;</span>                 <span class="c1"># model hyperparameters</span>
 <span class="n">neigh</span> <span class="o">=</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">weights</span> <span class="o">=</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="n">n_neighbours</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="p">)</span> <span class="c1"># instantiate the prediction model</span>
 </pre></div>
 </div>
@@ -1582,7 +1583,7 @@ Response Feature: [[&#39;Prod&#39;]]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/dd9cfeb47657661a2423dad215c8b8dd2eac3b9b797de000dfff181328be6aff.png" src="_images/dd9cfeb47657661a2423dad215c8b8dd2eac3b9b797de000dfff181328be6aff.png" />
+<img alt="_images/8687713a2a5e6441f354a7136a11c925434235dd1930a34a508287b1aed9f7e5.png" src="_images/8687713a2a5e6441f354a7136a11c925434235dd1930a34a508287b1aed9f7e5.png" />
 </div>
 </div>
 <p>The model looks good:</p>
@@ -1595,7 +1596,7 @@ Response Feature: [[&#39;Prod&#39;]]
 <p>Let’s try to overfit the model by using a very large k hyperparameter.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_neighbours</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">weights</span> <span class="o">=</span> <span class="s1">&#39;uniform&#39;</span>                <span class="c1"># model hyperparameters</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_neighbours</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">weights</span> <span class="o">=</span> <span class="s1">&#39;distance&#39;</span>                <span class="c1"># model hyperparameters</span>
 <span class="n">neigh</span> <span class="o">=</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">weights</span> <span class="o">=</span> <span class="n">weights</span><span class="p">,</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">n_neighbours</span><span class="p">,</span><span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="p">)</span> <span class="c1"># instantiate the prediction model</span>
 
 <span class="n">neigh_fit</span> <span class="o">=</span> <span class="n">neigh</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>                        <span class="c1"># train the model with the training data</span>
@@ -1621,7 +1622,7 @@ Response Feature: [[&#39;Prod&#39;]]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d086186b363fc6f141a05f399838bcfb908de59fb18e692b839b79980263970e.png" src="_images/d086186b363fc6f141a05f399838bcfb908de59fb18e692b839b79980263970e.png" />
+<img alt="_images/83cee81bca347880fa5ef0e4a7b3b8ee0e1b9e71e0290f19b3cf51b7a3187793.png" src="_images/83cee81bca347880fa5ef0e4a7b3b8ee0e1b9e71e0290f19b3cf51b7a3187793.png" />
 </div>
 </div>
 <p>Note that this smoothed out the response, and the predictions are approaching the global mean.</p>
@@ -2200,7 +2201,7 @@ By Michael J. Pyrcz
 
   <p class="copyright">
     
-      © Copyright 2024 CC-BY-SA 4.0.
+      © Copyright 2024 CC BY-NC-ND 4.0.
       <br/>
     
   </p>
