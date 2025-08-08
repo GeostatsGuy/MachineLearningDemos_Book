@@ -204,6 +204,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ANN.html">Artificial Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_CNN.html">Convolutional Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_autoencoder.html">Autoencoder Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_GAN.html">Generative Adversarial Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_time_series.html">Time Series Analysis and Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_python.html">Python Code Snippets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
@@ -2350,29 +2351,29 @@ Correlation Matrix of the 6 principle components&#39; scores:
 Proportion of variance of original features:  [0.2 0.2 0.2 0.2 0.2]
 Correlation Matrix of original features:
 
-[[ 0.08 -0.   -0.   -0.   -0.  ]
- [-0.    0.08  0.    0.   -0.  ]
- [-0.    0.    0.08  0.   -0.  ]
- [-0.    0.    0.    0.08  0.  ]
- [-0.   -0.   -0.    0.    0.08]]
+[[ 0.08 -0.    0.   -0.    0.  ]
+ [-0.    0.08  0.    0.    0.  ]
+ [ 0.    0.    0.08  0.    0.  ]
+ [-0.    0.    0.    0.08 -0.  ]
+ [ 0.    0.    0.   -0.    0.08]]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PCA Variance Explained  [0.2 0.2 0.2 0.2 0.2]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PCA Variance Explained  [0.21 0.2  0.2  0.2  0.2 ]
 
 Correlation Matrix of scores:
 
-[[ 0.09  0.    0.   -0.    0.  ]
- [ 0.    0.08 -0.   -0.   -0.  ]
- [ 0.   -0.    0.08  0.   -0.  ]
- [-0.   -0.    0.    0.08 -0.  ]
- [ 0.   -0.   -0.   -0.    0.08]]
+[[ 0.09  0.    0.    0.    0.  ]
+ [ 0.    0.08  0.    0.    0.  ]
+ [ 0.    0.    0.08 -0.   -0.  ]
+ [ 0.    0.   -0.    0.08 -0.  ]
+ [ 0.    0.   -0.   -0.    0.08]]
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.98, &#39;Principal Component Scores&#39;)
 </pre></div>
 </div>
-<img alt="_images/3c3d79a574dba26ced26f29671f0908b68ea58fe079f0bbc48bb9dbba2deda9f.png" src="_images/3c3d79a574dba26ced26f29671f0908b68ea58fe079f0bbc48bb9dbba2deda9f.png" />
-<img alt="_images/66e23567a0381a3b4e23ad4e1b6fc1c82dee002c439f476572b95d7fc7870070.png" src="_images/66e23567a0381a3b4e23ad4e1b6fc1c82dee002c439f476572b95d7fc7870070.png" />
+<img alt="_images/ee1e8afa91fcf9db32da30b3d7b77ed017f4ee058028bc844ed021396f522fbc.png" src="_images/ee1e8afa91fcf9db32da30b3d7b77ed017f4ee058028bc844ed021396f522fbc.png" />
+<img alt="_images/ab4a76ff205c68dd9a876f834efd9e32a0decc104709219d5923e891106b1365.png" src="_images/ab4a76ff205c68dd9a876f834efd9e32a0decc104709219d5923e891106b1365.png" />
 </div>
 </div>
 <p>What happens when principal component analysis is applied to uncorrelated, uniformly distributed features?</p>

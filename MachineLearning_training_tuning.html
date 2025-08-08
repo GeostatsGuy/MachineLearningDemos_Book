@@ -204,6 +204,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ANN.html">Artificial Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_CNN.html">Convolutional Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_autoencoder.html">Autoencoder Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_GAN.html">Generative Adversarial Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_time_series.html">Time Series Analysis and Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_python.html">Python Code Snippets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
@@ -405,7 +406,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parameter-training-and-hyperparameter-tuning">Model Parameter Training and Hyperparameter Tuning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-and-tuning-predictive-machine-learning-models">Training and Tuning Predictive Machine Learning Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-questions-about-the-model-training-and-tuning-workflow">Common Questions About the Model Training and Tuning Workflow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parameters-and-model-hyperparameters">Model Parameters and Model Hyperparameters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-and-classification">Regression and Classification</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-and-testing-data">Training and Testing Data</a></li>
@@ -478,55 +480,113 @@ document.write(`
 <li><p><a class="reference external" href="https://youtu.be/FiX8IWPhTcg?si=K4A3W0zTaiypm7n7">Cross Validation Considerations</a></p></li>
 </ul>
 <p>For your convenience here’s a summary of salient points.</p>
-<section id="model-parameter-training-and-hyperparameter-tuning">
-<h2>Model Parameter Training and Hyperparameter Tuning<a class="headerlink" href="#model-parameter-training-and-hyperparameter-tuning" title="Permalink to this heading">#</a></h2>
-<p>For predictive machine learning, we commonly apply a general model training and testing workflow that is illustrated here.</p>
+<section id="training-and-tuning-predictive-machine-learning-models">
+<h2>Training and Tuning Predictive Machine Learning Models<a class="headerlink" href="#training-and-tuning-predictive-machine-learning-models" title="Permalink to this heading">#</a></h2>
+<p>In predictive machine learning, we follow a standard model training and testing workflow. This process ensures that our model generalizes well to new data, rather than just fitting the training data perfectly.</p>
 <figure style="text-align: center;">
-  <img src="_static/concepts/ML_workflow.png" style="display: block; margin: 0 auto; width: 100%;">
+  <img src="_static/concepts/ML_workflow_portrait.png" style="display: block; margin: 0 auto; width: 100%;">
   <figcaption style="text-align: center;">Standard predictive machine learning modeling workflow.</figcaption>
 </figure>
-<p>Let’s walk through the steps,</p>
+<p>Let’s walk through the key steps,</p>
 <ol class="arabic simple">
-<li><p><strong>Train and Test Split</strong> the available data into train and test mutually exclusive, exhaustive subsets. Typically 15% - 30% of the data are withheld and assigned to test and the remainder to the train.</p></li>
-<li><p><strong>Remove the Test Split</strong> from the analysis. The test data cannot be used to train the predictive model. Any information from test data to inform the model training is considered information leakage and compromises the accuracy of the model.</p></li>
-<li><p><strong>Train a Very Simple Model</strong> with the training data. Set the hyperparameters such that the model is as simple as reasonable and then train the model parameters with the available training data.</p></li>
-<li><p><strong>Train Models from Simple to Complicated</strong> by repeating the previous steps with the model hyperparameters incrementally increasing the model complexity. The result is a suite of models of variable complexity all with model parameters trained to minimize misfit with the training data.</p></li>
-<li><p><strong>Access Performance with the Withheld Testing Data</strong> by retrieving the testing data and summarizing the error over all these withheld data.</p></li>
-<li><p><strong>Select the Hyperparameter(s)</strong> that minimize the testing error by picking the model from the previous step with the minimum testing error. The associated hyperparameter(s) are known as the tuned hyperparameter(s).</p></li>
-<li><p><strong>Retrain the Model</strong> with all of the data (train and test combined) with the tuned hyperparameter(s).</p></li>
+<li><p><strong>Train and Test Split</strong> - divide the available data into mutually exclusive, exhaustive subsets: a training set and a testing set.</p></li>
 </ol>
-<p>Let’s answer a couple of common questions to better explain this general predictive machine learning training and tuning workflow,</p>
-<p><strong>What is the outcome from the empirical approach expressed in steps 1 through 6?</strong> - just the tuned hyperparameter(s). We would never deploy the selected model in step 6 as it would omit valuable data used for testing. In step 7 we retrain with all the data and the tuned hyperparameter(s) before model deployment.</p>
-<p><strong>Why not just train the model with all of the data?</strong> - We can always minimize the training error by selecting hyperparameters that result in a very complicated model. More complicated models are more flexible, and with enough flexibility will be able to perfectly fit all of the training data, but that model would not do a very good job with making predictions for predictor feature cases away from the training cases. The most complicated, overfit model would always win.</p>
-<p>In other words, this approach is an attempt to simulate the model use, a form of model dress rehearsal, to find the level of model complexity that does the best job making new predictions, known as model generalization. Now we can review the definitions of and differences between model parameters and hyperparameters.</p>
+<ul class="simple">
+<li><p>typically, 15%–30% of the data is held out for testing</p></li>
+<li><p>the remaining 70%–85% is used for training the model</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p><strong>Define a range of hyperparameter(s)</strong> values to explore, ranging from,</p></li>
+</ol>
+<ul class="simple">
+<li><p>simple models with low flexibility</p></li>
+<li><p>to complex models with high flexibility</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> This step may involve tuning multiple hyperparameters, in which case efficient sampling methods (e.g., grid search, random search, or Bayesian optimization) are often used.</p>
+<ol class="arabic simple" start="3">
+<li><p><strong>Train Model Parameters for Each Hyperparameter Setting</strong> - for each set of hyperparameters, train a model on the training data. This yields:</p></li>
+</ol>
+<ul class="simple">
+<li><p>a suite of trained models, each with different complexity</p></li>
+<li><p>each model has parameters optimized to minimize error on the training data</p></li>
+</ul>
+<ol class="arabic simple" start="4">
+<li><p><strong>Evaluate Each Model on the Withheld Testing Data</strong> - using the testing data,</p></li>
+</ol>
+<ul class="simple">
+<li><p>evaluate how each trained model performs on unseen data</p></li>
+<li><p>summarize prediction error (for example, root mean square error (RMSE), mean absolute error (MAE), classification accuracy) for each model</p></li>
+</ul>
+<ol class="arabic simple" start="5">
+<li><p><strong>Select the Hyperparameters That Minimize Test Error</strong> - this is the hyperparameter tuning step:</p></li>
+</ol>
+<ul class="simple">
+<li><p>choose the model hyperparaemter(s) that performs best on the test data</p></li>
+<li><p>these are your tuned hyperparameters</p></li>
+</ul>
+<ol class="arabic simple" start="6">
+<li><p><strong>Retrain the Final Model on All Data Using Tuned Hyperparameters</strong> - now that the best model complexity has been identified,</p></li>
+</ol>
+<ul class="simple">
+<li><p>retrain the model using both the training and test sets</p></li>
+<li><p>this maximizes the amount of data used for final model parameter estimation</p></li>
+<li><p>the resulting model is the one you deploy in real-world applications</p></li>
+</ul>
+</section>
+<section id="common-questions-about-the-model-training-and-tuning-workflow">
+<h2>Common Questions About the Model Training and Tuning Workflow<a class="headerlink" href="#common-questions-about-the-model-training-and-tuning-workflow" title="Permalink to this heading">#</a></h2>
+<p>As a professor, I often hear these questions when I introduce the above machine learning model training and tuning workflow.</p>
+<ul class="simple">
+<li><p><strong>What is the main outcome of steps 1–5?</strong> - the only reliable outcome is the tuned hyperparameters.</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> we do not use the model trained in step 3 or 4 directly, because it was trained without access to all available data. Instead, we retrain the final model using all data with the selected hyperparameters.</p>
+<ul class="simple">
+<li><p><strong>Why not train the model on all the data from the beginning?</strong> - because if we do that, we have no independent way to evaluate the model’s generalization. A very complex model can easily overfit—fitting the training data perfectly, but performing poorly on new, unseen data.</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> overfitting happens when model flexibility is too high—it captures noise instead of the underlying pattern. Without a withheld test set, we can’t detect this.</p>
+<p>This workflow for training and tuning predictive machine learning models is,</p>
+<ul class="simple">
+<li><p>an empirical, cross-validation-based process</p></li>
+<li><p>a practical simulation of real-world model use</p></li>
+<li><p>a method to identify the model complexity that best balances fit and generalization</p></li>
+</ul>
+<p>I’ve said model parameters and model hyperparameters a bunch of times, so I owe you their definitions.</p>
 </section>
 <section id="model-parameters-and-model-hyperparameters">
 <h2>Model Parameters and Model Hyperparameters<a class="headerlink" href="#model-parameters-and-model-hyperparameters" title="Permalink to this heading">#</a></h2>
-<p>Model parameters are fit during training phase to minimize error at the training data, i.e.,</p>
+<p><strong>Model parameters</strong> are fit during training phase to minimize error at the training data, i.e., model parameters are trained with training data and control model fit to the data. For example,</p>
 <ul class="simple">
-<li><p>model parameters are trained with training data and control model fit to the data.</p></li>
+<li><p>for the polynomial predictive machine learning model from the machine learning workflow example above, the model parameters are the polynomial coefficients, e.g., <span class="math notranslate nohighlight">\(b_3\)</span>, <span class="math notranslate nohighlight">\(b_2\)</span>, <span class="math notranslate nohighlight">\(b_1\)</span> and <span class="math notranslate nohighlight">\(c\)</span> (often called <span class="math notranslate nohighlight">\(b_0\)</span>) for the third order polynomial model.</p></li>
 </ul>
-<p>For the polynomial predictive machine learning model from the machine learning workflow example above, the model parameters are the polynomial coefficients, e.g., <span class="math notranslate nohighlight">\(b_3\)</span>, <span class="math notranslate nohighlight">\(b_2\)</span>, <span class="math notranslate nohighlight">\(b_1\)</span> and <span class="math notranslate nohighlight">\(c\)</span> (often called <span class="math notranslate nohighlight">\(b_0\)</span>) for the third order polynomial model.</p>
 <figure style="text-align: center;">
   <img src="_static/concepts/parameters.png" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;">Model parameters are adjusted to fit of the model to the data, i.e., model parameters are trained to minimize error over the training data (x markers).</figcaption>
 </figure>
-<p>Model hyperparameters are very different. They do not constrain the model fit to the data directly, instead they constrain the model complexity and flexibility.</p>
-<ul class="simple">
-<li><p>model hyperparameters are selected, i.e., tuned, to minimize error over the withheld testing data.</p></li>
-</ul>
-<p>Going back to our polynomial predictive machine learning example, the choice of polynomial order is the model hyperparameter.</p>
+<p><strong>Model hyperparameters</strong> are very different. They do not constrain the model fit to the data directly, instead they constrain the model complexity.
+The model hyperparameters are selected (call tuning) to minimize error at the withheld testing data. Going back to our polynomial predictive machine learning example, the choice of polynomial order is the model hyperparameter.</p>
 <figure style="text-align: center;">
-  <img src="_static/concepts/hyperparameters.png" style="display: block; margin: 0 auto; width: 80%;">
+  <img src="_static/concepts/hyperparameters.png" style="display: block; margin: 0 auto; width: 100%;">
   <figcaption style="text-align: center;">Model hyperparameters are adjusted to change the model complexity / flexibility, i.e., model hyperparameters are tuned to minimize error over the withheld testing data (solid circles).</figcaption>
 </figure>
+<div class="remove-from-content-only admonition">
+<p class="admonition-title">Model parameters vs. model hyperparameters</p>
+<p>Model parameters control the model fit and are trained with training data. Model hyperparameters control the model complexity and are tuned with testing data.</p>
+</div>
 </section>
 <section id="regression-and-classification">
 <h2>Regression and Classification<a class="headerlink" href="#regression-and-classification" title="Permalink to this heading">#</a></h2>
-<p>Since our model goodness metrics will not be the same for regression and classification models, it may be helpful to review their definitions,</p>
+<p>Before we proceed, we need to define regression and classification.</p>
 <ul class="simple">
-<li><p><strong>Regression Model</strong> - a predictive machine learning model where the response feature(s) is continuous.</p></li>
-<li><p><strong>Classification Model</strong> - a predictive machine learning model where the response feature(s) is categorical.</p></li>
+<li><p><strong>Regression</strong> - a predictive machine learning model where the response feature(s) is continuous.</p></li>
+<li><p><strong>Classification</strong> - a predictive machine learning model where the response feature(s) is categorical.</p></li>
+</ul>
+<p>It turns out that for each of these we need to build different models and use different methods to score these models.</p>
+<ul class="simple">
+<li><p>for the remainder of this discussion we will focus on regression, but in later chapters we introduce classification models as well.</p></li>
+</ul>
+<p>Now, to better understand predictive machine learning model tuning, i.e., the empirical approach to tune model complexity to minimize testing error, we need to understand the sources of testing error.</p>
+<ul class="simple">
+<li><p>the causes of the thing that we are attempting to minimize!</p></li>
 </ul>
 </section>
 <section id="training-and-testing-data">
@@ -1343,7 +1403,8 @@ I(y_i, \hat{y}_i) =
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parameter-training-and-hyperparameter-tuning">Model Parameter Training and Hyperparameter Tuning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-and-tuning-predictive-machine-learning-models">Training and Tuning Predictive Machine Learning Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-questions-about-the-model-training-and-tuning-workflow">Common Questions About the Model Training and Tuning Workflow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parameters-and-model-hyperparameters">Model Parameters and Model Hyperparameters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-and-classification">Regression and Classification</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-and-testing-data">Training and Testing Data</a></li>
