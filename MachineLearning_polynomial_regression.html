@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Polynomial Regression &#8212; Applied Machine Learning in Python</title>
   
@@ -15,55 +14,51 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=304429a7" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=564be945" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'MachineLearning_polynomial_regression';</script>
@@ -80,28 +75,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -123,12 +113,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -144,6 +142,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -162,7 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -201,6 +212,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ensemble_trees.html">Bagging Tree and Random Forest</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_gradient_boosting.html">Gradient Boosting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_support_vector_machines.html">Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_activation_functions.html">Neural Networks Activation Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ANN.html">Artificial Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_CNN.html">Convolutional Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_autoencoder.html">Autoencoder Neural Networks</a></li>
@@ -226,7 +238,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -235,14 +247,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -367,10 +379,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -378,14 +390,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -444,15 +456,15 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <figure style="text-align: center;">
   <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
 </figure>
 <section id="polynomial-regression">
-<h1>Polynomial Regression<a class="headerlink" href="#polynomial-regression" title="Permalink to this heading">#</a></h1>
+<h1>Polynomial Regression<a class="headerlink" href="#polynomial-regression" title="Link to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite this e-Book as:</p>
@@ -473,9 +485,9 @@ document.write(`
 <li><p><a class="reference external" href="https://youtu.be/z19Hs2HfO88?si=etUIb3LegiTigEio">Polynomial Regression</a></p></li>
 <li><p><a class="reference external" href="https://youtu.be/4nYz5j0sAQs?si=n_553YQdh5grTquV">Numerical Optimization</a></p></li>
 </ul>
-<p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
+<p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
 <section id="motivations-for-polynomial-regression">
-<h2>Motivations for Polynomial Regression<a class="headerlink" href="#motivations-for-polynomial-regression" title="Permalink to this heading">#</a></h2>
+<h2>Motivations for Polynomial Regression<a class="headerlink" href="#motivations-for-polynomial-regression" title="Link to this heading">#</a></h2>
 <p>By moving from linear regression to polynomial regression we,</p>
 <ul class="simple">
 <li><p>add prediction flexibility by modeling non-linearity in our data</p></li>
@@ -491,7 +503,7 @@ document.write(`
 <p>Let’s start with linear regression and then build to polynomial regression.</p>
 </section>
 <section id="linear-regression">
-<h2>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this heading">#</a></h2>
+<h2>Linear Regression<a class="headerlink" href="#linear-regression" title="Link to this heading">#</a></h2>
 <p>Linear regression for prediction, let’s start by looking at a linear model fit to a set of data.</p>
 <figure style="text-align: center;">
   <img src="_static/linear/linear_example.png" style="display: block; margin: 0 auto; width: 50%;">
@@ -551,7 +563,7 @@ RSS = \sum_{i=1}^n \left(y_i - (\sum_{\alpha = 1}^m b_{\alpha} x_{\alpha,i} + b_
 </ul>
 </section>
 <section id="predictor-feature-basis-expansion">
-<h2>Predictor Feature / Basis Expansion<a class="headerlink" href="#predictor-feature-basis-expansion" title="Permalink to this heading">#</a></h2>
+<h2>Predictor Feature / Basis Expansion<a class="headerlink" href="#predictor-feature-basis-expansion" title="Link to this heading">#</a></h2>
 <p>We can improve model flexibility and complexity by applying basis expansion with basis functions applied to our predictor features. The fundamental idea is to utilize a suite of basis functions, <span class="math notranslate nohighlight">\(h_1, h_2, \ldots, h_k\)</span>, that provide new predictor features.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -567,7 +579,7 @@ h(x_i) = (h_1(x_i),h_1(x_i),\ldots,h_k(x_i))
 </figure>
 </section>
 <section id="id1">
-<h2>Polynomial Regression<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2>Polynomial Regression<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>It can be shown that polynomial regression is just linear regression applied to a polynomial expansion of the predictor features.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -608,7 +620,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </ul>
 </section>
 <section id="advantage-and-disadvantages-of-polynomial-regression">
-<h2>Advantage and Disadvantages of Polynomial Regression<a class="headerlink" href="#advantage-and-disadvantages-of-polynomial-regression" title="Permalink to this heading">#</a></h2>
+<h2>Advantage and Disadvantages of Polynomial Regression<a class="headerlink" href="#advantage-and-disadvantages-of-polynomial-regression" title="Link to this heading">#</a></h2>
 <p>The advantages of polynomial regression vs. linear regression, include,</p>
 <ul class="simple">
 <li><p>improved flexibility to fit nonlinear phenomenon, with linear analysis and an analytical solution to train the model parameters.</p></li>
@@ -619,7 +631,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 <p>we lose model parameter interpretability, <span class="math notranslate nohighlight">\(𝛽_{𝑗,𝑘}\)</span> is related to <span class="math notranslate nohighlight">\(ℎ_𝑘 \left(𝑋_j \right)\)</span>.</p>
 </section>
 <section id="adding-elementary-functions">
-<h2>Adding Elementary Functions<a class="headerlink" href="#adding-elementary-functions" title="Permalink to this heading">#</a></h2>
+<h2>Adding Elementary Functions<a class="headerlink" href="#adding-elementary-functions" title="Link to this heading">#</a></h2>
 <p>An alternative interpretation of polynomial regression is the construction of a regression model by adding elementary functions, i.e., the basis functions.</p>
 <p>Let’s work with a single predictor feature and <span class="math notranslate nohighlight">\(K\)</span> basis expansion.</p>
 <div class="math notranslate nohighlight">
@@ -687,7 +699,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </ul>
 </section>
 <section id="assumptions-of-polynomial-regression">
-<h2>Assumptions of Polynomial Regression<a class="headerlink" href="#assumptions-of-polynomial-regression" title="Permalink to this heading">#</a></h2>
+<h2>Assumptions of Polynomial Regression<a class="headerlink" href="#assumptions-of-polynomial-regression" title="Link to this heading">#</a></h2>
 <p>There are important assumption with our polynomial regression model, extended from the assumptions of linear regression above,</p>
 <ul class="simple">
 <li><p><strong>Error-free</strong> - predictor features basis expansions are error free, not random variables</p></li>
@@ -709,9 +721,9 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 <p>To remove this collinearity we can apply Hermite polynomials.</p>
 </section>
 <section id="hermite-polynomials">
-<h2><strong>Hermite Polynomials</strong><a class="headerlink" href="#hermite-polynomials" title="Permalink to this heading">#</a></h2>
+<h2><strong>Hermite Polynomials</strong><a class="headerlink" href="#hermite-polynomials" title="Link to this heading">#</a></h2>
 <p>Is a family of orthogonal polynomials on the real number line.</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-center"><p>Order</p></th>
 <th class="head text-center"><p>Hermite Polynomial <span class="math notranslate nohighlight">\(H_e(x)\)</span></p></th>
@@ -735,6 +747,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </tr>
 </tbody>
 </table>
+</div>
 <p>These polynomials are orthogonal with respect to a weighting function,</p>
 <div class="math notranslate nohighlight">
 \[
@@ -752,7 +765,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </ul>
 </section>
 <section id="load-the-required-libraries">
-<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
+<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Link to this heading">#</a></h2>
 <p>We will also need some standard packages. These should have been installed with Anaconda 3.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -792,7 +805,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 <p>If you get a package import error, you may have to first install some of these packages. This can usually be accomplished by opening up a command window on Windows and then typing ‘python -m pip install [package-name]’. More assistance is available with the respective package docs.</p>
 </section>
 <section id="declare-functions">
-<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
+<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Link to this heading">#</a></h2>
 <p>Let’s define a convenience function to add gridlines to our plots and to plot correlation matrices.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -825,7 +838,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </div>
 </section>
 <section id="set-the-working-directory">
-<h2>Set the Working Directory<a class="headerlink" href="#set-the-working-directory" title="Permalink to this heading">#</a></h2>
+<h2>Set the Working Directory<a class="headerlink" href="#set-the-working-directory" title="Link to this heading">#</a></h2>
 <p>I always like to do this so I don’t lose files and to simplify subsequent read and writes (avoid including the full address each time).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -837,7 +850,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 <p>You will have to update the part in quotes with your own working directory and the format is different on a Mac (e.g. “~/PGE”).</p>
 </section>
 <section id="loading-data">
-<h2>Loading Data<a class="headerlink" href="#loading-data" title="Permalink to this heading">#</a></h2>
+<h2>Loading Data<a class="headerlink" href="#loading-data" title="Link to this heading">#</a></h2>
 <p>Let’s load the provided bivariate, spatial dataset <a class="reference external" href="https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/Density_Por_data.csv">Density_Por_data.csv</a> available in my GeoDataSet repo. It is a comma delimited file with:</p>
 <ul class="simple">
 <li><p>depth (m)</p></li>
@@ -853,7 +866,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </div>
 </section>
 <section id="visualize-the-dataframe">
-<h2>Visualize the DataFrame<a class="headerlink" href="#visualize-the-dataframe" title="Permalink to this heading">#</a></h2>
+<h2>Visualize the DataFrame<a class="headerlink" href="#visualize-the-dataframe" title="Link to this heading">#</a></h2>
 <p>Visualizing the train and test DataFrame is useful check before we build our models.</p>
 <ul class="simple">
 <li><p>many things can go wrong, e.g., we loaded the wrong data, all the features did not load, etc.</p></li>
@@ -960,7 +973,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </div>
 </section>
 <section id="summary-statistics-for-tabular-data">
-<h2>Summary Statistics for Tabular Data<a class="headerlink" href="#summary-statistics-for-tabular-data" title="Permalink to this heading">#</a></h2>
+<h2>Summary Statistics for Tabular Data<a class="headerlink" href="#summary-statistics-for-tabular-data" title="Link to this heading">#</a></h2>
 <p>There are a lot of efficient methods to calculate summary statistics from tabular data in DataFrames.</p>
 <ul class="simple">
 <li><p>The describe command provides count, mean, standard deviation, percentiles, minimum, maximum in a nice data table.</p></li>
@@ -1054,7 +1067,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </div>
 </section>
 <section id="linear-regression-model">
-<h2>Linear Regression Model<a class="headerlink" href="#linear-regression-model" title="Permalink to this heading">#</a></h2>
+<h2>Linear Regression Model<a class="headerlink" href="#linear-regression-model" title="Link to this heading">#</a></h2>
 <p>Let’s first calculate the linear regression model with the LinearRegression class from scikit-learn. The steps include,</p>
 <ol class="arabic simple">
 <li><p><strong>instantiate</strong> - the linear regression object, note there are no hyperparameters to specify.</p></li>
@@ -1092,12 +1105,12 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/64b4519fff29b4b1c8eef0c0d94e3ceba809f3543abba1333ea33b4f4120ac4a.png" src="_images/64b4519fff29b4b1c8eef0c0d94e3ceba809f3543abba1333ea33b4f4120ac4a.png" />
+<img alt="_images/5e706211267c857a57ee3978c8133b544044fb1240198e74e682fa58fe586cb9.png" src="_images/5e706211267c857a57ee3978c8133b544044fb1240198e74e682fa58fe586cb9.png" />
 </div>
 </div>
 </section>
 <section id="comparison-to-a-nonparametric-predictive-machine-learning-model">
-<h2>Comparison to a Nonparametric Predictive Machine Learning Model<a class="headerlink" href="#comparison-to-a-nonparametric-predictive-machine-learning-model" title="Permalink to this heading">#</a></h2>
+<h2>Comparison to a Nonparametric Predictive Machine Learning Model<a class="headerlink" href="#comparison-to-a-nonparametric-predictive-machine-learning-model" title="Link to this heading">#</a></h2>
 <p>Let’s run a couple nonparametric predictive machine learning models to contrast with the linear and polynomial parametric models. First we train a quick decision tree model and then a random forest model.</p>
 <ul class="simple">
 <li><p>we gain significant flexibility to fit any patterns from the data</p></li>
@@ -1124,7 +1137,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b5e3bfa9d8d83005e43dd6add7fb70f36813fa375d987065f62bbdf04957cddb.png" src="_images/b5e3bfa9d8d83005e43dd6add7fb70f36813fa375d987065f62bbdf04957cddb.png" />
+<img alt="_images/8532bc8d59468483feb9456b4bf0ed46d444a681315d1a5a1a0e36c176b30754.png" src="_images/8532bc8d59468483feb9456b4bf0ed46d444a681315d1a5a1a0e36c176b30754.png" />
 </div>
 </div>
 <p>and here is a random forest model:</p>
@@ -1152,7 +1165,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d5ecd12edcb40da8fada767537df53155d9f68f2ab79546bb129a6d93f2cc28e.png" src="_images/d5ecd12edcb40da8fada767537df53155d9f68f2ab79546bb129a6d93f2cc28e.png" />
+<img alt="_images/c2ff2250f2e4a3dc03db0a0c69b93ba781f7fe60ead9d37b89ca994c304ad2fe.png" src="_images/c2ff2250f2e4a3dc03db0a0c69b93ba781f7fe60ead9d37b89ca994c304ad2fe.png" />
 </div>
 </div>
 <p>Note, no effort was made to tune the hyperparameters for these models. I just wanted to demonstrate the great flexibility of a nonparametric model to learn the shape of the system from the data.</p>
@@ -1163,7 +1176,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </ul>
 </section>
 <section id="gaussian-anamorphosis-gaussian-transform">
-<h2>Gaussian Anamorphosis \ Gaussian Transform<a class="headerlink" href="#gaussian-anamorphosis-gaussian-transform" title="Permalink to this heading">#</a></h2>
+<h2>Gaussian Anamorphosis \ Gaussian Transform<a class="headerlink" href="#gaussian-anamorphosis-gaussian-transform" title="Link to this heading">#</a></h2>
 <p>Let’s transform the features to standard normal,</p>
 <ul class="simple">
 <li><p>Gaussian distribution</p></li>
@@ -1232,12 +1245,12 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/502106ad20a71cc9f6a412707dabe69539c7d2e42d6c72fa8b141c5695c13588.png" src="_images/502106ad20a71cc9f6a412707dabe69539c7d2e42d6c72fa8b141c5695c13588.png" />
+<img alt="_images/5230c0ec4475358f181f5892a688875ad4690de743d213d7eb950d9ef2abb9df.png" src="_images/5230c0ec4475358f181f5892a688875ad4690de743d213d7eb950d9ef2abb9df.png" />
 </div>
 </div>
 </section>
 <section id="linear-regression-model-with-standardized-features">
-<h2>Linear Regression Model with Standardized Features<a class="headerlink" href="#linear-regression-model-with-standardized-features" title="Permalink to this heading">#</a></h2>
+<h2>Linear Regression Model with Standardized Features<a class="headerlink" href="#linear-regression-model-with-standardized-features" title="Link to this heading">#</a></h2>
 <p>Let’s repeat the linear regression model, now with the standardized features.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1264,20 +1277,20 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1966b7337c4a5b38596f989a8211aa0c1e8cfbab292369ed714bb5b7ebefb550.png" src="_images/1966b7337c4a5b38596f989a8211aa0c1e8cfbab292369ed714bb5b7ebefb550.png" />
+<img alt="_images/7718aaac9a745f06bef665d52de4c55c33c6f4294983190bddd6bb101661759b.png" src="_images/7718aaac9a745f06bef665d52de4c55c33c6f4294983190bddd6bb101661759b.png" />
 </div>
 </div>
 <p>Once again, not a good fit. Let’s use a more complex, flexible predictive machine learning model.</p>
 </section>
 <section id="id2">
-<h2>Polynomial Regression<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2>Polynomial Regression<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>We will do polynomial regression by hand:</p>
 <ul class="simple">
 <li><p>create the polynomial basis expansion of the original predictor feature</p></li>
 <li><p>perform linear regression on the polynomial basis expansion</p></li>
 </ul>
 <section id="polynomial-basis-expansion">
-<h3>Polynomial Basis Expansion<a class="headerlink" href="#polynomial-basis-expansion" title="Permalink to this heading">#</a></h3>
+<h3>Polynomial Basis Expansion<a class="headerlink" href="#polynomial-basis-expansion" title="Link to this heading">#</a></h3>
 <p>Let’s start with calculating the polynomial basis expansion for the 1 predictor feature.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1379,7 +1392,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2f3f18b5d2988d034a420125ea0efceca61840db5af413c92d054ca206d52af6.png" src="_images/2f3f18b5d2988d034a420125ea0efceca61840db5af413c92d054ca206d52af6.png" />
+<img alt="_images/cb0c1c0ce5c46c510a8ee727d5cdb3d96332c2a278da5a1be9572fc57c067417.png" src="_images/cb0c1c0ce5c46c510a8ee727d5cdb3d96332c2a278da5a1be9572fc57c067417.png" />
 </div>
 </div>
 <p>We have high correlations between order 1 and 3 and order 2 and 4.</p>
@@ -1389,7 +1402,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </section>
 </section>
 <section id="visualize-the-polynomial-expansion-features-pairwise-relationship">
-<h2>Visualize the Polynomial Expansion Features’ Pairwise Relationship<a class="headerlink" href="#visualize-the-polynomial-expansion-features-pairwise-relationship" title="Permalink to this heading">#</a></h2>
+<h2>Visualize the Polynomial Expansion Features’ Pairwise Relationship<a class="headerlink" href="#visualize-the-polynomial-expansion-features-pairwise-relationship" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df_X_ns_poly4</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:],</span><span class="nb">vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;1st&#39;</span><span class="p">,</span><span class="s1">&#39;2nd&#39;</span><span class="p">,</span><span class="s1">&#39;3rd&#39;</span><span class="p">,</span><span class="s1">&#39;4th&#39;</span><span class="p">],</span><span class="n">markers</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;reg&#39;</span><span class="p">,</span><span class="n">diag_kind</span><span class="o">=</span><span class="s1">&#39;kde&#39;</span><span class="p">)</span>
@@ -1398,7 +1411,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3dd094028319b761d57cd8252b98d14b52ba78fcc953f598312826b1426e71f5.png" src="_images/3dd094028319b761d57cd8252b98d14b52ba78fcc953f598312826b1426e71f5.png" />
+<img alt="_images/d05ee7bd4a58262ed0d0c99649f2aa75c39648fb21b92f49c54e50b3d21ebaec.png" src="_images/d05ee7bd4a58262ed0d0c99649f2aa75c39648fb21b92f49c54e50b3d21ebaec.png" />
 </div>
 </div>
 <p>Let’s visualize the polynomial expansion over the Gaussian transformed depth.</p>
@@ -1419,7 +1432,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/918e255b4a95601966627b5b6f5cd42f0edf824785db2cd3669e31d5f4519ed5.png" src="_images/918e255b4a95601966627b5b6f5cd42f0edf824785db2cd3669e31d5f4519ed5.png" />
+<img alt="_images/f4860e7231a4a13fe42fd0bd6c56b284f93f1bc32dd82e4b153d832580c4495c.png" src="_images/f4860e7231a4a13fe42fd0bd6c56b284f93f1bc32dd82e4b153d832580c4495c.png" />
 </div>
 </div>
 <p>We can also check the arithmetic average of each polynomial basis expansion.</p>
@@ -1468,12 +1481,12 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8e8a2889184278abe92b133ef03f98039f95b3558223864483cc2bfb0461e2d1.png" src="_images/8e8a2889184278abe92b133ef03f98039f95b3558223864483cc2bfb0461e2d1.png" />
+<img alt="_images/89ed3103b3fe0b39ad169bd9f6f426f8619c6aa17d026f0daa84f2c163f79a6c.png" src="_images/89ed3103b3fe0b39ad169bd9f6f426f8619c6aa17d026f0daa84f2c163f79a6c.png" />
 </div>
 </div>
 </section>
 <section id="regression-with-hermite-basis-expansion">
-<h2>Regression with Hermite Basis Expansion<a class="headerlink" href="#regression-with-hermite-basis-expansion" title="Permalink to this heading">#</a></h2>
+<h2>Regression with Hermite Basis Expansion<a class="headerlink" href="#regression-with-hermite-basis-expansion" title="Link to this heading">#</a></h2>
 <p>We can use Hermite polynomials to reduce the correlation between the basis predictor features.</p>
 <ul class="simple">
 <li><p>We transform the predictor feature, depth, to standard normal since the Hermite polynomial expansion approach independence over the range of negative infinity to positive infinity under the assumption of standard normal probability density function.</p></li>
@@ -1574,7 +1587,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/767654dc38789e23879b6040b9c52283c5c21eb95f0671e3d0470ab4b3b8c71f.png" src="_images/767654dc38789e23879b6040b9c52283c5c21eb95f0671e3d0470ab4b3b8c71f.png" />
+<img alt="_images/49cc06da554726160fd8c87686228e6ed67efd9e06052a4951fb1e85bbb1f5a9.png" src="_images/49cc06da554726160fd8c87686228e6ed67efd9e06052a4951fb1e85bbb1f5a9.png" />
 </div>
 </div>
 <p>The pairwise linear correlation is quite low compared to the polynomial basis.</p>
@@ -1587,7 +1600,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3b92dbd8622519cf5d98836365bd34ef2cdd0aaf19be6c7f46a1296d4a331e3e.png" src="_images/3b92dbd8622519cf5d98836365bd34ef2cdd0aaf19be6c7f46a1296d4a331e3e.png" />
+<img alt="_images/6e3c368005c9630d401273aad744ef9932f7f77a76125ee9fc33475b914ef7b7.png" src="_images/6e3c368005c9630d401273aad744ef9932f7f77a76125ee9fc33475b914ef7b7.png" />
 </div>
 </div>
 <p>We can check the arithmetic averages of all the Hermite basis expansions.</p>
@@ -1620,7 +1633,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f32be19da954ac4bb5bdc7d502a565b9c8e6c3c007728bd33276d37d1eaf6259.png" src="_images/f32be19da954ac4bb5bdc7d502a565b9c8e6c3c007728bd33276d37d1eaf6259.png" />
+<img alt="_images/89cfc985ac44835fd9b9d4f21003566633103e209b001019fc54c5b4dafc6c3a.png" src="_images/89cfc985ac44835fd9b9d4f21003566633103e209b001019fc54c5b4dafc6c3a.png" />
 </div>
 </div>
 <p>Now let’s fit our Hermite basis regression model.</p>
@@ -1653,13 +1666,13 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5b4926cdbd311bf1b5374a042995789082def9fd00376dc30620f948c00f669d.png" src="_images/5b4926cdbd311bf1b5374a042995789082def9fd00376dc30620f948c00f669d.png" />
+<img alt="_images/0492473959429690d297a13357b30dcff422633e42323da991a325dd50c86026.png" src="_images/0492473959429690d297a13357b30dcff422633e42323da991a325dd50c86026.png" />
 </div>
 </div>
 <p>Since we have less correlation between the expanded basis features we can check out the model coefficients and interpret the unique importance of each order.</p>
 </section>
 <section id="orthogonal-polynomials">
-<h2>Orthogonal Polynomials<a class="headerlink" href="#orthogonal-polynomials" title="Permalink to this heading">#</a></h2>
+<h2>Orthogonal Polynomials<a class="headerlink" href="#orthogonal-polynomials" title="Link to this heading">#</a></h2>
 <p>Let’s try the orthogonal polynomial basis expansion reimplemented in Python by Dave Moore from the poly() function in R.</p>
 <ul class="simple">
 <li><p>the functions below for fit and predict are directly from Dave’s <a class="reference external" href="http://davmre.github.io/blog/python/2013/12/15/orthogonal_poly">blog</a></p></li>
@@ -1801,7 +1814,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/51874452bf180e62d5f0824897a2b248a5e40bd802ff4ba4fefefda0c75d9c65.png" src="_images/51874452bf180e62d5f0824897a2b248a5e40bd802ff4ba4fefefda0c75d9c65.png" />
+<img alt="_images/fe7fe5d01144f1c825a5ec83a453bb266bc43154c7dcef1a3dc82da429522730.png" src="_images/fe7fe5d01144f1c825a5ec83a453bb266bc43154c7dcef1a3dc82da429522730.png" />
 </div>
 </div>
 <p>Let’s visualize the bivariate relationships between our orthogonal polynomial basis orders.</p>
@@ -1812,10 +1825,10 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x1d5311d7f70&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x2a9a7825610&gt;
 </pre></div>
 </div>
-<img alt="_images/82867389d3372999bdde181eb5045091fe1fa8e79bf3bb639327c53f45eb9154.png" src="_images/82867389d3372999bdde181eb5045091fe1fa8e79bf3bb639327c53f45eb9154.png" />
+<img alt="_images/469e18948e79600f38b7f84d5d3556a5312b1ff8e09e8f6f9e25be04eb007914.png" src="_images/469e18948e79600f38b7f84d5d3556a5312b1ff8e09e8f6f9e25be04eb007914.png" />
 </div>
 </div>
 <p>Let’s visualize orthogonal polynomial basis orders over the range of the standardized depth.</p>
@@ -1838,7 +1851,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/fb2ab3f98848b762f738beb5133cf2b9963dbab254ba2882a5a5265e218ba8ce.png" src="_images/fb2ab3f98848b762f738beb5133cf2b9963dbab254ba2882a5a5265e218ba8ce.png" />
+<img alt="_images/8abfb0cce502d82a5ab2363419abb2b7aafc69d6be7215259ab15c5eaa9b13cb.png" src="_images/8abfb0cce502d82a5ab2363419abb2b7aafc69d6be7215259ab15c5eaa9b13cb.png" />
 </div>
 </div>
 <p>Finally let’s fit our orthogonal polynomial basis expansion regression model.</p>
@@ -1871,12 +1884,12 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b9adcfb2f480cc56becaad7a7b7d097564da38381dbf860303502572e5eab039.png" src="_images/b9adcfb2f480cc56becaad7a7b7d097564da38381dbf860303502572e5eab039.png" />
+<img alt="_images/56b455f555e99a202e1f6350585f983b273ac7080f4bf640f33d8735423f1c05.png" src="_images/56b455f555e99a202e1f6350585f983b273ac7080f4bf640f33d8735423f1c05.png" />
 </div>
 </div>
 </section>
 <section id="polynomial-regression-in-scikit-learn-with-pipelines">
-<h2>Polynomial Regression in scikit-learn with Pipelines<a class="headerlink" href="#polynomial-regression-in-scikit-learn-with-pipelines" title="Permalink to this heading">#</a></h2>
+<h2>Polynomial Regression in scikit-learn with Pipelines<a class="headerlink" href="#polynomial-regression-in-scikit-learn-with-pipelines" title="Link to this heading">#</a></h2>
 <p>The need to first perform basis expansion and then train the resulting (after basis transformations) linear model may seem a bit complicated.</p>
 <ul class="simple">
 <li><p>one solution is to use the Pipeline object from scikit-learn. Here are some highlights on Pipelines.</p></li>
@@ -1934,18 +1947,18 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4c8e565b643fa879eb74f2d3c49419386b5073f8c2dce53cd9dd9142465f16ee.png" src="_images/4c8e565b643fa879eb74f2d3c49419386b5073f8c2dce53cd9dd9142465f16ee.png" />
+<img alt="_images/455d14c5fce26b4bc531fecea90b3cadb6f490d735a8a1e1493da76ae5bea58b.png" src="_images/455d14c5fce26b4bc531fecea90b3cadb6f490d735a8a1e1493da76ae5bea58b.png" />
 </div>
 </div>
 </section>
 <section id="comments">
-<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
+<h2>Comments<a class="headerlink" href="#comments" title="Link to this heading">#</a></h2>
 <p>This was a basic treatment of polynomial regression. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
 <section id="about-the-author">
-<h2>About the Author<a class="headerlink" href="#about-the-author" title="Permalink to this heading">#</a></h2>
+<h2>About the Author<a class="headerlink" href="#about-the-author" title="Link to this heading">#</a></h2>
 <figure style="text-align: center;">
   <img src="_static/intro/michael_pyrcz_officeshot_jacket.jpg" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
@@ -1956,11 +1969,11 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 <li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
+<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference internal" href="#www.michaelpyrcz.com"><span class="xref myst">Website</span></a>.</p>
 </section>
 <section id="want-to-work-together">
-<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
+<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Link to this heading">#</a></h2>
 <p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
@@ -1970,7 +1983,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -2001,7 +2014,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -2030,6 +2043,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -2114,8 +2128,8 @@ By Michael J. Pyrcz
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

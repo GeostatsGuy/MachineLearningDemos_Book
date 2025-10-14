@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Time Series Analysis and Modeling &#8212; Applied Machine Learning in Python</title>
   
@@ -15,55 +14,51 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=304429a7" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=564be945" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'MachineLearning_time_series';</script>
@@ -80,28 +75,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -123,12 +113,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -144,6 +142,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -162,7 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -201,6 +212,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ensemble_trees.html">Bagging Tree and Random Forest</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_gradient_boosting.html">Gradient Boosting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_support_vector_machines.html">Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_activation_functions.html">Neural Networks Activation Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ANN.html">Artificial Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_CNN.html">Convolutional Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_autoencoder.html">Autoencoder Neural Networks</a></li>
@@ -226,7 +238,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -235,14 +247,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -367,10 +379,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -378,14 +390,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -441,15 +453,15 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <figure style="text-align: center;">
   <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
 </figure>
 <section id="time-series-analysis-and-modeling">
-<h1>Time Series Analysis and Modeling<a class="headerlink" href="#time-series-analysis-and-modeling" title="Permalink to this heading">#</a></h1>
+<h1>Time Series Analysis and Modeling<a class="headerlink" href="#time-series-analysis-and-modeling" title="Link to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite this e-Book as:</p>
@@ -468,9 +480,9 @@ document.write(`
 <li><p><a class="reference external" href="https://youtu.be/zOUM_AnI1DQ?si=wzWdJ35qJ9n8O6Bl">Introduction to Machine Learning</a></p></li>
 <li><p><a class="reference external" href="https://youtu.be/nxY1HS3SrQ4?si=VSYYO2bqBd_ftb4u">Time Series Analysis</a></p></li>
 </ul>
-<p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
+<p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
 <section id="motivation-for-time-series-analysis-and-modeling">
-<h2>Motivation for Time Series Analysis and Modeling<a class="headerlink" href="#motivation-for-time-series-analysis-and-modeling" title="Permalink to this heading">#</a></h2>
+<h2>Motivation for Time Series Analysis and Modeling<a class="headerlink" href="#motivation-for-time-series-analysis-and-modeling" title="Link to this heading">#</a></h2>
 <p>Time series data is typically 1D over time. This data may be univariate, bivariate or multivariate. So why not just apply regular machine learning methods in 1D? There are many unique aspects for time series analysis and modeling that preclude this:</p>
 <ul class="simple">
 <li><p>time series phenomenon are often highly nonstationary with trends and cyclicity</p></li>
@@ -480,7 +492,7 @@ document.write(`
 <p>As result, we need a unique set of tools, analysis and models to address time series phenomenon.</p>
 </section>
 <section id="id1">
-<h2>Time Series Analysis and Modeling<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2>Time Series Analysis and Modeling<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>Time series analysis for learning from time series data. Here are some key aspects of time series analysis and modeling.</p>
 <p><strong>One Dimensional</strong></p>
 <ul class="simple">
@@ -503,7 +515,7 @@ document.write(`
 </ul>
 </section>
 <section id="examples-of-time-series-analysis">
-<h2>Examples of Time Series Analysis<a class="headerlink" href="#examples-of-time-series-analysis" title="Permalink to this heading">#</a></h2>
+<h2>Examples of Time Series Analysis<a class="headerlink" href="#examples-of-time-series-analysis" title="Link to this heading">#</a></h2>
 <p>There are many well-known, important examples of time series analysis:</p>
 <ol class="arabic simple">
 <li><p>local and global CO2 emisions that are applied to model and forecast climate change</p></li>
@@ -519,7 +531,7 @@ document.write(`
 <p>While multivariate is important, for this brevity I only cover univariate time series analysis and modeling here.</p>
 </section>
 <section id="what-do-i-cover">
-<h2>What Do I Cover?<a class="headerlink" href="#what-do-i-cover" title="Permalink to this heading">#</a></h2>
+<h2>What Do I Cover?<a class="headerlink" href="#what-do-i-cover" title="Link to this heading">#</a></h2>
 <p>For time series analysis, modeling and prediction the following is included:</p>
 <ul class="simple">
 <li><p>Formatting time series dataset</p></li>
@@ -530,7 +542,7 @@ document.write(`
 </ul>
 </section>
 <section id="load-the-required-libraries">
-<h2>Load the required libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
+<h2>Load the required libraries<a class="headerlink" href="#load-the-required-libraries" title="Link to this heading">#</a></h2>
 <p>We will also need some standard packages. These should have been installed with Anaconda 3.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -542,7 +554,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GeostatsPy version: 0.0.72
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GeostatsPy version: 0.0.78
 </pre></div>
 </div>
 </div>
@@ -578,25 +590,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">20</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="kn">from</span> <span class="nn">statsmodels.tsa.seasonal</span> <span class="kn">import</span> <span class="n">seasonal_decompose</span>       <span class="c1"># decomposition time series model</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="kn">from</span> <span class="nn">statsmodels.tsa.arima.model</span> <span class="kn">import</span> <span class="n">ARIMA</span>                 <span class="c1"># ARIMA time series model</span>
-<span class="ne">---&gt; </span><span class="mi">20</span> <span class="kn">import</span> <span class="nn">pmdarima</span> <span class="k">as</span> <span class="nn">pm</span>                                         <span class="c1"># autotune for ARIMA</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">axisbelow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                                <span class="c1"># plot all grids below the plot elements</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="k">if</span> <span class="n">ignore_warnings</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>                                   
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;pmdarima&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <p>If you get a package import error, you may have to first install some of these packages. This can usually be accomplished by opening up a command window on Windows and then typing ‘python -m pip install [package-name]’. More assistance is available with the respective package docs.</p>
 </section>
 <section id="declare-functions">
-<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
+<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Link to this heading">#</a></h2>
 <p>Let’s define a couple of functions to streamline plotting correlation matrices and visualization of a decision tree regression model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -613,7 +611,7 @@ document.write(`
 </div>
 </section>
 <section id="set-the-working-directory">
-<h2>Set the Working Directory<a class="headerlink" href="#set-the-working-directory" title="Permalink to this heading">#</a></h2>
+<h2>Set the Working Directory<a class="headerlink" href="#set-the-working-directory" title="Link to this heading">#</a></h2>
 <p>I always like to do this so I don’t lose files and to simplify subsequent read and writes (avoid including the full address each time).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -624,7 +622,7 @@ document.write(`
 </div>
 </section>
 <section id="generating-a-synthetic-time-series">
-<h2>Generating a Synthetic Time Series<a class="headerlink" href="#generating-a-synthetic-time-series" title="Permalink to this heading">#</a></h2>
+<h2>Generating a Synthetic Time Series<a class="headerlink" href="#generating-a-synthetic-time-series" title="Link to this heading">#</a></h2>
 <p>We will build a simple time series representing production at an hypothetical lithium (Li) mine, where we have daily measurements of lithium recovery in tonnes per day.</p>
 <ul class="simple">
 <li><p>We will use an additive model with trend, cycles and stochastic noise (short scale continuity) features</p></li>
@@ -691,7 +689,7 @@ document.write(`
 </div>
 </section>
 <section id="time-series-dataframe">
-<h2>Time Series DataFrame<a class="headerlink" href="#time-series-dataframe" title="Permalink to this heading">#</a></h2>
+<h2>Time Series DataFrame<a class="headerlink" href="#time-series-dataframe" title="Link to this heading">#</a></h2>
 <p>Let’s make a pandas DataFrame with the lithium production data indexed by date of the production. We utilize the useful functionality with Pandas’ DataFrames to work with time series data, this includes:</p>
 <ul class="simple">
 <li><p>the ability to use various time formats for display</p></li>
@@ -736,7 +734,7 @@ document.write(`
 <p>That’s a good plot for time series data. Now let’s start doing analysis with our lithium production data.</p>
 </section>
 <section id="autocorrelation">
-<h2>Autocorrelation<a class="headerlink" href="#autocorrelation" title="Permalink to this heading">#</a></h2>
+<h2>Autocorrelation<a class="headerlink" href="#autocorrelation" title="Link to this heading">#</a></h2>
 <p>Autocorrelation is applied in time series analysis to detect relationships over lags in time.  The autocorrelation is the correlogram (standardized covariance function) commonly used in geostatistics applied to the one dimensional time series data.</p>
 <p>Also, for the calculation of a predictive model we often check for the presence of autocorrelation between error residual values.</p>
 <ul class="simple">
@@ -784,7 +782,7 @@ document.write(`
 </div>
 </section>
 <section id="test-for-stationarity">
-<h2>Test for Stationarity<a class="headerlink" href="#test-for-stationarity" title="Permalink to this heading">#</a></h2>
+<h2>Test for Stationarity<a class="headerlink" href="#test-for-stationarity" title="Link to this heading">#</a></h2>
 <p>Is this dataset stationary? Does the mean change locally? We use the Dickey-Fuller Test to test for stationarity of our time series with the following hypotheses:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(H_0 =\)</span> time series is non-stationary</p></li>
@@ -822,7 +820,7 @@ dtype: float64
 </ul>
 </section>
 <section id="stationarity-transformations-for-time-series">
-<h2>Stationarity Transformations for Time Series<a class="headerlink" href="#stationarity-transformations-for-time-series" title="Permalink to this heading">#</a></h2>
+<h2>Stationarity Transformations for Time Series<a class="headerlink" href="#stationarity-transformations-for-time-series" title="Link to this heading">#</a></h2>
 <p>Most time series models (like spatial models) require a stationarity assumption.</p>
 <p>To transform time series to stationary we must model and remove:</p>
 <ul class="simple">
@@ -831,7 +829,7 @@ dtype: float64
 </ul>
 </section>
 <section id="rolling-moving-window-statistics">
-<h2>Rolling, Moving Window Statistics<a class="headerlink" href="#rolling-moving-window-statistics" title="Permalink to this heading">#</a></h2>
+<h2>Rolling, Moving Window Statistics<a class="headerlink" href="#rolling-moving-window-statistics" title="Link to this heading">#</a></h2>
 <p>We calculate moving window statistics to evaluate the local change in these statistics.</p>
 <ul class="simple">
 <li><p>visually observe the local changes continuously over the time series</p></li>
@@ -884,7 +882,7 @@ dtype: float64
 </div>
 </section>
 <section id="working-with-residuals">
-<h2>Working with Residuals<a class="headerlink" href="#working-with-residuals" title="Permalink to this heading">#</a></h2>
+<h2>Working with Residuals<a class="headerlink" href="#working-with-residuals" title="Link to this heading">#</a></h2>
 <p>Let’s remove (subtract) the moving window average from the original production time series and calculate the residual.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1122,7 +1120,7 @@ dtype: float64
 </div>
 </section>
 <section id="additivity-of-variance-trend-and-residual-components-and-residual-distribution-checks">
-<h2>Additivity of Variance Trend and Residual Components and Residual Distribution Checks<a class="headerlink" href="#additivity-of-variance-trend-and-residual-components-and-residual-distribution-checks" title="Permalink to this heading">#</a></h2>
+<h2>Additivity of Variance Trend and Residual Components and Residual Distribution Checks<a class="headerlink" href="#additivity-of-variance-trend-and-residual-components-and-residual-distribution-checks" title="Link to this heading">#</a></h2>
 <p>When we work with a trend and residual model we are decomposing the temporal phenomenon into:</p>
 <ol class="arabic simple">
 <li><p>deterministic trend - known</p></li>
@@ -1198,7 +1196,7 @@ dtype: float64
 </div>
 </section>
 <section id="test-for-stationarity-on-the-de-trended-time-series">
-<h2>Test for Stationarity on the De-trended Time Series<a class="headerlink" href="#test-for-stationarity-on-the-de-trended-time-series" title="Permalink to this heading">#</a></h2>
+<h2>Test for Stationarity on the De-trended Time Series<a class="headerlink" href="#test-for-stationarity-on-the-de-trended-time-series" title="Link to this heading">#</a></h2>
 <p>We use the Dickey-Fuller Test to test for stationarity of our detrened time series</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(H_0 =\)</span> time series is non-stationary</p></li>
@@ -1235,7 +1233,7 @@ dtype: float64
 <p>Now we reject the null hypothesis, <span class="math notranslate nohighlight">\(H_0\)</span>, and state that the detrended time series is stationary.</p>
 </section>
 <section id="differencing-to-remove-nonstationarity">
-<h2>Differencing to Remove Nonstationarity<a class="headerlink" href="#differencing-to-remove-nonstationarity" title="Permalink to this heading">#</a></h2>
+<h2>Differencing to Remove Nonstationarity<a class="headerlink" href="#differencing-to-remove-nonstationarity" title="Link to this heading">#</a></h2>
 <p>Differencing is a common approach applied to tine series to remove nonstationarity. Differencing proceeds as:</p>
 <p><span class="math notranslate nohighlight">\(y(\bf{u_i}) = z(\bf{u}_{i+1}) - z(\bf{u}_i)\)</span></p>
 <p>where <span class="math notranslate nohighlight">\(z(\bf{u}_{i+1}) - z(\bf{u}_i)\)</span> is the difference between the current and the next value in the time series.</p>
@@ -1459,7 +1457,7 @@ dtype: float64
 <p>The autocorrelation indicates that the temporal correlation is also removed.</p>
 </section>
 <section id="test-for-stationarity-on-the-first-and-second-differenced-time-series">
-<h2>Test for Stationarity on the First and Second Differenced Time Series<a class="headerlink" href="#test-for-stationarity-on-the-first-and-second-differenced-time-series" title="Permalink to this heading">#</a></h2>
+<h2>Test for Stationarity on the First and Second Differenced Time Series<a class="headerlink" href="#test-for-stationarity-on-the-first-and-second-differenced-time-series" title="Link to this heading">#</a></h2>
 <p>We use the Dickey-Fuller Test for stationarity of our first and second difference of our production time series</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(H_0 =\)</span> time series is non-stationary</p></li>
@@ -1519,7 +1517,7 @@ dtype: float64
 </ul>
 </section>
 <section id="time-series-decomposition">
-<h2>Time Series Decomposition<a class="headerlink" href="#time-series-decomposition" title="Permalink to this heading">#</a></h2>
+<h2>Time Series Decomposition<a class="headerlink" href="#time-series-decomposition" title="Link to this heading">#</a></h2>
 <p>Let’s demonstrate an automated method to decompose a time series into multiple components. With time series decomposition we will decompose the time series into the following components.</p>
 <ul class="simple">
 <li><p>trend</p></li>
@@ -1646,7 +1644,7 @@ dtype: float64
 </ul>
 </section>
 <section id="train-and-test-split">
-<h2>Train and Test Split<a class="headerlink" href="#train-and-test-split" title="Permalink to this heading">#</a></h2>
+<h2>Train and Test Split<a class="headerlink" href="#train-and-test-split" title="Link to this heading">#</a></h2>
 <p>Let’s split the data with train and test and attempt time series forecasting.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1671,7 +1669,7 @@ Train samples dates = 800, Test samples dates = 200
 </div>
 </section>
 <section id="arima-auto-regressive-integrated-moving-average-model-for-time-series">
-<h2>ARIMA (Auto-Regressive Integrated Moving Average) Model for Time Series<a class="headerlink" href="#arima-auto-regressive-integrated-moving-average-model-for-time-series" title="Permalink to this heading">#</a></h2>
+<h2>ARIMA (Auto-Regressive Integrated Moving Average) Model for Time Series<a class="headerlink" href="#arima-auto-regressive-integrated-moving-average-model-for-time-series" title="Link to this heading">#</a></h2>
 <p>The ARIMA model is based on the following parameters:</p>
 <ul class="simple">
 <li><p>number of auto-regressive terms (p) is the number of lags for autocorrelation - we find this from the number of significant lags in the partial autocorrelation.  There was only one lag (see above). <span class="math notranslate nohighlight">\(p=1\)</span></p></li>
@@ -1695,28 +1693,28 @@ Train samples dates = 800, Test samples dates = 200
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                    SARIMAX Results                                    
 =======================================================================================
 Dep. Variable:                      production   No. Observations:                  800
-Model:             ARIMA(1, 0, 2)x(1, 1, 2, 5)   Log Likelihood               -1782.678
-Date:                         Tue, 08 Oct 2024   AIC                           3581.357
-Time:                                 11:06:15   BIC                           3618.784
-Sample:                             01-01-2016   HQIC                          3595.739
+Model:             ARIMA(1, 0, 2)x(1, 1, 2, 5)   Log Likelihood               -1782.699
+Date:                         Tue, 14 Oct 2025   AIC                           3581.397
+Time:                                 13:34:47   BIC                           3618.824
+Sample:                             01-01-2016   HQIC                          3595.779
                                   - 03-10-2018                                         
 Covariance Type:                           opg                                         
 ==============================================================================
                  coef    std err          z      P&gt;|z|      [0.025      0.975]
 ------------------------------------------------------------------------------
-x1             0.0497      0.026      1.943      0.052      -0.000       0.100
-ar.L1          0.9844      0.009    109.383      0.000       0.967       1.002
-ma.L1          0.2957      0.023     13.071      0.000       0.251       0.340
-ma.L2          0.4662      0.020     23.536      0.000       0.427       0.505
-ar.S.L5        0.1298      0.249      0.521      0.602      -0.358       0.618
-ma.S.L5       -1.3116      0.234     -5.597      0.000      -1.771      -0.852
-ma.S.L10       0.3133      0.240      1.308      0.191      -0.156       0.783
-sigma2         5.0306      0.337     14.947      0.000       4.371       5.690
+x1             0.0501      0.025      1.970      0.049       0.000       0.100
+ar.L1          0.9841      0.009    108.614      0.000       0.966       1.002
+ma.L1          0.2975      0.023     13.137      0.000       0.253       0.342
+ma.L2          0.4667      0.020     23.668      0.000       0.428       0.505
+ar.S.L5        0.1029      0.256      0.401      0.688      -0.400       0.605
+ma.S.L5       -1.2839      0.244     -5.252      0.000      -1.763      -0.805
+ma.S.L10       0.2861      0.249      1.150      0.250      -0.202       0.774
+sigma2         5.0221      0.288     17.461      0.000       4.458       5.586
 ===================================================================================
-Ljung-Box (L1) (Q):                  12.96   Jarque-Bera (JB):              2704.23
+Ljung-Box (L1) (Q):                  12.69   Jarque-Bera (JB):              2727.07
 Prob(Q):                              0.00   Prob(JB):                         0.00
 Heteroskedasticity (H):               1.22   Skew:                             0.02
-Prob(H) (two-sided):                  0.11   Kurtosis:                        12.04
+Prob(H) (two-sided):                  0.11   Kurtosis:                        12.07
 ===================================================================================
 
 Warnings:
@@ -1755,7 +1753,7 @@ Warnings:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/863c09d404d499b67217b911f1e3586c5a4d3471981ff76b8636995108bdd134.png" src="_images/863c09d404d499b67217b911f1e3586c5a4d3471981ff76b8636995108bdd134.png" />
+<img alt="_images/0cca6fd1bb637fd0533b5b7c8a363f2ff307b7d977a30319d074d7642bb37965.png" src="_images/0cca6fd1bb637fd0533b5b7c8a363f2ff307b7d977a30319d074d7642bb37965.png" />
 </div>
 </div>
 <p>Let’s look at the predictions from our model.</p>
@@ -1787,7 +1785,7 @@ Warnings:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/13aa79d2f8da832d631685229be46fab79c1163ebef3251aad4a0266240d4660.png" src="_images/13aa79d2f8da832d631685229be46fab79c1163ebef3251aad4a0266240d4660.png" />
+<img alt="_images/d7edb8a424e9fda08328b7db54589dc33e2b3ab0d51f38161bda7d28681339c1.png" src="_images/d7edb8a424e9fda08328b7db54589dc33e2b3ab0d51f38161bda7d28681339c1.png" />
 </div>
 </div>
 <p>Some observations about our ability to forecast:</p>
@@ -1798,7 +1796,7 @@ Warnings:
 <p>We could have improved model performance by manually removing the trend and cycle and modeling the residual. Also, more could be done with Python packages for autotuning ARIMA models (e.g., pmdarima package).</p>
 </section>
 <section id="time-series-analysis-and-modeling-summary">
-<h2>Time Series Analysis and Modeling Summary<a class="headerlink" href="#time-series-analysis-and-modeling-summary" title="Permalink to this heading">#</a></h2>
+<h2>Time Series Analysis and Modeling Summary<a class="headerlink" href="#time-series-analysis-and-modeling-summary" title="Link to this heading">#</a></h2>
 <p>Here’s some observations:</p>
 <ul class="simple">
 <li><p>We need to check time series data for stationarity</p></li>
@@ -1808,21 +1806,21 @@ Warnings:
 </ul>
 </section>
 <section id="comments">
-<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
+<h2>Comments<a class="headerlink" href="#comments" title="Link to this heading">#</a></h2>
 <p>Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a>.</p>
 <p>I hope this was helpful,</p>
 <p><em>Michael</em></p>
 </section>
 <section id="the-author">
-<h2>The Author:<a class="headerlink" href="#the-author" title="Permalink to this heading">#</a></h2>
+<h2>The Author:<a class="headerlink" href="#the-author" title="Link to this heading">#</a></h2>
 <p>Michael Pyrcz, Professor, The University of Texas at Austin
 <em>Novel Data Analytics, Geostatistics and Machine Learning Subsurface Solutions</em></p>
 <p>With over 17 years of experience in subsurface consulting, research and development, Michael has returned to academia driven by his passion for teaching and enthusiasm for enhancing engineers’ and geoscientists’ impact in subsurface resource development.</p>
 <p>For more about Michael check out these links:</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 <section id="want-to-work-together">
-<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
+<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Link to this heading">#</a></h2>
 <p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
@@ -1834,7 +1832,7 @@ Warnings:
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
 </section>
 <section id="more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">
-<h2>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin" title="Permalink to this heading">#</a></h2>
+<h2>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -1865,7 +1863,7 @@ Warnings:
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1894,6 +1892,7 @@ Warnings:
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1975,8 +1974,8 @@ By Michael J. Pyrcz
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

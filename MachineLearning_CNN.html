@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Convolutional Neural Networks &#8212; Applied Machine Learning in Python</title>
   
@@ -15,55 +14,51 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=304429a7" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=564be945" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'MachineLearning_CNN';</script>
@@ -80,28 +75,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -123,12 +113,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -144,6 +142,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -162,7 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -201,6 +212,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ensemble_trees.html">Bagging Tree and Random Forest</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_gradient_boosting.html">Gradient Boosting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_support_vector_machines.html">Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_activation_functions.html">Neural Networks Activation Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ANN.html">Artificial Neural Networks</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Convolutional Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_autoencoder.html">Autoencoder Neural Networks</a></li>
@@ -226,7 +238,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -235,14 +247,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -367,10 +379,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -378,14 +390,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -442,15 +454,15 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <figure style="text-align: center;">
   <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
 </figure>
 <section id="convolutional-neural-networks">
-<h1>Convolutional Neural Networks<a class="headerlink" href="#convolutional-neural-networks" title="Permalink to this heading">#</a></h1>
+<h1>Convolutional Neural Networks<a class="headerlink" href="#convolutional-neural-networks" title="Link to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite this e-Book as:</p>
@@ -469,9 +481,9 @@ document.write(`
 <li><p><a class="reference external" href="https://youtu.be/A9PiCMY_6nM?si=NxWSU_5RgQ4w55EL">Artificial Neural Networks</a></p></li>
 <li><p><a class="reference external" href="https://youtu.be/za2my_XDoOs?si=LeHU6p2_fc9dX4Yt">Convolutional Neural Networks</a></p></li>
 </ul>
-<p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
+<p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
 <section id="motivation">
-<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this heading">#</a></h2>
+<h2>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h2>
 <p>Convolutional neural networks are very powerful, nature inspired computing deep learning method based on an analogy of visual cortex extending the ability of our artificial neural networks to better work with images.</p>
 <p>Nature inspired computing is looking to nature for inspiration to develop novel problem-solving methods,</p>
 <ul class="simple">
@@ -483,7 +495,7 @@ document.write(`
 <p>intelligence emerges from many connected simple processors. For the remainder of this chapter, I will used the terms nodes and connections to describe our convolutional neural network.</p>
 </section>
 <section id="concepts-in-common-with-artificial-neural-networks">
-<h2>Concepts in Common with Artificial Neural Networks<a class="headerlink" href="#concepts-in-common-with-artificial-neural-networks" title="Permalink to this heading">#</a></h2>
+<h2>Concepts in Common with Artificial Neural Networks<a class="headerlink" href="#concepts-in-common-with-artificial-neural-networks" title="Link to this heading">#</a></h2>
 <p>Here are some key aspects of artificial neural networks (ANNs),</p>
 <p><strong>Basic Design</strong> - <em>“…a computing system made up of a number of simple, highly interconnected processing elements, which process information by their dynamic state response to external inputs.”</em> Caudill (1989).</p>
 <p><strong>Still a Prediction Model</strong> - while these models may be quite complicated with even millions of trainable model parameters, weights and biases, they are still a function that maps from predictor features to response features,</p>
@@ -500,7 +512,7 @@ Y=f(X)+\epsilon
 </ul>
 </section>
 <section id="convolutional-neural-networks-concepts">
-<h2>Convolutional Neural Networks Concepts<a class="headerlink" href="#convolutional-neural-networks-concepts" title="Permalink to this heading">#</a></h2>
+<h2>Convolutional Neural Networks Concepts<a class="headerlink" href="#convolutional-neural-networks-concepts" title="Link to this heading">#</a></h2>
 <p><strong>Regularization</strong> - artificial neural networks are prone to overfitting; therefore, we need a form of regularization to prevent this</p>
 <ul class="simple">
 <li><p>for example, ridge and LASSO integrate regularization into the loss function through the shrinkage term to reduce overfit</p></li>
@@ -514,7 +526,7 @@ Y=f(X)+\epsilon
 <p>Note, we also include dropout, random removal of connections, as another form of regularization</p>
 </section>
 <section id="image-data-with-artificial-neural-networks">
-<h2>Image Data with Artificial Neural Networks<a class="headerlink" href="#image-data-with-artificial-neural-networks" title="Permalink to this heading">#</a></h2>
+<h2>Image Data with Artificial Neural Networks<a class="headerlink" href="#image-data-with-artificial-neural-networks" title="Link to this heading">#</a></h2>
 <p>We could use image data with our artificial neural networks.</p>
 <figure style="text-align: center;">
   <img src="_static/CNN/annimage.png" style="display: block; margin: 0 auto; width: 90%;">
@@ -555,7 +567,7 @@ Y=f(X)+\epsilon
 </figure>
 </section>
 <section id="regularization-for-cnns">
-<h2>Regularization for CNNs<a class="headerlink" href="#regularization-for-cnns" title="Permalink to this heading">#</a></h2>
+<h2>Regularization for CNNs<a class="headerlink" href="#regularization-for-cnns" title="Link to this heading">#</a></h2>
 <p>Let’s do a quick recall on the concept of regularization for predictive machine learning models,</p>
 <p><strong>Regularization</strong> - a constraint to reduce the sensitivity of the model to the data, i.e., to reduce model variance</p>
 <p><strong>Regularization with Receptive Fields</strong> - the use of receptive fields is a form of regularization, resulting in,</p>
@@ -587,7 +599,7 @@ y_i \leftarrow \gamma \hat{x}_i + \beta
 \]</div>
 </section>
 <section id="building-blocks-for-cnns">
-<h2>Building Blocks for CNNs<a class="headerlink" href="#building-blocks-for-cnns" title="Permalink to this heading">#</a></h2>
+<h2>Building Blocks for CNNs<a class="headerlink" href="#building-blocks-for-cnns" title="Link to this heading">#</a></h2>
 <p>We have various operators to move from layer to layer (feature maps to feature maps) in our convolutional neural networks. The common operators include,</p>
 <ul class="simple">
 <li><p><strong>Convolution</strong> – a weighting window, kernel / filter designed to extract spatial information</p></li>
@@ -599,7 +611,7 @@ y_i \leftarrow \gamma \hat{x}_i + \beta
 <p>Now we will describe, interpret and demonstrate these operators.</p>
 </section>
 <section id="convolution">
-<h2>Convolution<a class="headerlink" href="#convolution" title="Permalink to this heading">#</a></h2>
+<h2>Convolution<a class="headerlink" href="#convolution" title="Link to this heading">#</a></h2>
 <p>Convolution is the integral product of two functions, after one is reversed and shifted by <span class="math notranslate nohighlight">\(\Delta\)</span>.</p>
 <ul class="simple">
 <li><p>one interpretation is smoothing a function with weighting function, <span class="math notranslate nohighlight">\(𝑓(\Delta)\)</span>, is applied to calculate the weighted average of function, <span class="math notranslate nohighlight">\(𝑔(x)\)</span>,</p></li>
@@ -721,7 +733,7 @@ n_{\text{out}} = \left\lfloor \frac{4 + 2(0) - 2}{1} \right\rfloor + 1 = 3
 </figure>
 </section>
 <section id="activation-functions">
-<h2>Activation Functions<a class="headerlink" href="#activation-functions" title="Permalink to this heading">#</a></h2>
+<h2>Activation Functions<a class="headerlink" href="#activation-functions" title="Link to this heading">#</a></h2>
 <p>See the artificial neural network chapter for more details, but for a reminder considerations for selecting activation functions,</p>
 <ul class="simple">
 <li><p><strong>Nonlinear</strong> – required to impose nonlinearity into the predictor. Proved to be a universal function approximator if at least 1 hidden layer (Cybenko, 1989).</p></li>
@@ -738,7 +750,7 @@ n_{\text{out}} = \left\lfloor \frac{4 + 2(0) - 2}{1} \right\rfloor + 1 = 3
 </figure>
 </section>
 <section id="pooling">
-<h2>Pooling<a class="headerlink" href="#pooling" title="Permalink to this heading">#</a></h2>
+<h2>Pooling<a class="headerlink" href="#pooling" title="Link to this heading">#</a></h2>
 <p>Summarization over a filter / kernel with a single value. The impact of pooling includes,</p>
 <ul class="simple">
 <li><p>down sample the detection of features in feature maps</p></li>
@@ -765,7 +777,7 @@ n_{\text{out}} = \left\lfloor \frac{4 + 2(0) - 2}{1} \right\rfloor + 1 = 3
 </figure>
 </section>
 <section id="depth-wise-pooling">
-<h2>Depth-wise Pooling<a class="headerlink" href="#depth-wise-pooling" title="Permalink to this heading">#</a></h2>
+<h2>Depth-wise Pooling<a class="headerlink" href="#depth-wise-pooling" title="Link to this heading">#</a></h2>
 <p>Summarization over feature maps with a single value.</p>
 <ul class="simple">
 <li><p>down sample the detection over feature maps</p></li>
@@ -779,7 +791,7 @@ n_{\text{out}} = \left\lfloor \frac{4 + 2(0) - 2}{1} \right\rfloor + 1 = 3
 </figure>
 </section>
 <section id="common-cnn-architecture">
-<h2>Common CNN Architecture<a class="headerlink" href="#common-cnn-architecture" title="Permalink to this heading">#</a></h2>
+<h2>Common CNN Architecture<a class="headerlink" href="#common-cnn-architecture" title="Link to this heading">#</a></h2>
 <p>The following is a common workflow for convolutional neural networks,</p>
 <figure style="text-align: center;">
   <img src="_static/CNN/flowchart.png" style="display: block; margin: 0 auto; width: 80%;">
@@ -792,7 +804,7 @@ n_{\text{out}} = \left\lfloor \frac{4 + 2(0) - 2}{1} \right\rfloor + 1 = 3
 </figure>
 </section>
 <section id="by-hand-cnn-architecture">
-<h2>By-Hand CNN Architecture<a class="headerlink" href="#by-hand-cnn-architecture" title="Permalink to this heading">#</a></h2>
+<h2>By-Hand CNN Architecture<a class="headerlink" href="#by-hand-cnn-architecture" title="Link to this heading">#</a></h2>
 <p>Just like the artificial neural network chapter, I build a simple convolutional neural network by-hand.</p>
 <p>For simplicity and brevity, I have made the following architectural choices,</p>
 <ul class="simple">
@@ -825,7 +837,7 @@ n_{\text{out}} = \left\lfloor \frac{4 + 2(0) - 2}{1} \right\rfloor + 1 = 3
 </figure>
 </section>
 <section id="training-model-parameters">
-<h2>Training Model Parameters<a class="headerlink" href="#training-model-parameters" title="Permalink to this heading">#</a></h2>
+<h2>Training Model Parameters<a class="headerlink" href="#training-model-parameters" title="Link to this heading">#</a></h2>
 <p>Training  a convolutional neural network proceeds iteratively by these steps, the same as discussed in the artificial neural network chapter.</p>
 <figure style="text-align: center;">
   <img src="_static/ANN/training_cycle.png" style="display: block; margin: 0 auto; width: 90%;">
@@ -898,11 +910,11 @@ n_out = k \times k \times  C = 3 \times 3 \times 9
 </ol>
 </section>
 <section id="backpropagation">
-<h2>Backpropagation<a class="headerlink" href="#backpropagation" title="Permalink to this heading">#</a></h2>
+<h2>Backpropagation<a class="headerlink" href="#backpropagation" title="Link to this heading">#</a></h2>
 <p>For brevity, I refer you to the artificial neural network chapter for a walkthrough of backpropagating the error gradient through a neural network.</p>
 </section>
 <section id="updating-model-parameters">
-<h2>Updating Model Parameters<a class="headerlink" href="#updating-model-parameters" title="Permalink to this heading">#</a></h2>
+<h2>Updating Model Parameters<a class="headerlink" href="#updating-model-parameters" title="Link to this heading">#</a></h2>
 <p>The derivatives for each of the model parameters are the error gradients, so we are ready to use gradient descent optimization with the addition of,</p>
 <ul class="simple">
 <li><p><strong>learning rate</strong> -  to scale the rate of change of the model updates we assign a learning rate, <span class="math notranslate nohighlight">\(\eta\)</span>. For our model parameter examples from above,</p></li>
@@ -932,7 +944,7 @@ b_{12}^{\ell} = b_{12}^{\ell - 1} + \eta \cdot \frac{\partial P}{\partial b_{12}
 </ul>
 </section>
 <section id="training-epochs">
-<h2>Training Epochs<a class="headerlink" href="#training-epochs" title="Permalink to this heading">#</a></h2>
+<h2>Training Epochs<a class="headerlink" href="#training-epochs" title="Link to this heading">#</a></h2>
 <p>This is a good time to talk about stochastic gradient descent optimization, first let’s define some common terms,</p>
 <ul class="simple">
 <li><p><strong>Batch Gradient Descent</strong> - updates the model parameters after passing through all of the data</p></li>
@@ -960,7 +972,7 @@ b_{12}^{\ell} = b_{12}^{\ell - 1} + \eta \cdot \frac{\partial P}{\partial b_{12}
 </ul>
 </section>
 <section id="training-with-multiple-training-images">
-<h2>Training with Multiple Training Images<a class="headerlink" href="#training-with-multiple-training-images" title="Permalink to this heading">#</a></h2>
+<h2>Training with Multiple Training Images<a class="headerlink" href="#training-with-multiple-training-images" title="Link to this heading">#</a></h2>
 <p>The backpropagation is based on a single sample, i.e., training image and paired response feature value; therefore, to train over multiple images we must cycle over the,</p>
 <ul class="simple">
 <li><p>forward pass</p></li>
@@ -974,7 +986,7 @@ b_{12}^{\ell} = b_{12}^{\ell - 1} + \eta \cdot \frac{\partial P}{\partial b_{12}
 <p>For each image the weights and biases gradients are stored. Then the gradients are summed over the images in the batch and this sum is applied with the learning rate to update the weights and biases.</p>
 </section>
 <section id="forward-pass">
-<h2>Forward Pass<a class="headerlink" href="#forward-pass" title="Permalink to this heading">#</a></h2>
+<h2>Forward Pass<a class="headerlink" href="#forward-pass" title="Link to this heading">#</a></h2>
 <p>For clarity, let’s walk through the convolutional neural network, starting with image input.</p>
 <p>The input nodes receives the input from the image in to the convolution layer,</p>
 <ul class="simple">
@@ -1064,7 +1076,7 @@ O_j = g_k(O_{j_{\text{in}}}) = \frac{e^{O_{j_{\text{in}}}}}{\sum_{\iota=1}^{K} e
 \]</div>
 </section>
 <section id="import-required-packages">
-<h2>Import Required Packages<a class="headerlink" href="#import-required-packages" title="Permalink to this heading">#</a></h2>
+<h2>Import Required Packages<a class="headerlink" href="#import-required-packages" title="Link to this heading">#</a></h2>
 <p>We will also need some standard packages. These should have been installed with Anaconda 3.</p>
 <ul class="simple">
 <li><p>recall our goal is to build a convolutional neural network by-hand with only basic math and array operations, so we only need NumPy along with matplotlib for plotting.</p></li>
@@ -1085,7 +1097,7 @@ O_j = g_k(O_{j_{\text{in}}}) = \frac{e^{O_{j_{\text{in}}}}}{\sum_{\iota=1}^{K} e
 <p>If you get a package import error, you may have to first install some of these packages. This can usually be accomplished by opening up a command window on Windows and then typing ‘python -m pip install [package-name]’. More assistance is available with the respective package docs.</p>
 </section>
 <section id="declare-functions">
-<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
+<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Link to this heading">#</a></h2>
 <p>Here’s the functions to make, train and visualize our convoluational neural network.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1181,7 +1193,7 @@ O_j = g_k(O_{j_{\text{in}}}) = \frac{e^{O_{j_{\text{in}}}}}{\sum_{\iota=1}^{K} e
 </div>
 </section>
 <section id="the-simple-by-hand-cnn">
-<h2>The Simple By-hand CNN<a class="headerlink" href="#the-simple-by-hand-cnn" title="Permalink to this heading">#</a></h2>
+<h2>The Simple By-hand CNN<a class="headerlink" href="#the-simple-by-hand-cnn" title="Link to this heading">#</a></h2>
 <p>I wrote this code to specify a simple CNN,</p>
 <ul class="simple">
 <li><p>five input nodes, 1 convolution layer with a kernel of 3 resulting in a 3 nodes in the feature map and 1 output node</p></li>
@@ -1287,7 +1299,7 @@ O_j = g_k(O_{j_{\text{in}}}) = \frac{e^{O_{j_{\text{in}}}}}{\sum_{\iota=1}^{K} e
 </div>
 </section>
 <section id="visualize-by-hand-cnn">
-<h2>Visualize By-hand CNN<a class="headerlink" href="#visualize-by-hand-cnn" title="Permalink to this heading">#</a></h2>
+<h2>Visualize By-hand CNN<a class="headerlink" href="#visualize-by-hand-cnn" title="Link to this heading">#</a></h2>
 <p>Let’s visualize our convolutional neural network.</p>
 <ul class="simple">
 <li><p>note, I will used this code latter to make interactive dashboards.</p></li>
@@ -1369,7 +1381,7 @@ O_j = g_k(O_{j_{\text{in}}}) = \frac{e^{O_{j_{\text{in}}}}}{\sum_{\iota=1}^{K} e
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/bd6f0d76fef9a0c1d4062d2fed4028a098a6ba3f59c0dff50e67370b90502ba7.png" src="_images/bd6f0d76fef9a0c1d4062d2fed4028a098a6ba3f59c0dff50e67370b90502ba7.png" />
+<img alt="_images/53837023355e5d49063bdfc1b3b64adff4a284791620cfef3b1d2fbb3ad912c0.png" src="_images/53837023355e5d49063bdfc1b3b64adff4a284791620cfef3b1d2fbb3ad912c0.png" />
 </div>
 </div>
 <p>and now we can visualize the model training results including,</p>
@@ -1415,7 +1427,7 @@ O_j = g_k(O_{j_{\text{in}}}) = \frac{e^{O_{j_{\text{in}}}}}{\sum_{\iota=1}^{K} e
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4cea6b946d67f8e2cb6605415803c148ac63ebfb43f8034a7285880405bb88d3.png" src="_images/4cea6b946d67f8e2cb6605415803c148ac63ebfb43f8034a7285880405bb88d3.png" />
+<img alt="_images/2d921cb9ab8055e1c952be55b0ea8277b8926839532ae6557bedc36f5b9e6963.png" src="_images/2d921cb9ab8055e1c952be55b0ea8277b8926839532ae6557bedc36f5b9e6963.png" />
 </div>
 </div>
 <p>Of course, the results above are not very practical, in fact we need our convolutional neural network to generalize by learning over many images, not just 1 as demonstrated above. Let’s,</p>
@@ -1425,7 +1437,7 @@ O_j = g_k(O_{j_{\text{in}}}) = \frac{e^{O_{j_{\text{in}}}}}{\sum_{\iota=1}^{K} e
 </ul>
 </section>
 <section id="make-synthetic-training-images-with-label">
-<h2>Make Synthetic Training Images with Label<a class="headerlink" href="#make-synthetic-training-images-with-label" title="Permalink to this heading">#</a></h2>
+<h2>Make Synthetic Training Images with Label<a class="headerlink" href="#make-synthetic-training-images-with-label" title="Link to this heading">#</a></h2>
 <p>The following code makes random configurations of 5 points with variable slope and additive noise and then retains the slope linear regression model of the data as the label.</p>
 <p>The workflow inludes these steps,</p>
 <ol class="arabic simple">
@@ -1476,12 +1488,12 @@ m = \frac{&lt;Z_{\epsilon}^{\ell} \cdot x&gt;}{&lt;x \cdot x&gt;}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/60bea9aeec98af43e38abc10f6ce1302ee8c10ff095a8bfdef8fb4231fc1be32.png" src="_images/60bea9aeec98af43e38abc10f6ce1302ee8c10ff095a8bfdef8fb4231fc1be32.png" />
+<img alt="_images/991fb3eba3ef64f4bdec87b93a1f61a8783ebb6128db51d6c385f4439d723f28.png" src="_images/991fb3eba3ef64f4bdec87b93a1f61a8783ebb6128db51d6c385f4439d723f28.png" />
 </div>
 </div>
 </section>
 <section id="training-the-simple-cnn-on-many-training-images">
-<h2>Training the Simple CNN on Many Training Images<a class="headerlink" href="#training-the-simple-cnn-on-many-training-images" title="Permalink to this heading">#</a></h2>
+<h2>Training the Simple CNN on Many Training Images<a class="headerlink" href="#training-the-simple-cnn-on-many-training-images" title="Link to this heading">#</a></h2>
 <p>I modified the code above to loops over the batch of training images, sums the error gradients and updates over all the weights and biases for each training epoch.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1618,18 +1630,18 @@ m = \frac{&lt;Z_{\epsilon}^{\ell} \cdot x&gt;}{&lt;x \cdot x&gt;}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ba623428124e0113a09fcf1b71bb1dacaf21bee4f296116c527e30bf0e957edb.png" src="_images/ba623428124e0113a09fcf1b71bb1dacaf21bee4f296116c527e30bf0e957edb.png" />
+<img alt="_images/c1ced79efbf5f2024f32848a07d67855e574c29b21a16122b2dfef45c312b4ed.png" src="_images/c1ced79efbf5f2024f32848a07d67855e574c29b21a16122b2dfef45c312b4ed.png" />
 </div>
 </div>
 </section>
 <section id="comments">
-<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
+<h2>Comments<a class="headerlink" href="#comments" title="Link to this heading">#</a></h2>
 <p>This was a basic treatment of convolutional neural networks. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
 <section id="about-the-author">
-<h2>About the Author<a class="headerlink" href="#about-the-author" title="Permalink to this heading">#</a></h2>
+<h2>About the Author<a class="headerlink" href="#about-the-author" title="Link to this heading">#</a></h2>
 <figure style="text-align: center;">
   <img src="_static/intro/michael_pyrcz_officeshot_jacket.jpg" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
@@ -1640,11 +1652,11 @@ m = \frac{&lt;Z_{\epsilon}^{\ell} \cdot x&gt;}{&lt;x \cdot x&gt;}
 <li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
+<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference internal" href="#www.michaelpyrcz.com"><span class="xref myst">Website</span></a>.</p>
 </section>
 <section id="want-to-work-together">
-<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
+<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Link to this heading">#</a></h2>
 <p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
@@ -1654,7 +1666,7 @@ m = \frac{&lt;Z_{\epsilon}^{\ell} \cdot x&gt;}{&lt;x \cdot x&gt;}
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -1685,7 +1697,7 @@ m = \frac{&lt;Z_{\epsilon}^{\ell} \cdot x&gt;}{&lt;x \cdot x&gt;}
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1714,6 +1726,7 @@ m = \frac{&lt;Z_{\epsilon}^{\ell} \cdot x&gt;}{&lt;x \cdot x&gt;}
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1796,8 +1809,8 @@ By Michael J. Pyrcz
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

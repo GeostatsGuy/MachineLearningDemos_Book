@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Gradient Boosting Trees &#8212; Applied Machine Learning in Python</title>
   
@@ -15,55 +14,51 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=304429a7" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=564be945" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'MachineLearning_gradient_boosting';</script>
@@ -80,28 +75,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -123,12 +113,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -144,6 +142,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -162,7 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -201,6 +212,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ensemble_trees.html">Bagging Tree and Random Forest</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Gradient Boosting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_support_vector_machines.html">Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_activation_functions.html">Neural Networks Activation Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ANN.html">Artificial Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_CNN.html">Convolutional Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_autoencoder.html">Autoencoder Neural Networks</a></li>
@@ -226,7 +238,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -235,14 +247,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -367,10 +379,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -378,14 +390,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -443,15 +455,15 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <figure style="text-align: center;">
   <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
 </figure>
 <section id="gradient-boosting-trees">
-<h1>Gradient Boosting Trees<a class="headerlink" href="#gradient-boosting-trees" title="Permalink to this heading">#</a></h1>
+<h1>Gradient Boosting Trees<a class="headerlink" href="#gradient-boosting-trees" title="Link to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite this e-Book as:</p>
@@ -472,12 +484,12 @@ document.write(`
 <li><p><a class="reference external" href="https://youtu.be/m5_wk310fho?si=up-mzVPHvniXsYE6">Random Forest</a></p></li>
 <li><p><a class="reference external" href="https://youtu.be/___T8_ixIwc?si=ozHR_eIuMF3SPTxJ">Gradient Boosting</a></p></li>
 </ul>
-<p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
+<p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
 <section id="motivations-for-gradient-boosting-trees">
-<h2>Motivations for Gradient Boosting Trees<a class="headerlink" href="#motivations-for-gradient-boosting-trees" title="Permalink to this heading">#</a></h2>
+<h2>Motivations for Gradient Boosting Trees<a class="headerlink" href="#motivations-for-gradient-boosting-trees" title="Link to this heading">#</a></h2>
 <p>Before we can understand gradient boosting trees we first need to cover decision trees. Here’s the critical concepts for decision trees.</p>
 <section id="decision-tree">
-<h3>Decision Tree<a class="headerlink" href="#decision-tree" title="Permalink to this heading">#</a></h3>
+<h3>Decision Tree<a class="headerlink" href="#decision-tree" title="Link to this heading">#</a></h3>
 <p><strong>Prediction</strong></p>
 <ul class="simple">
 <li><p>estimate a function <span class="math notranslate nohighlight">\(\hat{f}\)</span> such that we predict a response feature <span class="math notranslate nohighlight">\(Y\)</span> from a set of predictor features <span class="math notranslate nohighlight">\(X_1,\ldots,X_m\)</span>.</p></li>
@@ -518,7 +530,7 @@ RSS = \sum^{J}_{j=1} \sum_{i \in R_j} (y_i - \hat{y}_{R_j})^2
 </section>
 </section>
 <section id="boosting-models">
-<h2>Boosting Models<a class="headerlink" href="#boosting-models" title="Permalink to this heading">#</a></h2>
+<h2>Boosting Models<a class="headerlink" href="#boosting-models" title="Link to this heading">#</a></h2>
 <p>Boosting additively applies multiple week learners to build a stronger learner.</p>
 <ul class="simple">
 <li><p>a weak learner is one that offers predictions just marginally better than random selection</p></li>
@@ -552,7 +564,7 @@ RSS = \sum^{J}_{j=1} \sum_{i \in R_j} (y_i - \hat{y}_{R_j})^2
 \]</div>
 </section>
 <section id="gradient-boosting-methods">
-<h2>Gradient Boosting Methods<a class="headerlink" href="#gradient-boosting-methods" title="Permalink to this heading">#</a></h2>
+<h2>Gradient Boosting Methods<a class="headerlink" href="#gradient-boosting-methods" title="Link to this heading">#</a></h2>
 <p>If you look at the previous method, it becomes clear that it could be mapped to a gradient descent problem</p>
 <p>At each step, <span class="math notranslate nohighlight">\(k\)</span>, a model is being fit, then the error is calculated, <span class="math notranslate nohighlight">\(h_k(X_1,\ldots,X_m)\)</span>.</p>
 <p>We can assign a loss function</p>
@@ -627,7 +639,7 @@ F_{k+1}(X_i) = F_k(X_i) - 1 \frac{\partial J}{\partial F_k(X_i)}
 <p>Both are standardized to sum to 1.0 over the features.</p>
 </section>
 <section id="classification">
-<h2>Classification<a class="headerlink" href="#classification" title="Permalink to this heading">#</a></h2>
+<h2>Classification<a class="headerlink" href="#classification" title="Link to this heading">#</a></h2>
 <p>The response is a finite set of possible categories.</p>
 <ul class="simple">
 <li><p>For each training data the truth is 100% probability in the observed category and 0% otherwise</p></li>
@@ -636,7 +648,7 @@ F_{k+1}(X_i) = F_k(X_i) - 1 \frac{\partial J}{\partial F_k(X_i)}
 </ul>
 </section>
 <section id="load-the-required-libraries">
-<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
+<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Link to this heading">#</a></h2>
 <p>We will also need some standard packages. These should have been installed with Anaconda 3.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -676,7 +688,7 @@ F_{k+1}(X_i) = F_k(X_i) - 1 \frac{\partial J}{\partial F_k(X_i)}
 <p>If you get a package import error, you may have to first install some of these packages. This can usually be accomplished by opening up a command window on Windows and then typing ‘python -m pip install [package-name]’. More assistance is available with the respective package docs.</p>
 </section>
 <section id="declare-functions">
-<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
+<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Link to this heading">#</a></h2>
 <p>Let’s define a couple of functions to streamline plotting correlation matrices and visualization of a decision tree regression model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -772,7 +784,7 @@ F_{k+1}(X_i) = F_k(X_i) - 1 \frac{\partial J}{\partial F_k(X_i)}
 </div>
 </section>
 <section id="set-the-working-directory">
-<h2>Set the Working Directory<a class="headerlink" href="#set-the-working-directory" title="Permalink to this heading">#</a></h2>
+<h2>Set the Working Directory<a class="headerlink" href="#set-the-working-directory" title="Link to this heading">#</a></h2>
 <p>I always like to do this so I don’t lose files and to simplify subsequent read and writes (avoid including the full address each time).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -784,7 +796,7 @@ F_{k+1}(X_i) = F_k(X_i) - 1 \frac{\partial J}{\partial F_k(X_i)}
 <p>You will have to update the part in quotes with your own working directory and the format is different on a Mac (e.g. “~/PGE”).</p>
 </section>
 <section id="loading-data">
-<h2>Loading Data<a class="headerlink" href="#loading-data" title="Permalink to this heading">#</a></h2>
+<h2>Loading Data<a class="headerlink" href="#loading-data" title="Link to this heading">#</a></h2>
 <p>Let’s load the provided multivariate, spatial dataset <a class="reference external" href="https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/unconv_MV.csv">unconv_MV.csv</a> available in my GeoDataSet repo. It is a comma delimited file with:</p>
 <ul class="simple">
 <li><p>well index (integer)</p></li>
@@ -821,7 +833,7 @@ F_{k+1}(X_i) = F_k(X_i) - 1 \frac{\partial J}{\partial F_k(X_i)}
 </div>
 </section>
 <section id="feature-engineering">
-<h2>Feature Engineering<a class="headerlink" href="#feature-engineering" title="Permalink to this heading">#</a></h2>
+<h2>Feature Engineering<a class="headerlink" href="#feature-engineering" title="Link to this heading">#</a></h2>
 <p>Let’s make some changes to the data to improve the workflow:</p>
 <ul class="simple">
 <li><p><strong>Select the predictor features (x2) and the response feature (x1)</strong>, make sure the metadata is also consistent.</p></li>
@@ -836,7 +848,7 @@ F_{k+1}(X_i) = F_k(X_i) - 1 \frac{\partial J}{\partial F_k(X_i)}
 </ul>
 </section>
 <section id="optional-add-random-noise-to-the-response-feature">
-<h2>Optional: Add Random Noise to the Response Feature<a class="headerlink" href="#optional-add-random-noise-to-the-response-feature" title="Permalink to this heading">#</a></h2>
+<h2>Optional: Add Random Noise to the Response Feature<a class="headerlink" href="#optional-add-random-noise-to-the-response-feature" title="Link to this heading">#</a></h2>
 <p>We can do this to observe the impact of data noise on overfit and hyperparameter tuning.</p>
 <ul class="simple">
 <li><p>This is for experiential learning, of course we wouldn’t add random noise to our data</p></li>
@@ -884,7 +896,7 @@ F_{k+1}(X_i) = F_k(X_i) - 1 \frac{\partial J}{\partial F_k(X_i)}
 </ul>
 </section>
 <section id="calculate-the-correlation-matrix-and-correlation-with-response-ranking">
-<h2>Calculate the Correlation Matrix and Correlation with Response Ranking<a class="headerlink" href="#calculate-the-correlation-matrix-and-correlation-with-response-ranking" title="Permalink to this heading">#</a></h2>
+<h2>Calculate the Correlation Matrix and Correlation with Response Ranking<a class="headerlink" href="#calculate-the-correlation-matrix-and-correlation-with-response-ranking" title="Link to this heading">#</a></h2>
 <p>Let’s start with correlation analysis. We can calculate and view the correlation matrix and correlation to the response features with these previously declared functions.</p>
 <ul class="simple">
 <li><p>correlation analysis is based on the assumption of linear relationships, but it is a good start</p></li>
@@ -906,7 +918,7 @@ F_{k+1}(X_i) = F_k(X_i) - 1 \frac{\partial J}{\partial F_k(X_i)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f16d805e35f1c39ce293ec74df9132232e9f79c7ca0cb2ab8b63641a714d99c3.png" src="_images/f16d805e35f1c39ce293ec74df9132232e9f79c7ca0cb2ab8b63641a714d99c3.png" />
+<img alt="_images/bba0d05eaedfddecd5b90bd0e40ddbe4c6efa39ad2c72f6d35ec8edb6950c2fc.png" src="_images/bba0d05eaedfddecd5b90bd0e40ddbe4c6efa39ad2c72f6d35ec8edb6950c2fc.png" />
 </div>
 </div>
 <p>Note the 1.0 diagonal resulting from the correlation of each variable with themselves.</p>
@@ -927,12 +939,12 @@ F_{k+1}(X_i) = F_k(X_i) - 1 \frac{\partial J}{\partial F_k(X_i)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b641089892114f3044ca3ab9a43c2723da5e4105a26416ee749176d163822c57.png" src="_images/b641089892114f3044ca3ab9a43c2723da5e4105a26416ee749176d163822c57.png" />
+<img alt="_images/a908f48689e48fdd3e42f323391073cc6a52b963b09a6d3ff655f3ee37769ec9.png" src="_images/a908f48689e48fdd3e42f323391073cc6a52b963b09a6d3ff655f3ee37769ec9.png" />
 </div>
 </div>
 </section>
 <section id="train-and-test-split">
-<h2>Train and Test Split<a class="headerlink" href="#train-and-test-split" title="Permalink to this heading">#</a></h2>
+<h2>Train and Test Split<a class="headerlink" href="#train-and-test-split" title="Link to this heading">#</a></h2>
 <p>For convenience and simplicity we use scikit-learn’s random train and test split.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -945,7 +957,7 @@ F_{k+1}(X_i) = F_k(X_i) - 1 \frac{\partial J}{\partial F_k(X_i)}
 </div>
 </section>
 <section id="visualize-the-dataframe">
-<h2>Visualize the DataFrame<a class="headerlink" href="#visualize-the-dataframe" title="Permalink to this heading">#</a></h2>
+<h2>Visualize the DataFrame<a class="headerlink" href="#visualize-the-dataframe" title="Link to this heading">#</a></h2>
 <p>Visualizing the train and test DataFrame is useful check before we build our models.</p>
 <ul class="simple">
 <li><p>many things can go wrong, e.g., we loaded the wrong data, all the features did not load, etc.</p></li>
@@ -1048,7 +1060,7 @@ F_{k+1}(X_i) = F_k(X_i) - 1 \frac{\partial J}{\partial F_k(X_i)}
 </div>
 </section>
 <section id="summary-statistics-for-tabular-data">
-<h2>Summary Statistics for Tabular Data<a class="headerlink" href="#summary-statistics-for-tabular-data" title="Permalink to this heading">#</a></h2>
+<h2>Summary Statistics for Tabular Data<a class="headerlink" href="#summary-statistics-for-tabular-data" title="Link to this heading">#</a></h2>
 <p>There are a lot of efficient methods to calculate summary statistics from tabular data in DataFrames.</p>
 <ul class="simple">
 <li><p>The describe command provides count, mean, minimum, maximum in a nice data table.</p></li>
@@ -1155,7 +1167,7 @@ F_{k+1}(X_i) = F_k(X_i) - 1 \frac{\partial J}{\partial F_k(X_i)}
 </ul>
 </section>
 <section id="visualize-the-train-and-test-splits">
-<h2>Visualize the Train and Test Splits<a class="headerlink" href="#visualize-the-train-and-test-splits" title="Permalink to this heading">#</a></h2>
+<h2>Visualize the Train and Test Splits<a class="headerlink" href="#visualize-the-train-and-test-splits" title="Link to this heading">#</a></h2>
 <p>Let’s check the consistency and coverage of training and testing with histograms and scatter plots.</p>
 <ul class="simple">
 <li><p>check to make sure the training and testing cover the range of possible feature combinations</p></li>
@@ -1197,7 +1209,7 @@ F_{k+1}(X_i) = F_k(X_i) - 1 \frac{\partial J}{\partial F_k(X_i)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/39becd8bd5d8101d8e6567bb5e26eb2b8fbe6499ce965fd4f72fdc3d8b7a3013.png" src="_images/39becd8bd5d8101d8e6567bb5e26eb2b8fbe6499ce965fd4f72fdc3d8b7a3013.png" />
+<img alt="_images/35442c6c082d93af6242abccfdf6e25f355368b30dd0e2cff242dc923f3a722e.png" src="_images/35442c6c082d93af6242abccfdf6e25f355368b30dd0e2cff242dc923f3a722e.png" />
 </div>
 </div>
 <p>Sometimes I find it more convenient to compare distributions by looking at CDF’s instead of histograms.</p>
@@ -1231,7 +1243,7 @@ F_{k+1}(X_i) = F_k(X_i) - 1 \frac{\partial J}{\partial F_k(X_i)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/26e6503a4d7debf39d1789ec8242383e943228b6a4f2f3dfc0a0f10cd99a5b46.png" src="_images/26e6503a4d7debf39d1789ec8242383e943228b6a4f2f3dfc0a0f10cd99a5b46.png" />
+<img alt="_images/112622def877ff95565363ff776441d1c74280adfdebbb772e2853c7ef24bb27.png" src="_images/112622def877ff95565363ff776441d1c74280adfdebbb772e2853c7ef24bb27.png" />
 </div>
 </div>
 <p>Once again, the distributions are well behaved,</p>
@@ -1259,12 +1271,12 @@ F_{k+1}(X_i) = F_k(X_i) - 1 \frac{\partial J}{\partial F_k(X_i)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1a847dd38c7158f07f58197cf7bfb88e46738dacb7622cd79a3a267a25a94494.png" src="_images/1a847dd38c7158f07f58197cf7bfb88e46738dacb7622cd79a3a267a25a94494.png" />
+<img alt="_images/3969ba1e8eb3d4f10681625f31431db81c7b2cb46650e8a4185c29e44bf214f1.png" src="_images/3969ba1e8eb3d4f10681625f31431db81c7b2cb46650e8a4185c29e44bf214f1.png" />
 </div>
 </div>
 </section>
 <section id="tree-based-boosting">
-<h2>Tree-based Boosting<a class="headerlink" href="#tree-based-boosting" title="Permalink to this heading">#</a></h2>
+<h2>Tree-based Boosting<a class="headerlink" href="#tree-based-boosting" title="Link to this heading">#</a></h2>
 <p>To perform tree-based boosting, gradient boosting tree regression we:</p>
 <ol class="arabic simple">
 <li><p>set the hyperparameters for our model</p></li>
@@ -1296,7 +1308,7 @@ F_{k+1}(X_i) = F_k(X_i) - 1 \frac{\partial J}{\partial F_k(X_i)}
 </ol>
 </section>
 <section id="demonstration-of-boosting">
-<h2>Demonstration of Boosting<a class="headerlink" href="#demonstration-of-boosting" title="Permalink to this heading">#</a></h2>
+<h2>Demonstration of Boosting<a class="headerlink" href="#demonstration-of-boosting" title="Link to this heading">#</a></h2>
 <p>For demonstration let’s set tree maximum depth to 1 and 6 tree-based boosting regression trees.</p>
 <ul class="simple">
 <li><p>each tree only has a single split, called decision stumps. This will prevent interaction between the predictor features and be highly interpretable</p></li>
@@ -1334,7 +1346,7 @@ F_{k+1}(X_i) = F_k(X_i) - 1 \frac{\partial J}{\partial F_k(X_i)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0689fdfd411d646efca1490a036e9354bc12c7bd5797bac40f5b0295fb0f11a3.png" src="_images/0689fdfd411d646efca1490a036e9354bc12c7bd5797bac40f5b0295fb0f11a3.png" />
+<img alt="_images/a5eca9bf407e7293f7d0fd50140d5809ac1783512ef7483646bec7adc8c1e0c7.png" src="_images/a5eca9bf407e7293f7d0fd50140d5809ac1783512ef7483646bec7adc8c1e0c7.png" />
 </div>
 </div>
 <p>Notice that there is significant misfit with the data</p>
@@ -1354,13 +1366,13 @@ F_{k+1}(X_i) = F_k(X_i) - 1 \frac{\partial J}{\partial F_k(X_i)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/dca4db99b262b1382fe6624eace15ad6cfe1a52dd28209db869d61cb97d8a540.png" src="_images/dca4db99b262b1382fe6624eace15ad6cfe1a52dd28209db869d61cb97d8a540.png" />
+<img alt="_images/b94788f3dfab50fce2259ab78168009e23ce50ffcb0501fa982c416c624f9d4d.png" src="_images/b94788f3dfab50fce2259ab78168009e23ce50ffcb0501fa982c416c624f9d4d.png" />
 </div>
 </div>
 <p>Of course with a single tree we do quite poorly, but by the time we get to 6 stump trees we cut the MSE almost in half.</p>
 </section>
 <section id="time-to-build-more-trees">
-<h2>Time to Build More Trees<a class="headerlink" href="#time-to-build-more-trees" title="Permalink to this heading">#</a></h2>
+<h2>Time to Build More Trees<a class="headerlink" href="#time-to-build-more-trees" title="Link to this heading">#</a></h2>
 <p>Now let’s demonstrate the result of utilizing many more trees in our tree-based boosting model.</p>
 <ul class="simple">
 <li><p>we will still work with simple decision stumps, don’t worry we will add more later</p></li>
@@ -1392,7 +1404,7 @@ F_{k+1}(X_i) = F_k(X_i) - 1 \frac{\partial J}{\partial F_k(X_i)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ad50902645fae1091779c09e40ad78025d6ddf1261c9d5a405eb2af496ddd2df.png" src="_images/ad50902645fae1091779c09e40ad78025d6ddf1261c9d5a405eb2af496ddd2df.png" />
+<img alt="_images/7fcccaa2e1643c0cd638a61b0cd58c0efbffbb7a1b30c2a48899847cfd9026ed.png" src="_images/7fcccaa2e1643c0cd638a61b0cd58c0efbffbb7a1b30c2a48899847cfd9026ed.png" />
 </div>
 </div>
 <p>See the plaid pattern? It is due to the use of decision stumps, and:</p>
@@ -1417,13 +1429,13 @@ F_{k+1}(X_i) = F_k(X_i) - 1 \frac{\partial J}{\partial F_k(X_i)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f6fae7eb28cbf98d98c8bfbf82659a7d3bcb67136928521595c9e0374bdc1147.png" src="_images/f6fae7eb28cbf98d98c8bfbf82659a7d3bcb67136928521595c9e0374bdc1147.png" />
+<img alt="_images/279a83262145cd8a44a360c34a4555109a80ad46e9ab8f7e9692a446f6d75b33.png" src="_images/279a83262145cd8a44a360c34a4555109a80ad46e9ab8f7e9692a446f6d75b33.png" />
 </div>
 </div>
 <p>Around 20 trees we get our best performance and then we start to degrade, we are likely starting to overfit the training data.</p>
 </section>
 <section id="going-beyond-decision-stumps">
-<h2>Going Beyond Decision Stumps<a class="headerlink" href="#going-beyond-decision-stumps" title="Permalink to this heading">#</a></h2>
+<h2>Going Beyond Decision Stumps<a class="headerlink" href="#going-beyond-decision-stumps" title="Link to this heading">#</a></h2>
 <p>As state before with decision stumps we prevent interactions between features.</p>
 <p>Let’s extend to tree depth of 2</p>
 <ul class="simple">
@@ -1456,7 +1468,7 @@ F_{k+1}(X_i) = F_k(X_i) - 1 \frac{\partial J}{\partial F_k(X_i)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/07951866b16ac8dd604974240c5a929632a2a45dccbbed9c7a5b1fcc6d5e3f6e.png" src="_images/07951866b16ac8dd604974240c5a929632a2a45dccbbed9c7a5b1fcc6d5e3f6e.png" />
+<img alt="_images/593276f176e2464c70ec94a8fbf0d628ec50c5f13a13ee7f763c223f6171a2c3.png" src="_images/593276f176e2464c70ec94a8fbf0d628ec50c5f13a13ee7f763c223f6171a2c3.png" />
 </div>
 </div>
 <p>We have much more flexibility now.</p>
@@ -1492,7 +1504,7 @@ F_{k+1}(X_i) = F_k(X_i) - 1 \frac{\partial J}{\partial F_k(X_i)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/aba462916f779681b9aa90d6b1a3a548e3d43d5ad379c5af304e09a38658a793.png" src="_images/aba462916f779681b9aa90d6b1a3a548e3d43d5ad379c5af304e09a38658a793.png" />
+<img alt="_images/8b200d5dfbf56f6c38852a4eb1c643c6288001da50321bebed6d80d0d7ca308e.png" src="_images/8b200d5dfbf56f6c38852a4eb1c643c6288001da50321bebed6d80d0d7ca308e.png" />
 </div>
 </div>
 <p>One more time, it is common to use trees with depths of 4-8, so let’s try 5.</p>
@@ -1523,7 +1535,7 @@ F_{k+1}(X_i) = F_k(X_i) - 1 \frac{\partial J}{\partial F_k(X_i)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1739c0986e82122c4de50870f59b64abac148392710ba70c39c9f279197c0704.png" src="_images/1739c0986e82122c4de50870f59b64abac148392710ba70c39c9f279197c0704.png" />
+<img alt="_images/1217f2a21baaf538fd57d80f9177b63bf5a27864092e18d6cf01cee6465a1033.png" src="_images/1217f2a21baaf538fd57d80f9177b63bf5a27864092e18d6cf01cee6465a1033.png" />
 </div>
 </div>
 <p>Let’s cross validate the model with testing data.</p>
@@ -1539,7 +1551,7 @@ F_{k+1}(X_i) = F_k(X_i) - 1 \frac{\partial J}{\partial F_k(X_i)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/76eb33533b0470061aefadc2a8ad8b34dcd8adaa5de34b3a7fef0efc8af812ca.png" src="_images/76eb33533b0470061aefadc2a8ad8b34dcd8adaa5de34b3a7fef0efc8af812ca.png" />
+<img alt="_images/483eb83b516e2a9246711b9e52f34dc145c6a58830a5cc8da4b78ba313c118cb.png" src="_images/483eb83b516e2a9246711b9e52f34dc145c6a58830a5cc8da4b78ba313c118cb.png" />
 </div>
 </div>
 <p>With a max tree depth of 5 our model performance peaks early and the addition of more trees has no impact.</p>
@@ -1620,7 +1632,7 @@ F_{k+1}(X_i) = F_k(X_i) - 1 \frac{\partial J}{\partial F_k(X_i)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ae7e45a290e0fe1fb8cb9fe76b23eff4132746b7765f4629c874d06b593e0ca6.png" src="_images/ae7e45a290e0fe1fb8cb9fe76b23eff4132746b7765f4629c874d06b593e0ca6.png" />
+<img alt="_images/a417562d364f673659af7b9e73b1074437249b206cfad17b7ab94e08a5815007.png" src="_images/a417562d364f673659af7b9e73b1074437249b206cfad17b7ab94e08a5815007.png" />
 </div>
 </div>
 <p>That’s interesting:</p>
@@ -1632,7 +1644,7 @@ F_{k+1}(X_i) = F_k(X_i) - 1 \frac{\partial J}{\partial F_k(X_i)}
 </ul>
 </section>
 <section id="gradient-descent-hyperparameters">
-<h2>Gradient Descent Hyperparameters<a class="headerlink" href="#gradient-descent-hyperparameters" title="Permalink to this heading">#</a></h2>
+<h2>Gradient Descent Hyperparameters<a class="headerlink" href="#gradient-descent-hyperparameters" title="Link to this heading">#</a></h2>
 <p>The learning rate scales the additive impact of each additive tree to the overall model prediction.</p>
 <ul class="simple">
 <li><p>lower learning rate will slow the convergence to a solution</p></li>
@@ -1707,7 +1719,7 @@ F_{k+1}(X_i) = F_k(X_i) - 1 \frac{\partial J}{\partial F_k(X_i)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/011852fab9e64d42c5e7ac6bcaa69e4f061994730784f35584ff27e0d4ba9831.png" src="_images/011852fab9e64d42c5e7ac6bcaa69e4f061994730784f35584ff27e0d4ba9831.png" />
+<img alt="_images/5809b042b3a6a204131dd2140872aec50dc3b5e16dab3c209fb2f20f32a2bd26.png" src="_images/5809b042b3a6a204131dd2140872aec50dc3b5e16dab3c209fb2f20f32a2bd26.png" />
 </div>
 </div>
 <p>Once again, a very interesting result.</p>
@@ -1716,7 +1728,7 @@ F_{k+1}(X_i) = F_k(X_i) - 1 \frac{\partial J}{\partial F_k(X_i)}
 </ul>
 </section>
 <section id="machine-learning-pipelines-for-clean-compact-machine-learning-code">
-<h2>Machine Learning Pipelines for Clean, Compact Machine Learning Code<a class="headerlink" href="#machine-learning-pipelines-for-clean-compact-machine-learning-code" title="Permalink to this heading">#</a></h2>
+<h2>Machine Learning Pipelines for Clean, Compact Machine Learning Code<a class="headerlink" href="#machine-learning-pipelines-for-clean-compact-machine-learning-code" title="Link to this heading">#</a></h2>
 <p>Pipelines are a scikit-learn class that allows for the encapsulation of a sequence of data preparation and modeling steps</p>
 <ul class="simple">
 <li><p>then we can treat the pipeline as an object in our much condensed workflow</p></li>
@@ -1729,7 +1741,7 @@ F_{k+1}(X_i) = F_k(X_i) - 1 \frac{\partial J}{\partial F_k(X_i)}
 <li><p>abstract common machine learning modeling and focus on building the best model possible</p></li>
 </ul>
 <p>The fundamental philosophy is to treat machine learning as a combinatorial search to find the best model (AutoML)</p>
-<p>For more information see my recorded lecture on <a class="reference external" href="https://www.youtube.com/watch?v=tYrPs8s1l9U&amp;list=PLG19vXLQHvSAufDFgZEFAYQEwMJXklnQV&amp;index=5">Machine Learning Pipelines</a> and a well-documented demonstration <a class="reference external" href="http://localhost:8892/notebooks/OneDrive%20-%20The%20University%20of%20Texas%20at%20Austin/Courses/Workflows/PythonDataBasics_Pipelines.ipynb">Machine Learning Pipeline Workflow</a>.</p>
+<p>For more information see my recorded lecture on <a class="reference external" href="https://www.youtube.com/watch?v=tYrPs8s1l9U&amp;amp;list=PLG19vXLQHvSAufDFgZEFAYQEwMJXklnQV&amp;amp;index=5">Machine Learning Pipelines</a> and a well-documented demonstration <a class="reference external" href="http://localhost:8892/notebooks/OneDrive%20-%20The%20University%20of%20Texas%20at%20Austin/Courses/Workflows/PythonDataBasics_Pipelines.ipynb">Machine Learning Pipeline Workflow</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="o">=</span> <span class="mf">0.25</span><span class="p">;</span> <span class="n">x2</span> <span class="o">=</span> <span class="mf">0.3</span>                                           <span class="c1"># predictor values for the prediction</span>
@@ -1764,20 +1776,20 @@ Estimated Production for Porosity = 0.25 and Brittleness = 0.3 is 1979.7 MCFPD
 </div>
 </section>
 <section id="comments">
-<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
+<h2>Comments<a class="headerlink" href="#comments" title="Link to this heading">#</a></h2>
 <p>I hope you found this chapter helpful. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a>,</p>
 <p><em>Michael</em></p>
 </section>
 <section id="the-author">
-<h2>The Author:<a class="headerlink" href="#the-author" title="Permalink to this heading">#</a></h2>
+<h2>The Author:<a class="headerlink" href="#the-author" title="Link to this heading">#</a></h2>
 <p>Michael Pyrcz, Professor, The University of Texas at Austin
 <em>Novel Data Analytics, Geostatistics and Machine Learning Subsurface Solutions</em></p>
 <p>With over 17 years of experience in subsurface consulting, research and development, Michael has returned to academia driven by his passion for teaching and enthusiasm for enhancing engineers’ and geoscientists’ impact in subsurface resource development.</p>
 <p>For more about Michael check out these links:</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a> | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a> | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 <section id="want-to-work-together">
-<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
+<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Link to this heading">#</a></h2>
 <p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
@@ -1789,7 +1801,7 @@ Estimated Production for Porosity = 0.25 and Brittleness = 0.3 is 1979.7 MCFPD
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
 </section>
 <section id="more-resources-available-at-twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin">
-<h2>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin" title="Permalink to this heading">#</a></h2>
+<h2>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -1820,7 +1832,7 @@ Estimated Production for Porosity = 0.25 and Brittleness = 0.3 is 1979.7 MCFPD
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1849,6 +1861,7 @@ Estimated Production for Porosity = 0.25 and Brittleness = 0.3 is 1979.7 MCFPD
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1932,8 +1945,8 @@ By Michael J. Pyrcz
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Autoencoder &#8212; Applied Machine Learning in Python</title>
   
@@ -15,55 +14,51 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=304429a7" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=564be945" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'MachineLearning_autoencoder';</script>
@@ -80,28 +75,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -123,12 +113,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -144,6 +142,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -162,7 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -201,6 +212,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ensemble_trees.html">Bagging Tree and Random Forest</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_gradient_boosting.html">Gradient Boosting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_support_vector_machines.html">Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_activation_functions.html">Neural Networks Activation Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ANN.html">Artificial Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_CNN.html">Convolutional Neural Networks</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Autoencoder Neural Networks</a></li>
@@ -226,7 +238,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -235,14 +247,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -367,10 +379,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -378,14 +390,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -431,15 +443,15 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <figure style="text-align: center;">
   <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
 </figure>
 <section id="autoencoder">
-<h1>Autoencoder<a class="headerlink" href="#autoencoder" title="Permalink to this heading">#</a></h1>
+<h1>Autoencoder<a class="headerlink" href="#autoencoder" title="Link to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite this e-Book as:</p>
@@ -458,9 +470,9 @@ document.write(`
 <li><p><a class="reference external" href="https://youtu.be/A9PiCMY_6nM?si=NxWSU_5RgQ4w55EL">Artificial Neural Networks</a></p></li>
 <li><p><a class="reference external" href="https://youtu.be/za2my_XDoOs?si=LeHU6p2_fc9dX4Yt">Convolutional Neural Networks</a></p></li>
 </ul>
-<p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
+<p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
 <section id="motivation">
-<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this heading">#</a></h2>
+<h2>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h2>
 <p>Autoencoders are a very powerful, flexible deep learning approach for compressing information,</p>
 <ul class="simple">
 <li><p>mapping training data to a latent space</p></li>
@@ -469,7 +481,7 @@ document.write(`
 </ul>
 </section>
 <section id="autoencoder-architecture">
-<h2>Autoencoder Architecture<a class="headerlink" href="#autoencoder-architecture" title="Permalink to this heading">#</a></h2>
+<h2>Autoencoder Architecture<a class="headerlink" href="#autoencoder-architecture" title="Link to this heading">#</a></h2>
 <p>Here’s our simple autoencoder,</p>
 <figure style="text-align: center;">
   <img src="_static/autoencoder/autoencoder.png" style="display: block; margin: 0 auto; width: 90%;">
@@ -527,7 +539,7 @@ x = f_{\theta} (z)
 \]</div>
 </section>
 <section id="training-model-parameters">
-<h2>Training Model Parameters<a class="headerlink" href="#training-model-parameters" title="Permalink to this heading">#</a></h2>
+<h2>Training Model Parameters<a class="headerlink" href="#training-model-parameters" title="Link to this heading">#</a></h2>
 <p>Training an autoencoder proceeds iteratively by these steps.</p>
 <figure style="text-align: center;">
   <img src="_static/ANN/training_cycle.png" style="display: block; margin: 0 auto; width: 90%;">
@@ -591,7 +603,7 @@ U \left[ \frac{-1}{\sqrt{p}+k}, \frac{1}{\sqrt{p}+k} \right] = U \left[ \frac{-1
 </ol>
 </section>
 <section id="autoencoder-loss">
-<h2>Autoencoder Loss<a class="headerlink" href="#autoencoder-loss" title="Permalink to this heading">#</a></h2>
+<h2>Autoencoder Loss<a class="headerlink" href="#autoencoder-loss" title="Link to this heading">#</a></h2>
 <p>There is a loss and loss gradient at each output-input node pair. The error loss function,</p>
 <figure style="text-align: center;">
   <img src="_static/autoencoder/error.png" style="display: block; margin: 0 auto; width: 45%;">
@@ -619,7 +631,7 @@ L = \frac{1}{2} \sum_{i=1}^3 \left(O_{i+8} - I_i \right)^2
 \]</div>
 </section>
 <section id="autoencoder-backpropagation">
-<h2>Autoencoder Backpropagation<a class="headerlink" href="#autoencoder-backpropagation" title="Permalink to this heading">#</a></h2>
+<h2>Autoencoder Backpropagation<a class="headerlink" href="#autoencoder-backpropagation" title="Link to this heading">#</a></h2>
 <p>Let’s walk through the back propagation of our autoencoder, let’s start with a bias in the output node, <span class="math notranslate nohighlight">\(\frac{\partial \mathcal{L}}{\partial b_{9}}\)</span>.</p>
 <figure style="text-align: center;">
   <img src="_static/autoencoder/backb9.png" style="display: block; margin: 0 auto; width: 80%;">
@@ -1024,7 +1036,7 @@ Once again, since linear activation at <span class="math notranslate nohighlight
 <p>Now we will build out this autoencoder from the ground up with only the NumPy python package for arrays and Python built-in data structure dictionaries.</p>
 </section>
 <section id="import-required-packages">
-<h2>Import Required Packages<a class="headerlink" href="#import-required-packages" title="Permalink to this heading">#</a></h2>
+<h2>Import Required Packages<a class="headerlink" href="#import-required-packages" title="Link to this heading">#</a></h2>
 <p>We will also need some standard packages. These should have been installed with Anaconda 3.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1048,7 +1060,7 @@ Once again, since linear activation at <span class="math notranslate nohighlight
 <p>If you get a package import error, you may have to first install some of these packages. This can usually be accomplished by opening up a command window on Windows and then typing ‘python -m pip install [package-name]’. More assistance is available with the respective package docs.</p>
 </section>
 <section id="declare-functions">
-<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
+<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Link to this heading">#</a></h2>
 <p>Here’s the functions to train and visualize our autoencoder.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1207,7 +1219,7 @@ Once again, since linear activation at <span class="math notranslate nohighlight
 </div>
 </section>
 <section id="visualize-the-autoencoder-network">
-<h2>Visualize the Autoencoder Network<a class="headerlink" href="#visualize-the-autoencoder-network" title="Permalink to this heading">#</a></h2>
+<h2>Visualize the Autoencoder Network<a class="headerlink" href="#visualize-the-autoencoder-network" title="Link to this heading">#</a></h2>
 <p>Here we specify the autoencoder labels, positions, connections and colors and then plot the autoencoder.</p>
 <ul class="simple">
 <li><p>while this code is general, the actual autoencoder codes are not generalized to work with other architectures, for example changing the depth or width of the network</p></li>
@@ -1291,12 +1303,12 @@ Once again, since linear activation at <span class="math notranslate nohighlight
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/333249f6a43bbad84e15a2423db3b9cc8670650c55532adfe9fea6ac7c992872.png" src="_images/333249f6a43bbad84e15a2423db3b9cc8670650c55532adfe9fea6ac7c992872.png" />
+<img alt="_images/33560c9c44631c2f18c1b43c9d2180a88ee044e04b1ad26fd103a4f30c7faa00.png" src="_images/33560c9c44631c2f18c1b43c9d2180a88ee044e04b1ad26fd103a4f30c7faa00.png" />
 </div>
 </div>
 </section>
 <section id="make-an-interesting-synthetic-dataset">
-<h2>Make an Interesting Synthetic Dataset<a class="headerlink" href="#make-an-interesting-synthetic-dataset" title="Permalink to this heading">#</a></h2>
+<h2>Make an Interesting Synthetic Dataset<a class="headerlink" href="#make-an-interesting-synthetic-dataset" title="Link to this heading">#</a></h2>
 <p>Generate a stochastic dataset of 1D length of 3 vectors with a pattern that can be summarized by our autoencoder.</p>
 <ul class="simple">
 <li><p>if we generate random 1D vectors of length 3 our autoencoder would not be able to summarize, i.e., it is not possible to compress the information from the original 3 values</p></li>
@@ -1346,12 +1358,12 @@ Once again, since linear activation at <span class="math notranslate nohighlight
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/39557c0e268bdf9e355e0769aff4633ec5601e1ef244d68560aa0a4c22ac5f3f.png" src="_images/39557c0e268bdf9e355e0769aff4633ec5601e1ef244d68560aa0a4c22ac5f3f.png" />
+<img alt="_images/f164f12fbe4452d2c3d055664525d07a18911d12f91f9a1235deb3554578d6a7.png" src="_images/f164f12fbe4452d2c3d055664525d07a18911d12f91f9a1235deb3554578d6a7.png" />
 </div>
 </div>
 </section>
 <section id="train-the-autoencoder">
-<h2>Train the Autoencoder<a class="headerlink" href="#train-the-autoencoder" title="Permalink to this heading">#</a></h2>
+<h2>Train the Autoencoder<a class="headerlink" href="#train-the-autoencoder" title="Link to this heading">#</a></h2>
 <p>We have previously defined all the basic functions for our autoencoder so we can put together our autoencoder training steps with the following functions,</p>
 <ol class="arabic simple">
 <li><p><strong>initialize_parameters</strong> - initialize the weights and bias</p></li>
@@ -1407,7 +1419,7 @@ Once again, since linear activation at <span class="math notranslate nohighlight
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b4374d79f0f8d85887bb5f6075aa68f024e9e33bc189c7492047de36822bcb2a.png" src="_images/b4374d79f0f8d85887bb5f6075aa68f024e9e33bc189c7492047de36822bcb2a.png" />
+<img alt="_images/834aa6519c3bd4955f3aa17396ac46a35b8fbe11c7bec078a965f74437bbb253.png" src="_images/834aa6519c3bd4955f3aa17396ac46a35b8fbe11c7bec078a965f74437bbb253.png" />
 </div>
 </div>
 <p>The average L2 loss vs. training epoch curve looks very good.</p>
@@ -1417,7 +1429,7 @@ Once again, since linear activation at <span class="math notranslate nohighlight
 </ul>
 </section>
 <section id="evaluating-our-autoencoder-network">
-<h2>Evaluating Our Autoencoder Network<a class="headerlink" href="#evaluating-our-autoencoder-network" title="Permalink to this heading">#</a></h2>
+<h2>Evaluating Our Autoencoder Network<a class="headerlink" href="#evaluating-our-autoencoder-network" title="Link to this heading">#</a></h2>
 <p>Let’s look at the output from the latent node at the network bottleneck, i.e., the output of node M6.</p>
 <ul class="simple">
 <li><p>notice above that we recorded the M6 output (called node activation) for all training epochs and for all data.</p></li>
@@ -1433,14 +1445,14 @@ Once again, since linear activation at <span class="math notranslate nohighlight
 <span class="k">for</span> <span class="n">ibatch</span><span class="p">,</span><span class="n">input_vec</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>                      <span class="c1"># plot and label training data</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ymat</span><span class="p">[</span><span class="n">ibatch</span><span class="p">],</span><span class="n">M6_mat</span><span class="p">[</span><span class="n">ibatch</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="n">ibatch</span><span class="o">/</span><span class="p">(</span><span class="n">nbatch</span><span class="p">)),</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">ibatch</span><span class="o">+</span><span class="mi">1</span><span class="p">,[</span><span class="n">ymat</span><span class="p">[</span><span class="n">ibatch</span><span class="p">]</span><span class="o">-</span><span class="mf">0.01</span><span class="p">,</span><span class="n">M6_mat</span><span class="p">[</span><span class="n">ibatch</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mf">0.01</span><span class="p">],</span><span class="n">size</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span> 
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Bottleneck M6 Output&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Sample Slope, $m_i$&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Bottleneck M6 Output vs. Sample Slope&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;M6 Output&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Sample Slope, $m_i$&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Latent Node Output vs. Sample Slope&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.8</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.4</span><span class="p">]);</span> <span class="n">add_grid</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6ac849bfb40af8e5b580716b8afadd994d88c8b284d68352b5c0421354f8f830.png" src="_images/6ac849bfb40af8e5b580716b8afadd994d88c8b284d68352b5c0421354f8f830.png" />
+<img alt="_images/b2d214dfa3aadbba0f25c9e996c80f1a3b063661068eb6771e2d4347ef1ccd42.png" src="_images/b2d214dfa3aadbba0f25c9e996c80f1a3b063661068eb6771e2d4347ef1ccd42.png" />
 </div>
 </div>
 <p>As hypothesized, there is a good relationship between the output of our latent node at the network bottleneck and the slope of the samples used to generate the data!</p>
@@ -1450,7 +1462,7 @@ Once again, since linear activation at <span class="math notranslate nohighlight
 </ul>
 </section>
 <section id="check-training-data-reconstruction">
-<h2>Check Training Data Reconstruction<a class="headerlink" href="#check-training-data-reconstruction" title="Permalink to this heading">#</a></h2>
+<h2>Check Training Data Reconstruction<a class="headerlink" href="#check-training-data-reconstruction" title="Link to this heading">#</a></h2>
 <p>Let’s visualize the reconstructed 1D data, encoded and then decoded with out autoencoder network.</p>
 <ul class="simple">
 <li><p>for all training data, I include the original data and the reconstructed data, i.e., data encoded and decoded by our trained autoencoder</p></li>
@@ -1476,7 +1488,7 @@ Once again, since linear activation at <span class="math notranslate nohighlight
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/fe7102239237e5dec48032be77d18524b61a306c2238811815f52c81fcbd5955.png" src="_images/fe7102239237e5dec48032be77d18524b61a306c2238811815f52c81fcbd5955.png" />
+<img alt="_images/11a826044d8f2ca6ebd12065724451a4c3e622eb2350f3ecc1ad678796afe6e7.png" src="_images/11a826044d8f2ca6ebd12065724451a4c3e622eb2350f3ecc1ad678796afe6e7.png" />
 </div>
 </div>
 <p>The training data reconstruction is quite good!</p>
@@ -1486,7 +1498,7 @@ Once again, since linear activation at <span class="math notranslate nohighlight
 </ul>
 </section>
 <section id="check-testing-data-reconstruction">
-<h2>Check Testing Data Reconstruction<a class="headerlink" href="#check-testing-data-reconstruction" title="Permalink to this heading">#</a></h2>
+<h2>Check Testing Data Reconstruction<a class="headerlink" href="#check-testing-data-reconstruction" title="Link to this heading">#</a></h2>
 <p>Let’s generate additional data and test the reconstruction.</p>
 <ul class="simple">
 <li><p>check the performance of our training autoencoder with data not used to train the autoencoder, known as model generalization</p></li>
@@ -1524,7 +1536,7 @@ Once again, since linear activation at <span class="math notranslate nohighlight
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/422b0a32f31f3498764ada7f7ec63e50a53a411b5d12e6c718a4288f371d62e8.png" src="_images/422b0a32f31f3498764ada7f7ec63e50a53a411b5d12e6c718a4288f371d62e8.png" />
+<img alt="_images/ed4dc73976ec68cc92c001442fdd07e87dcd0f1bf775aa38a769d8bad2187de6.png" src="_images/ed4dc73976ec68cc92c001442fdd07e87dcd0f1bf775aa38a769d8bad2187de6.png" />
 </div>
 </div>
 <p>Apply trained autoencoder to reconstruct test data.</p>
@@ -1558,7 +1570,7 @@ Once again, since linear activation at <span class="math notranslate nohighlight
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6d4114b87e54f6dcb8a4cbefcdd99015b46e78ceca3a5d93daa4ff900d2cdf08.png" src="_images/6d4114b87e54f6dcb8a4cbefcdd99015b46e78ceca3a5d93daa4ff900d2cdf08.png" />
+<img alt="_images/250cdf7947c6089a54c74c281f321446a9e49ee92789a475c49cf1cdcfade9ee.png" src="_images/250cdf7947c6089a54c74c281f321446a9e49ee92789a475c49cf1cdcfade9ee.png" />
 </div>
 </div>
 <p>Our trained autoencoder seems to have generalized well with very good performance reconstructing training and also the withheld testing cases.</p>
@@ -1568,13 +1580,13 @@ Once again, since linear activation at <span class="math notranslate nohighlight
 </ul>
 </section>
 <section id="comments">
-<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
+<h2>Comments<a class="headerlink" href="#comments" title="Link to this heading">#</a></h2>
 <p>This was a basic treatment of autoencoder deep learning networks. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
 <section id="about-the-author">
-<h2>About the Author<a class="headerlink" href="#about-the-author" title="Permalink to this heading">#</a></h2>
+<h2>About the Author<a class="headerlink" href="#about-the-author" title="Link to this heading">#</a></h2>
 <figure style="text-align: center;">
   <img src="_static/intro/michael_pyrcz_officeshot_jacket.jpg" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
@@ -1585,11 +1597,11 @@ Once again, since linear activation at <span class="math notranslate nohighlight
 <li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
+<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference internal" href="#www.michaelpyrcz.com"><span class="xref myst">Website</span></a>.</p>
 </section>
 <section id="want-to-work-together">
-<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
+<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Link to this heading">#</a></h2>
 <p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
@@ -1599,7 +1611,7 @@ Once again, since linear activation at <span class="math notranslate nohighlight
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -1630,7 +1642,7 @@ Once again, since linear activation at <span class="math notranslate nohighlight
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1659,6 +1671,7 @@ Once again, since linear activation at <span class="math notranslate nohighlight
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1730,8 +1743,8 @@ By Michael J. Pyrcz
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

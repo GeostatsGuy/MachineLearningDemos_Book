@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Principal Component Analysis &#8212; Applied Machine Learning in Python</title>
   
@@ -15,55 +14,51 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=304429a7" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=564be945" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'MachineLearning_PCA';</script>
@@ -80,28 +75,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -123,12 +113,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -144,6 +142,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -162,7 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -201,6 +212,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ensemble_trees.html">Bagging Tree and Random Forest</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_gradient_boosting.html">Gradient Boosting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_support_vector_machines.html">Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_activation_functions.html">Neural Networks Activation Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ANN.html">Artificial Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_CNN.html">Convolutional Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_autoencoder.html">Autoencoder Neural Networks</a></li>
@@ -226,7 +238,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -235,14 +247,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -367,10 +379,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -378,14 +390,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -461,15 +473,15 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <figure style="text-align: center;">
   <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
 </figure>
 <section id="principal-component-analysis">
-<h1>Principal Component Analysis<a class="headerlink" href="#principal-component-analysis" title="Permalink to this heading">#</a></h1>
+<h1>Principal Component Analysis<a class="headerlink" href="#principal-component-analysis" title="Link to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite this e-Book as:</p>
@@ -489,9 +501,9 @@ document.write(`
 <li><p><a class="reference external" href="https://youtu.be/-to3JXiae9Y?si=W1j2CwR9t0t8hxIB">Curse of Dimensionality, Dimensionality Reduction, Principal Component Analysis</a></p></li>
 <li><p><a class="reference external" href="https://youtu.be/Yt0o8ukIOKU?si=_ri1NPwKVdhYzgO3">Multidimensional Scaling and Random Projection</a></p></li>
 </ul>
-<p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
+<p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
 <section id="motivation-for-principal-component-analysis">
-<h2>Motivation for Principal Component Analysis<a class="headerlink" href="#motivation-for-principal-component-analysis" title="Permalink to this heading">#</a></h2>
+<h2>Motivation for Principal Component Analysis<a class="headerlink" href="#motivation-for-principal-component-analysis" title="Link to this heading">#</a></h2>
 <p>Working with more features / variables is harder!</p>
 <ol class="arabic simple">
 <li><p>More difficult to visualize data and model</p></li>
@@ -506,7 +518,7 @@ document.write(`
 <p>We get a better model with fewer, informative features than throwing all our features into the model! A big part of this motivation is driven by the curse of dimensionality.</p>
 </section>
 <section id="curse-of-dimensionality">
-<h2>Curse of Dimensionality<a class="headerlink" href="#curse-of-dimensionality" title="Permalink to this heading">#</a></h2>
+<h2>Curse of Dimensionality<a class="headerlink" href="#curse-of-dimensionality" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p><strong>Data and Model Visualization</strong> - we cannot visualize beyond 3D, i.e., access the model fit to data, evaluate interpolation vs. extrapolation.</p></li>
 </ol>
@@ -591,7 +603,7 @@ c =  c_1^m
 <ul class="simple">
 <li><p>here’s the severity of the distortion for various dimensionalities,</p></li>
 </ul>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>m</p></th>
 <th class="head"><p>nD / 2D</p></th>
@@ -612,6 +624,7 @@ c =  c_1^m
 </tr>
 </tbody>
 </table>
+</div>
 <ol class="arabic simple" start="5">
 <li><p><strong>Multicollinearity</strong> - higher dimensional datasets are more likely to have collinearity or multicollinearity.</p></li>
 </ol>
@@ -620,7 +633,7 @@ c =  c_1^m
 </ul>
 </section>
 <section id="inferential-machine-learning">
-<h2>Inferential Machine Learning<a class="headerlink" href="#inferential-machine-learning" title="Permalink to this heading">#</a></h2>
+<h2>Inferential Machine Learning<a class="headerlink" href="#inferential-machine-learning" title="Link to this heading">#</a></h2>
 <p>Princpal conponent analysis is an inferential, unsupervised machine learnng method.</p>
 <ul class="simple">
 <li><p>there are no response features, <span class="math notranslate nohighlight">\(y\)</span>, just predictor features,</p></li>
@@ -636,7 +649,7 @@ c =  c_1^m
 </ul>
 </section>
 <section id="id1">
-<h2>Principal Component Analysis<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2>Principal Component Analysis<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>Principal Component Analysis one of a variety of methods for dimensional reduction:</p>
 <p>Dimensional reduction transforms the data to a lower dimension</p>
 <ul class="simple">
@@ -653,7 +666,7 @@ c =  c_1^m
 </ol>
 </section>
 <section id="orthogonal-transformation">
-<h2>Orthogonal Transformation<a class="headerlink" href="#orthogonal-transformation" title="Permalink to this heading">#</a></h2>
+<h2>Orthogonal Transformation<a class="headerlink" href="#orthogonal-transformation" title="Link to this heading">#</a></h2>
 <p>Convert a set of observations into a set of linearly uncorrelated variables known as principal components</p>
 <ul class="simple">
 <li><p>The number of principal components (<span class="math notranslate nohighlight">\(k\)</span>) available are min⁡(<span class="math notranslate nohighlight">\(𝑛−1,𝑚\)</span>)</p></li>
@@ -668,7 +681,7 @@ c =  c_1^m
 <p>There are mutliple ways to interpret principal components analysis,</p>
 </section>
 <section id="best-fitting-interpretation">
-<h2>Best Fitting Interpretation<a class="headerlink" href="#best-fitting-interpretation" title="Permalink to this heading">#</a></h2>
+<h2>Best Fitting Interpretation<a class="headerlink" href="#best-fitting-interpretation" title="Link to this heading">#</a></h2>
 <p>Minimizes the orthogonal projection error between the data and the principal components,</p>
 <div class="math notranslate nohighlight">
 \[ 
@@ -697,7 +710,7 @@ V_p^T = V_p^{-1}
 \]</div>
 </section>
 <section id="rotation-based-intepretation">
-<h2>Rotation-based Intepretation<a class="headerlink" href="#rotation-based-intepretation" title="Permalink to this heading">#</a></h2>
+<h2>Rotation-based Intepretation<a class="headerlink" href="#rotation-based-intepretation" title="Link to this heading">#</a></h2>
 <p>Orthogonal transformation is a rotation that maximizes the variance explained on the first principal component, maximizes the remaining variance on the second principal component, etc.</p>
 <p>If you would like to see PCA as a rotation in action, check out my <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_PCA_Rotation.ipynb">PCA Rotation interactive Python dashboard</a>,</p>
 <figure style="text-align: center;">
@@ -708,7 +721,7 @@ V_p^T = V_p^{-1}
 <p>from this dashboard it is clear that there is a rotation that maixmizes the variance explained by the first principal component while removing the correlation between the first and second principal component.</p>
 </section>
 <section id="eigenvalues-eigenvectors-interpretation">
-<h2>Eigenvalues / Eigenvectors Interpretation<a class="headerlink" href="#eigenvalues-eigenvectors-interpretation" title="Permalink to this heading">#</a></h2>
+<h2>Eigenvalues / Eigenvectors Interpretation<a class="headerlink" href="#eigenvalues-eigenvectors-interpretation" title="Link to this heading">#</a></h2>
 <p>For principal components analysis we calculate the data covariance matrix, the pairwise covariance for the combinatorial of features.</p>
 <ul class="simple">
 <li><p>The we calculate the eigenvectors and eigenvalues from the covariance matrix.</p></li>
@@ -717,7 +730,7 @@ V_p^T = V_p^{-1}
 </ul>
 </section>
 <section id="the-principal-components-analysis-workflow">
-<h2>The Principal Components Analysis Workflow<a class="headerlink" href="#the-principal-components-analysis-workflow" title="Permalink to this heading">#</a></h2>
+<h2>The Principal Components Analysis Workflow<a class="headerlink" href="#the-principal-components-analysis-workflow" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Standardize the Features</p></li>
 </ol>
@@ -814,7 +827,7 @@ C = \begin{bmatrix}
 </figure>
 </section>
 <section id="load-the-required-libraries">
-<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
+<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Link to this heading">#</a></h2>
 <p>The following code loads the required libraries. These should have been installed with Anaconda 3.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -845,7 +858,7 @@ C = \begin{bmatrix}
 <p>If you get a package import error, you may have to first install some of these packages. This can usually be accomplished by opening up a command window on Windows and then typing ‘python -m pip install [package-name]’. More assistance is available with the respective package docs.</p>
 </section>
 <section id="declare-functions">
-<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
+<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Link to this heading">#</a></h2>
 <p>Let’s define a single function to streamline plotting correlation matrices. I also added a convenience function to add major and minor gridlines to improve plot interpretability.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -884,7 +897,7 @@ C = \begin{bmatrix}
 </div>
 </section>
 <section id="set-the-working-directory">
-<h2>Set the Working Directory<a class="headerlink" href="#set-the-working-directory" title="Permalink to this heading">#</a></h2>
+<h2>Set the Working Directory<a class="headerlink" href="#set-the-working-directory" title="Link to this heading">#</a></h2>
 <p>I always like to do this so I don’t lose files and to simplify subsequent read and writes (avoid including the full address each time).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -896,7 +909,7 @@ C = \begin{bmatrix}
 <p>You will have to update the part in quotes with your own working directory and the format is different on a Mac (e.g. “~/PGE”).</p>
 </section>
 <section id="loading-tabular-data">
-<h2>Loading Tabular Data<a class="headerlink" href="#loading-tabular-data" title="Permalink to this heading">#</a></h2>
+<h2>Loading Tabular Data<a class="headerlink" href="#loading-tabular-data" title="Link to this heading">#</a></h2>
 <p>Here’s the command to load our comma delimited data file in to a Pandas’ DataFrame object.</p>
 <p>Let’s load the provided multivariate, spatial dataset ‘unconv_MV.csv’. This dataset has variables from 1,000 unconventional wells including:</p>
 <ul class="simple">
@@ -921,7 +934,7 @@ C = \begin{bmatrix}
 </div>
 </section>
 <section id="visualize-the-dataframe">
-<h2>Visualize the DataFrame<a class="headerlink" href="#visualize-the-dataframe" title="Permalink to this heading">#</a></h2>
+<h2>Visualize the DataFrame<a class="headerlink" href="#visualize-the-dataframe" title="Link to this heading">#</a></h2>
 <p>Visualizing the DataFrame is a useful first check.</p>
 <p>We can preview by slicing the DataFrame.</p>
 <ul class="simple">
@@ -1038,7 +1051,7 @@ C = \begin{bmatrix}
 </div>
 </section>
 <section id="summary-statistics-for-tabular-data">
-<h2>Summary Statistics for Tabular Data<a class="headerlink" href="#summary-statistics-for-tabular-data" title="Permalink to this heading">#</a></h2>
+<h2>Summary Statistics for Tabular Data<a class="headerlink" href="#summary-statistics-for-tabular-data" title="Link to this heading">#</a></h2>
 <p>There are a lot of efficient methods to calculate summary statistics from tabular data in DataFrames. The describe command provides count, mean, minimum, maximum, and quartiles all in a nice data table.</p>
 <ul class="simple">
 <li><p>We use transpose just to flip the table so that features are on the rows and the statistics are on the columns.</p></li>
@@ -1294,7 +1307,7 @@ C = \begin{bmatrix}
 </div>
 </section>
 <section id="calculate-the-correlation-matrix">
-<h2>Calculate the Correlation Matrix<a class="headerlink" href="#calculate-the-correlation-matrix" title="Permalink to this heading">#</a></h2>
+<h2>Calculate the Correlation Matrix<a class="headerlink" href="#calculate-the-correlation-matrix" title="Link to this heading">#</a></h2>
 <p>For dimensional reduction, a good first step is data visualization.</p>
 <p>Let’s start with the correlation matrix.</p>
 <p>We can calculate it and view it in the console with these commands.</p>
@@ -1334,13 +1347,13 @@ C = \begin{bmatrix}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/779b947412ca0f360bb3a9f517fdd22d7c6ad98015e0cf1a6bd4a8f8fb0162da.png" src="_images/779b947412ca0f360bb3a9f517fdd22d7c6ad98015e0cf1a6bd4a8f8fb0162da.png" />
+<img alt="_images/39d82651c05f777b0a8853441452cb793a3ae4843961e8007e27fbfcaa88af60.png" src="_images/39d82651c05f777b0a8853441452cb793a3ae4843961e8007e27fbfcaa88af60.png" />
 </div>
 </div>
 <p>This looks good. There is a mix of bivariate, linear correlation magnitudes. Of course, correlation coefficients are limited to degree of linear correlations.</p>
 </section>
 <section id="check-matrix-scatter-plots">
-<h2>Check Matrix Scatter Plots<a class="headerlink" href="#check-matrix-scatter-plots" title="Permalink to this heading">#</a></h2>
+<h2>Check Matrix Scatter Plots<a class="headerlink" href="#check-matrix-scatter-plots" title="Link to this heading">#</a></h2>
 <p>For more complete information, let’s look at the matrix scatter plot from the Pandas package.</p>
 <ul class="simple">
 <li><p>covariance and correlation are sensitive to outliers and nonlinearity</p></li>
@@ -1359,12 +1372,12 @@ C = \begin{bmatrix}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ad5210bc0e50b9cd1f9e82e2101cd6a8e22b7b46827929b73884539038ea060c.png" src="_images/ad5210bc0e50b9cd1f9e82e2101cd6a8e22b7b46827929b73884539038ea060c.png" />
+<img alt="_images/3798ef27aa786d334b8f3c70760a7ff87e1e8ec3c0d81f50ed01ac33c13f4bf9.png" src="_images/3798ef27aa786d334b8f3c70760a7ff87e1e8ec3c0d81f50ed01ac33c13f4bf9.png" />
 </div>
 </div>
 </section>
 <section id="simple-bivariate-example">
-<h2>Simple Bivariate Example<a class="headerlink" href="#simple-bivariate-example" title="Permalink to this heading">#</a></h2>
+<h2>Simple Bivariate Example<a class="headerlink" href="#simple-bivariate-example" title="Link to this heading">#</a></h2>
 <p>Let’s simplify the problem to bivariate (2 features), porosity and the log transform of permeability and reduce the number of wells from 1,000 to 100.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1442,7 +1455,7 @@ C = \begin{bmatrix}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06c2be261b8ed9903e1e372588a28bcd52cf56d411cbd6376aa5fdec5bbda07e.png" src="_images/06c2be261b8ed9903e1e372588a28bcd52cf56d411cbd6376aa5fdec5bbda07e.png" />
+<img alt="_images/d23cf05752acd39f891a019b4cb680b79161a11b79b9bc49dd641e25494a679a.png" src="_images/d23cf05752acd39f891a019b4cb680b79161a11b79b9bc49dd641e25494a679a.png" />
 </div>
 </div>
 <p>The distributions may actually be Gaussian distributed, regardless they are well behaved, we cannot observe obvious gaps nor truncations.</p>
@@ -1463,19 +1476,19 @@ C = \begin{bmatrix}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6db1439ec376e70dfe82d70d9dfae50de99df77b9c2bbc25f29d89f082850b57.png" src="_images/6db1439ec376e70dfe82d70d9dfae50de99df77b9c2bbc25f29d89f082850b57.png" />
+<img alt="_images/76dceebbb2dc9641b9dfe9d07dfff1ac60236aef483a9cd0991b5037060ba289.png" src="_images/76dceebbb2dc9641b9dfe9d07dfff1ac60236aef483a9cd0991b5037060ba289.png" />
 </div>
 </div>
 </section>
 <section id="calculation-of-principal-components">
-<h2>Calculation of Principal Components<a class="headerlink" href="#calculation-of-principal-components" title="Permalink to this heading">#</a></h2>
+<h2>Calculation of Principal Components<a class="headerlink" href="#calculation-of-principal-components" title="Link to this heading">#</a></h2>
 <p>With the log transform of permeability we have a very nice linear relationship with porosity, PCA should work well on this data.</p>
 <ul class="simple">
 <li><p>We are ready to perform PCA with porosity and log of permeability.</p></li>
 </ul>
 </section>
 <section id="standardize-the-features">
-<h2>Standardize the Features<a class="headerlink" href="#standardize-the-features" title="Permalink to this heading">#</a></h2>
+<h2>Standardize the Features<a class="headerlink" href="#standardize-the-features" title="Link to this heading">#</a></h2>
 <p>We must standardize our variables to have a mean equal to zero, <span class="math notranslate nohighlight">\(\bar{x} = 0.0\)</span>, and the variance equal to one, <span class="math notranslate nohighlight">\(\sigma^{2}_{x} = 1.0\)</span>.</p>
 <ul class="simple">
 <li><p>Otherwise the difference between the scale of porosity and permeability would have a significant impact. Note, given the impact of choice of units on variance, e.g., darcies (D) vs. millidarcies (mD) for permeability or fraction instead of a percentage for porosity. This is quite arbitrary!</p></li>
@@ -1533,13 +1546,13 @@ Variance Transformed Por = 1.0000000000000002 , Variance Transformed LogPerm = 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/294c5353a5f381ec9771db8cfa867a24ca2c07c3089527accf291ed36b79524d.png" src="_images/294c5353a5f381ec9771db8cfa867a24ca2c07c3089527accf291ed36b79524d.png" />
+<img alt="_images/5ff9ad644fb212437331bcca0c747a38ef5e41185292bd755310558fae94f9c6.png" src="_images/5ff9ad644fb212437331bcca0c747a38ef5e41185292bd755310558fae94f9c6.png" />
 </div>
 </div>
 <p>Everything looks fine and we are ready to apply principal components analysis.</p>
 </section>
 <section id="principal-component-analysis-pca">
-<h2>Principal Component Analysis (PCA)<a class="headerlink" href="#principal-component-analysis-pca" title="Permalink to this heading">#</a></h2>
+<h2>Principal Component Analysis (PCA)<a class="headerlink" href="#principal-component-analysis-pca" title="Link to this heading">#</a></h2>
 <p>To run PCA with the SciKitLearn machine learning package in Python, we first make a PCA model with a specified number of components and then we ‘fit’ it to our data.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n_components</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">n_components</span><span class="p">)</span>
@@ -1557,7 +1570,7 @@ Variance Transformed Por = 1.0000000000000002 , Variance Transformed LogPerm = 1
 </div>
 </section>
 <section id="component-loadings">
-<h2>Component Loadings<a class="headerlink" href="#component-loadings" title="Permalink to this heading">#</a></h2>
+<h2>Component Loadings<a class="headerlink" href="#component-loadings" title="Link to this heading">#</a></h2>
 <p>The first thing we should do is look at the component loadings. Let’s view them and interpret our result.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1584,7 +1597,7 @@ Second Principal Component = [ 0.707 -0.707]
 </ul>
 </section>
 <section id="proportion-of-variance-explained-with-principal-components">
-<h2>Proportion of Variance Explained with Principal Components<a class="headerlink" href="#proportion-of-variance-explained-with-principal-components" title="Permalink to this heading">#</a></h2>
+<h2>Proportion of Variance Explained with Principal Components<a class="headerlink" href="#proportion-of-variance-explained-with-principal-components" title="Link to this heading">#</a></h2>
 <p>It is also important to look at the proportion of the variance described by each principal component.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1604,7 +1617,7 @@ Second Principal Component explains 0.104 of the total variance.
 </div>
 </section>
 <section id="principal-component-scores-forward-and-reverse-projections">
-<h2>Principal Component Scores, Forward and Reverse Projections<a class="headerlink" href="#principal-component-scores-forward-and-reverse-projections" title="Permalink to this heading">#</a></h2>
+<h2>Principal Component Scores, Forward and Reverse Projections<a class="headerlink" href="#principal-component-scores-forward-and-reverse-projections" title="Link to this heading">#</a></h2>
 <p>We can calculate the principle component scores of the original data.</p>
 <ul class="simple">
 <li><p>This is effectively a rotation of the data, aligned with PC1 for the direction of greatest variance.</p></li>
@@ -1635,13 +1648,13 @@ Second Principal Component explains 0.104 of the total variance.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/040728685fd4737dba466d509bb325eece330659c69d1efa7a1d9c67735a74ae.png" src="_images/040728685fd4737dba466d509bb325eece330659c69d1efa7a1d9c67735a74ae.png" />
+<img alt="_images/f941e25291336430b24754784c37e02fbf5ac586ef75949e90f7f8395dc7c30d.png" src="_images/f941e25291336430b24754784c37e02fbf5ac586ef75949e90f7f8395dc7c30d.png" />
 </div>
 </div>
 <p>The standardized original and reverse PCA cross plots should look exactly the same. If so, the method is working.</p>
 </section>
 <section id="conservation-of-variance">
-<h2>Conservation of Variance<a class="headerlink" href="#conservation-of-variance" title="Permalink to this heading">#</a></h2>
+<h2>Conservation of Variance<a class="headerlink" href="#conservation-of-variance" title="Link to this heading">#</a></h2>
 <p>Let’s check the variances of the principle component scores, since we have calculated them now.</p>
 <ul class="simple">
 <li><p>we calculate the variance for each of the original features</p></li>
@@ -1688,7 +1701,7 @@ Total Variance from Original Features:
 </div>
 </section>
 <section id="independence-of-principal-component-scores">
-<h2>Independence of Principal Component Scores<a class="headerlink" href="#independence-of-principal-component-scores" title="Permalink to this heading">#</a></h2>
+<h2>Independence of Principal Component Scores<a class="headerlink" href="#independence-of-principal-component-scores" title="Link to this heading">#</a></h2>
 <p>Let’s check the correlations for the original features vs. our projected features.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1715,7 +1728,7 @@ Correlation Matrix of the 2 principle components&#39; scores:
 <p>We have projected our original features with high correlation to 2 new features without correlation between the new features.</p>
 </section>
 <section id="principal-component-analysis-by-hand-with-eigenvalue-and-eigen-vector-calculator">
-<h2>Principal Component Analysis By-hand with Eigenvalue and Eigen Vector Calculator<a class="headerlink" href="#principal-component-analysis-by-hand-with-eigenvalue-and-eigen-vector-calculator" title="Permalink to this heading">#</a></h2>
+<h2>Principal Component Analysis By-hand with Eigenvalue and Eigen Vector Calculator<a class="headerlink" href="#principal-component-analysis-by-hand-with-eigenvalue-and-eigen-vector-calculator" title="Link to this heading">#</a></h2>
 <p>Let’s show PCA by-hand with the standardized features and the eigen calculation and compare to the scikit-learn results from above.</p>
 <ul class="simple">
 <li><p>we confirm that the results match.</p></li>
@@ -1753,12 +1766,12 @@ Eigen Values:
 [1.81 0.21]
 </pre></div>
 </div>
-<img alt="_images/792323ef0c7e641c08fbe33eefb6dc67e05dfacaee639375589ba3f7f4689f07.png" src="_images/792323ef0c7e641c08fbe33eefb6dc67e05dfacaee639375589ba3f7f4689f07.png" />
+<img alt="_images/5b073916054377ead4ad334277d8818106f2b22dbdbf4880638860addff0bda0.png" src="_images/5b073916054377ead4ad334277d8818106f2b22dbdbf4880638860addff0bda0.png" />
 </div>
 </div>
 </section>
 <section id="demonstration-of-dimensional-reduction">
-<h2>Demonstration of Dimensional Reduction<a class="headerlink" href="#demonstration-of-dimensional-reduction" title="Permalink to this heading">#</a></h2>
+<h2>Demonstration of Dimensional Reduction<a class="headerlink" href="#demonstration-of-dimensional-reduction" title="Link to this heading">#</a></h2>
 <p>Now let’s attempt <strong>dimensional reduction</strong> by only retaining the first principle component. We will go from original values to predictions of original values.</p>
 <ul class="simple">
 <li><p>Recall we were able to explain about 90% of the variance with the first principal component so the result should look ‘pretty good’, right?</p></li>
@@ -1824,7 +1837,7 @@ Eigen Values:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/99fce5c8ff4962b84e1d76599a56e25a485eb8a4462b4fa608f8d5a9af64a8dd.png" src="_images/99fce5c8ff4962b84e1d76599a56e25a485eb8a4462b4fa608f8d5a9af64a8dd.png" />
+<img alt="_images/66eb8a5710480047e402945e7e2fe1e808d5568605dfc99a568e9ef4a41037cd.png" src="_images/66eb8a5710480047e402945e7e2fe1e808d5568605dfc99a568e9ef4a41037cd.png" />
 </div>
 </div>
 <p>Let’s put the original data and the resulting lower dimensional model side-by-side and check the resulting variances.</p>
@@ -1851,7 +1864,7 @@ Eigen Values:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/dd23216e8863e8d206d5ad4311ffe9586147d99dbb5d2ad0581d859f68582c1d.png" src="_images/dd23216e8863e8d206d5ad4311ffe9586147d99dbb5d2ad0581d859f68582c1d.png" />
+<img alt="_images/2cf44ff4f6c69575b766f8401a66df79078cf3cb10a0a56bb6adadf6b20af7ed.png" src="_images/2cf44ff4f6c69575b766f8401a66df79078cf3cb10a0a56bb6adadf6b20af7ed.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Variance Por = 7.89 , Variance Reduced Dimensional Por = 7.073 Fraction =  0.896
 Variance LogPerm = 0.151 , Variance Reduced Dimensional LogPerm = 0.136 Fraction =  0.896
 Total Variance = 8.041 , Total Variance Reduced Dimension = 7.208 Fraction =  0.896
@@ -1861,7 +1874,7 @@ Total Variance = 8.041 , Total Variance Reduced Dimension = 7.208 Fraction =  0.
 </div>
 </section>
 <section id="all-predictor-features">
-<h2>All Predictor Features<a class="headerlink" href="#all-predictor-features" title="Permalink to this heading">#</a></h2>
+<h2>All Predictor Features<a class="headerlink" href="#all-predictor-features" title="Link to this heading">#</a></h2>
 <p>We will go back to the original data file and this time extract all 6 predictor variables and the first 500 samples.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2036,7 +2049,7 @@ Variance Transformed Por = [&#39;Por&#39;, &#39;LogPerm&#39;, &#39;AI&#39;, &#39
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/cb70ebc58a6161c91e168f37c51faf16ad0c7a73cb23c7741794ee731d2470a4.png" src="_images/cb70ebc58a6161c91e168f37c51faf16ad0c7a73cb23c7741794ee731d2470a4.png" />
+<img alt="_images/fb87ab856532a769a7e7299eb22279668068d8f2758903c9ee449c7fad82c776.png" src="_images/fb87ab856532a769a7e7299eb22279668068d8f2758903c9ee449c7fad82c776.png" />
 </div>
 </div>
 <p>The summary statistics and distributions look good.  No obvious missing data, gaps, significant truncations, spikes or outliers.  We are ready to perform principal component analysis on our 6 features.</p>
@@ -2065,7 +2078,7 @@ Variance Transformed Por = [&#39;Por&#39;, &#39;LogPerm&#39;, &#39;AI&#39;, &#39
 <p>First principal component is mainly composed of porosity, log permeability, acoustic impedance and total organic carbon, suggesting that the way they vary together is responsible for much of the variance.  The next principle component is mainly composed of vitrinite reflectance.  The third principal coordinate is mainly composed of brittleness and so on.</p>
 </section>
 <section id="scree-plots">
-<h2>Scree Plots<a class="headerlink" href="#scree-plots" title="Permalink to this heading">#</a></h2>
+<h2>Scree Plots<a class="headerlink" href="#scree-plots" title="Link to this heading">#</a></h2>
 <p>To assist in this interpretation we should consider the variance contributions from each principal component.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2097,13 +2110,13 @@ Variance Transformed Por = [&#39;Por&#39;, &#39;LogPerm&#39;, &#39;AI&#39;, &#39
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Variance explained by PC1 thru PC6 = [0.462 0.246 0.149 0.11  0.024 0.009]
 </pre></div>
 </div>
-<img alt="_images/f13a2759a5a3a9ba079c2c90976c1d01b7e4e03c073aeb9780c2e4db83e7bbbf.png" src="_images/f13a2759a5a3a9ba079c2c90976c1d01b7e4e03c073aeb9780c2e4db83e7bbbf.png" />
+<img alt="_images/cd1195f13e4538017ea84d1056848fe22629358d4646b73b656d3d4b6f27c32b.png" src="_images/cd1195f13e4538017ea84d1056848fe22629358d4646b73b656d3d4b6f27c32b.png" />
 </div>
 </div>
 <p>We can see that about 46% of the variance is described by the 1st principal component and then about 25% is described by the 2nd principal component etc.</p>
 </section>
 <section id="id2">
-<h2>Independence of Principal Component Scores<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2>Independence of Principal Component Scores<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>Let’s check the pairwise feature correlations before and after the projection.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2125,12 +2138,12 @@ Variance Transformed Por = [&#39;Por&#39;, &#39;LogPerm&#39;, &#39;AI&#39;, &#39
  [ 0.12  0.04  0.47  0.24  0.35  1.  ]]
 
 Correlation Matrix of the 6 principle components&#39; scores:
-[[ 1. -0.  0. -0.  0. -0.]
- [-0.  1. -0. -0.  0. -0.]
- [ 0. -0.  1. -0.  0.  0.]
- [-0. -0. -0.  1.  0. -0.]
- [ 0.  0.  0.  0.  1.  0.]
- [-0. -0.  0. -0.  0.  1.]]
+[[ 1. -0.  0.  0. -0. -0.]
+ [-0.  1.  0. -0.  0. -0.]
+ [ 0.  0.  1.  0. -0. -0.]
+ [ 0. -0.  0.  1.  0. -0.]
+ [-0.  0. -0.  0.  1. -0.]
+ [-0. -0. -0. -0. -0.  1.]]
 </pre></div>
 </div>
 </div>
@@ -2141,7 +2154,7 @@ Correlation Matrix of the 6 principle components&#39; scores:
 </ul>
 </section>
 <section id="reduced-dimensionality-impact-on-a-2-feature-relationship">
-<h2>Reduced Dimensionality Impact on a 2 Feature Relationship<a class="headerlink" href="#reduced-dimensionality-impact-on-a-2-feature-relationship" title="Permalink to this heading">#</a></h2>
+<h2>Reduced Dimensionality Impact on a 2 Feature Relationship<a class="headerlink" href="#reduced-dimensionality-impact-on-a-2-feature-relationship" title="Link to this heading">#</a></h2>
 <p>It would be interesting to look just at the porosity vs. log permeability bivariate relationship when we retain <span class="math notranslate nohighlight">\(1,\ldots,6\)</span> principal components.</p>
 <ul class="simple">
 <li><p>to do this we use matrix math to reverse with PCA and the standardization with various number of principal component and then plot the scatter plots of log permeability vs. porosity.</p></li>
@@ -2208,7 +2221,7 @@ Correlation Matrix of the 6 principle components&#39; scores:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2c07008ca4c1cad616bfb73f5ffed082b67c565a0bbab5e216624e59e8c949ff.png" src="_images/2c07008ca4c1cad616bfb73f5ffed082b67c565a0bbab5e216624e59e8c949ff.png" />
+<img alt="_images/3c37c3bf555d578f9e53cae204bebf78621299a16cb9ababbbd99f52718850e8.png" src="_images/3c37c3bf555d578f9e53cae204bebf78621299a16cb9ababbbd99f52718850e8.png" />
 </div>
 </div>
 <p>Very interesting to watch the accuracy of the bivariate relationship between log permeability and porosity improve as we include more components.  Let’s check the variances.</p>
@@ -2246,7 +2259,7 @@ Correlation Matrix of the 6 principle components&#39; scores:
 </ul>
 </section>
 <section id="reduced-dimensionality-impact-on-matrix-scatter-plots-of-all-features">
-<h2>Reduced Dimensionality Impact on Matrix Scatter Plots of All Features<a class="headerlink" href="#reduced-dimensionality-impact-on-matrix-scatter-plots-of-all-features" title="Permalink to this heading">#</a></h2>
+<h2>Reduced Dimensionality Impact on Matrix Scatter Plots of All Features<a class="headerlink" href="#reduced-dimensionality-impact-on-matrix-scatter-plots-of-all-features" title="Link to this heading">#</a></h2>
 <p>Let’s look at the matrix scatter plots for see all of the bivariate combinations.</p>
 <ul class="simple">
 <li><p>first some book keeping, we have to put the 6D reduced dimensionality models in DataFrames (there are currently Numpy ndarrays.</p></li>
@@ -2304,18 +2317,18 @@ Correlation Matrix of the 6 principle components&#39; scores:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
 </pre></div>
 </div>
-<img alt="_images/7e0fd0b08b519dd15fc7c0b2a9ccd5a2b5754140ab93346fc7115546b8d3e809.png" src="_images/7e0fd0b08b519dd15fc7c0b2a9ccd5a2b5754140ab93346fc7115546b8d3e809.png" />
-<img alt="_images/f27b9d55ef99f92c08c7cb21de0a0d689254e6fc3a83a54a3e8eb85f5c95c0d0.png" src="_images/f27b9d55ef99f92c08c7cb21de0a0d689254e6fc3a83a54a3e8eb85f5c95c0d0.png" />
-<img alt="_images/aed8d060779415617db82a0fcf6fe64f0807b6bd8859de1bf769095e5a16edf8.png" src="_images/aed8d060779415617db82a0fcf6fe64f0807b6bd8859de1bf769095e5a16edf8.png" />
-<img alt="_images/fe7783f010bac449b06713e8507ed1212dae68d11fe79bf77c977cfda4ec2a47.png" src="_images/fe7783f010bac449b06713e8507ed1212dae68d11fe79bf77c977cfda4ec2a47.png" />
-<img alt="_images/258d2ca47aaa2f729024d1eb1517e1e69073d620c641c8c2a8663cf88c072056.png" src="_images/258d2ca47aaa2f729024d1eb1517e1e69073d620c641c8c2a8663cf88c072056.png" />
-<img alt="_images/c8dbfa1e504c7c4ee4572bd05c6736e244f886478e03ac2b6eba2326d41cf45f.png" src="_images/c8dbfa1e504c7c4ee4572bd05c6736e244f886478e03ac2b6eba2326d41cf45f.png" />
-<img alt="_images/ea4343603b3fdf5cb42d2edb405f36462556c343aa0a8d5a79a90a367b4c45e2.png" src="_images/ea4343603b3fdf5cb42d2edb405f36462556c343aa0a8d5a79a90a367b4c45e2.png" />
+<img alt="_images/68d95968115924cf81a0f5fb07b8bf5bfe3b36b38bf0354b958c0f9ecbf283f4.png" src="_images/68d95968115924cf81a0f5fb07b8bf5bfe3b36b38bf0354b958c0f9ecbf283f4.png" />
+<img alt="_images/3ef627016728261123eefda1a826bbac39872e012c78817491fa39cfaa98882b.png" src="_images/3ef627016728261123eefda1a826bbac39872e012c78817491fa39cfaa98882b.png" />
+<img alt="_images/adcde4e1cf581161481bbe1ff1620097a7fd1cf3da5bb8a5bb55bdd9c50efe4b.png" src="_images/adcde4e1cf581161481bbe1ff1620097a7fd1cf3da5bb8a5bb55bdd9c50efe4b.png" />
+<img alt="_images/08d781e1bb65df8a1b5d14dd75041317c5a9e6e4f2dd1e790ec578e069d81cbf.png" src="_images/08d781e1bb65df8a1b5d14dd75041317c5a9e6e4f2dd1e790ec578e069d81cbf.png" />
+<img alt="_images/9a185eda76c7b2ebfa74a08432e3138732971abcb2f0143a2995567294bbe5f5.png" src="_images/9a185eda76c7b2ebfa74a08432e3138732971abcb2f0143a2995567294bbe5f5.png" />
+<img alt="_images/c8b623c932881a72297bf46f4f18024ca08b076b5fd4fe3df793f7ef88b12efd.png" src="_images/c8b623c932881a72297bf46f4f18024ca08b076b5fd4fe3df793f7ef88b12efd.png" />
+<img alt="_images/fb5c88927cdd62c0763b203e0e214b442fa83c60a4f22cea79e14b7f9dc4cde1.png" src="_images/fb5c88927cdd62c0763b203e0e214b442fa83c60a4f22cea79e14b7f9dc4cde1.png" />
 </div>
 </div>
 </section>
 <section id="principal-components-analysis-on-uncorrelated-data">
-<h2>Principal Components Analysis on Uncorrelated Data<a class="headerlink" href="#principal-components-analysis-on-uncorrelated-data" title="Permalink to this heading">#</a></h2>
+<h2>Principal Components Analysis on Uncorrelated Data<a class="headerlink" href="#principal-components-analysis-on-uncorrelated-data" title="Link to this heading">#</a></h2>
 <p>Let’s try one more test, principal components analysis on uncorrelated data.</p>
 <ul class="simple">
 <li><p>we generate a large number of random samples (n is large) for 5 feature.</p></li>
@@ -2351,29 +2364,29 @@ Correlation Matrix of the 6 principle components&#39; scores:
 Proportion of variance of original features:  [0.2 0.2 0.2 0.2 0.2]
 Correlation Matrix of original features:
 
-[[ 0.08 -0.    0.   -0.    0.  ]
- [-0.    0.08  0.    0.    0.  ]
- [ 0.    0.    0.08  0.    0.  ]
+[[ 0.08 -0.   -0.   -0.   -0.  ]
+ [-0.    0.08 -0.    0.   -0.  ]
+ [-0.   -0.    0.08  0.    0.  ]
  [-0.    0.    0.    0.08 -0.  ]
- [ 0.    0.    0.   -0.    0.08]]
+ [-0.   -0.    0.   -0.    0.08]]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PCA Variance Explained  [0.21 0.2  0.2  0.2  0.2 ]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PCA Variance Explained  [0.21 0.21 0.2  0.19 0.19]
 
 Correlation Matrix of scores:
 
-[[ 0.09  0.    0.    0.    0.  ]
- [ 0.    0.08  0.    0.    0.  ]
- [ 0.    0.    0.08 -0.   -0.  ]
- [ 0.    0.   -0.    0.08 -0.  ]
- [ 0.    0.   -0.   -0.    0.08]]
+[[ 0.09 -0.    0.    0.    0.  ]
+ [-0.    0.09 -0.    0.    0.  ]
+ [ 0.   -0.    0.08  0.    0.  ]
+ [ 0.    0.    0.    0.08  0.  ]
+ [ 0.    0.    0.    0.    0.08]]
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.98, &#39;Principal Component Scores&#39;)
 </pre></div>
 </div>
-<img alt="_images/ee1e8afa91fcf9db32da30b3d7b77ed017f4ee058028bc844ed021396f522fbc.png" src="_images/ee1e8afa91fcf9db32da30b3d7b77ed017f4ee058028bc844ed021396f522fbc.png" />
-<img alt="_images/ab4a76ff205c68dd9a876f834efd9e32a0decc104709219d5923e891106b1365.png" src="_images/ab4a76ff205c68dd9a876f834efd9e32a0decc104709219d5923e891106b1365.png" />
+<img alt="_images/d5f1273b8cf32fd9b6cdea6760d383d37c39e7d3eaa615d4690aa12eab62d72e.png" src="_images/d5f1273b8cf32fd9b6cdea6760d383d37c39e7d3eaa615d4690aa12eab62d72e.png" />
+<img alt="_images/b1c67a6754aa84ac355f739a743c181762a2b0c0905b5cf869d64c1bd516924c.png" src="_images/b1c67a6754aa84ac355f739a743c181762a2b0c0905b5cf869d64c1bd516924c.png" />
 </div>
 </div>
 <p>What happens when principal component analysis is applied to uncorrelated, uniformly distributed features?</p>
@@ -2384,7 +2397,7 @@ Correlation Matrix of scores:
 </ul>
 </section>
 <section id="practice-on-a-new-dataset">
-<h2>Practice on a New Dataset<a class="headerlink" href="#practice-on-a-new-dataset" title="Permalink to this heading">#</a></h2>
+<h2>Practice on a New Dataset<a class="headerlink" href="#practice-on-a-new-dataset" title="Link to this heading">#</a></h2>
 <p>Ok, time to get to work. Let’s load up a dataset and perform PCA with,</p>
 <ul class="simple">
 <li><p>compact code</p></li>
@@ -2393,7 +2406,7 @@ Correlation Matrix of scores:
 </ul>
 <p>You can select any of these datasets or modify the code and add your own to do this.</p>
 <section id="dataset-0-unconventional-multivariate-v4">
-<h3>Dataset 0, Unconventional Multivariate v4<a class="headerlink" href="#dataset-0-unconventional-multivariate-v4" title="Permalink to this heading">#</a></h3>
+<h3>Dataset 0, Unconventional Multivariate v4<a class="headerlink" href="#dataset-0-unconventional-multivariate-v4" title="Link to this heading">#</a></h3>
 <p>Let’s load the provided multivariate, dataset <a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets/blob/master/unconv_MV_v4.csv">unconv_MV.csv</a>. This dataset has variables from 1,000 unconventional wells including:</p>
 <ul class="simple">
 <li><p>well average porosity</p></li>
@@ -2406,7 +2419,7 @@ Correlation Matrix of scores:
 </ul>
 </section>
 <section id="dataset-1-twelve-12">
-<h3>Dataset 1, Twelve, 12<a class="headerlink" href="#dataset-1-twelve-12" title="Permalink to this heading">#</a></h3>
+<h3>Dataset 1, Twelve, 12<a class="headerlink" href="#dataset-1-twelve-12" title="Link to this heading">#</a></h3>
 <p>Let’s load the provided multivariate, 2D spatial dataset <a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets/blob/master/12_sample_data.csv">12_sample_data.csv</a>. This dataset has variables from 480 unconventional wells including:</p>
 <ul class="simple">
 <li><p>X (m), Y (m) location coordinates</p></li>
@@ -2417,7 +2430,7 @@ Correlation Matrix of scores:
 </ul>
 </section>
 <section id="dataset-2-reservoir-21">
-<h3>Dataset 2, Reservoir 21<a class="headerlink" href="#dataset-2-reservoir-21" title="Permalink to this heading">#</a></h3>
+<h3>Dataset 2, Reservoir 21<a class="headerlink" href="#dataset-2-reservoir-21" title="Link to this heading">#</a></h3>
 <p>Let’s load the provided multivariate, 3D spatial dataset <a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets/blob/master/res21_wells.csv">res21_wells.csv</a>. This dataset has variables from 73 vertical wells over a 10,000m x 10,000m x 50 m reservoir unit:</p>
 <ul class="simple">
 <li><p>well (ID)</p></li>
@@ -2648,7 +2661,7 @@ Correlation Matrix of scores:
 </div>
 </section>
 <section id="perform-principal-components-analysis">
-<h3>Perform Principal Components Analysis<a class="headerlink" href="#perform-principal-components-analysis" title="Permalink to this heading">#</a></h3>
+<h3>Perform Principal Components Analysis<a class="headerlink" href="#perform-principal-components-analysis" title="Link to this heading">#</a></h3>
 <p>Perform principal components analysis,</p>
 <ol class="arabic simple">
 <li><p>Calculate the principal component loadings</p></li>
@@ -2676,12 +2689,12 @@ Correlation Matrix of scores:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c849a0643237d2cfdd80d77be1638fac7ede9092059c7cf673a61db49ae9519a.png" src="_images/c849a0643237d2cfdd80d77be1638fac7ede9092059c7cf673a61db49ae9519a.png" />
+<img alt="_images/ba2703edebf387333e106943631cb2955d0cf313a880a4e6861e46b5c37cdb7b.png" src="_images/ba2703edebf387333e106943631cb2955d0cf313a880a4e6861e46b5c37cdb7b.png" />
 </div>
 </div>
 </section>
 <section id="check-the-cumulative-variance-explained">
-<h3>Check the Cumulative Variance Explained<a class="headerlink" href="#check-the-cumulative-variance-explained" title="Permalink to this heading">#</a></h3>
+<h3>Check the Cumulative Variance Explained<a class="headerlink" href="#check-the-cumulative-variance-explained" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">pca_new</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">pca_new</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="o">*</span><span class="mi">100</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
@@ -2699,12 +2712,12 @@ Correlation Matrix of scores:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2ff3b417eb8d29bf00f83b4ed697d6e6112a30ee3d2545d1079c3b838c4d2933.png" src="_images/2ff3b417eb8d29bf00f83b4ed697d6e6112a30ee3d2545d1079c3b838c4d2933.png" />
+<img alt="_images/89fd6cef4108b95f81f7b3aa4605b712237033b589fad86cb0d9d5065b20245e.png" src="_images/89fd6cef4108b95f81f7b3aa4605b712237033b589fad86cb0d9d5065b20245e.png" />
 </div>
 </div>
 </section>
 <section id="save-the-principal-components">
-<h3>Save the Principal Components<a class="headerlink" href="#save-the-principal-components" title="Permalink to this heading">#</a></h3>
+<h3>Save the Principal Components<a class="headerlink" href="#save-the-principal-components" title="Link to this heading">#</a></h3>
 <p>Now we can choose to write out the DataFrame with the reduced dimensionality principal component scores.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2722,13 +2735,13 @@ Correlation Matrix of scores:
 </section>
 </section>
 <section id="comments">
-<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
+<h2>Comments<a class="headerlink" href="#comments" title="Link to this heading">#</a></h2>
 <p>This was a basic treatment of dimensionality reduction by principal component analysis (PCA). Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
 <section id="about-the-author">
-<h2>About the Author<a class="headerlink" href="#about-the-author" title="Permalink to this heading">#</a></h2>
+<h2>About the Author<a class="headerlink" href="#about-the-author" title="Link to this heading">#</a></h2>
 <figure style="text-align: center;">
   <img src="_static/intro/michael_pyrcz_officeshot_jacket.jpg" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
@@ -2739,11 +2752,11 @@ Correlation Matrix of scores:
 <li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
+<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference internal" href="#www.michaelpyrcz.com"><span class="xref myst">Website</span></a>.</p>
 </section>
 <section id="want-to-work-together">
-<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
+<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Link to this heading">#</a></h2>
 <p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
@@ -2753,7 +2766,7 @@ Correlation Matrix of scores:
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -2784,7 +2797,7 @@ Correlation Matrix of scores:
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -2813,6 +2826,7 @@ Correlation Matrix of scores:
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -2914,8 +2928,8 @@ By Michael J. Pyrcz
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

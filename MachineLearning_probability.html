@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Probability Concepts &#8212; Applied Machine Learning in Python</title>
   
@@ -15,55 +14,51 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=304429a7" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=564be945" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'MachineLearning_probability';</script>
@@ -80,28 +75,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -123,12 +113,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -144,6 +142,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -162,7 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -201,6 +212,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ensemble_trees.html">Bagging Tree and Random Forest</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_gradient_boosting.html">Gradient Boosting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_support_vector_machines.html">Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_activation_functions.html">Neural Networks Activation Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ANN.html">Artificial Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_CNN.html">Convolutional Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_autoencoder.html">Autoencoder Neural Networks</a></li>
@@ -226,7 +238,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -235,14 +247,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -367,10 +379,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -378,14 +390,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -435,15 +447,15 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <figure style="text-align: center;">
   <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
 </figure>
 <section id="probability-concepts">
-<h1>Probability Concepts<a class="headerlink" href="#probability-concepts" title="Permalink to this heading">#</a></h1>
+<h1>Probability Concepts<a class="headerlink" href="#probability-concepts" title="Link to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite this e-Book as:</p>
@@ -480,7 +492,7 @@ document.write(`
 </ul>
 <p>For convenience here’s a summary of the salient points.</p>
 <section id="motivation-for-probability">
-<h2>Motivation for Probability<a class="headerlink" href="#motivation-for-probability" title="Permalink to this heading">#</a></h2>
+<h2>Motivation for Probability<a class="headerlink" href="#motivation-for-probability" title="Link to this heading">#</a></h2>
 <p>Why cover probability at the beginning of an e-book or course on machine learning?</p>
 <ol class="arabic simple">
 <li><p><strong>Model Formulation</strong> - many of our machine learning models are formulated with probability concepts, for example, naive Bayes classification is derived from Bayes’ Theorem and Bayesian linear regression estimates the probability distributions for our model parameters.</p></li>
@@ -498,7 +510,7 @@ document.write(`
 <p>Now we get started by defining probability and then we will be ready to talk about ways to calculate it.</p>
 </section>
 <section id="what-is-probability">
-<h2>What is Probability?<a class="headerlink" href="#what-is-probability" title="Permalink to this heading">#</a></h2>
+<h2>What is Probability?<a class="headerlink" href="#what-is-probability" title="Link to this heading">#</a></h2>
 <p>To understand what is probability consider Kolmogorov’s 3 axioms for probabilities, i.e., the rules that any measure of probability must honor,</p>
 <figure style="text-align: center;">
   <img src="_static/probability/kolmogorov.png" style="display: block; margin: 0 auto; width: 30%;">
@@ -535,7 +547,7 @@ P\left(⋃_{i=1}^{\infty} A_i\right) = \sum_{i=1}^{\infty} P(A_i)
 <p>This is a good place to start for valid probabilities, we will refine this later. Now we can ask,</p>
 </section>
 <section id="how-to-calculate-probability">
-<h2>How to Calculate Probability?<a class="headerlink" href="#how-to-calculate-probability" title="Permalink to this heading">#</a></h2>
+<h2>How to Calculate Probability?<a class="headerlink" href="#how-to-calculate-probability" title="Link to this heading">#</a></h2>
 <p>There are 3 probability perspectives that can be applied to calculate probabilities,</p>
 <ol class="arabic simple">
 <li><p><strong>Probability by long-term frequencies</strong> (Frequentist Probability),</p></li>
@@ -589,7 +601,7 @@ P(\text{heads}) = \frac{n(\text{heads})}{n}
 </ul>
 </section>
 <section id="a-warning-about-calculating-probability">
-<h2>A Warning about Calculating Probability<a class="headerlink" href="#a-warning-about-calculating-probability" title="Permalink to this heading">#</a></h2>
+<h2>A Warning about Calculating Probability<a class="headerlink" href="#a-warning-about-calculating-probability" title="Link to this heading">#</a></h2>
 <p>Statistics can be misused or even abused, leading to flawed conclusions and poor decision-making. When probabilities are calculated improperly or misinterpreted, it can result in significant consequences. Here are a few examples of what can go wrong:</p>
 <ol class="arabic simple">
 <li><p><strong>Insufficient sampling</strong> - there are various rules of thumb about what constitutes a small sample size, i.e., too small for inference about the population parameters and too small to train a reliable prediction model. Some say 7, some say 30, indubitably there is a minimum sample size.</p></li>
@@ -618,7 +630,7 @@ P(\text{heads}) = \frac{n(\text{heads})}{n}
 <p>Please remember these warnings as you proceed below and onward as you build your own data science workflows.</p>
 </section>
 <section id="venn-diagrams">
-<h2>Venn Diagrams<a class="headerlink" href="#venn-diagrams" title="Permalink to this heading">#</a></h2>
+<h2>Venn Diagrams<a class="headerlink" href="#venn-diagrams" title="Link to this heading">#</a></h2>
 <p>Venn Diagrams are a tool to communicate probability.</p>
 <ul class="simple">
 <li><p>representing the possible events or outcomes (<span class="math notranslate nohighlight">\(A, B,\ldots\)</span>) of an experiment within the collection of all possible events or outcomes, the sample space (<span class="math notranslate nohighlight">\(\Omega\)</span>).</p></li>
@@ -653,7 +665,7 @@ P(\text{heads}) = \frac{n(\text{heads})}{n}
 <p>In summary, Venn diagrams are an excellent tool to visualize probability, so we will use them to visualize and teach probability here.</p>
 </section>
 <section id="frequentist-probability">
-<h2>Frequentist Probability<a class="headerlink" href="#frequentist-probability" title="Permalink to this heading">#</a></h2>
+<h2>Frequentist Probability<a class="headerlink" href="#frequentist-probability" title="Link to this heading">#</a></h2>
 <p>We now provide an extended definition for the frequentist approach for probability. A measure of the likelihood that an event will occur based on frequencies observed from an experiment.</p>
 <ul class="simple">
 <li><p>For random experiments and well-defined settings, we calculate probability as:</p></li>
@@ -675,7 +687,7 @@ P(A) = \lim_{n \to \infty} \frac{n(A)}{n}
 <p>Now we walk-through various probability operations from the frequentist perspective, may I ask for patience from my Bayesian friends as we will later return to the Bayesian perspective for probability.</p>
 </section>
 <section id="probability-operations">
-<h2>Probability Operations<a class="headerlink" href="#probability-operations" title="Permalink to this heading">#</a></h2>
+<h2>Probability Operations<a class="headerlink" href="#probability-operations" title="Link to this heading">#</a></h2>
 <p><strong>Union of Events</strong> - for example, all outcomes in the sample space that belong to either event <span class="math notranslate nohighlight">\(A\)</span> or <span class="math notranslate nohighlight">\(B\)</span></p>
 <ul class="simple">
 <li><p>for the union of events operator, we use the word “or” and the mathematics symbol, <span class="math notranslate nohighlight">\(cup\)</span>, using set notation we state the samples in the union <span class="math notranslate nohighlight">\(A\)</span> or <span class="math notranslate nohighlight">\(B\)</span> as,</p></li>
@@ -828,7 +840,7 @@ P(A^c \cap B \cap C) = \frac{\text{Area}(A^c \cap B \cap C)}{\text{Area}(\Omega)
 </figure>
 </section>
 <section id="constraints-on-probability">
-<h2>Constraints on Probability<a class="headerlink" href="#constraints-on-probability" title="Permalink to this heading">#</a></h2>
+<h2>Constraints on Probability<a class="headerlink" href="#constraints-on-probability" title="Link to this heading">#</a></h2>
 <p>Now that we have defined probability notation and probability operations, now we return the idea of permissible probability values expressed by Kolmogorov. We can now build on Kolmogorov’s probability axioms with this set of probability constraints,</p>
 <p>Non-negativity, Normalization constraints include,</p>
 <ul class="simple">
@@ -863,7 +875,7 @@ P(\emptyset) = 0.0
 <p>Now we use these probability concepts and notation to append more essential complicated probability concepts.</p>
 </section>
 <section id="probability-addition-rule">
-<h2>Probability Addition Rule<a class="headerlink" href="#probability-addition-rule" title="Permalink to this heading">#</a></h2>
+<h2>Probability Addition Rule<a class="headerlink" href="#probability-addition-rule" title="Link to this heading">#</a></h2>
 <p>What is the probability for a union of events? Remember that union is an “or” operation represented by the <span class="math notranslate nohighlight">\(\cup\)</span> notation. Consider,</p>
 <div class="math notranslate nohighlight">
 \[
@@ -905,7 +917,7 @@ P\left( \bigcup_{i=1}^k A_i \right) = \sum_{i=1}^k P(A_i)
 </figure>
 </section>
 <section id="conditional-probability">
-<h2>Conditional Probability<a class="headerlink" href="#conditional-probability" title="Permalink to this heading">#</a></h2>
+<h2>Conditional Probability<a class="headerlink" href="#conditional-probability" title="Link to this heading">#</a></h2>
 <p>What is the probability of an event given another event has occurred? To discuss this, let us get more specific, what is the probability of event <span class="math notranslate nohighlight">\(B\)</span> given event <span class="math notranslate nohighlight">\(A\)</span> has occurred?</p>
 <ul class="simple">
 <li><p>to express this we use the notation, <span class="math notranslate nohighlight">\(P(B|A)\)</span></p></li>
@@ -1030,7 +1042,7 @@ P(A_1, A_2, \ldots , A_n) = P(A_n|A_{n-1}, \ldots , A_1) \cdot P(A_{n-1}|A_{n-2}
 <p>Now we are ready to summarize marginal, conditional and joint probabilities together.</p>
 </section>
 <section id="marginal-conditional-and-joint-probabilities">
-<h2>Marginal, Conditional and Joint Probabilities<a class="headerlink" href="#marginal-conditional-and-joint-probabilities" title="Permalink to this heading">#</a></h2>
+<h2>Marginal, Conditional and Joint Probabilities<a class="headerlink" href="#marginal-conditional-and-joint-probabilities" title="Link to this heading">#</a></h2>
 <p>Now we define marginal, conditional and joint probability, provide notation and discuss how to calculate them:</p>
 <p><strong>Marginal Probability</strong> - probability of an event, irrespective of any other event,</p>
 <div class="math notranslate nohighlight">
@@ -1129,35 +1141,35 @@ P(A,B) = \frac{n(A,B)}{n(\Omega)}
 </figure>
 </section>
 <section id="probability-multiplication-rule">
-<h2>Probability Multiplication Rule<a class="headerlink" href="#probability-multiplication-rule" title="Permalink to this heading">#</a></h2>
+<h2>Probability Multiplication Rule<a class="headerlink" href="#probability-multiplication-rule" title="Link to this heading">#</a></h2>
 <p>As shown above, we can calculate the joint probability of <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> as the product of the conditional probability of <span class="math notranslate nohighlight">\(B\)</span> given <span class="math notranslate nohighlight">\(A\)</span> with the marginal probability of <span class="math notranslate nohighlight">\(A\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
-P(A \cup B) = P(A,B) = P(B|A) \cdot P(A)
+P(A \cap B) = P(A,B) = P(B|A) \cdot P(A)
 \]</div>
 <p>and of course, we can also state,</p>
 <div class="math notranslate nohighlight">
 \[
-P(B \cup A) = P(B,A) = P(A|B) \cdot P(B)
+P(B \cap A) = P(B,A) = P(A|B) \cdot P(B)
 \]</div>
 <p>this is know as the multiplication rule, we use the multiplication rule to develop the definition of independence.</p>
 </section>
 <section id="independent-events">
-<h2>Independent Events<a class="headerlink" href="#independent-events" title="Permalink to this heading">#</a></h2>
+<h2>Independent Events<a class="headerlink" href="#independent-events" title="Link to this heading">#</a></h2>
 <p>Given the probability multiplication rule,</p>
 <div class="math notranslate nohighlight">
 \[
-P(A \cup B) = P(A,B) = P(B|A) \cdot P(A)
+P(A \cap B) = P(A,B) = P(B|A) \cdot P(A)
 \]</div>
 <p>now we ask the question, what is the conditional probability <span class="math notranslate nohighlight">\(P(B|A)\)</span> if events <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are independent? Given independence between <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> we would expect that knowing about <span class="math notranslate nohighlight">\(A\)</span> will not impact the outcome of <span class="math notranslate nohighlight">\(B\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
 P(B|A) = P(B)
 \]</div>
-<p>if we substitute this into <span class="math notranslate nohighlight">\(P(A \cup B) = P(A,B) = P(B|A) \cdot P(A)\)</span> we get,</p>
+<p>if we substitute this into <span class="math notranslate nohighlight">\(P(A \cap B) = P(A,B) = P(B|A) \cdot P(A)\)</span> we get,</p>
 <div class="math notranslate nohighlight">
 \[
-P(A \cup B) = P(B) \cdot P(A)
+P(A \cap B) = P(B) \cdot P(A)
 \]</div>
 <p>by the same logic we can show,</p>
 <div class="math notranslate nohighlight">
@@ -1192,7 +1204,7 @@ P(A_1) = \frac{5}{10} \quad P(A_2) = \frac{6}{10} \quad P(A_1,A_2) = \frac{2}{10
 </ul>
 </section>
 <section id="bayesian-probability">
-<h2>Bayesian Probability<a class="headerlink" href="#bayesian-probability" title="Permalink to this heading">#</a></h2>
+<h2>Bayesian Probability<a class="headerlink" href="#bayesian-probability" title="Link to this heading">#</a></h2>
 <p>Now we finally dive into the Bayesian approach to probability, a very flexible approach that can be applied to assign probability to anything, and includes a framework for updating with new information.</p>
 <p>When I say that the Bayesian approach can assign probability to anything, I realize this needs some further explanation,</p>
 <ul class="simple">
@@ -1221,7 +1233,7 @@ P(A_1) = \frac{5}{10} \quad P(A_2) = \frac{6}{10} \quad P(A_1,A_2) = \frac{2}{10
 </ul>
 </section>
 <section id="bayes-theorem">
-<h2>Bayes’ Theorem<a class="headerlink" href="#bayes-theorem" title="Permalink to this heading">#</a></h2>
+<h2>Bayes’ Theorem<a class="headerlink" href="#bayes-theorem" title="Link to this heading">#</a></h2>
 <p>Once again, here’s the multiplication rule,</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1290,14 +1302,14 @@ P(B) = \int_{A} P(B|A) \cdot P(A) dA
 </ul>
 <div class="math notranslate nohighlight">
 \[
-P(B) = P(B|A) \cdot P(A) + P(B|A^c) \cdot P(B^c)
+P(B) = P(B|A) \cdot P(A) + P(B|A^c) \cdot P(A^c)
 \]</div>
 <ul class="simple">
 <li><p>and by substitution we get this expanded but usually easier to calculate form of Bayes’ theorem,</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
-P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B|A) \cdot P(A) + P(B|A^c) \cdot P(B^c)}
+P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B|A) \cdot P(A) + P(B|A^c) \cdot P(A^c)}
 \]</div>
 <ul class="simple">
 <li><p>we can generalize this marginalization for any number of discrete, mutually exclusive, exhaustive events as,</p></li>
@@ -1321,7 +1333,7 @@ P(B) = \sum_{i=1}^{m} P(B|A_i) \cdot P(A_i), \quad \forall \quad i = 1,\ldots,m
 </ol>
 </section>
 <section id="bayesian-probability-example-problems">
-<h2>Bayesian Probability Example Problems<a class="headerlink" href="#bayesian-probability-example-problems" title="Permalink to this heading">#</a></h2>
+<h2>Bayesian Probability Example Problems<a class="headerlink" href="#bayesian-probability-example-problems" title="Link to this heading">#</a></h2>
 <p>An efficient way to improve your understanding of Bayesian probability is through solving illustrative problems. Here’s a great group of problems,</p>
 <ul class="simple">
 <li><p>you conduct a test and get a positive test result for something we can’t directly observe happening, but what is the probability of the thing actually happening given the positive test?</p></li>
@@ -1355,7 +1367,7 @@ P(B) = \sum_{i=1}^{m} P(B|A_i) \cdot P(A_i), \quad \forall \quad i = 1,\ldots,m
 <p>Now we write out Bayes’ theorem, the regular and expanded evidence term by marginalization,</p>
 <div class="math notranslate nohighlight">
 \[
-P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)} = \frac{P(B|A) \cdot P(A)}{P(B|A) \cdot P(A) + P(B|A^c) \cdot P(B^c)}
+P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)} = \frac{P(B|A) \cdot P(A)}{P(B|A) \cdot P(A) + P(B|A^c) \cdot P(A^c)}
 \]</div>
 <p>What do we know? From the question above we have,</p>
 <ul class="simple">
@@ -1469,7 +1481,7 @@ P(X_1|Y) + P(X_2|Y) + P(X_3|Y) = 0.41 + 0.38 + 0.21 = 1.0
 </figure>
 </section>
 <section id="bayesian-updating-with-gaussian-distributions">
-<h2>Bayesian Updating with Gaussian Distributions<a class="headerlink" href="#bayesian-updating-with-gaussian-distributions" title="Permalink to this heading">#</a></h2>
+<h2>Bayesian Updating with Gaussian Distributions<a class="headerlink" href="#bayesian-updating-with-gaussian-distributions" title="Link to this heading">#</a></h2>
 <p>Sivia (1996) provided an analytical approach for Bayesian updating under the assumption of a standard normal global distribution, Gaussian distributed with mean of 0.0 and variance of 1.0. We calculate,</p>
 <ul class="simple">
 <li><p>the mean of the posterior distribution from the prior and likelihood mean and variance.</p></li>
@@ -1502,13 +1514,13 @@ P(X_1|Y) + P(X_2|Y) + P(X_3|Y) = 0.41 + 0.38 + 0.21 = 1.0
 </ol>
 </section>
 <section id="comments">
-<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
+<h2>Comments<a class="headerlink" href="#comments" title="Link to this heading">#</a></h2>
 <p>This was a basic treatment of probability. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
 <section id="about-the-author">
-<h2>About the Author<a class="headerlink" href="#about-the-author" title="Permalink to this heading">#</a></h2>
+<h2>About the Author<a class="headerlink" href="#about-the-author" title="Link to this heading">#</a></h2>
 <figure style="text-align: center;">
   <img src="_static/intro/michael_pyrcz_officeshot_jacket.jpg" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
@@ -1519,11 +1531,11 @@ P(X_1|Y) + P(X_2|Y) + P(X_3|Y) = 0.41 + 0.38 + 0.21 = 1.0
 <li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
+<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference internal" href="#www.michaelpyrcz.com"><span class="xref myst">Website</span></a>.</p>
 </section>
 <section id="want-to-work-together">
-<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
+<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Link to this heading">#</a></h2>
 <p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
@@ -1533,7 +1545,7 @@ P(X_1|Y) + P(X_2|Y) + P(X_3|Y) = 0.41 + 0.38 + 0.21 = 1.0
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -1564,7 +1576,7 @@ P(X_1|Y) + P(X_2|Y) + P(X_3|Y) = 0.41 + 0.38 + 0.21 = 1.0
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1593,6 +1605,7 @@ P(X_1|Y) + P(X_2|Y) + P(X_3|Y) = 0.41 + 0.38 + 0.21 = 1.0
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1668,8 +1681,8 @@ By Michael J. Pyrcz
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

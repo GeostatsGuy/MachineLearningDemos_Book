@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Training and Tuning &#8212; Applied Machine Learning in Python</title>
   
@@ -15,55 +14,51 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=304429a7" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=564be945" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'MachineLearning_training_tuning';</script>
@@ -80,28 +75,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -123,12 +113,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -144,6 +142,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -162,7 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -201,6 +212,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ensemble_trees.html">Bagging Tree and Random Forest</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_gradient_boosting.html">Gradient Boosting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_support_vector_machines.html">Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_activation_functions.html">Neural Networks Activation Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ANN.html">Artificial Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_CNN.html">Convolutional Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_autoencoder.html">Autoencoder Neural Networks</a></li>
@@ -226,7 +238,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -235,14 +247,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -367,10 +379,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -378,14 +390,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -445,15 +457,15 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <figure style="text-align: center;">
   <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
 </figure>
 <section id="training-and-tuning">
-<h1>Training and Tuning<a class="headerlink" href="#training-and-tuning" title="Permalink to this heading">#</a></h1>
+<h1>Training and Tuning<a class="headerlink" href="#training-and-tuning" title="Link to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite this e-Book as:</p>
@@ -481,7 +493,7 @@ document.write(`
 </ul>
 <p>For your convenience here’s a summary of salient points.</p>
 <section id="training-and-tuning-predictive-machine-learning-models">
-<h2>Training and Tuning Predictive Machine Learning Models<a class="headerlink" href="#training-and-tuning-predictive-machine-learning-models" title="Permalink to this heading">#</a></h2>
+<h2>Training and Tuning Predictive Machine Learning Models<a class="headerlink" href="#training-and-tuning-predictive-machine-learning-models" title="Link to this heading">#</a></h2>
 <p>In predictive machine learning, we follow a standard model training and testing workflow. This process ensures that our model generalizes well to new data, rather than just fitting the training data perfectly.</p>
 <figure style="text-align: center;">
   <img src="_static/concepts/ML_workflow_portrait.png" style="display: block; margin: 0 auto; width: 100%;">
@@ -534,7 +546,7 @@ document.write(`
 </ul>
 </section>
 <section id="common-questions-about-the-model-training-and-tuning-workflow">
-<h2>Common Questions About the Model Training and Tuning Workflow<a class="headerlink" href="#common-questions-about-the-model-training-and-tuning-workflow" title="Permalink to this heading">#</a></h2>
+<h2>Common Questions About the Model Training and Tuning Workflow<a class="headerlink" href="#common-questions-about-the-model-training-and-tuning-workflow" title="Link to this heading">#</a></h2>
 <p>As a professor, I often hear these questions when I introduce the above machine learning model training and tuning workflow.</p>
 <ul class="simple">
 <li><p><strong>What is the main outcome of steps 1–5?</strong> - the only reliable outcome is the tuned hyperparameters.</p></li>
@@ -553,7 +565,7 @@ document.write(`
 <p>I’ve said model parameters and model hyperparameters a bunch of times, so I owe you their definitions.</p>
 </section>
 <section id="model-parameters-and-model-hyperparameters">
-<h2>Model Parameters and Model Hyperparameters<a class="headerlink" href="#model-parameters-and-model-hyperparameters" title="Permalink to this heading">#</a></h2>
+<h2>Model Parameters and Model Hyperparameters<a class="headerlink" href="#model-parameters-and-model-hyperparameters" title="Link to this heading">#</a></h2>
 <p><strong>Model parameters</strong> are fit during training phase to minimize error at the training data, i.e., model parameters are trained with training data and control model fit to the data. For example,</p>
 <ul class="simple">
 <li><p>for the polynomial predictive machine learning model from the machine learning workflow example above, the model parameters are the polynomial coefficients, e.g., <span class="math notranslate nohighlight">\(b_3\)</span>, <span class="math notranslate nohighlight">\(b_2\)</span>, <span class="math notranslate nohighlight">\(b_1\)</span> and <span class="math notranslate nohighlight">\(c\)</span> (often called <span class="math notranslate nohighlight">\(b_0\)</span>) for the third order polynomial model.</p></li>
@@ -574,7 +586,7 @@ The model hyperparameters are selected (call tuning) to minimize error at the wi
 </div>
 </section>
 <section id="regression-and-classification">
-<h2>Regression and Classification<a class="headerlink" href="#regression-and-classification" title="Permalink to this heading">#</a></h2>
+<h2>Regression and Classification<a class="headerlink" href="#regression-and-classification" title="Link to this heading">#</a></h2>
 <p>Before we proceed, we need to define regression and classification.</p>
 <ul class="simple">
 <li><p><strong>Regression</strong> - a predictive machine learning model where the response feature(s) is continuous.</p></li>
@@ -590,7 +602,7 @@ The model hyperparameters are selected (call tuning) to minimize error at the wi
 </ul>
 </section>
 <section id="training-and-testing-data">
-<h2>Training and Testing Data<a class="headerlink" href="#training-and-testing-data" title="Permalink to this heading">#</a></h2>
+<h2>Training and Testing Data<a class="headerlink" href="#training-and-testing-data" title="Link to this heading">#</a></h2>
 <p>For clarity, consider this is schematic of the flow of training and testing data in the predictive machine learning model parameter training and hyperparameter tuning workflow,</p>
 <figure style="text-align: center;">
   <img src="_static/training_tuning/traintestdata.png" style="display: block; margin: 0 auto; width: 80%;">
@@ -609,7 +621,7 @@ The model hyperparameters are selected (call tuning) to minimize error at the wi
 </ul>
 </section>
 <section id="how-much-data-should-be-withheld-for-testing">
-<h2>How Much Data Should be Withheld for Testing?<a class="headerlink" href="#how-much-data-should-be-withheld-for-testing" title="Permalink to this heading">#</a></h2>
+<h2>How Much Data Should be Withheld for Testing?<a class="headerlink" href="#how-much-data-should-be-withheld-for-testing" title="Link to this heading">#</a></h2>
 <p>The proportion in testing is recommended by various sources from 15% - 30% of the total dataset. This is a compromise,</p>
 <ul class="simple">
 <li><p>data withheld for testing reduces the data available for training; therefore, reduces the accuracy of the model.</p></li>
@@ -622,7 +634,7 @@ The model hyperparameters are selected (call tuning) to minimize error at the wi
 <p>To determine the proportion of testing data to withheld we could consider the difficulty in model parameter training (e.g., the number of model parameters) and the difficulty in model hyperparameter tuning (e.g., number of hyperparameters, range of response feature outcomes).</p>
 </section>
 <section id="fair-train-and-test-splits">
-<h2>Fair Train and Test Splits<a class="headerlink" href="#fair-train-and-test-splits" title="Permalink to this heading">#</a></h2>
+<h2>Fair Train and Test Splits<a class="headerlink" href="#fair-train-and-test-splits" title="Link to this heading">#</a></h2>
 <p>Dr. Julian Salazar suggests that for spatial prediction problems that random train and test data splits may not be fair.</p>
 <ul class="simple">
 <li><p>proposed a <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0920410521015023">fair train and test split method</a> for spatial prediction models that splits the data based on the difficulty of the planned use of the model.</p></li>
@@ -652,7 +664,7 @@ The model hyperparameters are selected (call tuning) to minimize error at the wi
 </ul>
 </section>
 <section id="model-metrics">
-<h2>Model Metrics<a class="headerlink" href="#model-metrics" title="Permalink to this heading">#</a></h2>
+<h2>Model Metrics<a class="headerlink" href="#model-metrics" title="Link to this heading">#</a></h2>
 <p>Since we have covered the workflows for training and tuning, now we can specify the model metrics that are applied for,</p>
 <ul class="simple">
 <li><p>training model parameters</p></li>
@@ -678,7 +690,7 @@ The model hyperparameters are selected (call tuning) to minimize error at the wi
 <p>Let’s review some of the common model metrics for regression models and then for classification models.</p>
 </section>
 <section id="mean-square-error-mse">
-<h2>Mean Square Error (MSE)<a class="headerlink" href="#mean-square-error-mse" title="Permalink to this heading">#</a></h2>
+<h2>Mean Square Error (MSE)<a class="headerlink" href="#mean-square-error-mse" title="Link to this heading">#</a></h2>
 <p>Is sensitive to outliers, but is continuously differentiable, leading to a closed-form expression for model training. Since the error is squared the error units are squared and this may be less interpretable, for example, MSE of 23,543 <span class="math notranslate nohighlight">\(mD^2\)</span>. The equation is,</p>
 <div class="math notranslate nohighlight">
 \[
@@ -686,7 +698,7 @@ The model hyperparameters are selected (call tuning) to minimize error at the wi
 \]</div>
 </section>
 <section id="mean-absolute-error-mae">
-<h2>Mean Absolute Error (MAE)<a class="headerlink" href="#mean-absolute-error-mae" title="Permalink to this heading">#</a></h2>
+<h2>Mean Absolute Error (MAE)<a class="headerlink" href="#mean-absolute-error-mae" title="Link to this heading">#</a></h2>
 <p>Is robust in the presence of outliers, but is not continuously differentiable; therefore, there is no closed-form expression for model training and training is generally accomplished by iterative optimization. The equation is,</p>
 <div class="math notranslate nohighlight">
 \[
@@ -694,7 +706,7 @@ The model hyperparameters are selected (call tuning) to minimize error at the wi
 \]</div>
 </section>
 <section id="variance-explained">
-<h2>Variance Explained<a class="headerlink" href="#variance-explained" title="Permalink to this heading">#</a></h2>
+<h2>Variance Explained<a class="headerlink" href="#variance-explained" title="Link to this heading">#</a></h2>
 <p>The proportion of variance of the response feature captured by the model. Assumes additivity of variance; therefore, we only use this model metric for linear models.</p>
 <p>First we calculate the variance explained by the model, simply as the variance of the model predictions,</p>
 <div class="math notranslate nohighlight">
@@ -719,7 +731,7 @@ r^2 = \frac{\sigma_{\text{explained}}^2}{\sigma_{\text{explained}}^2 + \sigma_{\
 <p>Also, even a linear model can have a negative <span class="math notranslate nohighlight">\(r^2\)</span> if the model trend contradicts the data trend, for example, if you fit data with a negative slope with a linear model with a positive slope!</p>
 </section>
 <section id="inlier-ratio">
-<h2>Inlier Ratio<a class="headerlink" href="#inlier-ratio" title="Permalink to this heading">#</a></h2>
+<h2>Inlier Ratio<a class="headerlink" href="#inlier-ratio" title="Link to this heading">#</a></h2>
 <p>The proportion of testing data, <span class="math notranslate nohighlight">\(y_i\)</span> within a margin, <span class="math notranslate nohighlight">\(\epsilon\)</span>, of the model, <span class="math notranslate nohighlight">\(\hat{y}_i\)</span>, calculated as,</p>
 <div class="math notranslate nohighlight">
 \[ 
@@ -745,7 +757,7 @@ I(y_i, \hat{y}_i) =
 </ul>
 </section>
 <section id="common-classification-model-metrics">
-<h2>Common Classification Model Metrics<a class="headerlink" href="#common-classification-model-metrics" title="Permalink to this heading">#</a></h2>
+<h2>Common Classification Model Metrics<a class="headerlink" href="#common-classification-model-metrics" title="Link to this heading">#</a></h2>
 <p>Let’s review some of the common model metrics for classification models. Classification is potentially more complicated than regression, since instead of a single model metric, we actually calculate an entire confusion matrix,</p>
 <ul class="simple">
 <li><p>a <span class="math notranslate nohighlight">\(K \times K\)</span> matrix with frequencies of predicted (x axis) vs. actual (y axis) categories to visualize the performance of a classification model, where <span class="math notranslate nohighlight">\(K\)</span> is the response feature cardinality, i.e., the number of possible categories</p></li>
@@ -768,7 +780,7 @@ I(y_i, \hat{y}_i) =
 </ul>
 </section>
 <section id="precision">
-<h2>Precision<a class="headerlink" href="#precision" title="Permalink to this heading">#</a></h2>
+<h2>Precision<a class="headerlink" href="#precision" title="Link to this heading">#</a></h2>
 <p>For category <span class="math notranslate nohighlight">\(𝑘\)</span>, precision is the ratio of true positive over all positives,</p>
 <div class="math notranslate nohighlight">
 \[ 
@@ -807,7 +819,7 @@ I(y_i, \hat{y}_i) =
 \]</div>
 </section>
 <section id="recall-called-sensitivity-in-medical">
-<h2>Recall (called sensitivity in medical)<a class="headerlink" href="#recall-called-sensitivity-in-medical" title="Permalink to this heading">#</a></h2>
+<h2>Recall (called sensitivity in medical)<a class="headerlink" href="#recall-called-sensitivity-in-medical" title="Link to this heading">#</a></h2>
 <p>Recall for group <span class="math notranslate nohighlight">\(𝑘\)</span> is the ratio of true positives over all cases of <span class="math notranslate nohighlight">\(𝑘\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -845,7 +857,7 @@ I(y_i, \hat{y}_i) =
 \]</div>
 </section>
 <section id="specificity">
-<h2>Specificity<a class="headerlink" href="#specificity" title="Permalink to this heading">#</a></h2>
+<h2>Specificity<a class="headerlink" href="#specificity" title="Link to this heading">#</a></h2>
 <p>Specificity for group <span class="math notranslate nohighlight">\(𝑘\)</span> is the ratio of true negatives over all negative cases of <span class="math notranslate nohighlight">\(n \ne 𝑘\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[ 
@@ -883,7 +895,7 @@ I(y_i, \hat{y}_i) =
 \]</div>
 </section>
 <section id="f1-score">
-<h2>f1-score<a class="headerlink" href="#f1-score" title="Permalink to this heading">#</a></h2>
+<h2>f1-score<a class="headerlink" href="#f1-score" title="Link to this heading">#</a></h2>
 <p>f1-score is the harmonic mean of precision and recall for each <span class="math notranslate nohighlight">\(k\)</span> category,</p>
 <div class="math notranslate nohighlight">
 \[ 
@@ -895,7 +907,7 @@ I(y_i, \hat{y}_i) =
 </ul>
 </section>
 <section id="train-and-test-hold-out-cross-validation">
-<h2>Train and Test Hold Out Cross Validation<a class="headerlink" href="#train-and-test-hold-out-cross-validation" title="Permalink to this heading">#</a></h2>
+<h2>Train and Test Hold Out Cross Validation<a class="headerlink" href="#train-and-test-hold-out-cross-validation" title="Link to this heading">#</a></h2>
 <p>If only one train and test data split is applied to tune our machine learning model hyperparameters then we are applying the hold out cross validation approach.</p>
 <ul class="simple">
 <li><p>we split the data into training and testing data, these are exhaustive and mutually exclusive groups.</p></li>
@@ -923,7 +935,7 @@ I(y_i, \hat{y}_i) =
 </ul>
 </section>
 <section id="train-validate-and-test-hold-out-cross-validation">
-<h2>Train, Validate and Test Hold Out Cross Validation<a class="headerlink" href="#train-validate-and-test-hold-out-cross-validation" title="Permalink to this heading">#</a></h2>
+<h2>Train, Validate and Test Hold Out Cross Validation<a class="headerlink" href="#train-validate-and-test-hold-out-cross-validation" title="Link to this heading">#</a></h2>
 <p>There is a more complete hold out cross validation workflow commonly applied,</p>
 <ol class="arabic simple">
 <li><p><strong>Train with training data split</strong> - models sees and learns from this data to train the model parameters.</p></li>
@@ -947,7 +959,7 @@ I(y_i, \hat{y}_i) =
 </ol>
 </section>
 <section id="load-the-required-libraries">
-<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
+<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Link to this heading">#</a></h2>
 <p>The following code loads the required libraries. These should have been installed with Anaconda 3.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -971,7 +983,7 @@ I(y_i, \hat{y}_i) =
 </div>
 </section>
 <section id="declare-functions">
-<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
+<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Link to this heading">#</a></h2>
 <p>I also added a convenience function to add major and minor gridlines to improve plot interpretability.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -985,7 +997,7 @@ I(y_i, \hat{y}_i) =
 </div>
 </section>
 <section id="load-data-to-demonstration-cross-validation-methods">
-<h2>Load Data to Demonstration Cross Validation Methods<a class="headerlink" href="#load-data-to-demonstration-cross-validation-methods" title="Permalink to this heading">#</a></h2>
+<h2>Load Data to Demonstration Cross Validation Methods<a class="headerlink" href="#load-data-to-demonstration-cross-validation-methods" title="Link to this heading">#</a></h2>
 <p>Let’s load a spatial dataset and select 2 predictor features to visualize cross validation methods.</p>
 <ul class="simple">
 <li><p>we will focus on the data splits and not the actual model training and tuning. Later when we cover predictive machine learning methods we will add the model component of the workflow.</p></li>
@@ -1035,7 +1047,7 @@ I(y_i, \hat{y}_i) =
 </div>
 </section>
 <section id="visualize-train-and-test-hold-out-cross-validation">
-<h2>Visualize Train and Test Hold Out Cross Validation<a class="headerlink" href="#visualize-train-and-test-hold-out-cross-validation" title="Permalink to this heading">#</a></h2>
+<h2>Visualize Train and Test Hold Out Cross Validation<a class="headerlink" href="#visualize-train-and-test-hold-out-cross-validation" title="Link to this heading">#</a></h2>
 <p>Let’s compare the train and test with train, validate and test hold out data splits.</p>
 <ul class="simple">
 <li><p>first we plot a train and test data split and then a train, validate and test split.</p></li>
@@ -1167,7 +1179,7 @@ I(y_i, \hat{y}_i) =
 </ul>
 </section>
 <section id="leave-one-out-cross-validation-loo-cv">
-<h2>Leave-one-out Cross Validation (LOO CV)<a class="headerlink" href="#leave-one-out-cross-validation-loo-cv" title="Permalink to this heading">#</a></h2>
+<h2>Leave-one-out Cross Validation (LOO CV)<a class="headerlink" href="#leave-one-out-cross-validation-loo-cv" title="Link to this heading">#</a></h2>
 <p>Leave-one-out cross validation is an exhaustive cross validation method, i.e., all data gets tested by loop over all the data.</p>
 <ul class="simple">
 <li><p>we train and tune <span class="math notranslate nohighlight">\(n\)</span> models, for each model a single datum is withheld as testing and the <span class="math notranslate nohighlight">\(n-1\)</span> data are assigned as training data</p></li>
@@ -1208,7 +1220,7 @@ I(y_i, \hat{y}_i) =
 <p>where the full combinatorial is the <span class="math notranslate nohighlight">\(n\)</span> models that we built above!</p>
 </section>
 <section id="k-fold-cross-validation-k-fold-cv">
-<h2>K-fold Cross Validation (k-fold CV)<a class="headerlink" href="#k-fold-cross-validation-k-fold-cv" title="Permalink to this heading">#</a></h2>
+<h2>K-fold Cross Validation (k-fold CV)<a class="headerlink" href="#k-fold-cross-validation-k-fold-cv" title="Link to this heading">#</a></h2>
 <p>K-fold is a more general, efficient and robust approach.</p>
 <ul class="simple">
 <li><p>a exhaustive cross validation approach (all data are tested), but it samples a limited set of the possible combinatorial of prediction problems, unlike Leave-one-out cross validation where we attempt every possible case on data withheld for testing</p></li>
@@ -1261,7 +1273,7 @@ I(y_i, \hat{y}_i) =
 </div>
 </section>
 <section id="leave-p-out-cross-validation-lpo-cv">
-<h2>Leave-p-out Cross Validation (LpO-CV)<a class="headerlink" href="#leave-p-out-cross-validation-lpo-cv" title="Permalink to this heading">#</a></h2>
+<h2>Leave-p-out Cross Validation (LpO-CV)<a class="headerlink" href="#leave-p-out-cross-validation-lpo-cv" title="Link to this heading">#</a></h2>
 <p>This is the variant of K-fold cross validation that exhaustively samples the full combinatorial of withholding <span class="math notranslate nohighlight">\(p\)</span> testing data.</p>
 <ol class="arabic simple">
 <li><p>Select <span class="math notranslate nohighlight">\(p\)</span>, integer number of testing data to withhold</p></li>
@@ -1279,7 +1291,7 @@ I(y_i, \hat{y}_i) =
 <p>For <span class="math notranslate nohighlight">\(n=100\)</span> and <span class="math notranslate nohighlight">\(p=20\)</span>, we have <span class="math notranslate nohighlight">\(5.36 \times 10^{20}\)</span> combinations to check!</p>
 </section>
 <section id="limitations-of-cross-validation">
-<h2>Limitations of Cross Validation<a class="headerlink" href="#limitations-of-cross-validation" title="Permalink to this heading">#</a></h2>
+<h2>Limitations of Cross Validation<a class="headerlink" href="#limitations-of-cross-validation" title="Link to this heading">#</a></h2>
 <p>Here are some additional issues with the model cross validation approach in general,</p>
 <ul class="simple">
 <li><p><strong>Peeking, Information Leakage</strong> – some information is transmitted from the withheld data into the model, some model decision(s) use all the data. Pipelines and wrappers help with this.</p></li>
@@ -1305,13 +1317,13 @@ I(y_i, \hat{y}_i) =
 <p>‘Be humble, the earth will surprise you!’ – Michael Pyrcz</p>
 </section>
 <section id="comments">
-<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
+<h2>Comments<a class="headerlink" href="#comments" title="Link to this heading">#</a></h2>
 <p>This was a basic description of machine learning concepts. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
 <p>I hope this was helpful,</p>
 <p><em>Michael</em></p>
 </section>
 <section id="about-the-author">
-<h2>About the Author<a class="headerlink" href="#about-the-author" title="Permalink to this heading">#</a></h2>
+<h2>About the Author<a class="headerlink" href="#about-the-author" title="Link to this heading">#</a></h2>
 <figure style="text-align: center;">
   <img src="_static/intro/michael_pyrcz_officeshot_jacket.jpg" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
@@ -1322,11 +1334,11 @@ I(y_i, \hat{y}_i) =
 <li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
+<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference internal" href="#www.michaelpyrcz.com"><span class="xref myst">Website</span></a>.</p>
 </section>
 <section id="want-to-work-together">
-<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
+<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Link to this heading">#</a></h2>
 <p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
@@ -1336,7 +1348,7 @@ I(y_i, \hat{y}_i) =
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -1367,7 +1379,7 @@ I(y_i, \hat{y}_i) =
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1396,6 +1408,7 @@ I(y_i, \hat{y}_i) =
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1481,8 +1494,8 @@ By Michael J. Pyrcz
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

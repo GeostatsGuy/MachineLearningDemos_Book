@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Machine Learning Concepts &#8212; Applied Machine Learning in Python</title>
   
@@ -15,55 +14,51 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=304429a7" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=564be945" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'MachineLearning_concepts';</script>
@@ -80,28 +75,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -123,12 +113,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -144,6 +142,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -162,7 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -201,6 +212,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ensemble_trees.html">Bagging Tree and Random Forest</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_gradient_boosting.html">Gradient Boosting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_support_vector_machines.html">Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_activation_functions.html">Neural Networks Activation Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ANN.html">Artificial Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_CNN.html">Convolutional Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_autoencoder.html">Autoencoder Neural Networks</a></li>
@@ -226,7 +238,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -235,14 +247,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -367,10 +379,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -378,14 +390,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -453,15 +465,15 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <figure style="text-align: center;">
   <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
 </figure>
 <section id="machine-learning-concepts">
-<h1>Machine Learning Concepts<a class="headerlink" href="#machine-learning-concepts" title="Permalink to this heading">#</a></h1>
+<h1>Machine Learning Concepts<a class="headerlink" href="#machine-learning-concepts" title="Link to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite this e-Book as:</p>
@@ -485,7 +497,7 @@ document.write(`
 </ul>
 <p><strong>YouTube Lecture</strong>: check out my lecture on <a class="reference external" href="https://youtu.be/zOUM_AnI1DQ?si=Gi2KZTfPa5xQ2Qb6">Introduction to Machine Learning</a>. For your convenience here’s a summary of salient points.</p>
 <section id="motivation-for-machine-learning-concepts">
-<h2>Motivation for Machine Learning Concepts<a class="headerlink" href="#motivation-for-machine-learning-concepts" title="Permalink to this heading">#</a></h2>
+<h2>Motivation for Machine Learning Concepts<a class="headerlink" href="#motivation-for-machine-learning-concepts" title="Link to this heading">#</a></h2>
 <p>You could just open up a Jupyter notebook in Python and start building machine learning models.</p>
 <ul class="simple">
 <li><p>the <a class="reference external" href="https://scikit-learn.org/stable/">scikit-learn docs</a> are quite good and for every machine learning function there is a short code example that you could copy and paste to repeat their work.</p></li>
@@ -511,7 +523,7 @@ document.write(`
 <p>To help out this chapter provides you with the basic knowledge to answer these questions and to make better, more reliable machine learning models. Let’s start building this essential foundation with some definitions.</p>
 </section>
 <section id="big-data">
-<h2>Big Data<a class="headerlink" href="#big-data" title="Permalink to this heading">#</a></h2>
+<h2>Big Data<a class="headerlink" href="#big-data" title="Link to this heading">#</a></h2>
 <p>Everyone hears that machine learning needs a lot of data. In fact, so much data that it is called “big data”, but how do you know if you are working with big data?</p>
 <ul class="simple">
 <li><p>the criteria for big data are these ‘V’s</p></li>
@@ -536,7 +548,7 @@ document.write(`
 <p>Now that we know big data, let’s talk about the big data related topics, statistics, geostatistics and data analytics.</p>
 </section>
 <section id="statistics-geostatistics-and-data-analytics">
-<h2>Statistics, Geostatistics and Data Analytics<a class="headerlink" href="#statistics-geostatistics-and-data-analytics" title="Permalink to this heading">#</a></h2>
+<h2>Statistics, Geostatistics and Data Analytics<a class="headerlink" href="#statistics-geostatistics-and-data-analytics" title="Link to this heading">#</a></h2>
 <p>Statistics is the practice of,</p>
 <ol class="arabic simple">
 <li><p>collecting data</p></li>
@@ -578,7 +590,7 @@ document.write(`
 </figure>
 </section>
 <section id="scientific-paradigms-and-the-fourth-paradigm">
-<h2>Scientific Paradigms and the Fourth Paradigm<a class="headerlink" href="#scientific-paradigms-and-the-fourth-paradigm" title="Permalink to this heading">#</a></h2>
+<h2>Scientific Paradigms and the Fourth Paradigm<a class="headerlink" href="#scientific-paradigms-and-the-fourth-paradigm" title="Link to this heading">#</a></h2>
 <p>If no one else has said this to you, let me have the honor of saying,</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Welcome</p>
@@ -592,7 +604,7 @@ document.write(`
 <li><p><strong>Fourth Paradigm</strong> - analysis of massive datasets with tools such as data analytics, machine learning, cloud computing and AI, patterns in the data guide insights.</p></li>
 </ul>
 <p>Here’s all of the four paradigms with dates for important developments with each,</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>1st Paradigm Empirical Science</p></th>
 <th class="head text-left"><p>2nd Paradigm Theoretical Science</p></th>
@@ -628,8 +640,9 @@ document.write(`
 </tr>
 </tbody>
 </table>
+</div>
 <p>Of course, we can argue about the boundaries between the paradigms for scientific discovery, i.e., when did a specific paradigm begin? For example, consider these examples of the application of the first paradigm that push the start of the first paradigm deep into antiquity!</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>Field</p></th>
 <th class="head text-left"><p>Example</p></th>
@@ -665,11 +678,12 @@ document.write(`
 </tr>
 </tbody>
 </table>
+</div>
 <ul class="simple">
 <li><p>certainly the Mesopotamians (4000 BC - 3500 BC) applied the first paradigm with their experiments that supported the development of the wheel, plow, chariot, weaving loom, and irrigation. Aside, I wanted to give a shout out to the ancient peoples, because I’m quite fascinated by the development of human societies and their technologies over time.</p></li>
 </ul>
 <p>On the other side, we can trace the development of fourth paradigm approaches, for example the artificial neural networks to McColloch and Pitts in 1943 and consider these early examples of learning by distilling patterns from large datasets,</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>Year</p></th>
 <th class="head text-left"><p>Field</p></th>
@@ -735,15 +749,16 @@ document.write(`
 </tr>
 </tbody>
 </table>
+</div>
 <p>Finally, the adoption of a new scientific paradigm represents a significant societal shift that unfolds unevenly across the globe. While I aim to summarize the chronology, it’s important to acknowledge its complexity.</p>
 </section>
 <section id="foundations-and-enablers-of-the-fourth-scientific-paradigm">
-<h2>Foundations and Enablers of the Fourth Scientific Paradigm<a class="headerlink" href="#foundations-and-enablers-of-the-fourth-scientific-paradigm" title="Permalink to this heading">#</a></h2>
+<h2>Foundations and Enablers of the Fourth Scientific Paradigm<a class="headerlink" href="#foundations-and-enablers-of-the-fourth-scientific-paradigm" title="Link to this heading">#</a></h2>
 <p>What caused the fourth paradigm to start some time between 1943 and 2009? Is it the development of new math?</p>
 <ul class="simple">
 <li><p>the foundational mathematics behind data-driven models has been available for decades and even centuries. Consider the following examples of mathematical and statistical developments that underpin modern data science,</p></li>
 </ul>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>Technique</p></th>
 <th class="head text-left"><p>Key Contributor(s)</p></th>
@@ -773,6 +788,7 @@ document.write(`
 </tr>
 </tbody>
 </table>
+</div>
 <p>Upon reflection, one might ask: why didn’t the fourth scientific paradigm emerge earlier—say, in the 1800s or even before the 1940s? What changed? The answer lies in the fact that several key developments were still needed to create the fertile ground for data science to take root.</p>
 <p>Specifically:</p>
 <ul class="simple">
@@ -781,9 +797,9 @@ document.write(`
 </ul>
 <p>Let’s explore each of these in more detail.</p>
 <section id="cheap-and-available-compute">
-<h3>Cheap and Available Compute<a class="headerlink" href="#cheap-and-available-compute" title="Permalink to this heading">#</a></h3>
+<h3>Cheap and Available Compute<a class="headerlink" href="#cheap-and-available-compute" title="Link to this heading">#</a></h3>
 <p>Learning from big data is not feasible without affordable and widely available computing and storage resources. Consider the following computational advancements that paved the way for the emergence of the fourth scientific paradigm,</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>Year</p></th>
 <th class="head text-left"><p>Milestone</p></th>
@@ -813,6 +829,7 @@ document.write(`
 </tr>
 </tbody>
 </table>
+</div>
 <p>Yes, when I was in grade 1 of my elementary school education we had the first computers in classrooms (Apple IIe), and it amazed all of us with the monochrome (orange and black pixels) monitor, 5 1/4 inch floppy disk loaded programs (there was no hard drive) and the beeps and clicks from the computer (no dedicated sound chip)!</p>
 <p>We live in a society with more compute power in our pockets, i.e., our cell phones, than used to send the first astronauts to the moon and a SETI screen saver that uses home computers’ idle time to search for extraterrestrial life!</p>
 <ul class="simple">
@@ -839,7 +856,7 @@ document.write(`
 <p>In the era of Babbage’s Analytical Engine or the ENIAC, data science at scale would have been simply impossible.</p>
 </section>
 <section id="availability-of-big-data">
-<h3>Availability of Big Data<a class="headerlink" href="#availability-of-big-data" title="Permalink to this heading">#</a></h3>
+<h3>Availability of Big Data<a class="headerlink" href="#availability-of-big-data" title="Link to this heading">#</a></h3>
 <p>With small data, we often rely on external sources of knowledge such as:</p>
 <ol class="arabic simple">
 <li><p>Physics</p></li>
@@ -853,7 +870,7 @@ document.write(`
 </ul>
 <p>It may even challenge the exclusive reliance on second and third paradigm models, as the complexity of large datasets uncovers the boundaries of our existing theoretical frameworks.</p>
 <p>Today, big data is everywhere! Consider all the open-source and publically available data online. Here’s some great examples,</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>Resource</p></th>
 <th class="head text-left"><p>Description</p></th>
@@ -911,6 +928,7 @@ document.write(`
 </tr>
 </tbody>
 </table>
+</div>
 <p>While open data is rapidly expanding, proprietary data is also growing quickly across many industries, driven by the adoption of smart, connected systems with advanced monitoring and control.</p>
 <p>The result of all of this is a massive explosion of data, supported by faster, more affordable computing, processing, and storage. We are now immersed in a sea of data that previous generations could never have imagined.</p>
 <ul class="simple">
@@ -940,7 +958,7 @@ document.write(`
 </section>
 </section>
 <section id="data-science-and-subsurface-resources">
-<h2>Data Science and Subsurface Resources<a class="headerlink" href="#data-science-and-subsurface-resources" title="Permalink to this heading">#</a></h2>
+<h2>Data Science and Subsurface Resources<a class="headerlink" href="#data-science-and-subsurface-resources" title="Link to this heading">#</a></h2>
 <p>Spoiler alert, I’m going to boast a bit in the section. I often hear students say,</p>
 <ul class="simple">
 <li><p>“I can’t believe this data science course is in the <a class="reference external" href="https://pge.utexas.edu/">Hildebrand Department of Petroleum and Geosystems Engineering</a>!”</p></li>
@@ -977,7 +995,7 @@ document.write(`
 <p>As a result, many of us in subsurface engineering and geoscience have a lot of experience learning, applying, and teaching data science to better understand and manage these complexities.</p>
 </section>
 <section id="machine-learning">
-<h2>Machine Learning<a class="headerlink" href="#machine-learning" title="Permalink to this heading">#</a></h2>
+<h2>Machine Learning<a class="headerlink" href="#machine-learning" title="Link to this heading">#</a></h2>
 <p>Now we are ready to define machine learning, a <a class="reference external" href="https://en.wikipedia.org/wiki/Machine_learning">Wikipedia artical on Machine Learning</a> can be summarized and broken down as follows, machine learning has these aspects,</p>
 <ol class="arabic simple">
 <li><p><strong>toolbox</strong> - a collections of algorithms and mathematical models used by computer systems</p></li>
@@ -999,10 +1017,10 @@ document.write(`
 </ul>
 </section>
 <section id="machine-learning-prerequisite-definitions">
-<h2>Machine Learning Prerequisite Definitions<a class="headerlink" href="#machine-learning-prerequisite-definitions" title="Permalink to this heading">#</a></h2>
+<h2>Machine Learning Prerequisite Definitions<a class="headerlink" href="#machine-learning-prerequisite-definitions" title="Link to this heading">#</a></h2>
 <p>To understand machine learning and in general, data science we need to first differentiate between the population and the sample.</p>
 <section id="population">
-<h3>Population<a class="headerlink" href="#population" title="Permalink to this heading">#</a></h3>
+<h3>Population<a class="headerlink" href="#population" title="Link to this heading">#</a></h3>
 <p>The population is all possible information of our spatial phenomenon of interest. Exhaustive, finite list of feature of interest over area of interest at the resolution of the data. For example,</p>
 <ul class="simple">
 <li><p>exhaustive set of porosity at every location within a gas reservoir at the scale of a core sample, i.e., imagine the entire reservoir drilled, extracted and analyzed core by core!</p></li>
@@ -1016,7 +1034,7 @@ document.write(`
 </ul>
 </section>
 <section id="sample">
-<h3>Sample<a class="headerlink" href="#sample" title="Permalink to this heading">#</a></h3>
+<h3>Sample<a class="headerlink" href="#sample" title="Link to this heading">#</a></h3>
 <p>The limited set of values, at specific locations that have been measured. For example,</p>
 <ul class="simple">
 <li><p>limited set of porosity values measured from extracted core sample and callibrated from well-logs within a reservoir</p></li>
@@ -1035,7 +1053,7 @@ document.write(`
 <p>Each distinct type of measure is called a variable or feature.</p>
 </section>
 <section id="variable-or-feature">
-<h3>Variable or Feature<a class="headerlink" href="#variable-or-feature" title="Permalink to this heading">#</a></h3>
+<h3>Variable or Feature<a class="headerlink" href="#variable-or-feature" title="Link to this heading">#</a></h3>
 <p>In any scientific or engineering study, a property that is measured or observed is typically referred to as a variable.</p>
 <ul class="simple">
 <li><p>however, in data science and machine learning, we use the term feature almost exclusively.</p></li>
@@ -1078,7 +1096,7 @@ document.write(`
 <p>This is a critical reminder, our features generally require interpretation, even when they appear directly measurable. Measurement scale, observation method, and intended use all influence how we define and derive a useful feature for our data science models.</p>
 </section>
 <section id="predictor-and-response-features">
-<h3>Predictor and Response Features<a class="headerlink" href="#predictor-and-response-features" title="Permalink to this heading">#</a></h3>
+<h3>Predictor and Response Features<a class="headerlink" href="#predictor-and-response-features" title="Link to this heading">#</a></h3>
 <p>To understand the difference between predictor and response features let’s look at the most concise expression of a machine learning model.</p>
 <figure style="text-align: center;">
   <img src="_static/concepts/ML_equation.png" style="display: block; margin: 0 auto; width: 70%;">
@@ -1092,7 +1110,7 @@ document.write(`
 <p>Machine Learning is all about estimating such models, <span class="math notranslate nohighlight">\(\hat{𝑓}\)</span>, for two purposes, inference or prediction.</p>
 </section>
 <section id="inference">
-<h3>Inference<a class="headerlink" href="#inference" title="Permalink to this heading">#</a></h3>
+<h3>Inference<a class="headerlink" href="#inference" title="Link to this heading">#</a></h3>
 <p>Before we can make reliable predictions, we must first perform inference—that is, we must learn about the underlying system from a limited sample in order to model the broader population. Inference is the process of building an understanding of the system, denoted as <span class="math notranslate nohighlight">\(\hat{f}\)</span>, based on observed data.</p>
 <p>Through inference, we seek to answer questions like:</p>
 <ul class="simple">
@@ -1110,7 +1128,7 @@ document.write(`
 <p>You’re not just summarizing the sample, you’re trying to learn something general about the system that generated the sample.</p>
 </section>
 <section id="prediction">
-<h3>Prediction<a class="headerlink" href="#prediction" title="Permalink to this heading">#</a></h3>
+<h3>Prediction<a class="headerlink" href="#prediction" title="Link to this heading">#</a></h3>
 <p>Once we’ve completed inference—learning from a sample to build a model of the underlying population—we’re ready to use that model for prediction. Prediction is the process of applying what we’ve learned to estimate the outcomes of new or future observations.</p>
 <ul class="simple">
 <li><p>in short, inference goes from sample to the population, while prediction goes from population model to the new sample</p></li>
@@ -1123,7 +1141,7 @@ document.write(`
 <p>Now, before I flip it again, you predict that the next 10 tosses will likely result in more tails than heads. That’s prediction, using your inferred model of the coin (i.e., the population) to estimate future data.</p>
 </section>
 <section id="inference-vs-prediction-in-machine-learning">
-<h3>Inference vs. Prediction in Machine Learning<a class="headerlink" href="#inference-vs-prediction-in-machine-learning" title="Permalink to this heading">#</a></h3>
+<h3>Inference vs. Prediction in Machine Learning<a class="headerlink" href="#inference-vs-prediction-in-machine-learning" title="Link to this heading">#</a></h3>
 <p>So, how do you know whether you’re doing inference or prediction in the machine learning context?</p>
 <ul class="simple">
 <li><p>it depends on whether you’re modeling structure or estimating outcomes</p></li>
@@ -1151,7 +1169,7 @@ document.write(`
 </section>
 </section>
 <section id="training-and-tuning-predictive-machine-learning-models">
-<h2>Training and Tuning Predictive Machine Learning Models<a class="headerlink" href="#training-and-tuning-predictive-machine-learning-models" title="Permalink to this heading">#</a></h2>
+<h2>Training and Tuning Predictive Machine Learning Models<a class="headerlink" href="#training-and-tuning-predictive-machine-learning-models" title="Link to this heading">#</a></h2>
 <p>In predictive machine learning, we follow a standard model training and testing workflow. This process ensures that our model generalizes well to new data, rather than just fitting the training data perfectly.</p>
 <figure style="text-align: center;">
   <img src="_static/concepts/ML_workflow_portrait.png" style="display: block; margin: 0 auto; width: 100%;">
@@ -1204,7 +1222,7 @@ document.write(`
 </ul>
 </section>
 <section id="common-questions-about-the-model-training-and-tuning-workflow">
-<h2>Common Questions About the Model Training and Tuning Workflow<a class="headerlink" href="#common-questions-about-the-model-training-and-tuning-workflow" title="Permalink to this heading">#</a></h2>
+<h2>Common Questions About the Model Training and Tuning Workflow<a class="headerlink" href="#common-questions-about-the-model-training-and-tuning-workflow" title="Link to this heading">#</a></h2>
 <p>As a professor, I often hear these questions when I introduce the above machine learning model training and tuning workflow.</p>
 <ul class="simple">
 <li><p><strong>What is the main outcome of steps 1–5?</strong> - the only reliable outcome is the tuned hyperparameters.</p></li>
@@ -1223,7 +1241,7 @@ document.write(`
 <p>I’ve said model parameters and model hyperparameters a bunch of times, so I owe you their definitions.</p>
 </section>
 <section id="model-parameters-and-model-hyperparameters">
-<h2>Model Parameters and Model Hyperparameters<a class="headerlink" href="#model-parameters-and-model-hyperparameters" title="Permalink to this heading">#</a></h2>
+<h2>Model Parameters and Model Hyperparameters<a class="headerlink" href="#model-parameters-and-model-hyperparameters" title="Link to this heading">#</a></h2>
 <p><strong>Model parameters</strong> are fit during training phase to minimize error at the training data, i.e., model parameters are trained with training data and control model fit to the data. For example,</p>
 <ul class="simple">
 <li><p>for the polynomial predictive machine learning model from the machine learning workflow example above, the model parameters are the polynomial coefficients, e.g., <span class="math notranslate nohighlight">\(b_3\)</span>, <span class="math notranslate nohighlight">\(b_2\)</span>, <span class="math notranslate nohighlight">\(b_1\)</span> and <span class="math notranslate nohighlight">\(c\)</span> (often called <span class="math notranslate nohighlight">\(b_0\)</span>) for the third order polynomial model.</p></li>
@@ -1244,7 +1262,7 @@ The model hyperparameters are selected (call tuning) to minimize error at the wi
 </div>
 </section>
 <section id="regression-and-classification">
-<h2>Regression and Classification<a class="headerlink" href="#regression-and-classification" title="Permalink to this heading">#</a></h2>
+<h2>Regression and Classification<a class="headerlink" href="#regression-and-classification" title="Link to this heading">#</a></h2>
 <p>Before we proceed, we need to define regression and classification.</p>
 <ul class="simple">
 <li><p><strong>Regression</strong> - a predictive machine learning model where the response feature(s) is continuous.</p></li>
@@ -1260,7 +1278,7 @@ The model hyperparameters are selected (call tuning) to minimize error at the wi
 </ul>
 </section>
 <section id="sources-of-predictive-machine-learning-testing-error">
-<h2>Sources of Predictive Machine Learning Testing Error<a class="headerlink" href="#sources-of-predictive-machine-learning-testing-error" title="Permalink to this heading">#</a></h2>
+<h2>Sources of Predictive Machine Learning Testing Error<a class="headerlink" href="#sources-of-predictive-machine-learning-testing-error" title="Link to this heading">#</a></h2>
 <p>Mean square error (MSE) is a standard way to express error. Mean squared error is known as a norm because we at taking a vector of error (over all of the data) and summarizing with a single, non-negative value.</p>
 <ul class="simple">
 <li><p>specifically MSER is the L2 norm because the errors are squared before they are summed,</p></li>
@@ -1292,7 +1310,7 @@ MSE_{test} = \frac{1}{n_{test}} \sum_{i=1}^{n_{test}} \left( y_i - \hat{f}(x^1_i
 \[
 E \left[ \left( y_0 - \hat{f}(x^1_0, \ldots , x^m_0) \right)^2 \right]
 \]</div>
-<p>where we use the <span class="math notranslate nohighlight">\(_0\)</span> notation to indicate data samples not in the training dataset split, but in the withheld testing split. We can expand the quadratic and group the terms to get this convenient decomposition of expect test square error into three additive sources (derivation is available in <a class="reference external" href="https://www.amazon.com/Elements-Statistical-Learning-Prediction-Statistics/dp/0387848576/ref=sr_1_1?crid=32MDGH9EIGR9T&amp;dib=eyJ2IjoiMSJ9.p0bVgWPuChRIt10algkzSRLwDHzW4bCihIh1RA6GGZDYFtIQN37sOnIqDS5rCJ4fF5dgqsleBiGbmgJUSXISlcmayLc6C0aOcXVX8iCtyZElt9qVbd-Dvq9P3x4KTBlzHCFHDtjz0ImJUAd3LhT6D6KhOtiHOAveaz8xiE4jU1ah6LlDo0xzGoQVDXzNE6ODFzysbfBvzJMRGXhLbQBD292ixuH_tTBTPZwOzNGzpIw.TpRqJ1llQqMdsDXdXhWr0WQIhzTn6rpjDKSAzA10E_I&amp;dib_tag=se&amp;keywords=hastie+machine+learning&amp;qid=1728683359&amp;s=books&amp;sprefix=hastie+machine+learn%2Cstripbooks%2C187&amp;sr=1-1">Hastie et al., 2009</a>,</p>
+<p>where we use the <span class="math notranslate nohighlight">\(_0\)</span> notation to indicate data samples not in the training dataset split, but in the withheld testing split. We can expand the quadratic and group the terms to get this convenient decomposition of expect test square error into three additive sources (derivation is available in <a class="reference external" href="https://www.amazon.com/Elements-Statistical-Learning-Prediction-Statistics/dp/0387848576/ref=sr_1_1?crid=32MDGH9EIGR9T&amp;amp;dib=eyJ2IjoiMSJ9.p0bVgWPuChRIt10algkzSRLwDHzW4bCihIh1RA6GGZDYFtIQN37sOnIqDS5rCJ4fF5dgqsleBiGbmgJUSXISlcmayLc6C0aOcXVX8iCtyZElt9qVbd-Dvq9P3x4KTBlzHCFHDtjz0ImJUAd3LhT6D6KhOtiHOAveaz8xiE4jU1ah6LlDo0xzGoQVDXzNE6ODFzysbfBvzJMRGXhLbQBD292ixuH_tTBTPZwOzNGzpIw.TpRqJ1llQqMdsDXdXhWr0WQIhzTn6rpjDKSAzA10E_I&amp;amp;dib_tag=se&amp;amp;keywords=hastie+machine+learning&amp;amp;qid=1728683359&amp;amp;s=books&amp;amp;sprefix=hastie+machine+learn%2Cstripbooks%2C187&amp;amp;sr=1-1">Hastie et al., 2009</a>,</p>
 <figure style="text-align: center;">
   <img src="_static/concepts/three_error.png" style="display: block; margin: 0 auto; width: 90%;">
   <figcaption style="text-align: center;">Model error in testing with three additive components, model variance, model bias and irreducible error.</figcaption>
@@ -1328,7 +1346,7 @@ E \left[ \left( y_0 - \hat{f}(x^1_0, \ldots , x^m_0) \right)^2 \right]
 <p>Now, let’s get into more details about under and overfit machine learning models.</p>
 </section>
 <section id="underfit-and-overfit-models">
-<h2>Underfit and Overfit Models<a class="headerlink" href="#underfit-and-overfit-models" title="Permalink to this heading">#</a></h2>
+<h2>Underfit and Overfit Models<a class="headerlink" href="#underfit-and-overfit-models" title="Link to this heading">#</a></h2>
 <p>First visualize underfit and overfit first with a simple prediction problem with one predictor feature and one response feature, here’s a model that is too simple (left) and a model that is too complicated (right).</p>
 <figure style="text-align: center;">
   <img src="_static/concepts/under_overfit.png" style="display: block; margin: 0 auto; width: 100%;">
@@ -1356,10 +1374,10 @@ E \left[ \left( y_0 - \hat{f}(x^1_0, \ldots , x^m_0) \right)^2 \right]
 </ul>
 </section>
 <section id="more-about-training-and-testing-splits">
-<h2>More About Training and Testing Splits<a class="headerlink" href="#more-about-training-and-testing-splits" title="Permalink to this heading">#</a></h2>
+<h2>More About Training and Testing Splits<a class="headerlink" href="#more-about-training-and-testing-splits" title="Link to this heading">#</a></h2>
 <p>A critical part of the machine learning training and tuning workflow is the training and testing data split. Here is some more considerations about training and testing data splits,</p>
 <section id="proportion-withheld-for-testing">
-<h3>Proportion Withheld for Testing<a class="headerlink" href="#proportion-withheld-for-testing" title="Permalink to this heading">#</a></h3>
+<h3>Proportion Withheld for Testing<a class="headerlink" href="#proportion-withheld-for-testing" title="Link to this heading">#</a></h3>
 <p>Meta studies have identified that between 15% and 30% withheld for testing is typically optimum. To understand the underlying trade-off imagine these end members,</p>
 <ul class="simple">
 <li><p>withhold 2% of the data for testing, then we will have a lot of training data to train the model very well, but too few testing data to test our model over a range of prediction cases.</p></li>
@@ -1368,7 +1386,7 @@ E \left[ \left( y_0 - \hat{f}(x^1_0, \ldots , x^m_0) \right)^2 \right]
 <p>The proportion to withhold for testing is a trade off between building a good model and testing this model well with a wide range of prediction cases.</p>
 </section>
 <section id="other-cross-validation-methods">
-<h3>Other Cross Validation Methods<a class="headerlink" href="#other-cross-validation-methods" title="Permalink to this heading">#</a></h3>
+<h3>Other Cross Validation Methods<a class="headerlink" href="#other-cross-validation-methods" title="Link to this heading">#</a></h3>
 <p>The train and test workflow above known as a cross validation or hold out approach, but there are many other methods for model training and testing,</p>
 <ul class="simple">
 <li><p><strong>k-fold Cross Validation (K-fold CV)</strong> - we divide the data into k mutually exclusive, exhaustive equal size sets (called folds) for repeat the model train and test k times with each fold having a turn being withheld testing data while the remainder is training data.</p></li>
@@ -1388,7 +1406,7 @@ E \left[ \left( y_0 - \hat{f}(x^1_0, \ldots , x^m_0) \right)^2 \right]
 </ul>
 </section>
 <section id="train-validate-and-test-split">
-<h3>Train, Validate and Test Split<a class="headerlink" href="#train-validate-and-test-split" title="Permalink to this heading">#</a></h3>
+<h3>Train, Validate and Test Split<a class="headerlink" href="#train-validate-and-test-split" title="Link to this heading">#</a></h3>
 <p>There is an alternative approach with three exhaustive, mutually exclusive subsets of the data</p>
 <ul class="simple">
 <li><p><strong>training data</strong> - subset is the same as train above and is used to train the model parameters</p></li>
@@ -1403,7 +1421,7 @@ E \left[ \left( y_0 - \hat{f}(x^1_0, \ldots , x^m_0) \right)^2 \right]
 </ol>
 </section>
 <section id="spatial-fair-train-and-test-splits">
-<h3>Spatial Fair Train and Test Splits<a class="headerlink" href="#spatial-fair-train-and-test-splits" title="Permalink to this heading">#</a></h3>
+<h3>Spatial Fair Train and Test Splits<a class="headerlink" href="#spatial-fair-train-and-test-splits" title="Link to this heading">#</a></h3>
 <p>Dr. Julian Salazar suggested that for spatial prediction problems that random train and test split may not fair. He proposed a <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0920410521015023">fair train and test split method</a> for spatial prediction models that splits the data based on the difficulty of the planned use of the model. Prediction difficulty is related to kriging variance that accounts for spatial continuity and distance offset. For example,</p>
 <ul class="simple">
 <li><p>if the model will be used to impute data with small offsets from available data then construct a train and test split with train data close to test data</p></li>
@@ -1413,7 +1431,7 @@ E \left[ \left( y_0 - \hat{f}(x^1_0, \ldots , x^m_0) \right)^2 \right]
 </section>
 </section>
 <section id="ethical-and-professional-practice-concerns-with-data-science">
-<h2>Ethical and Professional Practice Concerns with Data Science<a class="headerlink" href="#ethical-and-professional-practice-concerns-with-data-science" title="Permalink to this heading">#</a></h2>
+<h2>Ethical and Professional Practice Concerns with Data Science<a class="headerlink" href="#ethical-and-professional-practice-concerns-with-data-science" title="Link to this heading">#</a></h2>
 <p>To demonstrate concerns with data science consider this example, <a class="reference external" href="https://arxiv.org/pdf/1602.04938.pdf">Rideiro et al. (2016)</a> trained a logistic regression classifier with 20 wolf and dog images to detect the difference between wolves and dogs.</p>
 <ul class="simple">
 <li><p>the input is a photo of a dog or wolf and the output is the probability of dog and the compliment, the probability of wolf</p></li>
@@ -1440,20 +1458,20 @@ E \left[ \left( y_0 - \hat{f}(x^1_0, \ldots , x^m_0) \right)^2 \right]
 <li><p>Societal changes, disruptive technologies, post-labor society</p></li>
 <li><p>Non-scientific results such as <a class="reference external" href="https://en.wikipedia.org/wiki/Clever_Hans">Clever Hans</a> effect with models that learn from tells in the data rather than really learning to perform the task resulting catastrophic failures</p></li>
 </ul>
-<p>I don’t want to be too negative and to take this too far. Full disclosure, I’m the old-fashioned professor that thinks we should put of phones in our pockets, walk around with our heads up so we can greet each other and observe our amazing environments and societies. One thing that is certain, data science is changing society in so many ways and as Neil Postman in <a class="reference external" href="https://www.amazon.com/Technopoly-Surrender-Technology-Neil-Postman-ebook/dp/B004ZZJBW4/ref=sr_1_1?crid=E9SP0DFNP9JO&amp;dib=eyJ2IjoiMSJ9.ELnF0aIjkOw11vdTEQ3Tpg.NSaPUOIOz6m6i7XxpEMUJvZobANzU5baE6DlEa40Uzs&amp;dib_tag=se&amp;keywords=technolopoly&amp;qid=1728667409&amp;sprefix=technolopo%2Caps%2C127&amp;sr=8-1">Technopoly</a>)</p>
+<p>I don’t want to be too negative and to take this too far. Full disclosure, I’m the old-fashioned professor that thinks we should put of phones in our pockets, walk around with our heads up so we can greet each other and observe our amazing environments and societies. One thing that is certain, data science is changing society in so many ways and as Neil Postman in <a class="reference external" href="https://www.amazon.com/Technopoly-Surrender-Technology-Neil-Postman-ebook/dp/B004ZZJBW4/ref=sr_1_1?crid=E9SP0DFNP9JO&amp;amp;dib=eyJ2IjoiMSJ9.ELnF0aIjkOw11vdTEQ3Tpg.NSaPUOIOz6m6i7XxpEMUJvZobANzU5baE6DlEa40Uzs&amp;amp;dib_tag=se&amp;amp;keywords=technolopoly&amp;amp;qid=1728667409&amp;amp;sprefix=technolopo%2Caps%2C127&amp;amp;sr=8-1">Technopoly</a>)</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Neil Postman’s Quote for Technopoly</p>
 <p>“Once a technology is admitted, it plays out its hand.”</p>
 </div>
 </section>
 <section id="comments">
-<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
+<h2>Comments<a class="headerlink" href="#comments" title="Link to this heading">#</a></h2>
 <p>This was a basic description of machine learning concepts. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
 <p>I hope this was helpful,</p>
 <p><em>Michael</em></p>
 </section>
 <section id="about-the-author">
-<h2>About the Author<a class="headerlink" href="#about-the-author" title="Permalink to this heading">#</a></h2>
+<h2>About the Author<a class="headerlink" href="#about-the-author" title="Link to this heading">#</a></h2>
 <figure style="text-align: center;">
   <img src="_static/intro/michael_pyrcz_officeshot_jacket.jpg" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
@@ -1464,11 +1482,11 @@ E \left[ \left( y_0 - \hat{f}(x^1_0, \ldots , x^m_0) \right)^2 \right]
 <li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
+<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference internal" href="#www.michaelpyrcz.com"><span class="xref myst">Website</span></a>.</p>
 </section>
 <section id="want-to-work-together">
-<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
+<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Link to this heading">#</a></h2>
 <p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
@@ -1478,7 +1496,7 @@ E \left[ \left( y_0 - \hat{f}(x^1_0, \ldots , x^m_0) \right)^2 \right]
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -1509,7 +1527,7 @@ E \left[ \left( y_0 - \hat{f}(x^1_0, \ldots , x^m_0) \right)^2 \right]
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1538,6 +1556,7 @@ E \left[ \left( y_0 - \hat{f}(x^1_0, \ldots , x^m_0) \right)^2 \right]
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1631,8 +1650,8 @@ By Michael J. Pyrcz
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

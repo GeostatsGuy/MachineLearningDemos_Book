@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Machine Learning Workflow Construction and Coding &#8212; Applied Machine Learning in Python</title>
   
@@ -15,55 +14,51 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=304429a7" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=564be945" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'MachineLearning_workflow_construction';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -78,28 +73,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -121,12 +111,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -142,6 +140,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -160,7 +160,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -199,6 +210,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ensemble_trees.html">Bagging Tree and Random Forest</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_gradient_boosting.html">Gradient Boosting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_support_vector_machines.html">Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_activation_functions.html">Neural Networks Activation Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ANN.html">Artificial Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_CNN.html">Convolutional Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_autoencoder.html">Autoencoder Neural Networks</a></li>
@@ -224,7 +236,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -233,14 +245,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -365,10 +377,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -376,14 +388,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -434,15 +446,15 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <figure style="text-align: center;">
   <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
 </figure>
 <section id="machine-learning-workflow-construction-and-coding">
-<h1>Machine Learning Workflow Construction and Coding<a class="headerlink" href="#machine-learning-workflow-construction-and-coding" title="Permalink to this heading">#</a></h1>
+<h1>Machine Learning Workflow Construction and Coding<a class="headerlink" href="#machine-learning-workflow-construction-and-coding" title="Link to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite this e-Book as:</p>
@@ -468,12 +480,12 @@ document.write(`
 <li><p><a class="reference external" href="https://youtu.be/w98m0cPN2Ag?si=y4DYNt9Cr6N8gALT">Subsurface and Spatial Modeling</a></p></li>
 </ul>
 <section id="motivation-for-machine-learning-workflow-construction-and-coding">
-<h2>Motivation for Machine Learning Workflow Construction and Coding<a class="headerlink" href="#motivation-for-machine-learning-workflow-construction-and-coding" title="Permalink to this heading">#</a></h2>
+<h2>Motivation for Machine Learning Workflow Construction and Coding<a class="headerlink" href="#motivation-for-machine-learning-workflow-construction-and-coding" title="Link to this heading">#</a></h2>
 <p>You could learn the theory of data science and machine learning. Completely understand probability, statistics, inference and prediction, cross validation for hyperparameter tuning and model checking, but to add value we must code practical, fit-for-purpose workflows that can be widely deployed and used by many others. I’ve done this for many years and my goal is to share some of my experience to help you get started, or hone your skills!</p>
 <p>If you don’t already code then please review my reasons for all scientists and engineers to learn some coding. I often share this on social media and in my classes.</p>
 </section>
 <section id="reasons-for-all-scientists-and-engineers-to-learn-some-coding">
-<h2>Reasons for All Scientists and Engineers to Learn Some Coding<a class="headerlink" href="#reasons-for-all-scientists-and-engineers-to-learn-some-coding" title="Permalink to this heading">#</a></h2>
+<h2>Reasons for All Scientists and Engineers to Learn Some Coding<a class="headerlink" href="#reasons-for-all-scientists-and-engineers-to-learn-some-coding" title="Link to this heading">#</a></h2>
 <p>Here’s Professor Pyrcz’s reasons for all scientists and engineers to learn some coding.</p>
 <ol class="arabic simple">
 <li><p><strong>Transparency</strong> – no compiler accepts hand waiving! Coding forces your logic to be uncovered for any other scientist or engineer to review.</p></li>
@@ -499,7 +511,7 @@ document.write(`
 </div>
 </section>
 <section id="modeling-purpose">
-<h2>Modeling Purpose<a class="headerlink" href="#modeling-purpose" title="Permalink to this heading">#</a></h2>
+<h2>Modeling Purpose<a class="headerlink" href="#modeling-purpose" title="Link to this heading">#</a></h2>
 <p>The first step in any data science project is to pose the question, what is the purpose of this work? To address this we have to step back and ask:</p>
 <ol class="arabic simple">
 <li><p>What is the problem?</p></li>
@@ -509,7 +521,7 @@ document.write(`
 </ol>
 <p>Let’s start by reviewing some purposes for modeling. Now these will be focused on my experience in subsurface modeling, but they are transferable to any other type of data science project.</p>
 <section id="build-a-numerical-model-common-earth-model">
-<h3>Build a Numerical Model / Common Earth Model<a class="headerlink" href="#build-a-numerical-model-common-earth-model" title="Permalink to this heading">#</a></h3>
+<h3>Build a Numerical Model / Common Earth Model<a class="headerlink" href="#build-a-numerical-model-common-earth-model" title="Link to this heading">#</a></h3>
 <p>You often hear that we don’t model for the sake of modeling. That is mostly true, but sometimes there is value in just building the model. In this case, we see the model as a numerical platform to integrate all available information, build a unified understanding of the problem setting. When we do this there is a lot value adding things that often happen:</p>
 <ul class="simple">
 <li><p>Establish what is known, unknown and the critical risks</p></li>
@@ -522,7 +534,7 @@ document.write(`
 </figure>
 </section>
 <section id="assess-resources-and-value">
-<h3>Assess Resources and Value<a class="headerlink" href="#assess-resources-and-value" title="Permalink to this heading">#</a></h3>
+<h3>Assess Resources and Value<a class="headerlink" href="#assess-resources-and-value" title="Link to this heading">#</a></h3>
 <p>Sometimes models support the assessment of value. For a resource company resources and reserves are a critical part of their valuation. These models compute the gross volume of the resources, the associated spatial distribution and schedule of resource recovery.</p>
 <ul class="simple">
 <li><p>Of course, in this case we include much more than the data, including the engineering and geoscience associated with the extraction method and the forecasts of market conditions. Our models are often integrated over many scientific disciplines are may even be applied to report value outside our organization.</p></li>
@@ -534,14 +546,14 @@ document.write(`
 </figure>
 </section>
 <section id="quantify-resources-uncertainty">
-<h3>Quantify Resources Uncertainty<a class="headerlink" href="#quantify-resources-uncertainty" title="Permalink to this heading">#</a></h3>
+<h3>Quantify Resources Uncertainty<a class="headerlink" href="#quantify-resources-uncertainty" title="Link to this heading">#</a></h3>
 <p>Once again we must always integrate multiple sources and multiple scales of data, but often we must also include all significant sources of uncertainty to model uncertainty in recoverable resource.</p>
 <ul class="simple">
 <li><p>These types of projects report uncertainty and risk, but also may be used to direct data collection to reduce uncertainty, support development decisions and / or public disclosures</p></li>
 </ul>
 </section>
 <section id="exporting-statistics">
-<h3>Exporting Statistics<a class="headerlink" href="#exporting-statistics" title="Permalink to this heading">#</a></h3>
+<h3>Exporting Statistics<a class="headerlink" href="#exporting-statistics" title="Link to this heading">#</a></h3>
 <p>Sometimes we model a thing to help model another thing! In this case we develop a robust set of statistics from a mature location with a lot of good data for the purpose of applying this model to support decision making in a less mature, less sampled early development location. In this case we are assuming that the two sites are similar, known as an assumption of stationarity in geostatistics.</p>
 <ul class="simple">
 <li><p>Example of exported statistics include, distributions, correlations, training images, etc.</p></li>
@@ -556,7 +568,7 @@ document.write(`
 </section>
 </section>
 <section id="the-common-machine-learning-workflow">
-<h2>The Common Machine Learning Workflow<a class="headerlink" href="#the-common-machine-learning-workflow" title="Permalink to this heading">#</a></h2>
+<h2>The Common Machine Learning Workflow<a class="headerlink" href="#the-common-machine-learning-workflow" title="Link to this heading">#</a></h2>
 <p>Once we know the purpose for our data science modeling work, then we can utilize common modeling workflows. For example, for many machine learning projects we follow these steps:</p>
 <ol class="arabic simple">
 <li><p><strong>Data Cleaning</strong> - there are going to be data issues. Missing data, data with errors, biased data, etc. Often data cleaning is 80% - 90% of the effort on a data science project. This step requires a lot of domain expertise, so I can’t give you too much advice for your case besides,</p></li>
@@ -593,7 +605,7 @@ document.write(`
 </ul>
 </section>
 <section id="fit-for-purpose-modeling">
-<h2>Fit-for-Purpose Modeling<a class="headerlink" href="#fit-for-purpose-modeling" title="Permalink to this heading">#</a></h2>
+<h2>Fit-for-Purpose Modeling<a class="headerlink" href="#fit-for-purpose-modeling" title="Link to this heading">#</a></h2>
 <p>Regardless what data science workflow you build, you need to have a “fit-for-purpose” mentality. What does that mean?</p>
 <ol class="arabic simple">
 <li><p>As we discussed, the data science workflow design considers the goals of the workflow</p></li>
@@ -607,7 +619,7 @@ document.write(`
 </figure>
 </section>
 <section id="modeling-constraints">
-<h2>Modeling Constraints<a class="headerlink" href="#modeling-constraints" title="Permalink to this heading">#</a></h2>
+<h2>Modeling Constraints<a class="headerlink" href="#modeling-constraints" title="Link to this heading">#</a></h2>
 <p>Let’s talk a bit more about modeling constraints. Every organization has limitations, this is critical to capital stewardship and profitability. Here’s some of the common constraints,</p>
 <ol class="arabic simple">
 <li><p><strong>Professional Time</strong> - work hours available limited by workforce, number of projects and project timelines schedules. Our time is valuable and within the organization there is an accounting of the cost to maintain each project team member, full time equivalent (FTE), for a period of time. From this we can think about what activities are value adding to offset this cost.</p></li>
@@ -618,10 +630,10 @@ document.write(`
 </ol>
 </section>
 <section id="modeling-strategies">
-<h2>Modeling Strategies<a class="headerlink" href="#modeling-strategies" title="Permalink to this heading">#</a></h2>
+<h2>Modeling Strategies<a class="headerlink" href="#modeling-strategies" title="Link to this heading">#</a></h2>
 <p>There are various overarching modeling strategies. I will only mention a couple here.</p>
 <section id="top-down-modeling">
-<h3>Top-down Modeling<a class="headerlink" href="#top-down-modeling" title="Permalink to this heading">#</a></h3>
+<h3>Top-down Modeling<a class="headerlink" href="#top-down-modeling" title="Link to this heading">#</a></h3>
 <p>I like this approach, it is very conservative with elements of fail fast and fit-for-purpose modeling. It proceeds with these steps.</p>
 <ol class="arabic simple">
 <li><p>Start with the simplest model possible and forecast with the model</p></li>
@@ -636,7 +648,7 @@ document.write(`
 <p>How does top-down modeling apply to machine learning? In a way we already do it, when we tune the hyperparameters by testing a simple machine learning model and then incrementing the complexity until the test error is minimized. We can go further and integrate top-down modeling into our general approach by asking, what is the simplest model that gets us an accurate enough model, because this model will likely be more interpretable and practical to deploy.</p>
 </section>
 <section id="modeling-for-discomfort">
-<h3>Modeling for Discomfort<a class="headerlink" href="#modeling-for-discomfort" title="Permalink to this heading">#</a></h3>
+<h3>Modeling for Discomfort<a class="headerlink" href="#modeling-for-discomfort" title="Link to this heading">#</a></h3>
 <p>Mark Bentley proposed the concept of “<a class="reference external" href="https://watermark.silverchair.com/3.pdf?token=AQECAHi208BE49Ooan9kkhW_Ercy7Dm3ZL_9Cf3qfKAc485ysgAAAx0wggMZBgkqhkiG9w0BBwagggMKMIIDBgIBADCCAv8GCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMXkqBT76yzhoCxu0GAgEQgIIC0LwoyDfGdFuErEV3v7xYI_OmFzO9C1-vLUSf1RBl3leUJcUN63voEj-ldlOOSQGu0BiPhTdaHTiQwRedHpbdO1faIuRVfv6f3hAWEcpCSzzmPNJneZ_EIFsxyVeu5opQvMdg44yVEt335OflgyffMqtQKUGiNtuHruTURiNILh0C8KdO3LNwWvIekiwqeq2U5bqWwBkzc8Ymmj-zuCEIdN6-b3EoqYz3PfyldCqO_2twYgcjrn7_3Cka-zH25zvoMmsw-67KBJGfEBZprfLm5wxBlCmGRtqC6Zzn57x11nDmWcm3TnhmssLnUZwKHJzYAEkkWxPvBF02WFB3IG3tNGKCDK85WHu1Lc8BgfMkGyObDTvZbkIFn7aDBgFwbRfrUw4Q9n_k6ebV9BpLV8qx0JtxbIzLERkLbCxYqWPddTYUng8d8jACg43DZDHBpfube_yR6vdFEGi55O6h3Ufz6Q74RJPpwmV3kw9tofurZLOhXsW9W8bhxzTEE2FsWdj3WmSAVNgydJ52wMSzYtRCJgkrThWvo2R0zUrxRcMct7pntorVdo57SlZ22pD0jnOKVR9dteDloTyFMOCwF45ElBxZMO8bqf69qeoMc1s5dCyiMZsm6RZ9r3bLeJkja9nK5yRCKxLGWS8Ox_L_l7HJ4VkbXXMnt1LHlxTBhYNF2PRxM9CDknKlI19-KjPGSO1KA_AThdkYiK5uZVvrEt5k58EMscfJR-dXBEFepgTlFs5-WqDWzvgngGGHOH3JrnX0GZsiISji_MpVkh5YJTx8DgA3ZNQiVrqFcz5T8hF6qpRJmkMwAPikLYfU9-odb_8WVANlfx5PD07ZI9hLcdvwaE2UcWQyZ-P8KRjB6WIwFhZPkfA3gBcpnd80v53KLD08h0Ze96Vfm7-ELR7FgAU8iu2qRB5kF6hPvsliRung25R_-jhhRUQ-5pFb0Ur4pberrw">modeling for comfort</a>” <span id="id1">[]</span> with the suggestion that models may have become tools for verification of a decision already partially or fully made. To defend against this tendency, Bentley recommends that we model for discomfort!</p>
 <ul class="simple">
 <li><p>Stress test our current concepts and sensitivity on decision-making</p></li>
@@ -663,7 +675,7 @@ document.write(`
 </section>
 </section>
 <section id="learning-to-code-in-python">
-<h2>Learning to Code in Python<a class="headerlink" href="#learning-to-code-in-python" title="Permalink to this heading">#</a></h2>
+<h2>Learning to Code in Python<a class="headerlink" href="#learning-to-code-in-python" title="Link to this heading">#</a></h2>
 <p>I have taught data science to hundreds of engineers and geoscientists, many of them had no programming experience and are now doing data science in Python. This is awesome and I’m excited to help. To support these students I have developed a verity of resources that are helpful,</p>
 <ol class="arabic simple">
 <li><p>Data Science Basics in Python code walk-throughs with GeostatsGuy</p></li>
@@ -687,13 +699,13 @@ document.write(`
 </div>
 </section>
 <section id="comments">
-<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
+<h2>Comments<a class="headerlink" href="#comments" title="Link to this heading">#</a></h2>
 <p>This was a basic description of machine learning workflow construction and coding. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
 <p>I hope this was helpful,</p>
 <p><em>Michael</em></p>
 </section>
 <section id="about-the-author">
-<h2>About the Author<a class="headerlink" href="#about-the-author" title="Permalink to this heading">#</a></h2>
+<h2>About the Author<a class="headerlink" href="#about-the-author" title="Link to this heading">#</a></h2>
 <figure style="text-align: center;">
   <img src="_static/intro/michael_pyrcz_officeshot_jacket.jpg" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
@@ -704,11 +716,11 @@ document.write(`
 <li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
+<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference internal" href="#www.michaelpyrcz.com"><span class="xref myst">Website</span></a>.</p>
 </section>
 <section id="want-to-work-together">
-<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
+<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Link to this heading">#</a></h2>
 <p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
@@ -718,7 +730,7 @@ document.write(`
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -749,7 +761,7 @@ document.write(`
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -778,6 +790,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -854,8 +867,8 @@ By Michael J. Pyrcz
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

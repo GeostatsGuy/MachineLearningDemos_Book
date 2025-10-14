@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Generative Adversarial Networks &#8212; Applied Machine Learning in Python</title>
   
@@ -15,55 +14,51 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=304429a7" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=564be945" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'MachineLearning_GAN';</script>
@@ -80,28 +75,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -123,12 +113,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -144,6 +142,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -162,7 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -201,6 +212,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ensemble_trees.html">Bagging Tree and Random Forest</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_gradient_boosting.html">Gradient Boosting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_support_vector_machines.html">Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_activation_functions.html">Neural Networks Activation Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ANN.html">Artificial Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_CNN.html">Convolutional Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_autoencoder.html">Autoencoder Neural Networks</a></li>
@@ -226,7 +238,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -235,14 +247,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -367,10 +379,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -378,14 +390,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -407,12 +419,15 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#artificial-and-convolutional-neural-networks">Artificial and Convolutional Neural Networks</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Generative Adversarial Networks</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indirect-adversarial-learning">Indirect, Adversarial Learning</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-required-packages">Import Required Packages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-generative-adversarial-network">Visualize the Generative Adversarial Network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments-on-network-nomenclature">Comments on Network Nomenclature</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sigmoid-activation">Sigmoid Activation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generator-forward-pass">Generator Forward Pass</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discriminator-forward-pass">Discriminator Forward Pass</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discriminator-loss">Discriminator Loss</a></li>
@@ -435,15 +450,15 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <figure style="text-align: center;">
   <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
 </figure>
 <section id="generative-adversarial-networks">
-<h1>Generative Adversarial Networks<a class="headerlink" href="#generative-adversarial-networks" title="Permalink to this heading">#</a></h1>
+<h1>Generative Adversarial Networks<a class="headerlink" href="#generative-adversarial-networks" title="Link to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite this e-Book as:</p>
@@ -461,13 +476,14 @@ document.write(`
 <ul class="simple">
 <li><p><a class="reference external" href="https://youtu.be/A9PiCMY_6nM?si=NxWSU_5RgQ4w55EL">Artificial Neural Networks</a></p></li>
 <li><p><a class="reference external" href="https://youtu.be/za2my_XDoOs?si=LeHU6p2_fc9dX4Yt">Convolutional Neural Networks</a></p></li>
+<li><p>Generative Adversarial Networks (TBA)</p></li>
 </ul>
-<p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
+<p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
 <section id="motivation">
-<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this heading">#</a></h2>
+<h2>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h2>
 <p>What if we put together machines? Working in a competitive, adversarial manner?</p>
 <ul class="simple">
-<li><p>Could we make a more powerful model that learns its own loss function!</p></li>
+<li><p>Could we make a more powerful machine learning model that learns its own loss function!</p></li>
 <li><p>Could we make images that don’t collapse to exact reproduction of the images in the training set?</p></li>
 </ul>
 <p>Generative neural networks are very powerful, nature inspired computing deep learning method to make fake, but realistic, images by application of convolutional neural networks, an analogy of visual cortex that extend the ability of our artificial neural networks to better work with images.</p>
@@ -480,13 +496,33 @@ document.write(`
 </ul>
 <p>intelligence emerges from many connected simple processors. For the remainder of this chapter, I will used the terms nodes and connections to describe our convolutional neural network.</p>
 </section>
+<section id="artificial-and-convolutional-neural-networks">
+<h2>Artificial and Convolutional Neural Networks<a class="headerlink" href="#artificial-and-convolutional-neural-networks" title="Link to this heading">#</a></h2>
+<p>If you have not, take this opportunity to review my previous chapters in the e-book on,</p>
+<p><a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/MachineLearning_ANN.html">Artificial Neural Networks</a></p>
+<p>The <strong>main takeaways</strong> from my artificial neural network chapter are as follows,</p>
+<ul class="simple">
+<li><p><strong>architecture of a neural network</strong>, including its fundamental components, nodes (neurons) and the weighted connections between them.</p></li>
+<li><p><strong>forward pass</strong> computation through the network, where each node computes a weighted sum of its inputs (including a bias term), followed by the application of a nonlinear activation function.</p></li>
+<li><p><strong>computation of the error derivative</strong>, which is then backpropagated through the network via the chain rule to determine the gradients of the loss function with respect to each weight and bias.</p></li>
+<li><p><strong>aggregation of these gradients</strong> across all samples in a training batch, typically by averaging, to update the model parameters.</p></li>
+<li><p><strong>iterative training process</strong>, where the model is trained over multiple batches and epochs (passes over all the data) to continually refine the weights and biases until the model achieves an acceptable error rate on the test data.</p></li>
+</ul>
+<p><a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/MachineLearning_CNN.html">Convolutional Neural Networks</a></p>
+<p>The main takeaways from my convolutional neural network chapter are as follows,</p>
+<ul class="simple">
+<li><p><strong>regularization</strong> of image data with receptive fields to preserve spatial information and to avoid overfit.</p></li>
+<li><p><strong>convolutional kernels</strong> with learnable weights to extraction information from images.</p></li>
+</ul>
+<p>For both of these chapters, I have included links to my recorded lectures and to neural networks built from scratch with NumPy only!</p>
+</section>
 <section id="id1">
-<h2>Generative Adversarial Networks<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2>Generative Adversarial Networks<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>If we start with a convolutional neural network and we flip it, i.e., reverse the order of the operations,</p>
 <ul class="simple">
-<li><p>we have a machine that maps from a 1D vector of values, to an image, i.e., we can generate fake images</p></li>
-<li><p>to accomplish this instead of convolution, we have transpose convolution for each feature map</p></li>
-<li><p>we also perform non-linear activation at each feature map to prevent network collapse</p></li>
+<li><p>we have a machine that maps from a 1D vector of values, to an image, i.e., we can generate fake images by randomly assigning latent values</p></li>
+<li><p>to accomplish this instead of convolution operations with activation, we have transpose convolution operations with activation to move to the next feature map</p></li>
+<li><p>recall we also perform non-linear activation at each feature map to prevent network collapse</p></li>
 </ul>
 <figure style="text-align: center;">
   <img src="_static/GAN/flipcnn.png" style="display: block; margin: 0 auto; width: 80%;">
@@ -496,13 +532,14 @@ document.write(`
 <p>But how do we train this flipped convolutional neural network to make good images?</p>
 <ul class="simple">
 <li><p>we could take training images and score the difference between our generated fake images, for example, with a pixel-wise squared error (L2 norm)</p></li>
-<li><p>but if we did this, our machine would only learn how to make this image or a limited set of training images and that would not be useful</p></li>
+<li><p>but if we did this, our machine learning model would only learn how to make this image or a limited set of training images and that would not be useful</p></li>
 </ul>
-<p>We want to make a diverse set of image realizations, that look and behave correctly. This is the simulation paradigm at the heart of geostatistics</p>
+<p>We want to make a diverse set of image realizations, that look and behave correctly. This is the simulation paradigm at the heart of geostatistics,</p>
 <ul class="simple">
 <li><p>to learn more about the simulation paradigm from geostatistics, see my <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/GeostatsPy_simulation.html">Simulation Chapter</a> from my free, online e-book, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book">Applied Geostatistics in Python</a>.</p></li>
 </ul>
-<p>Instead of a loss function we take a classification convolutional neural network to map from the image to a probability of a real image. We have 2 neural networks in our GAN,</p>
+<p>Instead of a typically loss function, we apply a classification convolutional neural network to map from the image to a probability of a real image, i.e., our loss function is effectively a network that learns to score the loss during training.</p>
+<p>We have 2 neural networks in our GAN,</p>
 <ul class="simple">
 <li><p><strong>generator</strong> - flipped convolutional neural network that makes random fake images</p></li>
 <li><p><strong>discriminator</strong> - classification convolutional neural netwrok that calculates the probability that an image is real</p></li>
@@ -514,7 +551,7 @@ document.write(`
 </figure>
 </section>
 <section id="indirect-adversarial-learning">
-<h2>Indirect, Adversarial Learning<a class="headerlink" href="#indirect-adversarial-learning" title="Permalink to this heading">#</a></h2>
+<h2>Indirect, Adversarial Learning<a class="headerlink" href="#indirect-adversarial-learning" title="Link to this heading">#</a></h2>
 <p>How do we train these two coupled networks? We call each network an agent and we train them competively, e.g., they compete while learning!</p>
 <ul class="simple">
 <li><p>agent 1, Generator, is not trained to minimize an loss function with respect to training data (training image), no MSE!</p></li>
@@ -553,8 +590,8 @@ document.write(`
 \log D(\mathbf{y}) + \log(1 - D(G(\mathbf{x})))
 \]</div>
 <ul class="simple">
-<li><p>correctly predicts <strong>real</strong> data as real</p></li>
-<li><p>correctly predicts <strong>generated</strong> data as fake</p></li>
+<li><p>tries to <strong>correctly predicts real</strong> training images as real, <span class="math notranslate nohighlight">\(\log D(\mathbf{y}) \rightarrow 0.0\)</span></p></li>
+<li><p>and to <strong>correctly predicts generated</strong> fake training images as not real, <span class="math notranslate nohighlight">\(\log(1 - D(G(\mathbf{x}))) \rightarrow 0.0\)</span></p></li>
 </ul>
 <p>The generator want to <strong>minimize</strong>,</p>
 <div class="math notranslate nohighlight">
@@ -562,32 +599,44 @@ document.write(`
 \log(1 - D(G(\mathbf{x})))
 \]</div>
 <ul class="simple">
-<li><p>tries to <strong>fool the discriminator</strong></p></li>
-<li><p>makes fake samples look real</p></li>
+<li><p>tries to <strong>fool the discriminator</strong>, discriminator classifies fake training images as  real, <span class="math notranslate nohighlight">\(\log(1 - D(G(\mathbf{x}))) \rightarrow -\infty\)</span></p></li>
 </ul>
-<p>To assist with understanding the GAN loss function, consider these end members,</p>
+<p>To assist with understanding the GAN loss function and the system of competing agents, consider these end members,</p>
 <ol class="arabic simple">
-<li><p>Perfect Discriminator - if the discriminator is perfect,</p></li>
+<li><p><strong>Perfect Discriminator</strong> - if the discriminator is perfect,</p></li>
 </ol>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(D(\mathbf{y}) = 1\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(D(G(\mathbf{x})) = 0\)</span></p></li>
+<li><p>all real training images are classified as real, <span class="math notranslate nohighlight">\(D(\mathbf{y}) = 1\)</span></p></li>
+<li><p>all fake images from the generator are classified as real, <span class="math notranslate nohighlight">\(D(G(\mathbf{x})) = 0\)</span></p></li>
 </ul>
 <p><span class="math notranslate nohighlight">\(\quad\)</span> then the discriminator loss is,</p>
 <div class="math notranslate nohighlight">
 \[
 \log(1) + \log(1 - 0) = 0 + \log(1) = 0
 \]</div>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> this sounds like good news, i.e., the generator will then improve to catch up with the discriminator, but what actually happens is,</p>
 <ul class="simple">
-<li><p>generator receives <strong>no gradient</strong></p></li>
-<li><p>training <strong>stalls</strong> due to vanishing gradients</p></li>
+<li><p>generator receives <strong>no loss gradients</strong>, because the generators gradients,</p></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \log(1 - D(G(z)))}{\partial \theta_G}
+\]</div>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> if <span class="math notranslate nohighlight">\(D(G(z)) \to 0\)</span>, this derivative becomes <strong>zero</strong>, so training stalls and <strong>the generator doesn’t learn</strong>,</p>
+<ul class="simple">
+<li><p>this is practically solved by substituting <strong>non-saturating generator loss</strong> for the generator,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+L_G = -\mathbb{E}_{z \sim p_z}[\log D(G(z))]
+\]</div>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> if <span class="math notranslate nohighlight">\(D(G(z)) \to 0\)</span>, then <span class="math notranslate nohighlight">\(\log D(G(z)) \to -\infty\)</span>, so the gradient becomes <strong>large</strong>, giving the generator a strong learning signal.</p>
 <ol class="arabic simple" start="2">
-<li><p>Perfect Generator - if the generator is perfect,</p></li>
+<li><p><strong>Perfect Generator</strong> - if the generator is perfect,</p></li>
 </ol>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(G(\mathbf{x}) \sim p_{\text{data}}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(D(\cdot) = 0.5\)</span></p></li>
+<li><p>all fake images have the same distribution as the real training images, <span class="math notranslate nohighlight">\(G(\mathbf{x}) \sim p_{\text{data}}\)</span></p></li>
+<li><p>the best the discriminator can do is to assign a anive classification, <span class="math notranslate nohighlight">\(D(\cdot) = 0.5\)</span>, for all fake and real training images</p></li>
 </ul>
 <p><span class="math notranslate nohighlight">\(\quad\)</span> then the loss is,</p>
 <div class="math notranslate nohighlight">
@@ -596,11 +645,11 @@ document.write(`
 \]</div>
 <ul class="simple">
 <li><p>discriminator is <strong>maximally confused</strong></p></li>
-<li><p>this is the <strong>Nash equilibrium</strong></p></li>
+<li><p>this is a <strong>Nash equilibrium</strong> for the GAN, because no player can improve their outcome by unilaterally changing their strategy, assuming the other player’s strategy stays the same, generator is already making perfect images and discriminator can only guess naively, 50/50 real and fake.</p></li>
 </ul>
 </section>
 <section id="import-required-packages">
-<h2>Import Required Packages<a class="headerlink" href="#import-required-packages" title="Permalink to this heading">#</a></h2>
+<h2>Import Required Packages<a class="headerlink" href="#import-required-packages" title="Link to this heading">#</a></h2>
 <p>We will also need some standard packages. These should have been installed with Anaconda 3.</p>
 <ul class="simple">
 <li><p>recall our goal is to build a convolutional neural network by-hand with only basic math and array operations, so we only need NumPy along with matplotlib for plotting.</p></li>
@@ -612,8 +661,11 @@ document.write(`
 <span class="kn">import</span> <span class="nn">os</span>                                                     <span class="c1"># set working directory</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                                            <span class="c1"># arrays and matrix math</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>                               <span class="c1"># for plotting</span>
-<span class="kn">import</span> <span class="nn">matplotlib.patches</span> <span class="k">as</span> <span class="nn">patches</span>
+<span class="kn">import</span> <span class="nn">matplotlib.patches</span> <span class="k">as</span> <span class="nn">patches</span>                          <span class="c1"># fancy box around agents</span>
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="p">(</span><span class="n">MultipleLocator</span><span class="p">,</span> <span class="n">AutoMinorLocator</span><span class="p">)</span> <span class="c1"># control of axes ticks</span>
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">FuncFormatter</span>
 <span class="kn">import</span> <span class="nn">copy</span>                                                   <span class="c1"># deep copy dictionaries</span>
+<span class="kn">import</span> <span class="nn">math</span>
 <span class="n">seed</span> <span class="o">=</span> <span class="mi">42</span>
 <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">inferno</span>                                         <span class="c1"># default color bar, no bias and friendly for color vision defeciency</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">axisbelow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                                <span class="c1"># grid behind plotting elements</span>
@@ -628,7 +680,7 @@ document.write(`
 <p>If you get a package import error, you may have to first install some of these packages. This can usually be accomplished by opening up a command window on Windows and then typing ‘python -m pip install [package-name]’. More assistance is available with the respective package docs.</p>
 </section>
 <section id="declare-functions">
-<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
+<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Link to this heading">#</a></h2>
 <p>Here’s the functions to make, train and visualize our generative adversarial network, including the steps,</p>
 <ul class="simple">
 <li><p>make a simple set of synthetic data</p></li>
@@ -650,7 +702,10 @@ document.write(`
 <p>Here are the functions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_real_data</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">slope_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.7</span><span class="p">),</span> <span class="n">residual_std</span><span class="o">=</span><span class="mf">0.02</span><span class="p">):</span> <span class="c1"># make a synthetic training image set</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>                                               <span class="c1"># sigmoid activation function</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">generate_real_data</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">slope_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.7</span><span class="p">),</span> <span class="n">residual_std</span><span class="o">=</span><span class="mf">0.02</span><span class="p">):</span> <span class="c1"># make a synthetic training image set</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generate real 3-node images with decreasing linear trend plus noise.</span>
 <span class="sd">    Standardize each to have mean 0.5.</span>
@@ -663,7 +718,7 @@ document.write(`
         <span class="n">trend</span> <span class="o">=</span> <span class="n">slopes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">base</span>
         <span class="n">residual</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">residual_std</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
         <span class="n">sample</span> <span class="o">=</span> <span class="n">trend</span> <span class="o">+</span> <span class="n">residual</span>
-        <span class="n">sample</span> <span class="o">+=</span> <span class="mf">0.5</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>  <span class="c1"># standardize to mean 0.5</span>
+        <span class="n">sample</span> <span class="o">+=</span> <span class="mf">0.5</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>                       <span class="c1"># standardize to mean 0.5</span>
         <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">sample</span>
     <span class="k">return</span> <span class="n">data</span>
 
@@ -676,16 +731,26 @@ document.write(`
         <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mf">0.0</span>
     <span class="p">}</span>
 
-<span class="k">def</span> <span class="nf">generator_forward</span><span class="p">(</span><span class="n">L1_latent</span><span class="p">,</span> <span class="n">weights</span><span class="p">):</span>                    <span class="c1"># given latent vector and generator weights return a set of fake images</span>
+<span class="k">def</span> <span class="nf">generator_forward</span><span class="p">(</span><span class="n">L1_latent</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span><span class="n">return_pre_activation</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span> <span class="c1"># given latent vector and generator weights return a set of fake images</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    L1_latent: ndarray shape (batch_size,)</span>
 <span class="sd">    weights: dict with keys &#39;lambda_1_2&#39;, &#39;lambda_1_3&#39;, &#39;lambda_1_4&#39;, &#39;b&#39;</span>
 <span class="sd">    Returns output ndarray shape (batch_size, 3)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">O2</span> <span class="o">=</span> <span class="n">weights</span><span class="p">[</span><span class="s1">&#39;lambda_12&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">L1_latent</span> <span class="o">+</span> <span class="n">weights</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
-    <span class="n">O3</span> <span class="o">=</span> <span class="n">weights</span><span class="p">[</span><span class="s1">&#39;lambda_13&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">L1_latent</span> <span class="o">+</span> <span class="n">weights</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
-    <span class="n">O4</span> <span class="o">=</span> <span class="n">weights</span><span class="p">[</span><span class="s1">&#39;lambda_14&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">L1_latent</span> <span class="o">+</span> <span class="n">weights</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">O2</span><span class="p">,</span> <span class="n">O3</span><span class="p">,</span> <span class="n">O4</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>  <span class="c1"># shape (batch_size, 3)</span>
+    <span class="n">O2in</span> <span class="o">=</span> <span class="n">weights</span><span class="p">[</span><span class="s1">&#39;lambda_12&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">L1_latent</span> <span class="o">+</span> <span class="n">weights</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
+    <span class="n">O3in</span> <span class="o">=</span> <span class="n">weights</span><span class="p">[</span><span class="s1">&#39;lambda_13&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">L1_latent</span> <span class="o">+</span> <span class="n">weights</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
+    <span class="n">O4in</span> <span class="o">=</span> <span class="n">weights</span><span class="p">[</span><span class="s1">&#39;lambda_14&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">L1_latent</span> <span class="o">+</span> <span class="n">weights</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
+
+    <span class="n">O2</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">O2in</span><span class="p">)</span>
+    <span class="n">O3</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">O3in</span><span class="p">)</span>
+    <span class="n">O4</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">O4in</span><span class="p">)</span>
+    
+    <span class="n">Oin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">O2in</span><span class="p">,</span> <span class="n">O3in</span><span class="p">,</span> <span class="n">O4in</span><span class="p">])</span><span class="o">.</span><span class="n">T</span><span class="p">;</span> <span class="n">O</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">O2</span><span class="p">,</span> <span class="n">O3</span><span class="p">,</span> <span class="n">O4</span><span class="p">])</span><span class="o">.</span><span class="n">T</span><span class="p">;</span> 
+
+    <span class="k">if</span> <span class="n">return_pre_activation</span><span class="p">:</span> 
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">O2in</span><span class="p">,</span> <span class="n">O3in</span><span class="p">,</span> <span class="n">O4in</span><span class="p">])</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">O2</span><span class="p">,</span> <span class="n">O3</span><span class="p">,</span> <span class="n">O4</span><span class="p">])</span><span class="o">.</span><span class="n">T</span> <span class="c1"># shape (batch_size, 3)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">O2</span><span class="p">,</span> <span class="n">O3</span><span class="p">,</span> <span class="n">O4</span><span class="p">])</span><span class="o">.</span><span class="n">T</span> <span class="c1"># shape (batch_size, 3)</span>
 
 <span class="k">def</span> <span class="nf">initialize_discriminator_weights</span><span class="p">():</span>                       <span class="c1"># initialize the discriminator weights and return as a dictionary               </span>
     <span class="k">return</span> <span class="p">{</span>
@@ -695,20 +760,18 @@ document.write(`
         <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mf">0.0</span>
     <span class="p">}</span>
 
-<span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>                                               <span class="c1"># sigmoid activation function</span>
-    <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
-
 <span class="k">def</span> <span class="nf">discriminator_forward</span><span class="p">(</span><span class="n">I5</span><span class="p">,</span> <span class="n">I6</span><span class="p">,</span> <span class="n">I7</span><span class="p">,</span> <span class="n">weights</span><span class="p">):</span>               <span class="c1"># given a set of images return the discriminator probability of real image</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Inputs: I5, I6, I7 shape (batch_size,)</span>
 <span class="sd">    weights: dict with keys &#39;lambda_58&#39;, &#39;lambda_68&#39;, &#39;lambda_78&#39;, &#39;c&#39;</span>
 <span class="sd">    Returns probability ndarray shape (batch_size,)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">z</span> <span class="o">=</span> <span class="p">(</span><span class="n">weights</span><span class="p">[</span><span class="s1">&#39;lambda_58&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">I5</span> <span class="o">+</span> 
+    <span class="n">dO8in</span> <span class="o">=</span> <span class="p">(</span><span class="n">weights</span><span class="p">[</span><span class="s1">&#39;lambda_58&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">I5</span> <span class="o">+</span> 
          <span class="n">weights</span><span class="p">[</span><span class="s1">&#39;lambda_68&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">I6</span> <span class="o">+</span> 
          <span class="n">weights</span><span class="p">[</span><span class="s1">&#39;lambda_78&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">I7</span> <span class="o">+</span> 
          <span class="n">weights</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">])</span>
-    <span class="k">return</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">),</span> <span class="n">z</span>
+    <span class="n">dO8</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">dO8in</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dO8</span><span class="p">,</span> <span class="n">dO8in</span>
 
 <span class="k">def</span> <span class="nf">discriminator_gradients</span><span class="p">(</span><span class="n">I5</span><span class="p">,</span> <span class="n">I6</span><span class="p">,</span> <span class="n">I7</span><span class="p">,</span> <span class="n">y_true</span><span class="p">,</span> <span class="n">weights</span><span class="p">):</span>     <span class="c1"># given set of images, true labels, and discriminator weights return the gradients</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -717,12 +780,12 @@ document.write(`
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">batch_size</span> <span class="o">=</span> <span class="n">y_true</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">y_pred</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">discriminator_forward</span><span class="p">(</span><span class="n">I5</span><span class="p">,</span> <span class="n">I6</span><span class="p">,</span> <span class="n">I7</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span>
-    <span class="n">dz</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_pred</span> <span class="o">-</span> <span class="n">y_true</span><span class="p">)</span>  <span class="c1"># shape (batch_size,)</span>
+    <span class="n">dO8in</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_pred</span> <span class="o">-</span> <span class="n">y_true</span><span class="p">)</span>                                  <span class="c1"># shape (batch_size,), note this solution integrates the sigmoid activation at O8</span>
     
-    <span class="n">grad_lambda_58</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dz</span> <span class="o">*</span> <span class="n">I5</span><span class="p">)</span>
-    <span class="n">grad_lambda_68</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dz</span> <span class="o">*</span> <span class="n">I6</span><span class="p">)</span>
-    <span class="n">grad_lambda_78</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dz</span> <span class="o">*</span> <span class="n">I7</span><span class="p">)</span>
-    <span class="n">grad_c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dz</span><span class="p">)</span>
+    <span class="n">grad_lambda_58</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dO8in</span> <span class="o">*</span> <span class="n">I5</span><span class="p">)</span>
+    <span class="n">grad_lambda_68</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dO8in</span> <span class="o">*</span> <span class="n">I6</span><span class="p">)</span>
+    <span class="n">grad_lambda_78</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dO8in</span> <span class="o">*</span> <span class="n">I7</span><span class="p">)</span>
+    <span class="n">grad_c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dO8in</span><span class="p">)</span>
     
     <span class="k">return</span> <span class="p">{</span>
         <span class="s1">&#39;lambda_58&#39;</span><span class="p">:</span> <span class="n">grad_lambda_58</span><span class="p">,</span>
@@ -740,26 +803,29 @@ document.write(`
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">batch_size</span> <span class="o">=</span> <span class="n">L1_latent</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     
-    <span class="c1"># Generator outputs</span>
-    <span class="n">O</span> <span class="o">=</span> <span class="n">generator_forward</span><span class="p">(</span><span class="n">L1_latent</span><span class="p">,</span> <span class="n">weights_g</span><span class="p">)</span>  <span class="c1"># shape (batch_size, 3)</span>
+    <span class="c1">#O = generator_forward(L1_latent, weights_g)               # generator outputs, shape (batch_size, 3)</span>
+    <span class="n">O_in</span><span class="p">,</span> <span class="n">O</span> <span class="o">=</span> <span class="n">generator_forward</span><span class="p">(</span><span class="n">L1_latent</span><span class="p">,</span> <span class="n">weights_g</span><span class="p">,</span> <span class="n">return_pre_activation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">O2_in</span><span class="p">,</span> <span class="n">O3_in</span><span class="p">,</span> <span class="n">O4_in</span> <span class="o">=</span> <span class="n">O_in</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">O_in</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">O_in</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
+    <span class="n">O2</span><span class="p">,</span> <span class="n">O3</span><span class="p">,</span> <span class="n">O4</span> <span class="o">=</span> <span class="n">O</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">O</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">O</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span>
     <span class="n">I5</span><span class="p">,</span> <span class="n">I6</span><span class="p">,</span> <span class="n">I7</span> <span class="o">=</span> <span class="n">O</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">O</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">O</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span>
     
-    <span class="c1"># Discriminator forward pass</span>
-    <span class="n">y_pred</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">discriminator_forward</span><span class="p">(</span><span class="n">I5</span><span class="p">,</span> <span class="n">I6</span><span class="p">,</span> <span class="n">I7</span><span class="p">,</span> <span class="n">weights_d</span><span class="p">)</span>
+    <span class="n">y_pred</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">discriminator_forward</span><span class="p">(</span><span class="n">I5</span><span class="p">,</span> <span class="n">I6</span><span class="p">,</span> <span class="n">I7</span><span class="p">,</span> <span class="n">weights_d</span><span class="p">)</span>  <span class="c1"># discriminator forward pass</span>
     
-    <span class="c1"># Gradient of loss w.r.t discriminator logit for generator loss (label=1)</span>
-    <span class="n">dz</span> <span class="o">=</span> <span class="n">y_pred</span> <span class="o">-</span> <span class="mi">1</span>  <span class="c1"># shape (batch_size,)</span>
+    <span class="n">dO8in</span> <span class="o">=</span> <span class="n">y_pred</span> <span class="o">-</span> <span class="mi">1</span>                                           <span class="c1"># gradient of loss w.r.t discriminator logit for generator loss, shape (batch_size,)</span>
     
-    <span class="c1"># Gradients w.r.t generator outputs</span>
-    <span class="n">dO2</span> <span class="o">=</span> <span class="n">dz</span> <span class="o">*</span> <span class="n">weights_d</span><span class="p">[</span><span class="s1">&#39;lambda_58&#39;</span><span class="p">]</span>
-    <span class="n">dO3</span> <span class="o">=</span> <span class="n">dz</span> <span class="o">*</span> <span class="n">weights_d</span><span class="p">[</span><span class="s1">&#39;lambda_68&#39;</span><span class="p">]</span>
-    <span class="n">dO4</span> <span class="o">=</span> <span class="n">dz</span> <span class="o">*</span> <span class="n">weights_d</span><span class="p">[</span><span class="s1">&#39;lambda_78&#39;</span><span class="p">]</span>
+    <span class="n">dO2</span> <span class="o">=</span> <span class="n">dO8in</span> <span class="o">*</span> <span class="n">weights_d</span><span class="p">[</span><span class="s1">&#39;lambda_58&#39;</span><span class="p">]</span>                         <span class="c1"># gradients w.r.t generator outputs</span>
+    <span class="n">dO3</span> <span class="o">=</span> <span class="n">dO8in</span> <span class="o">*</span> <span class="n">weights_d</span><span class="p">[</span><span class="s1">&#39;lambda_68&#39;</span><span class="p">]</span>
+    <span class="n">dO4</span> <span class="o">=</span> <span class="n">dO8in</span> <span class="o">*</span> <span class="n">weights_d</span><span class="p">[</span><span class="s1">&#39;lambda_78&#39;</span><span class="p">]</span>
+
+    <span class="n">dO2in</span> <span class="o">=</span> <span class="n">dO2</span> <span class="o">*</span> <span class="n">O2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">O2</span><span class="p">)</span>                                  <span class="c1"># Backprop through generator sigmoid activation</span>
+    <span class="n">dO3in</span> <span class="o">=</span> <span class="n">dO3</span> <span class="o">*</span> <span class="n">O3</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">O3</span><span class="p">)</span>
+    <span class="n">dO4in</span> <span class="o">=</span> <span class="n">dO4</span> <span class="o">*</span> <span class="n">O4</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">O4</span><span class="p">)</span>
     
-    <span class="c1"># Gradients w.r.t generator weights and bias</span>
-    <span class="n">grad_lambda_12</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dO2</span> <span class="o">*</span> <span class="n">L1_latent</span><span class="p">)</span>
-    <span class="n">grad_lambda_13</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dO3</span> <span class="o">*</span> <span class="n">L1_latent</span><span class="p">)</span>
-    <span class="n">grad_lambda_14</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dO4</span> <span class="o">*</span> <span class="n">L1_latent</span><span class="p">)</span>
-    <span class="n">grad_b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dO2</span> <span class="o">+</span> <span class="n">dO3</span> <span class="o">+</span> <span class="n">dO4</span><span class="p">)</span>
+    <span class="n">grad_lambda_12</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dO2in</span> <span class="o">*</span> <span class="n">L1_latent</span><span class="p">)</span>                 <span class="c1"># gradients w.r.t generator weights and bias</span>
+    <span class="n">grad_lambda_13</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dO3in</span> <span class="o">*</span> <span class="n">L1_latent</span><span class="p">)</span>
+    <span class="n">grad_lambda_14</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dO4in</span> <span class="o">*</span> <span class="n">L1_latent</span><span class="p">)</span>
+    <span class="n">grad_b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dO2in</span> <span class="o">+</span> <span class="n">dO3in</span> <span class="o">+</span> <span class="n">dO4in</span><span class="p">)</span>
     
     <span class="k">return</span> <span class="p">{</span>
         <span class="s1">&#39;lambda_12&#39;</span><span class="p">:</span> <span class="n">grad_lambda_12</span><span class="p">,</span>
@@ -784,8 +850,7 @@ document.write(`
     <span class="k">if</span> <span class="n">text_color</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">text_color</span> <span class="o">=</span> <span class="n">edgecolor</span>
 
-    <span class="c1"># Draw box</span>
-    <span class="n">box</span> <span class="o">=</span> <span class="n">patches</span><span class="o">.</span><span class="n">FancyBboxPatch</span><span class="p">(</span>
+    <span class="n">box</span> <span class="o">=</span> <span class="n">patches</span><span class="o">.</span><span class="n">FancyBboxPatch</span><span class="p">(</span>                             <span class="c1"># draw box</span>
         <span class="n">xy</span><span class="p">,</span>
         <span class="n">width</span><span class="p">,</span>
         <span class="n">height</span><span class="p">,</span>
@@ -797,17 +862,21 @@ document.write(`
     <span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">box</span><span class="p">)</span>
 
-    <span class="c1"># Add label text above the box</span>
-    <span class="n">x_center</span> <span class="o">=</span> <span class="n">xy</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">width</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">x_center</span> <span class="o">=</span> <span class="n">xy</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">width</span> <span class="o">/</span> <span class="mi">2</span>                              <span class="c1"># add label text above the box</span>
     <span class="n">y_top</span> <span class="o">=</span> <span class="n">xy</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">height</span> <span class="o">+</span> <span class="mf">0.02</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x_center</span><span class="p">,</span> <span class="n">y_top</span> <span class="o">+</span> <span class="mf">0.02</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">text_color</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">add_grid2</span><span class="p">():</span>                                              <span class="c1"># add grid lines</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">)</span> <span class="c1"># add y grids</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span><span class="n">length</span><span class="o">=</span><span class="mi">7</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">AutoMinorLocator</span><span class="p">());</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">AutoMinorLocator</span><span class="p">())</span> <span class="c1"># turn on minor ticks </span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="set-the-working-directory">
-<h2>Set the Working Directory<a class="headerlink" href="#set-the-working-directory" title="Permalink to this heading">#</a></h2>
+<h2>Set the Working Directory<a class="headerlink" href="#set-the-working-directory" title="Link to this heading">#</a></h2>
 <p>I always like to do this so I don’t lose files and to simplify subsequent read and writes (avoid including the full address each time).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -818,26 +887,23 @@ document.write(`
 </div>
 </section>
 <section id="visualize-the-generative-adversarial-network">
-<h2>Visualize the Generative Adversarial Network<a class="headerlink" href="#visualize-the-generative-adversarial-network" title="Permalink to this heading">#</a></h2>
-<p>We are implementing a minimal Generative Adversarial Network (GAN) with:</p>
+<h2>Visualize the Generative Adversarial Network<a class="headerlink" href="#visualize-the-generative-adversarial-network" title="Link to this heading">#</a></h2>
+<p>We are implementing a minimal Generative Adversarial Network (GAN) with the 2 agents,</p>
 <ul class="simple">
-<li><p><strong>Generator</strong> that produces 3-node outputs (like tiny 1D images) from a single latent input</p></li>
-<li><p><strong>Discriminator</strong> that evaluates these outputs to distinguish between <strong>real</strong> and <strong>fake</strong> samples.</p></li>
+<li><p><strong>Generator</strong> - that produces 3-node outputs (like tiny 1D images) from a single latent input</p></li>
+<li><p><strong>Discriminator</strong> - that evaluates these outputs to distinguish between <strong>real</strong> and <strong>fake</strong> samples.</p></li>
 </ul>
-<p>Now let’s define the part of the <strong>Generator</strong>,</p>
+<p>Now let’s define the parts of the <strong>Generator</strong>,</p>
 <ul class="simple">
-<li><p><strong>Latent Node</strong> - <span class="math notranslate nohighlight">\(L_1\)</span>, a single random value with uniform distribution, <span class="math notranslate nohighlight">\(U[0.4,1.0]\)</span>. Note we do stay away from 0.0 or negative values as these would remove the slope or flip the slope of the fakes.</p></li>
-<li><p><strong>Generator Weights</strong> - <span class="math notranslate nohighlight">\(\lambda_{1,2}\)</span>, <span class="math notranslate nohighlight">\(\lambda_{1,3}\)</span> and <span class="math notranslate nohighlight">\(\lambda_{1,4}\)</span> for the connections from latent to each of the output nodes. This is the simplest possible tranpose convolution, kernel size is 3, output nodes is 3 and latent is 1, so the kernel does not translate. I did this to greatly simplify the book keeping, but the concepts could be extended to a more realistic convolution / tranpose convolution problem.</p></li>
+<li><p><strong>Latent Node</strong> - <span class="math notranslate nohighlight">\(L_1\)</span>, a single random value with uniform distribution, <span class="math notranslate nohighlight">\(U[0.4,1.0]\)</span>. Note we set the minimum as 0.4 to stay away from 0.0 or negative values as these would remove the slope or flip the slope of the fakes.</p></li>
+<li><p><strong>Generator Weights</strong> - <span class="math notranslate nohighlight">\(\lambda_{1,2}\)</span>, <span class="math notranslate nohighlight">\(\lambda_{1,3}\)</span> and <span class="math notranslate nohighlight">\(\lambda_{1,4}\)</span> for the connections from latent to each of the output nodes. This is the simplest possible tranpose convolution, with a kernel size is 3, output nodes is 3 and latent node is 1, so the kernel does not translate. I did this to greatly simplify the book keeping, but the concepts could be extended to a more realistic convolution / tranpose convolution architectures for more realistic images sizes problem.</p></li>
 <li><p><strong>Generator Bias</strong> - <span class="math notranslate nohighlight">\(b\)</span>, a single, constant bias over the output layer (output image), the nodes, <span class="math notranslate nohighlight">\(O_2\)</span>, <span class="math notranslate nohighlight">\(O_3\)</span>, and <span class="math notranslate nohighlight">\(O_4\)</span></p></li>
-<li><p><strong>Generator Output Nodes</strong> - <span class="math notranslate nohighlight">\(O_2\)</span>, <span class="math notranslate nohighlight">\(O_3\)</span>, and <span class="math notranslate nohighlight">\(O_4\)</span>, the single and last feature map in our very simple generator, a 1D image with 3 nodes or pixels</p></li>
-</ul>
-<p>and the parts of the paired <strong>Discrimintor</strong>,</p>
-<ul class="simple">
+<li><p><strong>Generator Output Nodes</strong> - <span class="math notranslate nohighlight">\(O_2\)</span>, <span class="math notranslate nohighlight">\(O_3\)</span>, and <span class="math notranslate nohighlight">\(O_4\)</span>, the single and last feature map in our very simple generator; therefore, the output a 1D image with 3 nodes or pixels that are passed to the <strong>Discriminator</strong> input nodes, <span class="math notranslate nohighlight">\(I_5\)</span>, <span class="math notranslate nohighlight">\(I_6\)</span>, and <span class="math notranslate nohighlight">\(I_7\)</span></p></li>
 <li><p><strong>Discriminator Input Nodes</strong> - <span class="math notranslate nohighlight">\(I_5\)</span>, <span class="math notranslate nohighlight">\(I_6\)</span>, and <span class="math notranslate nohighlight">\(I_7\)</span>, that receive the real images or the fake images from the generator output nodes, <span class="math notranslate nohighlight">\(O_2\)</span>, <span class="math notranslate nohighlight">\(O_3\)</span>, <span class="math notranslate nohighlight">\(O_4\)</span></p></li>
-<li><p><strong>Discriminator Weights</strong> - <span class="math notranslate nohighlight">\(\lambda_{5,8}\)</span>, <span class="math notranslate nohighlight">\(\lambda_{6,8}\)</span>, and <span class="math notranslate nohighlight">\(\lambda_{7,8}\)</span> for the connections from input nodes (input image) to the output (descision) node, <span class="math notranslate nohighlight">\(D_8\)</span>
-$$</p></li>
+<li><p><strong>Discriminator Weights</strong> - <span class="math notranslate nohighlight">\(\lambda_{5,8}\)</span>, <span class="math notranslate nohighlight">\(\lambda_{6,8}\)</span>, and <span class="math notranslate nohighlight">\(\lambda_{7,8}\)</span> for the connections from input nodes (input image) to the output (descision) node, <span class="math notranslate nohighlight">\(D_8\)</span></p></li>
 <li><p><strong>Discriminator Bias</strong> - <span class="math notranslate nohighlight">\(c\)</span>, bias applied at the output (descision) node, <span class="math notranslate nohighlight">\(D_8\)</span></p></li>
 </ul>
+<p>Now let’s visualize this very simple generative adversarial network.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;darksalmon&#39;</span><span class="p">,</span><span class="s1">&#39;deepskyblue&#39;</span><span class="p">,</span><span class="s1">&#39;gold&#39;</span><span class="p">]</span>                  <span class="c1"># line colors for latent to fake to probability flow</span>
@@ -849,36 +915,33 @@ $$</p></li>
     <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$L_1$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="c1"># generator latent node</span>
             <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">boxstyle</span><span class="o">=</span><span class="s2">&quot;circle&quot;</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">))</span>
 
-    <span class="n">gen_outputs</span> <span class="o">=</span> <span class="p">[</span>                                           <span class="c1"># generator output nodes</span>
+    <span class="n">gen_outputs</span> <span class="o">=</span> <span class="p">[</span>                                           <span class="c1"># generator output nodes locations and labels</span>
         <span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$O_2$&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$\lambda_{1,2}$&quot;</span><span class="p">),</span>
         <span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$O_3$&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$\lambda_{1,3}$&quot;</span><span class="p">),</span>
         <span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$O_4$&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$\lambda_{1,4}$&quot;</span><span class="p">)</span>
     <span class="p">]</span>
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">gen_outputs</span><span class="p">):</span>  
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">gen_outputs</span><span class="p">):</span>   <span class="c1"># generator output node labels</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
                 <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">boxstyle</span><span class="o">=</span><span class="s2">&quot;circle&quot;</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">))</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-                    <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mf">0.05</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mf">0.05</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>   <span class="c1"># generator output node connections</span>
                     <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;-&gt;&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.11</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
 
-    <span class="n">disc_inputs</span> <span class="o">=</span> <span class="p">[</span>                                           <span class="c1"># discriminator input nodes</span>
+    <span class="n">disc_inputs</span> <span class="o">=</span> <span class="p">[</span>                                           <span class="c1"># discriminator input nodes locations and labels</span>
         <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$I_5$&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$\lambda_{5,8}$&quot;</span><span class="p">),</span>
         <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$I_6$&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$\lambda_{6,8}$&quot;</span><span class="p">),</span>
         <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$I_7$&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$\lambda_{7,8}$&quot;</span><span class="p">)</span>
     <span class="p">]</span>
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">disc_inputs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">disc_inputs</span><span class="p">):</span>        <span class="c1"># discriminator input node labels</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
                 <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">boxstyle</span><span class="o">=</span><span class="s2">&quot;circle&quot;</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">))</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-                    <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mf">0.05</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">0.35</span><span class="p">,</span> <span class="n">gen_outputs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]),</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mf">0.05</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">0.35</span><span class="p">,</span> <span class="n">gen_outputs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]),</span> <span class="c1"># discriminator input node connections</span>
                     <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;-&gt;&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
 
-    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$D_8$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="c1"># discriminator decision node</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$D_8$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="c1"># discriminator decision node label</span>
             <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">boxstyle</span><span class="o">=</span><span class="s2">&quot;circle&quot;</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">))</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">disc_inputs</span><span class="p">):</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-                    <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.65</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.05</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.65</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.05</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span>  <span class="c1"># discriminator output node connections</span>
                     <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;-&gt;&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.7</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
 
@@ -888,26 +951,29 @@ $$</p></li>
         <span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$I_7^</span><span class="si">{real}</span><span class="s2">$&quot;</span><span class="p">)</span>
     <span class="p">]</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">real_inputs</span><span class="p">):</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="c1"># label real data node labels</span>
                 <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">boxstyle</span><span class="o">=</span><span class="s2">&quot;circle&quot;</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">))</span>
-        <span class="c1"># Arrow to discriminator inputs</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span>                                       <span class="c1"># arrow to discriminator inputs</span>
                     <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">disc_inputs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mf">0.05</span><span class="p">,</span> <span class="n">disc_inputs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]),</span> 
                     <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.05</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span>
                     <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;-&gt;&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors_real</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">))</span>
     
-    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.57</span><span class="p">,</span> <span class="s2">&quot;Latent&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>    <span class="c1"># part labels</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.57</span><span class="p">,</span> <span class="s2">&quot;Latent&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>    <span class="c1"># GAN part labels</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.57</span><span class="p">,</span> <span class="s2">&quot;Classification&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.265</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.18</span><span class="p">,</span> <span class="s2">&quot;Real Images&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span><span class="n">rotation</span><span class="o">=</span><span class="mf">90.0</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.265</span><span class="p">,</span> <span class="mf">0.38</span><span class="p">,</span> <span class="s2">&quot;Fake Images&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span><span class="n">rotation</span><span class="o">=</span><span class="mf">90.0</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.26</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.18</span><span class="p">,</span> <span class="s2">&quot;Real Images&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span><span class="n">rotation</span><span class="o">=</span><span class="mf">90.0</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.26</span><span class="p">,</span> <span class="mf">0.38</span><span class="p">,</span> <span class="s2">&quot;Fake Images&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span><span class="n">rotation</span><span class="o">=</span><span class="mf">90.0</span><span class="p">)</span>
 
-    <span class="n">fancybox</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.07</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Generator&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
-    <span class="n">fancybox</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.48</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.29</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Discriminator&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
+    <span class="n">fancybox</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.07</span><span class="p">,</span> <span class="mf">0.24</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Generator&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span> <span class="c1"># fancy boxes around generator and discriminator</span>
+    <span class="n">fancybox</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.48</span><span class="p">,</span> <span class="mf">0.24</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.29</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Discriminator&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
 
-    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.68</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>           <span class="c1"># draw the biases</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.68</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>           <span class="c1"># draw the biases in O2, O3, O4 and D8</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.695</span><span class="p">,</span> <span class="mf">0.47</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">0.685</span><span class="p">,</span> <span class="mf">0.42</span><span class="p">),</span><span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.08</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.095</span><span class="p">,</span> <span class="mf">0.472</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">0.085</span><span class="p">,</span> <span class="mf">0.42</span><span class="p">),</span><span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span><span class="mf">0.63</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.28</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">0.29</span><span class="p">,</span> <span class="mf">0.68</span><span class="p">),</span><span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span><span class="mf">0.43</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.28</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">0.29</span><span class="p">,</span> <span class="mf">0.48</span><span class="p">),</span><span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.27</span><span class="p">,</span><span class="mf">0.23</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.28</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">0.29</span><span class="p">,</span> <span class="mf">0.28</span><span class="p">),</span><span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -917,24 +983,83 @@ $$</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b9cda33562135d931de4cba645356ec67988f21d0d19a0230f142961a6b7402e.png" src="_images/b9cda33562135d931de4cba645356ec67988f21d0d19a0230f142961a6b7402e.png" />
+<img alt="_images/5da0094b37cb89d06ad071c33da7d5b5bcc00b6ea2ee296a99783cf1394c887c.png" src="_images/5da0094b37cb89d06ad071c33da7d5b5bcc00b6ea2ee296a99783cf1394c887c.png" />
 </div>
 </div>
+<p>Just a couple more comments about my network nomenclature. My goal is to maximize simplicity and clarity,</p>
+</section>
+<section id="comments-on-network-nomenclature">
+<h2>Comments on Network Nomenclature<a class="headerlink" href="#comments-on-network-nomenclature" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Network Nodes and Connections</strong> - I choose to use unique numbers for all nodes, <span class="math notranslate nohighlight">\(L_1\)</span>, <span class="math notranslate nohighlight">\(O_2\)</span>, <span class="math notranslate nohighlight">\(O_3\)</span>, <span class="math notranslate nohighlight">\(\ldots\)</span> instead of <span class="math notranslate nohighlight">\(L_1\)</span>, <span class="math notranslate nohighlight">\(O_1\)</span>, <span class="math notranslate nohighlight">\(O_2\)</span>, <span class="math notranslate nohighlight">\(\ldots\)</span> to simplify the notation for the weights; therefore, when I say <span class="math notranslate nohighlight">\(\lambda_{5,8}\)</span> you know exactly where this weight is applied in the network.</p></li>
+<li><p><strong>Node Outputs</strong> - I use the node label to also describe the output from the node, for example <span class="math notranslate nohighlight">\(O_2\)</span> is a node in the generator’s output layer and also the signal or value output from that node.</p></li>
+<li><p><strong>Pre- and Post-activation</strong> - at our nodes <span class="math notranslate nohighlight">\(O_2\)</span>, <span class="math notranslate nohighlight">\(O_3\)</span>, <span class="math notranslate nohighlight">\(O_4\)</span>, and <span class="math notranslate nohighlight">\(D_8\)</span> we have the node input before activation and the node output after activation, I use the notation <span class="math notranslate nohighlight">\(O_{2_{in}}\)</span>, <span class="math notranslate nohighlight">\(O_{3_{in}}\)</span>, <span class="math notranslate nohighlight">\(O_{4_{in}}\)</span> and <span class="math notranslate nohighlight">\(D_{8_{in}}\)</span> for the pre-activation input and <span class="math notranslate nohighlight">\(O_2\)</span>, <span class="math notranslate nohighlight">\(O_3\)</span>, <span class="math notranslate nohighlight">\(O_4\)</span>, and <span class="math notranslate nohighlight">\(D_8\)</span> for the post-activation node output. This is important because with back propagation we have to step through the nodes, going from post-activation to pre-activation.</p></li>
+<li><p><strong>Latent</strong> - while publications often use <span class="math notranslate nohighlight">\(z\)</span> notation for the latent values, to be consistent with my notion above, I use <span class="math notranslate nohighlight">\(L_1\)</span> for the latent value, i.e., the output from my latent node, <span class="math notranslate nohighlight">\(L_1\)</span>.</p></li>
+</ul>
 <p>Now let’s walk-through all the parts of our example GAN and show all the math.</p>
 </section>
+<section id="sigmoid-activation">
+<h2>Sigmoid Activation<a class="headerlink" href="#sigmoid-activation" title="Link to this heading">#</a></h2>
+<p>For reference, let’s visualize the sigmoid activation function,</p>
+<ul class="simple">
+<li><p><strong>activation</strong> - the non-linear transformation, this is the sigmoid activation</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+x_{out} = \sigma(x_{in}) = \dfrac{1}{1 + e^{-x_{in}}}
+\]</div>
+<ul class="simple">
+<li><p><strong>activation derrivative</strong> - essential for back propogation</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\sigma'(x_{in}) = \sigma(x_{out})(1 - \sigma(x_{out}))
+\]</div>
+<p>note, for convenience the derrivative of the sigmoid activation function with respect to the input is posed for the output.</p>
+<ul class="simple">
+<li><p>as we back-propogate backwards over the activation function we can us the output to step back through the activated network node</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">amin</span> <span class="o">=</span> <span class="o">-</span><span class="mf">5.0</span><span class="p">;</span> <span class="n">amax</span> <span class="o">=</span> <span class="mf">5.0</span>
+
+<span class="nb">input</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">amin</span><span class="p">,</span><span class="n">amax</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span> <span class="n">output</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">amin</span><span class="p">,</span><span class="n">amax</span><span class="p">,</span><span class="mi">100</span><span class="p">)));</span> <span class="n">derriv</span> <span class="o">=</span> <span class="n">output</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">output</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span><span class="n">output</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;forestgreen&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Activation&#39;</span><span class="p">);</span> <span class="n">add_grid2</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Input&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Output&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span><span class="n">derriv</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;deepskyblue&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Derrivative&#39;</span><span class="p">);</span> <span class="n">add_grid2</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Input&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Output&#39;</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sigmoid Activation&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="n">amin</span><span class="p">,</span><span class="n">amax</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/52a4254a000efc76579e5bf8203fec2c8bca0d9afbc2dd210bfa15bc7eed3b7b.png" src="_images/52a4254a000efc76579e5bf8203fec2c8bca0d9afbc2dd210bfa15bc7eed3b7b.png" />
+</div>
+</div>
+<p>Let’s make some observations about the sigmoid activation and its derrivative,</p>
+<ul class="simple">
+<li><p><strong>sigmoid outputs</strong> - are bounded (0,1) approaching both limits asymptotically</p></li>
+<li><p><strong>vanishing gradients</strong> - as the</p></li>
+</ul>
+</section>
 <section id="generator-forward-pass">
-<h2>Generator Forward Pass<a class="headerlink" href="#generator-forward-pass" title="Permalink to this heading">#</a></h2>
+<h2>Generator Forward Pass<a class="headerlink" href="#generator-forward-pass" title="Link to this heading">#</a></h2>
 <p>First, let’s walk through the generator to go from a latent value to a fake image. The generator takes a latent input,</p>
 <div class="math notranslate nohighlight">
 \[
-z \sim \mathcal{U}(0.4, 1)
+L_1 \sim \mathcal{U}(0.4, 1)
 \]</div>
-<p>Our simple generator has only one layer (L1), with only 3 outputs, <span class="math notranslate nohighlight">\(O_2\)</span>, <span class="math notranslate nohighlight">\(O_3\)</span>, and <span class="math notranslate nohighlight">\(O_4\)</span>, representing the fake image.</p>
 <ul class="simple">
-<li><p>Our transpose convolution kernel has a size of 3, so we don’t see it translate, resulting in simplified book keeping!</p></li>
-<li><p>The kernel weights are <span class="math notranslate nohighlight">\(\lambda_{1,2}\)</span>, <span class="math notranslate nohighlight">\(\lambda_{1,3}\)</span>, and <span class="math notranslate nohighlight">\(\lambda_{1,4}\)</span></p></li>
-<li><p>We apply the sigmoid activation in each of the output nodes</p></li>
+<li><p>recall, our simple generator has only one layer <span class="math notranslate nohighlight">\(L1\)</span>, with only 3 outputs, <span class="math notranslate nohighlight">\(O_2\)</span>, <span class="math notranslate nohighlight">\(O_3\)</span>, and <span class="math notranslate nohighlight">\(O_4\)</span>, representing the fake image.</p></li>
 </ul>
+<p>Then latent value, <span class="math notranslate nohighlight">\(L_1\)</span>, is passed through the transpose convolution kernel to the output,</p>
+<ul class="simple">
+<li><p>our transpose convolution kernel has a size of 3, the same size as our output, so we don’t see it translate it, resulting in greatly simplified book keeping!</p></li>
+<li><p>the tranpose convolution kernel weights are <span class="math notranslate nohighlight">\(\lambda_{1,2}\)</span>, <span class="math notranslate nohighlight">\(\lambda_{1,3}\)</span>, and <span class="math notranslate nohighlight">\(\lambda_{1,4}\)</span></p></li>
+</ul>
+<p>We apply the sigmoid activation in each of the output nodes</p>
 <p>Each output is computed by applying a linear transformation followed by a <strong>sigmoid</strong> activation, <span class="math notranslate nohighlight">\(\sigma\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
@@ -948,11 +1073,10 @@ O_3 = \sigma(\lambda_{1,3} \cdot z + b)
 \[
 O_4 = \sigma(\lambda_{1,4} \cdot z + b)
 \]</div>
-<p>Where:</p>
+<p>where,</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\lambda_{1,j}\)</span> are the transpose convolution kernel weights</p></li>
-<li><p><span class="math notranslate nohighlight">\(b\)</span> is the shared bias, single bias term for the output layer</p></li>
-<li><p><span class="math notranslate nohighlight">\(\sigma(x) = \dfrac{1}{1 + e^{-x}}\)</span> is the sigmoid activation function</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(\lambda_{1,j}\)</span></strong> - are the transpose convolution kernel weights</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(b\)</span></strong> - is the shared bias, single bias term for the output layer</p></li>
 </ul>
 <p>We can also write the generator forward pass in matrix notation as,</p>
 <div class="math notranslate nohighlight">
@@ -980,7 +1104,7 @@ b
 <p>where the sigmoid activation is applied element-wise.</p>
 </section>
 <section id="discriminator-forward-pass">
-<h2>Discriminator Forward Pass<a class="headerlink" href="#discriminator-forward-pass" title="Permalink to this heading">#</a></h2>
+<h2>Discriminator Forward Pass<a class="headerlink" href="#discriminator-forward-pass" title="Link to this heading">#</a></h2>
 <p>Now let’s walk-through the discriminator, going from an image, real or fake, to a probability of real. The discriminator receives the image, over 3 input nodes, <span class="math notranslate nohighlight">\(I_5\)</span>, <span class="math notranslate nohighlight">\(I_6\)</span>, and <span class="math notranslate nohighlight">\(I_7\)</span>. In the case of a fake image,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1027,8 +1151,6 @@ D_8 = \sigma\left(
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\lambda_{i,8}\)</span> are the convolutional kernel weights to go from input image to next feature map, only 1 value, our output probability</p></li>
 <li><p><span class="math notranslate nohighlight">\(c\)</span> is the bias term</p></li>
-</ul>
-<ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\sigma(x) = \dfrac{1}{1 + e^{-x}}\)</span> is the sigmoid activation function</p></li>
 </ul>
 <p><span class="math notranslate nohighlight">\(D_8 \in [0, 1]\)</span> represents the probability assigned by the discriminator that the input is <strong>real</strong> (i.e. not a fake from the generator).</p>
@@ -1057,7 +1179,7 @@ I_7
 </ul>
 </section>
 <section id="discriminator-loss">
-<h2>Discriminator Loss<a class="headerlink" href="#discriminator-loss" title="Permalink to this heading">#</a></h2>
+<h2>Discriminator Loss<a class="headerlink" href="#discriminator-loss" title="Link to this heading">#</a></h2>
 <p>Binary cross-entropy is a loss function used for binary classification tasks where the output is a probability between 0 and 1, and the target label is either 0 or 1.</p>
 <ul class="simple">
 <li><p><strong>Prediction</strong> (model output) - <span class="math notranslate nohighlight">\(\hat{y} \in (0, 1)\)</span>, the output of <span class="math notranslate nohighlight">\(D_8\)</span>, the discriminator’s classification, probability that the image is real</p></li>
@@ -1096,13 +1218,13 @@ I_7
 \]</div>
 <p>We can summarize as,</p>
 <ul class="simple">
-<li><p>the loss is <strong>low</strong> when the model’s prediction ( \hat{y} ) is <strong>close to the true label</strong>, low probability of real for a fake image and high probability of real for a real image</p></li>
+<li><p>the loss is <strong>low</strong> when the model’s prediction <span class="math notranslate nohighlight">\(\hat{y}\)</span> is <strong>close to the true label</strong>, low probability of real for a fake image and high probability of real for a real image</p></li>
 <li><p>the loss becomes <strong>very large</strong> if the model is <strong>confident and wrong</strong>, due to the logarithm, i.e., very low probability or real for a real image and very high probability of real for a fake image</p></li>
 <li><p>the sigmoid activation ensures that the output, <span class="math notranslate nohighlight">\(\hat{y}\)</span> is a valid probability</p></li>
 </ul>
 </section>
 <section id="discriminator-loss-derivative">
-<h2>Discriminator Loss Derivative<a class="headerlink" href="#discriminator-loss-derivative" title="Permalink to this heading">#</a></h2>
+<h2>Discriminator Loss Derivative<a class="headerlink" href="#discriminator-loss-derivative" title="Link to this heading">#</a></h2>
 <p>To perform backpropagation we need to calculate the loss derivative. Let’s do this for the input of the activation function as our output node, <span class="math notranslate nohighlight">\(D_8\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1170,7 +1292,7 @@ I_7
 </ul>
 </section>
 <section id="discriminator-back-propagation">
-<h2>Discriminator Back Propagation<a class="headerlink" href="#discriminator-back-propagation" title="Permalink to this heading">#</a></h2>
+<h2>Discriminator Back Propagation<a class="headerlink" href="#discriminator-back-propagation" title="Link to this heading">#</a></h2>
 <p>For compact notation, let’s use matrix notation and define the input to the <span class="math notranslate nohighlight">\(D_8\)</span> activation, <span class="math notranslate nohighlight">\(z\)</span>, as,</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1225,7 +1347,7 @@ $<span class="math notranslate nohighlight">\(
 \)</span>$</p>
 </section>
 <section id="generator-loss-derivative-and-back-propagation-through-the-discriminator">
-<h2>Generator Loss Derivative and Back Propagation Through the Discriminator<a class="headerlink" href="#generator-loss-derivative-and-back-propagation-through-the-discriminator" title="Permalink to this heading">#</a></h2>
+<h2>Generator Loss Derivative and Back Propagation Through the Discriminator<a class="headerlink" href="#generator-loss-derivative-and-back-propagation-through-the-discriminator" title="Link to this heading">#</a></h2>
 <p>Recall that the goal of the generator is to make fake images the discriminator assigns as a high probability of a real image, i.e., to fool the discriminator</p>
 <ul class="simple">
 <li><p>the generator produces a fake image,</p></li>
@@ -1252,7 +1374,30 @@ $<span class="math notranslate nohighlight">\(
 <li><p><span class="math notranslate nohighlight">\(\hat{y} = D(G(z))\)</span>, the discriminator’s evaluation of the generator’s fake image, <span class="math notranslate nohighlight">\(z\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\hat{y}\)</span> is the probability assigned by the discriminator to the fake being real</p></li>
 </ul>
-<p>This is equivalent to cross-entropy with <strong>target label ( y = 1 )</strong></p>
+<p>This is equivalent to cross-entropy with <strong>target label <span class="math notranslate nohighlight">\(y = 1\)</span></strong>, note here we do a trick, from the generator’s perspective it’s images are real, so we are using <span class="math notranslate nohighlight">\(y=1\)</span>, i.e., real images for the fake images!</p>
+<p>You may get confused if you look at the original GAN loss above, this is called the non-saturating generator loss.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Loss Type</p></th>
+<th class="head"><p>Expression</p></th>
+<th class="head"><p>Comment</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Original GAN</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathbb{E}[\log(1 - D(G(z)))]\)</span></p></td>
+<td><p>Theoretical, can cause vanishing gradients</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Non-saturating</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(-\mathbb{E}[\log(D(G(z)))]\)</span></p></td>
+<td><p>Practical, stronger gradients, commonly used</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul class="simple">
+<li><p>so instead of minimizing the original generator loss we are maximizing the non-saturating generator loss.</p></li>
+</ul>
 <p>Let’s show how to back propagate through the entire discriminator with the chain rule.</p>
 <ul class="simple">
 <li><p>we want the generator loss gradient with respect generator output,</p></li>
@@ -1346,7 +1491,7 @@ $<span class="math notranslate nohighlight">\(
 \]</div>
 </section>
 <section id="backpropagation-through-generator-to-weights-and-bias">
-<h2>Backpropagation Through Generator to Weights and Bias<a class="headerlink" href="#backpropagation-through-generator-to-weights-and-bias" title="Permalink to this heading">#</a></h2>
+<h2>Backpropagation Through Generator to Weights and Bias<a class="headerlink" href="#backpropagation-through-generator-to-weights-and-bias" title="Link to this heading">#</a></h2>
 <p>We now propagate through the generators sigmoid activation in each of the output nodes,</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1424,7 +1569,7 @@ z_i = \lambda_{1,i} \cdot L_1 + b
 </ul>
 </section>
 <section id="simple-gan-training-workflow">
-<h2>Simple GAN Training Workflow<a class="headerlink" href="#simple-gan-training-workflow" title="Permalink to this heading">#</a></h2>
+<h2>Simple GAN Training Workflow<a class="headerlink" href="#simple-gan-training-workflow" title="Link to this heading">#</a></h2>
 <p>We start with initialization of the generator and discriminator weights and bias and setting the training hyperparameters.</p>
 <ol class="arabic simple">
 <li><p>Generate the Synthethic, “Real Images” for training</p></li>
@@ -1541,7 +1686,7 @@ c \leftarrow 0.0
 
         <span class="c1"># Step 2: Generate fake data</span>
         <span class="n">L1_fake</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">)</span>
-        <span class="n">fake_images</span> <span class="o">=</span> <span class="n">generator_forward</span><span class="p">(</span><span class="n">L1_fake</span><span class="p">,</span> <span class="n">weights_g</span><span class="p">)</span>
+        <span class="n">fake_images</span> <span class="o">=</span> <span class="n">generator_forward</span><span class="p">(</span><span class="n">L1_fake</span><span class="p">,</span> <span class="n">weights_g</span><span class="p">,</span><span class="n">return_pre_activation</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="n">I5_fake</span><span class="p">,</span> <span class="n">I6_fake</span><span class="p">,</span> <span class="n">I7_fake</span> <span class="o">=</span> <span class="n">fake_images</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">fake_images</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">fake_images</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span>
         <span class="n">y_fake</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
 
@@ -1577,7 +1722,7 @@ c \leftarrow 0.0
         <span class="n">generator_losses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss_g</span><span class="p">)</span>
 
         <span class="c1"># Print progress</span>
-        <span class="k">if</span> <span class="n">verbose</span> <span class="ow">and</span> <span class="p">(</span><span class="n">epoch</span> <span class="o">%</span> <span class="mi">1000</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">epoch</span> <span class="o">==</span> <span class="n">epochs</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">verbose</span> <span class="ow">and</span> <span class="p">(</span><span class="n">epoch</span> <span class="o">%</span> <span class="mi">5000</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">epoch</span> <span class="o">==</span> <span class="n">epochs</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
             <span class="n">weights_epoch_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">epoch</span><span class="p">)</span>
             <span class="n">weights_g_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">weights_g</span><span class="p">))</span>
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s2">: D_loss = </span><span class="si">{</span><span class="n">loss_d</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, G_loss = </span><span class="si">{</span><span class="n">loss_g</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -1594,7 +1739,7 @@ c \leftarrow 0.0
     <span class="k">return</span> <span class="n">weights_g</span><span class="p">,</span> <span class="n">weights_d</span><span class="p">,</span> <span class="n">generator_losses</span><span class="p">,</span> <span class="n">discriminator_losses</span><span class="p">,</span> <span class="n">real_images</span><span class="p">,</span> <span class="n">weights_g_list</span><span class="p">,</span> <span class="n">weights_epoch_list</span>
 
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
-<span class="n">epochs</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="mi">50000</span>
 <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span>
 <span class="n">final_weights_g</span><span class="p">,</span> <span class="n">final_weights_d</span><span class="p">,</span> <span class="n">loss_g</span><span class="p">,</span> <span class="n">loss_d</span><span class="p">,</span> <span class="n">real_images</span><span class="p">,</span> <span class="n">weights_g_list</span><span class="p">,</span> <span class="n">weights_epoch_list</span> <span class="o">=</span> <span class="n">train_gan</span><span class="p">(</span><span class="n">epochs</span><span class="o">=</span><span class="n">epochs</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">lr_g</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">lr_d</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
 
@@ -1607,45 +1752,45 @@ c \leftarrow 0.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 0: D_loss = 1.3181, G_loss = 0.6909
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 0: D_loss = 1.3433, G_loss = 0.6666
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1000: D_loss = 1.2445, G_loss = 0.6723
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 5000: D_loss = 1.0994, G_loss = 0.7903
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 2000: D_loss = 1.2650, G_loss = 0.6292
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 10000: D_loss = 1.0035, G_loss = 0.8478
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 3000: D_loss = 1.2955, G_loss = 0.6195
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 15000: D_loss = 0.9899, G_loss = 0.8271
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 4000: D_loss = 1.2948, G_loss = 0.6584
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 20000: D_loss = 1.0441, G_loss = 0.8124
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 5000: D_loss = 1.3010, G_loss = 0.6991
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 25000: D_loss = 1.0621, G_loss = 0.8129
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 6000: D_loss = 1.3335, G_loss = 0.6973
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 30000: D_loss = 1.1218, G_loss = 0.8277
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 7000: D_loss = 1.4199, G_loss = 0.6486
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 35000: D_loss = 1.1224, G_loss = 0.8411
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 8000: D_loss = 1.4667, G_loss = 0.5782
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 40000: D_loss = 1.1631, G_loss = 0.7914
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 9000: D_loss = 1.5111, G_loss = 0.5936
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 45000: D_loss = 1.1779, G_loss = 0.7685
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 9999: D_loss = 1.4460, G_loss = 0.6302
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 49999: D_loss = 1.1607, G_loss = 0.7617
 </pre></div>
 </div>
-<img alt="_images/20883611b90b0f953f930771b5a8bd601f413b3124ae6e2b6ff6a3b77b778aa2.png" src="_images/20883611b90b0f953f930771b5a8bd601f413b3124ae6e2b6ff6a3b77b778aa2.png" />
+<img alt="_images/394f0f2a5fa6f9315ee2b97739445c3887efad743ea6832119d4e606e5c4331d.png" src="_images/394f0f2a5fa6f9315ee2b97739445c3887efad743ea6832119d4e606e5c4331d.png" />
 </div>
 </div>
 </section>
 <section id="visualize-real-images-and-trained-generator-fake-images">
-<h2>Visualize Real Images and Trained Generator Fake Images<a class="headerlink" href="#visualize-real-images-and-trained-generator-fake-images" title="Permalink to this heading">#</a></h2>
+<h2>Visualize Real Images and Trained Generator Fake Images<a class="headerlink" href="#visualize-real-images-and-trained-generator-fake-images" title="Link to this heading">#</a></h2>
 <p>Let’s check a set of fake images from our trained generator against the real images.</p>
 <ul class="simple">
 <li><p>recall the generator never saw these images, the discriminator saw the real and fake images and told the generator how good or bad were the generator’s fake images.</p></li>
@@ -1660,25 +1805,27 @@ c \leftarrow 0.0
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">batch_size</span><span class="p">):</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">real_images</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">real_images</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Real Images&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Node&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Real Images&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Node&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Pixel&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">3.2</span><span class="p">,</span><span class="mf">0.8</span><span class="p">])</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">batch_size</span><span class="p">):</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trained_fake</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">trained_fake</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Trained Generator Fake Images&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Node&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Trained Generator Fake Images&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Node&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;$O_2$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$O_3$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$O_4$&#39;</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">3.2</span><span class="p">,</span><span class="mf">0.8</span><span class="p">])</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/23aaf1fce6eb82054c0d400153aec8c52ee7bcfacab67cf4abc33aa9e946f388.png" src="_images/23aaf1fce6eb82054c0d400153aec8c52ee7bcfacab67cf4abc33aa9e946f388.png" />
+<img alt="_images/f1458c54cacabaac151061062cfa4382d49baad5835a59a7b36470a0e727fc10.png" src="_images/f1458c54cacabaac151061062cfa4382d49baad5835a59a7b36470a0e727fc10.png" />
 </div>
 </div>
 </section>
 <section id="visualize-real-images-and-generator-fake-images-over-training-epochs">
-<h2>Visualize Real Images and Generator Fake Images Over Training Epochs<a class="headerlink" href="#visualize-real-images-and-generator-fake-images-over-training-epochs" title="Permalink to this heading">#</a></h2>
+<h2>Visualize Real Images and Generator Fake Images Over Training Epochs<a class="headerlink" href="#visualize-real-images-and-generator-fake-images-over-training-epochs" title="Link to this heading">#</a></h2>
 <p>It is interesting to see how our generator’s fake images evolve over the training epochs.</p>
 <ul class="simple">
 <li><p>as first the fake images are random due to the random initialization of the generator’s weights and bias</p></li>
@@ -1693,30 +1840,32 @@ c \leftarrow 0.0
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">batch_size</span><span class="p">):</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fake</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">fake</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fake Images: Training Epoch &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">weights_epoch_list</span><span class="p">[</span><span class="n">i</span><span class="p">]));</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Node&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fake Images: Training Epoch &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">weights_epoch_list</span><span class="p">[</span><span class="n">i</span><span class="p">]));</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Output Node&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;$O_2$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$O_3$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$O_4$&#39;</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">3.2</span><span class="p">,</span><span class="mf">0.8</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">batch_size</span><span class="p">):</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">real_images</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">real_images</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Real Images&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Node&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Real Images&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Pixel&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">3.2</span><span class="p">,</span><span class="mf">0.8</span><span class="p">])</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">3.2</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ca71df0d300fff9ff2c2772bec3d93d556f4435bfcb9f00cefcc71d54aff50e5.png" src="_images/ca71df0d300fff9ff2c2772bec3d93d556f4435bfcb9f00cefcc71d54aff50e5.png" />
+<img alt="_images/c2463ac51f65797d72a8d5928b7d9bacc68d2cd34e20a257721b3f99c27348eb.png" src="_images/c2463ac51f65797d72a8d5928b7d9bacc68d2cd34e20a257721b3f99c27348eb.png" />
 </div>
 </div>
 </section>
 <section id="comments">
-<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
+<h2>Comments<a class="headerlink" href="#comments" title="Link to this heading">#</a></h2>
 <p>This was a basic treatment of generative adversarial networks. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
 <section id="about-the-author">
-<h2>About the Author<a class="headerlink" href="#about-the-author" title="Permalink to this heading">#</a></h2>
+<h2>About the Author<a class="headerlink" href="#about-the-author" title="Link to this heading">#</a></h2>
 <figure style="text-align: center;">
   <img src="_static/intro/michael_pyrcz_officeshot_jacket.jpg" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
@@ -1727,11 +1876,11 @@ c \leftarrow 0.0
 <li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
+<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference internal" href="#www.michaelpyrcz.com"><span class="xref myst">Website</span></a>.</p>
 </section>
 <section id="want-to-work-together">
-<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
+<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Link to this heading">#</a></h2>
 <p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
@@ -1741,7 +1890,7 @@ c \leftarrow 0.0
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -1772,7 +1921,7 @@ c \leftarrow 0.0
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1802,6 +1951,7 @@ c \leftarrow 0.0
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -1809,12 +1959,15 @@ c \leftarrow 0.0
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#artificial-and-convolutional-neural-networks">Artificial and Convolutional Neural Networks</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Generative Adversarial Networks</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indirect-adversarial-learning">Indirect, Adversarial Learning</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-required-packages">Import Required Packages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-generative-adversarial-network">Visualize the Generative Adversarial Network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments-on-network-nomenclature">Comments on Network Nomenclature</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sigmoid-activation">Sigmoid Activation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generator-forward-pass">Generator Forward Pass</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discriminator-forward-pass">Discriminator Forward Pass</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discriminator-loss">Discriminator Loss</a></li>
@@ -1876,8 +2029,8 @@ By Michael J. Pyrcz
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

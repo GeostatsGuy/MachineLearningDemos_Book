@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Feature Transformations &#8212; Applied Machine Learning in Python</title>
   
@@ -15,55 +14,51 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=304429a7" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=564be945" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'MachineLearning_feature_transformations';</script>
@@ -80,28 +75,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -123,12 +113,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -144,6 +142,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -162,7 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -201,6 +212,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ensemble_trees.html">Bagging Tree and Random Forest</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_gradient_boosting.html">Gradient Boosting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_support_vector_machines.html">Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_activation_functions.html">Neural Networks Activation Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ANN.html">Artificial Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_CNN.html">Convolutional Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_autoencoder.html">Autoencoder Neural Networks</a></li>
@@ -226,7 +238,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -235,14 +247,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -367,10 +379,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -378,14 +390,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -439,15 +451,15 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <figure style="text-align: center;">
   <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
 </figure>
 <section id="feature-transformations">
-<h1>Feature Transformations<a class="headerlink" href="#feature-transformations" title="Permalink to this heading">#</a></h1>
+<h1>Feature Transformations<a class="headerlink" href="#feature-transformations" title="Link to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite this e-Book as:</p>
@@ -468,9 +480,9 @@ document.write(`
 <li><p><a class="reference external" href="https://youtu.be/Yt0o8ukIOKU?si=_ri1NPwKVdhYzgO3">Multidimensional Scaling and Random Projection</a></p></li>
 <li><p><a class="reference external" href="https://youtu.be/6QJjZoWknEI?si=p6vp811xWAmzWY3r">Feature Transformations</a></p></li>
 </ul>
-<p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
+<p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
 <section id="motivations-for-feature-transformations">
-<h2>Motivations for Feature Transformations<a class="headerlink" href="#motivations-for-feature-transformations" title="Permalink to this heading">#</a></h2>
+<h2>Motivations for Feature Transformations<a class="headerlink" href="#motivations-for-feature-transformations" title="Link to this heading">#</a></h2>
 <p>There are many reasons that we may want to perform feature transformations.</p>
 <ul class="simple">
 <li><p>the make the features consistent for visualization and comparison</p></li>
@@ -490,7 +502,7 @@ document.write(`
 </ul>
 </section>
 <section id="feature-transformation-workflow">
-<h2>Feature Transformation Workflow<a class="headerlink" href="#feature-transformation-workflow" title="Permalink to this heading">#</a></h2>
+<h2>Feature Transformation Workflow<a class="headerlink" href="#feature-transformation-workflow" title="Link to this heading">#</a></h2>
 <p>A common feature transformation workflow involves the transformation of the features to a new space, completed the machine learning workflow in the new space and then backtransform to the original space.</p>
 <figure style="text-align: center;">
   <img src="_static/feature_transformations/transform_workflow.png" style="display: block; margin: 0 auto; width: 100%;">
@@ -499,7 +511,7 @@ document.write(`
 </figure>
 </section>
 <section id="load-the-required-libraries">
-<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
+<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Link to this heading">#</a></h2>
 <p>The following code loads the required libraries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -511,7 +523,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GeostatsPy version: 0.0.72
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GeostatsPy version: 0.0.78
 </pre></div>
 </div>
 </div>
@@ -554,7 +566,7 @@ document.write(`
 <p>If you get a package import error, you may have to first install some of these packages. This can usually be accomplished by opening up a command window on Windows and then typing ‘python -m pip install [package-name]’. More assistance is available with the respective package docs.</p>
 </section>
 <section id="declare-functions">
-<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
+<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Link to this heading">#</a></h2>
 <p>Let’s define a function to streamline the addition specified percentiles and major and minor gridlines to our plots.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -582,7 +594,7 @@ document.write(`
 </div>
 </section>
 <section id="set-the-working-directory">
-<h2>Set the Working Directory<a class="headerlink" href="#set-the-working-directory" title="Permalink to this heading">#</a></h2>
+<h2>Set the Working Directory<a class="headerlink" href="#set-the-working-directory" title="Link to this heading">#</a></h2>
 <p>I always like to do this so I don’t lose files and to simplify subsequent read and writes (avoid including the full address each time).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -594,7 +606,7 @@ document.write(`
 <p>You will have to update the part in quotes with your own working directory and the format is different on a Mac (e.g. “~/PGE”).</p>
 </section>
 <section id="loading-tabular-data">
-<h2>Loading Tabular Data<a class="headerlink" href="#loading-tabular-data" title="Permalink to this heading">#</a></h2>
+<h2>Loading Tabular Data<a class="headerlink" href="#loading-tabular-data" title="Link to this heading">#</a></h2>
 <p>Here’s the command to load our comma delimited data file in to a Pandas’ DataFrame object.</p>
 <p>Let’s load the provided multivariate, spatial dataset ‘unconv_MV.csv’. This dataset has variables from 1,000 unconventional wells including:</p>
 <ul class="simple">
@@ -644,7 +656,7 @@ document.write(`
 </div>
 </section>
 <section id="visualize-the-dataframe">
-<h2>Visualize the DataFrame<a class="headerlink" href="#visualize-the-dataframe" title="Permalink to this heading">#</a></h2>
+<h2>Visualize the DataFrame<a class="headerlink" href="#visualize-the-dataframe" title="Link to this heading">#</a></h2>
 <p>Visualizing the DataFrame is useful first check of the data.</p>
 <ul class="simple">
 <li><p>many things can go wrong, e.g., we loaded the wrong data, all the features did not load, etc.</p></li>
@@ -824,7 +836,7 @@ document.write(`
 </div>
 </section>
 <section id="summary-statistics-for-tabular-data">
-<h2>Summary Statistics for Tabular Data<a class="headerlink" href="#summary-statistics-for-tabular-data" title="Permalink to this heading">#</a></h2>
+<h2>Summary Statistics for Tabular Data<a class="headerlink" href="#summary-statistics-for-tabular-data" title="Link to this heading">#</a></h2>
 <p>There are a lot of efficient methods to calculate summary statistics from tabular data in DataFrames. The describe command provides count, mean, minimum, maximum, and quartiles all in a nice data table.</p>
 <ul class="simple">
 <li><p>We use transpose just to flip the table so that features are on the rows and the statistics are on the columns.</p></li>
@@ -948,7 +960,7 @@ document.write(`
 </div>
 </section>
 <section id="data-visualization">
-<h2>Data Visualization<a class="headerlink" href="#data-visualization" title="Permalink to this heading">#</a></h2>
+<h2>Data Visualization<a class="headerlink" href="#data-visualization" title="Link to this heading">#</a></h2>
 <p>We should also take a look at the histograms.</p>
 <ul class="simple">
 <li><p>get a sense of the range, modes, skew, outliers etc. for each feature</p></li>
@@ -971,14 +983,14 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/919ec2a38f23ede94c93df48bbd9fe48c3a4a10ace07770d09b4768c61b9da29.png" src="_images/919ec2a38f23ede94c93df48bbd9fe48c3a4a10ace07770d09b4768c61b9da29.png" />
+<img alt="_images/0e63159ea527325d4e6b029cb9d2054683e593be959e6334b22edccafb06bdcc.png" src="_images/0e63159ea527325d4e6b029cb9d2054683e593be959e6334b22edccafb06bdcc.png" />
 </div>
 </div>
 <p>Now let’s step through, describe, demonstrate and visualize each feature transformation.</p>
 <p>Fortunately, there are just a couple slightly negative values, this is a great segue into our first feature transformation.</p>
 </section>
 <section id="truncation">
-<h2>Truncation<a class="headerlink" href="#truncation" title="Permalink to this heading">#</a></h2>
+<h2>Truncation<a class="headerlink" href="#truncation" title="Link to this heading">#</a></h2>
 <p>It is possible that the features may extend beyond the plausible range of values.</p>
 <ul class="simple">
 <li><p>truncation is simply assigning values outside the range with a specific value</p></li>
@@ -1016,7 +1028,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d3c727976e7e63b35f0ea4317278cef07a079a9471f83ab835c5fa45071e563d.png" src="_images/d3c727976e7e63b35f0ea4317278cef07a079a9471f83ab835c5fa45071e563d.png" />
+<img alt="_images/aec129a21e627c6fa03382a0774db5311b771bff5bb9f77d3e8085ecc58d12cd.png" src="_images/aec129a21e627c6fa03382a0774db5311b771bff5bb9f77d3e8085ecc58d12cd.png" />
 </div>
 </div>
 <p>Let’s look at the summary statistics again to confirm that we were successful in truncating TOC to <span class="math notranslate nohighlight">\(\ge 0\)</span>.</p>
@@ -1140,7 +1152,7 @@ document.write(`
 <p>From the summary statistics you can see that the truncation was successful, we now have a minimum of 0.0.</p>
 </section>
 <section id="affine-correction">
-<h2>Affine Correction<a class="headerlink" href="#affine-correction" title="Permalink to this heading">#</a></h2>
+<h2>Affine Correction<a class="headerlink" href="#affine-correction" title="Link to this heading">#</a></h2>
 <p>The affine correction is the transform of the feature distribution to a new mean and variance.</p>
 <ul class="simple">
 <li><p>this is a shift and stretch / squeeze of the original property distribution</p></li>
@@ -1181,7 +1193,7 @@ y = \frac{\sigma_y}{\sigma_x}\left( x - \overline{x} \right) + \overline{y}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/503e7600fa382ce95c90337883c56169c23a7019c676e8932519689bd69521ba.png" src="_images/503e7600fa382ce95c90337883c56169c23a7019c676e8932519689bd69521ba.png" />
+<img alt="_images/80780d6dcda1c60e1b4531fb209ba4904c49859b06ae2bae2fa915bd0b78dae0.png" src="_images/80780d6dcda1c60e1b4531fb209ba4904c49859b06ae2bae2fa915bd0b78dae0.png" />
 </div>
 </div>
 <p>Let’s check the summary statistics of our new feature.</p>
@@ -1215,7 +1227,7 @@ Name: aPor, dtype: float64
 </div>
 </section>
 <section id="standardization">
-<h2>Standardization<a class="headerlink" href="#standardization" title="Permalink to this heading">#</a></h2>
+<h2>Standardization<a class="headerlink" href="#standardization" title="Link to this heading">#</a></h2>
 <p>Standardization is the transform of the feature distribution to a mean of zero and a variance of one.</p>
 <ul class="simple">
 <li><p>this is a shift and stretch / squeeze of the original property distribution</p></li>
@@ -1285,7 +1297,7 @@ y = \frac{1}{\sigma_x}\left( x - \overline{x} \right)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/860c817150a4b132f0a47fd6b3633078aa8aad5e083becddb7c142dd011b9761.png" src="_images/860c817150a4b132f0a47fd6b3633078aa8aad5e083becddb7c142dd011b9761.png" />
+<img alt="_images/c8769effd88272686fb3a710c01e4a23cf9ddcb2f573e96127ea1e27563ac3c2.png" src="_images/c8769effd88272686fb3a710c01e4a23cf9ddcb2f573e96127ea1e27563ac3c2.png" />
 </div>
 </div>
 <p>Let’s close the loop and reverse the transformation and confirm that we get back to the original data.</p>
@@ -1327,7 +1339,7 @@ y = \frac{1}{\sigma_x}\left( x - \overline{x} \right)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7d881f2136413ce943bfe3043e094add5466ee75470a94ee7b8aa3293b013a80.png" src="_images/7d881f2136413ce943bfe3043e094add5466ee75470a94ee7b8aa3293b013a80.png" />
+<img alt="_images/f51254c2aa4d1a04f8eb8f60658d9b1a58e57e31b729ce8f7ff344e007b4714a.png" src="_images/f51254c2aa4d1a04f8eb8f60658d9b1a58e57e31b729ce8f7ff344e007b4714a.png" />
 </div>
 </div>
 <p>You can confirm the result is the same as the original, prior to standardization DatatFrame.</p>
@@ -1345,7 +1357,7 @@ y = \frac{1}{\sigma_x}\left( x - \overline{x} \right)
 </div>
 </section>
 <section id="normalization">
-<h2>Normalization<a class="headerlink" href="#normalization" title="Permalink to this heading">#</a></h2>
+<h2>Normalization<a class="headerlink" href="#normalization" title="Link to this heading">#</a></h2>
 <p>Also known as the min / max transform, recales the features to have a minimum of 0 and a maximum of 1.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1388,7 +1400,7 @@ y = \frac{x - min(x)}{max(x) - min(x)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1720620304bcabd820b921f3816eb82144f13a0e5c72c14f54b7df3377402c90.png" src="_images/1720620304bcabd820b921f3816eb82144f13a0e5c72c14f54b7df3377402c90.png" />
+<img alt="_images/c6292aa330e51f8b35f24e18e85567ed7a117e185ab2b47ccabeb4f6dcb41325.png" src="_images/c6292aa330e51f8b35f24e18e85567ed7a117e185ab2b47ccabeb4f6dcb41325.png" />
 </div>
 </div>
 <p>Let’s check the summary statistics.</p>
@@ -1533,7 +1545,7 @@ y = \frac{x - min(x)}{max(x) - min(x)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5aef0d99270f184e75f6cb3c82049f191a609ba33e108a1df3bd77627ad879d8.png" src="_images/5aef0d99270f184e75f6cb3c82049f191a609ba33e108a1df3bd77627ad879d8.png" />
+<img alt="_images/0ad6f60bc749aaeca0e099cbfa94b3b081c9ef1b4a1e819bf28fd8189a958e31.png" src="_images/0ad6f60bc749aaeca0e099cbfa94b3b081c9ef1b4a1e819bf28fd8189a958e31.png" />
 </div>
 </div>
 <p>You can confirm the result is the same as the original, prior to standardization DataFrame.</p>
@@ -1547,7 +1559,7 @@ y = \frac{x - min(x)}{max(x) - min(x)}
 </div>
 </section>
 <section id="l1-l2-normalizer">
-<h2>L1 / L2 Normalizer<a class="headerlink" href="#l1-l2-normalizer" title="Permalink to this heading">#</a></h2>
+<h2>L1 / L2 Normalizer<a class="headerlink" href="#l1-l2-normalizer" title="Link to this heading">#</a></h2>
 <p>Another type of normalization is performed independently on each sample to force the <span class="math notranslate nohighlight">\(L1\)</span> or <span class="math notranslate nohighlight">\(L2\)</span> norm to be 1.0.</p>
 <p>For the L1 norm:</p>
 <div class="math notranslate nohighlight">
@@ -1618,7 +1630,7 @@ y = \frac{x - min(x)}{max(x) - min(x)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0df41899d9ad7219dd3958a6d8ec2c4d1056a0c3c707e310b2e9d165eec49742.png" src="_images/0df41899d9ad7219dd3958a6d8ec2c4d1056a0c3c707e310b2e9d165eec49742.png" />
+<img alt="_images/d82d4acf59b7c00033dbf6b60f21663382838013828f2ea5ee07b0b2bd8aeca5.png" src="_images/d82d4acf59b7c00033dbf6b60f21663382838013828f2ea5ee07b0b2bd8aeca5.png" />
 </div>
 </div>
 <p>Now let’s demonstrate the <span class="math notranslate nohighlight">\(L1\)</span> norm.</p>
@@ -1672,12 +1684,12 @@ y = \frac{x - min(x)}{max(x) - min(x)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c84fb1b26214b18195f7fb1487fe47dd19bd2c6efddf362366c9aae31d5e4206.png" src="_images/c84fb1b26214b18195f7fb1487fe47dd19bd2c6efddf362366c9aae31d5e4206.png" />
+<img alt="_images/79f35154a82f5a0c89e28bac891ddea9c95770d17c1ef60bab5ec38b2a14c04d.png" src="_images/79f35154a82f5a0c89e28bac891ddea9c95770d17c1ef60bab5ec38b2a14c04d.png" />
 </div>
 </div>
 </section>
 <section id="binary-or-indictor-transform">
-<h2>Binary or Indictor Transform<a class="headerlink" href="#binary-or-indictor-transform" title="Permalink to this heading">#</a></h2>
+<h2>Binary or Indictor Transform<a class="headerlink" href="#binary-or-indictor-transform" title="Link to this heading">#</a></h2>
 <p>For the many problems that we need to perform a binary transform to convert our continuous feature to 0’s and 1’s based on a threshold, <span class="math notranslate nohighlight">\(x_t\)</span></p>
 <ul class="simple">
 <li><p>for the binary transform, <span class="math notranslate nohighlight">\(x_i = 0\)</span> if <span class="math notranslate nohighlight">\(&lt;= x_t\)</span> and <span class="math notranslate nohighlight">\(x_i = 1\)</span> otherwise</p></li>
@@ -1703,12 +1715,12 @@ y = \frac{x - min(x)}{max(x) - min(x)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/22403035d20f298245a599ee12ef0e21b691b6964c3114767ac5d96de5cfc458.png" src="_images/22403035d20f298245a599ee12ef0e21b691b6964c3114767ac5d96de5cfc458.png" />
+<img alt="_images/2edb5a12fb68c72bd575f2c1211df12a6765673d30294cd3bb5045778761768a.png" src="_images/2edb5a12fb68c72bd575f2c1211df12a6765673d30294cd3bb5045778761768a.png" />
 </div>
 </div>
 </section>
 <section id="k-bins-discretization">
-<h2>k Bins Discretization<a class="headerlink" href="#k-bins-discretization" title="Permalink to this heading">#</a></h2>
+<h2>k Bins Discretization<a class="headerlink" href="#k-bins-discretization" title="Link to this heading">#</a></h2>
 <p>With k bins discretization we bin the range of the feature into K bins and then expand each sample for our continuous feature to K features with the assignment of a value of 1 if the sample is within a bin and 0 if outsize the bin</p>
 <ul class="simple">
 <li><p>strategies include uniform width bins (uniform) and uniform number of data in each bin (quantile)</p></li>
@@ -1811,13 +1823,13 @@ y = \frac{x - min(x)}{max(x) - min(x)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/840d6c4d9df55591d3d7cae041218c40ff8d026432fdb76a746b82a1112c0c91.png" src="_images/840d6c4d9df55591d3d7cae041218c40ff8d026432fdb76a746b82a1112c0c91.png" />
+<img alt="_images/52124691899f41d6c12eb186d54d1b854de21698ef22dfa89ca7c4ed9d557a05.png" src="_images/52124691899f41d6c12eb186d54d1b854de21698ef22dfa89ca7c4ed9d557a05.png" />
 </div>
 </div>
 <p>Spot check the first sample, <span class="math notranslate nohighlight">\(12.08\%\)</span> porosity is <span class="math notranslate nohighlight">\(\in [9.95\%,13.35\%]\)</span> so we have a 1 in the second bin (second column in our table) and zeros in the other bins.</p>
 </section>
 <section id="general-distribution-transformation">
-<h2>General Distribution Transformation<a class="headerlink" href="#general-distribution-transformation" title="Permalink to this heading">#</a></h2>
+<h2>General Distribution Transformation<a class="headerlink" href="#general-distribution-transformation" title="Link to this heading">#</a></h2>
 <p>The distribution transformation may be applied to transform any distribution, <span class="math notranslate nohighlight">\(F_x(x)\)</span> to any other distribution, <span class="math notranslate nohighlight">\(F_y(y)\)</span>.</p>
 <ul class="simple">
 <li><p>the target distribution, <span class="math notranslate nohighlight">\(F_y(y)\)</span>, could be nonparametric, i.e., a set of values. In this case the data is converted to a CDF and some form of interpolation is applied to find the inverse of the target CDF, <span class="math notranslate nohighlight">\(F_y^{-1}(p)\)</span>, for any cumulative probability, <span class="math notranslate nohighlight">\(p\)</span></p></li>
@@ -1837,7 +1849,7 @@ y = \frac{x - min(x)}{max(x) - min(x)}
 </figure>
 </section>
 <section id="distribution-transformation-to-a-parametric-distribution">
-<h2>Distribution Transformation to a Parametric Distribution<a class="headerlink" href="#distribution-transformation-to-a-parametric-distribution" title="Permalink to this heading">#</a></h2>
+<h2>Distribution Transformation to a Parametric Distribution<a class="headerlink" href="#distribution-transformation-to-a-parametric-distribution" title="Link to this heading">#</a></h2>
 <p>We can transform our data feature distribution to any parametric distribution with this workflow.</p>
 <ol class="arabic simple">
 <li><p>Calculate the cumulative probability value of each of our data values, <span class="math notranslate nohighlight">\(p_{\alpha} = F_x(x_\alpha)\)</span>, <span class="math notranslate nohighlight">\(\forall\)</span> <span class="math notranslate nohighlight">\(\alpha = 1,\ldots, n\)</span>.</p></li>
@@ -1884,7 +1896,7 @@ F_i = \frac{i}{n+1}
 </ul>
 </section>
 <section id="gaussian-transform-gaussian-anamorphosis">
-<h2>Gaussian Transform / Gaussian Anamorphosis<a class="headerlink" href="#gaussian-transform-gaussian-anamorphosis" title="Permalink to this heading">#</a></h2>
+<h2>Gaussian Transform / Gaussian Anamorphosis<a class="headerlink" href="#gaussian-transform-gaussian-anamorphosis" title="Link to this heading">#</a></h2>
 <p>We showed that the correction of the mean to 0.0 and standard deviation to 1.0 with affine correction does not change the shape; therefore, does not make a Gaussian distributed property.</p>
 <ul class="simple">
 <li><p>for many statistic or geostatistical methods the assumption of Gaussian distributed is required. We need normal score transforms in many subsurface modeling workflows</p></li>
@@ -1948,7 +1960,7 @@ X = F_{X}^{-1}(G_{Y}(Y))
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ccfe930544f5631942cac6455936c674ed3658e40aa34b66bc3c368a840557e0.png" src="_images/ccfe930544f5631942cac6455936c674ed3658e40aa34b66bc3c368a840557e0.png" />
+<img alt="_images/e8a1140fb031fafe10e470749d275e342043b9ef53bc7b188b567ccfa95e61ea.png" src="_images/e8a1140fb031fafe10e470749d275e342043b9ef53bc7b188b567ccfa95e61ea.png" />
 </div>
 </div>
 <p>Now let’s perform the Gaussian transformation with a function.</p>
@@ -1973,7 +1985,7 @@ X = F_{X}^{-1}(G_{Y}(Y))
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2e23070ec75841817bb2ff45e537e54f2962feb70f76f2e949cadc823bb937d3.png" src="_images/2e23070ec75841817bb2ff45e537e54f2962feb70f76f2e949cadc823bb937d3.png" />
+<img alt="_images/b57c4af151198ef7e965c872c29751713beac4b157276eb752118b4fad20422e.png" src="_images/b57c4af151198ef7e965c872c29751713beac4b157276eb752118b4fad20422e.png" />
 </div>
 </div>
 <p>Let’s visualize the Gaussian transformed feature histograms.</p>
@@ -1995,7 +2007,7 @@ X = F_{X}^{-1}(G_{Y}(Y))
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2808b9faa14fa3d3de6707270f13cb812ef90c1c2d4d2d6f15ad935b45cd1496.png" src="_images/2808b9faa14fa3d3de6707270f13cb812ef90c1c2d4d2d6f15ad935b45cd1496.png" />
+<img alt="_images/8c57a56ca7dd93840270c06f4fe1a26b722b9e06bd1c100da4b4538ccaf7aa7d.png" src="_images/8c57a56ca7dd93840270c06f4fe1a26b722b9e06bd1c100da4b4538ccaf7aa7d.png" />
 </div>
 </div>
 <p>Once again, let’s check out the reverse transform, from Gaussian back to the original features.</p>
@@ -2026,12 +2038,12 @@ x = F_x^{-1}(G_y(y))
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6b26c6c43ee3edace11bb1110c1426f4315f45336fb68b4ab16720270aa4c5d5.png" src="_images/6b26c6c43ee3edace11bb1110c1426f4315f45336fb68b4ab16720270aa4c5d5.png" />
+<img alt="_images/f01ff4ce6fce3f3ca8eb06ff77bb45261c944ab8ed5d8967d427dfda8a513d49.png" src="_images/f01ff4ce6fce3f3ca8eb06ff77bb45261c944ab8ed5d8967d427dfda8a513d49.png" />
 </div>
 </div>
 </section>
 <section id="quantile-uniform-0-1-transform">
-<h2>Quantile / Uniform[0,1] Transform<a class="headerlink" href="#quantile-uniform-0-1-transform" title="Permalink to this heading">#</a></h2>
+<h2>Quantile / Uniform[0,1] Transform<a class="headerlink" href="#quantile-uniform-0-1-transform" title="Link to this heading">#</a></h2>
 <p>We can also perform a uniform transform, this is known as the quantile transformation to the cumulative probability values.</p>
 <ul class="simple">
 <li><p>the cumulative probability values have a uniform distribution.</p></li>
@@ -2057,7 +2069,7 @@ x = F_x^{-1}(G_y(y))
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e55888e0117a7257dadef0dbe2984d3a2d5f30cb7c2dc20033d33a1ea6d77e25.png" src="_images/e55888e0117a7257dadef0dbe2984d3a2d5f30cb7c2dc20033d33a1ea6d77e25.png" />
+<img alt="_images/7426f75be618f396f3bd7583ab2bd0f8974236fa01560ccd4bff1adf5eb4ba81.png" src="_images/7426f75be618f396f3bd7583ab2bd0f8974236fa01560ccd4bff1adf5eb4ba81.png" />
 </div>
 </div>
 <p>Let’s visualize the uniform transformed feature histograms.</p>
@@ -2079,13 +2091,13 @@ x = F_x^{-1}(G_y(y))
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/091517d75ff4bdf9bfab58d187bd9a5ffd9c00c1dd38b8b65ab31b57357dd725.png" src="_images/091517d75ff4bdf9bfab58d187bd9a5ffd9c00c1dd38b8b65ab31b57357dd725.png" />
+<img alt="_images/16189e7ea7c03b3def12a0dda6abd2fd4f1ce0e23c2bd45670bad75e0256f750.png" src="_images/16189e7ea7c03b3def12a0dda6abd2fd4f1ce0e23c2bd45670bad75e0256f750.png" />
 </div>
 </div>
 <p>We now have features with uniform distributions <span class="math notranslate nohighlight">\([0,1]\)</span>.</p>
 </section>
 <section id="custom-feature-transforms">
-<h2>Custom Feature Transforms<a class="headerlink" href="#custom-feature-transforms" title="Permalink to this heading">#</a></h2>
+<h2>Custom Feature Transforms<a class="headerlink" href="#custom-feature-transforms" title="Link to this heading">#</a></h2>
 <p>We can also create our own custom feature transformation.  We can specify our own transform within a scikit-learn preprocessing function</p>
 <ul class="simple">
 <li><p>this allows us to have a convenient method for forward and reverse transforms of our features as we have seen above</p></li>
@@ -2124,7 +2136,7 @@ x = exp(y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/366f97304182137c18af248ab05bcf691049364126a2a1b44d259c5072f2007a.png" src="_images/366f97304182137c18af248ab05bcf691049364126a2a1b44d259c5072f2007a.png" />
+<img alt="_images/12dd2550d00d5340832904f9c9c8ec909bd33b6bc51cc7e9af989e7022720317.png" src="_images/12dd2550d00d5340832904f9c9c8ec909bd33b6bc51cc7e9af989e7022720317.png" />
 </div>
 </div>
 <p>Let’s demonstrate that our custom transform is reversible.</p>
@@ -2151,19 +2163,19 @@ x = exp(y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a9e9bd5918fbfe72331f080d2d0f8d2ad3e4285d43ef2fda1c2c38bd3a9fdf82.png" src="_images/a9e9bd5918fbfe72331f080d2d0f8d2ad3e4285d43ef2fda1c2c38bd3a9fdf82.png" />
+<img alt="_images/32fa109259b3757db4256b8d2569083cdb208ebbfc1471d7dc7d86deb3d1b887.png" src="_images/32fa109259b3757db4256b8d2569083cdb208ebbfc1471d7dc7d86deb3d1b887.png" />
 </div>
 </div>
 <p>Compare the back-transformed permeability values to the original dataset.  The reverse transform that we specified with our custom transformation works!</p>
 </section>
 <section id="comments">
-<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
+<h2>Comments<a class="headerlink" href="#comments" title="Link to this heading">#</a></h2>
 <p>This was a basic treatment of feature transformations. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
 <section id="about-the-author">
-<h2>About the Author<a class="headerlink" href="#about-the-author" title="Permalink to this heading">#</a></h2>
+<h2>About the Author<a class="headerlink" href="#about-the-author" title="Link to this heading">#</a></h2>
 <figure style="text-align: center;">
   <img src="_static/intro/michael_pyrcz_officeshot_jacket.jpg" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
@@ -2174,11 +2186,11 @@ x = exp(y)
 <li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
+<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference internal" href="#www.michaelpyrcz.com"><span class="xref myst">Website</span></a>.</p>
 </section>
 <section id="want-to-work-together">
-<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
+<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Link to this heading">#</a></h2>
 <p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
@@ -2188,7 +2200,7 @@ x = exp(y)
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael J. Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -2219,7 +2231,7 @@ x = exp(y)
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -2248,6 +2260,7 @@ x = exp(y)
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -2327,8 +2340,8 @@ By Michael J. Pyrcz
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

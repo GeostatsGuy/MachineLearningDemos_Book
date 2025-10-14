@@ -1,0 +1,58 @@
+Traceback (most recent call last):
+  File "C:\Users\pm27995\AppData\Roaming\Python\Python312\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\ProgramData\anaconda3\Lib\site-packages\nbclient\client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\ProgramData\anaconda3\Lib\site-packages\jupyter_core\utils\__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\ProgramData\anaconda3\Lib\asyncio\base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\ProgramData\anaconda3\Lib\site-packages\nbclient\client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "C:\ProgramData\anaconda3\Lib\site-packages\nbclient\client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\ProgramData\anaconda3\Lib\site-packages\nbclient\client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+max_depth = 100; min_samples_leaf = 2                         # set for a complicated tree
+
+regressor = DecisionTreeRegressor(max_depth = max_depth, min_samples_leaf = min_samples_leaf) # instantiate a decision tree
+
+num_tree = 1                                                  # use only a single tree for this demonstration
+seeds = [73073, 73074, 73075, 73076, 73077, 73078]
+bagging_models = []; oob_MSE = []; score = []; pred = []
+
+index = 1
+for seed in seeds:                                            # visualize models over random number seeds
+    bagging_models.append(BaggingRegressor(base_estimator=regressor,n_estimators=num_tree,random_state=seed,oob_score = True,
+                                           bootstrap=True,n_jobs = 4))
+    bagging_models[index-1].fit(X = X, y = y)
+    oob_MSE.append(bagging_models[index-1].oob_score_)
+    plt.subplot(2,3,index)
+    bag_X1 = X.iloc[np.asarray(bagging_models[index-1].estimators_samples_[0]),0]
+    bag_X2 = X.iloc[np.asarray(bagging_models[index-1].estimators_samples_[0]),1]
+    bag_y = y.iloc[np.asarray(bagging_models[index-1].estimators_samples_[0]),0]
+    pred.append(visualize_model(bagging_models[index-1],bag_X1,Xmin[0],Xmax[0],bag_X2,Xmin[1],Xmax[1],bag_y,ymin,ymax,
+                ylabelunit,Xlabelunit[0],Xlabelunit[1],'Bootstrap Data and Decision Tree #' + str(index) + ' '))
+    index = index + 1
+    
+plt.subplots_adjust(left=0.0, bottom=0.0, right=2.0, top=1.4, wspace=0.4, hspace=0.3)
+------------------
+
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mTypeError[0m                                 Traceback (most recent call last)
+Cell [1;32mIn[11], line 11[0m
+[0;32m      9[0m index [38;5;241m=[39m [38;5;241m1[39m
+[0;32m     10[0m [38;5;28;01mfor[39;00m seed [38;5;129;01min[39;00m seeds:                                            [38;5;66;03m# visualize models over random number seeds[39;00m
+[1;32m---> 11[0m     bagging_models[38;5;241m.[39mappend([43mBaggingRegressor[49m[43m([49m[43mbase_estimator[49m[38;5;241;43m=[39;49m[43mregressor[49m[43m,[49m[43mn_estimators[49m[38;5;241;43m=[39;49m[43mnum_tree[49m[43m,[49m[43mrandom_state[49m[38;5;241;43m=[39;49m[43mseed[49m[43m,[49m[43moob_score[49m[43m [49m[38;5;241;43m=[39;49m[43m [49m[38;5;28;43;01mTrue[39;49;00m[43m,[49m
+[0;32m     12[0m [43m                                           [49m[43mbootstrap[49m[38;5;241;43m=[39;49m[38;5;28;43;01mTrue[39;49;00m[43m,[49m[43mn_jobs[49m[43m [49m[38;5;241;43m=[39;49m[43m [49m[38;5;241;43m4[39;49m[43m)[49m)
+[0;32m     13[0m     bagging_models[index[38;5;241m-[39m[38;5;241m1[39m][38;5;241m.[39mfit(X [38;5;241m=[39m X, y [38;5;241m=[39m y)
+[0;32m     14[0m     oob_MSE[38;5;241m.[39mappend(bagging_models[index[38;5;241m-[39m[38;5;241m1[39m][38;5;241m.[39moob_score_)
+
+[1;31mTypeError[0m: BaggingRegressor.__init__() got an unexpected keyword argument 'base_estimator'
+

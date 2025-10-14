@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Machine Learning Python Code Snippets &#8212; Applied Machine Learning in Python</title>
   
@@ -15,55 +14,51 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=304429a7" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=564be945" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'MachineLearning_python';</script>
@@ -80,28 +75,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -123,12 +113,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -144,6 +142,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -162,7 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -201,6 +212,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ensemble_trees.html">Bagging Tree and Random Forest</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_gradient_boosting.html">Gradient Boosting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_support_vector_machines.html">Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_activation_functions.html">Neural Networks Activation Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ANN.html">Artificial Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_CNN.html">Convolutional Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_autoencoder.html">Autoencoder Neural Networks</a></li>
@@ -226,7 +238,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -235,14 +247,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -367,10 +379,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -378,14 +390,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -486,15 +498,15 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <figure style="text-align: center;">
   <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
 </figure>
 <section id="machine-learning-python-code-snippets">
-<h1>Machine Learning Python Code Snippets<a class="headerlink" href="#machine-learning-python-code-snippets" title="Permalink to this heading">#</a></h1>
+<h1>Machine Learning Python Code Snippets<a class="headerlink" href="#machine-learning-python-code-snippets" title="Link to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite this e-Book as:</p>
@@ -510,16 +522,16 @@ document.write(`
 <p>This chapter is a set of <strong>Machine Learning Python Code Snippets</strong> to help folks build machine learning workflows in Python.</p>
 <p><strong>YouTube Lecture</strong>: check out my live code walk-throughs in my data science basics in Python playlist:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSAufDFgZEFAYQEwMJXklnQV&amp;si=z9BF45XAod6brI8Z">Data Science Basics in Python Playlist</a></p></li>
+<li><p><a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSAufDFgZEFAYQEwMJXklnQV&amp;amp;si=z9BF45XAod6brI8Z">Data Science Basics in Python Playlist</a></p></li>
 </ul>
 <p>These walkthrough support of my courses,</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a></p></li>
-<li><p><a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSB-D4XKYieEku9GQMQyAzjJ&amp;si=XobEAdz3ntDdp870">Data Analytics and Geostatistics Course</a></p></li>
+<li><p><a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a></p></li>
+<li><p><a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSB-D4XKYieEku9GQMQyAzjJ&amp;amp;si=XobEAdz3ntDdp870">Data Analytics and Geostatistics Course</a></p></li>
 </ul>
 <p>on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
 <section id="motivation">
-<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this heading">#</a></h2>
+<h2>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h2>
 <p>I taught a high school hackathon with great students from all over Texas and beyond and I felt that they could use some additional resources in the form of a <strong>code snippets</strong> to help them over the hurdles of completing their first data science workflow in Python.</p>
 <p>Remember the definition of a code snippet is,</p>
 <ul class="simple">
@@ -533,7 +545,7 @@ document.write(`
 <p>Therefore, improvements and additions to provide diagnostic outputs and plots are highly recommended.</p>
 </section>
 <section id="structure">
-<h2>Structure<a class="headerlink" href="#structure" title="Permalink to this heading">#</a></h2>
+<h2>Structure<a class="headerlink" href="#structure" title="Link to this heading">#</a></h2>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">This is not a workflow!</p>
 <p>These are alphabetically ordered code snippets and not a complete workflow. Please do not attempt to run this chapter in sequence.</p>
@@ -547,7 +559,7 @@ document.write(`
 <p>After we load the data the remaining codes with be in alphabetical and not any logical workflow order for ease of search and retrieval.</p>
 </section>
 <section id="import-required-packages">
-<h2>Import Required Packages<a class="headerlink" href="#import-required-packages" title="Permalink to this heading">#</a></h2>
+<h2>Import Required Packages<a class="headerlink" href="#import-required-packages" title="Link to this heading">#</a></h2>
 <p>We need some standard packages. These should have been installed with Anaconda 3.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -583,16 +595,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
-</pre></div>
-</div>
-</div>
 </div>
 <p>If you get a package import error, you may have to first install some of these packages. This can usually be accomplished by opening up a command window on Windows and then typing ‘python -m pip install [package-name]’. More assistance is available with the respective package docs.</p>
 </section>
 <section id="declare-functions">
-<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
+<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Link to this heading">#</a></h2>
 <p>Here’s the functions to improve code readability.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -606,7 +613,7 @@ document.write(`
 </div>
 </section>
 <section id="load-a-couple-datasets">
-<h2>Load a Couple Datasets<a class="headerlink" href="#load-a-couple-datasets" title="Permalink to this heading">#</a></h2>
+<h2>Load a Couple Datasets<a class="headerlink" href="#load-a-couple-datasets" title="Link to this heading">#</a></h2>
 <p>We load a couple of datasets,</p>
 <ol class="arabic simple">
 <li><p>df - an exhaustive data table as a pandas DataFrame</p></li>
@@ -629,7 +636,7 @@ document.write(`
 </div>
 </section>
 <section id="complete-some-basic-operations">
-<h2>Complete Some Basic Operations<a class="headerlink" href="#complete-some-basic-operations" title="Permalink to this heading">#</a></h2>
+<h2>Complete Some Basic Operations<a class="headerlink" href="#complete-some-basic-operations" title="Link to this heading">#</a></h2>
 <p>Here I complete some basic operations to ensure that the alphabetically sorted code snippets below have the inputs to avoid errors.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -649,7 +656,7 @@ document.write(`
 <p>OK, now we are ready to walk thorugh our alphabetically ordered code snippets.</p>
 </section>
 <section id="beta-beta-coefficients">
-<h2>Beta, <span class="math notranslate nohighlight">\(\beta\)</span>, Coefficients<a class="headerlink" href="#beta-beta-coefficients" title="Permalink to this heading">#</a></h2>
+<h2>Beta, <span class="math notranslate nohighlight">\(\beta\)</span>, Coefficients<a class="headerlink" href="#beta-beta-coefficients" title="Link to this heading">#</a></h2>
 <p>Feature importance based on the multilinear regression coefficients of the normalized features.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -664,12 +671,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0242c4c943789f3508ddcdf0f54466db0571605cbffc4694f303c5b6f867cfec.png" src="_images/0242c4c943789f3508ddcdf0f54466db0571605cbffc4694f303c5b6f867cfec.png" />
+<img alt="_images/dad3a47403ffd43ffb841483b77538b2ffce4375342de481d3742eb5d76524ad.png" src="_images/dad3a47403ffd43ffb841483b77538b2ffce4375342de481d3742eb5d76524ad.png" />
 </div>
 </div>
 </section>
 <section id="correlation-pearson-product-momment">
-<h2>Correlation (Pearson product momment)<a class="headerlink" href="#correlation-pearson-product-momment" title="Permalink to this heading">#</a></h2>
+<h2>Correlation (Pearson product momment)<a class="headerlink" href="#correlation-pearson-product-momment" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">correlations</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>         <span class="c1"># calculate correlation matrix and extract the pred. rows for the response column</span>
@@ -679,12 +686,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/01b6c1f90ba99386369f74ed5c07b22976da6c3ab67393586c8e9287e428c995.png" src="_images/01b6c1f90ba99386369f74ed5c07b22976da6c3ab67393586c8e9287e428c995.png" />
+<img alt="_images/4915afdf5f1d998455282023e6cd9385f6959230968323b820ddd29d38b9434d.png" src="_images/4915afdf5f1d998455282023e6cd9385f6959230968323b820ddd29d38b9434d.png" />
 </div>
 </div>
 </section>
 <section id="correlation-spearman-rank">
-<h2>Correlation (Spearman rank)<a class="headerlink" href="#correlation-spearman-rank" title="Permalink to this heading">#</a></h2>
+<h2>Correlation (Spearman rank)<a class="headerlink" href="#correlation-spearman-rank" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rank_correlations</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;spearman&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="c1"># calculate Spearman correlation with same method as Pearson above</span>
@@ -694,12 +701,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/793c62c2e433f3d5824617e6404b5a63fc9fa91f3ffb1a23e5f11b6aef582fd6.png" src="_images/793c62c2e433f3d5824617e6404b5a63fc9fa91f3ffb1a23e5f11b6aef582fd6.png" />
+<img alt="_images/9cbf221d8e565b923031a8b9dea4a652073b9d3b7cd22867b386c23c801b78c2.png" src="_images/9cbf221d8e565b923031a8b9dea4a652073b9d3b7cd22867b386c23c801b78c2.png" />
 </div>
 </div>
 </section>
 <section id="cross-validation-plot-training-and-testing">
-<h2>Cross Validation Plot (training and testing)<a class="headerlink" href="#cross-validation-plot-training-and-testing" title="Permalink to this heading">#</a></h2>
+<h2>Cross Validation Plot (training and testing)<a class="headerlink" href="#cross-validation-plot-training-and-testing" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span><span class="n">y_hat_train</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;Training Data&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># scatter plot</span>
@@ -710,12 +717,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9dd5b2ef7db8189250200c8fda4684707fd265c686f3d344fd988859b056f10c.png" src="_images/9dd5b2ef7db8189250200c8fda4684707fd265c686f3d344fd988859b056f10c.png" />
+<img alt="_images/e4429f0e79377b154cef0d73b8ca7d0e78d05eaaef3938e9dc7deb407d822644.png" src="_images/e4429f0e79377b154cef0d73b8ca7d0e78d05eaaef3938e9dc7deb407d822644.png" />
 </div>
 </div>
 </section>
 <section id="cross-validation-plot-testing">
-<h2>Cross Validation Plot (testing)<a class="headerlink" href="#cross-validation-plot-testing" title="Permalink to this heading">#</a></h2>
+<h2>Cross Validation Plot (testing)<a class="headerlink" href="#cross-validation-plot-testing" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_hat_test</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">utcolor</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;Testing Data&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># scatter plot</span>
@@ -725,12 +732,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/46b7748af289cbd304af34994fe959c5a2f18d75bc1f14f21555bf54972513bf.png" src="_images/46b7748af289cbd304af34994fe959c5a2f18d75bc1f14f21555bf54972513bf.png" />
+<img alt="_images/4053cc07b6676244730b03f4d8858c2f9203e2306f6c70d241d849f74fa12335.png" src="_images/4053cc07b6676244730b03f4d8858c2f9203e2306f6c70d241d849f74fa12335.png" />
 </div>
 </div>
 </section>
 <section id="cross-validation-plot-training">
-<h2>Cross Validation Plot (training)<a class="headerlink" href="#cross-validation-plot-training" title="Permalink to this heading">#</a></h2>
+<h2>Cross Validation Plot (training)<a class="headerlink" href="#cross-validation-plot-training" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span><span class="n">y_hat_train</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">utcolor</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;Training Data&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># scatter plot</span>
@@ -740,12 +747,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e9004125ee8191a22a71ca31d0c303276bc944bdac42e6a5baa00e5f1de1320d.png" src="_images/e9004125ee8191a22a71ca31d0c303276bc944bdac42e6a5baa00e5f1de1320d.png" />
+<img alt="_images/93d8b82e47e278431f9420710656e1a70392660cf56e5043d5da319cc205142c.png" src="_images/93d8b82e47e278431f9420710656e1a70392660cf56e5043d5da319cc205142c.png" />
 </div>
 </div>
 </section>
 <section id="dataframe-add-noise-to-a-feature">
-<h2>DataFrame (add noise to a feature)<a class="headerlink" href="#dataframe-add-noise-to-a-feature" title="Permalink to this heading">#</a></h2>
+<h2>DataFrame (add noise to a feature)<a class="headerlink" href="#dataframe-add-noise-to-a-feature" title="Link to this heading">#</a></h2>
 <p>I do this to experiment and make educational content, e.g., add noise to the response feature to demonstrate overfit.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -847,7 +854,7 @@ document.write(`
 </div>
 </section>
 <section id="dataframe-add-a-new-feature-column">
-<h2>DataFrame (add a new feature/column)<a class="headerlink" href="#dataframe-add-a-new-feature-column" title="Permalink to this heading">#</a></h2>
+<h2>DataFrame (add a new feature/column)<a class="headerlink" href="#dataframe-add-a-new-feature-column" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_temp</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                                  <span class="c1"># make a deep copy of the DataFrame</span>
@@ -953,7 +960,7 @@ document.write(`
 </div>
 </section>
 <section id="dataframe-make-new">
-<h2>DataFrame (make new)<a class="headerlink" href="#dataframe-make-new" title="Permalink to this heading">#</a></h2>
+<h2>DataFrame (make new)<a class="headerlink" href="#dataframe-make-new" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_new</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Ones&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">100</span><span class="p">)),</span><span class="s1">&#39;Zeros&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">100</span><span class="p">))})</span> <span class="c1"># make new DataFrame</span>
@@ -1016,7 +1023,7 @@ document.write(`
 </div>
 </section>
 <section id="dataframe-preview">
-<h2>DataFrame (preview)<a class="headerlink" href="#dataframe-preview" title="Permalink to this heading">#</a></h2>
+<h2>DataFrame (preview)<a class="headerlink" href="#dataframe-preview" title="Link to this heading">#</a></h2>
 <p>Display the first ‘n’ rows of the DataFrame</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1203,7 +1210,7 @@ document.write(`
 </div>
 </section>
 <section id="dataframe-rename-a-feature-column">
-<h2>DataFrame (rename a feature/column)<a class="headerlink" href="#dataframe-rename-a-feature-column" title="Permalink to this heading">#</a></h2>
+<h2>DataFrame (rename a feature/column)<a class="headerlink" href="#dataframe-rename-a-feature-column" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_temp</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                                  <span class="c1"># make a deep copy of the DataFrame</span>
@@ -1303,7 +1310,7 @@ document.write(`
 </div>
 </section>
 <section id="dataframe-remove-features-columns">
-<h2>DataFrame (remove features/columns)<a class="headerlink" href="#dataframe-remove-features-columns" title="Permalink to this heading">#</a></h2>
+<h2>DataFrame (remove features/columns)<a class="headerlink" href="#dataframe-remove-features-columns" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_temp</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                                  <span class="c1"># make a deep copy of the DataFrame</span>
@@ -1385,7 +1392,7 @@ document.write(`
 </div>
 </section>
 <section id="dataframe-remove-samples-rows">
-<h2>DataFrame (remove samples/rows)<a class="headerlink" href="#dataframe-remove-samples-rows" title="Permalink to this heading">#</a></h2>
+<h2>DataFrame (remove samples/rows)<a class="headerlink" href="#dataframe-remove-samples-rows" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_temp</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                                  <span class="c1"># make a deep copy of the DataFrame</span>
@@ -1485,7 +1492,7 @@ document.write(`
 </div>
 </section>
 <section id="dataframe-remove-samples-rows-by-condition">
-<h2>DataFrame (remove samples/rows by condition)<a class="headerlink" href="#dataframe-remove-samples-rows-by-condition" title="Permalink to this heading">#</a></h2>
+<h2>DataFrame (remove samples/rows by condition)<a class="headerlink" href="#dataframe-remove-samples-rows-by-condition" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_temp</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                                  <span class="c1"># make a deep copy of the DataFrame</span>
@@ -1585,7 +1592,7 @@ document.write(`
 </div>
 </section>
 <section id="decision-tree-feature-importance">
-<h2>Decision Tree (feature importance)<a class="headerlink" href="#decision-tree-feature-importance" title="Permalink to this heading">#</a></h2>
+<h2>Decision Tree (feature importance)<a class="headerlink" href="#decision-tree-feature-importance" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">leaf_node</span> <span class="o">=</span> <span class="mi">5</span>                                                 <span class="c1"># decision tree model hyperparameters</span>
@@ -1598,12 +1605,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/498e717d8cd4f6a6f673071a88cbd7a4b3370249d7bdd3b4c0506fede88353ca.png" src="_images/498e717d8cd4f6a6f673071a88cbd7a4b3370249d7bdd3b4c0506fede88353ca.png" />
+<img alt="_images/80daa9ee817ba0521c983551f3410370d99163b86d5aea85ce6f4c08de16e8b5.png" src="_images/80daa9ee817ba0521c983551f3410370d99163b86d5aea85ce6f4c08de16e8b5.png" />
 </div>
 </div>
 </section>
 <section id="decision-tree-prediction-at-testing-data">
-<h2>Decision Tree (prediction at testing data)<a class="headerlink" href="#decision-tree-prediction-at-testing-data" title="Permalink to this heading">#</a></h2>
+<h2>Decision Tree (prediction at testing data)<a class="headerlink" href="#decision-tree-prediction-at-testing-data" title="Link to this heading">#</a></h2>
 <p>Apply our model to predict at withheld testing data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1670,7 +1677,7 @@ document.write(`
 </div>
 </section>
 <section id="decision-tree-prediction-at-training-data">
-<h2>Decision Tree (prediction at training data)<a class="headerlink" href="#decision-tree-prediction-at-training-data" title="Permalink to this heading">#</a></h2>
+<h2>Decision Tree (prediction at training data)<a class="headerlink" href="#decision-tree-prediction-at-training-data" title="Link to this heading">#</a></h2>
 <p>Apply our model to predict at the retained training data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1737,7 +1744,7 @@ document.write(`
 </div>
 </section>
 <section id="decision-tree-train">
-<h2>Decision Tree (train)<a class="headerlink" href="#decision-tree-train" title="Permalink to this heading">#</a></h2>
+<h2>Decision Tree (train)<a class="headerlink" href="#decision-tree-train" title="Link to this heading">#</a></h2>
 <p>Train model parameters on training data with specified model hyperparameters</p>
 <ul class="simple">
 <li><p>let’s look at the trained model parameters, by visualizing the trained decision tree.</p></li>
@@ -1751,12 +1758,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d6589d670e2e9b593d1e13e44cfe8c153b4c836395654656835da04c747d5194.png" src="_images/d6589d670e2e9b593d1e13e44cfe8c153b4c836395654656835da04c747d5194.png" />
+<img alt="_images/415e42ff5e2333a7193828bc60b9a422b22041637555e807240ddc4a260b56da.png" src="_images/415e42ff5e2333a7193828bc60b9a422b22041637555e807240ddc4a260b56da.png" />
 </div>
 </div>
 </section>
 <section id="decision-tree-retrain-tuned-model">
-<h2>Decision Tree (retrain tuned model)<a class="headerlink" href="#decision-tree-retrain-tuned-model" title="Permalink to this heading">#</a></h2>
+<h2>Decision Tree (retrain tuned model)<a class="headerlink" href="#decision-tree-retrain-tuned-model" title="Link to this heading">#</a></h2>
 <p>Apply tuned hyperparameters and retrain the model with all the data.</p>
 <ul class="simple">
 <li><p>this is the model that we will use for future predictions, real-world use</p></li>
@@ -1774,12 +1781,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/bed759efe8f74ab399429a00ba5e1a7deb2f0564e294d93190f0787e1b1df966.png" src="_images/bed759efe8f74ab399429a00ba5e1a7deb2f0564e294d93190f0787e1b1df966.png" />
+<img alt="_images/08fef60dbe94fb33f56816b75b53ce55c383e5b5650fc60ce3c6b85cb621aebf.png" src="_images/08fef60dbe94fb33f56816b75b53ce55c383e5b5650fc60ce3c6b85cb621aebf.png" />
 </div>
 </div>
 </section>
 <section id="decision-tree-tune-prune">
-<h2>Decision Tree (tune/prune)<a class="headerlink" href="#decision-tree-tune-prune" title="Permalink to this heading">#</a></h2>
+<h2>Decision Tree (tune/prune)<a class="headerlink" href="#decision-tree-tune-prune" title="Link to this heading">#</a></h2>
 <p>Train model parameters on training data with a range of model hyperparameters, select the model hyperparameters with minimum error over the withheld testing data</p>
 <p>This requires the following steps,</p>
 <p>Loop over the hyperparameter(s) values,</p>
@@ -1813,12 +1820,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b60aa2eac0a1291d28f8028ee5949559b2cb770db7315a469587f57d0769aaa3.png" src="_images/b60aa2eac0a1291d28f8028ee5949559b2cb770db7315a469587f57d0769aaa3.png" />
+<img alt="_images/d5adb4db8d4e8571bada883fd98051f2a2acc4e4226f1930daf325023656ed4b.png" src="_images/d5adb4db8d4e8571bada883fd98051f2a2acc4e4226f1930daf325023656ed4b.png" />
 </div>
 </div>
 </section>
 <section id="features-extraction-by-name">
-<h2>Features Extraction (by name)<a class="headerlink" href="#features-extraction-by-name" title="Permalink to this heading">#</a></h2>
+<h2>Features Extraction (by name)<a class="headerlink" href="#features-extraction-by-name" title="Link to this heading">#</a></h2>
 <p>Build a new DataFrame with only the selected predictor feature and the response feature</p>
 <ol class="arabic simple">
 <li><p>specify the selected predictor features</p></li>
@@ -1909,7 +1916,7 @@ document.write(`
 </div>
 </section>
 <section id="features-extraction-by-number">
-<h2>Features Extraction (by number)<a class="headerlink" href="#features-extraction-by-number" title="Permalink to this heading">#</a></h2>
+<h2>Features Extraction (by number)<a class="headerlink" href="#features-extraction-by-number" title="Link to this heading">#</a></h2>
 <p>Build a new DataFrame with only the selected predictor feature.</p>
 <ol class="arabic simple">
 <li><p>specify the selected predictor features</p></li>
@@ -1998,7 +2005,7 @@ document.write(`
 </div>
 </section>
 <section id="features-extraction-make-x-and-y-dataframes">
-<h2>Features Extraction (make X and y DataFrames)<a class="headerlink" href="#features-extraction-make-x-and-y-dataframes" title="Permalink to this heading">#</a></h2>
+<h2>Features Extraction (make X and y DataFrames)<a class="headerlink" href="#features-extraction-make-x-and-y-dataframes" title="Link to this heading">#</a></h2>
 <p>Build a two new DataFrames, one with only the selected predictor feature and the other with the response feature,</p>
 <ul class="simple">
 <li><p>assuming that the last feature is the response feature</p></li>
@@ -2020,7 +2027,7 @@ Response feature: Prod
 </div>
 </section>
 <section id="features-extraction-make-x-and-y-dataframes-assumed-feature-order">
-<h2>Features Extraction (make X and y DataFrames assumed feature order)<a class="headerlink" href="#features-extraction-make-x-and-y-dataframes-assumed-feature-order" title="Permalink to this heading">#</a></h2>
+<h2>Features Extraction (make X and y DataFrames assumed feature order)<a class="headerlink" href="#features-extraction-make-x-and-y-dataframes-assumed-feature-order" title="Link to this heading">#</a></h2>
 <p>Build a two new DataFrames, one with only the selected predictor feature and the other with the response feature,</p>
 <ul class="simple">
 <li><p>assuming that the last feature is the response feature</p></li>
@@ -2041,7 +2048,7 @@ Response feature: Prod
 </div>
 </section>
 <section id="histogram">
-<h2>Histogram<a class="headerlink" href="#histogram" title="Permalink to this heading">#</a></h2>
+<h2>Histogram<a class="headerlink" href="#histogram" title="Link to this heading">#</a></h2>
 <p>Simple histogram,</p>
 <ul class="simple">
 <li><p>you can set the histogram limits by specifying the exact bins with a method like, np.linspace(min,max,n)</p></li>
@@ -2054,12 +2061,12 @@ Response feature: Prod
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0ff41b2a04299239a5787ea06ee741abd39a85b84705e042e481757fa761783f.png" src="_images/0ff41b2a04299239a5787ea06ee741abd39a85b84705e042e481757fa761783f.png" />
+<img alt="_images/a31fcbcff01564877d1e461fb14ddc5c62a25e2696e077ab17cac0d4287ad70b.png" src="_images/a31fcbcff01564877d1e461fb14ddc5c62a25e2696e077ab17cac0d4287ad70b.png" />
 </div>
 </div>
 </section>
 <section id="histogram-normalized">
-<h2>Histogram (normalized)<a class="headerlink" href="#histogram-normalized" title="Permalink to this heading">#</a></h2>
+<h2>Histogram (normalized)<a class="headerlink" href="#histogram-normalized" title="Link to this heading">#</a></h2>
 <p>A histogram with probability on the y axis and the sum of all bars is one, i.e., probability closure.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2069,12 +2076,12 @@ Response feature: Prod
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/418e0e90a2846168a380bc4e0ecbfdc630e06e4d53b06e01a518f9cf2dbe00a1.png" src="_images/418e0e90a2846168a380bc4e0ecbfdc630e06e4d53b06e01a518f9cf2dbe00a1.png" />
+<img alt="_images/f575c40dfc9b25cc0c8c77c5c058d67af80652a286ef05e0d101df255f66081d.png" src="_images/f575c40dfc9b25cc0c8c77c5c058d67af80652a286ef05e0d101df255f66081d.png" />
 </div>
 </div>
 </section>
 <section id="image-plot">
-<h2>Image Plot<a class="headerlink" href="#image-plot" title="Permalink to this heading">#</a></h2>
+<h2>Image Plot<a class="headerlink" href="#image-plot" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ndarray_2D</span><span class="p">,</span><span class="n">extent</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">10000</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10000</span><span class="p">],</span><span class="n">vmin</span><span class="o">=</span><span class="mi">1500</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">6500</span><span class="p">,</span><span class="n">cmap</span> <span class="o">=</span> <span class="n">cmap</span><span class="p">)</span> <span class="c1"># plot of 2D ndarray, image or map feature</span>
@@ -2085,12 +2092,12 @@ Response feature: Prod
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c86ec564386d943eec0c63d05909805d2ef77161ec97f54666f8f4014aa78cd5.png" src="_images/c86ec564386d943eec0c63d05909805d2ef77161ec97f54666f8f4014aa78cd5.png" />
+<img alt="_images/6dcb8bfc4501f3d4f8a6023aa5e10511d68eb44bab2ad1caf12b6787dcf92659.png" src="_images/6dcb8bfc4501f3d4f8a6023aa5e10511d68eb44bab2ad1caf12b6787dcf92659.png" />
 </div>
 </div>
 </section>
 <section id="image-plot-combined-with-location-map">
-<h2>Image Plot (combined with location map)<a class="headerlink" href="#image-plot-combined-with-location-map" title="Permalink to this heading">#</a></h2>
+<h2>Image Plot (combined with location map)<a class="headerlink" href="#image-plot-combined-with-location-map" title="Link to this heading">#</a></h2>
 <p>Superimpose multiple plots on top of each other,</p>
 <ul class="simple">
 <li><p>use ‘zorder’ to place object in front of other objects, higher number is in front</p></li>
@@ -2107,12 +2114,12 @@ Response feature: Prod
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e209044ada9e1ec85d74ec9b44724049f126863a34e47f23e678d71f469c2e3d.png" src="_images/e209044ada9e1ec85d74ec9b44724049f126863a34e47f23e678d71f469c2e3d.png" />
+<img alt="_images/d8d384ce298ce66201cbc68ed6526636a3faf50348b8b855d37b113478b0f6d2.png" src="_images/d8d384ce298ce66201cbc68ed6526636a3faf50348b8b855d37b113478b0f6d2.png" />
 </div>
 </div>
 </section>
 <section id="k-nearest-neighbours-feature-imputation">
-<h2>K-Nearest Neighbours (feature imputation)<a class="headerlink" href="#k-nearest-neighbours-feature-imputation" title="Permalink to this heading">#</a></h2>
+<h2>K-Nearest Neighbours (feature imputation)<a class="headerlink" href="#k-nearest-neighbours-feature-imputation" title="Link to this heading">#</a></h2>
 <p>Feature imputation by estimating missing features with the nearest neighbours,</p>
 <ul class="simple">
 <li><p>distance is accessed with all samples that have all features present in the sample with a missing feature</p></li>
@@ -2234,7 +2241,7 @@ Response feature: Prod
 </div>
 </section>
 <section id="k-nearest-neighbours-prediction-at-testing-data">
-<h2>K-Nearest Neighbours (prediction at testing data)<a class="headerlink" href="#k-nearest-neighbours-prediction-at-testing-data" title="Permalink to this heading">#</a></h2>
+<h2>K-Nearest Neighbours (prediction at testing data)<a class="headerlink" href="#k-nearest-neighbours-prediction-at-testing-data" title="Link to this heading">#</a></h2>
 <p>Apply our model to predict at withheld testing data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2301,7 +2308,7 @@ Response feature: Prod
 </div>
 </section>
 <section id="k-nearest-neighbours-prediction-at-training-data">
-<h2>K-Nearest Neighbours (prediction at training data)<a class="headerlink" href="#k-nearest-neighbours-prediction-at-training-data" title="Permalink to this heading">#</a></h2>
+<h2>K-Nearest Neighbours (prediction at training data)<a class="headerlink" href="#k-nearest-neighbours-prediction-at-training-data" title="Link to this heading">#</a></h2>
 <p>Apply our model to predict at the retained training data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2368,7 +2375,7 @@ Response feature: Prod
 </div>
 </section>
 <section id="k-nearest-neighbours-train">
-<h2>K-Nearest Neighbours (train)<a class="headerlink" href="#k-nearest-neighbours-train" title="Permalink to this heading">#</a></h2>
+<h2>K-Nearest Neighbours (train)<a class="headerlink" href="#k-nearest-neighbours-train" title="Link to this heading">#</a></h2>
 <p>Train model parameters on training data with specified model hyperparameters</p>
 <ul class="simple">
 <li><p>since K-nearest neighbours is a lazy learning model, there are no trained model parameters to display</p></li>
@@ -2390,12 +2397,12 @@ Response feature: Prod
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/eab39432f0ca9fd360006ebec626cc016401b43ee69b4f7b5b60678d249f978e.png" src="_images/eab39432f0ca9fd360006ebec626cc016401b43ee69b4f7b5b60678d249f978e.png" />
+<img alt="_images/b733cb25d339c7fef534a587296c00ddcd83f2c221c7ec782831cdf036d3575b.png" src="_images/b733cb25d339c7fef534a587296c00ddcd83f2c221c7ec782831cdf036d3575b.png" />
 </div>
 </div>
 </section>
 <section id="k-nearest-neighbours-retrain-tuned-model">
-<h2>K-Nearest Neighbours (retrain tuned model)<a class="headerlink" href="#k-nearest-neighbours-retrain-tuned-model" title="Permalink to this heading">#</a></h2>
+<h2>K-Nearest Neighbours (retrain tuned model)<a class="headerlink" href="#k-nearest-neighbours-retrain-tuned-model" title="Link to this heading">#</a></h2>
 <p>Apply tuned hyperparameters and retrain the model with all the data.</p>
 <ul class="simple">
 <li><p>this is the model that we will use for future predictions, real-world use</p></li>
@@ -2412,12 +2419,12 @@ Response feature: Prod
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5a2ca81f6a2c7d36a865cd0ca4aaeda29ddbc131ec5d90cbd7651a11d56abf5b.png" src="_images/5a2ca81f6a2c7d36a865cd0ca4aaeda29ddbc131ec5d90cbd7651a11d56abf5b.png" />
+<img alt="_images/7497de33f5665f4fbba909d0673bb054d5e10f0ca2fb1d59b52a2d5573ce3fa6.png" src="_images/7497de33f5665f4fbba909d0673bb054d5e10f0ca2fb1d59b52a2d5573ce3fa6.png" />
 </div>
 </div>
 </section>
 <section id="k-nearest-neighbours-tune">
-<h2>K-Nearest Neighbours (tune)<a class="headerlink" href="#k-nearest-neighbours-tune" title="Permalink to this heading">#</a></h2>
+<h2>K-Nearest Neighbours (tune)<a class="headerlink" href="#k-nearest-neighbours-tune" title="Link to this heading">#</a></h2>
 <p>Train model parameters on training data with a range of model hyperparameters, select the model hyperparameters with minimum error over the withheld testing data</p>
 <p>This requires the following steps,</p>
 <p>Loop over the hyperparameter(s) values,</p>
@@ -2450,12 +2457,12 @@ Response feature: Prod
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d19bc60e905a2ecfeaea5603abad42f0a080fc5df476fed45044fefd8c1b4a39.png" src="_images/d19bc60e905a2ecfeaea5603abad42f0a080fc5df476fed45044fefd8c1b4a39.png" />
+<img alt="_images/1c7e2623b9896aa16566d3547b57d983c48f6d01d55c922c40b4cff056900922.png" src="_images/1c7e2623b9896aa16566d3547b57d983c48f6d01d55c922c40b4cff056900922.png" />
 </div>
 </div>
 </section>
 <section id="linear-regression-model-model-parameters">
-<h2>Linear Regression Model (model parameters)<a class="headerlink" href="#linear-regression-model-model-parameters" title="Permalink to this heading">#</a></h2>
+<h2>Linear Regression Model (model parameters)<a class="headerlink" href="#linear-regression-model-model-parameters" title="Link to this heading">#</a></h2>
 <p>Retreive the model parameters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2529,7 +2536,7 @@ Response feature: Prod
 </div>
 </section>
 <section id="linear-regression-model-prediction-test">
-<h2>Linear Regression Model (prediction test)<a class="headerlink" href="#linear-regression-model-prediction-test" title="Permalink to this heading">#</a></h2>
+<h2>Linear Regression Model (prediction test)<a class="headerlink" href="#linear-regression-model-prediction-test" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_test_temp</span> <span class="o">=</span> <span class="n">y_test</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                          <span class="c1"># make a deep copy of the y test DataFrame</span>
@@ -2593,7 +2600,7 @@ Response feature: Prod
 </div>
 </section>
 <section id="linear-regression-model-prediction-train">
-<h2>Linear Regression Model (prediction train)<a class="headerlink" href="#linear-regression-model-prediction-train" title="Permalink to this heading">#</a></h2>
+<h2>Linear Regression Model (prediction train)<a class="headerlink" href="#linear-regression-model-prediction-train" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_train_temp</span> <span class="o">=</span> <span class="n">y_train</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                        <span class="c1"># make a deep copy of the y train DataFrame</span>
@@ -2657,7 +2664,7 @@ Response feature: Prod
 </div>
 </section>
 <section id="linear-regression-model-train">
-<h2>Linear Regression Model (train)<a class="headerlink" href="#linear-regression-model-train" title="Permalink to this heading">#</a></h2>
+<h2>Linear Regression Model (train)<a class="headerlink" href="#linear-regression-model-train" title="Link to this heading">#</a></h2>
 <p>Train model parameters on training data, no hyperparameters</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2732,7 +2739,7 @@ Response feature: Prod
 </div>
 </section>
 <section id="listwise-deletion">
-<h2>Listwise Deletion<a class="headerlink" href="#listwise-deletion" title="Permalink to this heading">#</a></h2>
+<h2>Listwise Deletion<a class="headerlink" href="#listwise-deletion" title="Link to this heading">#</a></h2>
 <p>Remove all samples that are missing and features.</p>
 <ul class="simple">
 <li><p>the “sledge hammer” approach to avoid feature imputation</p></li>
@@ -2869,7 +2876,7 @@ Response feature: Prod
 </div>
 </section>
 <section id="location-map">
-<h2>Location Map<a class="headerlink" href="#location-map" title="Permalink to this heading">#</a></h2>
+<h2>Location Map<a class="headerlink" href="#location-map" title="Link to this heading">#</a></h2>
 <p>For plotting sparsely sampled features with X and Y sample locations to inspect the spatial structures.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2882,12 +2889,12 @@ Response feature: Prod
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a7838f0acb4fea58f25cb89ea2238304b6fc709f5438bc9fdbc9d89c96544a0e.png" src="_images/a7838f0acb4fea58f25cb89ea2238304b6fc709f5438bc9fdbc9d89c96544a0e.png" />
+<img alt="_images/a43f81324d5b3eea69851709dc0c3f2fecf4ab22ef5b00a7d1d1ab63fab5a95c.png" src="_images/a43f81324d5b3eea69851709dc0c3f2fecf4ab22ef5b00a7d1d1ab63fab5a95c.png" />
 </div>
 </div>
 </section>
 <section id="mean-imputation">
-<h2>Mean (imputation)<a class="headerlink" href="#mean-imputation" title="Permalink to this heading">#</a></h2>
+<h2>Mean (imputation)<a class="headerlink" href="#mean-imputation" title="Link to this heading">#</a></h2>
 <p>A very simple approach for feature imputation, replace the missing values with the mean of the feature,</p>
 <ul class="simple">
 <li><p>does on introduce a bias in the mean, but will introduce a bias in the standard deviation and variance</p></li>
@@ -3008,7 +3015,7 @@ Response feature: Prod
 </div>
 </section>
 <section id="minimum-and-maximum-dataframe">
-<h2>Minimum and Maximum (dataframe)<a class="headerlink" href="#minimum-and-maximum-dataframe" title="Permalink to this heading">#</a></h2>
+<h2>Minimum and Maximum (dataframe)<a class="headerlink" href="#minimum-and-maximum-dataframe" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dataframe Minimum:&#39;</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>                  <span class="c1"># using pandas DataFrame&#39;s min and max member functions</span>
@@ -3044,7 +3051,7 @@ dtype: float64
 </div>
 </section>
 <section id="minimum-and-maximum-ndarray">
-<h2>Minimum and Maximum (ndarray)<a class="headerlink" href="#minimum-and-maximum-ndarray" title="Permalink to this heading">#</a></h2>
+<h2>Minimum and Maximum (ndarray)<a class="headerlink" href="#minimum-and-maximum-ndarray" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;2D ndarray Minimum:&#39;</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">ndarray_2D</span><span class="p">))</span>       <span class="c1"># using NumPy&#39;s min and max functions that flatten internally</span>
@@ -3064,7 +3071,7 @@ dtype: float64
 </div>
 </section>
 <section id="model-plot-linear-1d">
-<h2>Model Plot (linear 1D)<a class="headerlink" href="#model-plot-linear-1d" title="Permalink to this heading">#</a></h2>
+<h2>Model Plot (linear 1D)<a class="headerlink" href="#model-plot-linear-1d" title="Link to this heading">#</a></h2>
 <p>We use the follow steps,</p>
 <ol class="arabic simple">
 <li><p>make an array of equally spaced values of the predictor feature(s)</p></li>
@@ -3081,12 +3088,12 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a4c0583b40c49bf06c7fa895961557fd17d1ca0773f145b95f65432f518cdeeb.png" src="_images/a4c0583b40c49bf06c7fa895961557fd17d1ca0773f145b95f65432f518cdeeb.png" />
+<img alt="_images/9d679d314e4a391c4c126de8118ffe66e03fe36cd873b0cb0831811d9059acbe.png" src="_images/9d679d314e4a391c4c126de8118ffe66e03fe36cd873b0cb0831811d9059acbe.png" />
 </div>
 </div>
 </section>
 <section id="model-plot-linear-2d">
-<h2>Model Plot (linear 2D)<a class="headerlink" href="#model-plot-linear-2d" title="Permalink to this heading">#</a></h2>
+<h2>Model Plot (linear 2D)<a class="headerlink" href="#model-plot-linear-2d" title="Link to this heading">#</a></h2>
 <p>We use the follow steps,</p>
 <ol class="arabic simple">
 <li><p>make a mesh array of equally spaced values of the predictor feature(s)</p></li>
@@ -3106,12 +3113,12 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/193089af665cc59cf9497b4914122f55a90b0c545f5a56100202ad8a88b12a47.png" src="_images/193089af665cc59cf9497b4914122f55a90b0c545f5a56100202ad8a88b12a47.png" />
+<img alt="_images/de7cd1ee7f88c09a4a6ababf63c3f9f03111a97259f805f241ead79ff6967665.png" src="_images/de7cd1ee7f88c09a4a6ababf63c3f9f03111a97259f805f241ead79ff6967665.png" />
 </div>
 </div>
 </section>
 <section id="model-mean-absolute-error-testing">
-<h2>Model Mean Absolute Error (testing)<a class="headerlink" href="#model-mean-absolute-error-testing" title="Permalink to this heading">#</a></h2>
+<h2>Model Mean Absolute Error (testing)<a class="headerlink" href="#model-mean-absolute-error-testing" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">MSE_test</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_hat_test</span><span class="p">)</span>     <span class="c1"># calculate the training MSE</span>
@@ -3127,7 +3134,7 @@ dtype: float64
 </div>
 </section>
 <section id="model-mean-absolute-error-training">
-<h2>Model Mean Absolute Error (training)<a class="headerlink" href="#model-mean-absolute-error-training" title="Permalink to this heading">#</a></h2>
+<h2>Model Mean Absolute Error (training)<a class="headerlink" href="#model-mean-absolute-error-training" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">MSE_train</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span><span class="n">y_hat_train</span><span class="p">)</span>  <span class="c1"># calculate the training MSE</span>
@@ -3136,14 +3143,14 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Training MAE: 713.4026730760602
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Training MAE: 713.4026730760603
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="model-mse-testing">
-<h2>Model MSE (testing)<a class="headerlink" href="#model-mse-testing" title="Permalink to this heading">#</a></h2>
+<h2>Model MSE (testing)<a class="headerlink" href="#model-mse-testing" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">MSE_test</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_hat_test</span><span class="p">)</span>      <span class="c1"># calculate the training MSE</span>
@@ -3159,7 +3166,7 @@ dtype: float64
 </div>
 </section>
 <section id="model-mse-training">
-<h2>Model MSE (training)<a class="headerlink" href="#model-mse-training" title="Permalink to this heading">#</a></h2>
+<h2>Model MSE (training)<a class="headerlink" href="#model-mse-training" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">MSE_train</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span><span class="n">y_hat_train</span><span class="p">)</span>   <span class="c1"># calculate the training MSE</span>
@@ -3175,7 +3182,7 @@ dtype: float64
 </div>
 </section>
 <section id="multiple-imputation-by-chained-equations">
-<h2>Multiple Imputation by Chained Equations<a class="headerlink" href="#multiple-imputation-by-chained-equations" title="Permalink to this heading">#</a></h2>
+<h2>Multiple Imputation by Chained Equations<a class="headerlink" href="#multiple-imputation-by-chained-equations" title="Link to this heading">#</a></h2>
 <p>Feature imputation by iterative application of K-nearest neighbours,</p>
 <ul class="simple">
 <li><p>accomplished by multiple passes, the structure in the data is learned to improve the imputation</p></li>
@@ -3296,12 +3303,12 @@ dtype: float64
 </div>
 </section>
 <section id="mutual-information">
-<h2>Mutual Information<a class="headerlink" href="#mutual-information" title="Permalink to this heading">#</a></h2>
+<h2>Mutual Information<a class="headerlink" href="#mutual-information" title="Link to this heading">#</a></h2>
 <p>Measure of information shared between predictors and the response feature,</p>
 <ul class="simple">
 <li><p>robust in the presence of nonlinearity and heteroscedasticity,</p></li>
 </ul>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>MI Value Range</p></th>
 <th class="head"><p>Interpretation</p></th>
@@ -3325,6 +3332,7 @@ dtype: float64
 </tr>
 </tbody>
 </table>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mi</span> <span class="o">=</span> <span class="n">mutual_info_regression</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># calculuate mutual information</span>
@@ -3336,19 +3344,19 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/644b6fbdbf03216167f1baad977206f250ff2b88264e2e989d89465218f4edd7.png" src="_images/644b6fbdbf03216167f1baad977206f250ff2b88264e2e989d89465218f4edd7.png" />
+<img alt="_images/2eb3f870c0e3e2b4035f3f3f7e8bd407902f6acd2fea4652042080ef2b341573.png" src="_images/2eb3f870c0e3e2b4035f3f3f7e8bd407902f6acd2fea4652042080ef2b341573.png" />
 </div>
 </div>
 </section>
 <section id="mutual-information-normalized">
-<h2>Mutual Information (normalized)<a class="headerlink" href="#mutual-information-normalized" title="Permalink to this heading">#</a></h2>
+<h2>Mutual Information (normalized)<a class="headerlink" href="#mutual-information-normalized" title="Link to this heading">#</a></h2>
 <p>Measure of information shared between predictors and the response feature,</p>
 <ul class="simple">
 <li><p>robust in the presence of nonlinearity and heteroscedasticity</p></li>
 <li><p>normalized by marginal entropies to have a maximum value of 1.0, 0.0 = no information, 1.0 = perfect information</p></li>
 </ul>
 <p>Here’s the common rule of thumb to assist with interpretation,</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>NMI Value Range</p></th>
 <th class="head"><p>Interpretation</p></th>
@@ -3372,6 +3380,7 @@ dtype: float64
 </tr>
 </tbody>
 </table>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kbd</span> <span class="o">=</span> <span class="n">KBinsDiscretizer</span><span class="p">(</span><span class="n">n_bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">encode</span><span class="o">=</span><span class="s1">&#39;ordinal&#39;</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;quantile&#39;</span><span class="p">)</span> <span class="c1"># instantiate dicretizer</span>
@@ -3391,12 +3400,12 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0e31eacf7d15566196b691c4dfa7fef7850043fa2b7a438b1ff8cc6a68987be8.png" src="_images/0e31eacf7d15566196b691c4dfa7fef7850043fa2b7a438b1ff8cc6a68987be8.png" />
+<img alt="_images/59bbaba7ccc6f593346c07c7a4b1b05e37041b3f95cbed7d21f13c01475129ab.png" src="_images/59bbaba7ccc6f593346c07c7a4b1b05e37041b3f95cbed7d21f13c01475129ab.png" />
 </div>
 </div>
 </section>
 <section id="normalize-predictor-features">
-<h2>Normalize Predictor Features<a class="headerlink" href="#normalize-predictor-features" title="Permalink to this heading">#</a></h2>
+<h2>Normalize Predictor Features<a class="headerlink" href="#normalize-predictor-features" title="Link to this heading">#</a></h2>
 <p>Normalize the predictor features to remove any sensitivity to feature range or variance, for example,</p>
 <ul class="simple">
 <li><p>put features all on equal playing field for distance calculations</p></li>
@@ -3517,7 +3526,7 @@ dtype: float64
 </div>
 </section>
 <section id="random-forest-retrain-tuned-model">
-<h2>Random Forest (retrain tuned model)<a class="headerlink" href="#random-forest-retrain-tuned-model" title="Permalink to this heading">#</a></h2>
+<h2>Random Forest (retrain tuned model)<a class="headerlink" href="#random-forest-retrain-tuned-model" title="Link to this heading">#</a></h2>
 <p>Apply tuned hyperparameters and retrain the model.</p>
 <ul class="simple">
 <li><p>this is the model that we will use for future predictions, real-world use</p></li>
@@ -3537,12 +3546,12 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e9fcd5f031e201181841d77931510c34d15f80eaae16df3fb6f993b0b29e18d1.png" src="_images/e9fcd5f031e201181841d77931510c34d15f80eaae16df3fb6f993b0b29e18d1.png" />
+<img alt="_images/06678351378440217e3d7a2442bf51680a0ec8d05d0f4452ab7ad2bc0c5b38cc.png" src="_images/06678351378440217e3d7a2442bf51680a0ec8d05d0f4452ab7ad2bc0c5b38cc.png" />
 </div>
 </div>
 </section>
 <section id="random-forest-train">
-<h2>Random Forest (train)<a class="headerlink" href="#random-forest-train" title="Permalink to this heading">#</a></h2>
+<h2>Random Forest (train)<a class="headerlink" href="#random-forest-train" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_leaf_node</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="n">num_tree</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="n">max_features</span> <span class="o">=</span> <span class="mi">2</span>                <span class="c1"># random forest model hyperparameters</span>
@@ -3558,12 +3567,12 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d4f91ebd10926c4f96b51e807a79e5bae0107950b77cdbfce9b17f8a524c1300.png" src="_images/d4f91ebd10926c4f96b51e807a79e5bae0107950b77cdbfce9b17f8a524c1300.png" />
+<img alt="_images/31e8266a6ac658a32007be0c951d1fbbacfddbb32f9beb10953053576781aa86.png" src="_images/31e8266a6ac658a32007be0c951d1fbbacfddbb32f9beb10953053576781aa86.png" />
 </div>
 </div>
 </section>
 <section id="random-forest-tune">
-<h2>Random Forest (tune)<a class="headerlink" href="#random-forest-tune" title="Permalink to this heading">#</a></h2>
+<h2>Random Forest (tune)<a class="headerlink" href="#random-forest-tune" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_leaf_node_mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>                        <span class="c1"># set the random forest hyperparameters</span>
@@ -3596,12 +3605,12 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a4378ef7e741036b57b87da2bfebdaca422f740e5e57a7c80830378ffb2a97e5.png" src="_images/a4378ef7e741036b57b87da2bfebdaca422f740e5e57a7c80830378ffb2a97e5.png" />
+<img alt="_images/b9af887e0b2bd39fd103c98127b2f62075d402f4a888a11d4376896b70ed8517.png" src="_images/b9af887e0b2bd39fd103c98127b2f62075d402f4a888a11d4376896b70ed8517.png" />
 </div>
 </div>
 </section>
 <section id="scatter-plot">
-<h2>Scatter Plot<a class="headerlink" href="#scatter-plot" title="Permalink to this heading">#</a></h2>
+<h2>Scatter Plot<a class="headerlink" href="#scatter-plot" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;Por&#39;</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="s1">&#39;Prod&#39;</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Porosity (%)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Permeability (mD)&#39;</span><span class="p">)</span>
@@ -3610,12 +3619,12 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4aeafcadb98fdfb83173ccc394603ab43273c3b50a994399068a5faebea04ac0.png" src="_images/4aeafcadb98fdfb83173ccc394603ab43273c3b50a994399068a5faebea04ac0.png" />
+<img alt="_images/2e22d7a90ae531a19f4b39b44af54eddc24bc84eb1cddc2b8ef74d2d2bd15db2.png" src="_images/2e22d7a90ae531a19f4b39b44af54eddc24bc84eb1cddc2b8ef74d2d2bd15db2.png" />
 </div>
 </div>
 </section>
 <section id="standardize-predictor-features">
-<h2>Standardize Predictor Features<a class="headerlink" href="#standardize-predictor-features" title="Permalink to this heading">#</a></h2>
+<h2>Standardize Predictor Features<a class="headerlink" href="#standardize-predictor-features" title="Link to this heading">#</a></h2>
 <p>Standardize the predictor features to remove any sensitivity to feature range or variance, for example,</p>
 <ul class="simple">
 <li><p>put features all on equal playing field for distance calculations</p></li>
@@ -3736,7 +3745,7 @@ dtype: float64
 </div>
 </section>
 <section id="shapley-values-feature-ranking">
-<h2>Shapley Values (feature ranking)<a class="headerlink" href="#shapley-values-feature-ranking" title="Permalink to this heading">#</a></h2>
+<h2>Shapley Values (feature ranking)<a class="headerlink" href="#shapley-values-feature-ranking" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_leaf_nodes</span> <span class="o">=</span> <span class="mi">20</span>
@@ -3751,12 +3760,12 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b3537b09e57d634463cb4d12485c10ea473a4bdc2f13c5a57bff20c0c1ddcca9.png" src="_images/b3537b09e57d634463cb4d12485c10ea473a4bdc2f13c5a57bff20c0c1ddcca9.png" />
+<img alt="_images/b0e8d9b31c681b2fda4b93ed1407ff472b8e2f67a12663b4452bca2901b0d06d.png" src="_images/b0e8d9b31c681b2fda4b93ed1407ff472b8e2f67a12663b4452bca2901b0d06d.png" />
 </div>
 </div>
 </section>
 <section id="summary-statistics-dataframe">
-<h2>Summary Statistics (DataFrame)<a class="headerlink" href="#summary-statistics-dataframe" title="Permalink to this heading">#</a></h2>
+<h2>Summary Statistics (DataFrame)<a class="headerlink" href="#summary-statistics-dataframe" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>                                                 <span class="c1"># calculate the summary statistics of each feature</span>
@@ -3887,7 +3896,7 @@ dtype: float64
 </div>
 </section>
 <section id="train-and-test-split">
-<h2>Train and Test Split<a class="headerlink" href="#train-and-test-split" title="Permalink to this heading">#</a></h2>
+<h2>Train and Test Split<a class="headerlink" href="#train-and-test-split" title="Link to this heading">#</a></h2>
 <p>Random splitting of the data into train and test splits.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3899,7 +3908,7 @@ dtype: float64
 </div>
 </section>
 <section id="variance-inflation-factor">
-<h2>Variance Inflation Factor<a class="headerlink" href="#variance-inflation-factor" title="Permalink to this heading">#</a></h2>
+<h2>Variance Inflation Factor<a class="headerlink" href="#variance-inflation-factor" title="Link to this heading">#</a></h2>
 <p>Feature ranking method that only considers the linear redundancy between the predictor features,</p>
 <ul class="simple">
 <li><p>relationship with the response feature, relevancy is not considered</p></li>
@@ -3917,18 +3926,18 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e86fe7cffabcf6080b3ed4c7a671ff49b6e2b59355c6e39c654f7ab12292fe8b.png" src="_images/e86fe7cffabcf6080b3ed4c7a671ff49b6e2b59355c6e39c654f7ab12292fe8b.png" />
+<img alt="_images/12e4e2491e23fcd1d6e26025b7932bc1539079963a55276c0a3f34c50b994beb.png" src="_images/12e4e2491e23fcd1d6e26025b7932bc1539079963a55276c0a3f34c50b994beb.png" />
 </div>
 </div>
 </section>
 <section id="comments">
-<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
+<h2>Comments<a class="headerlink" href="#comments" title="Link to this heading">#</a></h2>
 <p>These are some basic code snipets for predictive machine learning in Python. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
 <section id="about-the-author">
-<h2>About the Author<a class="headerlink" href="#about-the-author" title="Permalink to this heading">#</a></h2>
+<h2>About the Author<a class="headerlink" href="#about-the-author" title="Link to this heading">#</a></h2>
 <figure style="text-align: center;">
   <img src="_static/intro/michael_pyrcz_officeshot_jacket.jpg" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
@@ -3939,11 +3948,11 @@ dtype: float64
 <li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
+<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference internal" href="#www.michaelpyrcz.com"><span class="xref myst">Website</span></a>.</p>
 </section>
 <section id="want-to-work-together">
-<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
+<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Link to this heading">#</a></h2>
 <p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
@@ -3953,7 +3962,7 @@ dtype: float64
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -3984,7 +3993,7 @@ dtype: float64
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -4013,6 +4022,7 @@ dtype: float64
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -4139,8 +4149,8 @@ By Michael J. Pyrcz
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Linear Regression &#8212; Applied Machine Learning in Python</title>
   
@@ -15,55 +14,51 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=304429a7" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=564be945" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'MachineLearning_linear_regression';</script>
@@ -80,28 +75,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -123,12 +113,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -144,6 +142,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -162,7 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -201,6 +212,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ensemble_trees.html">Bagging Tree and Random Forest</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_gradient_boosting.html">Gradient Boosting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_support_vector_machines.html">Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_activation_functions.html">Neural Networks Activation Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ANN.html">Artificial Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_CNN.html">Convolutional Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_autoencoder.html">Autoencoder Neural Networks</a></li>
@@ -226,7 +238,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -235,14 +247,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -367,10 +379,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -378,14 +390,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -445,15 +457,15 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <figure style="text-align: center;">
   <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
 </figure>
 <section id="linear-regression">
-<h1>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this heading">#</a></h1>
+<h1>Linear Regression<a class="headerlink" href="#linear-regression" title="Link to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite this e-Book as:</p>
@@ -475,9 +487,9 @@ document.write(`
 <li><p><a class="reference external" href="https://youtu.be/cVFYhlCCI_8?si=NbwIDaZj30vxezn2">LASSO Regression</a></p></li>
 <li><p><a class="reference external" href="https://youtu.be/JmxGlrurQp0?si=vuF1TXDbZkyRC1j-">Norms</a></p></li>
 </ul>
-<p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
+<p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
 <section id="motivations-for-linear-regression">
-<h2>Motivations for Linear Regression<a class="headerlink" href="#motivations-for-linear-regression" title="Permalink to this heading">#</a></h2>
+<h2>Motivations for Linear Regression<a class="headerlink" href="#motivations-for-linear-regression" title="Link to this heading">#</a></h2>
 <p>Here’s a simple workflow, demonstration of linear regression for machine learning-based predictions. Why start with linear regression?</p>
 <ul class="simple">
 <li><p>Linear regression is the simplest parametric predictive machine learning model</p></li>
@@ -488,7 +500,7 @@ document.write(`
 <p>Here’s some basic details about linear regression.</p>
 </section>
 <section id="id1">
-<h2>Linear Regression<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2>Linear Regression<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>Linear regression for prediction, let’s start by looking at a linear model fit to a set of data.</p>
 <figure style="text-align: center;">
   <img src="_static/linear/linear_example.png" style="display: block; margin: 0 auto; width: 50%;">
@@ -548,7 +560,7 @@ RSS = \sum_{i=1}^n \left(y_i - (\sum_{\alpha = 1}^m b_{\alpha} x_{\alpha,i} + b_
 </ul>
 </section>
 <section id="analytical-solution">
-<h2>Analytical Solution<a class="headerlink" href="#analytical-solution" title="Permalink to this heading">#</a></h2>
+<h2>Analytical Solution<a class="headerlink" href="#analytical-solution" title="Link to this heading">#</a></h2>
 <p>Since the loss is <span class="math notranslate nohighlight">\(L^2\)</span> we have access to a non-iterative, analytics solution, i.e., optimization of the linear regression model parameters.</p>
 <ul class="simple">
 <li><p>we are looking for the model parameter(s) that minimize the loss function</p></li>
@@ -576,7 +588,7 @@ RSS = \sum_{i=1}^n \left(y_i - (\sum_{\alpha = 1}^m b_{\alpha} x_{\alpha,i} + b_
 <p>Now let’s use this approach to derived the solution for linear regression.</p>
 </section>
 <section id="linear-regression-training">
-<h2>Linear Regression Training<a class="headerlink" href="#linear-regression-training" title="Permalink to this heading">#</a></h2>
+<h2>Linear Regression Training<a class="headerlink" href="#linear-regression-training" title="Link to this heading">#</a></h2>
 <p>For the least squares (L2) norm the linear regression model parameters can be trained with training data with an analytical solution. Let’s derive it for linear regression analytical solution for the case of 1 predictor feature.</p>
 <p>To calculated the slope coefficient, <span class="math notranslate nohighlight">\(b_1\)</span>, we start with the loss function,</p>
 <div class="math notranslate nohighlight">
@@ -696,7 +708,7 @@ b_0 = \overline{y} - b_1 \cdot \overline{x}
 \]</div>
 </section>
 <section id="checking-the-model">
-<h2>Checking the Model<a class="headerlink" href="#checking-the-model" title="Permalink to this heading">#</a></h2>
+<h2>Checking the Model<a class="headerlink" href="#checking-the-model" title="Link to this heading">#</a></h2>
 <p>For linear regression models we have access to a powerful metric to check our model, the coefficient of determination, also known as “r-squared”, <span class="math notranslate nohighlight">\(r^2\)</span>.</p>
 <ul class="simple">
 <li><p>the proportion of variance explained by the model</p></li>
@@ -728,18 +740,18 @@ r^2 = \left(\rho_{x,y} \right)^2
 </ul>
 </section>
 <section id="model-uncertainty">
-<h2>Model Uncertainty<a class="headerlink" href="#model-uncertainty" title="Permalink to this heading">#</a></h2>
+<h2>Model Uncertainty<a class="headerlink" href="#model-uncertainty" title="Link to this heading">#</a></h2>
 <p>To communicate model uncertainty we rely on confidence intervals for the model parameters, <span class="math notranslate nohighlight">\(b_1\)</span> and <span class="math notranslate nohighlight">\(b_0\)</span>. Let’s define confidence interval here for convenience,</p>
 <p><strong>Confidence Interval</strong> - the uncertainty in a summary statistic / model / model parameter represented as a range, lower and upper bound, based on a specified probability interval known as the confidence level.</p>
 <p>We communicate confidence intervals like this:</p>
 <ul class="simple">
 <li><p>there is a 95% probability (or 19 times out of 20) that model slope is between 0.5 and 0.7.</p></li>
 </ul>
-<p>We cover analytical methods here, but we could also use the more flexible <span class="xref myst">Bootstrap</span> approach.</p>
+<p>We cover analytical methods here, but we could also use the more flexible <a class="reference internal" href="#GeostatsPy_bootstrap"><span class="xref myst">Bootstrap</span></a> approach.</p>
 <p>That’s enough here, let’s load data and explain more as we demonstrate linear regression.</p>
 </section>
 <section id="load-the-required-libraries">
-<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
+<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Link to this heading">#</a></h2>
 <p>We will also need some standard packages. These should have been installed with Anaconda 3.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -766,7 +778,7 @@ r^2 = \left(\rho_{x,y} \right)^2
 <p>If you get a package import error, you may have to first install some of these packages. This can usually be accomplished by opening up a command window on Windows and then typing ‘python -m pip install [package-name]’. More assistance is available with the respective package docs.</p>
 </section>
 <section id="declare-functions">
-<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
+<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Link to this heading">#</a></h2>
 <p>Let’s define a function to streamline the addition specified percentiles and major and minor gridlines to our plots.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -793,7 +805,7 @@ r^2 = \left(\rho_{x,y} \right)^2
 </div>
 </section>
 <section id="set-the-working-directory">
-<h2>Set the Working Directory<a class="headerlink" href="#set-the-working-directory" title="Permalink to this heading">#</a></h2>
+<h2>Set the Working Directory<a class="headerlink" href="#set-the-working-directory" title="Link to this heading">#</a></h2>
 <p>I always like to do this so I don’t lose files and to simplify subsequent read and writes (avoid including the full address each time).  Also, in this case make sure to place the required (see below) data file in this working directory.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -805,7 +817,7 @@ r^2 = \left(\rho_{x,y} \right)^2
 <p>You will have to update the part in quotes with your own working directory and the format is different on a Mac (e.g. “~/PGE”).</p>
 </section>
 <section id="loading-tabular-data">
-<h2>Loading Tabular Data<a class="headerlink" href="#loading-tabular-data" title="Permalink to this heading">#</a></h2>
+<h2>Loading Tabular Data<a class="headerlink" href="#loading-tabular-data" title="Link to this heading">#</a></h2>
 <p>Here’s the command to load our comma delimited data file in to a Pandas’ DataFrame object.</p>
 <p>Let’s load the provided multivariate, spatial dataset ‘unconv_MV.csv’. This dataset has variables from 1,000 unconventional wells including:</p>
 <ul class="simple">
@@ -1042,7 +1054,7 @@ r^2 = \left(\rho_{x,y} \right)^2
 </div>
 </section>
 <section id="visualize-the-dataframe">
-<h2>Visualize the DataFrame<a class="headerlink" href="#visualize-the-dataframe" title="Permalink to this heading">#</a></h2>
+<h2>Visualize the DataFrame<a class="headerlink" href="#visualize-the-dataframe" title="Link to this heading">#</a></h2>
 <p>Visualizing the DataFrame is useful first check of the data.</p>
 <ul class="simple">
 <li><p>many things can go wrong, e.g., we loaded the wrong data, all the features did not load, etc.</p></li>
@@ -1152,7 +1164,7 @@ r^2 = \left(\rho_{x,y} \right)^2
 </div>
 </section>
 <section id="summary-statistics-for-tabular-data">
-<h2>Summary Statistics for Tabular Data<a class="headerlink" href="#summary-statistics-for-tabular-data" title="Permalink to this heading">#</a></h2>
+<h2>Summary Statistics for Tabular Data<a class="headerlink" href="#summary-statistics-for-tabular-data" title="Link to this heading">#</a></h2>
 <p>There are a lot of efficient methods to calculate summary statistics from tabular data in DataFrames. The describe command provides count, mean, minimum, maximum, and quartiles all in a nice data table.</p>
 <ul class="simple">
 <li><p>We use transpose just to flip the table so that features are on the rows and the statistics are on the columns.</p></li>
@@ -1221,7 +1233,7 @@ r^2 = \left(\rho_{x,y} \right)^2
 </div>
 </section>
 <section id="data-visualization">
-<h2>Data Visualization<a class="headerlink" href="#data-visualization" title="Permalink to this heading">#</a></h2>
+<h2>Data Visualization<a class="headerlink" href="#data-visualization" title="Link to this heading">#</a></h2>
 <p>We should also take a look at the histograms.</p>
 <ul class="simple">
 <li><p>get a sense of the range, modes, skew, outliers etc. for each feature</p></li>
@@ -1256,12 +1268,12 @@ r^2 = \left(\rho_{x,y} \right)^2
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/98de0f9e6b4fc55ef535855f27875a0c49893f41a34ad00f9df6b7568c083cdf.png" src="_images/98de0f9e6b4fc55ef535855f27875a0c49893f41a34ad00f9df6b7568c083cdf.png" />
+<img alt="_images/d48f5377011069217b058c7cf707d7196d51760af66984deaecb4fef0d4af257.png" src="_images/d48f5377011069217b058c7cf707d7196d51760af66984deaecb4fef0d4af257.png" />
 </div>
 </div>
 </section>
 <section id="linear-regression-model">
-<h2>Linear Regression Model<a class="headerlink" href="#linear-regression-model" title="Permalink to this heading">#</a></h2>
+<h2>Linear Regression Model<a class="headerlink" href="#linear-regression-model" title="Link to this heading">#</a></h2>
 <p>Let’s first train a linear regression model to all our data with SciPy package, stats module.</p>
 <ul class="simple">
 <li><p>we will develop more complicated cross validation training and tuning methods latter with training and testing data splits latter. For now all the data is used to train the model.</p></li>
@@ -1317,13 +1329,13 @@ r^2 = \left(\rho_{x,y} \right)^2
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d3fdafa548372646c151694b18b0c75982244b0b0a186248b71ef376c8584bc8.png" src="_images/d3fdafa548372646c151694b18b0c75982244b0b0a186248b71ef376c8584bc8.png" />
+<img alt="_images/92c6407428d81d77e61cf78846beeb50abe4969e37ca0c290d405fc47f7f0cb7.png" src="_images/92c6407428d81d77e61cf78846beeb50abe4969e37ca0c290d405fc47f7f0cb7.png" />
 </div>
 </div>
 <p>The model looks reasonable. Let’s go beyond occular inspection.</p>
 </section>
 <section id="model-checking-with-r-2-values">
-<h2>Model Checking with <span class="math notranslate nohighlight">\(r^2\)</span> Values<a class="headerlink" href="#model-checking-with-r-2-values" title="Permalink to this heading">#</a></h2>
+<h2>Model Checking with <span class="math notranslate nohighlight">\(r^2\)</span> Values<a class="headerlink" href="#model-checking-with-r-2-values" title="Link to this heading">#</a></h2>
 <p>Let’s first explain <span class="math notranslate nohighlight">\(r^2\)</span>, proportion of variance explained. Here’s the variance explained by the model:</p>
 <p>\begin{equation}
 𝑠𝑠𝑟𝑒𝑔 = \sum_{𝑖=1}^{𝑛}\left(\hat{y}_i - \overline{y}\right)^2
@@ -1339,7 +1351,7 @@ r^2 = \left(\rho_{x,y} \right)^2
 <p>which is a common and intuitive metric for the goodness of a linear regression model.</p>
 </section>
 <section id="model-checking-with-hypothesis-testing">
-<h2>Model Checking with Hypothesis Testing<a class="headerlink" href="#model-checking-with-hypothesis-testing" title="Permalink to this heading">#</a></h2>
+<h2>Model Checking with Hypothesis Testing<a class="headerlink" href="#model-checking-with-hypothesis-testing" title="Link to this heading">#</a></h2>
 <p>Let’s test the slope, <span class="math notranslate nohighlight">\(b_1\)</span>, with the following hypothesis test,</p>
 <p>\begin{equation}
 H_0: b_{1} = 0.0
@@ -1400,7 +1412,7 @@ and the t-statistic is -8.4
 </div>
 </section>
 <section id="confidence-intervals-for-model-uncertainty">
-<h2>Confidence Intervals for Model Uncertainty<a class="headerlink" href="#confidence-intervals-for-model-uncertainty" title="Permalink to this heading">#</a></h2>
+<h2>Confidence Intervals for Model Uncertainty<a class="headerlink" href="#confidence-intervals-for-model-uncertainty" title="Link to this heading">#</a></h2>
 <p>Let’s calculate the 95% confidence interval for the slope parameter, <span class="math notranslate nohighlight">\(b_1\)</span> of our model. We just need our <span class="math notranslate nohighlight">\(t_{critical}\)</span> and the standard error in the slope, <span class="math notranslate nohighlight">\(SE_{b_1}\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1438,12 +1450,12 @@ The slope P02.5 and P97.5 are [-12.8  -7.8]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0bbbe3bf373fd68d3772e3c17b50ebbc962bfa52dfe9696bbbcf88f2260be693.png" src="_images/0bbbe3bf373fd68d3772e3c17b50ebbc962bfa52dfe9696bbbcf88f2260be693.png" />
+<img alt="_images/7cf8a1b4f2feaf4f2761b37820fb0d5d8c38df60dd55ce884438c510112a6b73.png" src="_images/7cf8a1b4f2feaf4f2761b37820fb0d5d8c38df60dd55ce884438c510112a6b73.png" />
 </div>
 </div>
 </section>
 <section id="model-prediction-intervals">
-<h2>Model Prediction Intervals<a class="headerlink" href="#model-prediction-intervals" title="Permalink to this heading">#</a></h2>
+<h2>Model Prediction Intervals<a class="headerlink" href="#model-prediction-intervals" title="Link to this heading">#</a></h2>
 <p>Let’s calculate the prediction intervals.</p>
 <p>\begin{equation}
 \hat{y}<em>{n+1} ± t</em>{(\frac{\alpha}{2},n-2)} \sqrt{MSE}\ \times \sqrt{1+\frac{1}{n}+\frac{(x_{n+1}-\overline{x})^2}{\sum_{i=1}^{n}(x_{i}-\overline{x})^2}  }
@@ -1491,12 +1503,12 @@ MSE = \sum_{i=1}^n\frac{(y_i - \hat{y}<em>i)^2}{n-2} = \sum</em>{i=1}^n \frac{\l
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5a6dd7728637e0e475487e0a80b773a4446a401a945fb86809c1c1febb8c575d.png" src="_images/5a6dd7728637e0e475487e0a80b773a4446a401a945fb86809c1c1febb8c575d.png" />
+<img alt="_images/63a35adb70cd5208f62214fa0f1c8a37c40b3fc34d46e9b653845bccf04002ce.png" src="_images/63a35adb70cd5208f62214fa0f1c8a37c40b3fc34d46e9b653845bccf04002ce.png" />
 </div>
 </div>
 </section>
 <section id="prediction">
-<h2>Prediction<a class="headerlink" href="#prediction" title="Permalink to this heading">#</a></h2>
+<h2>Prediction<a class="headerlink" href="#prediction" title="Link to this heading">#</a></h2>
 <p>Now, let’s use this model to make a prediction at all the data locations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1510,12 +1522,12 @@ MSE = \sum_{i=1}^n\frac{(y_i - \hat{y}<em>i)^2}{n-2} = \sum</em>{i=1}^n \frac{\l
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/545490d4664e3ba1508005fe883dd6cea523f44e8aaadcd36f2307b474dab097.png" src="_images/545490d4664e3ba1508005fe883dd6cea523f44e8aaadcd36f2307b474dab097.png" />
+<img alt="_images/6ec998ed42bd8d2dcaf0000f0c65f0ac9409f30bf238c1acdeb73a45551c7059.png" src="_images/6ec998ed42bd8d2dcaf0000f0c65f0ac9409f30bf238c1acdeb73a45551c7059.png" />
 </div>
 </div>
 </section>
 <section id="checking-prediction-error">
-<h2>Checking Prediction Error<a class="headerlink" href="#checking-prediction-error" title="Permalink to this heading">#</a></h2>
+<h2>Checking Prediction Error<a class="headerlink" href="#checking-prediction-error" title="Link to this heading">#</a></h2>
 <p>It is useful to plot the predictions of porosity with the training porosity vs. density scatter plot.</p>
 <ul class="simple">
 <li><p>From this plot we can observe the linear limitation of our model</p></li>
@@ -1541,7 +1553,7 @@ MSE = \sum_{i=1}^n\frac{(y_i - \hat{y}<em>i)^2}{n-2} = \sum</em>{i=1}^n \frac{\l
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c0b53c83c8aa3c23ee1636d164da4a46e45d2410df17b6670670dd5d04980935.png" src="_images/c0b53c83c8aa3c23ee1636d164da4a46e45d2410df17b6670670dd5d04980935.png" />
+<img alt="_images/51ee9ab9b818d1ad0f35e217943a02eceeaada8a9e7bbbf1c252cd4407028c25.png" src="_images/51ee9ab9b818d1ad0f35e217943a02eceeaada8a9e7bbbf1c252cd4407028c25.png" />
 </div>
 </div>
 <p>See the plotted error residuals,</p>
@@ -1573,7 +1585,7 @@ MSE = \sum_{i=1}^n\frac{(y_i - \hat{y}<em>i)^2}{n-2} = \sum</em>{i=1}^n \frac{\l
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1bc994acb07d204d76581a13525e09733c2f17f2105bbd67f0005fbc0001ac0e.png" src="_images/1bc994acb07d204d76581a13525e09733c2f17f2105bbd67f0005fbc0001ac0e.png" />
+<img alt="_images/1d582f9f3455f52f7f278b454d05cff208437bf11b46e1f97556e1686130606b.png" src="_images/1d582f9f3455f52f7f278b454d05cff208437bf11b46e1f97556e1686130606b.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The average of the residuals is 0.0
 </pre></div>
 </div>
@@ -1608,13 +1620,13 @@ MSE = \sum_{i=1}^n\frac{(y_i - \hat{y}<em>i)^2}{n-2} = \sum</em>{i=1}^n \frac{\l
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8ad1779c8dd4b364ab69f60144c920c3837df8fd24c6ab9fa4bd6953f0c4bc9a.png" src="_images/8ad1779c8dd4b364ab69f60144c920c3837df8fd24c6ab9fa4bd6953f0c4bc9a.png" />
+<img alt="_images/ba89878dde698390b2de614c3fde6f4b23e4729028f046a7c4cdf298e2e97fe4.png" src="_images/ba89878dde698390b2de614c3fde6f4b23e4729028f046a7c4cdf298e2e97fe4.png" />
 </div>
 </div>
 <p>For the demonstration case, there is no apparent conditional bias in the estimates over the range of values.</p>
 </section>
 <section id="practice-on-a-new-dataset">
-<h2>Practice on a New Dataset<a class="headerlink" href="#practice-on-a-new-dataset" title="Permalink to this heading">#</a></h2>
+<h2>Practice on a New Dataset<a class="headerlink" href="#practice-on-a-new-dataset" title="Link to this heading">#</a></h2>
 <p>Ok, time to get to work. Let’s load up a dataset and build a linear regression model with,</p>
 <ul class="simple">
 <li><p>compact code</p></li>
@@ -1623,7 +1635,7 @@ MSE = \sum_{i=1}^n\frac{(y_i - \hat{y}<em>i)^2}{n-2} = \sum</em>{i=1}^n \frac{\l
 </ul>
 <p>You can select any of these datasets or modify the code and add your own to do this.</p>
 <section id="dataset-0-unconventional-multivariate-v4">
-<h3>Dataset 0, Unconventional Multivariate v4<a class="headerlink" href="#dataset-0-unconventional-multivariate-v4" title="Permalink to this heading">#</a></h3>
+<h3>Dataset 0, Unconventional Multivariate v4<a class="headerlink" href="#dataset-0-unconventional-multivariate-v4" title="Link to this heading">#</a></h3>
 <p>Let’s load the provided multivariate, dataset <a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets/blob/master/unconv_MV_v4.csv">unconv_MV.csv</a>. This dataset has variables from 1,000 unconventional wells including:</p>
 <ul class="simple">
 <li><p>well average porosity</p></li>
@@ -1636,7 +1648,7 @@ MSE = \sum_{i=1}^n\frac{(y_i - \hat{y}<em>i)^2}{n-2} = \sum</em>{i=1}^n \frac{\l
 </ul>
 </section>
 <section id="dataset-1-twelve-12">
-<h3>Dataset 1, Twelve, 12<a class="headerlink" href="#dataset-1-twelve-12" title="Permalink to this heading">#</a></h3>
+<h3>Dataset 1, Twelve, 12<a class="headerlink" href="#dataset-1-twelve-12" title="Link to this heading">#</a></h3>
 <p>Let’s load the provided multivariate, 2D spatial dataset <a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets/blob/master/12_sample_data.csv">12_sample_data.csv</a>. This dataset has variables from 480 unconventional wells including:</p>
 <ul class="simple">
 <li><p>X (m), Y (m) location coordinates</p></li>
@@ -1647,7 +1659,7 @@ MSE = \sum_{i=1}^n\frac{(y_i - \hat{y}<em>i)^2}{n-2} = \sum</em>{i=1}^n \frac{\l
 </ul>
 </section>
 <section id="dataset-2-reservoir-21">
-<h3>Dataset 2, Reservoir 21<a class="headerlink" href="#dataset-2-reservoir-21" title="Permalink to this heading">#</a></h3>
+<h3>Dataset 2, Reservoir 21<a class="headerlink" href="#dataset-2-reservoir-21" title="Link to this heading">#</a></h3>
 <p>Let’s load the provided multivariate, 3D spatial dataset <a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets/blob/master/res21_wells.csv">res21_wells.csv</a>. This dataset has variables from 73 vertical wells over a 10,000m x 10,000m x 50 m reservoir unit:</p>
 <ul class="simple">
 <li><p>well (ID)</p></li>
@@ -2027,7 +2039,7 @@ MSE = \sum_{i=1}^n\frac{(y_i - \hat{y}<em>i)^2}{n-2} = \sum</em>{i=1}^n \frac{\l
 </div>
 </section>
 <section id="build-and-check-model">
-<h3>Build and Check Model<a class="headerlink" href="#build-and-check-model" title="Permalink to this heading">#</a></h3>
+<h3>Build and Check Model<a class="headerlink" href="#build-and-check-model" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_prop</span> <span class="o">=</span> <span class="mf">0.2</span>
@@ -2048,7 +2060,7 @@ MSE = \sum_{i=1}^n\frac{(y_i - \hat{y}<em>i)^2}{n-2} = \sum</em>{i=1}^n \frac{\l
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3a7d23260a411f4894d7f9270056b8ff28820241bf7e6859bae42ed471f22fa3.png" src="_images/3a7d23260a411f4894d7f9270056b8ff28820241bf7e6859bae42ed471f22fa3.png" />
+<img alt="_images/124584aebf6e46f0062a57a295500edd6b8cd296fa45d682d86db8996e7d8678.png" src="_images/124584aebf6e46f0062a57a295500edd6b8cd296fa45d682d86db8996e7d8678.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2192,13 +2204,13 @@ MSE = \sum_{i=1}^n\frac{(y_i - \hat{y}<em>i)^2}{n-2} = \sum</em>{i=1}^n \frac{\l
 </section>
 </section>
 <section id="comments">
-<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
+<h2>Comments<a class="headerlink" href="#comments" title="Link to this heading">#</a></h2>
 <p>This was a basic treatment of linear regression. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
 <section id="about-the-author">
-<h2>About the Author<a class="headerlink" href="#about-the-author" title="Permalink to this heading">#</a></h2>
+<h2>About the Author<a class="headerlink" href="#about-the-author" title="Link to this heading">#</a></h2>
 <figure style="text-align: center;">
   <img src="_static/intro/michael_pyrcz_officeshot_jacket.jpg" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
@@ -2209,11 +2221,11 @@ MSE = \sum_{i=1}^n\frac{(y_i - \hat{y}<em>i)^2}{n-2} = \sum</em>{i=1}^n \frac{\l
 <li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
+<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference internal" href="#www.michaelpyrcz.com"><span class="xref myst">Website</span></a>.</p>
 </section>
 <section id="want-to-work-together">
-<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
+<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Link to this heading">#</a></h2>
 <p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
@@ -2223,7 +2235,7 @@ MSE = \sum_{i=1}^n\frac{(y_i - \hat{y}<em>i)^2}{n-2} = \sum</em>{i=1}^n \frac{\l
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -2254,7 +2266,7 @@ MSE = \sum_{i=1}^n\frac{(y_i - \hat{y}<em>i)^2}{n-2} = \sum</em>{i=1}^n \frac{\l
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -2283,6 +2295,7 @@ MSE = \sum_{i=1}^n\frac{(y_i - \hat{y}<em>i)^2}{n-2} = \sum</em>{i=1}^n \frac{\l
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -2368,8 +2381,8 @@ By Michael J. Pyrcz
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

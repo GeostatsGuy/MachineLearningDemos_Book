@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Artificial Neural Networks &#8212; Applied Machine Learning in Python</title>
   
@@ -15,62 +14,58 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=304429a7" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=564be945" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'MachineLearning_ANN';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Convolutional Neural Networks" href="MachineLearning_CNN.html" />
-    <link rel="prev" title="Support Vector Machines" href="MachineLearning_support_vector_machines.html" />
+    <link rel="prev" title="Neural Network Activation Functions" href="MachineLearning_activation_functions.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -80,28 +75,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -123,12 +113,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -144,6 +142,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -162,7 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -201,6 +212,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ensemble_trees.html">Bagging Tree and Random Forest</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_gradient_boosting.html">Gradient Boosting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_support_vector_machines.html">Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_activation_functions.html">Neural Networks Activation Functions</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Artificial Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_CNN.html">Convolutional Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_autoencoder.html">Autoencoder Neural Networks</a></li>
@@ -226,7 +238,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -235,14 +247,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -367,10 +379,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -378,14 +390,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -407,13 +419,28 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concepts">Concepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-network-concepts">Neural Network Concepts</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-network">A Simple Network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments-on-network-nomenclature">Comments on Network Nomenclature</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#description-of-the-network-approach">Description of the Network Approach</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#walkthrough-the-network">Walkthrough the Network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-forward-pass">Network Forward Pass</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-model-parameters">Number of Model Parameters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activation-functions">Activation Functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-model-parameters">Training Model Parameters</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backpropagation">Backpropagation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-networks-steps">Training Networks Steps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-chain-rule">The Chain Rule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-networks-backpropagation-building-blocks">Neural Networks Backpropagation Building Blocks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-loss-derivative">Calculating the Loss Derivative</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#backpropagation-through-output-node-with-identity-activation">Backpropagation through Output Node with Identity Activation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#backpropagation-along-connections">Backpropagation along Connections</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#backpropagation-through-nodes-with-sigmoid-activation">Backpropagation through Nodes with Sigmoid Activation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#backpropagation-along-another-connection">Backpropagation Along Another Connection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accounting-for-multiple-paths">Accounting for Multiple Paths</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#backpropagation-through-input-nodes-with-identity-activation">Backpropagation through Input Nodes with Identity Activation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-derivatives-with-respect-to-weights-and-biases">Loss Derivatives with Respect to Weights and Biases</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backpropagation-example">Backpropagation Example</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-model-parameters">Updating Model Parameters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-epochs">Training Epochs</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-dashboard">Interactive Dashboard</a></li>
@@ -434,15 +461,15 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <figure style="text-align: center;">
   <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
 </figure>
 <section id="artificial-neural-networks">
-<h1>Artificial Neural Networks<a class="headerlink" href="#artificial-neural-networks" title="Permalink to this heading">#</a></h1>
+<h1>Artificial Neural Networks<a class="headerlink" href="#artificial-neural-networks" title="Link to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite this e-Book as:</p>
@@ -461,9 +488,9 @@ document.write(`
 <li><p><a class="reference external" href="https://youtu.be/A9PiCMY_6nM?si=NxWSU_5RgQ4w55EL">Artificial Neural Networks</a></p></li>
 <li><p><a class="reference external" href="https://youtu.be/za2my_XDoOs?si=LeHU6p2_fc9dX4Yt">Convolutional Neural Networks</a></p></li>
 </ul>
-<p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
+<p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
 <section id="motivation">
-<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this heading">#</a></h2>
+<h2>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h2>
 <p>Artificial neural networks are very powerful, nature inspired computing based on an analogy of brain</p>
 <ul class="simple">
 <li><p>I suggest that they are like a reptilian brain, without planning and higher order reasoning</p></li>
@@ -483,8 +510,8 @@ document.write(`
 </ul>
 <p>intelligence emerges from many connected simple processors. For the remainder of this chapter, I will used the terms nodes and connections to describe our artificial neural network.</p>
 </section>
-<section id="concepts">
-<h2>Concepts<a class="headerlink" href="#concepts" title="Permalink to this heading">#</a></h2>
+<section id="neural-network-concepts">
+<h2>Neural Network Concepts<a class="headerlink" href="#neural-network-concepts" title="Link to this heading">#</a></h2>
 <p>Here are some key aspects of artificial neural networks,</p>
 <p><strong>Basic Design</strong> - <em>“…a computing system made up of a number of simple, highly interconnected processing elements, which process information by their dynamic state response to external inputs.”</em> Caudill (1989).</p>
 <p><strong>Still a Prediction Model</strong> - while these models may be quite complicated with even millions of trainable model parameters, weights and biases, they are still a function that maps from predictor features to response features,</p>
@@ -497,7 +524,7 @@ Y=f(X)+\epsilon
 <p><strong>Universal Function Approximator (Universal Approximation Theorem)</strong> - ANNs have the ability to learn any possible function shape of <span class="math notranslate nohighlight">\(f\)</span> over an interval, for an arbitrary wide (single hidden layer) by Cybenko (1989) and arbitrary depth by Lu and others (2017)</p>
 </section>
 <section id="a-simple-network">
-<h2>A Simple Network<a class="headerlink" href="#a-simple-network" title="Permalink to this heading">#</a></h2>
+<h2>A Simple Network<a class="headerlink" href="#a-simple-network" title="Link to this heading">#</a></h2>
 <p>To get started, let’s build a neural net, single hidden layer, fully connected, feed-forward neural network,</p>
 <figure style="text-align: center;">
   <img src="_static/ANN/ann.png" style="display: block; margin: 0 auto; width: 60%;">
@@ -513,30 +540,77 @@ Y=f(X)+\epsilon
 </figure>
 <p>Our artificial neural network has,</p>
 <ul class="simple">
-<li><p>3 predictor features, <span class="math notranslate nohighlight">\(X_1, X_2, X_3\)</span></p></li>
-<li><p>3 input nodes</p></li>
-<li><p>2 hidden layer nodes</p></li>
-<li><p>1 output node</p></li>
+<li><p>3 predictor features, <span class="math notranslate nohighlight">\(X_1\)</span>, <span class="math notranslate nohighlight">\(X_2\)</span> and <span class="math notranslate nohighlight">\(X_3\)</span></p></li>
+<li><p>3 input nodes, <span class="math notranslate nohighlight">\(I_1\)</span>, <span class="math notranslate nohighlight">\(I_2\)</span> and <span class="math notranslate nohighlight">\(I_3\)</span></p></li>
+<li><p>2 hidden layer nodes, <span class="math notranslate nohighlight">\(H_4\)</span> and <span class="math notranslate nohighlight">\(H_5\)</span></p></li>
+<li><p>1 output node, <span class="math notranslate nohighlight">\(O_6\)</span></p></li>
 <li><p>1 response feature, <span class="math notranslate nohighlight">\(Y_1\)</span></p></li>
 </ul>
 <p>where all nodes fully connected. Note, deep learning is a neural network with more than 1 hidden layer, but for brevity let’s continue with our non-deep learning artificial neural network.</p>
-<p>Let’s walk through some concepts,</p>
-<p><strong>Feed-forward</strong> – all information flows from left to right. Each node sends the same signal along the connections to all the nodes in the next layer, but connection has their own unique trainable weights, including in this example, <span class="math notranslate nohighlight">\(\lambda_{1,4}, \lambda_{2,4}, \ldots, \lambda_{5,6}\)</span></p>
+</section>
+<section id="comments-on-network-nomenclature">
+<h2>Comments on Network Nomenclature<a class="headerlink" href="#comments-on-network-nomenclature" title="Link to this heading">#</a></h2>
+<p>Just a couple more comments about my network nomenclature. My goal is to maximize simplicity and clarity,</p>
+<ul class="simple">
+<li><p><strong>Network Nodes and Connections</strong> - I choose to use unique numbers for all nodes, <span class="math notranslate nohighlight">\(I_1\)</span>, <span class="math notranslate nohighlight">\(I_2\)</span>, <span class="math notranslate nohighlight">\(I_3\)</span>, <span class="math notranslate nohighlight">\(H_4\)</span>, <span class="math notranslate nohighlight">\(H_5\)</span> and <span class="math notranslate nohighlight">\(O_6\)</span>, instead of repeating numbers over each layer, <span class="math notranslate nohighlight">\(I_1\)</span>, <span class="math notranslate nohighlight">\(I_2\)</span>, <span class="math notranslate nohighlight">\(I_3\)</span>, <span class="math notranslate nohighlight">\(H_1\)</span>, <span class="math notranslate nohighlight">\(H_2\)</span>, and <span class="math notranslate nohighlight">\(O_1\)</span> to simplify the notation for the weights; therefore, when I say <span class="math notranslate nohighlight">\(\lambda_{1,4}\)</span> you know exactly where this weight is applied in the network, from node <span class="math notranslate nohighlight">\(I_1\)</span> to node <span class="math notranslate nohighlight">\(H_4\)</span>.</p></li>
+<li><p><strong>Node Outputs</strong> - I use the node label to also describe the output from the node, for example <span class="math notranslate nohighlight">\(O_6\)</span> is the output node, <span class="math notranslate nohighlight">\(O_6\)</span>, and also the signal or value output from node <span class="math notranslate nohighlight">\(O_6\)</span>,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+O_6 = \sigma \left( \lambda_{4,6} \cdot H_4 + \lambda_{5,6} \cdot H_5 \right) 
+\]</div>
+<ul class="simple">
+<li><p><strong>Pre- and Post-activation</strong> - at our nodes <span class="math notranslate nohighlight">\(H_4\)</span>, <span class="math notranslate nohighlight">\(H_5\)</span>, and <span class="math notranslate nohighlight">\(O_6\)</span>, we have the node input before activation and the node output after activation, I use the notation <span class="math notranslate nohighlight">\(H_{4_{in}}\)</span>, <span class="math notranslate nohighlight">\(H_{5_{in}}\)</span>, and <span class="math notranslate nohighlight">\(O_{6_{in}}\)</span> for the pre-activation input,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+H_{4_{in}} = \lambda_{1,4} \cdot I_1 + \lambda_{2,4} \cdot I_2 + \lambda_{3,4} \cdot I_3 
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+H_{5_{in}} = \lambda_{1,5} \cdot I_1 + \lambda_{2,5} \cdot I_2 + \lambda_{2,5} \cdot I_3 
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+O_{6_{in}} = \lambda_{4,6} \cdot H_4 + \lambda_{5,6} \cdot H_5 
+\]</div>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> and <span class="math notranslate nohighlight">\(H_4\)</span>, <span class="math notranslate nohighlight">\(H_5\)</span>, and <span class="math notranslate nohighlight">\(O_6\)</span> for the post-activation node output.</p>
+<div class="math notranslate nohighlight">
+\[
+H_{4} = \sigma \left( H_{4_{in}} \right) = \sigma \left( \lambda_{1,4} \cdot I_1 + \lambda_{2,4} \cdot I_2 + \lambda_{3,4} \cdot I_3 \right) 
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+H_{5} = \sigma \left( H_{5_{in}} \right) = \sigma \left( \lambda_{1,5} \cdot I_1 + \lambda_{2,5} \cdot I_2 + \lambda_{2,5} \cdot I_3 \right) 
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+O_6 = \sigma \left( O_{6_{in}} \right) = \sigma \left( \lambda_{4,6} \cdot H_4 + \lambda_{5,6} \cdot H_5 \right)
+\]</div>
+<p>It is important to have clean, clear notation because with back propagation we have to step through the nodes, going from post-activation to pre-activation.</p>
+<ul class="simple">
+<li><p>often variables like <span class="math notranslate nohighlight">\(z\)</span> are applied for pre-activation in neural network literature, but I feel this is ambiguous and may cause confusion as we provide a nuts and bolts approach, explicitly describing every equation, to describe exactly how neural networks are trained and predict</p></li>
+</ul>
+</section>
+<section id="description-of-the-network-approach">
+<h2>Description of the Network Approach<a class="headerlink" href="#description-of-the-network-approach" title="Link to this heading">#</a></h2>
+<p>Let’s talk about the network, the parts and how information flows through the network.</p>
+<p><strong>Feed-forward</strong> – all information flows from left to right. Each node sends the same signal along the connections to all the nodes in the next layer,</p>
 <figure style="text-align: center;">
   <img src="_static/ANN/ann_flow.png" style="display: block; margin: 0 auto; width: 70%;">
-  <figcaption style="text-align: center;"> Feed forward, fully connected, with each node sending the same signal to all the nodes in the next layer, each with their trainable weights, including in this example, $\lambda_{1,4}, \lambda_{2,4}, \ldots, \lambda_{5,6}$.
+  <figcaption style="text-align: center;"> Feed forward, fully connected, with each node sending the same signal to all the nodes in the next layer.
 </figcaption>
 </figure>
 <p><strong>Input Layer</strong> - the input features are passed directly to the input nodes, in the case of continuous predictor features, there is one input node per feature and the features are,</p>
 <ul class="simple">
-<li><p>min / max normalization to a range [−1,1] or [0,1] to improve activation function sensitivity and to remove the influence of scale differences in predictor features and to improve solution stability, i.e., smooth reduction in the training loss while training</p></li>
+<li><p>min / max normalization to a range <span class="math notranslate nohighlight">\(\left[ −1,1 \right]\)</span> or <span class="math notranslate nohighlight">\(\left[ 0,1 \right]\)</span> to improve activation function sensitivity and to remove the influence of scale differences in predictor features and to improve solution stability, i.e., smooth reduction in the training loss while training</p></li>
 </ul>
 <figure style="text-align: center;">
   <img src="_static/ANN/ann_input.png" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;"> Highlighting the input layer, the first layer that receives the normalized predictor features.
 </figcaption>
 </figure>
-<p>In the case of categorical predictor features, we have one input node per each category for each predictor feature, i.e., after one-hot-encoding of the feature, each encoding is passed to a separate input node.</p>
+<p>In the case of categorical predictor features, we have one input node per each category for each predictor feature, i.e., after one-hot-encoding of the feature where each encoding is passed to a separate input node.</p>
 <ul class="simple">
 <li><p>recall one-hot-encoding, 1 if the specific category, 0 otherwise, replaces the categorical feature with a binary vector with length as the number of categories.</p></li>
 </ul>
@@ -546,19 +620,51 @@ Y=f(X)+\epsilon
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>we could also use a single input node per categorical predictor and assign thresholds to each categories, for example [0.0, 0.5, 1.0] for 3 categories, but this assumes an ordinal categorical feature</p></li>
+<li><p>we could also use a single input node per categorical predictor and assign thresholds to each categories, for example <span class="math notranslate nohighlight">\(\left[ 0.0, 0.5, 1.0 \right]\)</span> for 3 categories, but this assumes an ordinal categorical feature</p></li>
 </ul>
-<p><strong>Hidden Layer</strong> -  the input layer values <span class="math notranslate nohighlight">\(I_1, I_2, I_2\)</span> are weighted with learnable weights <span class="math notranslate nohighlight">\(\lambda_{1,4}, \lambda_{2,4}, \lambda_{3,4}, \lambda_{1,5}, \lambda_{2,5}, \lambda_{3,5}\)</span>, and</p>
-<p>In the hidden layer nodes, the weighted input layer values, <span class="math notranslate nohighlight">\(\lambda_{1,4} \cdot I_1, \lambda_{2,4} \cdot I_2 \cdot I_2, \ldots, \lambda_{3,5} \cdot I_3\)</span> are summed with the addition of a trainable bias term in each node, <span class="math notranslate nohighlight">\(b_4\)</span> and <span class="math notranslate nohighlight">\(b_5\)</span>.</p>
+<p><strong>Hidden Layer</strong> -  the input layer values <span class="math notranslate nohighlight">\(I_1, I_2, I_2\)</span> are weighted with learnable weights,</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda_{1,4}, \lambda_{2,4}, \lambda_{3,4}, \lambda_{1,5}, \lambda_{2,5}, \lambda_{3,5}
+\]</div>
 <ul class="simple">
-<li><p>the output from the input layer nodes is constant over the hidden layer nodes, but the weights vary over each input node to hidden layer node connection</p></li>
+<li><p>in the hidden layer nodes, the weighted input layer values, <span class="math notranslate nohighlight">\(\lambda_{1,4} \cdot I_1, \lambda_{2,4} \cdot I_2 \cdot I_2, \ldots, \lambda_{3,5} \cdot I_3\)</span> are summed with the addition of a trainable bias term in each node, <span class="math notranslate nohighlight">\(b_4\)</span> and <span class="math notranslate nohighlight">\(b_5\)</span>.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+H_{4_{in}} = \lambda_{1,4} \cdot I_1 + \lambda_{2,4} \cdot I_2 + \lambda_{3,4} \cdot I_3 + b_4
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+H_{5_{in}} = \lambda_{1,5} \cdot I_1 + \lambda_{2,5} \cdot I_2 + \lambda_{3,5} \cdot I_3 + b_5
+\]</div>
+<p>the nonlinear activation is applied,</p>
+<div class="math notranslate nohighlight">
+\[
+H_{4} = \sigma  \bigl( \lambda_{1,4} \cdot I_1 + \lambda_{2,4} \cdot I_2 + \lambda_{3,4} \cdot I_3 + b_4 \bigr)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+H_{5} = \sigma \bigl( \lambda_{1,5} \cdot I_1 + \lambda_{2,5} \cdot I_2 + \lambda_{3,5} \cdot I_3 + b_5 \bigr)
+\]</div>
+<ul class="simple">
+<li><p>the output from the input layer nodes to all hidden layer nodes is contant (again, each node sends the same value to all nodes in the next layer)</p></li>
 </ul>
 <figure style="text-align: center;">
   <img src="_static/ANN/ann_hidden.png" style="display: block; margin: 0 auto; width: 70%;">
-  <figcaption style="text-align: center;"> The hidden layer of our artificial neural network highlighted. The input layer nodes' outputs are weighted and passed into the hidden layer nodes. The output from the input layer nodes is constant but the weights vary over the input layer node to hidden layer node connections.
+  <figcaption style="text-align: center;"> The hidden layer of our artificial neural network highlighted. The input layer nodes' outputs are weighted and passed into the hidden layer nodes. The output from the hidden layer nodes to all output layer nodes is constant.
 </figcaption>
 </figure>
-<p><strong>Output Layer</strong> - for continuous response features there is one output node per normalized response feature.</p>
+<p><strong>Output Layer</strong> - for continuous response features there is one output node per normalized response feature. Once again the weighted linear combination of inputs plus a node bias are calculated,</p>
+<div class="math notranslate nohighlight">
+\[
+O_{6_{in}} = \lambda_{4,6} \cdot H_4 + \lambda_{5,6} \cdot H_5 + b_6
+\]</div>
+<p>and then activation is applied, but for a continuous response feature, typically identity (linear) transform is applied,</p>
+<div class="math notranslate nohighlight">
+\[
+O_6 = \alpha \bigl( \lambda_{4,6} \cdot H_4 + \lambda_{5,6} \cdot H_5 + b_6 \bigr) = \lambda_{4,6} \cdot H_4 + \lambda_{5,6} \cdot H_5 + b_6 = O_{6_{in}} 
+\]</div>
 <ul class="simple">
 <li><p>backtransformation from normalized to original response feature(s) are then applied to recover the ultimate prediction</p></li>
 <li><p>as with continuous predictor features, min / max normalization is applied to continuous response features to a range [−1,1] or [0,1] to improve activation function sensitivity</p></li>
@@ -576,11 +682,14 @@ Y=f(X)+\epsilon
   <img src="_static/ANN/ann_output_cat.png" style="display: block; margin: 0 auto; width: 80%;">
   <figcaption style="text-align: center;"> Highlighting the input layer, the first layer that receives one-hot-encoding of a single categorical predictor feature.
 </figcaption>
-</figure>
-</section>
+</figure></section>
 <section id="walkthrough-the-network">
-<h2>Walkthrough the Network<a class="headerlink" href="#walkthrough-the-network" title="Permalink to this heading">#</a></h2>
-<p>Let’s walkthough the artificial neural network. We follow a single path to illustrate the precise calculations associated with making a prediction with an artificial neural network.</p>
+<h2>Walkthrough the Network<a class="headerlink" href="#walkthrough-the-network" title="Link to this heading">#</a></h2>
+<p>Now we are ready to walkthough the artificial neural network.</p>
+<ul class="simple">
+<li><p>we follow a single path to illustrate the precise calculations associated with making a prediction with an artificial neural network</p></li>
+</ul>
+<p>The full forward pass is explained next.</p>
 <p><strong>Inside an Input Layer Node</strong> - input layer nodes just pass the predictor features,</p>
 <ul class="simple">
 <li><p>normalized continuous predictor feature value</p></li>
@@ -589,17 +698,17 @@ Y=f(X)+\epsilon
 <p>into the hidden layer nodes, with general vector notation,</p>
 <div class="math notranslate nohighlight">
 \[
-I_j = X_j
+I = X
 \]</div>
 <figure style="text-align: center;">
   <img src="_static/ANN/ann_walkthrough_input.png" style="display: block; margin: 0 auto; width: 30%;">
   <figcaption style="text-align: center;"> Walkthrough of an artificial neural network, the input layer node receives one-hot-encoding of a single categorical predictor feature and passes it to all of the hidden layer nodes.
 </figcaption>
 </figure>
-<p>For a single example from the figure above consider,</p>
+<p>We can generalize over all input layer nodes with,</p>
 <div class="math notranslate nohighlight">
 \[
-I_1 = X_1^N
+H_j = H_{j_{in}} = X_j
 \]</div>
 <p><strong>Inside an Hidden Layer Node</strong></p>
 <p>The hidden layer nodes are simple processors. The take linearly weighted combinations of inputs, add a node bias term and then nonlinearly transform the result, this transform is call the activation function, <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
@@ -610,38 +719,49 @@ I_1 = X_1^N
 <p>Prior to activation we have,</p>
 <div class="math notranslate nohighlight">
 \[
-H_{j_{in}} = \sum_{i=1}^{p} \left( \lambda_{i,j} \cdot I_i \right) + b_j
+H_{4_{in}} = \sum_{i=1}^{3} \left( \lambda_{i,4} \cdot I_i \right) + b_4
 \]</div>
 <p>and after activation we have,</p>
 <div class="math notranslate nohighlight">
 \[
-H_j = \alpha \left(𝐻_{𝑗_{𝑖𝑛}} \right)
+H_4 = \alpha \left(H_{4_{in}} \right)
 \]</div>
 <p>We can express the simple processor in the node with general vector notation as,</p>
 <div class="math notranslate nohighlight">
 \[
-H_j = \alpha\left(b_j + \lambda_j^T X\right)
+H_4 = \alpha \left(b_4 + \lambda_{j,4}^T I \right)
 \]</div>
 <figure style="text-align: center;">
   <img src="_static/ANN/ann_walkthrough_hidden.png" style="display: block; margin: 0 auto; width: 30%;">
   <figcaption style="text-align: center;"> Walkthrough of an artificial neural network, the hidden layer linearly weights the input from each input layer node, adds a node bias term and then applies an activation function and passes this to all nodes in the next layer, i.e., the output layer for our example artificial neural network.
 </figcaption>
 </figure>
-<p>For an example of the simple processor of a hidden layer node, <span class="math notranslate nohighlight">\(H_4\)</span>, from the figure above consider,</p>
+<p>We can generalize over all hidden layer nodes with,</p>
 <div class="math notranslate nohighlight">
 \[
-H_4 = \alpha\left( \lambda_{1,4} \cdot I_1 + \lambda_{2,4} \cdot I_2 + \lambda_{3,4} \cdot I_3 + b_4 \right)
+H_{j_{in}} = \sum_{i=1}^{|I|} \left( \lambda_{i,j} \cdot I_i \right) + b_j
+\]</div>
+<p>and after activation, the node output is,</p>
+<div class="math notranslate nohighlight">
+\[
+H_{j_{in}} = \sigma \bigl( \sum_{i=1}^{|I|} \left( \lambda_{i,j} \cdot I_i \right) + b_j \bigr)
 \]</div>
 <p><strong>Inside an Output Layer Node</strong></p>
 <p>The output layer nodes take linearly weighted combinations of nodes’ inputs, adds a node bias term and then transforms the result with an activation function, <span class="math notranslate nohighlight">\(\alpha\)</span>, same as the hidden layer nodes,</p>
+<p>Prior to activation we have,</p>
 <div class="math notranslate nohighlight">
 \[
-O_j = \alpha\left(b_j + \lambda_j^T H\right)
+O_{6_{in}} = \sum_{i=4}^{5} \left( \lambda_{i,6} \cdot H_i \right) + b_6
 \]</div>
-<p>But unlike the hidden layer nodes, for continuous response features, linear activation is commonly applied,</p>
+<p>and after activation, assuming identity activation we have,</p>
 <div class="math notranslate nohighlight">
 \[
-O_j = \alpha \left(O_{𝑗_{𝑖𝑛}} \right) = O_{𝑗_{𝑖𝑛}}
+O_6 = \alpha \left(O_{6_{in}} \right)
+\]</div>
+<p>We can express the simple processor in the node with general vector notation as,</p>
+<div class="math notranslate nohighlight">
+\[
+O_6 = \alpha\left(b_6 + \lambda_{j,6}^T H\right)
 \]</div>
 <figure style="text-align: center;">
   <img src="_static/ANN/ann_walkthrough_output.png" style="display: block; margin: 0 auto; width: 30%;">
@@ -658,27 +778,74 @@ O_j = \alpha(O_{j_{in}}) = \frac{e^{O_{j_{in}}}}{\sum_{\iota=1}^{K} e^{O_{\iota_
   <figcaption style="text-align: center;"> Walkthrough of an artificial neural network, the output layer linearly weights the input from each hidden layer node, adds a node bias term and then applies an activation function, typically linear for continuous response features and passes this as an output.
 </figcaption>
 </figure>
+<p>softmax activation ensures that the output over all the output layer nodes are valid probabilities including,</p>
 <ul class="simple">
-<li><p>softmax activation ensures that the output over all the output layer nodes are valid probabilities including,</p></li>
 <li><p><strong>nonnegativity</strong> - through the exponentiation</p></li>
 <li><p><strong>closure</strong> - probabilities sum to 1.0 through the denominator normalizing the result</p></li>
 </ul>
+<p>Note, for all future discussions and demonstrations, I assume a standardized continuous responce feature.</p>
+</section>
+<section id="network-forward-pass">
+<h2>Network Forward Pass<a class="headerlink" href="#network-forward-pass" title="Link to this heading">#</a></h2>
+<p>Now that we have completed a walk-through of our network on a single path, let’s combine all the paths through our network to demonstrate a complete forward pass through our artificial neural network.</p>
+<ul class="simple">
+<li><p>this is the calculation required to make a prediction with out,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+O_6 = \sigma_{O_6} \bigl( 
+    \lambda_{4,6} \cdot \sigma_{H_4} \left( \lambda_{1,4} I_1 + \lambda_{2,4} I_2 + \lambda_{3,4} I_3 + b_4 \right) 
+  + \lambda_{5,6} \cdot \sigma_{H_5} \left( \lambda_{1,5} I_1 + \lambda_{2,5} I_2 + \lambda_{3,5} I_3 + b_5 \right)
+  + b_6 \bigr)
+\]</div>
+<p>where the activation functions <span class="math notranslate nohighlight">\(\sigma_{H_4}\)</span> = <span class="math notranslate nohighlight">\(\sigma_{H_5}\)</span> = <span class="math notranslate nohighlight">\(\sigma\)</span> are sigmoid, and <span class="math notranslate nohighlight">\(\sigma_{O_6}\)</span> is linear (identity), so we could simplify the forward pass to,</p>
+<div class="math notranslate nohighlight">
+\[
+O_6 = \lambda_{4,6} \cdot \sigma \left( \lambda_{1,4} I_1 + \lambda_{2,4} I_2 + \lambda_{3,4} I_3 + b_4 \right) 
+  + \lambda_{5,6} \cdot \sigma \left( \lambda_{1,5} I_1 + \lambda_{2,5} I_2 + \lambda_{3,5} I_3 + b_5 \right)
+  + b_6
+\]</div>
+<p>This emphasizes that our neural network is a nested set of activated linear systems, i.e., linearly weighted averages plus bias terms applied to activation functions.</p>
 </section>
 <section id="number-of-model-parameters">
-<h2>Number of Model Parameters<a class="headerlink" href="#number-of-model-parameters" title="Permalink to this heading">#</a></h2>
-<p>In general, there are many model parameters, <span class="math notranslate nohighlight">\(theta\)</span>, in an artificial neural network. Consider this notation for artificial neural network width, number of input nodes, <span class="math notranslate nohighlight">\(p\)</span>, number of hidden layer nodes, <span class="math notranslate nohighlight">\(m\)</span>, and number of output nodes, <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<h2>Number of Model Parameters<a class="headerlink" href="#number-of-model-parameters" title="Link to this heading">#</a></h2>
+<p>In general, there are many model parameters, <span class="math notranslate nohighlight">\(theta\)</span>, in an artificial neural network. First, let’s clarify these definitions to describe our artificial neural network,</p>
+<ul class="simple">
+<li><p><strong>neural network width</strong> - the number of nodes in the layers of the neural network</p></li>
+<li><p><strong>neural network depth</strong> - the number of layers in the neural network, typically the input layer is not included in this calculation</p></li>
+</ul>
+<p>Now, let’s assume the following compact notation for a 3 layer artificial neural network, input, output and 1 hidden layer, with the width of each layer as,</p>
+<ul class="simple">
+<li><p>number of input nodes, <span class="math notranslate nohighlight">\(p\)</span></p></li>
+<li><p>number of hidden layer nodes, <span class="math notranslate nohighlight">\(m\)</span></p></li>
+<li><p>and number of output nodes, <span class="math notranslate nohighlight">\(k\)</span></p></li>
+</ul>
 <figure style="text-align: center;">
   <img src="_static/ANN/parameters.png" style="display: block; margin: 0 auto; width: 30%;">
   <figcaption style="text-align: center;"> Notation for artificial neural network width, number of input nodes, \(p\), number of hidden layer nodes, \(m\), and number of output nodes, \(k\). 
 </figcaption>
 </figure>
-<p>for every connection there is a weight,</p>
+<p>fully connected, so for every connection there is a weight,</p>
 <div class="math notranslate nohighlight">
 \[
 \lambda_{𝐼_{1,\ldots,𝑝},𝐻_{1,\ldots,𝑚} } \quad \text{and} \quad \lambda_{𝐻_{1,\ldots,𝑚},𝑂_{1,\ldots,𝑘} }
 \]</div>
-<p>with full connectivity the number of weights is <span class="math notranslate nohighlight">\(𝑝 \times 𝑚\)</span> and <span class="math notranslate nohighlight">\(𝑚 \times 𝑘\)</span> and at each node there is a bias term <span class="math notranslate nohighlight">\(𝑏_{H_{1,\ldots,m} }\)</span> and <span class="math notranslate nohighlight">\(𝑏_{O_{1,\ldots,k} }\)</span>.</p>
-<p>the number of model parameters is,</p>
+<p>with full connectivity the number of weights is</p>
+<div class="math notranslate nohighlight">
+\[
+𝑝 \times 𝑚 \quad \text{and} \quad 𝑚 \times 𝑘
+\]</div>
+<p>and at each hidden layer node there is a bias term,</p>
+<div class="math notranslate nohighlight">
+\[
+𝑏_{H_{1,\ldots,m} }
+\]</div>
+<p>and at every output node there is a bias term,</p>
+<div class="math notranslate nohighlight">
+\[
+𝑏_{O_{1,\ldots,k} }
+\]</div>
+<p>Therefore, the number of model parameters is,</p>
 <div class="math notranslate nohighlight">
 \[
 |\theta| = 𝑝 \times 𝑚 + 𝑚 \times 𝑘 + 𝑚 + 𝑘 
@@ -694,113 +861,89 @@ O_j = \alpha(O_{j_{in}}) = \frac{e^{O_{j_{in}}}}{\sum_{\iota=1}^{K} e^{O_{\iota_
 \[
 |\theta| = 3 \times 2 + 2 \times 1 + 2 + 1 = 11
 \]</div>
-<p>I selected this as a manageable number of parameters, so we can train and visualize our model, but consider a more typical model size by increasing our artificial neural network’s width, with <span class="math notranslate nohighlight">\(p = 10\)</span>, <span class="math notranslate nohighlight">\(m = 20\)</span> and <span class="math notranslate nohighlight">\(k = 3\)</span>, then we have many more model parameters,</p>
+<p>I select this as a manageable number of parameters, so we can train and visualize our model, but consider a more typical model size by increasing our artificial neural network’s width, with <span class="math notranslate nohighlight">\(p = 10\)</span>, <span class="math notranslate nohighlight">\(m = 20\)</span> and <span class="math notranslate nohighlight">\(k = 3\)</span>, then we have many more model parameters,</p>
 <div class="math notranslate nohighlight">
 \[
 |\theta| = 10 \times 20 + 20 \times 3 + 20 + 3 = 283
 \]</div>
-<p>if we add hidden layers, increase our artificial neural network’s depth, the number of model parameters will grow very quickly.</p>
-<p>Let’s clarify these definitions,</p>
+<p>If we add hidden layers, increase our artificial neural network’s depth, the number of model parameters will grow very quickly.</p>
 <ul class="simple">
-<li><p><strong>neural network width</strong> - the number of nodes in the layers of the neural network</p></li>
-<li><p><strong>neural network depth</strong> - the number of layers in the neural network, typically the input layer is not included in this calculation</p></li>
+<li><p>we can generalize this calculation for any fully connected, feed forward neural network, given a <span class="math notranslate nohighlight">\(W\)</span> vector with the number of nodes, i.e., the width of each layer,</p></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{L} = [l_0, l_1, l_2, \dots, l_n]
+\]</div>
+<p>where,</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(l_0\)</span> is the number of input neurons</p></li>
+<li><p><span class="math notranslate nohighlight">\(l_1, \dots, l_{n-1}\)</span> are the widths of the hidden layers</p></li>
+<li><p><span class="math notranslate nohighlight">\(l_n\)</span> is the number of output neurons</p></li>
+</ul>
+<p>The total number of connection weights is,</p>
+<div class="math notranslate nohighlight">
+\[
+|\theta_{weights}| = \sum_{i=1}^{n} l_i \cdot l_{i-1}
+\]</div>
+<p>the total number of node biases (there are not bias parameters in the input layer nodes, <span class="math notranslate nohighlight">\(l_0\)</span>) is,</p>
+<div class="math notranslate nohighlight">
+\[
+|\theta_{biases}| = \sum_{i=1}^{n} l_i
+\]</div>
+<p>the total number of trainable model parameters, connectioned weights and node biases, is,</p>
+<div class="math notranslate nohighlight">
+\[
+|\theta| = \sum_{i=1}^{n} \left( l_i \cdot l_{i-1} + l_i \right) = \sum_{i=1}^{n} l_i \cdot (l_{i-1} + 1)
+\]</div>
+<p>Let’s take an example of artificial neural network with 4 hidden layers, with network width by-layer vector of,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{L} = [10, 8, 6, 4, 2, 1]
+\]</div>
+<p>The total number of connection weights is,</p>
+<div class="math notranslate nohighlight">
+\[
+|\theta_{L_{weights}}| = \sum_{i=1}^{5} l_i \cdot l_{i-1}
+= (8 \cdot 10) + (6 \cdot 8) + (4 \cdot 6) + (2 \cdot 4) + (1 \cdot 2)
+= 80 + 48 + 24 + 8 + 2 = 162
+\]</div>
+<p>and the total number of node biases is,</p>
+<div class="math notranslate nohighlight">
+\[
+|\theta_{L_{biases}}|  = \sum_{i=1}^{5} l_i = 8 + 6 + 4 + 2 + 1 = 21
+\]</div>
+<p>and finally the total nuber of trainable parameters is,</p>
+<div class="math notranslate nohighlight">
+\[
+|\theta_L| = \sum_{i=1}^{5} l_i \cdot (l_{i-1} + 1)
+= (8 \cdot 11) + (6 \cdot 9) + (4 \cdot 7) + (2 \cdot 5) + (1 \cdot 3)
+= 88 + 54 + 28 + 10 + 3 = 183
+\]</div>
 </section>
 <section id="activation-functions">
-<h2>Activation Functions<a class="headerlink" href="#activation-functions" title="Permalink to this heading">#</a></h2>
-<p>A activation function is a transformation of the linear combination of the weighted node inputs plus the node bias term. Nonlinear activation,</p>
+<h2>Activation Functions<a class="headerlink" href="#activation-functions" title="Link to this heading">#</a></h2>
+<p>The activation function is a transformation of the linear combination of the weighted node inputs plus the node bias term. Nonlinear activation,</p>
 <ul class="simple">
-<li><p>introduces non-linear properties to the network</p></li>
+<li><p>introduces non-linear properties, and complexity to the network</p></li>
 <li><p>prevents the network from collapsing</p></li>
 </ul>
 <p>Without the nonlinear activation function we would have linear regression, the entire system collapses.</p>
-<p>Do demonstrate this, let’s take our example network and remove the activation functions, or assuming a linear transformation,</p>
-<figure style="text-align: center;">
-  <img src="_static/ANN/ann_no_activation.png" style="display: block; margin: 0 auto; width: 70%;">
-  <figcaption style="text-align: center;"> Our simple artificial neural network with connections and model parameters. 
-</figcaption>
-</figure>
-<p>Now we can calculate the prediction ignoring activation, since it is identity or a linear scaling as,</p>
-<div class="math notranslate nohighlight">
-\[
-Y_1 = \lambda_{4,6} \cdot \left( \lambda_{1,4} \cdot X_1 + \lambda_{2,4} \cdot X_2 + \lambda_{3,4} \cdot X_3 + b_{H_4} \right) + 
-\lambda_{5,6} \cdot \left( \lambda_{1,5} \cdot X_1 + \lambda_{2,5} \cdot X_2 + \lambda_{3,5} \cdot X_3 + b_{H_5} \right)
-\]</div>
-<p>Now we can group the like terms,</p>
-<div class="math notranslate nohighlight">
-\[
-Y_1 = (\lambda_{4,6} \cdot \lambda_{1,4} + \lambda_{5,6} \cdot \lambda_{1,5}) \cdot X_1 + 
-      (\lambda_{4,6} \cdot \lambda_{2,4} + \lambda_{5,6} \cdot \lambda_{2,5}) \cdot X_2 + 
-      (\lambda_{4,6} \cdot \lambda_{3,4} + \lambda_{5,6} \cdot \lambda_{3,5}) \cdot X_3 + 
-      (\lambda_{4,6} \cdot b_{H_4} + \lambda_{5,6} \cdot b_{H_5})
-\]</div>
-<p>and finally, we can group the summed model parameters and replace them with recognizable coefficients,</p>
-<div class="math notranslate nohighlight">
-\[
-Y_1 = b_1 \cdot X_1 + b_2 \cdot X_2 + b_3 \cdot X_3 + b_0
-\]</div>
-<p>et voilà! We have linear regression, an artificial neural network without activation collapses to linear regression.</p>
-<p>Now that we have demonstrated the necessity of nonlinear activation, here’s some common activation functions,</p>
-<figure style="text-align: center;">
-  <img src="_static/ANN/activation.png" style="display: block; margin: 0 auto; width: 90%;">
-  <figcaption style="text-align: center;"> Some common activation functions. 
-</figcaption>
-</figure>
-<p>Note the notation in the figure above, the X-axis is the input, <span class="math notranslate nohighlight">\(H_{j_{in}}\)</span>, and the Y-axis is the output after activation, <span class="math notranslate nohighlight">\(H_j\)</span>.</p>
-<ol class="arabic simple">
-<li><p><strong>Sigmoid</strong> - also known as logistic has the following expression and derivative.</p></li>
-</ol>
-<div class="math notranslate nohighlight">
-\[
-f(x) = \frac{1}{1 + e^{-x}}
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-f'(x) = f(x) \cdot (1 - f(x))
-\]</div>
-<ol class="arabic simple" start="2">
-<li><p><strong>Tanh</strong> – hyperbolic tangent has the following expression and derivative.</p></li>
-</ol>
-<div class="math notranslate nohighlight">
-\[
-f(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-f'(x) = 1 - \frac{(e^x - e^{-x})^2}{(e^x + e^{-x})^2}
-\]</div>
-<ol class="arabic simple" start="3">
-<li><p><strong>ReLU</strong> – rectified linear units has the following expression and derivative.</p></li>
-</ol>
-<div class="math notranslate nohighlight">
-\[
-f(x) = \max(0, x)
-\]</div>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-f'(x) = 
-\begin{cases} 
-1 &amp; \text{if } x &gt; 0 \\
-0 &amp; \text{if } x \leq 0
-\end{cases}
-\end{split}\]</div>
-<p>How do we select our activation functions? Considerations these criteria for selecting activation functions,</p>
-<ul class="simple">
-<li><p><strong>Nonlinear</strong> – required to impose nonlinearity into the prediction model (e.g., sigmoid, tanh and ReLU are nonlinear).</p></li>
-<li><p><strong>Range</strong> – finite for more stability gradient-based learning, infinite for more efficient training, but requires a slower learning rate (e.g., sigmoid <span class="math notranslate nohighlight">\([0,\infty]\)</span>, tanh <span class="math notranslate nohighlight">\([-1,1]\)</span> and ReLU <span class="math notranslate nohighlight">\([0,\infty]\)</span>).</p></li>
-<li><p><strong>Continuously Differentiable</strong> – required for stable gradient-based optimization (e.g., sigmoid, tanh and ReLU <span class="math notranslate nohighlight">\(\ne 0.0\)</span>)</p></li>
-<li><p><strong>Fast Calculation of Derivative</strong> - the derivative calculation has low calculation complexity for efficient training (e.g., sigmoid and ReLU)</p></li>
-<li><p><strong>Smooth functions with Monotonic Derivative</strong> – may generalize better (e.g., sigmoid, tanh and ReLU)</p></li>
-<li><p><strong>Monotonic</strong> – guaranteed convexity of error surface of a single layer model, global minimum for loss function (e.g., sigmoid, tanh and ReLU)</p></li>
-<li><p><strong>Approximates Identity at the Origin</strong>, <span class="math notranslate nohighlight">\((𝑓(0) = 0)\)</span> – learns efficiently with the weights initialized as small random values (e.g., ReLU and tanh)</p></li>
-</ul>
+<p>For more information about activation functions and a demonstration of the collapse without nonlinear activation to multilinear regression see the associated chapter in this e-book, <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/MachineLearning_activation_functions.html">Neural Network Activation Functions</a>.</p>
 </section>
-<section id="training-model-parameters">
-<h2>Training Model Parameters<a class="headerlink" href="#training-model-parameters" title="Permalink to this heading">#</a></h2>
-<p>Training an artificial neural network proceeds iteratively by these steps.</p>
+<section id="training-networks-steps">
+<h2>Training Networks Steps<a class="headerlink" href="#training-networks-steps" title="Link to this heading">#</a></h2>
+<p>Training an artificial neural network proceeds iteratively by these steps,</p>
+<ol class="arabic simple" start="0">
+<li><p>initialized the model parameters</p></li>
+<li><p>forward pass to make a prediction</p></li>
+<li><p>calculate the error derivative based on the prediction and truth over training data</p></li>
+<li><p>backpropagate the error derivative back through the artificial neural network to calculate the derivatives of the error over all the model weights and biases parameters</p></li>
+<li><p>update the model parameters based on the derivatives and learning rates</p></li>
+<li><p>repeat until convergence.</p></li>
+</ol>
 <figure style="text-align: center;">
   <img src="_static/ANN/training_cycle.png" style="display: block; margin: 0 auto; width: 90%;">
-  <figcaption style="text-align: center;"> Training an artificial neural network proceeds iteratively by, 1. forward pass to make a prediction, 2. calculate the error derivative based on the prediction and truth over training data, 3. backpropagate the error derivative back through the artificial neural network to calculate the derivatives of the error over all the model weights and biases parameters, 4. update the model parameters based on the derivatives and learning rates, 5. repeat until convergence.
+  <figcaption style="text-align: center;"> The iterative steps for training an artificial neural network. 
 </figcaption>
 </figure>
 <p>Here’s some details on each step,</p>
@@ -814,242 +957,729 @@ f'(x) =
 \[
 \lambda_{i,j} = F_U^{-1} \left[ \frac{-1}{\sqrt{p}}, \frac{1}{\sqrt{p}} \right] (p^\ell)
 \]</div>
+<p>     where <span class="math notranslate nohighlight">\(F^{-1}_U\)</span> is the inverse of the CDF, <span class="math notranslate nohighlight">\(p\)</span> is the number of inputs, and <span class="math notranslate nohighlight">\(p^{\ell}\)</span> is a random cumulative probability value drawn from the uniform distribution, <span class="math notranslate nohighlight">\(U[0,1]\)</span>.</p>
 <ul class="simple">
-<li><p>where <span class="math notranslate nohighlight">\(F^{-1}_U\)</span> is the inverse of the CDF, <span class="math notranslate nohighlight">\(p\)</span> is the number of inputs, and <span class="math notranslate nohighlight">\(p^{\ell}\)</span> is a random cumulative probability value drawn from the uniform distribution, <span class="math notranslate nohighlight">\(U[0,1]\)</span>.</p></li>
 <li><p><strong>Normalized Xavier Weight Initialization</strong> - random realizations from uniform distributions specified by <span class="math notranslate nohighlight">\(U[\text{min}, \text{max}]\)</span>,</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
 \lambda_{i,j} = F_U^{-1} \left[ \frac{-1}{\sqrt{p}+k}, \frac{1}{\sqrt{p}+k} \right] (p^\ell)
 \]</div>
-<ul class="simple">
-<li><p>where <span class="math notranslate nohighlight">\(F^{-1}_U\)</span> is the inverse of the CDF, <span class="math notranslate nohighlight">\(p\)</span> is the number of inputs, <span class="math notranslate nohighlight">\(k\)</span> is the number of outputs, and <span class="math notranslate nohighlight">\(p^{\ell}\)</span> is a random cumulative probability value drawn from the uniform distribution, <span class="math notranslate nohighlight">\(U[0,1]\)</span>.</p></li>
-<li><p>For example, if we return to our first hidden layer node,</p></li>
-</ul>
+<p>     where <span class="math notranslate nohighlight">\(F^{-1}_U\)</span> is the inverse of the CDF, <span class="math notranslate nohighlight">\(p\)</span> is the number of inputs, <span class="math notranslate nohighlight">\(k\)</span> is the number of outputs, and <span class="math notranslate nohighlight">\(p^{\ell}\)</span> is a random cumulative probability value drawn from the uniform distribution, <span class="math notranslate nohighlight">\(U[0,1]\)</span>.</p>
+<p>     For example, if we return to our first hidden layer node,</p>
 <figure style="text-align: center;">
   <img src="_static/ANN/ann_walkthrough_hidden.png" style="display: block; margin: 0 auto; width: 30%;">
   <figcaption style="text-align: center;"> First hidden layer node with 3 inputs, and 1 output.
 </figcaption>
 </figure>
-<ul class="simple">
-<li><p>we have <span class="math notranslate nohighlight">\(p = 3\)</span> and <span class="math notranslate nohighlight">\(k = 1\)</span>, and we draw from the uniform distribution,</p></li>
-</ul>
+<p>     we have <span class="math notranslate nohighlight">\(p = 3\)</span> and <span class="math notranslate nohighlight">\(k = 1\)</span>, and we draw from the uniform distribution,</p>
 <div class="math notranslate nohighlight">
 \[
 U \left[ \frac{-1}{\sqrt{p}+k}, \frac{1}{\sqrt{p}+k} \right] = U \left[ \frac{-1}{\sqrt{3}+1}, \frac{1}{\sqrt{3}+1} \right]
 \]</div>
 <ol class="arabic simple">
-<li><p><strong>Forward Pass</strong> - to make a prediction, <span class="math notranslate nohighlight">\(\hat{y}\)</span>. Initial predictions will be random for the first iteration, but will improve.</p></li>
+<li><p><strong>Forward Pass</strong> - to make a prediction, <span class="math notranslate nohighlight">\(\hat{y}\)</span>. Initial predictions will be random for the first iteration, but will improve over iterations. Once again for our model the forward pass is,</p></li>
 </ol>
+<div class="math notranslate nohighlight">
+\[
+O_6 = \lambda_{4,6} \cdot \sigma \left( \lambda_{1,4} I_1 + \lambda_{2,4} I_2 + \lambda_{3,4} I_3 + b_4 \right) 
+  + \lambda_{5,6} \cdot \sigma \left( \lambda_{1,5} I_1 + \lambda_{2,5} I_2 + \lambda_{3,5} I_3 + b_5 \right)
+  + b_6
+\]</div>
 <figure style="text-align: center;">
   <img src="_static/ANN/first_prediction.png" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;"> Prediction with our artificial neural network initialized with random model parameters, weights and biases.
 </figcaption>
 </figure>
 <ol class="arabic simple" start="2">
-<li><p><strong>Calculate the Error Derivative</strong> - given a loss of, <span class="math notranslate nohighlight">\(P = \frac{1}{2} \left(\hat{y} - y \right)^2\)</span>, the error derivative, i.e., rate of change of in error given a change in model estimate is <span class="math notranslate nohighlight">\(\frac{\partial P}{\partial \hat{y}} = \hat{Y} - Y\)</span>.</p></li>
-</ol>
-<ul class="simple">
-<li><p>For now, let’s only consider a single estimate, and we will address more than 1 training data later.</p></li>
-</ul>
-<ol class="arabic simple" start="3">
-<li><p><strong>Backpropagate the Error Derivative</strong> - we shift back through the artificial neural network to calculate the derivatives of the error over all the model weights and biases parameters, to accomplish this we use the chain rule,</p></li>
+<li><p><strong>Calculate the Error Derivative</strong> - given a loss of,</p></li>
 </ol>
 <div class="math notranslate nohighlight">
 \[
-\frac{\partial}{\partial x} f(g(h(x))) = \frac{\partial f}{\partial g} \cdot \frac{\partial g}{\partial h} \cdot \frac{\partial h}{\partial x}
+L = \frac{1}{2} \left(\hat{y} - y \right)^2
+\]</div>
+<p>     and the error derivative, i.e., rate of change of in error given a change in model estimate is,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial L}{\partial \hat{y}} = \hat{Y} - Y
+\]</div>
+<p>     For now, let’s only consider a single estimate, and we will address more than 1 training data later.</p>
+<ol class="arabic simple" start="3">
+<li><p><strong>Backpropagate the Error Derivative</strong> - we shift back through the artificial neural network to calculate the derivatives of the error over all the model weights and biases parameters, with the chain rule, for example the loss derivative backpropagated to the output of node <span class="math notranslate nohighlight">\(H_4\)</span>,</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial L}{\partial H_4} 
+= \frac{\partial O_{6_{\text{in}}}}{\partial H_4} \cdot \frac{\partial O_6}{\partial O_{6_{\text{in}}}} \cdot \frac{\partial L}{\partial O_6} 
+= \lambda_{4,6} \cdot \bigl( (1 - O_6) \cdot O_6 \bigr) \cdot (O_6 - y)
 \]</div>
 <ol class="arabic simple" start="4">
-<li><p><strong>Update the Model Parameters</strong> - based on the derivatives, \frac{\partial P}{\partial \lambda_{i,j}} and learning rates, <span class="math notranslate nohighlight">\(\eta\)</span>, like this,</p></li>
+<li><p><strong>Update the Model Parameters</strong> - based on the derivatives, <span class="math notranslate nohighlight">\(\frac{\partial L}{\partial \lambda_{i,j}}\)</span> and learning rates, <span class="math notranslate nohighlight">\(\eta\)</span>, like this,</p></li>
 </ol>
 <div class="math notranslate nohighlight">
 \[
-\lambda_{i,j}^{\ell} = \lambda_{i,j}^{\ell - 1} + \eta \cdot \frac{\partial P}{\partial \lambda_{i,j}}
+\lambda_{i,j}^{\ell} = \lambda_{i,j}^{\ell - 1} + \eta \cdot \frac{\partial L}{\partial \lambda_{i,j}}
 \]</div>
 <ol class="arabic simple" start="5">
-<li><p><strong>Repeat Until Convergence</strong> - return to step 1. until the error, <span class="math notranslate nohighlight">\(P\)</span>, is reduced to an acceptable level, i.e., model convergence is the condition to stop the iterations</p></li>
+<li><p><strong>Repeat Until Convergence</strong> - return to step 1, until the error, <span class="math notranslate nohighlight">\(L\)</span>, is reduced to an acceptable level, i.e., model convergence is the condition to stop the iterations</p></li>
 </ol>
+<p>These are the steps, now let’s dive into the details for each, but first let’s start with the mathematical framework for backpropagation - the chain rule.</p>
 </section>
-<section id="backpropagation">
-<h2>Backpropagation<a class="headerlink" href="#backpropagation" title="Permalink to this heading">#</a></h2>
-<p>We can use the chain rule to perform backpropagation (from the term backward propagation) to step our error partial derivative backwards through out network to learn how each of our artificial neural network weights and biases impact the model prediction error.</p>
-<p>For example, given our simple artificial neural network, let’s backpropagate along a single path in the network,</p>
-<figure style="text-align: center;">
-  <img src="_static/ANN/backpropagation_example.png" style="display: block; margin: 0 auto; width: 30%;">
-  <figcaption style="text-align: center;"> With the chain rule we can backpropagate the error derivative from the output back through the artificial neural network.
-</figcaption>
-</figure>
-<p>Now, I’ll walk you through this, it is actually not as hard as it looks. In fact, the main challenge with backpropagation, once you learn the pattern, is the book keeping!</p>
+<section id="the-chain-rule">
+<h2>The Chain Rule<a class="headerlink" href="#the-chain-rule" title="Link to this heading">#</a></h2>
+<p>Upon reflection, it is clear that the forward pass through our artificial neural network involves a sequence of nested operations that progressively transform the input signals as they propagate from the input nodes, through each layer, to the output nodes.</p>
+<p>So we can represent this as a sequence of nested operations,</p>
+<div class="math notranslate nohighlight">
+\[
+f = f(x) \quad g = g(f) \quad y = h(g)
+\]</div>
+<p>and now in this form to emphasize the nesting of operations,</p>
+<div class="math notranslate nohighlight">
+\[
+y = h \bigl( g(f(x)) \bigr)
+\]</div>
+<p>By applying the chain rule to the nested functions <span class="math notranslate nohighlight">\(y = h \bigl( g(f(x)) \bigr)\)</span>, we can solve for <span class="math notranslate nohighlight">\(\frac{\partial y}{\partial x}\)</span> as,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial y}{\partial x} = \frac{\partial h}{\partial g} \cdot \frac{\partial g}{\partial f} \cdot \frac{\partial f}{\partial x}
+\]</div>
+<p>where we chain together the partial derivatives for all the operators to solve derivative of the output, <span class="math notranslate nohighlight">\(y\)</span>, given the input, <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<ul class="simple">
+<li><p>we can compute derivatives at any intermediate point in the nested functions, for example, stepping backwards one step,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial f}{\partial x}
+\]</div>
+<p>and now two steps,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial g}{\partial x} = \frac{\partial g}{\partial f} \cdot \frac{\partial f}{\partial x}
+\]</div>
+<p>and all the way with three steps,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial y}{\partial x} = \frac{\partial h}{\partial g} \cdot \frac{\partial g}{\partial f} \cdot \frac{\partial f}{\partial x}
+\]</div>
+<p>This is what we do with backpropagation, but this may be too abstract! Let’s move to a very simple feed forward neural network with only these three nodes,</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(I_1\)</span> - input node</p></li>
+<li><p><span class="math notranslate nohighlight">\(H_2 = h(I_1)\)</span> - hidden layer node, a function of <span class="math notranslate nohighlight">\(I_1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(O_3 = o(H_2)\)</span> - output node, a function of <span class="math notranslate nohighlight">\(H_2\)</span></p></li>
+<li><p>this is still intentionally abstract, i.e., without mention of weights and biases, to help you develop a mental framework of backpropagation with neural netowrks by the chain rule, we will dive into the details immediately after this discussion.</p></li>
+</ul>
+<p>The output <span class="math notranslate nohighlight">\(O_3\)</span> depends on the input <span class="math notranslate nohighlight">\(I_1\)</span> through these nested functions:</p>
+<div class="math notranslate nohighlight">
+\[
+O_3 = o \bigl( h(I_1) \bigr)
+\]</div>
+<p>Using the <strong>chain rule</strong>, the gradient of the output with respect to backpropagating one step,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial O_3}{\partial H_2}
+\]</div>
+<p>and with respect to backpropagating two steps,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial O_3}{\partial I_1} = \frac{\partial H_2}{\partial I_1} \cdot \frac{\partial O_3}{\partial H_2}
+\]</div>
+<p>This shows how the gradient <strong>backpropagates</strong> through the network,</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\frac{\partial O_3}{\partial I_1}\)</span> - is the local gradient at the hidden node</p></li>
+<li><p><span class="math notranslate nohighlight">\(\frac{\partial O_3}{\partial H_2}\)</span> - is the local gradient at the output node</p></li>
+</ul>
+<p>By backpropagation we can calculate the deriviates with respect to all parts of the network, how the input node signal <span class="math notranslate nohighlight">\(I_1\)</span>, or hidden nodel signal <span class="math notranslate nohighlight">\(H_2\)</span> affect the output <span class="math notranslate nohighlight">\(O_3\)</span>, <span class="math notranslate nohighlight">\(\frac{\partial O_3}{\partial I_1}\)</span> and <span class="math notranslate nohighlight">\(frac{\partial O_3}{\partial H_2}\)</span> respsectively.</p>
+<ul class="simple">
+<li><p>and more importantly, how changes in the input <span class="math notranslate nohighlight">\(I_1\)</span>, or <span class="math notranslate nohighlight">\(H_2\)</span> affect the change in model loss, <span class="math notranslate nohighlight">\(\frac{\partial L}{\partial I_1}\)</span> and <span class="math notranslate nohighlight">\(frac{\partial L}{\partial H_2}\)</span> respsectively.</p></li>
+</ul>
+<p>This chain of partial derivatives, move backwards step by step through the neural network layers, is the fundamental mechanism behind <strong>backpropagation</strong>. Next we will derive and demonstrate each of the parts of backpropagation and then finally put this together to show backpropagation over our entire network.</p>
+</section>
+<section id="neural-networks-backpropagation-building-blocks">
+<h2>Neural Networks Backpropagation Building Blocks<a class="headerlink" href="#neural-networks-backpropagation-building-blocks" title="Link to this heading">#</a></h2>
+<p>Let’s cover the numerical building blocks for backpropagation. Once you understand these backpropagation building blocks, you will be able to backpropagate our simple network and even any complicated artificial neural networks by hand,</p>
 <ol class="arabic simple">
-<li><p>Start with error derivative of the prediction, the output from the output layer node, <span class="math notranslate nohighlight">\(O_6\)</span>, <span class="math notranslate nohighlight">\(\frac{\partial P}{\partial O_6} = O_6 - Y_1^N\)</span></p></li>
+<li><p>calculating the loss derivative</p></li>
+<li><p>backpropagation through nodes</p></li>
+<li><p>backpropagation along connections</p></li>
+<li><p>accounting for multiple paths</p></li>
+<li><p>loss derivatives with respect to weights and biases</p></li>
 </ol>
+<p>For now I demonstrate backpropagation of this loss derivative for a single training data sample, <span class="math notranslate nohighlight">\(y\)</span>.</p>
 <ul class="simple">
-<li><p>recall the output of output layer node, <span class="math notranslate nohighlight">\(O_6\)</span> is the normalized model prediction, <span class="math notranslate nohighlight">\(\hat{Y}_1^N\)</span>.</p></li>
-<li><p>we use the <span class="math notranslate nohighlight">\(O_6\)</span> notation below to help track our backpropagation through the neural network nodes, but we could also state it as,</p></li>
+<li><p>I address multiple samples later, <span class="math notranslate nohighlight">\(y_i, i=1, \ldots, n\)</span></p></li>
 </ul>
+<p>Let’s start with calculating the loss derivative.</p>
+<section id="calculating-the-loss-derivative">
+<h3>Calculating the Loss Derivative<a class="headerlink" href="#calculating-the-loss-derivative" title="Link to this heading">#</a></h3>
+<p>Backpropagation is based on the concept of allocating or propagating the loss derivative backwards through the neural network,</p>
+<ul class="simple">
+<li><p>we calculate the loss derivative and then distribute it sequentially, in reverse direction, from network output back towards the network input</p></li>
+<li><p>it is important to know that we are working with derivatives, and that backpropagation is NOT distributing error, although as you will see it may look that way!</p></li>
+</ul>
+<p>We start by defining the loss, given the truth, <span class="math notranslate nohighlight">\(𝑦\)</span>, and our prediction, <span class="math notranslate nohighlight">\(\hat{y} = O_6\)</span>, we calculate our <span class="math notranslate nohighlight">\(L^2\)</span> loss as,</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{\partial P}{\partial O_6} = \hat{Y}_1^N - Y_1^N$ 
+L = \frac{1}{2} \left( \hat{y} - y \right)^2
 \]</div>
-<ol class="arabic simple" start="2">
-<li><p>Now backpropagate to before application of the activation function inside of the output layer neuron, <span class="math notranslate nohighlight">\(O_6\)</span>, <span class="math notranslate nohighlight">\(\frac{\partial P}{\partial O_{6_{\text{in}}}} = \frac{\partial O_6}{\partial O_{6_{\text{in}}}} \cdot \frac{\partial P}{\partial O_6}\)</span>.</p></li>
-</ol>
-<ul class="simple">
-<li><p>to assist, I specify <span class="math notranslate nohighlight">\(\frac{\partial O_6}{\partial O_{6_{\text{in}}}}\)</span> as <span class="math notranslate nohighlight">\(\frac{d}{dx} O_{6_{\alpha}}(x)\)</span> and <span class="math notranslate nohighlight">\(\frac{\partial P}{\partial O_6} = O_6 - Y_1^N\)</span> now we get,</p></li>
-</ul>
+<p>our choice of loss function allows us to use the prediction error as the loss derivative! We calculate the loss derivative as the partial derivative of the loss with respect to the estimate, <span class="math notranslate nohighlight">\(\frac{\partial 𝐿}{\partial \hat{y}}\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{\partial P}{\partial O_{6_{\text{in}}}} = \frac{d}{dx} O_{6_{\alpha}}(x) \cdot \left(O_6 - Y_1^N \right)
+\frac{\partial \mathcal{L}}{\partial \hat{y}} = \frac{\partial \frac{1}{2} \left( \hat{y} - y \right)^2 }{\partial \hat{y}} = \hat{y} - y
 \]</div>
-<ul class="simple">
-<li><p>note that, <span class="math notranslate nohighlight">\(\frac{d}{dx} O_{6_{\alpha}}(x)\)</span>, is just the derivative of the activation function for the node input, <span class="math notranslate nohighlight">\(x\)</span>, and above we listed the derivatives and commented on the need to calculate these very quickly. As you will see, we calculate many to accomplish backpropagation!</p></li>
-<li><p>we could replace <span class="math notranslate nohighlight">\(x\)</span> with the input, with prior to activation calculation in the node, for example, <span class="math notranslate nohighlight">\(H_j = \alpha\left(b_j + \lambda_j^T X\right)\)</span> but can we agree this notation would be totally unwieldly, let’s stick with <span class="math notranslate nohighlight">\(x\)</span> as input for the activation function</p></li>
-<li><p>this is the pattern, use the derivative of the activation function evaluated for the input to backpropagate through the node, from output after activation to input before activation.</p></li>
-</ul>
-<ol class="arabic simple" start="3">
-<li><p>Now backpropagate along the connection <span class="math notranslate nohighlight">\([5,6]\)</span> to the output of the node in the hidden layer, <span class="math notranslate nohighlight">\(H_5\)</span>, and before the application of the weight, <span class="math notranslate nohighlight">\(\lambda_{5,6}\)</span>, by the chain rule we add this term, <span class="math notranslate nohighlight">\(\frac{\partial O_{6_{\text{in}}}}{\partial H_5}\)</span> and get,</p></li>
-</ol>
-<div class="math notranslate nohighlight">
-\[
-\frac{\partial P}{\partial H_5} = \frac{\partial O_{6_{\text{in}}}}{\partial H_5} \cdot \frac{\partial O_6}{\partial O_{6_{\text{in}}}} \cdot \frac{\partial P}{\partial O_6}$.
-\]</div>
-<ul class="simple">
-<li><p>to assist, I evaluate <span class="math notranslate nohighlight">\(\frac{\partial O_{6_{\text{in}}}}{\partial H_5}\)</span> as <span class="math notranslate nohighlight">\(\lambda_{5,6}\)</span> and now we get,</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[
-\frac{\partial P}{\partial H_5} = \lambda_{5,6} \cdot \frac{d}{dx} O_{6_{\alpha}}(x) \cdot \left(O_6 - Y_1^N \right)
-\]</div>
-<ul class="simple">
-<li><p>and we have completed the pattern, derivative of the activation function to backpropagate through the node and then the current weight, <span class="math notranslate nohighlight">\(\lambda_{i,j}\)</span>, to backpropagate along the connection!</p></li>
-<li><p>with this method we can backpropagate, backward propagate the error derivative backwards through our artificial neural network along any connected path</p></li>
-</ul>
-<ol class="arabic simple" start="4">
-<li><p>To demonstrate this repeating pattern lets continue across the hidden layer node to the input of the node, <span class="math notranslate nohighlight">\(H_{5_{in}}\)</span>,</p></li>
-</ol>
-<div class="math notranslate nohighlight">
-\[
-\frac{\partial P}{\partial H_{5_{\text{in}}}} = 
-\frac{\partial O_6}{\partial O_{6_{\text{in}}}} \cdot 
-\frac{\partial O_{6_{\text{in}}}}{\partial H_5} \cdot 
-\frac{\partial H_5}{\partial H_{5_{\text{in}}}} \cdot 
-\frac{\partial P}{\partial O_6}
-\]</div>
-<ul class="simple">
-<li><p>and again if we evaluate the partial derivatives we have,</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[
-\frac{\partial P}{\partial H_{5_{\text{in}}}} = \frac{d}{dx} H_{5_{\alpha}}(x) \cdot \lambda_{5,6} \cdot \frac{d}{dx} O_{6_{\alpha}}(x) \cdot \left(O_6 - Y_1^N \right)
-\]</div>
-<ul class="simple">
-<li><p>see the pattern? From right to left we have - error derivative, derivative of activation, weight, derivative of activation, …</p></li>
-<li><p>to further simplify and specify the calculation, let’s assume the sigmoid activation function, and substitute the sigmoid derivatives,</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[
-\frac{\partial P}{\partial H_{5_{\text{in}}}} = H_{5}(x) \cdot \left(1.0 - H_{5}(x) \right) \cdot \lambda_{5,6} \cdot O_{6}(x) \cdot \left(1.0 - O_{6}(x) \right) \cdot \left(O_6 - Y_1^N \right)
-\]</div>
-<ul class="simple">
-<li><p>and if we use a linear activation for the output node, <span class="math notranslate nohighlight">\(O_6\)</span>, as is typical, the derivative <span class="math notranslate nohighlight">\(\frac{d}{dx} O_{6_{\alpha}}(x) = 1.0\)</span>,</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[
-\frac{\partial P}{\partial H_{5_{\text{in}}}} = H_{5}(x) \cdot \left(1.0 - H_{5}(x) \right) \cdot \lambda_{5,6} \cdot 1.0 \cdot \left(O_6 - Y_1^N \right)
-\]</div>
-<p>Now we get to the book keeping challenge. If you have a node that can be reached by multiple paths, then we need to add the derivatives across all the paths.</p>
-<ul class="simple">
-<li><p>for example, let’s jump to the error gradient at input for input node <span class="math notranslate nohighlight">\(I_1\)</span>,</p></li>
-</ul>
+<p>You see what I mean, we are backpropagating the loss derivative, but due to our formulation of the <span class="math notranslate nohighlight">\(L^2\)</span> loss, we only have to calculate the error at our output node output, but once again - it is the loss derivative.</p>
 <figure style="text-align: center;">
-  <img src="_static/ANN/multiple_path.png" style="display: block; margin: 0 auto; width: 70%;">
-  <figcaption style="text-align: center;"> Multiple paths for backpropagation to input layer node, $I_1$.
+  <img src="_static/ANN/back_loss.png" style="display: block; margin: 0 auto; width: 40%;">
+  <figcaption style="text-align: center;"> Calculation of the loss derivative at the output of an output layer node, $O_6$.
 </figcaption>
 </figure>
+<p>For the example of our simple artificial neural network with the output at node, <span class="math notranslate nohighlight">\(O_6\)</span>, our loss derivative is,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial O_6} = \frac{\partial \mathcal{L}}{\hat{y}} = \hat{y} - y = O_6 - y
+\]</div>
+<p>So this is our loss derivative backpropagated to the output our output node, and we are now we are ready to backpropagate this loss derivative through our artificial neural network, let’s talk about how we step through nodes and along connections.</p>
+</section>
+<section id="backpropagation-through-output-node-with-identity-activation">
+<h3>Backpropagation through Output Node with Identity Activation<a class="headerlink" href="#backpropagation-through-output-node-with-identity-activation" title="Link to this heading">#</a></h3>
+<p>Let’s backpropagate through our output node, <span class="math notranslate nohighlight">\(O_6\)</span>, from post-activation to pre-activation. To do this we need the partial derivative our activation function.</p>
 <ul class="simple">
-<li><p>for <span class="math notranslate nohighlight">\(\frac{\partial P}{\partial I_{i_{\text{in}}}}\)</span> we sum the two paths and then include the activation function derivative to shift to the input for node <span class="math notranslate nohighlight">\(I_1\)</span> as,</p></li>
+<li><p>since this is an output node with a regression artificial neural network I have selected the identity or linear activation function.</p></li>
 </ul>
+<figure style="text-align: center;">
+  <img src="_static/ANN/back_node.png" style="display: block; margin: 0 auto; width: 45%;">
+  <figcaption style="text-align: center;"> Backpropagation of the loss derivative through the node, $O_6$, from $O_6$ post-activation output to $O_{6_{in}}$ pre-activation input.
+</figcaption>
+</figure>
+<p>The identity activation at output node <span class="math notranslate nohighlight">\(O_6\)</span> is defined as:</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{\partial P}{\partial I_{i_{\text{in}}}} = 
-\left[ \alpha(I_i) \cdot (1 - \alpha(I_i)) \right] \cdot 
-\sum_{j=1}^{2} \lambda_{i,j} \cdot 
-\frac{\partial P}{\partial H_{j_{\text{in}}}}
+O_6 = \sigma(O_{6_{in}}) = O_6
 \]</div>
-<p>and if we once again evaluate each of the partial derivatives,</p>
+<p>The derivative of the identity activation at node <span class="math notranslate nohighlight">\(O_6\)</span> with respect to its input <span class="math notranslate nohighlight">\(O_{6_{in}}\)</span>, i.e., crossing node <span class="math notranslate nohighlight">\(O_6\)</span> is,</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{\partial P}{\partial I_{1_{\text{in}}}} =
-\left[ \alpha(I_1) \cdot (1 - \alpha(I_1)) \right] \cdot \left[
-\lambda_{1,4} \cdot \left[ \alpha(H_4) \cdot (1 - \alpha(H_4)) \right] \cdot \lambda_{4,6} \cdot \left[ \alpha(O_6) \cdot (1 - \alpha(O_6)) \right] \cdot (Y^N - O_6) \right.
+\frac{\partial O_6}{\partial O_{6_{in}}} = \frac{\partial \left(O_{6_{in}} \right)}{\partial O_{6_{in}}} = 1.0
 \]</div>
-<p>With this method we can backpropagate the error derivatives to the inputs for each node in our artificial neural network. Here’s the result for our first iteration,</p>
+<p>Note, we just need <span class="math notranslate nohighlight">\(O_6\)</span> the output signal from the node. Now we can add this to our chain rule to backpropagate from loss derivative with respect to the node output, <span class="math notranslate nohighlight">\(\frac{\partial \mathcal{L}}{\partial O_6}\)</span>, and to the loss derivative with respect to the node input, <span class="math notranslate nohighlight">\(\frac{\partial \mathcal{L}}{\partial O_{6_{\text{in}}}}\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial O_{6_{\text{in}}}} 
+= \frac{\partial O_6}{\partial O_{6_{\text{in}}}} \cdot \frac{\partial \mathcal{L}}{\partial O_6} 
+= 1.0 \cdot (O_6 - y)
+\]</div>
+<p>Now that we have backpropagated through an output node, let’s backpropagation along the <span class="math notranslate nohighlight">\(H_4\)</span> to <span class="math notranslate nohighlight">\(O_6\)</span> connection from the hidden layer.</p>
+</section>
+<section id="backpropagation-along-connections">
+<h3>Backpropagation along Connections<a class="headerlink" href="#backpropagation-along-connections" title="Link to this heading">#</a></h3>
+<p>Now let’s backpropagate along the connection between nodes <span class="math notranslate nohighlight">\(O_6\)</span> and <span class="math notranslate nohighlight">\(H_4\)</span>.</p>
+<figure style="text-align: center;">
+  <img src="_static/ANN/back_weight.png" style="display: block; margin: 0 auto; width: 50%;">
+  <figcaption style="text-align: center;"> Backpropagation of the loss derivative through node \(O_6\), from \(O_6\) post-activation output to $O_{6_{in}}$ pre-activation input and then along the connection to the output from node \(H_4\).
+</figcaption>
+</figure>
+<p>Preactivation, the input to node <span class="math notranslate nohighlight">\(𝑂_6\)</span> is calculated as,</p>
+<div class="math notranslate nohighlight">
+\[
+O_{6_{\text{in}}} = \lambda_{4,6} \cdot H_4 + \lambda_{5,6} \cdot H_5 + b_6
+\]</div>
+<p>We calculate the derivative along the connection as,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial O_{6_{\text{in}}}}{\partial H_4} 
+= \frac{\partial}{\partial H_4} \left( \lambda_{4,6} \cdot H_4 + \lambda_{5,6} \cdot H_5 + b_6 \right) 
+= \lambda_{4,6}
+\]</div>
+<p>by resolving the above partial derivative, we see that backpropagation along a connection by applying the connection weight.</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial O_{6_{\text{in}}}}{\partial H_4} = \lambda_{4,6}
+\]</div>
+<p>Note, we just need the current connection weight <span class="math notranslate nohighlight">\(\lambda_{4,6}\)</span>. Now we can add this to our chain rule to backpropagate along the <span class="math notranslate nohighlight">\(H_4\)</span> to <span class="math notranslate nohighlight">\(O_6\)</span> connection from loss derivative with respect to the output layer node input <span class="math notranslate nohighlight">\(\frac{\partial \mathcal{L}}{\partial O_{6_{\text{in}}}}\)</span>, to the loss derivative with respect to the hidden layer node output <span class="math notranslate nohighlight">\(\frac{\partial \mathcal{L}}{\partial H_4}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial H_4} 
+= \frac{\partial O_{6_{\text{in}}}}{\partial H_4} \cdot \frac{\partial O_6}{\partial O_{6_{\text{in}}}} \cdot \frac{\partial \mathcal{L}}{\partial O_6} 
+= \lambda_{4,6} \bigl( \cdot (1 - O_6) \cdot O_6 \bigr) \cdot (O_6 - y)
+\]</div>
+</section>
+<section id="backpropagation-through-nodes-with-sigmoid-activation">
+<h3>Backpropagation through Nodes with Sigmoid Activation<a class="headerlink" href="#backpropagation-through-nodes-with-sigmoid-activation" title="Link to this heading">#</a></h3>
+<p>Let’s backpropagate through a hidden layer node, <span class="math notranslate nohighlight">\(H_4\)</span>, from postactivation to preactivation. To do this we need the partial derivative our activation function.</p>
+<ul class="simple">
+<li><p>we are assuming sigmoid activation for all hidden layer nodes</p></li>
+<li><p>for super clean logic, everyone resolves the activation derivative as a function of the output rather than as typical the input,</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/ANN/back_node_hidden.png" style="display: block; margin: 0 auto; width: 55%;">
+  <figcaption style="text-align: center;"> Backpropagation of the loss derivative through the node, $H_4$, from $H_4$ postactivation output to $H_{4_{in}}$ preactivation input.
+</figcaption>
+</figure>
+<p>The sigmoid activation at output node <span class="math notranslate nohighlight">\(H_4\)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+H_4 = \sigma(H_{4_{in}}) = \frac{1}{1 + e^{-H_{4_{in}}}}
+\]</div>
+<p>The derivative of the sigmoid activation at node <span class="math notranslate nohighlight">\(H_4\)</span> with respect to its input <span class="math notranslate nohighlight">\(H_{4_{in}}\)</span>, i.e., crossing node <span class="math notranslate nohighlight">\(H_4\)</span> is,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial H_4}{\partial H_{4_{in}}} = \frac{\partial}{\partial H_{4_{in}}} \left( \frac{1}{1 + e^{-H_{4_{in}}}} \right)
+\]</div>
+<p>Now, for compact notation let’s set,</p>
+<div class="math notranslate nohighlight">
+\[
+u = e^{-H_{4_{in}}}
+\]</div>
+<p>and substituting we have,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial H_4}{\partial H_{4_{in}}} = \frac{\partial}{\partial H_{4_{in}}} \left( \frac{1}{1 + u} \right)
+\]</div>
+<p>and by the chain rule we can extend it to,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial H_4}{\partial H_{4_{in}}}
+= \frac{\partial}{\partial H_{4_{in}}} \left( \frac{1}{1 + u} \right)
+= -\frac{u}{(1 + u)^2} \cdot \frac{\partial u}{\partial H_{4_{in}}}
+\]</div>
+<p>The derivative of <span class="math notranslate nohighlight">\(u = e^{-H_{4_{in}}}\)</span> with respect to <span class="math notranslate nohighlight">\(H_{4_{in}}\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial u}{\partial H_{4_{in}}} = -e^{-H_{4_{in}}} = -u
+\]</div>
+<p>now we can substitute,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial H_4}{\partial H_{4_{in}}} = -\frac{1}{(1+u)^2} \cdot (-u) = \frac{u}{(1+u)^2}
+\]</div>
+<p>Express in terms of node <span class="math notranslate nohighlight">\(H_4\)</span> output, <span class="math notranslate nohighlight">\(H_4 = \frac{1}{1 + u}\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial H_4}{\partial H_{4_{\text{in}}}} 
+= \frac{\left(1 - H_4\right)/H_4}{\left(1/H_4\right)^2} 
+= \frac{1 - H_4}{H_4} \cdot H_4^2 
+= \left(1 - H_4\right) \cdot H_4
+\]</div>
+<p>So we can backpropagate through our node, <span class="math notranslate nohighlight">\(H_4\)</span>, from node post-activation output, <span class="math notranslate nohighlight">\(H_4\)</span> to node pre-activation input, <span class="math notranslate nohighlight">\(H_{4_{in}}\)</span>, by,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial H_4}{\partial H_{4_{\text{in}}}} = \left(1 - H_4\right) \cdot H_4
+\]</div>
+<p>Note, we just need <span class="math notranslate nohighlight">\(H_4\)</span> the output signal from the node. Now we can add this to our chain rule to backpropagate from loss derivative to the output of node <span class="math notranslate nohighlight">\(H_4\)</span> and to the input of node <span class="math notranslate nohighlight">\(H_4\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial H_{4_{\text{in}}}} 
+= \frac{\partial H_4}{\partial H_{4_{\text{in}}}} \cdot \frac{\partial O_{6_{\text{in}}}}{\partial H_4} \cdot \frac{\partial O_6}{\partial O_{6_{\text{in}}}} \cdot \frac{\partial \mathcal{L}}{\partial O_6} 
+= \bigl((1 - H_4) \cdot H_4 \bigr) \cdot \lambda_{4,6} \cdot 1.0 \cdot (O_6 - y)
+\]</div>
+<p>Now we can handle all cases of backpropagation through the nodes in our network.</p>
+</section>
+<section id="backpropagation-along-another-connection">
+<h3>Backpropagation Along Another Connection<a class="headerlink" href="#backpropagation-along-another-connection" title="Link to this heading">#</a></h3>
+<p>For continuity and completeness, let’s repeat the previously described method to backpropagate along the connection <span class="math notranslate nohighlight">\(I_1\)</span> to <span class="math notranslate nohighlight">\(H_4\)</span>.</p>
+<figure style="text-align: center;">
+  <img src="_static/ANN/back_weight_input.png" style="display: block; margin: 0 auto; width: 75%;">
+  <figcaption style="text-align: center;"> Backpropagation of the loss derivative along the connection from $H_4$ to $I_1$.
+</figcaption>
+</figure>
+<p>Once again, preactivation the input to node <span class="math notranslate nohighlight">\(H_4\)</span> is calculated as,</p>
+<div class="math notranslate nohighlight">
+\[
+H_{4_{\text{in}}} = \lambda_{1,4} \cdot I_1 + \lambda_{2,4} \cdot I_2 + \lambda_{3,4} \cdot I_3 + b_4
+\]</div>
+<p>We calculate the derivative along the connection as,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial H_{4_{\text{in}}}}{\partial I_1} 
+= \frac{\partial \left(\lambda_{1,4} \cdot I_1 + \lambda_{2,4} \cdot I_2 + \lambda_{3,4} \cdot I_3 + b_4 \right)}{\partial I_1} = \lambda_{1,4}
+\]</div>
+<p>by resolving the above partial derivative, we see that backpropagation along a connection by applying the connection weight.</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial H_{4_{\text{in}}}}{\partial I_1} = \lambda_{4,6}
+\]</div>
+<p>Note, we just need the current connection weight <span class="math notranslate nohighlight">\(\lambda_{4,6}\)</span>. Now we can add this to our chain rule to backpropagate along the <span class="math notranslate nohighlight">\(H_4\)</span> to <span class="math notranslate nohighlight">\(O_6\)</span> connection from loss derivative with respect to the output layer node input <span class="math notranslate nohighlight">\(\frac{\partial \mathcal{L}}{\partial O_{6_{\text{in}}}}\)</span>, to the loss derivative with respect to the hidden layer node output <span class="math notranslate nohighlight">\(\frac{\partial \mathcal{L}}{\partial H_4}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial I_1} 
+= \frac{\partial H_{4_{\text{in}}}}{\partial I_1} \cdot \frac{\partial H_4}{\partial H_{4_{\text{in}}}} \cdot \frac{\partial O_{6_{\text{in}}}}{\partial H_4} \cdot \frac{\partial O_6}{\partial O_{6_{\text{in}}}} \cdot \frac{\partial \mathcal{L}}{\partial O_6} 
+= \lambda_{1,4} \cdot \bigl((1 - H_4) \cdot H_4 \bigr) \cdot \lambda_{4,6} \cdot 1.0 \cdot (O_6 - y)
+\]</div>
+</section>
+<section id="accounting-for-multiple-paths">
+<h3>Accounting for Multiple Paths<a class="headerlink" href="#accounting-for-multiple-paths" title="Link to this heading">#</a></h3>
+<p>Our loss derivative with respect to the node output <span class="math notranslate nohighlight">\(I_1\)</span>, <span class="math notranslate nohighlight">\(\frac{\partial \mathcal{L}}{\partial I_1}\)</span> is not correct!</p>
+<ul class="simple">
+<li><p>we accounted for the <span class="math notranslate nohighlight">\(O_6\)</span> to <span class="math notranslate nohighlight">\(H_4\)</span> to <span class="math notranslate nohighlight">\(I_1\)</span> path, but we did not acccount for the <span class="math notranslate nohighlight">\(O_6\)</span> to <span class="math notranslate nohighlight">\(H_5\)</span> to <span class="math notranslate nohighlight">\(I_1\)</span> path</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/ANN/multiple_paths.png" style="display: block; margin: 0 auto; width: 75%;">
+  <figcaption style="text-align: center;"> Multiple paths for backpropagation to input node, $I_1$, from output node $O_6$.
+</figcaption>
+</figure>
+<p>To account for multiple paths we just need to sum over all the paths.</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial I_1} 
+= \frac{\partial H_{4_{\text{in}}}}{\partial I_1} \cdot \frac{\partial H_4}{\partial H_{4_{\text{in}}}} \cdot \frac{\partial O_{6_{\text{in}}}}{\partial H_4} \cdot \frac{\partial O_6}{\partial O_{6_{\text{in}}}} \cdot \frac{\partial \mathcal{L}}{\partial O_6} + 
+\frac{\partial H_{5_{\text{in}}}}{\partial I_1} \cdot \frac{\partial H_5}{\partial H_{5_{\text{in}}}} \cdot \frac{\partial O_{6_{\text{in}}}}{\partial H_5} \cdot \frac{\partial O_6}{\partial O_{6_{\text{in}}}} \cdot \frac{\partial \mathcal{L}}{\partial O_6}
+\]</div>
+<p>we can evaluate this as,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial I_1} = \lambda_{1,4} \cdot \bigl((1 - H_4) \cdot H_4 \bigr) \cdot \lambda_{4,6} \cdot 1.0 \cdot (O_6 - y) + \lambda_{1,5} \cdot \bigl((1 - H_5) \cdot H_5 \bigr) \cdot \lambda_{5,6} \cdot 1.0 \cdot (O_6 - y)
+\]</div>
+<p>and then simplify by removing the 1.0 values and grouping terms as,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial I_1} 
+= \left[ \frac{\partial H_{4_{\text{in}}}}{\partial I_1} \cdot \frac{\partial H_4}{\partial H_{4_{\text{in}}}} \cdot \frac{\partial O_{6_{\text{in}}}}{\partial H_4} + 
+\frac{\partial H_{5_{\text{in}}}}{\partial I_1} \cdot \frac{\partial H_5}{\partial H_{5_{\text{in}}}} \cdot \frac{\partial O_{6_{\text{in}}}}{\partial H_5} \right] \cdot \frac{\partial \mathcal{L}}{\partial O_6}
+\]</div>
+<p>and now we can evaluate this simplified form as,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial I_1} = \left[ \lambda_{1,4} \cdot \bigl((1 - H_4) \cdot H_4 \bigr) \cdot \lambda_{4,6} + \lambda_{1,5} \cdot \bigl((1 - H_5) \cdot H_5 \bigr) \cdot \lambda_{5,6} \right] \cdot (O_6 - y)
+\]</div>
+</section>
+<section id="backpropagation-through-input-nodes-with-identity-activation">
+<h3>Backpropagation through Input Nodes with Identity Activation<a class="headerlink" href="#backpropagation-through-input-nodes-with-identity-activation" title="Link to this heading">#</a></h3>
+<p>Let’s backpropagate through our input node, <span class="math notranslate nohighlight">\(I_1\)</span>, from postactivation to preactivation. To do this we need the partial derivative our activation function.</p>
+<ul class="simple">
+<li><p>since this is an input node I have selected the identity or linear activation function.</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/ANN/back_node_input.png" style="display: block; margin: 0 auto; width: 77%;">
+  <figcaption style="text-align: center;"> Backpropagation of the loss derivative through the node, $I_1$, from $I_1$ postactivation output to $I_{1_{in}}$ preactivation input.
+</figcaption>
+</figure>
+<p>The identity activation at output node <span class="math notranslate nohighlight">\(I_1\)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+I_1 = \sigma(I_{1_{in}}) = I_1
+\]</div>
+<p>The derivative of the identity activation at node <span class="math notranslate nohighlight">\(I_1\)</span> with respect to its input <span class="math notranslate nohighlight">\(I_{1_{in}}\)</span>, i.e., passing through node <span class="math notranslate nohighlight">\(I_1\)</span> is,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial I_1}{\partial I_{1_{in}}} = \frac{\partial \left(I_{1_{in}} \right)}{\partial I_{1_{in}}} = 1.0
+\]</div>
+<p>Note, we just need <span class="math notranslate nohighlight">\(I_1\)</span> the output signal from the node. Now we can add this to our chain rule to backpropagate from loss derivative with respect to the node output, <span class="math notranslate nohighlight">\(\frac{\partial \mathcal{L}}{\partial I_1}\)</span>, and to the loss derivative with respect to the node input, <span class="math notranslate nohighlight">\(\frac{\partial \mathcal{L}}{\partial I_{1_{\text{in}}}}\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial I_{1_{in}}} 
+= \frac{\partial I_1}{\partial I_{1_{in}}} \cdot \frac{\partial H_{4_{\text{in}}}}{\partial I_1} \cdot \frac{\partial H_4}{\partial H_{4_{\text{in}}}} \cdot \frac{\partial O_{6_{\text{in}}}}{\partial H_4} \cdot \frac{\partial O_6}{\partial O_{6_{\text{in}}}} \cdot \frac{\partial \mathcal{L}}{\partial O_6} + 
+\frac{\partial I_1}{\partial I_{1_{in}}} \cdot \frac{\partial H_{5_{\text{in}}}}{\partial I_1} \cdot \frac{\partial H_5}{\partial H_{5_{\text{in}}}} \cdot \frac{\partial O_{6_{\text{in}}}}{\partial H_5} \cdot \frac{\partial O_6}{\partial O_{6_{\text{in}}}} \cdot \frac{\partial \mathcal{L}}{\partial O_6}
+\]</div>
+<p>we can evaluate this as,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial I_{1_{in}}} = 1.0 \cdot \lambda_{1,4} \cdot \bigl((1 - H_4) \cdot H_4 \bigr) \cdot \lambda_{4,6} \cdot 1.0 \cdot (O_6 - y) + 1.0 \cdot \lambda_{1,5} \cdot \bigl((1 - H_5) \cdot H_5 \bigr) \cdot \lambda_{5,6} \cdot 1.0 \cdot (O_6 - y)
+\]</div>
+<p>For fun I designed this notation for maximum clarity,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial L}{\partial I_{1_{\text{in}}}} = 
+\overbrace{1.0}^{\textstyle \frac{\partial I_{1}}{\partial I_{1_{in}}}} \left[
+\overbrace{\lambda_{1,4}}^{\textstyle \frac{\partial H_{4_{\text{in}}}}{\partial I_1}} \cdot
+\overbrace{(1 - H_4) \cdot H_4}^{\textstyle \frac{\partial H_4}{\partial H_{4_{\text{in}}}}} \cdot
+\overbrace{\lambda_{4,6}}^{\textstyle \frac{\partial O_{6_{\text{in}}}}{\partial H_4}} \cdot
+\overbrace{1.0}^{\textstyle \frac{\partial O_{6}}{\partial O_{6_{in}}}} \cdot
+\overbrace{(O_6 - Y_1^N)}^{\textstyle \frac{\partial L}{\partial O_{6}}} + 
+\overbrace{\lambda_{1,5}}^{\textstyle \frac{\partial H_{5_{\text{in}}}}{\partial I_1}} \cdot
+\overbrace{(1 - H_5) \cdot H_5}^{\textstyle \frac{\partial H_5}{\partial H_{5_{\text{in}}}}} \cdot
+\overbrace{\lambda_{5,6}}^{\textstyle \frac{\partial O_{6_{\text{in}}}}{\partial H_5}} \cdot
+\overbrace{1.0}^{\textstyle \frac{\partial O_{6}}{\partial O_{6_{in}}}} \cdot
+\overbrace{(O_6 - Y_1^N)}^{\textstyle \frac{\partial L}{\partial O_{6}}} \right]
+\]</div>
+<p>But this can be simplified by removing the 1.0 values and grouping terms as,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial I_{1_{in}}} 
+= \left[ \frac{\partial H_{4_{\text{in}}}}{\partial I_1} \cdot \frac{\partial H_4}{\partial H_{4_{\text{in}}}} \cdot \frac{\partial O_{6_{\text{in}}}}{\partial H_4} + 
+\frac{\partial H_{5_{\text{in}}}}{\partial I_1} \cdot \frac{\partial H_5}{\partial H_{5_{\text{in}}}} \cdot \frac{\partial O_{6_{\text{in}}}}{\partial H_5} \right] \cdot \frac{\partial \mathcal{L}}{\partial O_6}
+\]</div>
+<p>and now we can evaluate this simplified form as,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial I_{1_{in}}} = \left[ \lambda_{1,4} \cdot \bigl((1 - H_4) \cdot H_4 \bigr) \cdot \lambda_{4,6} + \lambda_{1,5} \cdot \bigl((1 - H_5) \cdot H_5 \bigr) \cdot \lambda_{5,6} \right] \cdot (O_6 - y)
+\]</div>
+<p>For completeness here is the backpropagation for the other input nodes, here’s <span class="math notranslate nohighlight">\(\frac{\partial \mathcal{L}}{\partial I_{2_{in}}}\)</span>,</p>
+<figure style="text-align: center;">
+  <img src="_static/ANN/back_node_input_I2.png" style="display: block; margin: 0 auto; width: 77%;">
+  <figcaption style="text-align: center;"> Backpropagation of the loss derivative for input node 2.
+</figcaption>
+</figure>
+<p>For brevity I have remove the 1.0s and grouped like terms,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial I_{2_{in}}} 
+= \left[ \frac{\partial H_{4_{\text{in}}}}{\partial I_2} \cdot \frac{\partial H_4}{\partial H_{4_{\text{in}}}} \cdot \frac{\partial O_{6_{\text{in}}}}{\partial H_4} + 
+\frac{\partial H_{5_{\text{in}}}}{\partial I_2} \cdot \frac{\partial H_5}{\partial H_{5_{\text{in}}}} \cdot \frac{\partial O_{6_{\text{in}}}}{\partial H_5} \right] \cdot \frac{\partial \mathcal{L}}{\partial O_6}
+\]</div>
+<p>and now we can evaluate this simplified form as,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial I_{2_{in}}} = \left[ \lambda_{2,4} \cdot \bigl((1 - H_4) \cdot H_4 \bigr) \cdot \lambda_{4,6} + \lambda_{2,5} \cdot \bigl((1 - H_5) \cdot H_5 \bigr) \cdot \lambda_{5,6} \right] \cdot (O_6 - y)
+\]</div>
+<p>and here is <span class="math notranslate nohighlight">\(\frac{\partial \mathcal{L}}{\partial I_{3_{in}}}\)</span>,</p>
+<figure style="text-align: center;">
+  <img src="_static/ANN/back_node_input_I3.png" style="display: block; margin: 0 auto; width: 77%;">
+  <figcaption style="text-align: center;"> Backpropagation of the loss derivative for input node 3.
+</figcaption>
+</figure>
+<p>For brevity I have remove the 1.0s and grouped like terms,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial I_{3_{in}}} 
+= \left[ \frac{\partial H_{4_{\text{in}}}}{\partial I_3} \cdot \frac{\partial H_4}{\partial H_{4_{\text{in}}}} \cdot \frac{\partial O_{6_{\text{in}}}}{\partial H_4} + 
+\frac{\partial H_{5_{\text{in}}}}{\partial I_3} \cdot \frac{\partial H_5}{\partial H_{5_{\text{in}}}} \cdot \frac{\partial O_{6_{\text{in}}}}{\partial H_5} \right] \cdot \frac{\partial \mathcal{L}}{\partial O_6}
+\]</div>
+<p>and now we can evaluate this simplified form as,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial I_{3_{in}}} = \left[ \lambda_{3,4} \cdot \bigl((1 - H_4) \cdot H_4 \bigr) \cdot \lambda_{4,6} + \lambda_{3,5} \cdot \bigl((1 - H_5) \cdot H_5 \bigr) \cdot \lambda_{5,6} \right] \cdot (O_6 - y)
+\]</div>
+</section>
+<section id="loss-derivatives-with-respect-to-weights-and-biases">
+<h3>Loss Derivatives with Respect to Weights and Biases<a class="headerlink" href="#loss-derivatives-with-respect-to-weights-and-biases" title="Link to this heading">#</a></h3>
+<p>Now we have back propagated the loss derivative through our network.</p>
+<figure style="text-align: center;">
+  <img src="_static/ANN/back_all_nodes.png" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Backpropagated loss derivatives with respect to all network nodes inputs and outputs.
+</figcaption>
+</figure>
+<p>and we have the loss derivative with respect to the input and output of each node in our network,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial I_{1_{\text{in}}}},\quad
+\frac{\partial \mathcal{L}}{\partial I_1},\quad
+\frac{\partial \mathcal{L}}{\partial I_{2_{\text{in}}}},\quad
+\frac{\partial \mathcal{L}}{\partial I_2},\quad
+\frac{\partial \mathcal{L}}{\partial I_{3_{\text{in}}}},\quad
+\frac{\partial \mathcal{L}}{\partial I_3},\quad
+\frac{\partial \mathcal{L}}{\partial H_{4_{\text{in}}}},\quad
+\frac{\partial \mathcal{L}}{\partial H_4},\quad
+\frac{\partial \mathcal{L}}{\partial H_5},\quad
+\frac{\partial \mathcal{L}}{\partial H_5},\quad
+\frac{\partial \mathcal{L}}{\partial O_{6_{\text{in}}}},\quad
+\frac{\partial \mathcal{L}}{\partial O_6}
+\]</div>
+<p>But what we actually need is the loss derivative with respect to each connection weights,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial \lambda_{1,4}},\quad
+\frac{\partial \mathcal{L}}{\partial \lambda_{2,4}},\quad
+\frac{\partial \mathcal{L}}{\partial \lambda_{3,4}},\quad
+\frac{\partial \mathcal{L}}{\partial \lambda_{1,5}},\quad
+\frac{\partial \mathcal{L}}{\partial \lambda_{2,5}},\quad
+\frac{\partial \mathcal{L}}{\partial \lambda_{3,5}},\quad
+\frac{\partial \mathcal{L}}{\partial \lambda_{4,6}},\quad
+\frac{\partial \mathcal{L}}{\partial \lambda_{5,6}}
+\]</div>
+<p>and node biases,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial b_4},\quad
+\frac{\partial \mathcal{L}}{\partial b_5},\quad
+\frac{\partial \mathcal{L}}{\partial b_6}
+\]</div>
+<p>How do we backpropagate the loss derivative to a connection weight? Let’s start with the <span class="math notranslate nohighlight">\(H_4\)</span> to <span class="math notranslate nohighlight">\(O_6\)</span> connection.</p>
+<figure style="text-align: center;">
+  <img src="_static/ANN/back_connection_weight.png" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Backpropagated loss derivatives with respect to a connection weight.
+</figcaption>
+</figure>
+<p>Preactivation, input to node <span class="math notranslate nohighlight">\(O_6\)</span> we have,</p>
+<div class="math notranslate nohighlight">
+\[
+O_{6_{\text{in}}} = \lambda_{4,6} \cdot H_4 + \lambda_{5,6} \cdot H_5 + b_6
+\]</div>
+<p>We calculate the derivative with respect to the connection weight as,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial O_{6_{\text{in}}}}{\partial \lambda_{4,6}} =
+\frac{\partial \left( \lambda_{4,6} \cdot H_4 + \lambda_{5,6} \cdot H_5 + b_6 \right)}{\partial \lambda_{4,6}} = H_4
+\]</div>
+<p>We need the output of the node in the previous layer passed along the connection to backpropagate to the loss derivative with respect to the connection weight from the input to the next node,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial \lambda_{4,6}} =
+\frac{\partial O_{6_{\text{in}}}}{\partial \lambda_{4,6}} \cdot \frac{\partial \mathcal{L}}{\partial O_{6_{\text{in}}}} =
+H_4 \cdot 1.0 \cdot (O_6 - y)
+\]</div>
+<p>Now, for completeness, here are the equations for all of our network’s connection weights.</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial \lambda_{1,4}} =
+\frac{\partial H_{4_{\text{in}}}}{\partial \lambda_{1,4}} \cdot \frac{\partial \mathcal{L}}{\partial H_{4_{\text{in}}}} =
+I_1 \cdot \frac{\partial \mathcal{L}}{\partial H_{4_{\text{in}}}}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial \lambda_{2,4}} =
+\frac{\partial H_{4_{\text{in}}}}{\partial \lambda_{2,4}} \cdot \frac{\partial \mathcal{L}}{\partial H_{4_{\text{in}}}} =
+I_2 \cdot \frac{\partial \mathcal{L}}{\partial H_{4_{\text{in}}}}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial \lambda_{3,4}} =
+\frac{\partial H_{4_{\text{in}}}}{\partial \lambda_{3,4}} \cdot \frac{\partial \mathcal{L}}{\partial H_{4_{\text{in}}}} =
+I_3 \cdot \frac{\partial \mathcal{L}}{\partial H_{4_{\text{in}}}}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial \lambda_{1,5}} =
+\frac{\partial H_{5_{\text{in}}}}{\partial \lambda_{1,5}} \cdot \frac{\partial \mathcal{L}}{\partial H_{5_{\text{in}}}} =
+I_1 \cdot \frac{\partial \mathcal{L}}{\partial H_{5_{\text{in}}}}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial \lambda_{2,5}} =
+\frac{\partial H_{5_{\text{in}}}}{\partial \lambda_{2,5}} \cdot \frac{\partial \mathcal{L}}{\partial H_{5_{\text{in}}}} =
+I_2 \cdot \frac{\partial \mathcal{L}}{\partial H_{5_{\text{in}}}}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial \lambda_{3,5}} =
+\frac{\partial H_{5_{\text{in}}}}{\partial \lambda_{3,5}} \cdot \frac{\partial \mathcal{L}}{\partial H_{5_{\text{in}}}} =
+I_3 \cdot \frac{\partial \mathcal{L}}{\partial H_{5_{\text{in}}}}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial \lambda_{4,6}} =
+\frac{\partial O_{6_{\text{in}}}}{\partial \lambda_{4,6}} \cdot \frac{\partial \mathcal{L}}{\partial O_{6_{\text{in}}}} =
+H_4 \cdot \frac{\partial \mathcal{L}}{\partial O_{6_{\text{in}}}}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial \lambda_{5,6}} =
+\frac{\partial O_{6_{\text{in}}}}{\partial \lambda_{5,6}} \cdot \frac{\partial \mathcal{L}}{\partial O_{6_{\text{in}}}} =
+H_5 \cdot \frac{\partial \mathcal{L}}{\partial O_{6_{\text{in}}}}
+\]</div>
+<p>See the pattern, the loss derivatives with respect to connection weights are,</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Connection Signal} \times \text{Loss Derivative of Next Node Input}
+\]</div>
+<p>Now how do we backpropagate the loss derivative to a node bias? Let’s start with the <span class="math notranslate nohighlight">\(O_6\)</span> node.</p>
+<figure style="text-align: center;">
+  <img src="_static/ANN/back_bias.png" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Backpropagated loss derivatives with respect to a node bias.
+</figcaption>
+</figure>
+<p>Once again, the preactivation, input to node <span class="math notranslate nohighlight">\(O_6\)</span> is,</p>
+<div class="math notranslate nohighlight">
+\[
+O_{6_{\text{in}}} = \lambda_{4,6} \cdot H_4 + \lambda_{5,6} \cdot H_5 + b_6
+\]</div>
+<p>We calculate the derivative of a connection weight as,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial O_{6_{\text{in}}}}{\partial b_6} =
+\frac{\partial \left( \lambda_{4,6} \cdot H_4 + \lambda_{5,6} \cdot H_5 + b_6 \right)}{\partial b_6} = 1.0
+\]</div>
+<p>so our bias loss derivative is equal to the node input loss derivative,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial b_6} =
+\frac{\partial O_{6_{\text{in}}}}{\partial b_6} \cdot \frac{\partial \mathcal{L}}{\partial O_{6_{\text{in}}}} =
+1.0 \cdot \frac{\partial \mathcal{L}}{\partial O_{6_{\text{in}}}}
+\]</div>
+<p>For completeness here are all the loss derivatives with respect to node biases,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial b_6} = \frac{\partial \mathcal{L}}{\partial O_{6_{\text{in}}}}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial b_4} = \frac{\partial \mathcal{L}}{\partial H_{4_{\text{in}}}}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial b_5} = \frac{\partial \mathcal{L}}{\partial H_{5_{\text{in}}}}
+\]</div>
+<p>See the pattern, the loss derivatives with respect to node biases are,</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Loss Derivative of the Node Input}
+\]</div>
+</section>
+</section>
+<section id="backpropagation-example">
+<h2>Backpropagation Example<a class="headerlink" href="#backpropagation-example" title="Link to this heading">#</a></h2>
+<p>Let’s take the backpropagation method explained above and apply them to my interactive neural network.</p>
+<ul class="simple">
+<li><p>Here’s the result for our first training epoch with only 1 sample,</p></li>
+</ul>
 <figure style="text-align: center;">
   <img src="_static/ANN/backpropagate_node.png" style="display: block; margin: 0 auto; width: 70%;">
-  <figcaption style="text-align: center;"> Back propagation result for the first iteration.
+  <figcaption style="text-align: center;"> Backpropagation result for the first iteration.
 </figcaption>
 </figure>
-<p>With this approach we can backpropagate the error derivative through our artificial neural network and calculate the derivatives before and after every node,</p>
+<p>My interactive dashboard provides all the loss derivatives with respect to the input for each node and the output signals from each node, so for example we can calculate <span class="math notranslate nohighlight">\(\frac{\partial L}{\partial \lambda_{4,6}}\)</span> as,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial L}{\partial \lambda_{4,6}} = \frac{\partial O_{6_{\text{in}}}}{\partial \lambda_{4,6}} \cdot \frac{\partial L}{\partial O_{6_{\text{in}}}} = H_4 \cdot \frac{\partial L}{\partial O_{6_{\text{in}}}} = 0.42 \cdot 1.00 = 0.42
+\]</div>
+<p>Here’s the loss derivatives with respect to connection weights for the other hidden layer to output node connection,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial L}{\partial \lambda_{5,6}} = \frac{\partial O_{6_{\text{in}}}}{\partial \lambda_{5,6}} \cdot \frac{\partial L}{\partial O_{6_{\text{in}}}} = H_5 \cdot \frac{\partial L}{\partial O_{6_{\text{in}}}} = 0.60 \cdot 1.00 = 0.60
+\]</div>
+<p>and now let’s get all the input to hidden layer connections,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial L}{\partial \lambda_{1,4}} = \frac{\partial H_{4_{\text{in}}}}{\partial \lambda_{1,4}} \cdot \frac{\partial L}{\partial H_{4_{\text{in}}}} = I_1 \cdot \frac{\partial L}{\partial H_{4_{\text{in}}}} = 0.50 \cdot (-0.13) = -0.07
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial L}{\partial \lambda_{1,5}} = \frac{\partial H_{5_{\text{in}}}}{\partial \lambda_{1,5}} \cdot \frac{\partial L}{\partial H_{4_{\text{in}}}} = I_1 \cdot \frac{\partial L}{\partial H_{5_{\text{in}}}} = 0.50 \cdot (-0.10) = -0.05
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial L}{\partial \lambda_{2,4}} = \frac{\partial H_{4_{\text{in}}}}{\partial \lambda_{2,4}} \cdot \frac{\partial L}{\partial H_{4_{\text{in}}}} = I_2 \cdot \frac{\partial L}{\partial H_{4_{\text{in}}}} = 0.20 \cdot (-0.13) = -0.03
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial L}{\partial \lambda_{2,5}} = \frac{\partial H_{5_{\text{in}}}}{\partial \lambda_{2,5}} \cdot \frac{\partial L}{\partial H_{5_{\text{in}}}} = I_2 \cdot \frac{\partial L}{\partial H_{5_{\text{in}}}} = 0.20 \cdot (-0.10) = -0.02
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial L}{\partial \lambda_{3,4}} = \frac{\partial H_{4_{\text{in}}}}{\partial \lambda_{3,4}} \cdot \frac{\partial L}{\partial H_{4_{\text{in}}}} = I_3 \cdot \frac{\partial L}{\partial H_{4_{\text{in}}}} = 0.70 \cdot (-0.13) = -0.09
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial L}{\partial \lambda_{3,5}} = \frac{\partial H_{5_{\text{in}}}}{\partial \lambda_{3,5}} \cdot \frac{\partial L}{\partial H_{5_{\text{in}}}} = I_3 \cdot \frac{\partial L}{\partial H_{5_{\text{in}}}} = 0.70 \cdot (-0.10) = -0.07
+\]</div>
+<p>This takes care of all of the connection weight error derivatives, now lets take care of the node bias error derivatives.</p>
 <ul class="simple">
-<li><p>but, we actually need the partical derivatives with respect to the model parameters, the weights and bias terms.</p></li>
-<li><p>the good news is that we are almost there! Here’s some examples for calculating these from our error derivatives for node inputs, prior to activation,</p></li>
+<li><p>the node bias error derivatives are the same as the node peractivation error derivatives. Now let’s calculate the bias terms in the hidden layer,</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
-\frac{\partial P}{\partial \lambda_{4,6}} = H_4 \cdot \frac{\partial P}{\partial O_{6_{\text{in}}}} = 0.42 \cdot 1.00 = 0.42
+\frac{\partial L}{\partial b_4} =  \frac{\partial H_{4_{\text{in}}}}{\partial b_4}  \cdot \frac{\partial L}{\partial H_{4_{\text{in}}}} = 1.0 \cdot (-0.13) = -0.13
 \]</div>
 <div class="math notranslate nohighlight">
 \[
-\frac{\partial P}{\partial \lambda_{1,4}} = I_1 \cdot \frac{\partial P}{\partial H_{4_{\text{in}}}} = 0.5 \cdot (-0.13) = -0.065
+\frac{\partial L}{\partial b_5} =  \frac{\partial H_{5_{\text{in}}}}{\partial b_5}  \cdot \frac{\partial L}{\partial H_{5_{\text{in}}}} = 1.0 \cdot (-0.1) = -0.10
 \]</div>
-<div class="math notranslate nohighlight">
-\[
-\frac{\partial P}{\partial b_4} = \frac{\partial P}{\partial H_{4_{\text{in}}}} = -0.32
-\]</div>
-<p>What is happening?</p>
-<ul class="simple">
-<li><p>the partial derivative of the connection with respect to the weight is the signal!</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[
-\frac{\partial O_{6_{\text{in}}}}{\partial \lambda_{4,6}} = H4
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-\frac{\partial I_{1_{\text{in}}}}{\partial \lambda_{1,4}} = I1
-\]</div>
-<ul class="simple">
-<li><p>and the partial derivatives of the biases are already given as the partial derivatives at the node input, prior to activation!</p></li>
-</ul>
-<p>Now for weights along the connections from input layer to hidden layer and for the connections from hidden layer to output layer we have,</p>
-<div class="math notranslate nohighlight">
-\[
-\frac{\partial P}{\partial \lambda_{i,j}} = I_i \cdot \frac{\partial P}{\partial I_{j_{\text{in}}}} \quad \text{and} \quad \frac{\partial P}{\partial \lambda_{i,j}} = H_i \cdot \frac{\partial P}{\partial H_{j_{\text{in}}}}
-\]</div>
-<p>and for biases in the hidden layer and output layer we have,</p>
-<div class="math notranslate nohighlight">
-\[
-\frac{\partial P}{\partial b_j} = \frac{\partial P}{\partial I_{j_{\text{in}}}} \quad \text{and} \quad \frac{\partial P}{\partial b_j} = \frac{\partial P}{\partial H_{j_{\text{in}}}} 
-\]</div>
-<p>My advice is to review this a couple of times, learn the patterns, and be happy that the computer takes care of the book keeping for us!</p>
 </section>
 <section id="updating-model-parameters">
-<h2>Updating Model Parameters<a class="headerlink" href="#updating-model-parameters" title="Permalink to this heading">#</a></h2>
-<p>The derivatives for each of the model parameters are the gradients, so we are ready to use gradient descent optimization with the addition of,</p>
+<h2>Updating Model Parameters<a class="headerlink" href="#updating-model-parameters" title="Link to this heading">#</a></h2>
+<p>The loss derivatives with respect to each of the model parameters are the gradients, so we are ready to use gradient descent optimization with the addition of,</p>
 <ul class="simple">
 <li><p><strong>learning rate</strong> -  to scale the rate of change of the model updates we assign a learning rate, <span class="math notranslate nohighlight">\(\eta\)</span>. For our model parameter examples from above,</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
-\lambda_{4,6}^{\ell} = \lambda_{4,6}^{\ell - 1} + \eta \cdot \frac{\partial P}{\partial \lambda_{4,6}}
+\lambda_{4,6}^{\ell} = \lambda_{4,6}^{\ell - 1} + \eta \cdot \frac{\partial L}{\partial \lambda_{4,6}}
 \]</div>
 <div class="math notranslate nohighlight">
 \[
-\lambda_{1,4}^{\ell} = \lambda_{1,4}^{\ell - 1} + \eta \cdot \frac{\partial P}{\partial \lambda_{1,4}}
+\lambda_{1,4}^{\ell} = \lambda_{1,4}^{\ell - 1} + \eta \cdot \frac{\partial L}{\partial \lambda_{1,4}}
 \]</div>
 <div class="math notranslate nohighlight">
 \[
-b_j^{\ell} = b_j^{\ell - 1} + \eta \cdot \frac{\partial P}{\partial b_j}
+b_j^{\ell} = b_j^{\ell - 1} + \eta \cdot \frac{\partial L}{\partial b_j}
 \]</div>
 <ul class="simple">
 <li><p>recall, this process of gradient calculation and model parameters, weights and biases, updating is iterated and is known as gradient descent optimization.</p></li>
@@ -1071,31 +1701,31 @@ b_j^{\ell} = b_j^{\ell - 1} + \eta \cdot \frac{\partial P}{\partial b_j}
 <p>we calculate the update over all samples in the batch and apply the average of the updates.</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{\partial P}{\partial \lambda_{4,6}} = H_4 \cdot \frac{\partial P}{\partial O_{6_{\text{in}}}} = 0.42 \cdot 1.00 = 0.42
+\frac{\partial L}{\partial \lambda_{4,6}} = H_4 \cdot \frac{\partial L}{\partial O_{6_{\text{in}}}} = 0.42 \cdot 1.00 = 0.42
 \]</div>
 <p>is applied to update the <span class="math notranslate nohighlight">\(\lambda_{4,6}\)</span> parameter as,</p>
 <div class="math notranslate nohighlight">
 \[
-\lambda_{4,6}^{\ell} = \lambda_{4,6}^{\ell - 1} + \eta \cdot \frac{\partial P}{\partial \lambda_{4,6}}
+\lambda_{4,6}^{\ell} = \lambda_{4,6}^{\ell - 1} + \eta \cdot \frac{\partial L}{\partial \lambda_{4,6}}
 \]</div>
-<p>is dependent on <span class="math notranslate nohighlight">\(H_4\)</span> node output, and <span class="math notranslate nohighlight">\(𝑃\)</span> error that are for a single sample, <span class="math notranslate nohighlight">\(𝑥_1,\ldots,𝑥_𝑚\)</span> and <span class="math notranslate nohighlight">\(𝑦\)</span>; therefore, we cannot calculate a single parameter update over all our <span class="math notranslate nohighlight">\(1,\ldots,n\)</span> training data samples.</p>
+<p>is dependent on <span class="math notranslate nohighlight">\(H_4\)</span> node output, and <span class="math notranslate nohighlight">\(L\)</span> error that are for a single sample, <span class="math notranslate nohighlight">\(𝑥_1,\ldots,𝑥_𝑚\)</span> and <span class="math notranslate nohighlight">\(𝑦\)</span>; therefore, we cannot calculate a single parameter update over all our <span class="math notranslate nohighlight">\(1,\ldots,n\)</span> training data samples.</p>
 <ul class="simple">
 <li><p>instead we can calculate <span class="math notranslate nohighlight">\(1,\ldots,n\)</span> updates and then apply the average of all the updates to our model parameters,</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
-\lambda_{4,6}^{\ell} = \lambda_{4,6}^{\ell - 1} + \frac{1}{n_{batch}} \sum_{i=1}^{n_{batch}} \eta \cdot \frac{\partial P}{\partial \lambda_{4,6}}
+\lambda_{4,6}^{\ell} = \lambda_{4,6}^{\ell - 1} + \frac{1}{n_{batch}} \sum_{i=1}^{n_{batch}} \eta \cdot \frac{\partial L}{\partial \lambda_{4,6}}
 \]</div>
 <ul class="simple">
 <li><p>since the learning rate is a constant, we can move it out of the sum and now we are averaging the gradients,</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
-\lambda_{4,6}^{\ell} = \lambda_{4,6}^{\ell - 1} + \eta \frac{1}{n_{batch}} \sum_{i=1}^{n_{batch}} \frac{\partial P}{\partial \lambda_{4,6}}
+\lambda_{4,6}^{\ell} = \lambda_{4,6}^{\ell - 1} + \eta \frac{1}{n_{batch}} \sum_{i=1}^{n_{batch}} \frac{\partial L}{\partial \lambda_{4,6}}
 \]</div>
 </section>
 <section id="training-epochs">
-<h2>Training Epochs<a class="headerlink" href="#training-epochs" title="Permalink to this heading">#</a></h2>
+<h2>Training Epochs<a class="headerlink" href="#training-epochs" title="Link to this heading">#</a></h2>
 <p>This is a good time to talk about stochastic gradient descent optimization, first let’s define some common terms,</p>
 <ul class="simple">
 <li><p><strong>Batch Gradient Descent</strong> - updates the model parameters after passing through all of the data</p></li>
@@ -1123,7 +1753,7 @@ b_j^{\ell} = b_j^{\ell - 1} + \eta \cdot \frac{\partial P}{\partial b_j}
 </ul>
 </section>
 <section id="interactive-dashboard">
-<h2>Interactive Dashboard<a class="headerlink" href="#interactive-dashboard" title="Permalink to this heading">#</a></h2>
+<h2>Interactive Dashboard<a class="headerlink" href="#interactive-dashboard" title="Link to this heading">#</a></h2>
 <p>I built out an interactive Python dashboard with the code below for training an artificial neural network. You can step through the training iteration and observe over the training epochs,</p>
 <ul class="simple">
 <li><p>model parameters</p></li>
@@ -1132,13 +1762,13 @@ b_j^{\ell} = b_j^{\ell - 1} + \eta \cdot \frac{\partial P}{\partial b_j}
 </ul>
 <p>If you would like to see artificial neural networks in action, check out my <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_ANN.ipynb">ANN interactive Python dashboard</a>,</p>
 <figure style="text-align: center;">
-  <img src="_static/ANN/interactive_ann.png" style="display: block; margin: 0 auto; width: 70%;">
+  <img src="_static/ANN/interactive_ann.png" style="display: block; margin: 0 auto; width: 90%;">
   <figcaption style="text-align: center;"> Interactive artificial neural network training Python dashboard.
 </figcaption>
 </figure> 
 </section>
 <section id="import-required-packages">
-<h2>Import Required Packages<a class="headerlink" href="#import-required-packages" title="Permalink to this heading">#</a></h2>
+<h2>Import Required Packages<a class="headerlink" href="#import-required-packages" title="Link to this heading">#</a></h2>
 <p>We will also need some standard packages. These should have been installed with Anaconda 3.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1156,7 +1786,7 @@ b_j^{\ell} = b_j^{\ell - 1} + \eta \cdot \frac{\partial P}{\partial b_j}
 <p>If you get a package import error, you may have to first install some of these packages. This can usually be accomplished by opening up a command window on Windows and then typing ‘python -m pip install [package-name]’. More assistance is available with the respective package docs.</p>
 </section>
 <section id="declare-functions">
-<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
+<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Link to this heading">#</a></h2>
 <p>Here’s the functions to make, train and visualize our artificial neural network.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1252,7 +1882,7 @@ b_j^{\ell} = b_j^{\ell - 1} + \eta \cdot \frac{\partial P}{\partial b_j}
 </div>
 </section>
 <section id="the-simple-ann">
-<h2>The Simple ANN<a class="headerlink" href="#the-simple-ann" title="Permalink to this heading">#</a></h2>
+<h2>The Simple ANN<a class="headerlink" href="#the-simple-ann" title="Link to this heading">#</a></h2>
 <p>I wrote this code to specify a simple ANN:</p>
 <ul class="simple">
 <li><p>three input nodes, 2 hidden nodes and 1 output node</p></li>
@@ -1344,7 +1974,7 @@ b_j^{\ell} = b_j^{\ell - 1} + \eta \cdot \frac{\partial P}{\partial b_j}
 </div>
 </section>
 <section id="now-visualize-the-network-for-a-specific-epoch">
-<h2>Now Visualize the Network for a Specific Epoch<a class="headerlink" href="#now-visualize-the-network-for-a-specific-epoch" title="Permalink to this heading">#</a></h2>
+<h2>Now Visualize the Network for a Specific Epoch<a class="headerlink" href="#now-visualize-the-network-for-a-specific-epoch" title="Link to this heading">#</a></h2>
 <p>I wrote a custom network visualization below, select iepoch and visualize the artificial neural network for a specific epoch.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1505,12 +2135,12 @@ b_j^{\ell} = b_j^{\ell - 1} + \eta \cdot \frac{\partial P}{\partial b_j}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f1c2dc9fc05ec8a3d07b5642c59c42dd91a2b2ed35c547faa409371a1e776270.png" src="_images/f1c2dc9fc05ec8a3d07b5642c59c42dd91a2b2ed35c547faa409371a1e776270.png" />
+<img alt="_images/8d4f088b638b673ba120496356245a39611606ab09aedb9f5f79af282d34791a.png" src="_images/8d4f088b638b673ba120496356245a39611606ab09aedb9f5f79af282d34791a.png" />
 </div>
 </div>
 </section>
 <section id="check-the-ann-convergence">
-<h2>Check the ANN Convergence<a class="headerlink" href="#check-the-ann-convergence" title="Permalink to this heading">#</a></h2>
+<h2>Check the ANN Convergence<a class="headerlink" href="#check-the-ann-convergence" title="Link to this heading">#</a></h2>
 <p>Now we plot the weights, biases and prediction over the epochs to check the training convergence.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1548,18 +2178,18 @@ b_j^{\ell} = b_j^{\ell - 1} + \eta \cdot \frac{\partial P}{\partial b_j}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/96a2f9a7007123700054af340b223a0c9017cbf262afe43f97c8f1b445ec44a6.png" src="_images/96a2f9a7007123700054af340b223a0c9017cbf262afe43f97c8f1b445ec44a6.png" />
+<img alt="_images/b51a890dcbb85322ba6ac7865653ecded9106b0cee098106a211244a08aff44c.png" src="_images/b51a890dcbb85322ba6ac7865653ecded9106b0cee098106a211244a08aff44c.png" />
 </div>
 </div>
 </section>
 <section id="comments">
-<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
+<h2>Comments<a class="headerlink" href="#comments" title="Link to this heading">#</a></h2>
 <p>This was a basic treatment of artificial neural networks. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
 <section id="about-the-author">
-<h2>About the Author<a class="headerlink" href="#about-the-author" title="Permalink to this heading">#</a></h2>
+<h2>About the Author<a class="headerlink" href="#about-the-author" title="Link to this heading">#</a></h2>
 <figure style="text-align: center;">
   <img src="_static/intro/michael_pyrcz_officeshot_jacket.jpg" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
@@ -1570,11 +2200,11 @@ b_j^{\ell} = b_j^{\ell - 1} + \eta \cdot \frac{\partial P}{\partial b_j}
 <li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
+<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference internal" href="#www.michaelpyrcz.com"><span class="xref myst">Website</span></a>.</p>
 </section>
 <section id="want-to-work-together">
-<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
+<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Link to this heading">#</a></h2>
 <p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
@@ -1584,7 +2214,7 @@ b_j^{\ell} = b_j^{\ell - 1} + \eta \cdot \frac{\partial P}{\partial b_j}
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -1615,16 +2245,16 @@ b_j^{\ell} = b_j^{\ell - 1} + \eta \cdot \frac{\partial P}{\partial b_j}
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="MachineLearning_support_vector_machines.html"
+       href="MachineLearning_activation_functions.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Support Vector Machines</p>
+        <p class="prev-next-title">Neural Network Activation Functions</p>
       </div>
     </a>
     <a class="right-next"
@@ -1645,6 +2275,7 @@ b_j^{\ell} = b_j^{\ell - 1} + \eta \cdot \frac{\partial P}{\partial b_j}
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -1652,13 +2283,28 @@ b_j^{\ell} = b_j^{\ell - 1} + \eta \cdot \frac{\partial P}{\partial b_j}
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concepts">Concepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-network-concepts">Neural Network Concepts</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-network">A Simple Network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments-on-network-nomenclature">Comments on Network Nomenclature</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#description-of-the-network-approach">Description of the Network Approach</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#walkthrough-the-network">Walkthrough the Network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-forward-pass">Network Forward Pass</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-model-parameters">Number of Model Parameters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activation-functions">Activation Functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-model-parameters">Training Model Parameters</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backpropagation">Backpropagation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-networks-steps">Training Networks Steps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-chain-rule">The Chain Rule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-networks-backpropagation-building-blocks">Neural Networks Backpropagation Building Blocks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-loss-derivative">Calculating the Loss Derivative</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#backpropagation-through-output-node-with-identity-activation">Backpropagation through Output Node with Identity Activation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#backpropagation-along-connections">Backpropagation along Connections</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#backpropagation-through-nodes-with-sigmoid-activation">Backpropagation through Nodes with Sigmoid Activation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#backpropagation-along-another-connection">Backpropagation Along Another Connection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accounting-for-multiple-paths">Accounting for Multiple Paths</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#backpropagation-through-input-nodes-with-identity-activation">Backpropagation through Input Nodes with Identity Activation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-derivatives-with-respect-to-weights-and-biases">Loss Derivatives with Respect to Weights and Biases</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backpropagation-example">Backpropagation Example</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-model-parameters">Updating Model Parameters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-epochs">Training Epochs</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-dashboard">Interactive Dashboard</a></li>
@@ -1718,8 +2364,8 @@ By Michael J. Pyrcz
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Naive Bayes Classifier &#8212; Applied Machine Learning in Python</title>
   
@@ -15,55 +14,51 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=304429a7" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=564be945" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'MachineLearning_naive_Bayes';</script>
@@ -80,28 +75,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -123,12 +113,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -144,6 +142,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -162,7 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -201,6 +212,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ensemble_trees.html">Bagging Tree and Random Forest</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_gradient_boosting.html">Gradient Boosting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_support_vector_machines.html">Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_activation_functions.html">Neural Networks Activation Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ANN.html">Artificial Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_CNN.html">Convolutional Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_autoencoder.html">Autoencoder Neural Networks</a></li>
@@ -226,7 +238,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -235,14 +247,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -367,10 +379,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -378,14 +390,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -436,15 +448,15 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <figure style="text-align: center;">
   <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
 </figure>
 <section id="naive-bayes-classifier">
-<h1>Naive Bayes Classifier<a class="headerlink" href="#naive-bayes-classifier" title="Permalink to this heading">#</a></h1>
+<h1>Naive Bayes Classifier<a class="headerlink" href="#naive-bayes-classifier" title="Link to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite this e-Book as:</p>
@@ -463,20 +475,20 @@ document.write(`
 <li><p><a class="reference external" href="https://youtu.be/zOUM_AnI1DQ?si=wzWdJ35qJ9n8O6Bl">Introduction to Machine Learning</a></p></li>
 <li><p><a class="reference external" href="https://youtu.be/0fzbyhWiP84">Linear Regression</a></p></li>
 <li><p><a class="reference external" href="https://youtu.be/pMGO40yXZ5Y?si=ygJAheyX-v2BmSiR">Ridge Regression</a></p></li>
-<li><p><a class="reference external" href="https://www.youtube.com/watch?v=Ppwfr8H177M&amp;list=PLG19vXLQHvSB-D4XKYieEku9GQMQyAzjJ&amp;index=6">Bayesian Probability</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=Ppwfr8H177M&amp;amp;list=PLG19vXLQHvSB-D4XKYieEku9GQMQyAzjJ&amp;amp;index=6">Bayesian Probability</a></p></li>
 <li><p><a class="reference external" href="https://youtu.be/LzZ5b3wdZQk?si=DkhYrgmDXzrPFQyr">Bayesian Linear Regression</a></p></li>
 <li><p><a class="reference external" href="https://youtu.be/BDvyLrH3cLI?si=D6boOpoVpyo-6TqK">Naive Bayes Classifier</a></p></li>
 </ul>
-<p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
+<p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
 <section id="motivations-for-bayesian-linear-regression">
-<h2>Motivations for Bayesian Linear Regression<a class="headerlink" href="#motivations-for-bayesian-linear-regression" title="Permalink to this heading">#</a></h2>
+<h2>Motivations for Bayesian Linear Regression<a class="headerlink" href="#motivations-for-bayesian-linear-regression" title="Link to this heading">#</a></h2>
 <p>Bayesian machine learning methods apply probability to make predictions with an intrinsic uncertainty model. In addition, the Bayesian methods integrate the concept of Bayesian updating, a prior model updated with a likelihood model from data to calculate a posterior model.</p>
 <p>There are additional complexities with model training due to working with these probabilities, represented by continuous probability density functions. Due to the resulting high complexity, we have to make an assumption of conditional independence resulting a practical classification model.</p>
 <p>Here’s a simple workflow, demonstration of naive Bayes classification for subsurface modeling workflows. This should help you get started with building subsurface models that with predictions based on multiple sources of information.</p>
 <p>This method is great as it builds directly on our knowledge Bayesian statistics to provide a simple, but flexible classification method.</p>
 </section>
 <section id="bayesian-updating">
-<h2>Bayesian Updating<a class="headerlink" href="#bayesian-updating" title="Permalink to this heading">#</a></h2>
+<h2>Bayesian Updating<a class="headerlink" href="#bayesian-updating" title="Link to this heading">#</a></h2>
 <p>The Bayesian approach for probabilities is based on a degree of belief (expert experience) in an event updated as new information is available</p>
 <ul class="simple">
 <li><p>this approach to probability is powerful and can be applied to solve problems that we cannot be solved with the frequentist approach to probability</p></li>
@@ -489,7 +501,7 @@ P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}
 <p>where <span class="math notranslate nohighlight">\(P(A)\)</span> is the prior, <span class="math notranslate nohighlight">\(P(B|A)\)</span> is the likelihood, <span class="math notranslate nohighlight">\(P(B)\)</span> is the evidence term that is responsible for probability closure, and <span class="math notranslate nohighlight">\(P(A|B)\)</span> is the posterior.</p>
 </section>
 <section id="bayesian-updating-for-classification">
-<h2>Bayesian Updating for Classification<a class="headerlink" href="#bayesian-updating-for-classification" title="Permalink to this heading">#</a></h2>
+<h2>Bayesian Updating for Classification<a class="headerlink" href="#bayesian-updating-for-classification" title="Link to this heading">#</a></h2>
 <p>The naive Bayes classifier is based on the conditional probability of a category, <span class="math notranslate nohighlight">\(k\)</span>, given <span class="math notranslate nohighlight">\(n\)</span> features, <span class="math notranslate nohighlight">\(x_1, \dots , x_n\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -527,7 +539,7 @@ p(x_1 | x_2, \dots , x_n, C_k) p(x_2 | x_3, \dots , x_n, C_k) p(x_3 | x_4, \dots
 \]</div>
 </section>
 <section id="naive-bayes-approach">
-<h2>Naive Bayes Approach<a class="headerlink" href="#naive-bayes-approach" title="Permalink to this heading">#</a></h2>
+<h2>Naive Bayes Approach<a class="headerlink" href="#naive-bayes-approach" title="Link to this heading">#</a></h2>
 <p>The likelihood, conditional probability with the joint conditional is difficult, likely impossible, to calculate. It requires information about the joint relationship between <span class="math notranslate nohighlight">\(x_1, \dots , x_n\)</span> features. As <span class="math notranslate nohighlight">\(n\)</span> increases this requires a lot of data to inform the joint distribution.</p>
 <p>With the naive Bayes approach we make the ‘naive’ assumption that the features are all <strong>conditionally independent</strong>. This entails,</p>
 <div class="math notranslate nohighlight">
@@ -553,7 +565,7 @@ p(C_k | x_1, \dots , x_n) = \frac{p(C_k) \prod_{i=1}^{n} p(x_i | C_k)}{p(x_1, \d
 </ul>
 </section>
 <section id="load-the-required-libraries">
-<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
+<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Link to this heading">#</a></h2>
 <p>We will also need some standard packages. These should have been installed with Anaconda 3.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -588,7 +600,7 @@ p(C_k | x_1, \dots , x_n) = \frac{p(C_k) \prod_{i=1}^{n} p(x_i | C_k)}{p(x_1, \d
 <p>If you get a package import error, you may have to first install some of these packages. This can usually be accomplished by opening up a command window on Windows and then typing ‘python -m pip install [package-name]’. More assistance is available with the respective package docs.</p>
 </section>
 <section id="declare-functions">
-<h2>Declare functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
+<h2>Declare functions<a class="headerlink" href="#declare-functions" title="Link to this heading">#</a></h2>
 <p>Let’s define a couple of functions to streamline plotting correlation matrices and visualization of a decision tree regression model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -691,7 +703,7 @@ p(C_k | x_1, \dots , x_n) = \frac{p(C_k) \prod_{i=1}^{n} p(x_i | C_k)}{p(x_1, \d
 </div>
 </section>
 <section id="set-the-working-directory">
-<h2>Set the Working Directory<a class="headerlink" href="#set-the-working-directory" title="Permalink to this heading">#</a></h2>
+<h2>Set the Working Directory<a class="headerlink" href="#set-the-working-directory" title="Link to this heading">#</a></h2>
 <p>I always like to do this so I don’t lose files and to simplify subsequent read and writes (avoid including the full address each time).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -703,7 +715,7 @@ p(C_k | x_1, \dots , x_n) = \frac{p(C_k) \prod_{i=1}^{n} p(x_i | C_k)}{p(x_1, \d
 <p>You will have to update the part in quotes with your own working directory and the format is different on a Mac (e.g. “~/PGE”).</p>
 </section>
 <section id="loading-data">
-<h2>Loading Data<a class="headerlink" href="#loading-data" title="Permalink to this heading">#</a></h2>
+<h2>Loading Data<a class="headerlink" href="#loading-data" title="Link to this heading">#</a></h2>
 <p>Let’s load the provided multivariate, spatial dataset <a class="reference external" href="https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/unconv_MV_v4.csv">unconv_MV_v4.csv</a> available in my GeoDataSet repo. It is a comma delimited file with:</p>
 <ul class="simple">
 <li><p>well index (integer)</p></li>
@@ -758,7 +770,7 @@ p(C_k | x_1, \dots , x_n) = \frac{p(C_k) \prod_{i=1}^{n} p(x_i | C_k)}{p(x_1, \d
 </ul>
 </section>
 <section id="calculate-the-correlation-matrix-and-correlation-with-response-ranking">
-<h2>Calculate the Correlation Matrix and Correlation with Response Ranking<a class="headerlink" href="#calculate-the-correlation-matrix-and-correlation-with-response-ranking" title="Permalink to this heading">#</a></h2>
+<h2>Calculate the Correlation Matrix and Correlation with Response Ranking<a class="headerlink" href="#calculate-the-correlation-matrix-and-correlation-with-response-ranking" title="Link to this heading">#</a></h2>
 <p>Let’s start with correlation analysis. We can calculate it and view it in the console with these commands.</p>
 <ul class="simple">
 <li><p>correlation analysis is based on the assumption of linear relationships, but it is a good start</p></li>
@@ -780,7 +792,7 @@ p(C_k | x_1, \dots , x_n) = \frac{p(C_k) \prod_{i=1}^{n} p(x_i | C_k)}{p(x_1, \d
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c1518c2aba2c3f97db3a5a6d2a31e0afa50a35e1219986c0a273acb3b7b84525.png" src="_images/c1518c2aba2c3f97db3a5a6d2a31e0afa50a35e1219986c0a273acb3b7b84525.png" />
+<img alt="_images/165dac7369ec090d4b9f171b1036ebbcdc09791df2a1047d0fb7fbc446cf8a80.png" src="_images/165dac7369ec090d4b9f171b1036ebbcdc09791df2a1047d0fb7fbc446cf8a80.png" />
 </div>
 </div>
 <p>Note the 1.0 diagonal resulting from the correlation of each variable with themselves.</p>
@@ -801,12 +813,12 @@ p(C_k | x_1, \dots , x_n) = \frac{p(C_k) \prod_{i=1}^{n} p(x_i | C_k)}{p(x_1, \d
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/83c5de1598b49734fd9eb4bf488f0fa05e4e41fcd4b4b87cf4c0ad13de73c823.png" src="_images/83c5de1598b49734fd9eb4bf488f0fa05e4e41fcd4b4b87cf4c0ad13de73c823.png" />
+<img alt="_images/edb7eb9714fda165d4b4e28aee5ba36fb3957831d0ceaab2047b656043477dd3.png" src="_images/edb7eb9714fda165d4b4e28aee5ba36fb3957831d0ceaab2047b656043477dd3.png" />
 </div>
 </div>
 </section>
 <section id="production-truncation-to-categorical-feature">
-<h2>Production Truncation to Categorical Feature<a class="headerlink" href="#production-truncation-to-categorical-feature" title="Permalink to this heading">#</a></h2>
+<h2>Production Truncation to Categorical Feature<a class="headerlink" href="#production-truncation-to-categorical-feature" title="Link to this heading">#</a></h2>
 <p>Let’s also make a categorical variable for production, based on a threshold of 4,000 MCFPD.</p>
 <ul class="simple">
 <li><p>high production &gt; 4,000 MCFPD, cprod = 1</p></li>
@@ -882,7 +894,7 @@ p(C_k | x_1, \dots , x_n) = \frac{p(C_k) \prod_{i=1}^{n} p(x_i | C_k)}{p(x_1, \d
 </div>
 </section>
 <section id="train-and-test-split">
-<h2>Train and Test Split<a class="headerlink" href="#train-and-test-split" title="Permalink to this heading">#</a></h2>
+<h2>Train and Test Split<a class="headerlink" href="#train-and-test-split" title="Link to this heading">#</a></h2>
 <p>For convenience and simplicity we use scikit-learn’s random train and test split.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -895,7 +907,7 @@ p(C_k | x_1, \dots , x_n) = \frac{p(C_k) \prod_{i=1}^{n} p(x_i | C_k)}{p(x_1, \d
 </div>
 </section>
 <section id="visualize-the-dataframes">
-<h2>Visualize the DataFrames<a class="headerlink" href="#visualize-the-dataframes" title="Permalink to this heading">#</a></h2>
+<h2>Visualize the DataFrames<a class="headerlink" href="#visualize-the-dataframes" title="Link to this heading">#</a></h2>
 <p>Visualizing the train and test DataFrame is useful check before we build our models.</p>
 <ul class="simple">
 <li><p>many things can go wrong, e.g., we loaded the wrong data, all the features did not load, etc.</p></li>
@@ -1015,7 +1027,7 @@ p(C_k | x_1, \dots , x_n) = \frac{p(C_k) \prod_{i=1}^{n} p(x_i | C_k)}{p(x_1, \d
 </ul>
 </section>
 <section id="visualize-the-train-and-test-splits">
-<h2>Visualize the Train and Test Splits<a class="headerlink" href="#visualize-the-train-and-test-splits" title="Permalink to this heading">#</a></h2>
+<h2>Visualize the Train and Test Splits<a class="headerlink" href="#visualize-the-train-and-test-splits" title="Link to this heading">#</a></h2>
 <p>Let’s check the consistency and coverage of training and testing with histograms and scatter plots.</p>
 <ul class="simple">
 <li><p>check to make sure the train and test datasets cover the range of possible predictor feature combinations</p></li>
@@ -1083,7 +1095,7 @@ p(C_k | x_1, \dots , x_n) = \frac{p(C_k) \prod_{i=1}^{n} p(x_i | C_k)}{p(x_1, \d
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7764d1dd08fb24e785b08b58ee988d464d003ef20a13020c8f2c5211ea7a018e.png" src="_images/7764d1dd08fb24e785b08b58ee988d464d003ef20a13020c8f2c5211ea7a018e.png" />
+<img alt="_images/b121c15f4f4bd3a1e79d6b0b5a38db18c6b883ff04f2d87bc3046b5d1ae1e4c7.png" src="_images/b121c15f4f4bd3a1e79d6b0b5a38db18c6b883ff04f2d87bc3046b5d1ae1e4c7.png" />
 </div>
 </div>
 <p>This looks good,</p>
@@ -1093,7 +1105,7 @@ p(C_k | x_1, \dots , x_n) = \frac{p(C_k) \prod_{i=1}^{n} p(x_i | C_k)}{p(x_1, \d
 </ul>
 </section>
 <section id="visualize-the-predictor-feature-space">
-<h2>Visualize the Predictor Feature Space<a class="headerlink" href="#visualize-the-predictor-feature-space" title="Permalink to this heading">#</a></h2>
+<h2>Visualize the Predictor Feature Space<a class="headerlink" href="#visualize-the-predictor-feature-space" title="Link to this heading">#</a></h2>
 <p>Let’s build a simplified plot to visualize the 2D predictor feature space with the train and test data.</p>
 <ul class="simple">
 <li><p>we ask the question, will we be able to model the classification boundary? Is there a lot of data overlap? Is the boundary simple (i.e., linear) or more complicated?</p></li>
@@ -1123,12 +1135,12 @@ p(C_k | x_1, \dots , x_n) = \frac{p(C_k) \prod_{i=1}^{n} p(x_i | C_k)}{p(x_1, \d
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/16bd6f1bea4bb5305b2ff3f7e23c2b6d76d10103ec45b5888edbc092cae99578.png" src="_images/16bd6f1bea4bb5305b2ff3f7e23c2b6d76d10103ec45b5888edbc092cae99578.png" />
+<img alt="_images/184322546fc597da5871ed02cde46746fb0fa664842e8264d0f759c0439553e6.png" src="_images/184322546fc597da5871ed02cde46746fb0fa664842e8264d0f759c0439553e6.png" />
 </div>
 </div>
 </section>
 <section id="instantiate-fit-and-predict-with-naive-bayes">
-<h2>Instantiate, Fit and Predict with Naive Bayes<a class="headerlink" href="#instantiate-fit-and-predict-with-naive-bayes" title="Permalink to this heading">#</a></h2>
+<h2>Instantiate, Fit and Predict with Naive Bayes<a class="headerlink" href="#instantiate-fit-and-predict-with-naive-bayes" title="Link to this heading">#</a></h2>
 <p>We use the naive Bayes classifier to calculate the classification, conditional probability of each of our response feature categories</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1148,9 +1160,9 @@ P(C_2|x_1,x_2) \propto P(x_1 | C_2) \cdot P(x_2 | C_2) \cdot P(C_2)
 </ul>
 </section>
 <section id="gaussian-naive-bayes">
-<h2>Gaussian Naive Bayes<a class="headerlink" href="#gaussian-naive-bayes" title="Permalink to this heading">#</a></h2>
+<h2>Gaussian Naive Bayes<a class="headerlink" href="#gaussian-naive-bayes" title="Link to this heading">#</a></h2>
 <p>We select the Gaussian model as it simplifies the inference problem to a small number of parameters, the conditional means and variances given each feature.</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p><span class="math notranslate nohighlight">\(X_1\)</span></p></th>
@@ -1180,6 +1192,7 @@ P(C_2|x_1,x_2) \propto P(x_1 | C_2) \cdot P(x_2 | C_2) \cdot P(C_2)
 </tr>
 </tbody>
 </table>
+</div>
 <p>Recall we can set a prior probability of each response category</p>
 <ul class="simple">
 <li><p>We should not use proportions from the dataset! This would be information leakage as we are using the same data to inform the prior as the likelihood</p></li>
@@ -1248,12 +1261,12 @@ P(C_2|x_1,x_2) \propto P(x_1 | C_2) \cdot P(x_2 | C_2) \cdot P(C_2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/23a7a934c964949e1b24ce0fe8b8d34b73a606b2cc0b915ab86a76a99c2a1603.png" src="_images/23a7a934c964949e1b24ce0fe8b8d34b73a606b2cc0b915ab86a76a99c2a1603.png" />
+<img alt="_images/f4a0c65a8adf8a6433364aa59ed3ab66b580d36da143205ff4807390edf12260.png" src="_images/f4a0c65a8adf8a6433364aa59ed3ab66b580d36da143205ff4807390edf12260.png" />
 </div>
 </div>
 </section>
 <section id="model-checking">
-<h2>Model Checking<a class="headerlink" href="#model-checking" title="Permalink to this heading">#</a></h2>
+<h2>Model Checking<a class="headerlink" href="#model-checking" title="Link to this heading">#</a></h2>
 <p>Let’s check our model. With scikit learn we have great built in tools to evaluate our classification model. Let’s try the classification report first.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">classification_report</span><span class="p">(</span><span class="n">truth</span><span class="p">,</span> <span class="n">predicted</span><span class="p">)</span>                <span class="c1"># build a classification report to check our classification model</span>
 </pre></div>
@@ -1331,7 +1344,7 @@ f1-score_k = \frac{2} { \frac{1}{Precision_k} + \frac{1}{Recall_k} }
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b67396e1a4ec5b33481b8bee2e572ef984a6684bacc9eb853ddb87bb27218dad.png" src="_images/b67396e1a4ec5b33481b8bee2e572ef984a6684bacc9eb853ddb87bb27218dad.png" />
+<img alt="_images/2e3fec037c2bfb388cdabe9514cf898a81848b6d02e4c2829e76f69b0cd680f5.png" src="_images/2e3fec037c2bfb388cdabe9514cf898a81848b6d02e4c2829e76f69b0cd680f5.png" />
 </div>
 </div>
 <p>From above we can observe:</p>
@@ -1343,7 +1356,7 @@ f1-score_k = \frac{2} { \frac{1}{Precision_k} + \frac{1}{Recall_k} }
 </ul>
 </section>
 <section id="visualizing-the-classification-model">
-<h2>Visualizing the Classification Model<a class="headerlink" href="#visualizing-the-classification-model" title="Permalink to this heading">#</a></h2>
+<h2>Visualizing the Classification Model<a class="headerlink" href="#visualizing-the-classification-model" title="Link to this heading">#</a></h2>
 <p>Let’s visualize the model over the entire feature space.</p>
 <ul class="simple">
 <li><p>here’s the training data with the classification over the full range of predictor features.</p></li>
@@ -1364,7 +1377,7 @@ f1-score_k = \frac{2} { \frac{1}{Precision_k} + \frac{1}{Recall_k} }
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a2b365cc6c4388cc70fe0f11e78248e7f94a6862c3a6662478090eed4ddf625d.png" src="_images/a2b365cc6c4388cc70fe0f11e78248e7f94a6862c3a6662478090eed4ddf625d.png" />
+<img alt="_images/06a215aadeee9cda8bcb46b2bef14fb5dce825ceeecce250265bc1f911a7ac71.png" src="_images/06a215aadeee9cda8bcb46b2bef14fb5dce825ceeecce250265bc1f911a7ac71.png" />
 </div>
 </div>
 <p>We could also visualize the posterior probabilities of low and high production.</p>
@@ -1380,19 +1393,19 @@ f1-score_k = \frac{2} { \frac{1}{Precision_k} + \frac{1}{Recall_k} }
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c00f45b1af6ef9508cd1b24bad379da80e093292c19e701cbf096d37530c2b81.png" src="_images/c00f45b1af6ef9508cd1b24bad379da80e093292c19e701cbf096d37530c2b81.png" />
+<img alt="_images/7ad5a96abf28f9b3d90023709fa43d9633cfd97d230d73f813d85c223c508d09.png" src="_images/7ad5a96abf28f9b3d90023709fa43d9633cfd97d230d73f813d85c223c508d09.png" />
 </div>
 </div>
 <p>We have a reasonable model to predict well production from porosity and brittleness for an unconventional reservoir.</p>
 </section>
 <section id="comments">
-<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
+<h2>Comments<a class="headerlink" href="#comments" title="Link to this heading">#</a></h2>
 <p>This was a basic treatment of naive Bayes classifier. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
 <section id="about-the-author">
-<h2>About the Author<a class="headerlink" href="#about-the-author" title="Permalink to this heading">#</a></h2>
+<h2>About the Author<a class="headerlink" href="#about-the-author" title="Link to this heading">#</a></h2>
 <figure style="text-align: center;">
   <img src="_static/intro/michael_pyrcz_officeshot_jacket.jpg" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
@@ -1403,11 +1416,11 @@ f1-score_k = \frac{2} { \frac{1}{Precision_k} + \frac{1}{Recall_k} }
 <li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
+<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference internal" href="#www.michaelpyrcz.com"><span class="xref myst">Website</span></a>.</p>
 </section>
 <section id="want-to-work-together">
-<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
+<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Link to this heading">#</a></h2>
 <p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
@@ -1417,7 +1430,7 @@ f1-score_k = \frac{2} { \frac{1}{Precision_k} + \frac{1}{Recall_k} }
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -1448,7 +1461,7 @@ f1-score_k = \frac{2} { \frac{1}{Precision_k} + \frac{1}{Recall_k} }
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1477,6 +1490,7 @@ f1-score_k = \frac{2} { \frac{1}{Precision_k} + \frac{1}{Recall_k} }
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1553,8 +1567,8 @@ By Michael J. Pyrcz
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
