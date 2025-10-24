@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>K-means Clustering &#8212; Applied Machine Learning in Python</title>
   
@@ -14,51 +15,55 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=304429a7" />
-    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=564be945" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'MachineLearning_clustering';</script>
@@ -75,23 +80,28 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
+
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -113,20 +123,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -142,8 +144,6 @@
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
-  
-    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -162,18 +162,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -238,7 +227,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -247,14 +236,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -379,10 +368,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -390,14 +379,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -466,15 +455,15 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <figure style="text-align: center;">
   <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
 </figure>
 <section id="k-means-clustering">
-<h1>K-means Clustering<a class="headerlink" href="#k-means-clustering" title="Link to this heading">#</a></h1>
+<h1>K-means Clustering<a class="headerlink" href="#k-means-clustering" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite this e-Book as:</p>
@@ -493,11 +482,11 @@ document.write(`
 <li><p><a class="reference external" href="https://youtu.be/zOUM_AnI1DQ?si=wzWdJ35qJ9n8O6Bl">Introduction to Machine Learning</a></p></li>
 <li><p><a class="reference external" href="https://youtu.be/oFE10cLl0Fs?si=AwmYnrYggtYWGV2n">Cluster Analysis</a></p></li>
 <li><p><a class="reference external" href="https://youtu.be/ysJw8M_J40I?si=EIlg2941QrfAt7zE">Issues with k-Means Clustering</a></p></li>
-<li><p><a class="reference external" href="https://www.youtube.com/watch?v=3GaLe8HaDMc&amp;amp;list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;amp;index=15">Density-based Clustering</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=3GaLe8HaDMc&amp;list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;index=15">Density-based Clustering</a></p></li>
 </ul>
-<p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
+<p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
 <section id="motivation-for-cluster-analysis">
-<h2>Motivation for Cluster Analysis<a class="headerlink" href="#motivation-for-cluster-analysis" title="Link to this heading">#</a></h2>
+<h2>Motivation for Cluster Analysis<a class="headerlink" href="#motivation-for-cluster-analysis" title="Permalink to this heading">#</a></h2>
 <p>Mixing distinct populations to train prediction models often reduces model accuracy.</p>
 <ul class="simple">
 <li><p>clustering is an inferential machine learning method to automate the segmentation of the dataset into separate groups, known as clusters and specified by an integer index.</p></li>
@@ -525,7 +514,7 @@ document.write(`
 </figure>
 </section>
 <section id="inferential-machine-learning">
-<h2>Inferential Machine Learning<a class="headerlink" href="#inferential-machine-learning" title="Link to this heading">#</a></h2>
+<h2>Inferential Machine Learning<a class="headerlink" href="#inferential-machine-learning" title="Permalink to this heading">#</a></h2>
 <p>There are no response features, <span class="math notranslate nohighlight">\(y\)</span>, just predictor features,</p>
 <div class="math notranslate nohighlight">
 \[
@@ -538,7 +527,7 @@ document.write(`
 </ul>
 </section>
 <section id="id1">
-<h2>K-Means Clustering<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2>K-Means Clustering<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>The K-means clustering approach is primarily applied as an unsupervised machine learning method for clustering, group assignment to unlabeled data, where dissimilarity within clustered groups is minimized. The loss function that is minimized for K-means clustering, known as intertia, is,</p>
 <div class="math notranslate nohighlight">
 \[ 
@@ -564,7 +553,7 @@ J = \sum^k_{i=1} \sum_{\alpha \in C_i} || X_{\alpha} - \mu_i ||
 </ul>
 </section>
 <section id="solution-heuristic">
-<h2>Solution Heuristic<a class="headerlink" href="#solution-heuristic" title="Link to this heading">#</a></h2>
+<h2>Solution Heuristic<a class="headerlink" href="#solution-heuristic" title="Permalink to this heading">#</a></h2>
 <p>Let’s first define a solution heuristic,</p>
 <ul class="simple">
 <li><p><strong>Heuristic</strong> - a shortcut the sacrifices accuracy for practicality, i.e., the solution is usually good enough and has a reasonable run time.</p></li>
@@ -610,7 +599,7 @@ k^n
 </figure>
 </section>
 <section id="demonstration">
-<h2>Demonstration<a class="headerlink" href="#demonstration" title="Link to this heading">#</a></h2>
+<h2>Demonstration<a class="headerlink" href="#demonstration" title="Permalink to this heading">#</a></h2>
 <p>I start with a ‘by-hand’ approach to calculate the K-means clustering group assignments.</p>
 <ul class="simple">
 <li><p>this allows us to be able to watch the method in action, as opposed to just getting a result. I think this is more instructive.</p></li>
@@ -629,7 +618,7 @@ k^n
 </ul>
 </section>
 <section id="load-the-required-libraries">
-<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Link to this heading">#</a></h2>
+<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
 <p>The following code loads the required libraries. These should have been installed with Anaconda 3.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -657,7 +646,7 @@ k^n
 </div>
 </section>
 <section id="declare-functions">
-<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Link to this heading">#</a></h2>
+<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
 <p>The following functions perform the steps required by K-means clustering.</p>
 <ul class="simple">
 <li><p>assign the training data to the nearest prototype</p></li>
@@ -701,7 +690,7 @@ k^n
 </div>
 </section>
 <section id="set-the-working-directory">
-<h2>Set the Working Directory<a class="headerlink" href="#set-the-working-directory" title="Link to this heading">#</a></h2>
+<h2>Set the Working Directory<a class="headerlink" href="#set-the-working-directory" title="Permalink to this heading">#</a></h2>
 <p>I always like to do this so I don’t lose files and to simplify subsequent read and writes (avoid including the full address each time).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -712,7 +701,7 @@ k^n
 </div>
 </section>
 <section id="loading-tabular-data">
-<h2>Loading Tabular Data<a class="headerlink" href="#loading-tabular-data" title="Link to this heading">#</a></h2>
+<h2>Loading Tabular Data<a class="headerlink" href="#loading-tabular-data" title="Permalink to this heading">#</a></h2>
 <p>Here’s the command to load our comma delimited data file in to a Pandas’ DataFrame object.</p>
 <p>Let’s load the provided multivariate, spatial dataset ‘12_sample_data.csv’. It is a comma delimited file with:</p>
 <ul class="simple">
@@ -758,7 +747,7 @@ k^n
 </div>
 </section>
 <section id="summary-statistics-for-tabular-data">
-<h2>Summary Statistics for Tabular Data<a class="headerlink" href="#summary-statistics-for-tabular-data" title="Link to this heading">#</a></h2>
+<h2>Summary Statistics for Tabular Data<a class="headerlink" href="#summary-statistics-for-tabular-data" title="Permalink to this heading">#</a></h2>
 <p>The table includes porosity (fraction) and acoustic impedance (<span class="math notranslate nohighlight">\(\frac{kg}{m^3} \cdot \frac{m}{s} \cdot 10^3\)</span>) that we will work with in the demonstration below.</p>
 <p>There are a lot of efficient methods to calculate summary statistics from tabular data in DataFrames. The describe command provides count, mean, minimum, maximum, and quartiles all in a nice data table. We use transpose just to flip the table so that features are on the rows and the statistics are on the columns.</p>
 <div class="cell docutils container">
@@ -869,7 +858,7 @@ k^n
 </div>
 </section>
 <section id="normalize-the-features">
-<h2>Normalize the Features<a class="headerlink" href="#normalize-the-features" title="Link to this heading">#</a></h2>
+<h2>Normalize the Features<a class="headerlink" href="#normalize-the-features" title="Permalink to this heading">#</a></h2>
 <p>The two features are quite incompatible.  They have dramatically different:</p>
 <ul class="simple">
 <li><p>variances / ranges</p></li>
@@ -1034,7 +1023,7 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 </div>
 </section>
 <section id="extract-features-of-interest">
-<h2>Extract Features of Interest<a class="headerlink" href="#extract-features-of-interest" title="Link to this heading">#</a></h2>
+<h2>Extract Features of Interest<a class="headerlink" href="#extract-features-of-interest" title="Permalink to this heading">#</a></h2>
 <p>Now let’s slice out the porosity and acoustic impedance features and then look at the resulting DataFrame to ensure that we loaded and reformatted as expected.</p>
 <ul class="simple">
 <li><p>I often separate only the feature of interest to simplify my workflows and to reduce the probability of blunders, such as accidentally referring to a feature not being used in the current workflow!</p></li>
@@ -1114,7 +1103,7 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 </div>
 </section>
 <section id="infer-model-parameters">
-<h2>Infer Model Parameters<a class="headerlink" href="#infer-model-parameters" title="Link to this heading">#</a></h2>
+<h2>Infer Model Parameters<a class="headerlink" href="#infer-model-parameters" title="Permalink to this heading">#</a></h2>
 <p>From the summary statistics we can assign a reasonable minimum and maximum for each feature.</p>
 <ul class="simple">
 <li><p>We will use this for plotting.</p></li>
@@ -1139,7 +1128,7 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 </div>
 </section>
 <section id="visualize-the-training-data">
-<h2>Visualize the Training Data<a class="headerlink" href="#visualize-the-training-data" title="Link to this heading">#</a></h2>
+<h2>Visualize the Training Data<a class="headerlink" href="#visualize-the-training-data" title="Permalink to this heading">#</a></h2>
 <p>In this exercise, we want to use K-means clustering provide facies based on acoustic impedance and porosity predictor features.</p>
 <ul class="simple">
 <li><p>This allows use to group rock with similar petrophysical and geophysical properties.</p></li>
@@ -1164,15 +1153,15 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a128d35a82c5211c6be43ada99af7a75a679fdee7310e143d0aca5e1d939265d.png" src="_images/a128d35a82c5211c6be43ada99af7a75a679fdee7310e143d0aca5e1d939265d.png" />
+<img alt="_images/a6ff75dc69e4d9e155cc3824fad6b2ec17861b5e64d9ba32a73f07e4723f8a00.png" src="_images/a6ff75dc69e4d9e155cc3824fad6b2ec17861b5e64d9ba32a73f07e4723f8a00.png" />
 </div>
 </div>
 </section>
 <section id="calculating-k-means-clustering-by-hand">
-<h2>Calculating k-Means Clustering By-hand<a class="headerlink" href="#calculating-k-means-clustering-by-hand" title="Link to this heading">#</a></h2>
+<h2>Calculating k-Means Clustering By-hand<a class="headerlink" href="#calculating-k-means-clustering-by-hand" title="Permalink to this heading">#</a></h2>
 <p>Here’s the steps to calculate k-means clusters for our unlabelled dataset.</p>
 <section id="initialize-k-prototypes">
-<h3>Initialize k Prototypes<a class="headerlink" href="#initialize-k-prototypes" title="Link to this heading">#</a></h3>
+<h3>Initialize k Prototypes<a class="headerlink" href="#initialize-k-prototypes" title="Permalink to this heading">#</a></h3>
 <p>First we will assign k prototypes in the feature space randomly.</p>
 <ul class="simple">
 <li><p>for K prototypes assign a random porosity and acoustic impedance</p></li>
@@ -1212,12 +1201,12 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/685f880b625aa6d9bfa2732739e9517a5808868e511b3dcaeae7445d6e4bd06f.png" src="_images/685f880b625aa6d9bfa2732739e9517a5808868e511b3dcaeae7445d6e4bd06f.png" />
+<img alt="_images/89aa79fe89eb7252de4eaaa96655d8cab72c87945bda9896b49d5fb0e1ff3d02.png" src="_images/89aa79fe89eb7252de4eaaa96655d8cab72c87945bda9896b49d5fb0e1ff3d02.png" />
 </div>
 </div>
 </section>
 <section id="assignment-of-training-data">
-<h3>Assignment of Training Data<a class="headerlink" href="#assignment-of-training-data" title="Link to this heading">#</a></h3>
+<h3>Assignment of Training Data<a class="headerlink" href="#assignment-of-training-data" title="Permalink to this heading">#</a></h3>
 <p>All training data are assigned to the nearest prototype.</p>
 <ul class="simple">
 <li><p>recall we have a function to do this</p></li>
@@ -1258,12 +1247,12 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/99ec9346f33941fdf4c294d6cee9ebf094ca3af53271bb1069c229141712d9c9.png" src="_images/99ec9346f33941fdf4c294d6cee9ebf094ca3af53271bb1069c229141712d9c9.png" />
+<img alt="_images/54cb330a74898631faa71c40d5e5871042e52db556b1804a0b581917e8135eb9.png" src="_images/54cb330a74898631faa71c40d5e5871042e52db556b1804a0b581917e8135eb9.png" />
 </div>
 </div>
 </section>
 <section id="update-the-prototypes">
-<h3>Update the Prototypes<a class="headerlink" href="#update-the-prototypes" title="Link to this heading">#</a></h3>
+<h3>Update the Prototypes<a class="headerlink" href="#update-the-prototypes" title="Permalink to this heading">#</a></h3>
 <p>Now we reassign the prototypes to the centroids of the training data belonging to each.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1322,12 +1311,12 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/26e5c222d32b7b7c651e28def998fdd04a70e32ec5f76def0bfb57a4109a0028.png" src="_images/26e5c222d32b7b7c651e28def998fdd04a70e32ec5f76def0bfb57a4109a0028.png" />
+<img alt="_images/d407ac38fa40f3583c66b8c936ef6fa4d3520c2125e0c75a4033f08f6c812f5f.png" src="_images/d407ac38fa40f3583c66b8c936ef6fa4d3520c2125e0c75a4033f08f6c812f5f.png" />
 </div>
 </div>
 </section>
 <section id="repeat-the-assignment-of-the-training-data">
-<h3>Repeat the Assignment of the Training Data<a class="headerlink" href="#repeat-the-assignment-of-the-training-data" title="Link to this heading">#</a></h3>
+<h3>Repeat the Assignment of the Training Data<a class="headerlink" href="#repeat-the-assignment-of-the-training-data" title="Permalink to this heading">#</a></h3>
 <p>Once again we assign the training data to the nearest prototype.</p>
 <ul class="simple">
 <li><p>Note the prototypes were updated in the previous step so the assignments may change</p></li>
@@ -1362,12 +1351,12 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/dbbadbeb41888eec5a1f34ebb589c025a12387d56a39acd3e74b8fd0ca051d8c.png" src="_images/dbbadbeb41888eec5a1f34ebb589c025a12387d56a39acd3e74b8fd0ca051d8c.png" />
+<img alt="_images/f940da261c3075cbde5da1809f680248e34d82d4c1e57dda341ca76265cc6242.png" src="_images/f940da261c3075cbde5da1809f680248e34d82d4c1e57dda341ca76265cc6242.png" />
 </div>
 </div>
 </section>
 <section id="iterate-until-convergence">
-<h3>Iterate Until Convergence<a class="headerlink" href="#iterate-until-convergence" title="Link to this heading">#</a></h3>
+<h3>Iterate Until Convergence<a class="headerlink" href="#iterate-until-convergence" title="Permalink to this heading">#</a></h3>
 <p>Now we iterate over the previous set of steps:</p>
 <ul class="simple">
 <li><p>assign the training data to the nearest prototype</p></li>
@@ -1420,13 +1409,13 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3e6cfcf962f37b6e2656126e1e6d92c5bd97fb699a7c6b93e132972fdd5871ac.png" src="_images/3e6cfcf962f37b6e2656126e1e6d92c5bd97fb699a7c6b93e132972fdd5871ac.png" />
+<img alt="_images/ba1c9c046617e225fb4e6fcedc7cd0ccd6b4d1e017a1b4199b12b40d97b845f3.png" src="_images/ba1c9c046617e225fb4e6fcedc7cd0ccd6b4d1e017a1b4199b12b40d97b845f3.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="k-means-clustering-with-the-scikit-learn-function">
-<h2>k-Means Clustering with the scikit-learn Function<a class="headerlink" href="#k-means-clustering-with-the-scikit-learn-function" title="Link to this heading">#</a></h2>
+<h2>k-Means Clustering with the scikit-learn Function<a class="headerlink" href="#k-means-clustering-with-the-scikit-learn-function" title="Permalink to this heading">#</a></h2>
 <p>Let’s repeat with the scikit-learn function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1445,12 +1434,12 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9213210c3d5ff12bc175f446dd88be9d71e226129e74215c4b2f5eaa05900630.png" src="_images/9213210c3d5ff12bc175f446dd88be9d71e226129e74215c4b2f5eaa05900630.png" />
+<img alt="_images/e78be07d00c4ccada7b5914d3f073c3fe4155b63472a216aea3ceef74e3769d4.png" src="_images/e78be07d00c4ccada7b5914d3f073c3fe4155b63472a216aea3ceef74e3769d4.png" />
 </div>
 </div>
 </section>
 <section id="selecting-the-optimum-number-of-clusters">
-<h2>Selecting the Optimum Number of Clusters<a class="headerlink" href="#selecting-the-optimum-number-of-clusters" title="Link to this heading">#</a></h2>
+<h2>Selecting the Optimum Number of Clusters<a class="headerlink" href="#selecting-the-optimum-number-of-clusters" title="Permalink to this heading">#</a></h2>
 <p>For K-means clustering, the K number of clusters is an input.</p>
 <ul class="simple">
 <li><p>in some cases this choice is easy or constrained by the context of the problem, for example, we know that there are 3 distinct facies in our subsurface dataset</p></li>
@@ -1464,7 +1453,7 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 </ul>
 </section>
 <section id="elbow-method">
-<h2>Elbow Method<a class="headerlink" href="#elbow-method" title="Link to this heading">#</a></h2>
+<h2>Elbow Method<a class="headerlink" href="#elbow-method" title="Permalink to this heading">#</a></h2>
 <p>The <strong>Elbow Method</strong> is a heuristic used to determine the optimal number of clusters, <span class="math notranslate nohighlight">\(K\)</span>, in a clustering algorithm, such as <strong>K-Means</strong>.</p>
 <ul class="simple">
 <li><p>The idea is to run the clustering algorithm for a range of cluster values <span class="math notranslate nohighlight">\(K\)</span>, calculate a performance metric, and plot it. The <strong>elbow</strong> point on the plot represents the optimal number of clusters, where adding more clusters doesn’t significantly improve the model, that is, further reduce the loss function.</p></li>
@@ -1515,7 +1504,7 @@ J = \sum^k_{i=1} \sum_{\alpha \in C_i} || X_{\alpha} - \mu_i ||
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/563f70ca64cedc14ad2227f4f09483fd2393dc0e2b2533b9f59e833d686bbd8d.png" src="_images/563f70ca64cedc14ad2227f4f09483fd2393dc0e2b2533b9f59e833d686bbd8d.png" />
+<img alt="_images/9b4490f494f9ed350eba4adf028c03f3f0e3c8bd4f03d40ce20e2694e80ad8e0.png" src="_images/9b4490f494f9ed350eba4adf028c03f3f0e3c8bd4f03d40ce20e2694e80ad8e0.png" />
 </div>
 </div>
 <ul class="simple">
@@ -1523,7 +1512,7 @@ J = \sum^k_{i=1} \sum_{\alpha \in C_i} || X_{\alpha} - \mu_i ||
 </ul>
 </section>
 <section id="silhouette-method">
-<h2>Silhouette Method<a class="headerlink" href="#silhouette-method" title="Link to this heading">#</a></h2>
+<h2>Silhouette Method<a class="headerlink" href="#silhouette-method" title="Permalink to this heading">#</a></h2>
 <p>Description: The Silhouette Score measures how similar an object is to its own cluster compared to other clusters.
 How it works: Compute the silhouette score for each K value. The silhouette score ranges from -1 (poor fit) to +1 (good fit), where higher values indicate better clustering.
 Interpretation: The optimal K corresponds to the highest average silhouette score.
@@ -1602,12 +1591,12 @@ S = \frac{1}{n} \sum_{i=1}^{n} s(i)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/48dc3317e0c6f179c13e015630c7e686f00dffecff7ba2dd0ea3a60352f3a24c.png" src="_images/48dc3317e0c6f179c13e015630c7e686f00dffecff7ba2dd0ea3a60352f3a24c.png" />
+<img alt="_images/d832b7eb61524e55f01f2c0e1d3511d436008f09a451ec121046dce075d36982.png" src="_images/d832b7eb61524e55f01f2c0e1d3511d436008f09a451ec121046dce075d36982.png" />
 </div>
 </div>
 </section>
 <section id="clustering-without-normalization-standardization">
-<h2>Clustering without Normalization / Standardization<a class="headerlink" href="#clustering-without-normalization-standardization" title="Link to this heading">#</a></h2>
+<h2>Clustering without Normalization / Standardization<a class="headerlink" href="#clustering-without-normalization-standardization" title="Permalink to this heading">#</a></h2>
 <p>One of the critical assumptions of clustering is that the variability is the same over each feature.</p>
 <ul class="simple">
 <li><p>an exception would be if the features have the same units and the variability differences are meaningful</p></li>
@@ -1632,7 +1621,7 @@ S = \frac{1}{n} \sum_{i=1}^{n} s(i)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2f3bd81649e20213b4a9f683b105bcd565af2949f87b45945e90644309413eb6.png" src="_images/2f3bd81649e20213b4a9f683b105bcd565af2949f87b45945e90644309413eb6.png" />
+<img alt="_images/4f6ebe27d62c2cec31298b9304e5761354ba457676c91a47dc292391053a85f5.png" src="_images/4f6ebe27d62c2cec31298b9304e5761354ba457676c91a47dc292391053a85f5.png" />
 </div>
 </div>
 <p>Now let’s repeat the previous k-means clustering, but with the original features (not normalized).</p>
@@ -1653,7 +1642,7 @@ S = \frac{1}{n} \sum_{i=1}^{n} s(i)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7fca55fcddeea422e5c4600b9a6e254547612b100223241de6e4a96fb76dc513.png" src="_images/7fca55fcddeea422e5c4600b9a6e254547612b100223241de6e4a96fb76dc513.png" />
+<img alt="_images/e4fcddae460e9a2e4a28cbf468199a9b389038debb6e44b45ec723241a313db4.png" src="_images/e4fcddae460e9a2e4a28cbf468199a9b389038debb6e44b45ec723241a313db4.png" />
 </div>
 </div>
 <p>The clusters are only in acoustic impedance since the differences in porosity on not significant due to the much larger range for the acoustic impedance feature.</p>
@@ -1662,7 +1651,7 @@ S = \frac{1}{n} \sum_{i=1}^{n} s(i)
 </ul>
 </section>
 <section id="practice-on-a-new-dataset">
-<h2>Practice on a New Dataset<a class="headerlink" href="#practice-on-a-new-dataset" title="Link to this heading">#</a></h2>
+<h2>Practice on a New Dataset<a class="headerlink" href="#practice-on-a-new-dataset" title="Permalink to this heading">#</a></h2>
 <p>Ok, time to get to work. Let’s load up a dataset and perform cluster analysis with,</p>
 <ul class="simple">
 <li><p>compact code</p></li>
@@ -1671,7 +1660,7 @@ S = \frac{1}{n} \sum_{i=1}^{n} s(i)
 </ul>
 <p>You can select any of these datasets or modify the code and add your own to do this.</p>
 <section id="dataset-0-unconventional-multivariate-v4">
-<h3>Dataset 0, Unconventional Multivariate v4<a class="headerlink" href="#dataset-0-unconventional-multivariate-v4" title="Link to this heading">#</a></h3>
+<h3>Dataset 0, Unconventional Multivariate v4<a class="headerlink" href="#dataset-0-unconventional-multivariate-v4" title="Permalink to this heading">#</a></h3>
 <p>Let’s load the provided multivariate, dataset <a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets/blob/master/unconv_MV_v4.csv">unconv_MV.csv</a>. This dataset has variables from 1,000 unconventional wells including:</p>
 <ul class="simple">
 <li><p>well average porosity</p></li>
@@ -1684,7 +1673,7 @@ S = \frac{1}{n} \sum_{i=1}^{n} s(i)
 </ul>
 </section>
 <section id="dataset-1-twelve-12">
-<h3>Dataset 1, Twelve, 12<a class="headerlink" href="#dataset-1-twelve-12" title="Link to this heading">#</a></h3>
+<h3>Dataset 1, Twelve, 12<a class="headerlink" href="#dataset-1-twelve-12" title="Permalink to this heading">#</a></h3>
 <p>Let’s load the provided multivariate, 2D spatial dataset <a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets/blob/master/12_sample_data.csv">12_sample_data.csv</a>. This dataset has variables from 480 unconventional wells including:</p>
 <ul class="simple">
 <li><p>X (m), Y (m) location coordinates</p></li>
@@ -1695,7 +1684,7 @@ S = \frac{1}{n} \sum_{i=1}^{n} s(i)
 </ul>
 </section>
 <section id="dataset-2-reservoir-21">
-<h3>Dataset 2, Reservoir 21<a class="headerlink" href="#dataset-2-reservoir-21" title="Link to this heading">#</a></h3>
+<h3>Dataset 2, Reservoir 21<a class="headerlink" href="#dataset-2-reservoir-21" title="Permalink to this heading">#</a></h3>
 <p>Let’s load the provided multivariate, 3D spatial dataset <a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets/blob/master/res21_wells.csv">res21_wells.csv</a>. This dataset has variables from 73 vertical wells over a 10,000m x 10,000m x 50 m reservoir unit:</p>
 <ul class="simple">
 <li><p>well (ID)</p></li>
@@ -1926,7 +1915,7 @@ S = \frac{1}{n} \sum_{i=1}^{n} s(i)
 </div>
 </section>
 <section id="perform-cluster-analysis">
-<h3>Perform Cluster Analysis<a class="headerlink" href="#perform-cluster-analysis" title="Link to this heading">#</a></h3>
+<h3>Perform Cluster Analysis<a class="headerlink" href="#perform-cluster-analysis" title="Permalink to this heading">#</a></h3>
 <p>Now calculate the silhouette plot to calculate a good number of categories and perform K-means clustering with that ‘K’.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1956,12 +1945,12 @@ S = \frac{1}{n} \sum_{i=1}^{n} s(i)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/560c67747161099bbf88bc2144b7e84bf106919eed6b54a1c6650451fe0c92b1.png" src="_images/560c67747161099bbf88bc2144b7e84bf106919eed6b54a1c6650451fe0c92b1.png" />
+<img alt="_images/0a1ffbd9465edbd37a21e4a5c76af7b2e863639a218bb6dd8f81c3c7fc0824db.png" src="_images/0a1ffbd9465edbd37a21e4a5c76af7b2e863639a218bb6dd8f81c3c7fc0824db.png" />
 </div>
 </div>
 </section>
 <section id="visualize-the-clusters">
-<h3>Visualize the Clusters<a class="headerlink" href="#visualize-the-clusters" title="Link to this heading">#</a></h3>
+<h3>Visualize the Clusters<a class="headerlink" href="#visualize-the-clusters" title="Permalink to this heading">#</a></h3>
 <p>Now let’s visualize the clusters with a matrix scatter plot.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1971,12 +1960,12 @@ S = \frac{1}{n} \sum_{i=1}^{n} s(i)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/dae498286379b00b213db93a94e3ca0c971c1b530b422b5116019f33901bf852.png" src="_images/dae498286379b00b213db93a94e3ca0c971c1b530b422b5116019f33901bf852.png" />
+<img alt="_images/e994277777d8dfb7eb5faf49d97b1186211bfda69185ac313704f3d2f7d2b8ae.png" src="_images/e994277777d8dfb7eb5faf49d97b1186211bfda69185ac313704f3d2f7d2b8ae.png" />
 </div>
 </div>
 </section>
 <section id="save-the-clusters">
-<h3>Save the Clusters<a class="headerlink" href="#save-the-clusters" title="Link to this heading">#</a></h3>
+<h3>Save the Clusters<a class="headerlink" href="#save-the-clusters" title="Permalink to this heading">#</a></h3>
 <p>Now we can choose to write out the DataFrame with the clusters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1994,13 +1983,13 @@ S = \frac{1}{n} \sum_{i=1}^{n} s(i)
 </section>
 </section>
 <section id="comments">
-<h2>Comments<a class="headerlink" href="#comments" title="Link to this heading">#</a></h2>
+<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
 <p>This was a basic treatment of cluster analysis. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
 <section id="about-the-author">
-<h2>About the Author<a class="headerlink" href="#about-the-author" title="Link to this heading">#</a></h2>
+<h2>About the Author<a class="headerlink" href="#about-the-author" title="Permalink to this heading">#</a></h2>
 <figure style="text-align: center;">
   <img src="_static/intro/michael_pyrcz_officeshot_jacket.jpg" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
@@ -2011,11 +2000,11 @@ S = \frac{1}{n} \sum_{i=1}^{n} s(i)
 <li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference internal" href="#www.michaelpyrcz.com"><span class="xref myst">Website</span></a>.</p>
+<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
 </section>
 <section id="want-to-work-together">
-<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Link to this heading">#</a></h2>
+<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
 <p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
@@ -2025,7 +2014,7 @@ S = \frac{1}{n} \sum_{i=1}^{n} s(i)
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -2056,7 +2045,7 @@ S = \frac{1}{n} \sum_{i=1}^{n} s(i)
               
               
               
-                <footer class="prev-next-footer d-print-none">
+                <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -2085,7 +2074,6 @@ S = \frac{1}{n} \sum_{i=1}^{n} s(i)
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -2180,8 +2168,8 @@ By Michael J. Pyrcz
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>

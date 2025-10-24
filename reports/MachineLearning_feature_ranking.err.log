@@ -1,0 +1,279 @@
+Traceback (most recent call last):
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\nbclient\client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\jupyter_core\utils\__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\asyncio\base_events.py", line 608, in run_until_complete
+    return future.result()
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\nbclient\client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\nbclient\client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\nbclient\client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+idata = 0
+if idata == 0:
+    df = pd.read_csv('https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/unconv_MV_v4.csv') # load data from Dr. Pyrcz's GitHub repository  
+    
+    response = 'Prod'                                             # specify the response feature
+    x = df.copy(deep = True); x = x.drop(['Well',response],axis='columns') # make predictor and response DataFrames
+    Y = df.loc[:,response]
+    
+    features = x.columns.values.tolist() + [Y.name]               # store the names of the features
+    pred = x.columns.values.tolist()
+    resp = Y.name
+    
+    xmin = [6.0,0.0,1.0,10.0,0.0,0.9]; xmax = [24.0,10.0,5.0,85.0,2.2,2.9] # set the minimum and maximum values for plotting
+    Ymin = 500.0; Ymax = 9000.0
+    
+    predlabel = ['Porosity (%)','Permeability (mD)','Acoustic Impedance (kg/m2s*10^6)','Brittleness Ratio (%)', # set the names for plotting
+                 'Total Organic Carbon (%)','Vitrinite Reflectance (%)']
+    resplabel = 'Normalized Initial Production (MCFPD)'
+    
+    predtitle = ['Porosity','Permeability','Acoustic Impedance','Brittleness Ratio', # set the units for plotting
+                 'Total Organic Carbon','Vitrinite Reflectance']
+    resptitle = 'Normalized Initial Production'
+    
+    featurelabel = predlabel + [resplabel]                        # make feature labels and titles for concise code
+    featuretitle = predtitle + [resptitle]
+    
+    m = len(pred) + 1
+    mpred = len(pred)
+    
+# elif idata == 1:
+#     names = {'Porosity':'Por'}
+    
+#     df = pd.read_csv('https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/12_sample_data.csv') # load data from Dr. Pyrcz's GitHub repository  
+#     df = df.rename(columns=names)
+#     df['Por'] = df['Por'] * 100.0; df['AI'] = df['AI'] / 1000.0; 
+#     df.drop('Unnamed: 0',axis=1,inplace=True) 
+    
+#     features = df.columns.values.tolist()                          # store the names of the features
+
+#     xmin = [0.0,0.0,0.0,4.0,0.0,6.5,1.4,1600.0,10.0,1300.0,1.6]; xmax = [10000.0,10000.0,1.0,19.0,500.0,8.3,3.6,6200.0,50.0,2000.0,12.0] # set the minimum and maximum values for plotting
+    
+#     flabel = ['Well (ID)','X (m)','Y (m)','Depth (m)','Porosity (fraction)','Permeability (mD)','Acoustic Impedance (kg/m2s*10^6)','Facies (categorical)',
+#               'Density (g/cm^3)','Compressible velocity (m/s)','Youngs modulus (GPa)', 'Shear velocity (m/s)', 'Shear modulus (GPa)'] # set the names for plotting
+
+#     ftitle = ['Well','X','Y','Depth','Porosity','Permeability','Acoustic Impedance','Facies',
+#               'Density','Compressible velocity','Youngs modulus', 'Shear velocity', 'Shear modulus']
+
+elif idata == 2:  
+    df = pd.read_csv('https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/res21_2D_wells.csv') # load data from Dr. Pyrcz's GitHub repository  
+    
+    response = 'CumulativeOil'                                             # specify the response feature
+    x = df.copy(deep = True); x = x.drop(['Well_ID','X','Y',response],axis='columns') # make predictor and response DataFrames
+    Y = df.loc[:,response]
+    
+    features = x.columns.values.tolist() + [Y.name]               # store the names of the features
+    pred = x.columns.values.tolist()
+    resp = Y.name
+
+    xmin = [1.0,0.0,0.0,4.0,0.0,6.5,1.4,1600.0,10.0,1300.0,1.6]; xmax = [75.0,10000.0,10000.0,19.0,500.0,8.3,3.6,6200.0,50.0,2000.0,12.0] # set the minimum and maximum values for plotting
+    Ymin = 0.0; Ymax = 3000.0
+    
+    predlabel = ['Well (ID)','X (m)','Y (m)','Porosity (fraction)','Permeability (mD)','Acoustic Impedance (kg/m2s*10^6)',
+              'Density (g/cm^3)','Compressible velocity (m/s)','Youngs modulus (GPa)', 'Shear velocity (m/s)', 'Shear modulus (GPa)'] 
+    resplabel = 'Cumulative Production (MSTB)'
+    
+    predtitle = ['Well','X','Y','Porosity','Permeability','Acoustic Impedance',
+              'Density (g/cm^3)','Compressible velocity','Youngs modulus', 'Shear velocity', 'Shear modulus'] 
+    resptitle = 'Cumulative Production'
+    
+    featurelabel = predlabel + [resplabel]                        # make feature labels and titles for concise code
+    featuretitle = predtitle + [resptitle]
+    
+    m = len(pred) + 1
+    mpred = len(pred)
+------------------
+
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mSSLCertVerificationError[0m                  Traceback (most recent call last)
+File [1;32mC:\ProgramData\anaconda3\envs\MachineLearningBook\lib\urllib\request.py:1317[0m, in [0;36mAbstractHTTPHandler.do_open[1;34m(self, http_class, req, **http_conn_args)[0m
+[0;32m   1316[0m [38;5;28;01mtry[39;00m:
+[1;32m-> 1317[0m     [43mh[49m[38;5;241;43m.[39;49m[43mrequest[49m[43m([49m[43mreq[49m[38;5;241;43m.[39;49m[43mget_method[49m[43m([49m[43m)[49m[43m,[49m[43m [49m[43mreq[49m[38;5;241;43m.[39;49m[43mselector[49m[43m,[49m[43m [49m[43mreq[49m[38;5;241;43m.[39;49m[43mdata[49m[43m,[49m[43m [49m[43mheaders[49m[43m,[49m
+[0;32m   1318[0m [43m              [49m[43mencode_chunked[49m[38;5;241;43m=[39;49m[43mreq[49m[38;5;241;43m.[39;49m[43mhas_header[49m[43m([49m[38;5;124;43m'[39;49m[38;5;124;43mTransfer-encoding[39;49m[38;5;124;43m'[39;49m[43m)[49m[43m)[49m
+[0;32m   1319[0m [38;5;28;01mexcept[39;00m [38;5;167;01mOSError[39;00m [38;5;28;01mas[39;00m err: [38;5;66;03m# timeout error[39;00m
+
+File [1;32mC:\ProgramData\anaconda3\envs\MachineLearningBook\lib\http\client.py:1230[0m, in [0;36mHTTPConnection.request[1;34m(self, method, url, body, headers, encode_chunked)[0m
+[0;32m   1229[0m [38;5;250m[39m[38;5;124;03m"""Send a complete request to the server."""[39;00m
+[1;32m-> 1230[0m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_send_request[49m[43m([49m[43mmethod[49m[43m,[49m[43m [49m[43murl[49m[43m,[49m[43m [49m[43mbody[49m[43m,[49m[43m [49m[43mheaders[49m[43m,[49m[43m [49m[43mencode_chunked[49m[43m)[49m
+
+File [1;32mC:\ProgramData\anaconda3\envs\MachineLearningBook\lib\http\client.py:1276[0m, in [0;36mHTTPConnection._send_request[1;34m(self, method, url, body, headers, encode_chunked)[0m
+[0;32m   1275[0m     body [38;5;241m=[39m _encode(body, [38;5;124m'[39m[38;5;124mbody[39m[38;5;124m'[39m)
+[1;32m-> 1276[0m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mendheaders[49m[43m([49m[43mbody[49m[43m,[49m[43m [49m[43mencode_chunked[49m[38;5;241;43m=[39;49m[43mencode_chunked[49m[43m)[49m
+
+File [1;32mC:\ProgramData\anaconda3\envs\MachineLearningBook\lib\http\client.py:1225[0m, in [0;36mHTTPConnection.endheaders[1;34m(self, message_body, encode_chunked)[0m
+[0;32m   1224[0m     [38;5;28;01mraise[39;00m CannotSendHeader()
+[1;32m-> 1225[0m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_send_output[49m[43m([49m[43mmessage_body[49m[43m,[49m[43m [49m[43mencode_chunked[49m[38;5;241;43m=[39;49m[43mencode_chunked[49m[43m)[49m
+
+File [1;32mC:\ProgramData\anaconda3\envs\MachineLearningBook\lib\http\client.py:1004[0m, in [0;36mHTTPConnection._send_output[1;34m(self, message_body, encode_chunked)[0m
+[0;32m   1003[0m [38;5;28;01mdel[39;00m [38;5;28mself[39m[38;5;241m.[39m_buffer[:]
+[1;32m-> 1004[0m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43msend[49m[43m([49m[43mmsg[49m[43m)[49m
+[0;32m   1006[0m [38;5;28;01mif[39;00m message_body [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[0;32m   1007[0m 
+[0;32m   1008[0m     [38;5;66;03m# create a consistent interface to message_body[39;00m
+
+File [1;32mC:\ProgramData\anaconda3\envs\MachineLearningBook\lib\http\client.py:944[0m, in [0;36mHTTPConnection.send[1;34m(self, data)[0m
+[0;32m    943[0m [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39mauto_open:
+[1;32m--> 944[0m     [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mconnect[49m[43m([49m[43m)[49m
+[0;32m    945[0m [38;5;28;01melse[39;00m:
+
+File [1;32mC:\ProgramData\anaconda3\envs\MachineLearningBook\lib\http\client.py:1399[0m, in [0;36mHTTPSConnection.connect[1;34m(self)[0m
+[0;32m   1397[0m     server_hostname [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mhost
+[1;32m-> 1399[0m [38;5;28mself[39m[38;5;241m.[39msock [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_context[49m[38;5;241;43m.[39;49m[43mwrap_socket[49m[43m([49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43msock[49m[43m,[49m
+[0;32m   1400[0m [43m                                      [49m[43mserver_hostname[49m[38;5;241;43m=[39;49m[43mserver_hostname[49m[43m)[49m
+
+File [1;32mC:\ProgramData\anaconda3\envs\MachineLearningBook\lib\ssl.py:500[0m, in [0;36mSSLContext.wrap_socket[1;34m(self, sock, server_side, do_handshake_on_connect, suppress_ragged_eofs, server_hostname, session)[0m
+[0;32m    494[0m [38;5;28;01mdef[39;00m [38;5;21mwrap_socket[39m([38;5;28mself[39m, sock, server_side[38;5;241m=[39m[38;5;28;01mFalse[39;00m,
+[0;32m    495[0m                 do_handshake_on_connect[38;5;241m=[39m[38;5;28;01mTrue[39;00m,
+[0;32m    496[0m                 suppress_ragged_eofs[38;5;241m=[39m[38;5;28;01mTrue[39;00m,
+[0;32m    497[0m                 server_hostname[38;5;241m=[39m[38;5;28;01mNone[39;00m, session[38;5;241m=[39m[38;5;28;01mNone[39;00m):
+[0;32m    498[0m     [38;5;66;03m# SSLSocket class handles server_hostname encoding before it calls[39;00m
+[0;32m    499[0m     [38;5;66;03m# ctx._wrap_socket()[39;00m
+[1;32m--> 500[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43msslsocket_class[49m[38;5;241;43m.[39;49m[43m_create[49m[43m([49m
+[0;32m    501[0m [43m        [49m[43msock[49m[38;5;241;43m=[39;49m[43msock[49m[43m,[49m
+[0;32m    502[0m [43m        [49m[43mserver_side[49m[38;5;241;43m=[39;49m[43mserver_side[49m[43m,[49m
+[0;32m    503[0m [43m        [49m[43mdo_handshake_on_connect[49m[38;5;241;43m=[39;49m[43mdo_handshake_on_connect[49m[43m,[49m
+[0;32m    504[0m [43m        [49m[43msuppress_ragged_eofs[49m[38;5;241;43m=[39;49m[43msuppress_ragged_eofs[49m[43m,[49m
+[0;32m    505[0m [43m        [49m[43mserver_hostname[49m[38;5;241;43m=[39;49m[43mserver_hostname[49m[43m,[49m
+[0;32m    506[0m [43m        [49m[43mcontext[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[43m,[49m
+[0;32m    507[0m [43m        [49m[43msession[49m[38;5;241;43m=[39;49m[43msession[49m
+[0;32m    508[0m [43m    [49m[43m)[49m
+
+File [1;32mC:\ProgramData\anaconda3\envs\MachineLearningBook\lib\ssl.py:1040[0m, in [0;36mSSLSocket._create[1;34m(cls, sock, server_side, do_handshake_on_connect, suppress_ragged_eofs, server_hostname, context, session)[0m
+[0;32m   1039[0m             [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m([38;5;124m"[39m[38;5;124mdo_handshake_on_connect should not be specified for non-blocking sockets[39m[38;5;124m"[39m)
+[1;32m-> 1040[0m         [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mdo_handshake[49m[43m([49m[43m)[49m
+[0;32m   1041[0m [38;5;28;01mexcept[39;00m ([38;5;167;01mOSError[39;00m, [38;5;167;01mValueError[39;00m):
+
+File [1;32mC:\ProgramData\anaconda3\envs\MachineLearningBook\lib\ssl.py:1309[0m, in [0;36mSSLSocket.do_handshake[1;34m(self, block)[0m
+[0;32m   1308[0m         [38;5;28mself[39m[38;5;241m.[39msettimeout([38;5;28;01mNone[39;00m)
+[1;32m-> 1309[0m     [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_sslobj[49m[38;5;241;43m.[39;49m[43mdo_handshake[49m[43m([49m[43m)[49m
+[0;32m   1310[0m [38;5;28;01mfinally[39;00m:
+
+[1;31mSSLCertVerificationError[0m: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108)
+
+During handling of the above exception, another exception occurred:
+
+[1;31mURLError[0m                                  Traceback (most recent call last)
+Cell [1;32mIn[7], line 3[0m
+[0;32m      1[0m idata [38;5;241m=[39m [38;5;241m0[39m
+[0;32m      2[0m [38;5;28;01mif[39;00m idata [38;5;241m==[39m [38;5;241m0[39m:
+[1;32m----> 3[0m     df [38;5;241m=[39m [43mpd[49m[38;5;241;43m.[39;49m[43mread_csv[49m[43m([49m[38;5;124;43m'[39;49m[38;5;124;43mhttps://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/unconv_MV_v4.csv[39;49m[38;5;124;43m'[39;49m[43m)[49m [38;5;66;03m# load data from Dr. Pyrcz's GitHub repository  [39;00m
+[0;32m      5[0m     response [38;5;241m=[39m [38;5;124m'[39m[38;5;124mProd[39m[38;5;124m'[39m                                             [38;5;66;03m# specify the response feature[39;00m
+[0;32m      6[0m     x [38;5;241m=[39m df[38;5;241m.[39mcopy(deep [38;5;241m=[39m [38;5;28;01mTrue[39;00m); x [38;5;241m=[39m x[38;5;241m.[39mdrop([[38;5;124m'[39m[38;5;124mWell[39m[38;5;124m'[39m,response],axis[38;5;241m=[39m[38;5;124m'[39m[38;5;124mcolumns[39m[38;5;124m'[39m) [38;5;66;03m# make predictor and response DataFrames[39;00m
+
+File [1;32mC:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\pandas\io\parsers\readers.py:912[0m, in [0;36mread_csv[1;34m(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)[0m
+[0;32m    899[0m kwds_defaults [38;5;241m=[39m _refine_defaults_read(
+[0;32m    900[0m     dialect,
+[0;32m    901[0m     delimiter,
+[1;32m   (...)[0m
+[0;32m    908[0m     dtype_backend[38;5;241m=[39mdtype_backend,
+[0;32m    909[0m )
+[0;32m    910[0m kwds[38;5;241m.[39mupdate(kwds_defaults)
+[1;32m--> 912[0m [38;5;28;01mreturn[39;00m [43m_read[49m[43m([49m[43mfilepath_or_buffer[49m[43m,[49m[43m [49m[43mkwds[49m[43m)[49m
+
+File [1;32mC:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\pandas\io\parsers\readers.py:577[0m, in [0;36m_read[1;34m(filepath_or_buffer, kwds)[0m
+[0;32m    574[0m _validate_names(kwds[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mnames[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m))
+[0;32m    576[0m [38;5;66;03m# Create the parser.[39;00m
+[1;32m--> 577[0m parser [38;5;241m=[39m [43mTextFileReader[49m[43m([49m[43mfilepath_or_buffer[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwds[49m[43m)[49m
+[0;32m    579[0m [38;5;28;01mif[39;00m chunksize [38;5;129;01mor[39;00m iterator:
+[0;32m    580[0m     [38;5;28;01mreturn[39;00m parser
+
+File [1;32mC:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\pandas\io\parsers\readers.py:1407[0m, in [0;36mTextFileReader.__init__[1;34m(self, f, engine, **kwds)[0m
+[0;32m   1404[0m     [38;5;28mself[39m[38;5;241m.[39moptions[[38;5;124m"[39m[38;5;124mhas_index_names[39m[38;5;124m"[39m] [38;5;241m=[39m kwds[[38;5;124m"[39m[38;5;124mhas_index_names[39m[38;5;124m"[39m]
+[0;32m   1406[0m [38;5;28mself[39m[38;5;241m.[39mhandles: IOHandles [38;5;241m|[39m [38;5;28;01mNone[39;00m [38;5;241m=[39m [38;5;28;01mNone[39;00m
+[1;32m-> 1407[0m [38;5;28mself[39m[38;5;241m.[39m_engine [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_make_engine[49m[43m([49m[43mf[49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mengine[49m[43m)[49m
+
+File [1;32mC:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\pandas\io\parsers\readers.py:1661[0m, in [0;36mTextFileReader._make_engine[1;34m(self, f, engine)[0m
+[0;32m   1659[0m     [38;5;28;01mif[39;00m [38;5;124m"[39m[38;5;124mb[39m[38;5;124m"[39m [38;5;129;01mnot[39;00m [38;5;129;01min[39;00m mode:
+[0;32m   1660[0m         mode [38;5;241m+[39m[38;5;241m=[39m [38;5;124m"[39m[38;5;124mb[39m[38;5;124m"[39m
+[1;32m-> 1661[0m [38;5;28mself[39m[38;5;241m.[39mhandles [38;5;241m=[39m [43mget_handle[49m[43m([49m
+[0;32m   1662[0m [43m    [49m[43mf[49m[43m,[49m
+[0;32m   1663[0m [43m    [49m[43mmode[49m[43m,[49m
+[0;32m   1664[0m [43m    [49m[43mencoding[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43moptions[49m[38;5;241;43m.[39;49m[43mget[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mencoding[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;28;43;01mNone[39;49;00m[43m)[49m[43m,[49m
+[0;32m   1665[0m [43m    [49m[43mcompression[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43moptions[49m[38;5;241;43m.[39;49m[43mget[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mcompression[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;28;43;01mNone[39;49;00m[43m)[49m[43m,[49m
+[0;32m   1666[0m [43m    [49m[43mmemory_map[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43moptions[49m[38;5;241;43m.[39;49m[43mget[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mmemory_map[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;28;43;01mFalse[39;49;00m[43m)[49m[43m,[49m
+[0;32m   1667[0m [43m    [49m[43mis_text[49m[38;5;241;43m=[39;49m[43mis_text[49m[43m,[49m
+[0;32m   1668[0m [43m    [49m[43merrors[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43moptions[49m[38;5;241;43m.[39;49m[43mget[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mencoding_errors[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43mstrict[39;49m[38;5;124;43m"[39;49m[43m)[49m[43m,[49m
+[0;32m   1669[0m [43m    [49m[43mstorage_options[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43moptions[49m[38;5;241;43m.[39;49m[43mget[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mstorage_options[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;28;43;01mNone[39;49;00m[43m)[49m[43m,[49m
+[0;32m   1670[0m [43m[49m[43m)[49m
+[0;32m   1671[0m [38;5;28;01massert[39;00m [38;5;28mself[39m[38;5;241m.[39mhandles [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m
+[0;32m   1672[0m f [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mhandles[38;5;241m.[39mhandle
+
+File [1;32mC:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\pandas\io\common.py:716[0m, in [0;36mget_handle[1;34m(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)[0m
+[0;32m    713[0m     codecs[38;5;241m.[39mlookup_error(errors)
+[0;32m    715[0m [38;5;66;03m# open URLs[39;00m
+[1;32m--> 716[0m ioargs [38;5;241m=[39m [43m_get_filepath_or_buffer[49m[43m([49m
+[0;32m    717[0m [43m    [49m[43mpath_or_buf[49m[43m,[49m
+[0;32m    718[0m [43m    [49m[43mencoding[49m[38;5;241;43m=[39;49m[43mencoding[49m[43m,[49m
+[0;32m    719[0m [43m    [49m[43mcompression[49m[38;5;241;43m=[39;49m[43mcompression[49m[43m,[49m
+[0;32m    720[0m [43m    [49m[43mmode[49m[38;5;241;43m=[39;49m[43mmode[49m[43m,[49m
+[0;32m    721[0m [43m    [49m[43mstorage_options[49m[38;5;241;43m=[39;49m[43mstorage_options[49m[43m,[49m
+[0;32m    722[0m [43m[49m[43m)[49m
+[0;32m    724[0m handle [38;5;241m=[39m ioargs[38;5;241m.[39mfilepath_or_buffer
+[0;32m    725[0m handles: [38;5;28mlist[39m[BaseBuffer]
+
+File [1;32mC:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\pandas\io\common.py:368[0m, in [0;36m_get_filepath_or_buffer[1;34m(filepath_or_buffer, encoding, compression, mode, storage_options)[0m
+[0;32m    366[0m [38;5;66;03m# assuming storage_options is to be interpreted as headers[39;00m
+[0;32m    367[0m req_info [38;5;241m=[39m urllib[38;5;241m.[39mrequest[38;5;241m.[39mRequest(filepath_or_buffer, headers[38;5;241m=[39mstorage_options)
+[1;32m--> 368[0m [38;5;28;01mwith[39;00m [43murlopen[49m[43m([49m[43mreq_info[49m[43m)[49m [38;5;28;01mas[39;00m req:
+[0;32m    369[0m     content_encoding [38;5;241m=[39m req[38;5;241m.[39mheaders[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mContent-Encoding[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m)
+[0;32m    370[0m     [38;5;28;01mif[39;00m content_encoding [38;5;241m==[39m [38;5;124m"[39m[38;5;124mgzip[39m[38;5;124m"[39m:
+[0;32m    371[0m         [38;5;66;03m# Override compression based on Content-Encoding header[39;00m
+
+File [1;32mC:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\pandas\io\common.py:270[0m, in [0;36murlopen[1;34m(*args, **kwargs)[0m
+[0;32m    264[0m [38;5;250m[39m[38;5;124;03m"""[39;00m
+[0;32m    265[0m [38;5;124;03mLazy-import wrapper for stdlib urlopen, as that imports a big chunk of[39;00m
+[0;32m    266[0m [38;5;124;03mthe stdlib.[39;00m
+[0;32m    267[0m [38;5;124;03m"""[39;00m
+[0;32m    268[0m [38;5;28;01mimport[39;00m [38;5;21;01murllib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mrequest[39;00m
+[1;32m--> 270[0m [38;5;28;01mreturn[39;00m [43murllib[49m[38;5;241;43m.[39;49m[43mrequest[49m[38;5;241;43m.[39;49m[43murlopen[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [1;32mC:\ProgramData\anaconda3\envs\MachineLearningBook\lib\urllib\request.py:222[0m, in [0;36murlopen[1;34m(url, data, timeout, cafile, capath, cadefault, context)[0m
+[0;32m    220[0m [38;5;28;01melse[39;00m:
+[0;32m    221[0m     opener [38;5;241m=[39m _opener
+[1;32m--> 222[0m [38;5;28;01mreturn[39;00m [43mopener[49m[38;5;241;43m.[39;49m[43mopen[49m[43m([49m[43murl[49m[43m,[49m[43m [49m[43mdata[49m[43m,[49m[43m [49m[43mtimeout[49m[43m)[49m
+
+File [1;32mC:\ProgramData\anaconda3\envs\MachineLearningBook\lib\urllib\request.py:525[0m, in [0;36mOpenerDirector.open[1;34m(self, fullurl, data, timeout)[0m
+[0;32m    522[0m     req [38;5;241m=[39m meth(req)
+[0;32m    524[0m sys[38;5;241m.[39maudit([38;5;124m'[39m[38;5;124murllib.Request[39m[38;5;124m'[39m, req[38;5;241m.[39mfull_url, req[38;5;241m.[39mdata, req[38;5;241m.[39mheaders, req[38;5;241m.[39mget_method())
+[1;32m--> 525[0m response [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_open[49m[43m([49m[43mreq[49m[43m,[49m[43m [49m[43mdata[49m[43m)[49m
+[0;32m    527[0m [38;5;66;03m# post-process response[39;00m
+[0;32m    528[0m meth_name [38;5;241m=[39m protocol[38;5;241m+[39m[38;5;124m"[39m[38;5;124m_response[39m[38;5;124m"[39m
+
+File [1;32mC:\ProgramData\anaconda3\envs\MachineLearningBook\lib\urllib\request.py:542[0m, in [0;36mOpenerDirector._open[1;34m(self, req, data)[0m
+[0;32m    539[0m     [38;5;28;01mreturn[39;00m result
+[0;32m    541[0m protocol [38;5;241m=[39m req[38;5;241m.[39mtype
+[1;32m--> 542[0m result [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_call_chain[49m[43m([49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mhandle_open[49m[43m,[49m[43m [49m[43mprotocol[49m[43m,[49m[43m [49m[43mprotocol[49m[43m [49m[38;5;241;43m+[39;49m
+[0;32m    543[0m [43m                          [49m[38;5;124;43m'[39;49m[38;5;124;43m_open[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[43mreq[49m[43m)[49m
+[0;32m    544[0m [38;5;28;01mif[39;00m result:
+[0;32m    545[0m     [38;5;28;01mreturn[39;00m result
+
+File [1;32mC:\ProgramData\anaconda3\envs\MachineLearningBook\lib\urllib\request.py:502[0m, in [0;36mOpenerDirector._call_chain[1;34m(self, chain, kind, meth_name, *args)[0m
+[0;32m    500[0m [38;5;28;01mfor[39;00m handler [38;5;129;01min[39;00m handlers:
+[0;32m    501[0m     func [38;5;241m=[39m [38;5;28mgetattr[39m(handler, meth_name)
+[1;32m--> 502[0m     result [38;5;241m=[39m [43mfunc[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m)[49m
+[0;32m    503[0m     [38;5;28;01mif[39;00m result [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[0;32m    504[0m         [38;5;28;01mreturn[39;00m result
+
+File [1;32mC:\ProgramData\anaconda3\envs\MachineLearningBook\lib\urllib\request.py:1360[0m, in [0;36mHTTPSHandler.https_open[1;34m(self, req)[0m
+[0;32m   1359[0m [38;5;28;01mdef[39;00m [38;5;21mhttps_open[39m([38;5;28mself[39m, req):
+[1;32m-> 1360[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mdo_open[49m[43m([49m[43mhttp[49m[38;5;241;43m.[39;49m[43mclient[49m[38;5;241;43m.[39;49m[43mHTTPSConnection[49m[43m,[49m[43m [49m[43mreq[49m[43m,[49m
+[0;32m   1361[0m [43m        [49m[43mcontext[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_context[49m[43m,[49m[43m [49m[43mcheck_hostname[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_check_hostname[49m[43m)[49m
+
+File [1;32mC:\ProgramData\anaconda3\envs\MachineLearningBook\lib\urllib\request.py:1320[0m, in [0;36mAbstractHTTPHandler.do_open[1;34m(self, http_class, req, **http_conn_args)[0m
+[0;32m   1317[0m         h[38;5;241m.[39mrequest(req[38;5;241m.[39mget_method(), req[38;5;241m.[39mselector, req[38;5;241m.[39mdata, headers,
+[0;32m   1318[0m                   encode_chunked[38;5;241m=[39mreq[38;5;241m.[39mhas_header([38;5;124m'[39m[38;5;124mTransfer-encoding[39m[38;5;124m'[39m))
+[0;32m   1319[0m     [38;5;28;01mexcept[39;00m [38;5;167;01mOSError[39;00m [38;5;28;01mas[39;00m err: [38;5;66;03m# timeout error[39;00m
+[1;32m-> 1320[0m         [38;5;28;01mraise[39;00m URLError(err)
+[0;32m   1321[0m     r [38;5;241m=[39m h[38;5;241m.[39mgetresponse()
+[0;32m   1322[0m [38;5;28;01mexcept[39;00m:
+
+[1;31mURLError[0m: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1108)>
+

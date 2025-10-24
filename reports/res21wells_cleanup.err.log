@@ -1,0 +1,102 @@
+Traceback (most recent call last):
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\nbclient\client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\jupyter_core\utils\__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\asyncio\base_events.py", line 608, in run_until_complete
+    return future.result()
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\nbclient\client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\nbclient\client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\nbclient\client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+df_2D_merge_missing2.to_csv(r'C:\Local\res21_2D_well.csv', index=False)
+------------------
+
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mOSError[0m                                   Traceback (most recent call last)
+Cell [1;32mIn[10], line 1[0m
+[1;32m----> 1[0m [43mdf_2D_merge_missing2[49m[38;5;241;43m.[39;49m[43mto_csv[49m[43m([49m[38;5;124;43mr[39;49m[38;5;124;43m'[39;49m[38;5;124;43mC:[39;49m[38;5;124;43m\[39;49m[38;5;124;43mLocal[39;49m[38;5;124;43m\[39;49m[38;5;124;43mres21_2D_well.csv[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[43mindex[49m[38;5;241;43m=[39;49m[38;5;28;43;01mFalse[39;49;00m[43m)[49m
+
+File [1;32mC:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\pandas\core\generic.py:3772[0m, in [0;36mNDFrame.to_csv[1;34m(self, path_or_buf, sep, na_rep, float_format, columns, header, index, index_label, mode, encoding, compression, quoting, quotechar, lineterminator, chunksize, date_format, doublequote, escapechar, decimal, errors, storage_options)[0m
+[0;32m   3761[0m df [38;5;241m=[39m [38;5;28mself[39m [38;5;28;01mif[39;00m [38;5;28misinstance[39m([38;5;28mself[39m, ABCDataFrame) [38;5;28;01melse[39;00m [38;5;28mself[39m[38;5;241m.[39mto_frame()
+[0;32m   3763[0m formatter [38;5;241m=[39m DataFrameFormatter(
+[0;32m   3764[0m     frame[38;5;241m=[39mdf,
+[0;32m   3765[0m     header[38;5;241m=[39mheader,
+[1;32m   (...)[0m
+[0;32m   3769[0m     decimal[38;5;241m=[39mdecimal,
+[0;32m   3770[0m )
+[1;32m-> 3772[0m [38;5;28;01mreturn[39;00m [43mDataFrameRenderer[49m[43m([49m[43mformatter[49m[43m)[49m[38;5;241;43m.[39;49m[43mto_csv[49m[43m([49m
+[0;32m   3773[0m [43m    [49m[43mpath_or_buf[49m[43m,[49m
+[0;32m   3774[0m [43m    [49m[43mlineterminator[49m[38;5;241;43m=[39;49m[43mlineterminator[49m[43m,[49m
+[0;32m   3775[0m [43m    [49m[43msep[49m[38;5;241;43m=[39;49m[43msep[49m[43m,[49m
+[0;32m   3776[0m [43m    [49m[43mencoding[49m[38;5;241;43m=[39;49m[43mencoding[49m[43m,[49m
+[0;32m   3777[0m [43m    [49m[43merrors[49m[38;5;241;43m=[39;49m[43merrors[49m[43m,[49m
+[0;32m   3778[0m [43m    [49m[43mcompression[49m[38;5;241;43m=[39;49m[43mcompression[49m[43m,[49m
+[0;32m   3779[0m [43m    [49m[43mquoting[49m[38;5;241;43m=[39;49m[43mquoting[49m[43m,[49m
+[0;32m   3780[0m [43m    [49m[43mcolumns[49m[38;5;241;43m=[39;49m[43mcolumns[49m[43m,[49m
+[0;32m   3781[0m [43m    [49m[43mindex_label[49m[38;5;241;43m=[39;49m[43mindex_label[49m[43m,[49m
+[0;32m   3782[0m [43m    [49m[43mmode[49m[38;5;241;43m=[39;49m[43mmode[49m[43m,[49m
+[0;32m   3783[0m [43m    [49m[43mchunksize[49m[38;5;241;43m=[39;49m[43mchunksize[49m[43m,[49m
+[0;32m   3784[0m [43m    [49m[43mquotechar[49m[38;5;241;43m=[39;49m[43mquotechar[49m[43m,[49m
+[0;32m   3785[0m [43m    [49m[43mdate_format[49m[38;5;241;43m=[39;49m[43mdate_format[49m[43m,[49m
+[0;32m   3786[0m [43m    [49m[43mdoublequote[49m[38;5;241;43m=[39;49m[43mdoublequote[49m[43m,[49m
+[0;32m   3787[0m [43m    [49m[43mescapechar[49m[38;5;241;43m=[39;49m[43mescapechar[49m[43m,[49m
+[0;32m   3788[0m [43m    [49m[43mstorage_options[49m[38;5;241;43m=[39;49m[43mstorage_options[49m[43m,[49m
+[0;32m   3789[0m [43m[49m[43m)[49m
+
+File [1;32mC:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\pandas\io\formats\format.py:1186[0m, in [0;36mDataFrameRenderer.to_csv[1;34m(self, path_or_buf, encoding, sep, columns, index_label, mode, compression, quoting, quotechar, lineterminator, chunksize, date_format, doublequote, escapechar, errors, storage_options)[0m
+[0;32m   1165[0m     created_buffer [38;5;241m=[39m [38;5;28;01mFalse[39;00m
+[0;32m   1167[0m csv_formatter [38;5;241m=[39m CSVFormatter(
+[0;32m   1168[0m     path_or_buf[38;5;241m=[39mpath_or_buf,
+[0;32m   1169[0m     lineterminator[38;5;241m=[39mlineterminator,
+[1;32m   (...)[0m
+[0;32m   1184[0m     formatter[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39mfmt,
+[0;32m   1185[0m )
+[1;32m-> 1186[0m [43mcsv_formatter[49m[38;5;241;43m.[39;49m[43msave[49m[43m([49m[43m)[49m
+[0;32m   1188[0m [38;5;28;01mif[39;00m created_buffer:
+[0;32m   1189[0m     [38;5;28;01massert[39;00m [38;5;28misinstance[39m(path_or_buf, StringIO)
+
+File [1;32mC:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\pandas\io\formats\csvs.py:240[0m, in [0;36mCSVFormatter.save[1;34m(self)[0m
+[0;32m    236[0m [38;5;250m[39m[38;5;124;03m"""[39;00m
+[0;32m    237[0m [38;5;124;03mCreate the writer & save.[39;00m
+[0;32m    238[0m [38;5;124;03m"""[39;00m
+[0;32m    239[0m [38;5;66;03m# apply compression and byte/text conversion[39;00m
+[1;32m--> 240[0m [38;5;28;01mwith[39;00m [43mget_handle[49m[43m([49m
+[0;32m    241[0m [43m    [49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mfilepath_or_buffer[49m[43m,[49m
+[0;32m    242[0m [43m    [49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mmode[49m[43m,[49m
+[0;32m    243[0m [43m    [49m[43mencoding[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mencoding[49m[43m,[49m
+[0;32m    244[0m [43m    [49m[43merrors[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43merrors[49m[43m,[49m
+[0;32m    245[0m [43m    [49m[43mcompression[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mcompression[49m[43m,[49m
+[0;32m    246[0m [43m    [49m[43mstorage_options[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mstorage_options[49m[43m,[49m
+[0;32m    247[0m [43m[49m[43m)[49m [38;5;28;01mas[39;00m handles:
+[0;32m    248[0m     [38;5;66;03m# Note: self.encoding is irrelevant here[39;00m
+[0;32m    249[0m     [38;5;28mself[39m[38;5;241m.[39mwriter [38;5;241m=[39m csvlib[38;5;241m.[39mwriter(
+[0;32m    250[0m         handles[38;5;241m.[39mhandle,
+[0;32m    251[0m         lineterminator[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39mlineterminator,
+[1;32m   (...)[0m
+[0;32m    256[0m         quotechar[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39mquotechar,
+[0;32m    257[0m     )
+[0;32m    259[0m     [38;5;28mself[39m[38;5;241m.[39m_save()
+
+File [1;32mC:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\pandas\io\common.py:737[0m, in [0;36mget_handle[1;34m(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)[0m
+[0;32m    735[0m [38;5;66;03m# Only for write methods[39;00m
+[0;32m    736[0m [38;5;28;01mif[39;00m [38;5;124m"[39m[38;5;124mr[39m[38;5;124m"[39m [38;5;129;01mnot[39;00m [38;5;129;01min[39;00m mode [38;5;129;01mand[39;00m is_path:
+[1;32m--> 737[0m     [43mcheck_parent_directory[49m[43m([49m[38;5;28;43mstr[39;49m[43m([49m[43mhandle[49m[43m)[49m[43m)[49m
+[0;32m    739[0m [38;5;28;01mif[39;00m compression:
+[0;32m    740[0m     [38;5;28;01mif[39;00m compression [38;5;241m!=[39m [38;5;124m"[39m[38;5;124mzstd[39m[38;5;124m"[39m:
+[0;32m    741[0m         [38;5;66;03m# compression libraries do not like an explicit text-mode[39;00m
+
+File [1;32mC:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\pandas\io\common.py:600[0m, in [0;36mcheck_parent_directory[1;34m(path)[0m
+[0;32m    598[0m parent [38;5;241m=[39m Path(path)[38;5;241m.[39mparent
+[0;32m    599[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m parent[38;5;241m.[39mis_dir():
+[1;32m--> 600[0m     [38;5;28;01mraise[39;00m [38;5;167;01mOSError[39;00m([38;5;124mrf[39m[38;5;124m"[39m[38;5;124mCannot save file into a non-existent directory: [39m[38;5;124m'[39m[38;5;132;01m{[39;00mparent[38;5;132;01m}[39;00m[38;5;124m'[39m[38;5;124m"[39m)
+
+[1;31mOSError[0m: Cannot save file into a non-existent directory: 'C:\Local'
+

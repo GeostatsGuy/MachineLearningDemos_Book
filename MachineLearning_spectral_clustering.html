@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Spectral Clustering &#8212; Applied Machine Learning in Python</title>
   
@@ -14,51 +15,55 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=304429a7" />
-    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=564be945" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'MachineLearning_spectral_clustering';</script>
@@ -75,23 +80,28 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
+
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -113,20 +123,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -142,8 +144,6 @@
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
-  
-    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -162,18 +162,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -238,7 +227,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -247,14 +236,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -379,10 +368,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -390,14 +379,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -448,15 +437,15 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <figure style="text-align: center;">
   <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
 </figure>
 <section id="spectral-clustering">
-<h1>Spectral Clustering<a class="headerlink" href="#spectral-clustering" title="Link to this heading">#</a></h1>
+<h1>Spectral Clustering<a class="headerlink" href="#spectral-clustering" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite this e-Book as:</p>
@@ -475,11 +464,11 @@ document.write(`
 <li><p><a class="reference external" href="https://youtu.be/zOUM_AnI1DQ?si=wzWdJ35qJ9n8O6Bl">Introduction to Machine Learning</a></p></li>
 <li><p><a class="reference external" href="https://youtu.be/oFE10cLl0Fs?si=AwmYnrYggtYWGV2n">Cluster Analysis</a></p></li>
 <li><p><a class="reference external" href="https://youtu.be/ysJw8M_J40I?si=EIlg2941QrfAt7zE">Issues with k-Means Clustering</a></p></li>
-<li><p><a class="reference external" href="https://www.youtube.com/watch?v=3GaLe8HaDMc&amp;amp;list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;amp;index=15">Density-based Clustering</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=3GaLe8HaDMc&amp;list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;index=15">Density-based Clustering</a></p></li>
 <li><p>Spectral Clustering - I will get this recorded and updated ASAP.</p></li>
 </ul>
 <section id="motivation-for-spectral-cluster-analysis">
-<h2>Motivation for Spectral Cluster Analysis<a class="headerlink" href="#motivation-for-spectral-cluster-analysis" title="Link to this heading">#</a></h2>
+<h2>Motivation for Spectral Cluster Analysis<a class="headerlink" href="#motivation-for-spectral-cluster-analysis" title="Permalink to this heading">#</a></h2>
 <p>We need to learn and segment distinct populations to improve our prediction models.</p>
 <ul class="simple">
 <li><p>Mixing distinct populations to train prediction models often reduces model accuracy.</p></li>
@@ -490,7 +479,7 @@ document.write(`
 <p>Here’s a simple workflow demonstrating spectral clustering (for automated category assignment). This should help you get started with inferential methods to find patterns in your subsurface data sets.</p>
 </section>
 <section id="clustering-methods-covered">
-<h2>Clustering Methods Covered<a class="headerlink" href="#clustering-methods-covered" title="Link to this heading">#</a></h2>
+<h2>Clustering Methods Covered<a class="headerlink" href="#clustering-methods-covered" title="Permalink to this heading">#</a></h2>
 <p>I cover the following clustering methods,</p>
 <ul class="simple">
 <li><p><strong>k-Means clustering</strong> as a centroid-based clustering method with predetermined number of clusters</p></li>
@@ -500,7 +489,7 @@ document.write(`
 <p>Let’s cover essential prerequisites before we get started with spectral cluster analysis. Let’s start with the concept of inferential machine learning and then briefly discuss k-means clustering for comparison to spectral clustering.</p>
 </section>
 <section id="inferential-machine-learning">
-<h2>Inferential Machine Learning<a class="headerlink" href="#inferential-machine-learning" title="Link to this heading">#</a></h2>
+<h2>Inferential Machine Learning<a class="headerlink" href="#inferential-machine-learning" title="Permalink to this heading">#</a></h2>
 <p>There are no response features, <span class="math notranslate nohighlight">\(y\)</span>, just predictor features,</p>
 <div class="math notranslate nohighlight">
 \[
@@ -513,7 +502,7 @@ document.write(`
 </ul>
 </section>
 <section id="k-means-clustering">
-<h2>k-Means Clustering<a class="headerlink" href="#k-means-clustering" title="Link to this heading">#</a></h2>
+<h2>k-Means Clustering<a class="headerlink" href="#k-means-clustering" title="Permalink to this heading">#</a></h2>
 <p>The K-means clustering approach is primarily applied as an unsupervised machine learning method for clustering, group assignment to unlabeled data, where dissimilarity within clustered groups is mini minimized. The loss function that is minimized is:</p>
 <div class="math notranslate nohighlight">
 \[ 
@@ -533,7 +522,7 @@ J = \sum^k_{i=1} \sum_{\alpha \in C_i} || X_{\alpha} - \mu_i ||
 </ul>
 </section>
 <section id="assumptions-of-k-means-clustering">
-<h2>Assumptions of k-means Clustering<a class="headerlink" href="#assumptions-of-k-means-clustering" title="Link to this heading">#</a></h2>
+<h2>Assumptions of k-means Clustering<a class="headerlink" href="#assumptions-of-k-means-clustering" title="Permalink to this heading">#</a></h2>
 <p>These are the assumptions that result in significant reduction in flexibility of k-means clustering:</p>
 <ol class="arabic simple">
 <li><p>The clusters are spherical, convex, and isotropic within the predictor feature space.</p></li>
@@ -560,7 +549,7 @@ J = \sum^k_{i=1} \sum_{\alpha \in C_i} || X_{\alpha} - \mu_i ||
 </ul>
 </section>
 <section id="id1">
-<h2>Spectral Clustering<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2>Spectral Clustering<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>Spectral Clustering, utilize the spectrum (eigenvalues) of a matrix that represents the pairwise relationships between the data samples.</p>
 <p>The relationship between the data samples are represented by a graph, here’s some prerequisite graph terminology:</p>
 <figure style="text-align: center;">
@@ -696,7 +685,7 @@ L =
 <p>Let’s load a dataset and try out spectral clustering.</p>
 </section>
 <section id="load-the-required-libraries">
-<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Link to this heading">#</a></h2>
+<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
 <p>The following code loads the required libraries. These should have been installed with Anaconda 3.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -726,7 +715,7 @@ L =
 <p>If you get a package import error, you may have to first install some of these packages. This can usually be accomplished by opening up a command window on Windows and then typing ‘python -m pip install [package-name]’. More assistance is available with the respective package docs.</p>
 </section>
 <section id="set-up-custom-colormaps-for-plotting">
-<h2>Set Up Custom Colormaps for Plotting<a class="headerlink" href="#set-up-custom-colormaps-for-plotting" title="Link to this heading">#</a></h2>
+<h2>Set Up Custom Colormaps for Plotting<a class="headerlink" href="#set-up-custom-colormaps-for-plotting" title="Permalink to this heading">#</a></h2>
 <p>Here we specify custom colormap with discretization for plotting.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -740,7 +729,7 @@ L =
 </div>
 </section>
 <section id="declare-functions">
-<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Link to this heading">#</a></h2>
+<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
 <p>Convenience functions to add commas to numbers and major and minor gridlines to plots.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -757,7 +746,7 @@ L =
 </div>
 </section>
 <section id="set-the-working-directory">
-<h2>Set the Working Directory<a class="headerlink" href="#set-the-working-directory" title="Link to this heading">#</a></h2>
+<h2>Set the Working Directory<a class="headerlink" href="#set-the-working-directory" title="Permalink to this heading">#</a></h2>
 <p>I always like to do this so I don’t lose files and to simplify subsequent read and writes (avoid including the full address each time).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -768,7 +757,7 @@ L =
 </div>
 </section>
 <section id="loading-data">
-<h2>Loading Data<a class="headerlink" href="#loading-data" title="Link to this heading">#</a></h2>
+<h2>Loading Data<a class="headerlink" href="#loading-data" title="Permalink to this heading">#</a></h2>
 <p>Let’s load the provided multivariate, spatial datasets.  It is a comma delimited file with:</p>
 <ul class="simple">
 <li><p>you can select datasets 1-4 below.</p></li>
@@ -899,7 +888,7 @@ L =
 </div>
 </section>
 <section id="summary-statistics-for-tabular-data">
-<h2>Summary Statistics for Tabular Data<a class="headerlink" href="#summary-statistics-for-tabular-data" title="Link to this heading">#</a></h2>
+<h2>Summary Statistics for Tabular Data<a class="headerlink" href="#summary-statistics-for-tabular-data" title="Permalink to this heading">#</a></h2>
 <p>The table includes porosity (fraction) and acoustic impedance (<span class="math notranslate nohighlight">\(\frac{kg}{m^3} \cdot \frac{m}{s} \cdot 10^3\)</span>) that we will work with in the demonstration below.</p>
 <p>There are a lot of efficient methods to calculate summary statistics from tabular data in DataFrames. The describe command provides count, mean, minimum, maximum, and quartiles all in a nice data table. We use transpose just to flip the table so that features are on the rows and the statistics are on the columns.</p>
 <div class="cell docutils container">
@@ -1008,12 +997,12 @@ L =
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/94241e1ea079e044554b34ab239a9364a15a4e0108c372543176b4423f648a65.png" src="_images/94241e1ea079e044554b34ab239a9364a15a4e0108c372543176b4423f648a65.png" />
+<img alt="_images/c4b8e90c46f5544496d52ad9f232bc98e8a5223ce25c3724419509e4d8a3ec9c.png" src="_images/c4b8e90c46f5544496d52ad9f232bc98e8a5223ce25c3724419509e4d8a3ec9c.png" />
 </div>
 </div>
 </section>
 <section id="feature-normalization">
-<h2>Feature Normalization<a class="headerlink" href="#feature-normalization" title="Link to this heading">#</a></h2>
+<h2>Feature Normalization<a class="headerlink" href="#feature-normalization" title="Permalink to this heading">#</a></h2>
 <p>The two considered features are quite incompatible. They have dramatically different:</p>
 <ul class="simple">
 <li><p>magnitudes / averages</p></li>
@@ -1211,12 +1200,12 @@ L =
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b781c116883ad729dfaeec39ce2074079f9151d2fa087026b8136ce43e8810b0.png" src="_images/b781c116883ad729dfaeec39ce2074079f9151d2fa087026b8136ce43e8810b0.png" />
+<img alt="_images/acf5703f2a31373c27f22f9dfe1c826ef93ce18789b5e3f47ed5587755d86f9a.png" src="_images/acf5703f2a31373c27f22f9dfe1c826ef93ce18789b5e3f47ed5587755d86f9a.png" />
 </div>
 </div>
 </section>
 <section id="quick-peek-at-available-labels-for-educational-purposes">
-<h2>Quick Peek at Available Labels for Educational Purposes<a class="headerlink" href="#quick-peek-at-available-labels-for-educational-purposes" title="Link to this heading">#</a></h2>
+<h2>Quick Peek at Available Labels for Educational Purposes<a class="headerlink" href="#quick-peek-at-available-labels-for-educational-purposes" title="Permalink to this heading">#</a></h2>
 <p>I know this is cheating, but to calibrate our eye’s and to check the natural clusters in our dataset, let’s cheat and look at the features scatter plotted colored by the facies labels.</p>
 <ul class="simple">
 <li><p>for this demonstration workflow this is our inaccessible truth model, we are using this as only a teaching tool</p></li>
@@ -1240,12 +1229,12 @@ L =
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1e86a7b7b03788e5ae605d4a1001aaf1e899fba9986a3c2f6581dcf4fdb5a852.png" src="_images/1e86a7b7b03788e5ae605d4a1001aaf1e899fba9986a3c2f6581dcf4fdb5a852.png" />
+<img alt="_images/8be02d8288ec5cac5639f85fe3f99882ec9ab50c9883e51272accce539ab53f8.png" src="_images/8be02d8288ec5cac5639f85fe3f99882ec9ab50c9883e51272accce539ab53f8.png" />
 </div>
 </div>
 </section>
 <section id="visualization-of-training-data">
-<h2>Visualization of Training Data<a class="headerlink" href="#visualization-of-training-data" title="Link to this heading">#</a></h2>
+<h2>Visualization of Training Data<a class="headerlink" href="#visualization-of-training-data" title="Permalink to this heading">#</a></h2>
 <p>In this exercise, we want to use K-means clustering provide facies based on porosity and brittleness features.</p>
 <p>Let’s start by looking at the scatterplot of our training data features, porosity and brittleness.</p>
 <ul class="simple">
@@ -1269,12 +1258,12 @@ L =
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/97f2aac38aa482170be765e34fbcdc51fa1e4fd4d90f750da37d036ede67d631.png" src="_images/97f2aac38aa482170be765e34fbcdc51fa1e4fd4d90f750da37d036ede67d631.png" />
+<img alt="_images/d6d1f0ed5f9c9e518a0670b99b89a3775cc689e6a6479629b897594ee325bc27.png" src="_images/d6d1f0ed5f9c9e518a0670b99b89a3775cc689e6a6479629b897594ee325bc27.png" />
 </div>
 </div>
 </section>
 <section id="calculate-adjacency-degree-and-graph-laplacian-matrices">
-<h2>Calculate Adjacency, Degree and Graph Laplacian Matrices<a class="headerlink" href="#calculate-adjacency-degree-and-graph-laplacian-matrices" title="Link to this heading">#</a></h2>
+<h2>Calculate Adjacency, Degree and Graph Laplacian Matrices<a class="headerlink" href="#calculate-adjacency-degree-and-graph-laplacian-matrices" title="Permalink to this heading">#</a></h2>
 <p>Our first step is to calculate the affinity matrix. While kernel and nearest neighbour approaches are common, these methods only integrate proximity information, this step could include integration of various information sources.</p>
 <ul class="simple">
 <li><p>to demonstrate this here we will assign adjacency by-hand. Let’s specify data samples that are connected.</p></li>
@@ -1301,7 +1290,7 @@ L =
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9a838ff6cd07e05434b84fcc869fd37fe2d483eaf0a3864a466ca831e5fdd044.png" src="_images/9a838ff6cd07e05434b84fcc869fd37fe2d483eaf0a3864a466ca831e5fdd044.png" />
+<img alt="_images/66dade4ca857fd8365f9662e55cc3f1ce0d5a35cbb139bb143854ac9f2c77d3d.png" src="_images/66dade4ca857fd8365f9662e55cc3f1ce0d5a35cbb139bb143854ac9f2c77d3d.png" />
 </div>
 </div>
 <p>Now we specify the connected data pairs by index and build the adjacency, degree and graph Laplacian matrices.</p>
@@ -1378,12 +1367,12 @@ L =
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b031083704b8601483538c0dbe14d2c417abb1f1474b47fc72b55a8e8fb6c0f5.png" src="_images/b031083704b8601483538c0dbe14d2c417abb1f1474b47fc72b55a8e8fb6c0f5.png" />
+<img alt="_images/fdaaeebf599bf85787590f1efc74a462b02a6461821ea3b94577821e97f17c34.png" src="_images/fdaaeebf599bf85787590f1efc74a462b02a6461821ea3b94577821e97f17c34.png" />
 </div>
 </div>
 </section>
 <section id="spectral-clustering-with-custom-adjacency-matrix">
-<h2>Spectral Clustering with Custom Adjacency Matrix<a class="headerlink" href="#spectral-clustering-with-custom-adjacency-matrix" title="Link to this heading">#</a></h2>
+<h2>Spectral Clustering with Custom Adjacency Matrix<a class="headerlink" href="#spectral-clustering-with-custom-adjacency-matrix" title="Permalink to this heading">#</a></h2>
 <p>Now let’s run spectral clustering with our adjacency matrix.</p>
 <ul class="simple">
 <li><p>to do this we set the parameter ‘affinity’ as precomputed and then train on the adjacency matrix instead of the data.</p></li>
@@ -1434,7 +1423,7 @@ L =
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/23976001cf30f15695a20ef1c3efdc6c5892deb5a8ecca7ae95060350be248bc.png" src="_images/23976001cf30f15695a20ef1c3efdc6c5892deb5a8ecca7ae95060350be248bc.png" />
+<img alt="_images/001f2f92cbb8990bace5fde37acc03c9b6881278353fdbf0929638f1d79b1fcd.png" src="_images/001f2f92cbb8990bace5fde37acc03c9b6881278353fdbf0929638f1d79b1fcd.png" />
 </div>
 </div>
 <p>Some observations:</p>
@@ -1496,7 +1485,7 @@ L =
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ab0e8de1a8b0c5900a53c32d34ce1415bddbe04ce545606a3c1107b31bf7706f.png" src="_images/ab0e8de1a8b0c5900a53c32d34ce1415bddbe04ce545606a3c1107b31bf7706f.png" />
+<img alt="_images/b392eaffd64400bd04bb8e50a651c5a08db8bdfbd2751bf354c688c836a5bb0c.png" src="_images/b392eaffd64400bd04bb8e50a651c5a08db8bdfbd2751bf354c688c836a5bb0c.png" />
 </div>
 </div>
 <p>See the added vertices are shown as red bold lines above. Note the shift in the cluster groups across that gap that we connected.</p>
@@ -1506,7 +1495,7 @@ L =
 </ul>
 </section>
 <section id="spectral-clustering-with-affinity-matrix-from-kernel">
-<h2>Spectral Clustering with Affinity Matrix from Kernel<a class="headerlink" href="#spectral-clustering-with-affinity-matrix-from-kernel" title="Link to this heading">#</a></h2>
+<h2>Spectral Clustering with Affinity Matrix from Kernel<a class="headerlink" href="#spectral-clustering-with-affinity-matrix-from-kernel" title="Permalink to this heading">#</a></h2>
 <p>There are a variety of methods to calculate an affinity matrix from the data sample locations in the feature space.</p>
 <ul class="simple">
 <li><p>a common method is to use kernel functions, like a radial basis function (RBF) kernel, parameterized by <span class="math notranslate nohighlight">\(\gamma\)</span>:</p></li>
@@ -1552,7 +1541,7 @@ K(x_i,x_j) = exp \left(- \gamma || x_i - x_j ||^2 \right)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d570c2ad3b2187d63dd145d70b78e3c0e4ba40d2868c3ed9f3b6fe8e83acee80.png" src="_images/d570c2ad3b2187d63dd145d70b78e3c0e4ba40d2868c3ed9f3b6fe8e83acee80.png" />
+<img alt="_images/4ab466d66a474f22326f87525595960bb38698a43b7d9097ff234185b72cfdc6.png" src="_images/4ab466d66a474f22326f87525595960bb38698a43b7d9097ff234185b72cfdc6.png" />
 </div>
 </div>
 <p>Let’s look at the affinity matrix that was calculated by scikit-learn’s SpectralClustering function to achieve this clustering result.</p>
@@ -1569,7 +1558,7 @@ K(x_i,x_j) = exp \left(- \gamma || x_i - x_j ||^2 \right)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/482ea94b94e147fd49a24b1a4b0bb01de590801497df2fe966103bfa5d0e317d.png" src="_images/482ea94b94e147fd49a24b1a4b0bb01de590801497df2fe966103bfa5d0e317d.png" />
+<img alt="_images/a26ea28f26564381944024963e1cfddfdb181e67cb3d201ae5ee0983ae380ed3.png" src="_images/a26ea28f26564381944024963e1cfddfdb181e67cb3d201ae5ee0983ae380ed3.png" />
 </div>
 </div>
 <p>Here’s some general observations:</p>
@@ -1609,7 +1598,7 @@ K(x_i,x_j) = exp \left(- \gamma || x_i - x_j ||^2 \right)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a6424953c1790ac55e445667dda04e321e106ca03eec5f742679c66eaa3bbe47.png" src="_images/a6424953c1790ac55e445667dda04e321e106ca03eec5f742679c66eaa3bbe47.png" />
+<img alt="_images/32f66e1c345a7062dc8136bbfb43b739043b2fd9898edff4eb326237afe87ead.png" src="_images/32f66e1c345a7062dc8136bbfb43b739043b2fd9898edff4eb326237afe87ead.png" />
 </div>
 </div>
 <p>An observation from these spectral cluster group assignments:</p>
@@ -1618,13 +1607,13 @@ K(x_i,x_j) = exp \left(- \gamma || x_i - x_j ||^2 \right)
 </ul>
 </section>
 <section id="comments">
-<h2>Comments<a class="headerlink" href="#comments" title="Link to this heading">#</a></h2>
+<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
 <p>This was a basic treatment of cluster analysis with spectral clustering. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
 <section id="about-the-author">
-<h2>About the Author<a class="headerlink" href="#about-the-author" title="Link to this heading">#</a></h2>
+<h2>About the Author<a class="headerlink" href="#about-the-author" title="Permalink to this heading">#</a></h2>
 <figure style="text-align: center;">
   <img src="_static/intro/michael_pyrcz_officeshot_jacket.jpg" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
@@ -1635,11 +1624,11 @@ K(x_i,x_j) = exp \left(- \gamma || x_i - x_j ||^2 \right)
 <li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference internal" href="#www.michaelpyrcz.com"><span class="xref myst">Website</span></a>.</p>
+<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
 </section>
 <section id="want-to-work-together">
-<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Link to this heading">#</a></h2>
+<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
 <p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
@@ -1649,7 +1638,7 @@ K(x_i,x_j) = exp \left(- \gamma || x_i - x_j ||^2 \right)
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -1680,7 +1669,7 @@ K(x_i,x_j) = exp \left(- \gamma || x_i - x_j ||^2 \right)
               
               
               
-                <footer class="prev-next-footer d-print-none">
+                <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1709,7 +1698,6 @@ K(x_i,x_j) = exp \left(- \gamma || x_i - x_j ||^2 \right)
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1786,8 +1774,8 @@ By Michael J. Pyrcz
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>

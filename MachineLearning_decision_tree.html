@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Decision Tree &#8212; Applied Machine Learning in Python</title>
   
@@ -14,51 +15,55 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=304429a7" />
-    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=564be945" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'MachineLearning_decision_tree';</script>
@@ -75,23 +80,28 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
+
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -113,20 +123,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -142,8 +144,6 @@
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
-  
-    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -162,18 +162,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -238,7 +227,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -247,14 +236,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -379,10 +368,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -390,14 +379,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -470,15 +459,15 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <figure style="text-align: center;">
   <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
 </figure>
 <section id="decision-tree">
-<h1>Decision Tree<a class="headerlink" href="#decision-tree" title="Link to this heading">#</a></h1>
+<h1>Decision Tree<a class="headerlink" href="#decision-tree" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite this e-Book as:</p>
@@ -499,9 +488,9 @@ document.write(`
 <li><p><a class="reference external" href="https://youtu.be/m5_wk310fho?si=up-mzVPHvniXsYE6">Random Forest</a></p></li>
 <li><p><a class="reference external" href="https://youtu.be/___T8_ixIwc?si=ozHR_eIuMF3SPTxJ">Gradient Boosting</a></p></li>
 </ul>
-<p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
+<p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
 <section id="motivation">
-<h2>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h2>
+<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this heading">#</a></h2>
 <p>Decision trees are not the most powerful, cutting edge method in machine learning, so why cover decision trees?</p>
 <ul class="simple">
 <li><p>one of the most understandable, interpretable predictive machine learning models</p></li>
@@ -515,7 +504,7 @@ document.write(`
 <p>Let’s cover some key aspects of decision trees.</p>
 </section>
 <section id="model-formulation">
-<h2>Model Formulation<a class="headerlink" href="#model-formulation" title="Link to this heading">#</a></h2>
+<h2>Model Formulation<a class="headerlink" href="#model-formulation" title="Permalink to this heading">#</a></h2>
 <p>The prediction feature space is partitioned into <span class="math notranslate nohighlight">\(J\)</span> exhaustive, mutually exclusive regions <span class="math notranslate nohighlight">\(R_1, R_2, \ldots, R_J\)</span>. For a given prediction case <span class="math notranslate nohighlight">\(x_1,\ldots,x_m \in R_j\)</span>, the prediction is:</p>
 <p><strong>Regression</strong> - the average of the training data in the region, <span class="math notranslate nohighlight">\(R_j\)</span></p>
 <div class="math notranslate nohighlight">
@@ -573,7 +562,7 @@ document.write(`
 <p>This is a set of regions based on hierarchical, binary segmentation. Let’s clarify the concept of predictor feature space and then explain this form of predictor feature segmentation.</p>
 </section>
 <section id="predictor-feature-space">
-<h2>Predictor Feature Space<a class="headerlink" href="#predictor-feature-space" title="Link to this heading">#</a></h2>
+<h2>Predictor Feature Space<a class="headerlink" href="#predictor-feature-space" title="Permalink to this heading">#</a></h2>
 <p>Let’s step back and establish the concept of predictor feature space. We define it as,</p>
 <ul class="simple">
 <li><p>the space that includes all possible estimation problems, i.e., the combination of all possible predictor feature values, <span class="math notranslate nohighlight">\(x_1, x_2,\ldots,x_m\)</span>.</p></li>
@@ -597,7 +586,7 @@ document.write(`
 </div>
 </section>
 <section id="tree-loss-functions">
-<h2>Tree Loss Functions<a class="headerlink" href="#tree-loss-functions" title="Link to this heading">#</a></h2>
+<h2>Tree Loss Functions<a class="headerlink" href="#tree-loss-functions" title="Permalink to this heading">#</a></h2>
 <p>For regression trees we minimize the residual sum of squares and for classification trees we minimize the weighted average Gini impurity.</p>
 <p>The Residual Sum of Squares (RSS) measures the total squared difference between the actual values and predicted values in a regression tree,</p>
 <div class="math notranslate nohighlight">
@@ -634,7 +623,7 @@ document.write(`
 <p>Let’s talk about tree model training first and then tree model tuning.</p>
 </section>
 <section id="training-the-tree-model">
-<h2>Training the Tree Model<a class="headerlink" href="#training-the-tree-model" title="Link to this heading">#</a></h2>
+<h2>Training the Tree Model<a class="headerlink" href="#training-the-tree-model" title="Permalink to this heading">#</a></h2>
 <p>How do we calculate these mutually exclusive, exhaustive regions? This is accomplished through hierarchical binary segmentation of the predictor feature space.</p>
 <p>Training a decision tree model is both,</p>
 <ol class="arabic simple">
@@ -717,7 +706,7 @@ document.write(`
 </ul>
 </section>
 <section id="updating-the-loss-function-with-a-new-split">
-<h2>Updating the Loss Function with a New Split<a class="headerlink" href="#updating-the-loss-function-with-a-new-split" title="Link to this heading">#</a></h2>
+<h2>Updating the Loss Function with a New Split<a class="headerlink" href="#updating-the-loss-function-with-a-new-split" title="Permalink to this heading">#</a></h2>
 <p>To find the next best split, we must scan over all regions, and over all features with the regions. This may sound like a lot of computation, but it is quite efficient.</p>
 <ul class="simple">
 <li><p>we only need to check the midpoints between sorted training data for each feature in each region, because any split that does not change the region assignment of a training data will not change the training loss.</p></li>
@@ -735,7 +724,7 @@ document.write(`
 <p>Now we are prepared for tuning a decision tree model.</p>
 </section>
 <section id="tuning-the-tree-model">
-<h2>Tuning the Tree Model<a class="headerlink" href="#tuning-the-tree-model" title="Link to this heading">#</a></h2>
+<h2>Tuning the Tree Model<a class="headerlink" href="#tuning-the-tree-model" title="Permalink to this heading">#</a></h2>
 <p>To tune the decision tree we take the very overfit trained tree model,</p>
 <ul class="simple">
 <li><p>sequentially cut the last decision node</p></li>
@@ -861,7 +850,7 @@ document.write(`
 </ul>
 </section>
 <section id="the-prediction-model">
-<h2>The Prediction Model<a class="headerlink" href="#the-prediction-model" title="Link to this heading">#</a></h2>
+<h2>The Prediction Model<a class="headerlink" href="#the-prediction-model" title="Permalink to this heading">#</a></h2>
 <p>The decision tree prediction model is represented as <strong>set of nested if statements</strong>, for example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">porosity</span> <span class="o">&gt;</span> <span class="mf">0.15</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">brittleness</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">:</span>
@@ -882,7 +871,7 @@ document.write(`
 </ul>
 </section>
 <section id="shapley-values-from-decision-trees">
-<h2>Shapley Values from Decision Trees<a class="headerlink" href="#shapley-values-from-decision-trees" title="Link to this heading">#</a></h2>
+<h2>Shapley Values from Decision Trees<a class="headerlink" href="#shapley-values-from-decision-trees" title="Permalink to this heading">#</a></h2>
 <p>Recall, we need to take a single model, for example, <span class="math notranslate nohighlight">\(f(x_1,x_2,x_3,x_4)\)</span>, and make an estimate for all possible combinations of feature subsets, for example,</p>
 <div class="math notranslate nohighlight">
 \[
@@ -959,7 +948,7 @@ f(x_2=60) = 86.5
 \]</div>
 </section>
 <section id="load-the-required-libraries">
-<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Link to this heading">#</a></h2>
+<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
 <p>We will also need some standard packages. These should have been installed with Anaconda 3.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -998,7 +987,7 @@ f(x_2=60) = 86.5
 <p>If you get a package import error, you may have to first install some of these packages. This can usually be accomplished by opening up a command window on Windows and then typing ‘python -m pip install [package-name]’. More assistance is available with the respective package docs.</p>
 </section>
 <section id="declare-functions">
-<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Link to this heading">#</a></h2>
+<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
 <p>Let’s define a couple of functions to streamline plotting correlation matrices and visualization of a decision tree regression model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1248,7 +1237,7 @@ f(x_2=60) = 86.5
 </div>
 </section>
 <section id="set-the-working-directory">
-<h2>Set the Working Directory<a class="headerlink" href="#set-the-working-directory" title="Link to this heading">#</a></h2>
+<h2>Set the Working Directory<a class="headerlink" href="#set-the-working-directory" title="Permalink to this heading">#</a></h2>
 <p>I always like to do this so I don’t lose files and to simplify subsequent read and writes (avoid including the full address each time).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1260,7 +1249,7 @@ f(x_2=60) = 86.5
 <p>You will have to update the part in quotes with your own working directory and the format is different on a Mac (e.g. “~/PGE”).</p>
 </section>
 <section id="loading-data">
-<h2>Loading Data<a class="headerlink" href="#loading-data" title="Link to this heading">#</a></h2>
+<h2>Loading Data<a class="headerlink" href="#loading-data" title="Permalink to this heading">#</a></h2>
 <p>Let’s load the provided multivariate, spatial dataset <a class="reference external" href="https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/unconv_MV.csv">unconv_MV.csv</a> available in my GeoDataSet repo. It is a comma delimited file with:</p>
 <ul class="simple">
 <li><p>well index (integer)</p></li>
@@ -1297,7 +1286,7 @@ f(x_2=60) = 86.5
 </div>
 </section>
 <section id="feature-engineering">
-<h2>Feature Engineering<a class="headerlink" href="#feature-engineering" title="Link to this heading">#</a></h2>
+<h2>Feature Engineering<a class="headerlink" href="#feature-engineering" title="Permalink to this heading">#</a></h2>
 <p>Let’s make some changes to the data to improve the workflow:</p>
 <ul class="simple">
 <li><p><strong>Select the predictor features (x2) and the response feature (x1)</strong>, make sure the metadata is also consistent.</p></li>
@@ -1312,7 +1301,7 @@ f(x_2=60) = 86.5
 </ul>
 </section>
 <section id="optional-add-random-noise-to-the-response-feature">
-<h2>Optional: Add Random Noise to the Response Feature<a class="headerlink" href="#optional-add-random-noise-to-the-response-feature" title="Link to this heading">#</a></h2>
+<h2>Optional: Add Random Noise to the Response Feature<a class="headerlink" href="#optional-add-random-noise-to-the-response-feature" title="Permalink to this heading">#</a></h2>
 <p>We can do this to observe the impact of data noise on overfit and hyperparameter tuning.</p>
 <ul class="simple">
 <li><p>This is for experiential learning, of course we wouldn’t add random noise to our data</p></li>
@@ -1360,7 +1349,7 @@ f(x_2=60) = 86.5
 </ul>
 </section>
 <section id="calculate-the-correlation-matrix-and-correlation-with-response-ranking">
-<h2>Calculate the Correlation Matrix and Correlation with Response Ranking<a class="headerlink" href="#calculate-the-correlation-matrix-and-correlation-with-response-ranking" title="Link to this heading">#</a></h2>
+<h2>Calculate the Correlation Matrix and Correlation with Response Ranking<a class="headerlink" href="#calculate-the-correlation-matrix-and-correlation-with-response-ranking" title="Permalink to this heading">#</a></h2>
 <p>Let’s start with correlation analysis. We can calculate and view the correlation matrix and correlation to the response features with these previously declared functions.</p>
 <ul class="simple">
 <li><p>correlation analysis is based on the assumption of linear relationships, but it is a good start</p></li>
@@ -1382,7 +1371,7 @@ f(x_2=60) = 86.5
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0121f16cd28e1d2a472e68a266cd3cd9caf66a130020561538106fec0e0a1fa9.png" src="_images/0121f16cd28e1d2a472e68a266cd3cd9caf66a130020561538106fec0e0a1fa9.png" />
+<img alt="_images/152d837d72f43ba9a48527a444d81b3bbc73a2ba553d2760d27f5c20206ea0b2.png" src="_images/152d837d72f43ba9a48527a444d81b3bbc73a2ba553d2760d27f5c20206ea0b2.png" />
 </div>
 </div>
 <p>Note the 1.0 diagonal resulting from the correlation of each variable with themselves.</p>
@@ -1403,12 +1392,12 @@ f(x_2=60) = 86.5
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4ba970c91bbc66bf113c18b49587f3480568a041ecbabf37b263812ad1089e5e.png" src="_images/4ba970c91bbc66bf113c18b49587f3480568a041ecbabf37b263812ad1089e5e.png" />
+<img alt="_images/8d03fa748bcc76aea92c8e57b5fb8071473e84b910d1402f5fd62dd21b102145.png" src="_images/8d03fa748bcc76aea92c8e57b5fb8071473e84b910d1402f5fd62dd21b102145.png" />
 </div>
 </div>
 </section>
 <section id="train-and-test-split">
-<h2>Train and Test Split<a class="headerlink" href="#train-and-test-split" title="Link to this heading">#</a></h2>
+<h2>Train and Test Split<a class="headerlink" href="#train-and-test-split" title="Permalink to this heading">#</a></h2>
 <p>For convenience and simplicity we use scikit-learn’s random train and test split.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1421,7 +1410,7 @@ f(x_2=60) = 86.5
 </div>
 </section>
 <section id="visualize-the-dataframe">
-<h2>Visualize the DataFrame<a class="headerlink" href="#visualize-the-dataframe" title="Link to this heading">#</a></h2>
+<h2>Visualize the DataFrame<a class="headerlink" href="#visualize-the-dataframe" title="Permalink to this heading">#</a></h2>
 <p>Visualizing the train and test DataFrame is useful check before we build our models.</p>
 <ul class="simple">
 <li><p>many things can go wrong, e.g., we loaded the wrong data, all the features did not load, etc.</p></li>
@@ -1524,7 +1513,7 @@ f(x_2=60) = 86.5
 </div>
 </section>
 <section id="summary-statistics-for-tabular-data">
-<h2>Summary Statistics for Tabular Data<a class="headerlink" href="#summary-statistics-for-tabular-data" title="Link to this heading">#</a></h2>
+<h2>Summary Statistics for Tabular Data<a class="headerlink" href="#summary-statistics-for-tabular-data" title="Permalink to this heading">#</a></h2>
 <p>There are a lot of efficient methods to calculate summary statistics from tabular data in DataFrames.</p>
 <ul class="simple">
 <li><p>The describe command provides count, mean, minimum, maximum in a nice data table.</p></li>
@@ -1631,7 +1620,7 @@ f(x_2=60) = 86.5
 </ul>
 </section>
 <section id="visualize-the-train-and-test-splits">
-<h2>Visualize the Train and Test Splits<a class="headerlink" href="#visualize-the-train-and-test-splits" title="Link to this heading">#</a></h2>
+<h2>Visualize the Train and Test Splits<a class="headerlink" href="#visualize-the-train-and-test-splits" title="Permalink to this heading">#</a></h2>
 <p>Let’s check the consistency and coverage of training and testing with histograms and scatter plots.</p>
 <ul class="simple">
 <li><p>check to make sure the training and testing cover the range of possible feature combinations</p></li>
@@ -1673,7 +1662,7 @@ f(x_2=60) = 86.5
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/bded88916359c4f637e7b95b063c86102a2670e6d2df14011d9c7d7f152e5d63.png" src="_images/bded88916359c4f637e7b95b063c86102a2670e6d2df14011d9c7d7f152e5d63.png" />
+<img alt="_images/7f95232f4bccd970cd69b500c8930cfffaf4ffd9a243b7aea1e184337ba9175d.png" src="_images/7f95232f4bccd970cd69b500c8930cfffaf4ffd9a243b7aea1e184337ba9175d.png" />
 </div>
 </div>
 <p>Sometimes I find it more convenient to compare distributions by looking at CDF’s instead of histograms.</p>
@@ -1707,7 +1696,7 @@ f(x_2=60) = 86.5
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1d4a8d5a65a1a36a2af624b53ff3b4e823ae7eada9f926addf2f97e009851249.png" src="_images/1d4a8d5a65a1a36a2af624b53ff3b4e823ae7eada9f926addf2f97e009851249.png" />
+<img alt="_images/846daf6f4bcdece7bb39d2b1b9c385e351fbcf923d9599f41f5c7a4c3639c3dc.png" src="_images/846daf6f4bcdece7bb39d2b1b9c385e351fbcf923d9599f41f5c7a4c3639c3dc.png" />
 </div>
 </div>
 <p>Once again, the distributions are well behaved,</p>
@@ -1735,13 +1724,13 @@ f(x_2=60) = 86.5
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/788d2b9908785eea053557a1f9720b091e5d68d76cfb0cf459ecdcf876a60bc7.png" src="_images/788d2b9908785eea053557a1f9720b091e5d68d76cfb0cf459ecdcf876a60bc7.png" />
+<img alt="_images/a0a42ff41b36629afd1b47ee725006868db8d0038504ccf72d1f966ac5e69281.png" src="_images/a0a42ff41b36629afd1b47ee725006868db8d0038504ccf72d1f966ac5e69281.png" />
 </div>
 </div>
 <p>This problem looks complicated and could not be modeled with simple linear regression. It appears that there are non-linearities. Let’s use a simple nonparametric model, decision tree.</p>
 </section>
 <section id="instantiate-fit-and-predict-with-scikit-learn">
-<h2>Instantiate, Fit and Predict with scikit-learn<a class="headerlink" href="#instantiate-fit-and-predict-with-scikit-learn" title="Link to this heading">#</a></h2>
+<h2>Instantiate, Fit and Predict with scikit-learn<a class="headerlink" href="#instantiate-fit-and-predict-with-scikit-learn" title="Permalink to this heading">#</a></h2>
 <p>Let’s build our predictive machine learning model, by instantiate, fit and predict with scikit-learn.</p>
 <ul class="simple">
 <li><p><strong>instantiate</strong> the model object with the hyperparameters, k-nearest neighbours</p></li>
@@ -1750,7 +1739,7 @@ f(x_2=60) = 86.5
 </ul>
 </section>
 <section id="training-a-decision-tree-regression-tree">
-<h2>Training a Decision Tree (Regression Tree)<a class="headerlink" href="#training-a-decision-tree-regression-tree" title="Link to this heading">#</a></h2>
+<h2>Training a Decision Tree (Regression Tree)<a class="headerlink" href="#training-a-decision-tree-regression-tree" title="Permalink to this heading">#</a></h2>
 <p>Now we are ready to run the DecisionTreeRegressor command to build our regression tree to predict our response feature given our 2 predictor features (recall we limit ourselves here to 2 predictor features for ease of visualization).</p>
 <ul class="simple">
 <li><p>We will use our two functions defined above to visualize the decision tree prediction over the feature space and the cross plot of actual and estimated production for the training data along with three model metrics from the sklearn.metric module.</p></li>
@@ -1763,11 +1752,11 @@ f(x_2=60) = 86.5
 </ul>
 <p>For now lets just try out some hyperparameters.</p>
 <section id="underfit-decision-tree-model">
-<h3>Underfit Decision Tree Model<a class="headerlink" href="#underfit-decision-tree-model" title="Link to this heading">#</a></h3>
+<h3>Underfit Decision Tree Model<a class="headerlink" href="#underfit-decision-tree-model" title="Permalink to this heading">#</a></h3>
 <p>Let’s use too few regions, set max_leaf_nodes too small and see the resulting decision tree model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_leaf_nodes</span> <span class="o">=</span> <span class="mi">140</span><span class="p">;</span> <span class="n">max_depth</span> <span class="o">=</span><span class="mi">99</span><span class="p">;</span> <span class="n">min_samples_leaf</span> <span class="o">=</span> <span class="mi">1</span>      <span class="c1"># hyperparameters</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_leaf_nodes</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="n">max_depth</span> <span class="o">=</span><span class="mi">99</span><span class="p">;</span> <span class="n">min_samples_leaf</span> <span class="o">=</span> <span class="mi">1</span>      <span class="c1"># hyperparameters</span>
 
 <span class="n">tree_model</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_leaf_nodes</span> <span class="o">=</span> <span class="n">max_leaf_nodes</span><span class="p">,</span><span class="n">max_depth</span> <span class="o">=</span> <span class="n">max_depth</span><span class="p">,</span><span class="n">min_samples_leaf</span> <span class="o">=</span> <span class="n">min_samples_leaf</span><span class="p">)</span>
 <span class="n">tree_model</span> <span class="o">=</span> <span class="n">tree_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
@@ -1785,7 +1774,7 @@ f(x_2=60) = 86.5
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/edd99205d06f2be851023c0d846d4332fc3af9dc26d024b5d856979d5516cbc0.png" src="_images/edd99205d06f2be851023c0d846d4332fc3af9dc26d024b5d856979d5516cbc0.png" />
+<img alt="_images/de9bb85033f26085feea46a1ec5a5786ccbe3d092bb940c53d319584063a39c7.png" src="_images/de9bb85033f26085feea46a1ec5a5786ccbe3d092bb940c53d319584063a39c7.png" />
 </div>
 </div>
 <p>This model is very much underfit, it is too simple to fit the shape of the prediction problem. Here’s some more information on the plot.</p>
@@ -1798,7 +1787,7 @@ f(x_2=60) = 86.5
 <p>If we have a more complicated tree with more terminal nodes then there would be more lines.</p>
 </section>
 <section id="overfit-decision-tree-model">
-<h3>Overfit Decision Tree Model<a class="headerlink" href="#overfit-decision-tree-model" title="Link to this heading">#</a></h3>
+<h3>Overfit Decision Tree Model<a class="headerlink" href="#overfit-decision-tree-model" title="Permalink to this heading">#</a></h3>
 <p>Let’s use too many regions, set max_leaf_nodes too large and see the resulting decision tree model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1820,7 +1809,7 @@ f(x_2=60) = 86.5
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5811307a0e785d26a7b1916003c5507d34af87b38473ae4bfe1da6259d2f304b.png" src="_images/5811307a0e785d26a7b1916003c5507d34af87b38473ae4bfe1da6259d2f304b.png" />
+<img alt="_images/b64f9666026f63544dd4662412c50db7132cd58f19c828937a4e3bbfa9366dc6.png" src="_images/b64f9666026f63544dd4662412c50db7132cd58f19c828937a4e3bbfa9366dc6.png" />
 </div>
 </div>
 <p>Now we have an overfit predictive machine learning model.</p>
@@ -1851,7 +1840,7 @@ f(x_2=60) = 86.5
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e590a70603974906f36355409b63dd775886cf3a4aace18e1334d52e1837980c.png" src="_images/e590a70603974906f36355409b63dd775886cf3a4aace18e1334d52e1837980c.png" />
+<img alt="_images/b066c86d94043d639bf7b5305f612745b8a64d2920e129e3f924e8deaac2ab67.png" src="_images/b066c86d94043d639bf7b5305f612745b8a64d2920e129e3f924e8deaac2ab67.png" />
 </div>
 </div>
 <p>It may be useful to look at a decision tree model and the associated decision tree, side-by-side.</p>
@@ -1879,14 +1868,14 @@ f(x_2=60) = 86.5
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5eea0a6a47a8f15d86e00cbc4db83809e1dab6b562ad920f0499597680f96cca.png" src="_images/5eea0a6a47a8f15d86e00cbc4db83809e1dab6b562ad920f0499597680f96cca.png" />
+<img alt="_images/fbf5427fe1d098a17a235d28fdd24ff7b7b442c21b958df2b2855e4ffeb66011.png" src="_images/fbf5427fe1d098a17a235d28fdd24ff7b7b442c21b958df2b2855e4ffeb66011.png" />
 </div>
 </div>
 <p>How do we find the best hyperparameters, for the best complexity for optimum prediction accuracy for testing? That is hyperparameter tuning.</p>
 </section>
 </section>
 <section id="tuning-a-decision-tree-regression-tree">
-<h2>Tuning a Decision Tree (Regression Tree)<a class="headerlink" href="#tuning-a-decision-tree-regression-tree" title="Link to this heading">#</a></h2>
+<h2>Tuning a Decision Tree (Regression Tree)<a class="headerlink" href="#tuning-a-decision-tree-regression-tree" title="Permalink to this heading">#</a></h2>
 <p>Let’s perform hyperparameter tuning. To do this we,</p>
 <ol class="arabic simple">
 <li><p>See the range of possible hyperparameter values.</p></li>
@@ -1933,7 +1922,7 @@ f(x_2=60) = 86.5
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6b08ee1800285eaf82852d1841f1c8b50454a350b48f429464821023bc5b41ba.png" src="_images/6b08ee1800285eaf82852d1841f1c8b50454a350b48f429464821023bc5b41ba.png" />
+<img alt="_images/27a521f2cbd01b3caec37b95530d68674a6785fa6c061acdac71ea6326a9fe6b.png" src="_images/27a521f2cbd01b3caec37b95530d68674a6785fa6c061acdac71ea6326a9fe6b.png" />
 </div>
 </div>
 <p>It is useful to evaluate the performance of our tree by observing the accuracy vs. complexity, with a minimum due to the model variance and model bias trade-off.</p>
@@ -1975,7 +1964,7 @@ f(x_2=60) = 86.5
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/198b8056878be6e072ea0aaa05bc070b8b8df320c9bf7d3ad8ef779d4146bc97.png" src="_images/198b8056878be6e072ea0aaa05bc070b8b8df320c9bf7d3ad8ef779d4146bc97.png" />
+<img alt="_images/35821438b0adbe9ae455b2e6731dab92e05cf7dfb2dcbaaa8d296ac1c9a18b39.png" src="_images/35821438b0adbe9ae455b2e6731dab92e05cf7dfb2dcbaaa8d296ac1c9a18b39.png" />
 </div>
 </div>
 <p>The k-fold cross validation provides a smoother plot of MSE vs. the hyperparameter.</p>
@@ -1985,7 +1974,7 @@ f(x_2=60) = 86.5
 </ul>
 </section>
 <section id="build-the-final-model">
-<h2>Build the Final Model<a class="headerlink" href="#build-the-final-model" title="Link to this heading">#</a></h2>
+<h2>Build the Final Model<a class="headerlink" href="#build-the-final-model" title="Permalink to this heading">#</a></h2>
 <p>Now let’s take that hyperparameter and train on all the data, this is our <strong>final model</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2007,13 +1996,13 @@ f(x_2=60) = 86.5
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/66d3332180ca3ab07c69011f5b3c5235fb1cfac96c4f321caf86e2b7dc00e7df.png" src="_images/66d3332180ca3ab07c69011f5b3c5235fb1cfac96c4f321caf86e2b7dc00e7df.png" />
+<img alt="_images/e85bbd71cc280b9a057d106524b0d1dfca28c6500e32ece594637cde5b8b1dba.png" src="_images/e85bbd71cc280b9a057d106524b0d1dfca28c6500e32ece594637cde5b8b1dba.png" />
 </div>
 </div>
 <p>We have completed our predictive machine learning model. Now let’s cover a couple more decision tree diagnostics.</p>
 </section>
 <section id="interrogating-decision-trees">
-<h2>Interrogating Decision Trees<a class="headerlink" href="#interrogating-decision-trees" title="Link to this heading">#</a></h2>
+<h2>Interrogating Decision Trees<a class="headerlink" href="#interrogating-decision-trees" title="Permalink to this heading">#</a></h2>
 <p>It may be useful to evaluate for any possible feature combination, the order of decision nodes that resulted in the specific prediction.  The following function provides the list of nodes that the prediction cases passes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2035,7 +2024,7 @@ f(x_2=60) = 86.5
 </div>
 </section>
 <section id="extracting-the-decision-tree-prediction-model-as-a-function">
-<h2>Extracting the Decision Tree Prediction Model as a Function<a class="headerlink" href="#extracting-the-decision-tree-prediction-model-as-a-function" title="Link to this heading">#</a></h2>
+<h2>Extracting the Decision Tree Prediction Model as a Function<a class="headerlink" href="#extracting-the-decision-tree-prediction-model-as-a-function" title="Permalink to this heading">#</a></h2>
 <p>Furthermore it may be useful to convert the decision tree to code, a nested set of ‘if’ statements.</p>
 <ul class="simple">
 <li><p>This creates a portable model that could be copied and applied as a standalone function.</p></li>
@@ -2086,7 +2075,7 @@ f(x_2=60) = 86.5
 </div>
 </section>
 <section id="decision-tree-based-feature-importance">
-<h2>Decision Tree-based Feature Importance<a class="headerlink" href="#decision-tree-based-feature-importance" title="Link to this heading">#</a></h2>
+<h2>Decision Tree-based Feature Importance<a class="headerlink" href="#decision-tree-based-feature-importance" title="Permalink to this heading">#</a></h2>
 <p>Feature importance is calculated from a decision trees by summarizing the reduction in mean square error through inclusion of each feature and is summarized as:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -2108,12 +2097,12 @@ FI(x) = \sum_{t \in T_f} \frac{N_t}{N} \Delta_{MSE_t}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/53bd116fdac8789219e428f9d6ea54df07d0087cb1017be29cecccb10183eba1.png" src="_images/53bd116fdac8789219e428f9d6ea54df07d0087cb1017be29cecccb10183eba1.png" />
+<img alt="_images/8fcae780c3b59534e28863b5aa7a46545ac1a9e556ab9950e41495b87e7bee49.png" src="_images/8fcae780c3b59534e28863b5aa7a46545ac1a9e556ab9950e41495b87e7bee49.png" />
 </div>
 </div>
 </section>
 <section id="visualize-the-model">
-<h2>Visualize the Model<a class="headerlink" href="#visualize-the-model" title="Link to this heading">#</a></h2>
+<h2>Visualize the Model<a class="headerlink" href="#visualize-the-model" title="Permalink to this heading">#</a></h2>
 <p>Let’s take a last look at the graphical representation of our pruned tree.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2127,12 +2116,12 @@ FI(x) = \sum_{t \in T_f} \frac{N_t}{N} \Delta_{MSE_t}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0b38d6f9037492146a1f079b837eab9204e23ecea35e347ed4b93d71896f2155.png" src="_images/0b38d6f9037492146a1f079b837eab9204e23ecea35e347ed4b93d71896f2155.png" />
+<img alt="_images/67fb9697896ebccb3d2ba5fce562153c671634fd57bdc8739c47227f04785578.png" src="_images/67fb9697896ebccb3d2ba5fce562153c671634fd57bdc8739c47227f04785578.png" />
 </div>
 </div>
 </section>
 <section id="simple-code-to-make-a-decision-tree-machine-and-calculate-a-prediction">
-<h2>Simple Code to Make a Decision Tree Machine and Calculate a Prediction<a class="headerlink" href="#simple-code-to-make-a-decision-tree-machine-and-calculate-a-prediction" title="Link to this heading">#</a></h2>
+<h2>Simple Code to Make a Decision Tree Machine and Calculate a Prediction<a class="headerlink" href="#simple-code-to-make-a-decision-tree-machine-and-calculate-a-prediction" title="Permalink to this heading">#</a></h2>
 <p>To support those just getting started, here’s a minimal amount of code to:</p>
 <ul class="simple">
 <li><p>load the scikit-learn package for decision trees</p></li>
@@ -2162,7 +2151,7 @@ FI(x) = \sum_{t \in T_f} \frac{N_t}{N} \Delta_{MSE_t}
 </div>
 </section>
 <section id="machine-learning-pipelines-for-clean-compact-machine-learning-code">
-<h2>Machine Learning Pipelines for Clean, Compact Machine Learning Code<a class="headerlink" href="#machine-learning-pipelines-for-clean-compact-machine-learning-code" title="Link to this heading">#</a></h2>
+<h2>Machine Learning Pipelines for Clean, Compact Machine Learning Code<a class="headerlink" href="#machine-learning-pipelines-for-clean-compact-machine-learning-code" title="Permalink to this heading">#</a></h2>
 <p>Pipelines are a scikit-learn class that allows for the encapsulation of a sequence of data preparation and modeling steps</p>
 <ul class="simple">
 <li><p>then we can treat the pipeline as an object in our much condensed workflow</p></li>
@@ -2175,7 +2164,7 @@ FI(x) = \sum_{t \in T_f} \frac{N_t}{N} \Delta_{MSE_t}
 <li><p>abstract common machine learning modeling and focus on building the best model possible</p></li>
 </ul>
 <p>The fundamental philosophy is to treat machine learning as a combinatorial search to find the best model (AutoML)</p>
-<p>For more information see my recorded lecture on <a class="reference external" href="https://www.youtube.com/watch?v=tYrPs8s1l9U&amp;amp;list=PLG19vXLQHvSAufDFgZEFAYQEwMJXklnQV&amp;amp;index=5">Machine Learning Pipelines</a> and a well-documented demonstration <a class="reference external" href="http://localhost:8892/notebooks/OneDrive%20-%20The%20University%20of%20Texas%20at%20Austin/Courses/Workflows/PythonDataBasics_Pipelines.ipynb">Machine Learning Pipeline Workflow</a>.</p>
+<p>For more information see my recorded lecture on <a class="reference external" href="https://www.youtube.com/watch?v=tYrPs8s1l9U&amp;list=PLG19vXLQHvSAufDFgZEFAYQEwMJXklnQV&amp;index=5">Machine Learning Pipelines</a> and a well-documented demonstration <a class="reference external" href="http://localhost:8892/notebooks/OneDrive%20-%20The%20University%20of%20Texas%20at%20Austin/Courses/Workflows/PythonDataBasics_Pipelines.ipynb">Machine Learning Pipeline Workflow</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pipe_tree</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>                                        <span class="c1"># the machine learning workflow as a pipeline object</span>
@@ -2207,7 +2196,7 @@ Estimated Production for Porosity = 0.25 and Brittleness = 0.3 is 1879.2 MCFPD
 </div>
 </section>
 <section id="practice-on-a-new-dataset">
-<h2>Practice on a New Dataset<a class="headerlink" href="#practice-on-a-new-dataset" title="Link to this heading">#</a></h2>
+<h2>Practice on a New Dataset<a class="headerlink" href="#practice-on-a-new-dataset" title="Permalink to this heading">#</a></h2>
 <p>Ok, time to get to work. Let’s load up a dataset and build a decision tree prediction model with,</p>
 <ul class="simple">
 <li><p>compact code</p></li>
@@ -2216,7 +2205,7 @@ Estimated Production for Porosity = 0.25 and Brittleness = 0.3 is 1879.2 MCFPD
 </ul>
 <p>You can select any of these datasets or modify the code and add your own to do this.</p>
 <section id="dataset-0-unconventional-multivariate-v4">
-<h3>Dataset 0, Unconventional Multivariate v4<a class="headerlink" href="#dataset-0-unconventional-multivariate-v4" title="Link to this heading">#</a></h3>
+<h3>Dataset 0, Unconventional Multivariate v4<a class="headerlink" href="#dataset-0-unconventional-multivariate-v4" title="Permalink to this heading">#</a></h3>
 <p>Let’s load the provided multivariate, dataset <a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets/blob/master/unconv_MV_v4.csv">unconv_MV.csv</a>. This dataset has variables from 1,000 unconventional wells including:</p>
 <ul class="simple">
 <li><p>well average porosity</p></li>
@@ -2229,7 +2218,7 @@ Estimated Production for Porosity = 0.25 and Brittleness = 0.3 is 1879.2 MCFPD
 </ul>
 </section>
 <section id="dataset-2-reservoir-21">
-<h3>Dataset 2, Reservoir 21<a class="headerlink" href="#dataset-2-reservoir-21" title="Link to this heading">#</a></h3>
+<h3>Dataset 2, Reservoir 21<a class="headerlink" href="#dataset-2-reservoir-21" title="Permalink to this heading">#</a></h3>
 <p>Let’s load the provided multivariate, 3D spatial dataset <a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets/blob/master/res21_wells.csv">res21_wells.csv</a>. This dataset has variables from 73 vertical wells over a 10,000m x 10,000m x 50 m reservoir unit:</p>
 <ul class="simple">
 <li><p>well (ID)</p></li>
@@ -2486,7 +2475,7 @@ Estimated Production for Porosity = 0.25 and Brittleness = 0.3 is 1879.2 MCFPD
 </div>
 </section>
 <section id="build-and-check-model">
-<h3>Build and Check Model<a class="headerlink" href="#build-and-check-model" title="Link to this heading">#</a></h3>
+<h3>Build and Check Model<a class="headerlink" href="#build-and-check-model" title="Permalink to this heading">#</a></h3>
 <p>We apply the follow steps,</p>
 <ol class="arabic simple">
 <li><p>specify the K-fold method</p></li>
@@ -2533,19 +2522,19 @@ Estimated Production for Porosity = 0.25 and Brittleness = 0.3 is 1879.2 MCFPD
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/478c8bc133bd4326b96c2d6b823dd3702b3b898334df0a57e266eff8a9ff5ff0.png" src="_images/478c8bc133bd4326b96c2d6b823dd3702b3b898334df0a57e266eff8a9ff5ff0.png" />
+<img alt="_images/800e93156a21d23fb27ec3b349cbd0c234a2789e27a8582567a80abbbf0e08b0.png" src="_images/800e93156a21d23fb27ec3b349cbd0c234a2789e27a8582567a80abbbf0e08b0.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="comments">
-<h2>Comments<a class="headerlink" href="#comments" title="Link to this heading">#</a></h2>
+<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
 <p>This was a basic treatment of decision tree. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
 <section id="about-the-author">
-<h2>About the Author<a class="headerlink" href="#about-the-author" title="Link to this heading">#</a></h2>
+<h2>About the Author<a class="headerlink" href="#about-the-author" title="Permalink to this heading">#</a></h2>
 <figure style="text-align: center;">
   <img src="_static/intro/michael_pyrcz_officeshot_jacket.jpg" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
@@ -2556,11 +2545,11 @@ Estimated Production for Porosity = 0.25 and Brittleness = 0.3 is 1879.2 MCFPD
 <li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference internal" href="#www.michaelpyrcz.com"><span class="xref myst">Website</span></a>.</p>
+<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
 </section>
 <section id="want-to-work-together">
-<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Link to this heading">#</a></h2>
+<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
 <p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
@@ -2570,7 +2559,7 @@ Estimated Production for Porosity = 0.25 and Brittleness = 0.3 is 1879.2 MCFPD
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -2601,7 +2590,7 @@ Estimated Production for Porosity = 0.25 and Brittleness = 0.3 is 1879.2 MCFPD
               
               
               
-                <footer class="prev-next-footer d-print-none">
+                <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -2630,7 +2619,6 @@ Estimated Production for Porosity = 0.25 and Brittleness = 0.3 is 1879.2 MCFPD
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -2729,8 +2717,8 @@ By Michael J. Pyrcz
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>

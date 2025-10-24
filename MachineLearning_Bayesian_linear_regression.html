@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Bayesian Linear Regression &#8212; Applied Machine Learning in Python</title>
   
@@ -14,51 +15,55 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=304429a7" />
-    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=564be945" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'MachineLearning_Bayesian_linear_regression';</script>
@@ -75,23 +80,28 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
+
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -113,20 +123,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -142,8 +144,6 @@
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
-  
-    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -162,18 +162,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -238,7 +227,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -247,14 +236,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -379,10 +368,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -390,14 +379,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -448,15 +437,15 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <figure style="text-align: center;">
   <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
 </figure>
 <section id="bayesian-linear-regression">
-<h1>Bayesian Linear Regression<a class="headerlink" href="#bayesian-linear-regression" title="Link to this heading">#</a></h1>
+<h1>Bayesian Linear Regression<a class="headerlink" href="#bayesian-linear-regression" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite this e-Book as:</p>
@@ -475,19 +464,19 @@ document.write(`
 <li><p><a class="reference external" href="https://youtu.be/zOUM_AnI1DQ?si=wzWdJ35qJ9n8O6Bl">Introduction to Machine Learning</a></p></li>
 <li><p><a class="reference external" href="https://youtu.be/0fzbyhWiP84">Linear Regression</a></p></li>
 <li><p><a class="reference external" href="https://youtu.be/pMGO40yXZ5Y?si=ygJAheyX-v2BmSiR">Ridge Regression</a></p></li>
-<li><p><a class="reference external" href="https://www.youtube.com/watch?v=Ppwfr8H177M&amp;amp;list=PLG19vXLQHvSB-D4XKYieEku9GQMQyAzjJ&amp;amp;index=6">Bayesian Probability</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=Ppwfr8H177M&amp;list=PLG19vXLQHvSB-D4XKYieEku9GQMQyAzjJ&amp;index=6">Bayesian Probability</a></p></li>
 <li><p><a class="reference external" href="https://youtu.be/LzZ5b3wdZQk?si=DkhYrgmDXzrPFQyr">Bayesian Linear Regression</a></p></li>
 <li><p><a class="reference external" href="https://youtu.be/BDvyLrH3cLI?si=D6boOpoVpyo-6TqK">Naive Bayes Classifier</a></p></li>
 </ul>
-<p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
+<p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
 <section id="motivations-for-bayesian-linear-regression">
-<h2>Motivations for Bayesian Linear Regression<a class="headerlink" href="#motivations-for-bayesian-linear-regression" title="Link to this heading">#</a></h2>
+<h2>Motivations for Bayesian Linear Regression<a class="headerlink" href="#motivations-for-bayesian-linear-regression" title="Permalink to this heading">#</a></h2>
 <p>Bayesian machine learning methods apply probability to make predictions with an intrinsic uncertainty model. In addition, the Bayesian methods integrate the concept of Bayesian updating, a prior model updated with a likelihood model from data to calculate a posterior model.</p>
 <p>There are additional complexities with model training due to working with these probabilities, represented by continuous probability density functions. Due to the resulting high complexity, we can’t solve for the model parameters directly, instead we must apply a sampling method such as Markov Chain Monte Carlo (MCMC) simulation.</p>
 <p>This is a simple, very accessible demonstration of Bayesian linear regression with McMC Metropolis-Hastings sampling. My students struggled with these concepts so I challenged myself to built a workflow from scratch with all details explained clearly. Let’s explain the critical prerequisites, starting with Bayesian updating.</p>
 </section>
 <section id="linear-regression">
-<h2>Linear Regression<a class="headerlink" href="#linear-regression" title="Link to this heading">#</a></h2>
+<h2>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this heading">#</a></h2>
 <p>Let’s start by recalling the salient points for linear regression for prediction, let’s start by looking at a linear model fit to a set of data.</p>
 <figure style="text-align: center;">
   <img src="_static/linear/linear_example.png" style="display: block; margin: 0 auto; width: 50%;">
@@ -542,7 +531,7 @@ RSS = \sum_{i=1}^n \left(y_i - (\sum_{\alpha = 1}^m b_{\alpha} x_{\alpha,i} + b_
 <p>Now’s let’s recall Bayesian updating and then update our linear regression model to Bayesian linear regression.</p>
 </section>
 <section id="bayesian-updating">
-<h2>Bayesian Updating<a class="headerlink" href="#bayesian-updating" title="Link to this heading">#</a></h2>
+<h2>Bayesian Updating<a class="headerlink" href="#bayesian-updating" title="Permalink to this heading">#</a></h2>
 <p>The Bayesian approach for probabilities is based on a degree of belief (expert experience) in an event updated as new information is available</p>
 <ul class="simple">
 <li><p>this approach to probability is powerful and can be applied to solve problems that we cannot be solved with the frequentist approach to probability</p></li>
@@ -555,7 +544,7 @@ P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}
 <p>where <span class="math notranslate nohighlight">\(P(A)\)</span> is the prior, <span class="math notranslate nohighlight">\(P(B|A)\)</span> is the likelihood, <span class="math notranslate nohighlight">\(P(B)\)</span> is the evidence term that is responsible for probability closure, and <span class="math notranslate nohighlight">\(P(A|B)\)</span> is the posterior.</p>
 </section>
 <section id="id1">
-<h2>Bayesian Linear Regression<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2>Bayesian Linear Regression<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>The frequentist formulation of the linear regression model is,</p>
 <div class="math notranslate nohighlight">
 \[
@@ -616,7 +605,7 @@ p(\beta | y, X) = \frac{p(y,X| \beta) p(\beta)}{p(y,X)}
 <p>Here’s a McMC Metropolis Hastings workflow and more details.</p>
 </section>
 <section id="markov-chain-monte-carlo-mcmc">
-<h2>Markov Chain Monte Carlo (MCMC)<a class="headerlink" href="#markov-chain-monte-carlo-mcmc" title="Link to this heading">#</a></h2>
+<h2>Markov Chain Monte Carlo (MCMC)<a class="headerlink" href="#markov-chain-monte-carlo-mcmc" title="Permalink to this heading">#</a></h2>
 <p>Is a set of algorithms to sample from a probability distribution such that the samples match the distribution statistics.</p>
 <ul class="simple">
 <li><p><strong>Markov</strong> - screening assumption, the next sample is only dependent on the previous sample</p></li>
@@ -630,7 +619,7 @@ p(\beta | y, X) = \frac{p(y,X| \beta) p(\beta)}{p(y,X)}
 </ul>
 </section>
 <section id="bayesian-linear-regression-with-the-metropolis-hastings-sampler">
-<h2>Bayesian Linear Regression with the Metropolis-Hastings Sampler<a class="headerlink" href="#bayesian-linear-regression-with-the-metropolis-hastings-sampler" title="Link to this heading">#</a></h2>
+<h2>Bayesian Linear Regression with the Metropolis-Hastings Sampler<a class="headerlink" href="#bayesian-linear-regression-with-the-metropolis-hastings-sampler" title="Permalink to this heading">#</a></h2>
 <p>Here’s the basic steps of the Metropolis-Hastings MCMC Sampler:</p>
 <p>For <span class="math notranslate nohighlight">\(\ell = 1, \ldots, L\)</span>:</p>
 <ol class="arabic simple">
@@ -674,7 +663,7 @@ P(\beta \rightarrow \beta^{\prime}) = min\left(\frac{p(\beta^{\prime}|y,X) }{ p(
 </ul>
 </section>
 <section id="our-simplified-demonstration-metropolis-sampling">
-<h2>Our Simplified Demonstration Metropolis Sampling<a class="headerlink" href="#our-simplified-demonstration-metropolis-sampling" title="Link to this heading">#</a></h2>
+<h2>Our Simplified Demonstration Metropolis Sampling<a class="headerlink" href="#our-simplified-demonstration-metropolis-sampling" title="Permalink to this heading">#</a></h2>
 <p>Let’s further specify this workflow for our simple demonstration.</p>
 <ul class="simple">
 <li><p>I have assumed a Gaussian, symmetric distribution for all model parameters as a result this relationship holds for all possible model parameter, current and proposed.</p></li>
@@ -731,7 +720,7 @@ f(y,X| \beta) = \prod_{\alpha = 1}^{n} f_{y,X | \beta}(y_{\alpha})
 <p>Note, this workflow was developed with assistance from Fortunato Nucera’s Medium Article <a class="reference external" href="https://medium.com/&#64;tinonucera/bayesian-linear-regression-from-scratch-a-metropolis-hastings-implementation-63526857f191">Mastering Bayesian Linear Regression from Scratch: A Metropolis-Hastings Implementation in Python</a>. I highly recommend this accessible description and demonstration. Thank you, Fortunato.</p>
 </section>
 <section id="load-the-required-libraries">
-<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Link to this heading">#</a></h2>
+<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
 <p>We will also need some standard packages. These should have been installed with Anaconda 3.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -763,7 +752,7 @@ f(y,X| \beta) = \prod_{\alpha = 1}^{n} f_{y,X | \beta}(y_{\alpha})
 <p>If you get a package import error, you may have to first install some of these packages. This can usually be accomplished by opening up a command window on Windows and then typing ‘python -m pip install [package-name]’. More assistance is available with the respective package docs.</p>
 </section>
 <section id="declare-functions">
-<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Link to this heading">#</a></h2>
+<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
 <p>The following functions include:</p>
 <ul class="simple">
 <li><p><strong>next_proposal</strong> - propose a next model parameters from previous model parameters, this is the proposal method, parameterized by step standard deviation and Gaussian distribution.</p></li>
@@ -796,7 +785,7 @@ f(y,X| \beta) = \prod_{\alpha = 1}^{n} f_{y,X | \beta}(y_{\alpha})
 </div>
 </section>
 <section id="set-the-working-directory">
-<h2>Set the Working Directory<a class="headerlink" href="#set-the-working-directory" title="Link to this heading">#</a></h2>
+<h2>Set the Working Directory<a class="headerlink" href="#set-the-working-directory" title="Permalink to this heading">#</a></h2>
 <p>I always like to do this so I don’t lose files and to simplify subsequent read and writes (avoid including the full address each time).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -807,7 +796,7 @@ f(y,X| \beta) = \prod_{\alpha = 1}^{n} f_{y,X | \beta}(y_{\alpha})
 </div>
 </section>
 <section id="build-a-synthetic-dataset-with-known-truth-linear-regression-model-parameters">
-<h2>Build a Synthetic Dataset with Known Truth Linear Regression Model Parameters<a class="headerlink" href="#build-a-synthetic-dataset-with-known-truth-linear-regression-model-parameters" title="Link to this heading">#</a></h2>
+<h2>Build a Synthetic Dataset with Known Truth Linear Regression Model Parameters<a class="headerlink" href="#build-a-synthetic-dataset-with-known-truth-linear-regression-model-parameters" title="Permalink to this heading">#</a></h2>
 <p>Let’s build a simple dataset with known linear regression model parameters, <span class="math notranslate nohighlight">\(b_1\)</span> is the slope parameter, <span class="math notranslate nohighlight">\(b_0\)</span> is the intercept parameter and <span class="math notranslate nohighlight">\(\sigma\)</span> is the error or noise.</p>
 <ul class="simple">
 <li><p>we build the data based on these parameters, and then we train a linear regression model and show that we get the correct slope and intercept model parameters.</p></li>
@@ -850,16 +839,16 @@ f(y,X| \beta) = \prod_{\alpha = 1}^{n} f_{y,X | \beta}(y_{\alpha})
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a75461e2cb4f2a92177f788e7eb2743156a54cd69ffbaa0aaa8612158491c281.png" src="_images/a75461e2cb4f2a92177f788e7eb2743156a54cd69ffbaa0aaa8612158491c281.png" />
+<img alt="_images/03c99522c28b8cb2d8c756010b591bc0e06d3cc724b73a2cbcaa5331a9f072ea.png" src="_images/03c99522c28b8cb2d8c756010b591bc0e06d3cc724b73a2cbcaa5331a9f072ea.png" />
 </div>
 </div>
 <p>The linear regression model parameters are quite close to the coefficients used to make the synthetic data. Now let’s train an Bayesian linear regression model with MCMC.</p>
 </section>
 <section id="id2">
-<h2>Bayesian Linear Regression<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h2>Bayesian Linear Regression<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <p>It all begins with a prior model, for that we assume a reasonable prior model.</p>
 <section id="assume-the-prior-model">
-<h3>Assume the Prior Model<a class="headerlink" href="#assume-the-prior-model" title="Link to this heading">#</a></h3>
+<h3>Assume the Prior Model<a class="headerlink" href="#assume-the-prior-model" title="Permalink to this heading">#</a></h3>
 <p>We assume a multivariate Gaussian distribution for the slope and intercept parameters, <span class="math notranslate nohighlight">\(f_{b_1,b_0,\sigma}(b_1,b_0,\sigma)\)</span> with independence between <span class="math notranslate nohighlight">\(b_1\)</span>, <span class="math notranslate nohighlight">\(b_0\)</span>, and <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
 <ul class="simple">
 <li><p>For a naive prior assume a very large standard deviation.
@@ -894,12 +883,12 @@ We will work in log probability and log density to improve stability of the syst
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/63e662903723b93e9a867135262a566b63592d00b403fcef90a88092bf34dbb7.png" src="_images/63e662903723b93e9a867135262a566b63592d00b403fcef90a88092bf34dbb7.png" />
+<img alt="_images/1d26923084d95d772b3d02c1f620108104eaf5c01869ff2ab96e4107777052fb.png" src="_images/1d26923084d95d772b3d02c1f620108104eaf5c01869ff2ab96e4107777052fb.png" />
 </div>
 </div>
 </section>
 <section id="bayesian-linear-regression-with-mcmc-metropolis-hastings">
-<h3>Bayesian Linear Regression with MCMC Metropolis-Hastings<a class="headerlink" href="#bayesian-linear-regression-with-mcmc-metropolis-hastings" title="Link to this heading">#</a></h3>
+<h3>Bayesian Linear Regression with MCMC Metropolis-Hastings<a class="headerlink" href="#bayesian-linear-regression-with-mcmc-metropolis-hastings" title="Permalink to this heading">#</a></h3>
 <p>The Bayesian linear regression with MCMC Metropolis-Hastings workflow.</p>
 <ol class="arabic simple">
 <li><p>assign an random initial set of model parameters</p></li>
@@ -946,7 +935,7 @@ We will work in log probability and log density to improve stability of the syst
 </div>
 </section>
 <section id="visualize-the-results">
-<h3>Visualize the Results<a class="headerlink" href="#visualize-the-results" title="Link to this heading">#</a></h3>
+<h3>Visualize the Results<a class="headerlink" href="#visualize-the-results" title="Permalink to this heading">#</a></h3>
 <p>Let’s visualize the McMC Metropolis sample chain for each of the model parameters.</p>
 <ul class="simple">
 <li><p>Note the burn-in and equilibrium chains.</p></li>
@@ -1004,12 +993,12 @@ We will work in log probability and log density to improve stability of the syst
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ed804b2e3da5875bfeb39bb0eafe29c9d0480c7bd279ed5c2c4295f012a9b1a2.png" src="_images/ed804b2e3da5875bfeb39bb0eafe29c9d0480c7bd279ed5c2c4295f012a9b1a2.png" />
+<img alt="_images/c64bff7f86be7eccc60cf24f8bcafce02f0cc0fa8d1c2205137340aa80952f81.png" src="_images/c64bff7f86be7eccc60cf24f8bcafce02f0cc0fa8d1c2205137340aa80952f81.png" />
 </div>
 </div>
 </section>
 <section id="visualize-the-chain-in-the-model-parameter-space">
-<h3>Visualize the Chain in the Model Parameter Space<a class="headerlink" href="#visualize-the-chain-in-the-model-parameter-space" title="Link to this heading">#</a></h3>
+<h3>Visualize the Chain in the Model Parameter Space<a class="headerlink" href="#visualize-the-chain-in-the-model-parameter-space" title="Permalink to this heading">#</a></h3>
 <p>Set the burn-in chain as the accepted sample at the end of the burn in chain and observed the McMC sampling.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1025,19 +1014,19 @@ We will work in log probability and log density to improve stability of the syst
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6dd9898e0408fbd6f229626794affc8c8d5fbb37ba06d1a4e11895752d703780.png" src="_images/6dd9898e0408fbd6f229626794affc8c8d5fbb37ba06d1a4e11895752d703780.png" />
+<img alt="_images/7956369297e5fe6373b84e65821f1987b9d1cad30cf5f2b36ba27aed63f9f0c7.png" src="_images/7956369297e5fe6373b84e65821f1987b9d1cad30cf5f2b36ba27aed63f9f0c7.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="comments">
-<h2>Comments<a class="headerlink" href="#comments" title="Link to this heading">#</a></h2>
+<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
 <p>This was a basic treatment of Bayesian linear regression. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
 <section id="about-the-author">
-<h2>About the Author<a class="headerlink" href="#about-the-author" title="Link to this heading">#</a></h2>
+<h2>About the Author<a class="headerlink" href="#about-the-author" title="Permalink to this heading">#</a></h2>
 <figure style="text-align: center;">
   <img src="_static/intro/michael_pyrcz_officeshot_jacket.jpg" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
@@ -1048,11 +1037,11 @@ We will work in log probability and log density to improve stability of the syst
 <li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference internal" href="#www.michaelpyrcz.com"><span class="xref myst">Website</span></a>.</p>
+<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
 </section>
 <section id="want-to-work-together">
-<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Link to this heading">#</a></h2>
+<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
 <p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
@@ -1062,7 +1051,7 @@ We will work in log probability and log density to improve stability of the syst
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -1093,7 +1082,7 @@ We will work in log probability and log density to improve stability of the syst
               
               
               
-                <footer class="prev-next-footer d-print-none">
+                <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1122,7 +1111,6 @@ We will work in log probability and log density to improve stability of the syst
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1199,8 +1187,8 @@ By Michael J. Pyrcz
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>

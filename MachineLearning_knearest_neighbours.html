@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>k-nearest Neighbours &#8212; Applied Machine Learning in Python</title>
   
@@ -14,51 +15,55 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=304429a7" />
-    <link rel="stylesheet" type="text/css" href="_static/myfile.css?v=564be945" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'MachineLearning_knearest_neighbours';</script>
@@ -75,23 +80,28 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
+
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -113,20 +123,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -142,8 +144,6 @@
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
-  
-    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -162,18 +162,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -238,7 +227,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -247,14 +236,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -379,10 +368,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -390,14 +379,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -457,15 +446,15 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <figure style="text-align: center;">
   <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
 </figure>
 <section id="k-nearest-neighbours">
-<h1>k-nearest Neighbours<a class="headerlink" href="#k-nearest-neighbours" title="Link to this heading">#</a></h1>
+<h1>k-nearest Neighbours<a class="headerlink" href="#k-nearest-neighbours" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite this e-Book as:</p>
@@ -484,9 +473,9 @@ document.write(`
 <li><p><a class="reference external" href="https://youtu.be/zOUM_AnI1DQ?si=wzWdJ35qJ9n8O6Bl">Introduction to Machine Learning</a></p></li>
 <li><p><a class="reference external" href="https://youtu.be/lzmeChSYvv8?si=nfcvGtkIAQ7rFkjo">k-nearest Neighbours Regression</a></p></li>
 </ul>
-<p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
+<p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
 <section id="motivations-for-k-nearest-neighbours-regression">
-<h2>Motivations for k-nearest Neighbours Regression<a class="headerlink" href="#motivations-for-k-nearest-neighbours-regression" title="Link to this heading">#</a></h2>
+<h2>Motivations for k-nearest Neighbours Regression<a class="headerlink" href="#motivations-for-k-nearest-neighbours-regression" title="Permalink to this heading">#</a></h2>
 <p>There are many good reasons to cover k-nearest neighbours regression. In addition to being a simple, interpretable and flexible predictive machine learning model, it also demonstrates important concepts,</p>
 <ul class="simple">
 <li><p><strong>non-parametric predictive model</strong> - that learns the form of the relationships from the data, i.e., no prior assumption about the form of the relationship</p></li>
@@ -496,33 +485,33 @@ document.write(`
 </ul>
 </section>
 <section id="convolution">
-<h2>Convolution<a class="headerlink" href="#convolution" title="Link to this heading">#</a></h2>
+<h2>Convolution<a class="headerlink" href="#convolution" title="Permalink to this heading">#</a></h2>
 <p>In fact, k-nearest neighbours is analogous to spatial estimation through weighted averaging within a local neighbourhood.</p>
 <figure style="text-align: center;">
   <img src="_static/knearest/spatial_interpolation.png" style="display: block; margin: 0 auto; width: 50%;">
   <figcaption style="text-align: center;">Prediction modeling a spatial interpolation in predictor feature space.</figcaption>
 </figure>
-<p>The k-nearest neighbours approach is similar to a convolution approach for spatial interpolation. Convolution is the integral product of two functions, after one is reversed and shifted by <span class="math notranslate nohighlight">\(\Delta\)</span>.</p>
+<p>The k-nearest neighbours approach is similar to a convolution approach for spatial interpolation. Convolution is the integral product of two functions, after one is reversed and shifted by <span class="math notranslate nohighlight">\(\tau\)</span>.</p>
 <ul class="simple">
 <li><p>one interpretation is smoothing a function with weighting function, <span class="math notranslate nohighlight">\(𝑓(\Delta)\)</span>, is applied to calculate the weighted average of function, <span class="math notranslate nohighlight">\(𝑔(x)\)</span>,</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[ 
-(f * g)(x) = \int_{-\infty}^{\infty} f(\Delta) g(x - \Delta) \, d\Delta 
+(f * g)(x) = \int_{-\infty}^{\infty} f(\tau) g(x - \tau) \, d\tau 
 \]</div>
 <p>this easily extends into multidimensional</p>
 <div class="math notranslate nohighlight">
 \[
-(f * g)(x, y, z) = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(\Delta_x, \Delta_y, \Delta_z) g(x - \Delta_x, y - \Delta_y, z - \Delta_z) \, d\Delta_x \, d\Delta_y \, d\Delta_z
+(f * g)(x, y, z) = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(\tau_x, \tau_y, \tau_z) g(x - \tau_x, y - \tau_y, z - \tau_z) \, d\tau_x \, d\tau_y \, d\tau_z
 \]</div>
 <p>The choice of which function is shifted before integration does not change the result, the convolution operator has commutativity,</p>
 <div class="math notranslate nohighlight">
 \[ 
-(f * g)(x) = \int_{-\infty}^{\infty} f(\Delta) g(x - \Delta) \, d\Delta 
+(f * g)(x) = \int_{-\infty}^{\infty} f(\tau) g(x - \tau) \, d\tau 
 \]</div>
 <div class="math notranslate nohighlight">
 \[
-(f * g)(x) = \int_{-\infty}^{\infty} f(x - \Delta) g(\Delta) \, d\Delta 
+(f * g)(x) = \int_{-\infty}^{\infty} f(x - \tau) g(\tau) \, d\tau 
 \]</div>
 <ul class="simple">
 <li><p>if either function is reflected then convolution is equivalent to cross-correlation, measure of similarity between 2 signals as a function of displacement.</p></li>
@@ -532,6 +521,97 @@ document.write(`
   <img src="_static/knearest/interactive_convolution.png" style="display: block; margin: 0 auto; width: 100%;">
   <figcaption style="text-align: center;">Interactive Python dashboard to demonstrate convolution.</figcaption>
 </figure>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                                            <span class="c1"># arrays and matrix math</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                                           <span class="c1"># DataFrames</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>                               <span class="c1"># for plotting</span>
+<span class="kn">from</span> <span class="nn">scipy.ndimage</span> <span class="kn">import</span> <span class="n">convolve1d</span>
+<span class="n">seed</span> <span class="o">=</span> <span class="mi">73073</span>                                                  <span class="c1"># random number seed</span>
+
+<span class="n">kr</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="n">kloc</span> <span class="o">=</span> <span class="mi">45</span>                                             <span class="c1"># kernel radius, kernel location for example point</span>
+
+<span class="n">df_denpor</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/1D_por_perm_smooth.csv&#39;</span><span class="p">)</span> <span class="c1"># load data from Dr. Pyrcz&#39;s GitHub </span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>                    
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_denpor</span><span class="p">[</span><span class="s1">&#39;Por&#39;</span><span class="p">],</span><span class="n">df_denpor</span><span class="p">[</span><span class="s1">&#39;Depth&#39;</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;f(x)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Depth (m)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Porosity (%)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">22</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Exhaustive Case: Original and Convolved Function&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">));</span>
+
+<span class="n">size</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">kr</span> <span class="o">+</span> <span class="mi">1</span>                                             <span class="c1"># make uniform kernel</span>
+<span class="n">kernel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">size</span><span class="p">)</span> <span class="o">/</span> <span class="n">size</span>                                 <span class="c1"># normalize kernel to sum to one for unbiasedness</span>
+
+<span class="n">convolved</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">convolve</span><span class="p">(</span><span class="n">df_denpor</span><span class="p">[</span><span class="s1">&#39;Por&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">)</span> <span class="c1"># convolution</span>
+
+<span class="n">k</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">kernel</span><span class="p">)</span>
+<span class="n">trim</span> <span class="o">=</span> <span class="n">k</span> <span class="o">//</span> <span class="mi">2</span>  <span class="c1"># how many values to trim from each edge</span>
+<span class="n">convolved_valid</span> <span class="o">=</span> <span class="n">convolved</span><span class="p">[</span><span class="n">trim</span><span class="p">:</span><span class="o">-</span><span class="n">trim</span><span class="p">]</span> <span class="k">if</span> <span class="n">trim</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">convolved</span>
+<span class="n">depth_valid</span> <span class="o">=</span> <span class="n">df_denpor</span><span class="p">[</span><span class="s1">&#39;Depth&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">trim</span><span class="p">:</span><span class="o">-</span><span class="n">trim</span><span class="p">]</span> <span class="k">if</span> <span class="n">trim</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">df_denpor</span><span class="p">[</span><span class="s1">&#39;Depth&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">convolved_pt</span> <span class="o">=</span> <span class="n">convolved_valid</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">depth_valid</span> <span class="o">-</span> <span class="n">kloc</span><span class="p">)</span><span class="o">.</span><span class="n">argmin</span><span class="p">()];</span> <span class="n">depth_pt</span> <span class="o">=</span> <span class="n">depth_valid</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">depth_valid</span> <span class="o">-</span> <span class="n">kloc</span><span class="p">)</span><span class="o">.</span><span class="n">argmin</span><span class="p">()]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">convolved_valid</span><span class="p">,</span><span class="n">depth_valid</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$(f * g)(x)$&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Depth (m)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Porosity (%)&#39;</span><span class="p">);</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">22</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">22</span><span class="p">],[</span><span class="n">depth_pt</span><span class="p">,</span><span class="n">depth_pt</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">convolved_pt</span><span class="p">,</span><span class="n">depth_pt</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kernel</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">kr</span><span class="o">+</span><span class="n">kloc</span><span class="p">,</span><span class="n">kr</span><span class="o">+</span><span class="n">kloc</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">kr</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$g(\tau)$&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">0.35</span><span class="p">,</span><span class="mf">0.0</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">]);</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">));</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">kernel</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mf">0.0</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">kr</span><span class="o">+</span><span class="n">kloc</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">kr</span><span class="o">+</span><span class="n">kloc</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">kernel</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mf">0.0</span><span class="p">],[</span><span class="n">kr</span><span class="o">+</span><span class="n">kloc</span><span class="p">,</span><span class="n">kr</span><span class="o">+</span><span class="n">kloc</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Kernel&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">0.35</span><span class="p">,</span><span class="mf">0.0</span><span class="p">],[</span><span class="n">depth_pt</span><span class="p">,</span><span class="n">depth_pt</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Depth (m)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Weight (unitless)&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/58f0d6ec82ae506386975d87b4fbaa3fa88f321e3ef516e9f956402a156d2751.png" src="_images/58f0d6ec82ae506386975d87b4fbaa3fa88f321e3ef516e9f956402a156d2751.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">astropy.convolution.convolve</span> <span class="k">as</span> <span class="nn">convolve</span>               <span class="c1"># sparse data convolution</span>
+<span class="n">frac</span> <span class="o">=</span> <span class="mf">0.2</span>
+
+<span class="n">df_denpor</span><span class="p">[</span><span class="s1">&#39;Por_Sparse&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_denpor</span><span class="p">[</span><span class="s1">&#39;Por&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span> <span class="o">=</span> <span class="n">seed</span><span class="p">)</span>
+<span class="n">nan_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df_denpor</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df_denpor</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mf">1.0</span><span class="o">-</span><span class="n">frac</span><span class="p">)),</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">df_denpor</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">nan_indices</span><span class="p">,</span> <span class="s1">&#39;Por_Sparse&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>                    
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_denpor</span><span class="p">[</span><span class="s1">&#39;Por_Sparse&#39;</span><span class="p">],</span><span class="n">df_denpor</span><span class="p">[</span><span class="s1">&#39;Depth&#39;</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;f(x) Sparse&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Depth (m)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Porosity (%)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_denpor</span><span class="p">[</span><span class="s1">&#39;Por&#39;</span><span class="p">],</span><span class="n">df_denpor</span><span class="p">[</span><span class="s1">&#39;Depth&#39;</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;f(x) Exhaustive&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">26</span><span class="p">,</span><span class="mi">0</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">22</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sparse Case: Original and Convolved Function&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">));</span>
+
+<span class="n">size</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">kr</span> <span class="o">+</span> <span class="mi">1</span>                                             <span class="c1"># make uniform kernel</span>
+<span class="n">kernel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">size</span><span class="p">)</span> <span class="o">/</span> <span class="n">size</span>                                 <span class="c1"># normalize kernel to sum to one for unbiasedness</span>
+
+<span class="n">convolved</span> <span class="o">=</span> <span class="n">convolve</span><span class="p">(</span><span class="n">df_denpor</span><span class="p">[</span><span class="s1">&#39;Por_Sparse&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">kernel</span><span class="p">,</span><span class="n">boundary</span><span class="o">=</span><span class="s1">&#39;extend&#39;</span><span class="p">,</span><span class="n">nan_treatment</span><span class="o">=</span><span class="s1">&#39;interpolate&#39;</span><span class="p">,</span><span class="n">normalize_kernel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># convolve</span>
+
+<span class="n">k</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">kernel</span><span class="p">)</span>
+<span class="n">trim</span> <span class="o">=</span> <span class="n">k</span> <span class="o">//</span> <span class="mi">2</span>  <span class="c1"># how many values to trim from each edge</span>
+<span class="n">convolved_valid</span> <span class="o">=</span> <span class="n">convolved</span><span class="p">[</span><span class="n">trim</span><span class="p">:</span><span class="o">-</span><span class="n">trim</span><span class="p">]</span> <span class="k">if</span> <span class="n">trim</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">convolved</span>
+<span class="n">depth_valid</span> <span class="o">=</span> <span class="n">df_denpor</span><span class="p">[</span><span class="s1">&#39;Depth&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">trim</span><span class="p">:</span><span class="o">-</span><span class="n">trim</span><span class="p">]</span> <span class="k">if</span> <span class="n">trim</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">df_denpor</span><span class="p">[</span><span class="s1">&#39;Depth&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">convolved_pt</span> <span class="o">=</span> <span class="n">convolved_valid</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">depth_valid</span> <span class="o">-</span> <span class="n">kloc</span><span class="p">)</span><span class="o">.</span><span class="n">argmin</span><span class="p">()];</span> <span class="n">depth_pt</span> <span class="o">=</span> <span class="n">depth_valid</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">depth_valid</span> <span class="o">-</span> <span class="n">kloc</span><span class="p">)</span><span class="o">.</span><span class="n">argmin</span><span class="p">()]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">convolved_valid</span><span class="p">,</span><span class="n">depth_valid</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$(f * g)(x)$&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Depth (m)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Porosity (%)&#39;</span><span class="p">);</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">22</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">22</span><span class="p">],[</span><span class="n">depth_pt</span><span class="p">,</span><span class="n">depth_pt</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">convolved_pt</span><span class="p">,</span><span class="n">depth_pt</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kernel</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">kr</span><span class="o">+</span><span class="n">kloc</span><span class="p">,</span><span class="n">kr</span><span class="o">+</span><span class="n">kloc</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">kr</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$g(\tau)$&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">0.35</span><span class="p">,</span><span class="mf">0.0</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">]);</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">));</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">kernel</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mf">0.0</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">kr</span><span class="o">+</span><span class="n">kloc</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">kr</span><span class="o">+</span><span class="n">kloc</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">kernel</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mf">0.0</span><span class="p">],[</span><span class="n">kr</span><span class="o">+</span><span class="n">kloc</span><span class="p">,</span><span class="n">kr</span><span class="o">+</span><span class="n">kloc</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Kernel&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">0.35</span><span class="p">,</span><span class="mf">0.0</span><span class="p">],[</span><span class="n">depth_pt</span><span class="p">,</span><span class="n">depth_pt</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Depth (m)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Weight (unitless)&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: nan_treatment=&#39;interpolate&#39;, however, NaN values detected post convolution. A contiguous region of NaN values, larger than the kernel size, are present in the input array. Increase the kernel size to avoid this. [astropy.convolution.convolve]
+</pre></div>
+</div>
+<img alt="_images/ae797e2e907bd48f0c7b524dd697136f6a863602289a91dc8e372c930f4a72c1.png" src="_images/ae797e2e907bd48f0c7b524dd697136f6a863602289a91dc8e372c930f4a72c1.png" />
+</div>
+</div>
 <p>While it is useful to review and discuss convolution, k-nearest neighbours departs from convolution with the specification of <span class="math notranslate nohighlight">\(k\)</span> nearest neighbours to include in the weighted average,</p>
 <ul class="simple">
 <li><p>specifying <span class="math notranslate nohighlight">\(k\)</span> results in a locally adaptive window size, the local neighbourhood extends far enough to find <span class="math notranslate nohighlight">\(k\)</span> training data</p></li>
@@ -542,7 +622,7 @@ document.write(`
 </figure>
 </section>
 <section id="k-nearest-neighbours-hyperparameters">
-<h2>k-nearest Neighbours Hyperparameters<a class="headerlink" href="#k-nearest-neighbours-hyperparameters" title="Link to this heading">#</a></h2>
+<h2>k-nearest Neighbours Hyperparameters<a class="headerlink" href="#k-nearest-neighbours-hyperparameters" title="Permalink to this heading">#</a></h2>
 <p>Now let’s discuss the k-nearest neighbours hyperparameters.</p>
 <ol class="arabic simple">
 <li><p><strong>k number of nearest data</strong> - to utilize for prediction</p></li>
@@ -571,7 +651,7 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
 </ul>
 </section>
 <section id="load-the-required-libraries">
-<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Link to this heading">#</a></h2>
+<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
 <p>We will also need some standard packages. These should have been installed with Anaconda 3.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -607,7 +687,7 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
 <p>If you get a package import error, you may have to first install some of these packages. This can usually be accomplished by opening up a command window on Windows and then typing ‘python -m pip install [package-name]’. More assistance is available with the respective package docs.</p>
 </section>
 <section id="declare-functions">
-<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Link to this heading">#</a></h2>
+<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
 <p>Let’s define a couple of functions to streamline plotting correlation matrices, visualization of a decision tree regression model, and the addition specified percentiles and major and minor gridlines to our plots.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -727,7 +807,7 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
 </div>
 </section>
 <section id="set-the-working-directory">
-<h2>Set the Working Directory<a class="headerlink" href="#set-the-working-directory" title="Link to this heading">#</a></h2>
+<h2>Set the Working Directory<a class="headerlink" href="#set-the-working-directory" title="Permalink to this heading">#</a></h2>
 <p>I always like to do this so I don’t lose files and to simplify subsequent read and writes (avoid including the full address each time).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -739,7 +819,7 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
 <p>You will have to update the part in quotes with your own working directory and the format is different on a Mac (e.g. “~/PGE”).</p>
 </section>
 <section id="loading-tabular-data">
-<h2>Loading Tabular Data<a class="headerlink" href="#loading-tabular-data" title="Link to this heading">#</a></h2>
+<h2>Loading Tabular Data<a class="headerlink" href="#loading-tabular-data" title="Permalink to this heading">#</a></h2>
 <p>Here’s the command to load our comma delimited data file in to a Pandas’ DataFrame object.</p>
 <p>Let’s load the provided multivariate, spatial dataset ‘unconv_MV.csv’. This dataset has variables from 1,000 unconventional wells including:</p>
 <ul class="simple">
@@ -755,7 +835,7 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
 <p>We load it with the pandas ‘read_csv’ function into a DataFrame we called ‘my_data’ and then preview it to make sure it loaded correctly.</p>
 </section>
 <section id="optional-add-random-noise-to-the-response-feature">
-<h2>Optional: Add Random Noise to the Response Feature<a class="headerlink" href="#optional-add-random-noise-to-the-response-feature" title="Link to this heading">#</a></h2>
+<h2>Optional: Add Random Noise to the Response Feature<a class="headerlink" href="#optional-add-random-noise-to-the-response-feature" title="Permalink to this heading">#</a></h2>
 <p>We can do this to observe the impact of data noise on overfit and hyperparameter tuning.</p>
 <ul class="simple">
 <li><p>This is for experiential learning, of course we wouldn’t add random noise to our data</p></li>
@@ -806,7 +886,7 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
 </div>
 </section>
 <section id="visualize-the-dataframe">
-<h2>Visualize the DataFrame<a class="headerlink" href="#visualize-the-dataframe" title="Link to this heading">#</a></h2>
+<h2>Visualize the DataFrame<a class="headerlink" href="#visualize-the-dataframe" title="Permalink to this heading">#</a></h2>
 <p>Visualizing the DataFrame is useful first check of the data.</p>
 <ul class="simple">
 <li><p>many things can go wrong, e.g., we loaded the wrong data, all the features did not load, etc.</p></li>
@@ -986,7 +1066,7 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
 </div>
 </section>
 <section id="summary-statistics-for-tabular-data">
-<h2>Summary Statistics for Tabular Data<a class="headerlink" href="#summary-statistics-for-tabular-data" title="Link to this heading">#</a></h2>
+<h2>Summary Statistics for Tabular Data<a class="headerlink" href="#summary-statistics-for-tabular-data" title="Permalink to this heading">#</a></h2>
 <p>There are a lot of efficient methods to calculate summary statistics from tabular data in DataFrames. The describe command provides count, mean, minimum, maximum in a nice data table.</p>
 <ul class="simple">
 <li><p>we have some negative TOC values! Let’s check the distribution.</p></li>
@@ -1237,7 +1317,7 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
 </ul>
 </section>
 <section id="calculate-the-correlation-matrix-and-correlation-with-response-ranking">
-<h2>Calculate the Correlation Matrix and Correlation with Response Ranking<a class="headerlink" href="#calculate-the-correlation-matrix-and-correlation-with-response-ranking" title="Link to this heading">#</a></h2>
+<h2>Calculate the Correlation Matrix and Correlation with Response Ranking<a class="headerlink" href="#calculate-the-correlation-matrix-and-correlation-with-response-ranking" title="Permalink to this heading">#</a></h2>
 <p>Let’s perform with correlation analysis. We can calculate and view the correlation matrix and correlation to the response features with these previously declared functions.</p>
 <ul class="simple">
 <li><p>correlation analysis is based on the assumption of linear relationships, but it is a good start</p></li>
@@ -1259,7 +1339,7 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ad4ccf1995474904cade667fcb779148c1598c8f8b880c29621650c97397f54d.png" src="_images/ad4ccf1995474904cade667fcb779148c1598c8f8b880c29621650c97397f54d.png" />
+<img alt="_images/9ccb60421ffa42bec24f02270e0cb19e4ab0827d13308e827a76a7a86b2c0dc6.png" src="_images/9ccb60421ffa42bec24f02270e0cb19e4ab0827d13308e827a76a7a86b2c0dc6.png" />
 </div>
 </div>
 <p>Note the 1.0 diagonal resulting from the correlation of each variable with themselves.</p>
@@ -1280,16 +1360,16 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d99c1ee30936e0a957d82c5affea00e77278080a0da3a6251c92b625d5fcc991.png" src="_images/d99c1ee30936e0a957d82c5affea00e77278080a0da3a6251c92b625d5fcc991.png" />
+<img alt="_images/4c23ae18eda1e533de50c2330dba444a3862043169ebd7569532055f40e72e5f.png" src="_images/4c23ae18eda1e533de50c2330dba444a3862043169ebd7569532055f40e72e5f.png" />
 </div>
 </div>
 </section>
 <section id="working-with-only-two-predictor-features">
-<h2>Working with Only Two Predictor Features<a class="headerlink" href="#working-with-only-two-predictor-features" title="Link to this heading">#</a></h2>
+<h2>Working with Only Two Predictor Features<a class="headerlink" href="#working-with-only-two-predictor-features" title="Permalink to this heading">#</a></h2>
 <p>Let’s simplify the problem to 2 predictor features, Porosity and Brittleness to predict Production rate.  By working with only 2 features, it is very easy to visualize the segmentation of the feature space (it is only 2D and can be shown completely on a single plot).</p>
 </section>
 <section id="standardizing-predictor-features">
-<h2>Standardizing Predictor Features<a class="headerlink" href="#standardizing-predictor-features" title="Link to this heading">#</a></h2>
+<h2>Standardizing Predictor Features<a class="headerlink" href="#standardizing-predictor-features" title="Permalink to this heading">#</a></h2>
 <p>The k-nearest neighbour method uses a nearest training sample search in feature space (like k-means clustering). To remove the impact feature range from the approach we standardize the features.</p>
 <ul class="simple">
 <li><p>we will standardize our predictor features to have a mean of zero and a variance of one.</p></li>
@@ -1453,7 +1533,7 @@ Response Feature: [[&#39;Prod&#39;]]
 </ul>
 </section>
 <section id="feature-ranges">
-<h2>Feature Ranges<a class="headerlink" href="#feature-ranges" title="Link to this heading">#</a></h2>
+<h2>Feature Ranges<a class="headerlink" href="#feature-ranges" title="Permalink to this heading">#</a></h2>
 <p>Let’s set some ranges for plotting. Note for the standardized predictor features we will use -3.5 to 3.5 as the limits.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1464,7 +1544,7 @@ Response Feature: [[&#39;Prod&#39;]]
 </div>
 </section>
 <section id="train-and-test-split">
-<h2>Train and Test Split<a class="headerlink" href="#train-and-test-split" title="Link to this heading">#</a></h2>
+<h2>Train and Test Split<a class="headerlink" href="#train-and-test-split" title="Permalink to this heading">#</a></h2>
 <p>For convenience and simplicity we use scikit-learn’s random train and test split.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1502,7 +1582,7 @@ Response Feature: [[&#39;Prod&#39;]]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9deb1b5e00fdb45df197264a452ea4a7250c81b98ad33c87dd769b549a396b5d.png" src="_images/9deb1b5e00fdb45df197264a452ea4a7250c81b98ad33c87dd769b549a396b5d.png" />
+<img alt="_images/a6e3b01d9e6230c6eb26e1b06c604aa2fc175bb399d25bcd7794d5fb4b1b1e46.png" src="_images/a6e3b01d9e6230c6eb26e1b06c604aa2fc175bb399d25bcd7794d5fb4b1b1e46.png" />
 </div>
 </div>
 <p>The distributions are well behaved,</p>
@@ -1538,7 +1618,7 @@ Response Feature: [[&#39;Prod&#39;]]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3e9dc5f019cae0c4e61305bb8fd23699128a8ee8dead606560313043aaa51c75.png" src="_images/3e9dc5f019cae0c4e61305bb8fd23699128a8ee8dead606560313043aaa51c75.png" />
+<img alt="_images/4c88383d908cf65a54e1601379bf0b36cdbfab09eeae0ff5cc37587387fd084c.png" src="_images/4c88383d908cf65a54e1601379bf0b36cdbfab09eeae0ff5cc37587387fd084c.png" />
 </div>
 </div>
 <p>This problem looks nonlinear and could not be modeled with simple linear regression.</p>
@@ -1547,7 +1627,7 @@ Response Feature: [[&#39;Prod&#39;]]
 </ul>
 </section>
 <section id="instantiate-fit-and-predict-with-k-nearest-neighbour">
-<h2>Instantiate, Fit and Predict with k-nearest Neighbour<a class="headerlink" href="#instantiate-fit-and-predict-with-k-nearest-neighbour" title="Link to this heading">#</a></h2>
+<h2>Instantiate, Fit and Predict with k-nearest Neighbour<a class="headerlink" href="#instantiate-fit-and-predict-with-k-nearest-neighbour" title="Permalink to this heading">#</a></h2>
 <p>Let’s instantiate, fit and predict with a k-nearest neighbour model.</p>
 <ul class="simple">
 <li><p>instantiate it with the hyperparameters, k-nearest neighbours</p></li>
@@ -1596,7 +1676,7 @@ Response Feature: [[&#39;Prod&#39;]]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/46bfb26e0add6904d8e32689898b13ab27e80e6a02cc185da24e4f67b5bee07b.png" src="_images/46bfb26e0add6904d8e32689898b13ab27e80e6a02cc185da24e4f67b5bee07b.png" />
+<img alt="_images/8687713a2a5e6441f354a7136a11c925434235dd1930a34a508287b1aed9f7e5.png" src="_images/8687713a2a5e6441f354a7136a11c925434235dd1930a34a508287b1aed9f7e5.png" />
 </div>
 </div>
 <p>The model looks good:</p>
@@ -1635,7 +1715,7 @@ Response Feature: [[&#39;Prod&#39;]]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/52b2c4e9cf422c096caa99709e86ed27ff640cf73b9afafd361ff3d4576a7caf.png" src="_images/52b2c4e9cf422c096caa99709e86ed27ff640cf73b9afafd361ff3d4576a7caf.png" />
+<img alt="_images/57e183c41e9ee9d084d79c733d18bfe2ce2f5e0504c9b7b75db9ad994fc637cb.png" src="_images/57e183c41e9ee9d084d79c733d18bfe2ce2f5e0504c9b7b75db9ad994fc637cb.png" />
 </div>
 </div>
 <p>Note that this smoothed out the response, and the predictions are approaching the global mean.</p>
@@ -1671,7 +1751,7 @@ Response Feature: [[&#39;Prod&#39;]]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/eccef66d988755a38179e565d20e077e09fb3b747a7abbc669c76e59302523b7.png" src="_images/eccef66d988755a38179e565d20e077e09fb3b747a7abbc669c76e59302523b7.png" />
+<img alt="_images/36151afeb7ee7ec97d8f9695513890616f1d619cbc81c9e9a734492d90c1e86f.png" src="_images/36151afeb7ee7ec97d8f9695513890616f1d619cbc81c9e9a734492d90c1e86f.png" />
 </div>
 </div>
 <p>Now we have an extreme overfit model.</p>
@@ -1708,7 +1788,7 @@ Response Feature: [[&#39;Prod&#39;]]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ed3473bae62c582443c7ea9b2c0932a76950439402064ac4066b17baa6ce0d14.png" src="_images/ed3473bae62c582443c7ea9b2c0932a76950439402064ac4066b17baa6ce0d14.png" />
+<img alt="_images/58118fcb46c0eb738a754ea3e1103828cda85f1f5eea8dc2d12b6e69215213d3.png" src="_images/58118fcb46c0eb738a754ea3e1103828cda85f1f5eea8dc2d12b6e69215213d3.png" />
 </div>
 </div>
 <p>Compare this prediction model to our first model, all we changes is the distance search for the k nearest samples to Manhattan from Euclidean distance.</p>
@@ -1717,7 +1797,7 @@ Response Feature: [[&#39;Prod&#39;]]
 </ul>
 </section>
 <section id="hyperparameter-tuning-for-k-nearest-neighbours">
-<h2>Hyperparameter Tuning for k-Nearest Neighbours<a class="headerlink" href="#hyperparameter-tuning-for-k-nearest-neighbours" title="Link to this heading">#</a></h2>
+<h2>Hyperparameter Tuning for k-Nearest Neighbours<a class="headerlink" href="#hyperparameter-tuning-for-k-nearest-neighbours" title="Permalink to this heading">#</a></h2>
 <p>Let’s check this out as we tune the hyper parameters.</p>
 <p>So what does the <span class="math notranslate nohighlight">\(k\)</span> do?</p>
 <ul class="simple">
@@ -1732,7 +1812,7 @@ Response Feature: [[&#39;Prod&#39;]]
 <p>We need to tune the complexity to optimize model performance.</p>
 </section>
 <section id="tuning-the-hyperparameters">
-<h2>Tuning the Hyperparameters<a class="headerlink" href="#tuning-the-hyperparameters" title="Link to this heading">#</a></h2>
+<h2>Tuning the Hyperparameters<a class="headerlink" href="#tuning-the-hyperparameters" title="Permalink to this heading">#</a></h2>
 <p>Let’s loop over multiple <span class="math notranslate nohighlight">\(k\)</span> nearest neighbours for average and inverse distance estimates to access the best hyperparameters with respect to accuracy in testing.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1771,7 +1851,7 @@ Response Feature: [[&#39;Prod&#39;]]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5fbc622f476932c0a13993a076599cecc2fa4e2cd216d3948ae60e4e3880f366.png" src="_images/5fbc622f476932c0a13993a076599cecc2fa4e2cd216d3948ae60e4e3880f366.png" />
+<img alt="_images/01eac05af310de41e5fc30ed84e0dd7ffbc211efc97eea008ec63bd1c8ef9a09.png" src="_images/01eac05af310de41e5fc30ed84e0dd7ffbc211efc97eea008ec63bd1c8ef9a09.png" />
 </div>
 </div>
 <p>What can we observe from this result?</p>
@@ -1787,7 +1867,7 @@ Response Feature: [[&#39;Prod&#39;]]
 <p>We are observing the accuracy vs. complexity trade-off for the <span class="math notranslate nohighlight">\(k\)</span> nearest neighbour model.</p>
 </section>
 <section id="k-fold-cross-validation">
-<h2>k-fold Cross Validation<a class="headerlink" href="#k-fold-cross-validation" title="Link to this heading">#</a></h2>
+<h2>k-fold Cross Validation<a class="headerlink" href="#k-fold-cross-validation" title="Permalink to this heading">#</a></h2>
 <p>It is useful to evaluate the performance of our model by observing the accuracy vs. complexity trade-off.</p>
 <p>Yet, what we really want to do is rigorously test our model performance.  We should perform a more rigorous cross validation that does a better job evaluating over different sets of training and testing data. scikit learn has a built in cross validation method called cross_val_score that we can use to:</p>
 <ol class="arabic simple">
@@ -1821,13 +1901,13 @@ Response Feature: [[&#39;Prod&#39;]]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d876d6b7a664c23adf81c3a783e7cc5ef8ca9c181aef4eac2c9d609b205312ff.png" src="_images/d876d6b7a664c23adf81c3a783e7cc5ef8ca9c181aef4eac2c9d609b205312ff.png" />
+<img alt="_images/3486b059575a23212d8aafc3a96a97665590c325236271232ebf8b699313ea39.png" src="_images/3486b059575a23212d8aafc3a96a97665590c325236271232ebf8b699313ea39.png" />
 </div>
 </div>
 <p>With the hyperparameter of 10 nearest neighbours we get the greatest accuracy in k-fold cross validation model testing.</p>
 </section>
 <section id="predictor-feature-standardization">
-<h2>Predictor Feature Standardization<a class="headerlink" href="#predictor-feature-standardization" title="Link to this heading">#</a></h2>
+<h2>Predictor Feature Standardization<a class="headerlink" href="#predictor-feature-standardization" title="Permalink to this heading">#</a></h2>
 <p>We have standardized the predictor feature to remove the influence of their ranges.</p>
 <ul class="simple">
 <li><p>What would happen if we worked with the original predictor features?</p></li>
@@ -1860,7 +1940,7 @@ Response Feature: [[&#39;Prod&#39;]]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/77c1e26f08fc8e1f52ecd35b289fd6f8deb69de9c21ee4b4ef08e8337e587e23.png" src="_images/77c1e26f08fc8e1f52ecd35b289fd6f8deb69de9c21ee4b4ef08e8337e587e23.png" />
+<img alt="_images/8c3133ce421b3030fdd8a00084845ccd1d24e4e798c75f636c0920eebed4d5c6.png" src="_images/8c3133ce421b3030fdd8a00084845ccd1d24e4e798c75f636c0920eebed4d5c6.png" />
 </div>
 </div>
 <p>Do you see the horizontal banding?  The larger range of magnitudes of brittleness vs. porosity results in this banding.</p>
@@ -1898,7 +1978,7 @@ Response Feature: [[&#39;Prod&#39;]]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/566a475d9e09608271def62157ae422f97b98a47f20383f633fafdb791bcf235.png" src="_images/566a475d9e09608271def62157ae422f97b98a47f20383f633fafdb791bcf235.png" />
+<img alt="_images/e98632fa73beaf85be54462502e9cd2b26c6bc804f11e5ba193bd5a17f99b64d.png" src="_images/e98632fa73beaf85be54462502e9cd2b26c6bc804f11e5ba193bd5a17f99b64d.png" />
 </div>
 </div>
 <ul class="simple">
@@ -1907,14 +1987,14 @@ Response Feature: [[&#39;Prod&#39;]]
 <p>Our distance metric for assigning nearest neighbours is quite sensitive to the feature units.  We should always standardize all predictor features (put them on equal footing) before we use them to build our <span class="math notranslate nohighlight">\(k\)</span>-nearest neighbour regression model!</p>
 </section>
 <section id="k-nearest-neighbour-regression-in-scikit-learn-with-pipelines">
-<h2>k Nearest Neighbour Regression in scikit-learn with Pipelines<a class="headerlink" href="#k-nearest-neighbour-regression-in-scikit-learn-with-pipelines" title="Link to this heading">#</a></h2>
+<h2>k Nearest Neighbour Regression in scikit-learn with Pipelines<a class="headerlink" href="#k-nearest-neighbour-regression-in-scikit-learn-with-pipelines" title="Permalink to this heading">#</a></h2>
 <p>The need to standardize features, train, tune and retrain the tuned model with all the data may seem to be a lot of work!</p>
 <ul class="simple">
 <li><p>one solution is to use the Pipeline object from scikit-learn.</p></li>
 </ul>
 <p>Here’s some highlights on Pipelines.</p>
 <section id="machine-learning-modeling-pipelines-basics">
-<h3>Machine Learning Modeling Pipelines Basics<a class="headerlink" href="#machine-learning-modeling-pipelines-basics" title="Link to this heading">#</a></h3>
+<h3>Machine Learning Modeling Pipelines Basics<a class="headerlink" href="#machine-learning-modeling-pipelines-basics" title="Permalink to this heading">#</a></h3>
 <p>Machine learning workflows can be complicated, with various steps:</p>
 <ul class="simple">
 <li><p>data preparation, feature engineering transformations</p></li>
@@ -1937,7 +2017,7 @@ Response Feature: [[&#39;Prod&#39;]]
 <p>The fundamental philosophy is to treat machine learning as a combinatorial search to automate the determination of the best model (AutoML)</p>
 </section>
 <section id="k-nearest-neighbours-with-pipelines">
-<h3>k-Nearest Neighbours with Pipelines<a class="headerlink" href="#k-nearest-neighbours-with-pipelines" title="Link to this heading">#</a></h3>
+<h3>k-Nearest Neighbours with Pipelines<a class="headerlink" href="#k-nearest-neighbours-with-pipelines" title="Permalink to this heading">#</a></h3>
 <p>Here’s compact, safe code for the entire model training and tuning process with scikit-learn pipelines</p>
 <ul class="simple">
 <li><p>the GridSearchCV object actually becomes the prediction model, with tuned hyperparameters retrained on all of the data!</p></li>
@@ -1984,12 +2064,12 @@ Response Feature: [[&#39;Prod&#39;]]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0c20b0dec445817781855d631d24b91ee74e9b836ca7140fd010540e702b0d9e.png" src="_images/0c20b0dec445817781855d631d24b91ee74e9b836ca7140fd010540e702b0d9e.png" />
+<img alt="_images/83fd2c84c5d45efc2ab0262137bbbdafd882df6ec6ab4098a5b6e277724e7c05.png" src="_images/83fd2c84c5d45efc2ab0262137bbbdafd882df6ec6ab4098a5b6e277724e7c05.png" />
 </div>
 </div>
 </section>
 <section id="check-the-tuned-hyperparameters">
-<h3>Check the Tuned Hyperparameters<a class="headerlink" href="#check-the-tuned-hyperparameters" title="Link to this heading">#</a></h3>
+<h3>Check the Tuned Hyperparameters<a class="headerlink" href="#check-the-tuned-hyperparameters" title="Permalink to this heading">#</a></h3>
 <p>In the GridSearchCV model object, there is a built in dictionary called best_params_ that includes all the tuned hyperparameters.</p>
 <ul class="simple">
 <li><p>note, over the range of k’s the selected k, n_neighbors</p></li>
@@ -2023,411 +2103,7 @@ Response Feature: [[&#39;Prod&#39;]]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-1 {
-  /* Definition of color scheme common for light and dark mode */
-  --sklearn-color-text: black;
-  --sklearn-color-line: gray;
-  /* Definition of color scheme for unfitted estimators */
-  --sklearn-color-unfitted-level-0: #fff5e6;
-  --sklearn-color-unfitted-level-1: #f6e4d2;
-  --sklearn-color-unfitted-level-2: #ffe0b3;
-  --sklearn-color-unfitted-level-3: chocolate;
-  /* Definition of color scheme for fitted estimators */
-  --sklearn-color-fitted-level-0: #f0f8ff;
-  --sklearn-color-fitted-level-1: #d4ebff;
-  --sklearn-color-fitted-level-2: #b3dbfd;
-  --sklearn-color-fitted-level-3: cornflowerblue;
-
-  /* Specific color for light theme */
-  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
-  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
-  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
-  --sklearn-color-icon: #696969;
-
-  @media (prefers-color-scheme: dark) {
-    /* Redefinition of color scheme for dark theme */
-    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
-    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
-    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
-    --sklearn-color-icon: #878787;
-  }
-}
-
-#sk-container-id-1 {
-  color: var(--sklearn-color-text);
-}
-
-#sk-container-id-1 pre {
-  padding: 0;
-}
-
-#sk-container-id-1 input.sk-hidden--visually {
-  border: 0;
-  clip: rect(1px 1px 1px 1px);
-  clip: rect(1px, 1px, 1px, 1px);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-}
-
-#sk-container-id-1 div.sk-dashed-wrapped {
-  border: 1px dashed var(--sklearn-color-line);
-  margin: 0 0.4em 0.5em 0.4em;
-  box-sizing: border-box;
-  padding-bottom: 0.4em;
-  background-color: var(--sklearn-color-background);
-}
-
-#sk-container-id-1 div.sk-container {
-  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
-     but bootstrap.min.css set `[hidden] { display: none !important; }`
-     so we also need the `!important` here to be able to override the
-     default hidden behavior on the sphinx rendered scikit-learn.org.
-     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
-  display: inline-block !important;
-  position: relative;
-}
-
-#sk-container-id-1 div.sk-text-repr-fallback {
-  display: none;
-}
-
-div.sk-parallel-item,
-div.sk-serial,
-div.sk-item {
-  /* draw centered vertical line to link estimators */
-  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
-  background-size: 2px 100%;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-
-/* Parallel-specific style estimator block */
-
-#sk-container-id-1 div.sk-parallel-item::after {
-  content: "";
-  width: 100%;
-  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
-  flex-grow: 1;
-}
-
-#sk-container-id-1 div.sk-parallel {
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-  background-color: var(--sklearn-color-background);
-  position: relative;
-}
-
-#sk-container-id-1 div.sk-parallel-item {
-  display: flex;
-  flex-direction: column;
-}
-
-#sk-container-id-1 div.sk-parallel-item:first-child::after {
-  align-self: flex-end;
-  width: 50%;
-}
-
-#sk-container-id-1 div.sk-parallel-item:last-child::after {
-  align-self: flex-start;
-  width: 50%;
-}
-
-#sk-container-id-1 div.sk-parallel-item:only-child::after {
-  width: 0;
-}
-
-/* Serial-specific style estimator block */
-
-#sk-container-id-1 div.sk-serial {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: var(--sklearn-color-background);
-  padding-right: 1em;
-  padding-left: 1em;
-}
-
-
-/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
-clickable and can be expanded/collapsed.
-- Pipeline and ColumnTransformer use this feature and define the default style
-- Estimators will overwrite some part of the style using the `sk-estimator` class
-*/
-
-/* Pipeline and ColumnTransformer style (default) */
-
-#sk-container-id-1 div.sk-toggleable {
-  /* Default theme specific background. It is overwritten whether we have a
-  specific estimator or a Pipeline/ColumnTransformer */
-  background-color: var(--sklearn-color-background);
-}
-
-/* Toggleable label */
-#sk-container-id-1 label.sk-toggleable__label {
-  cursor: pointer;
-  display: block;
-  width: 100%;
-  margin-bottom: 0;
-  padding: 0.5em;
-  box-sizing: border-box;
-  text-align: center;
-}
-
-#sk-container-id-1 label.sk-toggleable__label-arrow:before {
-  /* Arrow on the left of the label */
-  content: "▸";
-  float: left;
-  margin-right: 0.25em;
-  color: var(--sklearn-color-icon);
-}
-
-#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {
-  color: var(--sklearn-color-text);
-}
-
-/* Toggleable content - dropdown */
-
-#sk-container-id-1 div.sk-toggleable__content {
-  max-height: 0;
-  max-width: 0;
-  overflow: hidden;
-  text-align: left;
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-0);
-}
-
-#sk-container-id-1 div.sk-toggleable__content.fitted {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-0);
-}
-
-#sk-container-id-1 div.sk-toggleable__content pre {
-  margin: 0.2em;
-  border-radius: 0.25em;
-  color: var(--sklearn-color-text);
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-0);
-}
-
-#sk-container-id-1 div.sk-toggleable__content.fitted pre {
-  /* unfitted */
-  background-color: var(--sklearn-color-fitted-level-0);
-}
-
-#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {
-  /* Expand drop-down */
-  max-height: 200px;
-  max-width: 100%;
-  overflow: auto;
-}
-
-#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
-  content: "▾";
-}
-
-/* Pipeline/ColumnTransformer-specific style */
-
-#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
-  color: var(--sklearn-color-text);
-  background-color: var(--sklearn-color-unfitted-level-2);
-}
-
-#sk-container-id-1 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
-  background-color: var(--sklearn-color-fitted-level-2);
-}
-
-/* Estimator-specific style */
-
-/* Colorize estimator box */
-#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-2);
-}
-
-#sk-container-id-1 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-2);
-}
-
-#sk-container-id-1 div.sk-label label.sk-toggleable__label,
-#sk-container-id-1 div.sk-label label {
-  /* The background is the default theme color */
-  color: var(--sklearn-color-text-on-default-background);
-}
-
-/* On hover, darken the color of the background */
-#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {
-  color: var(--sklearn-color-text);
-  background-color: var(--sklearn-color-unfitted-level-2);
-}
-
-/* Label box, darken color on hover, fitted */
-#sk-container-id-1 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
-  color: var(--sklearn-color-text);
-  background-color: var(--sklearn-color-fitted-level-2);
-}
-
-/* Estimator label */
-
-#sk-container-id-1 div.sk-label label {
-  font-family: monospace;
-  font-weight: bold;
-  display: inline-block;
-  line-height: 1.2em;
-}
-
-#sk-container-id-1 div.sk-label-container {
-  text-align: center;
-}
-
-/* Estimator-specific */
-#sk-container-id-1 div.sk-estimator {
-  font-family: monospace;
-  border: 1px dotted var(--sklearn-color-border-box);
-  border-radius: 0.25em;
-  box-sizing: border-box;
-  margin-bottom: 0.5em;
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-0);
-}
-
-#sk-container-id-1 div.sk-estimator.fitted {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-0);
-}
-
-/* on hover */
-#sk-container-id-1 div.sk-estimator:hover {
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-2);
-}
-
-#sk-container-id-1 div.sk-estimator.fitted:hover {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-2);
-}
-
-/* Specification for estimator info (e.g. "i" and "?") */
-
-/* Common style for "i" and "?" */
-
-.sk-estimator-doc-link,
-a:link.sk-estimator-doc-link,
-a:visited.sk-estimator-doc-link {
-  float: right;
-  font-size: smaller;
-  line-height: 1em;
-  font-family: monospace;
-  background-color: var(--sklearn-color-background);
-  border-radius: 1em;
-  height: 1em;
-  width: 1em;
-  text-decoration: none !important;
-  margin-left: 1ex;
-  /* unfitted */
-  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
-  color: var(--sklearn-color-unfitted-level-1);
-}
-
-.sk-estimator-doc-link.fitted,
-a:link.sk-estimator-doc-link.fitted,
-a:visited.sk-estimator-doc-link.fitted {
-  /* fitted */
-  border: var(--sklearn-color-fitted-level-1) 1pt solid;
-  color: var(--sklearn-color-fitted-level-1);
-}
-
-/* On hover */
-div.sk-estimator:hover .sk-estimator-doc-link:hover,
-.sk-estimator-doc-link:hover,
-div.sk-label-container:hover .sk-estimator-doc-link:hover,
-.sk-estimator-doc-link:hover {
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-3);
-  color: var(--sklearn-color-background);
-  text-decoration: none;
-}
-
-div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
-.sk-estimator-doc-link.fitted:hover,
-div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
-.sk-estimator-doc-link.fitted:hover {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-3);
-  color: var(--sklearn-color-background);
-  text-decoration: none;
-}
-
-/* Span, style for the box shown on hovering the info icon */
-.sk-estimator-doc-link span {
-  display: none;
-  z-index: 9999;
-  position: relative;
-  font-weight: normal;
-  right: .2ex;
-  padding: .5ex;
-  margin: .5ex;
-  width: min-content;
-  min-width: 20ex;
-  max-width: 50ex;
-  color: var(--sklearn-color-text);
-  box-shadow: 2pt 2pt 4pt #999;
-  /* unfitted */
-  background: var(--sklearn-color-unfitted-level-0);
-  border: .5pt solid var(--sklearn-color-unfitted-level-3);
-}
-
-.sk-estimator-doc-link.fitted span {
-  /* fitted */
-  background: var(--sklearn-color-fitted-level-0);
-  border: var(--sklearn-color-fitted-level-3);
-}
-
-.sk-estimator-doc-link:hover span {
-  display: block;
-}
-
-/* "?"-specific style due to the `<a>` HTML tag */
-
-#sk-container-id-1 a.estimator_doc_link {
-  float: right;
-  font-size: 1rem;
-  line-height: 1em;
-  font-family: monospace;
-  background-color: var(--sklearn-color-background);
-  border-radius: 1rem;
-  height: 1rem;
-  width: 1rem;
-  text-decoration: none;
-  /* unfitted */
-  color: var(--sklearn-color-unfitted-level-1);
-  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
-}
-
-#sk-container-id-1 a.estimator_doc_link.fitted {
-  /* fitted */
-  border: var(--sklearn-color-fitted-level-1) 1pt solid;
-  color: var(--sklearn-color-fitted-level-1);
-}
-
-/* On hover */
-#sk-container-id-1 a.estimator_doc_link:hover {
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-3);
-  color: var(--sklearn-color-background);
-  text-decoration: none;
-}
-
-#sk-container-id-1 a.estimator_doc_link.fitted:hover {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-3);
-}
-</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>GridSearchCV(cv=KFold(n_splits=4, random_state=None, shuffle=False),
+<div class="output text_html"><style>#sk-container-id-1 {color: black;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>GridSearchCV(cv=KFold(n_splits=4, random_state=None, shuffle=False),
              estimator=Pipeline(steps=[(&#x27;scaler&#x27;, StandardScaler()),
                                        (&#x27;knear&#x27;, KNeighborsRegressor())]),
              param_grid={&#x27;knear__metric&#x27;: [&#x27;euclidean&#x27;],
@@ -2443,7 +2119,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
        144, 145, 146, 147, 148, 149]),
                          &#x27;knear__p&#x27;: [2], &#x27;knear__weights&#x27;: [&#x27;distance&#x27;],
                          &#x27;scaler&#x27;: [StandardScaler()]},
-             scoring=&#x27;neg_mean_squared_error&#x27;)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" ><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;&nbsp;GridSearchCV<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.4/modules/generated/sklearn.model_selection.GridSearchCV.html">?<span>Documentation for GridSearchCV</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>GridSearchCV(cv=KFold(n_splits=4, random_state=None, shuffle=False),
+             scoring=&#x27;neg_mean_squared_error&#x27;)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" ><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">GridSearchCV</label><div class="sk-toggleable__content"><pre>GridSearchCV(cv=KFold(n_splits=4, random_state=None, shuffle=False),
              estimator=Pipeline(steps=[(&#x27;scaler&#x27;, StandardScaler()),
                                        (&#x27;knear&#x27;, KNeighborsRegressor())]),
              param_grid={&#x27;knear__metric&#x27;: [&#x27;euclidean&#x27;],
@@ -2459,18 +2135,18 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
        144, 145, 146, 147, 148, 149]),
                          &#x27;knear__p&#x27;: [2], &#x27;knear__weights&#x27;: [&#x27;distance&#x27;],
                          &#x27;scaler&#x27;: [StandardScaler()]},
-             scoring=&#x27;neg_mean_squared_error&#x27;)</pre></div> </div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" ><label for="sk-estimator-id-2" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">estimator: Pipeline</label><div class="sk-toggleable__content fitted"><pre>Pipeline(steps=[(&#x27;scaler&#x27;, StandardScaler()), (&#x27;knear&#x27;, KNeighborsRegressor())])</pre></div> </div></div><div class="sk-serial"><div class="sk-item"><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" ><label for="sk-estimator-id-3" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;StandardScaler<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.4/modules/generated/sklearn.preprocessing.StandardScaler.html">?<span>Documentation for StandardScaler</span></a></label><div class="sk-toggleable__content fitted"><pre>StandardScaler()</pre></div> </div></div><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-4" type="checkbox" ><label for="sk-estimator-id-4" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;KNeighborsRegressor<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.4/modules/generated/sklearn.neighbors.KNeighborsRegressor.html">?<span>Documentation for KNeighborsRegressor</span></a></label><div class="sk-toggleable__content fitted"><pre>KNeighborsRegressor()</pre></div> </div></div></div></div></div></div></div></div></div></div></div></div></div>
+             scoring=&#x27;neg_mean_squared_error&#x27;)</pre></div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" ><label for="sk-estimator-id-2" class="sk-toggleable__label sk-toggleable__label-arrow">estimator: Pipeline</label><div class="sk-toggleable__content"><pre>Pipeline(steps=[(&#x27;scaler&#x27;, StandardScaler()), (&#x27;knear&#x27;, KNeighborsRegressor())])</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" ><label for="sk-estimator-id-3" class="sk-toggleable__label sk-toggleable__label-arrow">StandardScaler</label><div class="sk-toggleable__content"><pre>StandardScaler()</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-4" type="checkbox" ><label for="sk-estimator-id-4" class="sk-toggleable__label sk-toggleable__label-arrow">KNeighborsRegressor</label><div class="sk-toggleable__content"><pre>KNeighborsRegressor()</pre></div></div></div></div></div></div></div></div></div></div></div></div></div></div>
 </div>
 </section>
 </section>
 <section id="comments">
-<h2>Comments<a class="headerlink" href="#comments" title="Link to this heading">#</a></h2>
+<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
 <p>This was a basic treatment of k-nearest neighbours. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
 <section id="about-the-author">
-<h2>About the Author<a class="headerlink" href="#about-the-author" title="Link to this heading">#</a></h2>
+<h2>About the Author<a class="headerlink" href="#about-the-author" title="Permalink to this heading">#</a></h2>
 <figure style="text-align: center;">
   <img src="_static/intro/michael_pyrcz_officeshot_jacket.jpg" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
@@ -2481,11 +2157,11 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference internal" href="#www.michaelpyrcz.com"><span class="xref myst">Website</span></a>.</p>
+<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
 </section>
 <section id="want-to-work-together">
-<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Link to this heading">#</a></h2>
+<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
 <p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
@@ -2497,7 +2173,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
 </section>
 <section id="more-resources-available-at-twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin">
-<h2>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;amp;hl=en&amp;amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin" title="Link to this heading">#</a></h2>
+<h2>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-applied-geostats-in-python-e-book-linkedin" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
 
@@ -2528,7 +2204,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
               
               
               
-                <footer class="prev-next-footer d-print-none">
+                <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -2557,7 +2233,6 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -2643,8 +2318,8 @@ By Michael J. Pyrcz
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>
