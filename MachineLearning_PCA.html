@@ -206,6 +206,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_CNN.html">Convolutional Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_autoencoder.html">Autoencoder Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_GAN.html">Generative Adversarial Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_attention.html">Attention</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_time_series.html">Time Series Analysis and Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_python.html">Python Code Snippets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
@@ -2352,29 +2353,29 @@ Correlation Matrix of the 6 principle components&#39; scores:
 Proportion of variance of original features:  [0.2 0.2 0.2 0.2 0.2]
 Correlation Matrix of original features:
 
-[[ 0.08 -0.    0.   -0.    0.  ]
- [-0.    0.08  0.    0.   -0.  ]
- [ 0.    0.    0.08  0.   -0.  ]
- [-0.    0.    0.    0.08  0.  ]
- [ 0.   -0.   -0.    0.    0.08]]
+[[ 0.08 -0.    0.    0.    0.  ]
+ [-0.    0.08 -0.   -0.   -0.  ]
+ [ 0.   -0.    0.08 -0.   -0.  ]
+ [ 0.   -0.   -0.    0.08 -0.  ]
+ [ 0.   -0.   -0.   -0.    0.08]]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PCA Variance Explained  [0.21 0.2  0.2  0.2  0.19]
 
 Correlation Matrix of scores:
 
-[[ 0.09 -0.   -0.   -0.    0.  ]
- [-0.    0.08  0.   -0.   -0.  ]
- [-0.    0.    0.08  0.    0.  ]
- [-0.   -0.    0.    0.08  0.  ]
- [ 0.   -0.    0.    0.    0.08]]
+[[ 0.09  0.    0.    0.   -0.  ]
+ [ 0.    0.08  0.   -0.   -0.  ]
+ [ 0.    0.    0.08 -0.   -0.  ]
+ [ 0.   -0.   -0.    0.08 -0.  ]
+ [-0.   -0.   -0.   -0.    0.08]]
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.98, &#39;Principal Component Scores&#39;)
 </pre></div>
 </div>
-<img alt="_images/823b3c82d910714d4edc279cdc281c8f2a3624421d39dcd7a571a905f53b40dd.png" src="_images/823b3c82d910714d4edc279cdc281c8f2a3624421d39dcd7a571a905f53b40dd.png" />
-<img alt="_images/3067a78a3b5a5b8996f16d3b7b405b0bc52cb6995934ab583e5ccfbc538267aa.png" src="_images/3067a78a3b5a5b8996f16d3b7b405b0bc52cb6995934ab583e5ccfbc538267aa.png" />
+<img alt="_images/0640a044a7a8c283cb4ee58567e102921c1d548f179b7bfde7831d45d895581e.png" src="_images/0640a044a7a8c283cb4ee58567e102921c1d548f179b7bfde7831d45d895581e.png" />
+<img alt="_images/d757a87038a1837bad3cff78bcd35be8a1694807ecd13047a3bfcc562fac83af.png" src="_images/d757a87038a1837bad3cff78bcd35be8a1694807ecd13047a3bfcc562fac83af.png" />
 </div>
 </div>
 <p>What happens when principal component analysis is applied to uncorrelated, uniformly distributed features?</p>
@@ -2727,7 +2728,7 @@ Correlation Matrix of scores:
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">file_name</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;dataframe_PCA.csv&#39;</span>
 <span class="ne">----&gt; </span><span class="mi">7</span> <span class="n">df_new_projected</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">folder</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-<span class="nn">File C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\pandas\core\generic.py:3772,</span> in <span class="ni">NDFrame.to_csv</span><span class="nt">(self, path_or_buf, sep, na_rep, float_format, columns, header, index, index_label, mode, encoding, compression, quoting, quotechar, lineterminator, chunksize, date_format, doublequote, escapechar, decimal, errors, storage_options)</span>
+<span class="nn">File ~\AppData\Local\anaconda3\envs\book\lib\site-packages\pandas\core\generic.py:3772,</span> in <span class="ni">NDFrame.to_csv</span><span class="nt">(self, path_or_buf, sep, na_rep, float_format, columns, header, index, index_label, mode, encoding, compression, quoting, quotechar, lineterminator, chunksize, date_format, doublequote, escapechar, decimal, errors, storage_options)</span>
 <span class="g g-Whitespace">   </span><span class="mi">3761</span> <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ABCDataFrame</span><span class="p">)</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
 <span class="g g-Whitespace">   </span><span class="mi">3763</span> <span class="n">formatter</span> <span class="o">=</span> <span class="n">DataFrameFormatter</span><span class="p">(</span>
 <span class="g g-Whitespace">   </span><span class="mi">3764</span>     <span class="n">frame</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
@@ -2754,7 +2755,7 @@ Correlation Matrix of scores:
 <span class="g g-Whitespace">   </span><span class="mi">3788</span>     <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
 <span class="g g-Whitespace">   </span><span class="mi">3789</span> <span class="p">)</span>
 
-<span class="nn">File C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\pandas\io\formats\format.py:1186,</span> in <span class="ni">DataFrameRenderer.to_csv</span><span class="nt">(self, path_or_buf, encoding, sep, columns, index_label, mode, compression, quoting, quotechar, lineterminator, chunksize, date_format, doublequote, escapechar, errors, storage_options)</span>
+<span class="nn">File ~\AppData\Local\anaconda3\envs\book\lib\site-packages\pandas\io\formats\format.py:1186,</span> in <span class="ni">DataFrameRenderer.to_csv</span><span class="nt">(self, path_or_buf, encoding, sep, columns, index_label, mode, compression, quoting, quotechar, lineterminator, chunksize, date_format, doublequote, escapechar, errors, storage_options)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1165</span>     <span class="n">created_buffer</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="g g-Whitespace">   </span><span class="mi">1167</span> <span class="n">csv_formatter</span> <span class="o">=</span> <span class="n">CSVFormatter</span><span class="p">(</span>
 <span class="g g-Whitespace">   </span><span class="mi">1168</span>     <span class="n">path_or_buf</span><span class="o">=</span><span class="n">path_or_buf</span><span class="p">,</span>
@@ -2766,7 +2767,7 @@ Correlation Matrix of scores:
 <span class="g g-Whitespace">   </span><span class="mi">1188</span> <span class="k">if</span> <span class="n">created_buffer</span><span class="p">:</span>
 <span class="g g-Whitespace">   </span><span class="mi">1189</span>     <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path_or_buf</span><span class="p">,</span> <span class="n">StringIO</span><span class="p">)</span>
 
-<span class="nn">File C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\pandas\io\formats\csvs.py:240,</span> in <span class="ni">CSVFormatter.save</span><span class="nt">(self)</span>
+<span class="nn">File ~\AppData\Local\anaconda3\envs\book\lib\site-packages\pandas\io\formats\csvs.py:240,</span> in <span class="ni">CSVFormatter.save</span><span class="nt">(self)</span>
 <span class="g g-Whitespace">    </span><span class="mi">236</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="g g-Whitespace">    </span><span class="mi">237</span><span class="sd"> Create the writer &amp; save.</span>
 <span class="g g-Whitespace">    </span><span class="mi">238</span><span class="sd"> &quot;&quot;&quot;</span>
@@ -2788,7 +2789,7 @@ Correlation Matrix of scores:
 <span class="g g-Whitespace">    </span><span class="mi">257</span>     <span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">259</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_save</span><span class="p">()</span>
 
-<span class="nn">File C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\pandas\io\common.py:737,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="nn">File ~\AppData\Local\anaconda3\envs\book\lib\site-packages\pandas\io\common.py:737,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
 <span class="g g-Whitespace">    </span><span class="mi">735</span> <span class="c1"># Only for write methods</span>
 <span class="g g-Whitespace">    </span><span class="mi">736</span> <span class="k">if</span> <span class="s2">&quot;r&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span> <span class="ow">and</span> <span class="n">is_path</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">737</span>     <span class="n">check_parent_directory</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">handle</span><span class="p">))</span>
@@ -2796,7 +2797,7 @@ Correlation Matrix of scores:
 <span class="g g-Whitespace">    </span><span class="mi">740</span>     <span class="k">if</span> <span class="n">compression</span> <span class="o">!=</span> <span class="s2">&quot;zstd&quot;</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">741</span>         <span class="c1"># compression libraries do not like an explicit text-mode</span>
 
-<span class="nn">File C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\pandas\io\common.py:600,</span> in <span class="ni">check_parent_directory</span><span class="nt">(path)</span>
+<span class="nn">File ~\AppData\Local\anaconda3\envs\book\lib\site-packages\pandas\io\common.py:600,</span> in <span class="ni">check_parent_directory</span><span class="nt">(path)</span>
 <span class="g g-Whitespace">    </span><span class="mi">598</span> <span class="n">parent</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span>
 <span class="g g-Whitespace">    </span><span class="mi">599</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">parent</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
 <span class="ne">--&gt; </span><span class="mi">600</span>     <span class="k">raise</span> <span class="ne">OSError</span><span class="p">(</span><span class="sa">rf</span><span class="s2">&quot;Cannot save file into a non-existent directory: &#39;</span><span class="si">{</span><span class="n">parent</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>

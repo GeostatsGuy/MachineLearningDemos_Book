@@ -206,6 +206,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_CNN.html">Convolutional Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_autoencoder.html">Autoencoder Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_GAN.html">Generative Adversarial Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_attention.html">Attention</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_time_series.html">Time Series Analysis and Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_python.html">Python Code Snippets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
@@ -1756,7 +1757,7 @@ f(x_2=60) = 86.5
 <p>Let’s use too few regions, set max_leaf_nodes too small and see the resulting decision tree model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_leaf_nodes</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="n">max_depth</span> <span class="o">=</span><span class="mi">99</span><span class="p">;</span> <span class="n">min_samples_leaf</span> <span class="o">=</span> <span class="mi">1</span>      <span class="c1"># hyperparameters</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_leaf_nodes</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="n">max_depth</span> <span class="o">=</span> <span class="mi">99</span><span class="p">;</span> <span class="n">min_samples_leaf</span> <span class="o">=</span> <span class="mi">1</span>      <span class="c1"># hyperparameters</span>
 
 <span class="n">tree_model</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_leaf_nodes</span> <span class="o">=</span> <span class="n">max_leaf_nodes</span><span class="p">,</span><span class="n">max_depth</span> <span class="o">=</span> <span class="n">max_depth</span><span class="p">,</span><span class="n">min_samples_leaf</span> <span class="o">=</span> <span class="n">min_samples_leaf</span><span class="p">)</span>
 <span class="n">tree_model</span> <span class="o">=</span> <span class="n">tree_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
@@ -1791,7 +1792,7 @@ f(x_2=60) = 86.5
 <p>Let’s use too many regions, set max_leaf_nodes too large and see the resulting decision tree model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_leaf_nodes</span> <span class="o">=</span> <span class="mi">50</span><span class="p">;</span> <span class="n">max_depth</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="n">min_samples_leaf</span> <span class="o">=</span> <span class="mi">1</span>     <span class="c1"># hyperparameters</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_leaf_nodes</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span> <span class="n">max_depth</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">min_samples_leaf</span> <span class="o">=</span> <span class="mi">20</span>     <span class="c1"># hyperparameters</span>
 
 <span class="n">tree_model</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_leaf_nodes</span> <span class="o">=</span> <span class="n">max_leaf_nodes</span><span class="p">,</span><span class="n">max_depth</span> <span class="o">=</span> <span class="n">max_depth</span><span class="p">,</span><span class="n">min_samples_leaf</span> <span class="o">=</span> <span class="n">min_samples_leaf</span><span class="p">)</span>
 <span class="n">tree_model</span> <span class="o">=</span> <span class="n">tree_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
@@ -1809,7 +1810,7 @@ f(x_2=60) = 86.5
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b64f9666026f63544dd4662412c50db7132cd58f19c828937a4e3bbfa9366dc6.png" src="_images/b64f9666026f63544dd4662412c50db7132cd58f19c828937a4e3bbfa9366dc6.png" />
+<img alt="_images/635747c7aad796063ba5bae237f17c2701ad855a39e86aaeb6c407fcbeffa3b0.png" src="_images/635747c7aad796063ba5bae237f17c2701ad855a39e86aaeb6c407fcbeffa3b0.png" />
 </div>
 </div>
 <p>Now we have an overfit predictive machine learning model.</p>
@@ -1964,7 +1965,7 @@ f(x_2=60) = 86.5
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/35821438b0adbe9ae455b2e6731dab92e05cf7dfb2dcbaaa8d296ac1c9a18b39.png" src="_images/35821438b0adbe9ae455b2e6731dab92e05cf7dfb2dcbaaa8d296ac1c9a18b39.png" />
+<img alt="_images/5f805a7eb585aa6fe6b4b01aee50eb174f2c22e3fa07f8a518d7daf0146540d9.png" src="_images/5f805a7eb585aa6fe6b4b01aee50eb174f2c22e3fa07f8a518d7daf0146540d9.png" />
 </div>
 </div>
 <p>The k-fold cross validation provides a smoother plot of MSE vs. the hyperparameter.</p>

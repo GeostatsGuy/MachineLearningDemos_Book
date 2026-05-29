@@ -206,6 +206,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_CNN.html">Convolutional Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_autoencoder.html">Autoencoder Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_GAN.html">Generative Adversarial Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_attention.html">Attention</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_time_series.html">Time Series Analysis and Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_python.html">Python Code Snippets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
@@ -409,8 +410,9 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivations-for-k-nearest-neighbours-regression">Motivations for k-nearest Neighbours Regression</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convolution">Convolution</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbours-hyperparameters">k-nearest Neighbours Hyperparameters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstrations-of-convolution">Demonstrations of Convolution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbours-hyperparameters">k-nearest Neighbours Hyperparameters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-tabular-data">Loading Tabular Data</a></li>
@@ -418,10 +420,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-dataframe">Visualize the DataFrame</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-statistics-for-tabular-data">Summary Statistics for Tabular Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-correlation-matrix-and-correlation-with-response-ranking">Calculate the Correlation Matrix and Correlation with Response Ranking</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-only-two-predictor-features">Working with Only Two Predictor Features</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standardizing-predictor-features">Standardizing Predictor Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train-and-test-split-and-standardizing-predictor-features">Train and Test Split and Standardizing Predictor Features</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-ranges">Feature Ranges</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train-and-test-split">Train and Test Split</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instantiate-fit-and-predict-with-k-nearest-neighbour">Instantiate, Fit and Predict with k-nearest Neighbour</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hyperparameter-tuning-for-k-nearest-neighbours">Hyperparameter Tuning for k-Nearest Neighbours</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuning-the-hyperparameters">Tuning the Hyperparameters</a></li>
@@ -521,15 +521,61 @@ document.write(`
   <img src="_static/knearest/interactive_convolution.png" style="display: block; margin: 0 auto; width: 100%;">
   <figcaption style="text-align: center;">Interactive Python dashboard to demonstrate convolution.</figcaption>
 </figure>
+<p>This is a good time to load our libraries.</p>
+</section>
+<section id="load-the-required-libraries">
+<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
+<p>We will also need some standard packages. These should have been installed with Anaconda 3.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                                            <span class="c1"># arrays and matrix math</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline                                         
+<span class="n">suppress_warnings</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="kn">import</span> <span class="nn">os</span>                                                     <span class="c1"># to set current working directory </span>
+<span class="kn">import</span> <span class="nn">math</span>                                                   <span class="c1"># square root operator</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                                            <span class="c1"># arrays and matrix math</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">st</span>                                      <span class="c1"># statistical methods</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                                           <span class="c1"># DataFrames</span>
+<span class="kn">import</span> <span class="nn">pandas.plotting</span> <span class="k">as</span> <span class="nn">pd_plot</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>                               <span class="c1"># for plotting</span>
-<span class="kn">from</span> <span class="nn">scipy.ndimage</span> <span class="kn">import</span> <span class="n">convolve1d</span>
-<span class="n">seed</span> <span class="o">=</span> <span class="mi">73073</span>                                                  <span class="c1"># random number seed</span>
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="p">(</span><span class="n">MultipleLocator</span><span class="p">,</span><span class="n">AutoMinorLocator</span><span class="p">,</span><span class="n">FuncFormatter</span><span class="p">)</span> <span class="c1"># control of axes ticks</span>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">ListedColormap</span>                  <span class="c1"># custom color maps</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>                                         <span class="c1"># for matrix scatter plots</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>                                   <span class="c1"># measures to check our models</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>              <span class="c1"># standardize the features</span>
+<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsRegressor</span>             <span class="c1"># for nearest k neighbours</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>                                   <span class="c1"># measures to check our models</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="p">(</span><span class="n">cross_val_score</span><span class="p">,</span><span class="n">train_test_split</span><span class="p">,</span><span class="n">GridSearchCV</span><span class="p">,</span><span class="n">KFold</span><span class="p">)</span> <span class="c1"># model tuning</span>
+<span class="kn">from</span> <span class="nn">scipy.ndimage</span> <span class="kn">import</span> <span class="n">convolve1d</span>                          <span class="c1"># exhaustive data convolution</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="p">(</span><span class="n">Pipeline</span><span class="p">,</span><span class="n">make_pipeline</span><span class="p">)</span>         <span class="c1"># machine learning modeling pipeline</span>
+<span class="kn">import</span> <span class="nn">astropy.convolution.convolve</span> <span class="k">as</span> <span class="nn">astroconvolve</span>          <span class="c1"># sparse data convolution</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>                     <span class="c1"># custom displays</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">inferno</span>                                         <span class="c1"># default color bar, no bias and friendly for color vision defeciency</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">axisbelow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                                <span class="c1"># grid behind plotting elements</span>
+<span class="k">if</span> <span class="n">suppress_warnings</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>  
+    <span class="kn">import</span> <span class="nn">warnings</span>                                           <span class="c1"># suppress any warnings for this demonstration</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span> 
+<span class="n">seed</span> <span class="o">=</span> <span class="mi">13</span>                                                     <span class="c1"># random number seed for workflow repeatability</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you get a package import error, you may have to first install some of these packages. This can usually be accomplished by opening up a command window on Windows and then typing ‘python -m pip install [package-name]’. More assistance is available with the respective package docs.</p>
+</section>
+<section id="demonstrations-of-convolution">
+<h2>Demonstrations of Convolution<a class="headerlink" href="#demonstrations-of-convolution" title="Permalink to this heading">#</a></h2>
+<p>Let’s code up a simple demonstration of 1D convolution.</p>
+<ul class="simple">
+<li><p>I include following parameters for the demonstration,</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">kr</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="n">kloc</span> <span class="o">=</span> <span class="mi">45</span>                                             <span class="c1"># kernel radius, kernel location for example point</span>
+</pre></div>
+</div>
+<p>where kr is the radius of the convolution window in cells not including the center cell, so for <span class="math notranslate nohighlight">\(kr = 1\)</span> the convolution window is 3 cells and <span class="math notranslate nohighlight">\(kr = 5\)</span> the convolution window is 11 cells, and kloc is the location of the highlighted convolution case, just for visualization.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seed</span> <span class="o">=</span> <span class="mi">73073</span>                                                  <span class="c1"># random number seed</span>
 
-<span class="n">kr</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="n">kloc</span> <span class="o">=</span> <span class="mi">45</span>                                             <span class="c1"># kernel radius, kernel location for example point</span>
+<span class="n">kr</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="n">kloc</span> <span class="o">=</span> <span class="mi">45</span>                                             <span class="c1"># kernel radius, kernel location for example point</span>
 
 <span class="n">df_denpor</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/1D_por_perm_smooth.csv&#39;</span><span class="p">)</span> <span class="c1"># load data from Dr. Pyrcz&#39;s GitHub </span>
 
@@ -562,13 +608,16 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/58f0d6ec82ae506386975d87b4fbaa3fa88f321e3ef516e9f956402a156d2751.png" src="_images/58f0d6ec82ae506386975d87b4fbaa3fa88f321e3ef516e9f956402a156d2751.png" />
+<img alt="_images/4c5013efa275baf5efee6c66faec13ac80ca1eadfc17c4444575c6f9891e7c3c.png" src="_images/4c5013efa275baf5efee6c66faec13ac80ca1eadfc17c4444575c6f9891e7c3c.png" />
 </div>
 </div>
+<p>Now let’s demonstrate convolution with sparse data, samples instead of a grid of exhaustive values.</p>
+<ul class="simple">
+<li><p>to perform sparse data convolution we use the <a class="reference external" href="https://www.astropy.org/">astropy</a> Python package.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">astropy.convolution.convolve</span> <span class="k">as</span> <span class="nn">convolve</span>               <span class="c1"># sparse data convolution</span>
-<span class="n">frac</span> <span class="o">=</span> <span class="mf">0.2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frac</span> <span class="o">=</span> <span class="mf">0.2</span>
 
 <span class="n">df_denpor</span><span class="p">[</span><span class="s1">&#39;Por_Sparse&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_denpor</span><span class="p">[</span><span class="s1">&#39;Por&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
@@ -584,7 +633,7 @@ document.write(`
 <span class="n">size</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">kr</span> <span class="o">+</span> <span class="mi">1</span>                                             <span class="c1"># make uniform kernel</span>
 <span class="n">kernel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">size</span><span class="p">)</span> <span class="o">/</span> <span class="n">size</span>                                 <span class="c1"># normalize kernel to sum to one for unbiasedness</span>
 
-<span class="n">convolved</span> <span class="o">=</span> <span class="n">convolve</span><span class="p">(</span><span class="n">df_denpor</span><span class="p">[</span><span class="s1">&#39;Por_Sparse&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">kernel</span><span class="p">,</span><span class="n">boundary</span><span class="o">=</span><span class="s1">&#39;extend&#39;</span><span class="p">,</span><span class="n">nan_treatment</span><span class="o">=</span><span class="s1">&#39;interpolate&#39;</span><span class="p">,</span><span class="n">normalize_kernel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># convolve</span>
+<span class="n">convolved</span> <span class="o">=</span> <span class="n">astroconvolve</span><span class="p">(</span><span class="n">df_denpor</span><span class="p">[</span><span class="s1">&#39;Por_Sparse&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">kernel</span><span class="p">,</span><span class="n">boundary</span><span class="o">=</span><span class="s1">&#39;extend&#39;</span><span class="p">,</span><span class="n">nan_treatment</span><span class="o">=</span><span class="s1">&#39;interpolate&#39;</span><span class="p">,</span><span class="n">normalize_kernel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># convolve</span>
 
 <span class="n">k</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">kernel</span><span class="p">)</span>
 <span class="n">trim</span> <span class="o">=</span> <span class="n">k</span> <span class="o">//</span> <span class="mi">2</span>  <span class="c1"># how many values to trim from each edge</span>
@@ -606,13 +655,59 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: nan_treatment=&#39;interpolate&#39;, however, NaN values detected post convolution. A contiguous region of NaN values, larger than the kernel size, are present in the input array. Increase the kernel size to avoid this. [astropy.convolution.convolve]
+<img alt="_images/0b1560bcdb49268c3021d76a61a450549acd2841211fda9140f114cbb1f66000.png" src="_images/0b1560bcdb49268c3021d76a61a450549acd2841211fda9140f114cbb1f66000.png" />
+</div>
+</div>
+<p>We can observe jumps in the convolved result due to the combination of,</p>
+<ul class="simple">
+<li><p>uniform kernel</p></li>
+<li><p>sparse data</p></li>
+</ul>
+<p>the discontinuities in the convolved values can be improved with a distance weighted kernel.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>                    
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_denpor</span><span class="p">[</span><span class="s1">&#39;Por_Sparse&#39;</span><span class="p">],</span><span class="n">df_denpor</span><span class="p">[</span><span class="s1">&#39;Depth&#39;</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;f(x) Sparse&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Depth (m)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Porosity (%)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_denpor</span><span class="p">[</span><span class="s1">&#39;Por&#39;</span><span class="p">],</span><span class="n">df_denpor</span><span class="p">[</span><span class="s1">&#39;Depth&#39;</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;f(x) Exhaustive&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">26</span><span class="p">,</span><span class="mi">0</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">22</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sparse Case: Original and Convolved Function&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">));</span>
+
+<span class="n">size</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">kr</span> <span class="o">+</span> <span class="mi">1</span>                                             <span class="c1"># make inverse distance kernel</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="n">kr</span><span class="p">,</span> <span class="n">kr</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">kernel</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="n">kernel</span><span class="p">[</span><span class="n">kr</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># center element (distance = 0)</span>
+<span class="n">kernel</span> <span class="o">=</span> <span class="n">kernel</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">kernel</span><span class="p">)</span>                              <span class="c1"># normalize kernel to sum to one for unbiasedness</span>
+
+<span class="n">convolved</span> <span class="o">=</span> <span class="n">astroconvolve</span><span class="p">(</span><span class="n">df_denpor</span><span class="p">[</span><span class="s1">&#39;Por_Sparse&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">kernel</span><span class="p">,</span><span class="n">boundary</span><span class="o">=</span><span class="s1">&#39;extend&#39;</span><span class="p">,</span><span class="n">nan_treatment</span><span class="o">=</span><span class="s1">&#39;interpolate&#39;</span><span class="p">,</span><span class="n">normalize_kernel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># convolve</span>
+
+<span class="n">k</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">kernel</span><span class="p">)</span>
+<span class="n">trim</span> <span class="o">=</span> <span class="n">k</span> <span class="o">//</span> <span class="mi">2</span>  <span class="c1"># how many values to trim from each edge</span>
+<span class="n">convolved_valid</span> <span class="o">=</span> <span class="n">convolved</span><span class="p">[</span><span class="n">trim</span><span class="p">:</span><span class="o">-</span><span class="n">trim</span><span class="p">]</span> <span class="k">if</span> <span class="n">trim</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">convolved</span>
+<span class="n">depth_valid</span> <span class="o">=</span> <span class="n">df_denpor</span><span class="p">[</span><span class="s1">&#39;Depth&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">trim</span><span class="p">:</span><span class="o">-</span><span class="n">trim</span><span class="p">]</span> <span class="k">if</span> <span class="n">trim</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">df_denpor</span><span class="p">[</span><span class="s1">&#39;Depth&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">convolved_pt</span> <span class="o">=</span> <span class="n">convolved_valid</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">depth_valid</span> <span class="o">-</span> <span class="n">kloc</span><span class="p">)</span><span class="o">.</span><span class="n">argmin</span><span class="p">()];</span> <span class="n">depth_pt</span> <span class="o">=</span> <span class="n">depth_valid</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">depth_valid</span> <span class="o">-</span> <span class="n">kloc</span><span class="p">)</span><span class="o">.</span><span class="n">argmin</span><span class="p">()]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">convolved_valid</span><span class="p">,</span><span class="n">depth_valid</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$(f * g)(x)$&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Depth (m)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Porosity (%)&#39;</span><span class="p">);</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">22</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">22</span><span class="p">],[</span><span class="n">depth_pt</span><span class="p">,</span><span class="n">depth_pt</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">convolved_pt</span><span class="p">,</span><span class="n">depth_pt</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kernel</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">kr</span><span class="o">+</span><span class="n">kloc</span><span class="p">,</span><span class="n">kr</span><span class="o">+</span><span class="n">kloc</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">kr</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$g(\tau)$&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">0.35</span><span class="p">,</span><span class="mf">0.0</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">]);</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">));</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">kernel</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mf">0.0</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">kr</span><span class="o">+</span><span class="n">kloc</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">kr</span><span class="o">+</span><span class="n">kloc</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">kernel</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mf">0.0</span><span class="p">],[</span><span class="n">kr</span><span class="o">+</span><span class="n">kloc</span><span class="p">,</span><span class="n">kr</span><span class="o">+</span><span class="n">kloc</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Kernel&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">0.35</span><span class="p">,</span><span class="mf">0.0</span><span class="p">],[</span><span class="n">depth_pt</span><span class="p">,</span><span class="n">depth_pt</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Depth (m)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Weight (unitless)&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="_images/ae797e2e907bd48f0c7b524dd697136f6a863602289a91dc8e372c930f4a72c1.png" src="_images/ae797e2e907bd48f0c7b524dd697136f6a863602289a91dc8e372c930f4a72c1.png" />
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e9259749d61671c4fb9bde849dbcd10810a3dc51ae40b691ad5cdf56e3cbbe07.png" src="_images/e9259749d61671c4fb9bde849dbcd10810a3dc51ae40b691ad5cdf56e3cbbe07.png" />
 </div>
 </div>
-<p>While it is useful to review and discuss convolution, k-nearest neighbours departs from convolution with the specification of <span class="math notranslate nohighlight">\(k\)</span> nearest neighbours to include in the weighted average,</p>
+<p>It is useful to review and discuss convolution as it introduces important concepts that we can used with <span class="math notranslate nohighlight">\(k\)</span> nearest neighbours,</p>
+<ul class="simple">
+<li><p><strong>kernel size</strong> - larger the window over which we gather training data, the smoother the model</p></li>
+<li><p><strong>kernel shape</strong> - uniform may cause jumps in the solution, while tapered can smooth these out</p></li>
+</ul>
+<p>but, k-nearest neighbours departs from convolution with the specification of <span class="math notranslate nohighlight">\(k\)</span> nearest neighbours to include in the weighted average,</p>
 <ul class="simple">
 <li><p>specifying <span class="math notranslate nohighlight">\(k\)</span> results in a locally adaptive window size, the local neighbourhood extends far enough to find <span class="math notranslate nohighlight">\(k\)</span> training data</p></li>
 </ul>
@@ -649,42 +744,6 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
 <li><p>when <span class="math notranslate nohighlight">\(p=2\)</span>, this becomes the Euclidean distance</p></li>
 <li><p>when <span class="math notranslate nohighlight">\(p=1\)</span> it becomes the Manhattan distance</p></li>
 </ul>
-</section>
-<section id="load-the-required-libraries">
-<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
-<p>We will also need some standard packages. These should have been installed with Anaconda 3.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline                                         
-<span class="n">suppress_warnings</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="kn">import</span> <span class="nn">os</span>                                                     <span class="c1"># to set current working directory </span>
-<span class="kn">import</span> <span class="nn">math</span>                                                   <span class="c1"># square root operator</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                                            <span class="c1"># arrays and matrix math</span>
-<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">st</span>                                      <span class="c1"># statistical methods</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                                           <span class="c1"># DataFrames</span>
-<span class="kn">import</span> <span class="nn">pandas.plotting</span> <span class="k">as</span> <span class="nn">pd_plot</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>                               <span class="c1"># for plotting</span>
-<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="p">(</span><span class="n">MultipleLocator</span><span class="p">,</span><span class="n">AutoMinorLocator</span><span class="p">,</span><span class="n">FuncFormatter</span><span class="p">)</span> <span class="c1"># control of axes ticks</span>
-<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">ListedColormap</span>                  <span class="c1"># custom color maps</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>                                         <span class="c1"># for matrix scatter plots</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>                                   <span class="c1"># measures to check our models</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>              <span class="c1"># standardize the features</span>
-<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsRegressor</span>             <span class="c1"># for nearest k neighbours</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>                                   <span class="c1"># measures to check our models</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="p">(</span><span class="n">cross_val_score</span><span class="p">,</span><span class="n">train_test_split</span><span class="p">,</span><span class="n">GridSearchCV</span><span class="p">,</span><span class="n">KFold</span><span class="p">)</span> <span class="c1"># model tuning</span>
-<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="p">(</span><span class="n">Pipeline</span><span class="p">,</span><span class="n">make_pipeline</span><span class="p">)</span>         <span class="c1"># machine learning modeling pipeline</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>                     <span class="c1"># custom displays</span>
-<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">inferno</span>                                         <span class="c1"># default color bar, no bias and friendly for color vision defeciency</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">axisbelow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                                <span class="c1"># grid behind plotting elements</span>
-<span class="k">if</span> <span class="n">suppress_warnings</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>  
-    <span class="kn">import</span> <span class="nn">warnings</span>                                           <span class="c1"># suppress any warnings for this demonstration</span>
-    <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span> 
-<span class="n">seed</span> <span class="o">=</span> <span class="mi">13</span>                                                     <span class="c1"># random number seed for workflow repeatability</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>If you get a package import error, you may have to first install some of these packages. This can usually be accomplished by opening up a command window on Windows and then typing ‘python -m pip install [package-name]’. More assistance is available with the respective package docs.</p>
 </section>
 <section id="declare-functions">
 <h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
@@ -867,7 +926,7 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
 
 <span class="n">predlabel</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Porosity (%)&#39;</span><span class="p">,</span><span class="s1">&#39;Permeability (mD)&#39;</span><span class="p">,</span><span class="s1">&#39;Acoustic Impedance (kg/m2s*10^6)&#39;</span><span class="p">,</span><span class="s1">&#39;Brittleness Ratio (%)&#39;</span><span class="p">,</span> <span class="c1"># set the names for plotting</span>
              <span class="s1">&#39;Total Organic Carbon (%)&#39;</span><span class="p">,</span><span class="s1">&#39;Vitrinite Reflectance (%)&#39;</span><span class="p">]</span>
-<span class="n">resplabel</span> <span class="o">=</span> <span class="s1">&#39;Normalized Initial Production (MCFPD)&#39;</span>
+<span class="n">resplabel</span> <span class="o">=</span> <span class="s1">&#39;Initial Production (MCFPD)&#39;</span>
 
 <span class="n">predtitle</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="s1">&#39;Permeability&#39;</span><span class="p">,</span><span class="s1">&#39;Acoustic Impedance&#39;</span><span class="p">,</span><span class="s1">&#39;Brittleness Ratio&#39;</span><span class="p">,</span> <span class="c1"># set the units for plotting</span>
              <span class="s1">&#39;Total Organic Carbon&#39;</span><span class="p">,</span><span class="s1">&#39;Vitrinite Reflectance&#39;</span><span class="p">]</span>
@@ -938,7 +997,7 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
       <td>81.40</td>
       <td>1.16</td>
       <td>2.31</td>
-      <td>1339.165488</td>
+      <td>1310.036546</td>
     </tr>
     <tr>
       <th>1</th>
@@ -948,7 +1007,7 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
       <td>46.17</td>
       <td>0.89</td>
       <td>1.88</td>
-      <td>3383.979252</td>
+      <td>3382.396297</td>
     </tr>
     <tr>
       <th>2</th>
@@ -958,7 +1017,7 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
       <td>72.80</td>
       <td>0.89</td>
       <td>2.72</td>
-      <td>2509.686720</td>
+      <td>2518.403893</td>
     </tr>
     <tr>
       <th>3</th>
@@ -968,7 +1027,7 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
       <td>39.81</td>
       <td>1.08</td>
       <td>1.88</td>
-      <td>5514.421023</td>
+      <td>5652.465679</td>
     </tr>
     <tr>
       <th>4</th>
@@ -978,7 +1037,7 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
       <td>10.94</td>
       <td>1.51</td>
       <td>1.90</td>
-      <td>3532.020478</td>
+      <td>3399.441438</td>
     </tr>
     <tr>
       <th>5</th>
@@ -988,7 +1047,7 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
       <td>53.60</td>
       <td>0.94</td>
       <td>1.67</td>
-      <td>4283.543382</td>
+      <td>3837.089989</td>
     </tr>
     <tr>
       <th>6</th>
@@ -998,7 +1057,7 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
       <td>63.71</td>
       <td>0.80</td>
       <td>1.85</td>
-      <td>3627.906723</td>
+      <td>2279.013134</td>
     </tr>
     <tr>
       <th>7</th>
@@ -1008,7 +1067,7 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
       <td>53.00</td>
       <td>0.69</td>
       <td>1.93</td>
-      <td>3101.539533</td>
+      <td>2843.427906</td>
     </tr>
     <tr>
       <th>8</th>
@@ -1018,7 +1077,7 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
       <td>65.77</td>
       <td>0.95</td>
       <td>1.98</td>
-      <td>3213.391047</td>
+      <td>2496.015787</td>
     </tr>
     <tr>
       <th>9</th>
@@ -1028,7 +1087,7 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
       <td>66.20</td>
       <td>1.14</td>
       <td>2.65</td>
-      <td>2200.204701</td>
+      <td>2600.916534</td>
     </tr>
     <tr>
       <th>10</th>
@@ -1038,7 +1097,7 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
       <td>61.11</td>
       <td>1.08</td>
       <td>1.77</td>
-      <td>3433.752662</td>
+      <td>3955.833889</td>
     </tr>
     <tr>
       <th>11</th>
@@ -1048,7 +1107,7 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
       <td>49.10</td>
       <td>1.53</td>
       <td>1.86</td>
-      <td>4465.007131</td>
+      <td>4868.823958</td>
     </tr>
     <tr>
       <th>12</th>
@@ -1058,7 +1117,7 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
       <td>66.65</td>
       <td>1.17</td>
       <td>1.98</td>
-      <td>4373.060709</td>
+      <td>4421.655228</td>
     </tr>
   </tbody>
 </table>
@@ -1115,7 +1174,7 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
       <td>6.550000</td>
       <td>12.912500</td>
       <td>15.070000</td>
-      <td>17.40250</td>
+      <td>17.402500</td>
       <td>23.550000</td>
     </tr>
     <tr>
@@ -1126,7 +1185,7 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
       <td>1.130000</td>
       <td>3.122500</td>
       <td>4.035000</td>
-      <td>5.28750</td>
+      <td>5.287500</td>
       <td>9.870000</td>
     </tr>
     <tr>
@@ -1137,7 +1196,7 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
       <td>1.280000</td>
       <td>2.547500</td>
       <td>2.955000</td>
-      <td>3.34500</td>
+      <td>3.345000</td>
       <td>4.630000</td>
     </tr>
     <tr>
@@ -1148,7 +1207,7 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
       <td>10.940000</td>
       <td>37.755000</td>
       <td>49.510000</td>
-      <td>58.26250</td>
+      <td>58.262500</td>
       <td>84.330000</td>
     </tr>
     <tr>
@@ -1159,7 +1218,7 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
       <td>-0.190000</td>
       <td>0.617500</td>
       <td>1.030000</td>
-      <td>1.35000</td>
+      <td>1.350000</td>
       <td>2.180000</td>
     </tr>
     <tr>
@@ -1170,19 +1229,19 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
       <td>0.930000</td>
       <td>1.770000</td>
       <td>1.960000</td>
-      <td>2.14250</td>
+      <td>2.142500</td>
       <td>2.870000</td>
     </tr>
     <tr>
       <th>Prod</th>
       <td>200.0</td>
-      <td>3842.630027</td>
-      <td>1594.301295</td>
-      <td>803.640483</td>
-      <td>2551.414599</td>
-      <td>3626.229052</td>
-      <td>4739.73408</td>
-      <td>9021.792491</td>
+      <td>3877.829073</td>
+      <td>1592.393141</td>
+      <td>841.518737</td>
+      <td>2681.399789</td>
+      <td>3585.028984</td>
+      <td>4867.418216</td>
+      <td>8093.026321</td>
     </tr>
   </tbody>
 </table>
@@ -1237,7 +1296,7 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
       <td>6.550000</td>
       <td>12.912500</td>
       <td>15.070000</td>
-      <td>17.40250</td>
+      <td>17.402500</td>
       <td>23.550000</td>
     </tr>
     <tr>
@@ -1248,7 +1307,7 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
       <td>1.130000</td>
       <td>3.122500</td>
       <td>4.035000</td>
-      <td>5.28750</td>
+      <td>5.287500</td>
       <td>9.870000</td>
     </tr>
     <tr>
@@ -1259,7 +1318,7 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
       <td>1.280000</td>
       <td>2.547500</td>
       <td>2.955000</td>
-      <td>3.34500</td>
+      <td>3.345000</td>
       <td>4.630000</td>
     </tr>
     <tr>
@@ -1270,7 +1329,7 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
       <td>10.940000</td>
       <td>37.755000</td>
       <td>49.510000</td>
-      <td>58.26250</td>
+      <td>58.262500</td>
       <td>84.330000</td>
     </tr>
     <tr>
@@ -1281,7 +1340,7 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
       <td>0.000000</td>
       <td>0.617500</td>
       <td>1.030000</td>
-      <td>1.35000</td>
+      <td>1.350000</td>
       <td>2.180000</td>
     </tr>
     <tr>
@@ -1292,19 +1351,19 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
       <td>0.930000</td>
       <td>1.770000</td>
       <td>1.960000</td>
-      <td>2.14250</td>
+      <td>2.142500</td>
       <td>2.870000</td>
     </tr>
     <tr>
       <th>Prod</th>
       <td>200.0</td>
-      <td>3842.630027</td>
-      <td>1594.301295</td>
-      <td>803.640483</td>
-      <td>2551.414599</td>
-      <td>3626.229052</td>
-      <td>4739.73408</td>
-      <td>9021.792491</td>
+      <td>3877.829073</td>
+      <td>1592.393141</td>
+      <td>841.518737</td>
+      <td>2681.399789</td>
+      <td>3585.028984</td>
+      <td>4867.418216</td>
+      <td>8093.026321</td>
     </tr>
   </tbody>
 </table>
@@ -1339,7 +1398,7 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9ccb60421ffa42bec24f02270e0cb19e4ab0827d13308e827a76a7a86b2c0dc6.png" src="_images/9ccb60421ffa42bec24f02270e0cb19e4ab0827d13308e827a76a7a86b2c0dc6.png" />
+<img alt="_images/1423c55ab0db28169375192b7649a1154d797554cd69b7cbbb5b51e1999e5356.png" src="_images/1423c55ab0db28169375192b7649a1154d797554cd69b7cbbb5b51e1999e5356.png" />
 </div>
 </div>
 <p>Note the 1.0 diagonal resulting from the correlation of each variable with themselves.</p>
@@ -1360,145 +1419,165 @@ d_{(i,i')} = \left( \sum_{j=1}^{m} \left( x_{(j,i)} - x_{(j,i')} \right)^p \righ
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4c23ae18eda1e533de50c2330dba444a3862043169ebd7569532055f40e72e5f.png" src="_images/4c23ae18eda1e533de50c2330dba444a3862043169ebd7569532055f40e72e5f.png" />
+<img alt="_images/fe06c92747a120804dc0e9851b58b08a6fb859ff4a0765e4a7af9c09726d5d40.png" src="_images/fe06c92747a120804dc0e9851b58b08a6fb859ff4a0765e4a7af9c09726d5d40.png" />
 </div>
 </div>
 </section>
-<section id="working-with-only-two-predictor-features">
-<h2>Working with Only Two Predictor Features<a class="headerlink" href="#working-with-only-two-predictor-features" title="Permalink to this heading">#</a></h2>
-<p>Let’s simplify the problem to 2 predictor features, Porosity and Brittleness to predict Production rate.  By working with only 2 features, it is very easy to visualize the segmentation of the feature space (it is only 2D and can be shown completely on a single plot).</p>
-</section>
-<section id="standardizing-predictor-features">
-<h2>Standardizing Predictor Features<a class="headerlink" href="#standardizing-predictor-features" title="Permalink to this heading">#</a></h2>
-<p>The k-nearest neighbour method uses a nearest training sample search in feature space (like k-means clustering). To remove the impact feature range from the approach we standardize the features.</p>
+<section id="train-and-test-split-and-standardizing-predictor-features">
+<h2>Train and Test Split and Standardizing Predictor Features<a class="headerlink" href="#train-and-test-split-and-standardizing-predictor-features" title="Permalink to this heading">#</a></h2>
+<p>The k-nearest neighbour method uses a nearest training sample search in feature space (like k-means clustering). To remove the impact feature range from the approach we standardize the predictor features.</p>
 <ul class="simple">
 <li><p>we will standardize our predictor features to have a mean of zero and a variance of one.</p></li>
-<li><p>we use the scikit-learn preprocessing module to simplify this step and provide a convenient and safe reverse transform.</p></li>
+<li><p>we use the scikit-learn preprocessing module to simplify this step and provide a convenient and safe reverse transform</p></li>
+</ul>
+<p>We fit the transform on training data only,</p>
+<ul class="simple">
+<li><p>to avoid information leakage</p></li>
+</ul>
+<p>we then apply the same transform to testing data (fit on training) data,</p>
+<ul class="simple">
+<li><p>to ensure consistency and to avoid masking drift</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">if1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">if2</span> <span class="o">=</span> <span class="mi">3</span>                                              <span class="c1"># selected predictor features</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">if1</span><span class="p">,</span> <span class="n">if2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span>                                       <span class="c1"># select 2 predictor features for ease of data and model visualization</span>
 
-<span class="n">transform</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">();</span>                                 <span class="c1"># instantiate feature standardization method</span>
+<span class="n">X_sel</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">[</span><span class="n">if1</span><span class="p">,</span> <span class="n">if2</span><span class="p">]]</span>
 
-<span class="n">sel_pred</span> <span class="o">=</span> <span class="p">[</span><span class="n">pred</span><span class="p">[</span><span class="n">if1</span><span class="p">],</span><span class="n">pred</span><span class="p">[</span><span class="n">if2</span><span class="p">]]</span>
-<span class="n">sel_features</span> <span class="o">=</span> <span class="n">pred</span> <span class="o">+</span> <span class="p">[</span><span class="n">resp</span><span class="p">]</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_sel</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span> <span class="c1"># train and test split</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">y_train</span><span class="o">.</span><span class="n">to_frame</span><span class="p">();</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">y_test</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span> <span class="c1"># force as 1 column dataframes</span>
 
-<span class="n">spredlabel</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Standardized &#39;</span> <span class="o">+</span> <span class="n">element</span> <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">predlabel</span><span class="p">]</span> <span class="c1"># standardized predictors list</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">sX_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">),</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;s</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">X_train</span><span class="o">.</span><span class="n">columns</span><span class="p">],</span>
+    <span class="n">index</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">index</span>
+<span class="p">)</span>
+<span class="n">sX_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">),</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;s</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">X_test</span><span class="o">.</span><span class="n">columns</span><span class="p">],</span>
+    <span class="n">index</span><span class="o">=</span><span class="n">X_test</span><span class="o">.</span><span class="n">index</span>
+<span class="p">)</span>
 
-<span class="n">sel_spredlabel</span> <span class="o">=</span> <span class="p">[</span><span class="n">spredlabel</span><span class="p">[</span><span class="n">if1</span><span class="p">]]</span> <span class="o">+</span> <span class="p">[</span><span class="n">spredlabel</span><span class="p">[</span><span class="n">if2</span><span class="p">]]</span> 
+<span class="n">sel_pred</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">columns</span><span class="p">;</span> <span class="n">sel_spred</span> <span class="o">=</span> <span class="n">sX_train</span><span class="o">.</span><span class="n">columns</span>
 
-<span class="n">sel_spred</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;s&#39;</span> <span class="o">+</span> <span class="n">element</span> <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">sel_pred</span><span class="p">]</span>           <span class="c1"># standardized predictors list</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">X_train</span><span class="p">,</span> <span class="n">sX_train</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>   <span class="c1">## combine original and standardized predictors</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">X_test</span><span class="p">,</span> <span class="n">sX_test</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="n">df</span><span class="p">[</span><span class="n">sel_spred</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="n">sel_pred</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)[:,</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># standardize the data features to mean = 0, var = 1.0</span>
-<span class="n">df</span><span class="p">[</span><span class="n">sel_spred</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="n">sel_pred</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)[:,</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># standardize the data features to mean = 0, var = 1.0</span>
+<span class="n">sel_spredlabel</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Standardized &#39;</span> <span class="o">+</span> <span class="n">element</span> <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">predlabel</span><span class="p">]</span> <span class="c1"># standardized predictors label list</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Selected Predictor Features: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">sel_pred</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Standardized Selected Predictor Features: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">sel_spred</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Response Feature: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">([</span><span class="n">resp</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Selected Predictor Features: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">sel_pred</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Standardized Selected Predictor Features: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">sel_spred</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Response Feature: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">([</span><span class="n">resp</span><span class="p">[</span><span class="mi">0</span><span class="p">]]))</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;            Train DataFrame                       Test DataFrame&#39;</span><span class="p">)</span>
+<span class="n">display_sidebyside</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">X_test</span><span class="p">)</span>                          <span class="c1"># custom function for side-by-side DataFrame display</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Selected Predictor Features: [&#39;Por&#39;, &#39;Brittle&#39;]
-Standardized Selected Predictor Features: [&#39;sPor&#39;, &#39;sBrittle&#39;]
-Response Feature: [[&#39;Prod&#39;]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Selected Predictor Features: [&#39;Por&#39; &#39;Brittle&#39;]
+Standardized Selected Predictor Features: [&#39;sPor&#39; &#39;sBrittle&#39;]
+Response Feature: [&#39;Prod&#39;]
+            Train DataFrame                       Test DataFrame
 </pre></div>
 </div>
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
+<div class="output text_html"><div style="display: flex;"><table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th></th>
       <th>Por</th>
-      <th>Perm</th>
-      <th>AI</th>
       <th>Brittle</th>
-      <th>TOC</th>
-      <th>VR</th>
-      <th>Prod</th>
       <th>sPor</th>
       <th>sBrittle</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>12.08</td>
-      <td>2.92</td>
-      <td>2.80</td>
-      <td>81.40</td>
-      <td>1.16</td>
-      <td>2.31</td>
-      <td>1339.165488</td>
-      <td>-0.982256</td>
-      <td>2.358297</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>12.38</td>
-      <td>3.53</td>
-      <td>3.22</td>
-      <td>46.17</td>
-      <td>0.89</td>
-      <td>1.88</td>
-      <td>3383.979252</td>
-      <td>-0.881032</td>
-      <td>-0.141332</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>14.02</td>
-      <td>2.59</td>
-      <td>4.01</td>
-      <td>72.80</td>
-      <td>0.89</td>
-      <td>2.72</td>
-      <td>2509.686720</td>
-      <td>-0.327677</td>
-      <td>1.748113</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>17.67</td>
-      <td>6.75</td>
-      <td>2.63</td>
-      <td>39.81</td>
-      <td>1.08</td>
-      <td>1.88</td>
-      <td>5514.421023</td>
-      <td>0.903875</td>
-      <td>-0.592585</td>
-    </tr>
-    <tr>
       <th>4</th>
       <td>17.52</td>
-      <td>4.57</td>
-      <td>3.18</td>
       <td>10.94</td>
-      <td>1.51</td>
-      <td>1.90</td>
-      <td>3532.020478</td>
-      <td>0.853263</td>
-      <td>-2.640962</td>
+      <td>0.849184</td>
+      <td>-2.667354</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>15.40</td>
+      <td>46.29</td>
+      <td>0.133295</td>
+      <td>-0.113225</td>
+    </tr>
+    <tr>
+      <th>196</th>
+      <td>17.99</td>
+      <td>44.32</td>
+      <td>1.007895</td>
+      <td>-0.255562</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>15.80</td>
+      <td>42.13</td>
+      <td>0.268368</td>
+      <td>-0.413795</td>
+    </tr>
+    <tr>
+      <th>165</th>
+      <td>16.61</td>
+      <td>60.13</td>
+      <td>0.541892</td>
+      <td>0.886751</td>
     </tr>
   </tbody>
-</table>
-</div></div></div>
+</table><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Por</th>
+      <th>Brittle</th>
+      <th>sPor</th>
+      <th>sBrittle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>93</th>
+      <td>10.69</td>
+      <td>84.33</td>
+      <td>-1.457194</td>
+      <td>2.635264</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>16.95</td>
+      <td>61.43</td>
+      <td>0.656704</td>
+      <td>0.980680</td>
+    </tr>
+    <tr>
+      <th>137</th>
+      <td>14.69</td>
+      <td>62.93</td>
+      <td>-0.106460</td>
+      <td>1.089058</td>
+    </tr>
+    <tr>
+      <th>188</th>
+      <td>16.14</td>
+      <td>38.03</td>
+      <td>0.383181</td>
+      <td>-0.710031</td>
+    </tr>
+    <tr>
+      <th>181</th>
+      <td>14.48</td>
+      <td>47.44</td>
+      <td>-0.177374</td>
+      <td>-0.030134</td>
+    </tr>
+  </tbody>
+</table></div></div></div>
 </div>
 <p>Let’s demonstrate the reverse transform from standardized features back to the original features.</p>
 <ul class="simple">
@@ -1507,7 +1586,7 @@ Response Feature: [[&#39;Prod&#39;]]
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Backtransformed: </span><span class="se">\n</span><span class="s1">        Por    Brittle&#39;</span><span class="p">)</span>
-<span class="n">transform</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="n">sel_spred</span><span class="p">])[:</span><span class="mi">5</span><span class="p">,:]</span>        <span class="c1"># check the reverse standardization</span>
+<span class="n">scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">sX_train</span><span class="p">)[:</span><span class="mi">5</span><span class="p">,:]</span>        <span class="c1"># check the reverse standardization</span>
 </pre></div>
 </div>
 </div>
@@ -1516,11 +1595,11 @@ Response Feature: [[&#39;Prod&#39;]]
         Por    Brittle
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[12.08, 81.4 ],
-       [12.38, 46.17],
-       [14.02, 72.8 ],
-       [17.67, 39.81],
-       [17.52, 10.94]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[17.52, 10.94],
+       [15.4 , 46.29],
+       [17.99, 44.32],
+       [15.8 , 42.13],
+       [16.61, 60.13]])
 </pre></div>
 </div>
 </div>
@@ -1529,28 +1608,15 @@ Response Feature: [[&#39;Prod&#39;]]
 <ul class="simple">
 <li><p>We will use this method to return to original feature units when needed.</p></li>
 <li><p>In general, the back transformation is not needed for predictor features, well only forward transform the predictor features to make predictions of the response feature.</p></li>
-<li><p>In this example, we don’t need to transform the response feature while building our model. The response feature distribution is well-behaved and there is not theory in k-nearest neighbours that expects a specific range or distribution share for the response feature.</p></li>
 </ul>
+<p>In this example, we don’t need to transform the response feature while building our model. The response feature distribution is well-behaved and there is not theory in k-nearest neighbours that expects a specific range or distribution share for the response feature.</p>
 </section>
 <section id="feature-ranges">
 <h2>Feature Ranges<a class="headerlink" href="#feature-ranges" title="Permalink to this heading">#</a></h2>
-<p>Let’s set some ranges for plotting. Note for the standardized predictor features we will use -3.5 to 3.5 as the limits.</p>
+<p>Let’s set some ranges for plotting. Note for the standardized predictor features we use -3.0 to 3.0 as the limits.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Xmin</span> <span class="o">=</span> <span class="p">[</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">];</span> <span class="n">Xmax</span> <span class="o">=</span> <span class="p">[</span><span class="mf">25.0</span><span class="p">,</span><span class="mf">100.0</span><span class="p">]</span>                        <span class="c1"># selected predictor features min and max</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="train-and-test-split">
-<h2>Train and Test Split<a class="headerlink" href="#train-and-test-split" title="Permalink to this heading">#</a></h2>
-<p>For convenience and simplicity we use scikit-learn’s random train and test split.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="n">sel_spred</span><span class="p">],</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="n">resp</span><span class="p">],</span><span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">73073</span><span class="p">)</span>
-<span class="n">df_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>                <span class="c1"># make one train DataFrame with both X and y (remove all other features)</span>
-<span class="n">df_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>                   <span class="c1"># make one testin DataFrame with both X and y (remove all other features)</span>
 </pre></div>
 </div>
 </div>
@@ -1582,7 +1648,7 @@ Response Feature: [[&#39;Prod&#39;]]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a6e3b01d9e6230c6eb26e1b06c604aa2fc175bb399d25bcd7794d5fb4b1b1e46.png" src="_images/a6e3b01d9e6230c6eb26e1b06c604aa2fc175bb399d25bcd7794d5fb4b1b1e46.png" />
+<img alt="_images/61526f186543e737067d7f063bf3b87b6d0dc1e7b0fe992eba75cb8a68c1f552.png" src="_images/61526f186543e737067d7f063bf3b87b6d0dc1e7b0fe992eba75cb8a68c1f552.png" />
 </div>
 </div>
 <p>The distributions are well behaved,</p>
@@ -1618,7 +1684,7 @@ Response Feature: [[&#39;Prod&#39;]]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4c88383d908cf65a54e1601379bf0b36cdbfab09eeae0ff5cc37587387fd084c.png" src="_images/4c88383d908cf65a54e1601379bf0b36cdbfab09eeae0ff5cc37587387fd084c.png" />
+<img alt="_images/121df88d83f6c413a6041818571960b324aa94dd4695609da0892e2360c90537.png" src="_images/121df88d83f6c413a6041818571960b324aa94dd4695609da0892e2360c90537.png" />
 </div>
 </div>
 <p>This problem looks nonlinear and could not be modeled with simple linear regression.</p>
@@ -1635,7 +1701,7 @@ Response Feature: [[&#39;Prod&#39;]]
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_neighbours</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">weights</span> <span class="o">=</span> <span class="s1">&#39;uniform&#39;</span>                 <span class="c1"># model hyperparameters</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_neighbours</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">weights</span> <span class="o">=</span> <span class="s1">&#39;uniform&#39;</span>                 <span class="c1"># model hyperparameters</span>
 <span class="n">neigh</span> <span class="o">=</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">weights</span> <span class="o">=</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="n">n_neighbours</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="p">)</span> <span class="c1"># instantiate the prediction model</span>
 </pre></div>
 </div>
@@ -1653,7 +1719,7 @@ Response Feature: [[&#39;Prod&#39;]]
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">neigh_fit</span> <span class="o">=</span> <span class="n">neigh</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>                        <span class="c1"># train the model with the training data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">neigh_fit</span> <span class="o">=</span> <span class="n">neigh</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">sX_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>                        <span class="c1"># train the model with the training data</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">221</span><span class="p">)</span>                                              <span class="c1"># training data vs. the model predictions</span>
 <span class="n">Z</span> <span class="o">=</span> <span class="n">visualize_model</span><span class="p">(</span><span class="n">neigh_fit</span><span class="p">,</span><span class="n">X_train</span><span class="p">[</span><span class="n">sel_spred</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span><span class="mf">3.5</span><span class="p">,</span><span class="n">X_train</span><span class="p">[</span><span class="n">sel_spred</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span><span class="mf">3.5</span><span class="p">,</span><span class="n">y_train</span><span class="p">[</span><span class="n">resp</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span>
@@ -1676,7 +1742,7 @@ Response Feature: [[&#39;Prod&#39;]]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8687713a2a5e6441f354a7136a11c925434235dd1930a34a508287b1aed9f7e5.png" src="_images/8687713a2a5e6441f354a7136a11c925434235dd1930a34a508287b1aed9f7e5.png" />
+<img alt="_images/99f6886daaa8486b4b65ef591e3689c6a55ea1d47085bd9586789d26eb619328.png" src="_images/99f6886daaa8486b4b65ef591e3689c6a55ea1d47085bd9586789d26eb619328.png" />
 </div>
 </div>
 <p>The model looks good:</p>
@@ -1689,10 +1755,10 @@ Response Feature: [[&#39;Prod&#39;]]
 <p>Let’s try to overfit the model by using a very large k hyperparameter.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_neighbours</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">weights</span> <span class="o">=</span> <span class="s1">&#39;uniform&#39;</span>                <span class="c1"># model hyperparameters</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_neighbours</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">weights</span> <span class="o">=</span> <span class="s1">&#39;uniform&#39;</span>                <span class="c1"># model hyperparameters</span>
 <span class="n">neigh</span> <span class="o">=</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">weights</span> <span class="o">=</span> <span class="n">weights</span><span class="p">,</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">n_neighbours</span><span class="p">,</span><span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="p">)</span> <span class="c1"># instantiate the prediction model</span>
 
-<span class="n">neigh_fit</span> <span class="o">=</span> <span class="n">neigh</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>                        <span class="c1"># train the model with the training data</span>
+<span class="n">neigh_fit</span> <span class="o">=</span> <span class="n">neigh</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">sX_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>                        <span class="c1"># train the model with the training data</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">221</span><span class="p">)</span>                                              <span class="c1"># training data vs. the model predictions</span>
 <span class="n">Z</span> <span class="o">=</span> <span class="n">visualize_model</span><span class="p">(</span><span class="n">neigh_fit</span><span class="p">,</span><span class="n">X_train</span><span class="p">[</span><span class="n">sel_spred</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span><span class="mf">3.5</span><span class="p">,</span><span class="n">X_train</span><span class="p">[</span><span class="n">sel_spred</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span><span class="mf">3.5</span><span class="p">,</span><span class="n">y_train</span><span class="p">[</span><span class="n">resp</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span>
@@ -1715,7 +1781,7 @@ Response Feature: [[&#39;Prod&#39;]]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/57e183c41e9ee9d084d79c733d18bfe2ce2f5e0504c9b7b75db9ad994fc637cb.png" src="_images/57e183c41e9ee9d084d79c733d18bfe2ce2f5e0504c9b7b75db9ad994fc637cb.png" />
+<img alt="_images/38d8adad44657c1db909cc72cd44672aa9ef8a0ab87532e0c5d350edca059e0f.png" src="_images/38d8adad44657c1db909cc72cd44672aa9ef8a0ab87532e0c5d350edca059e0f.png" />
 </div>
 </div>
 <p>Note that this smoothed out the response, and the predictions are approaching the global mean.</p>
@@ -1728,7 +1794,7 @@ Response Feature: [[&#39;Prod&#39;]]
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_neighbours</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">weights</span> <span class="o">=</span> <span class="s1">&#39;uniform&#39;</span>                  <span class="c1"># model hyperparameters</span>
 <span class="n">neigh</span> <span class="o">=</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">weights</span> <span class="o">=</span> <span class="n">weights</span><span class="p">,</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">n_neighbours</span><span class="p">,</span><span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="p">)</span> <span class="c1"># instantiate the prediction model</span>
 
-<span class="n">neigh_fit</span> <span class="o">=</span> <span class="n">neigh</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>                        <span class="c1"># train the model with the training data</span>
+<span class="n">neigh_fit</span> <span class="o">=</span> <span class="n">neigh</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">sX_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>                        <span class="c1"># train the model with the training data</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">221</span><span class="p">)</span>                                              <span class="c1"># training data vs. the model predictions</span>
 <span class="n">Z</span> <span class="o">=</span> <span class="n">visualize_model</span><span class="p">(</span><span class="n">neigh_fit</span><span class="p">,</span><span class="n">X_train</span><span class="p">[</span><span class="n">sel_spred</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span><span class="mf">3.5</span><span class="p">,</span><span class="n">X_train</span><span class="p">[</span><span class="n">sel_spred</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span><span class="mf">3.5</span><span class="p">,</span><span class="n">y_train</span><span class="p">[</span><span class="n">resp</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span>
@@ -1751,7 +1817,7 @@ Response Feature: [[&#39;Prod&#39;]]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/36151afeb7ee7ec97d8f9695513890616f1d619cbc81c9e9a734492d90c1e86f.png" src="_images/36151afeb7ee7ec97d8f9695513890616f1d619cbc81c9e9a734492d90c1e86f.png" />
+<img alt="_images/5256e3647aae8b3c71766c077d75ea5b2c1350646c0dfdb36ccaa8694f739105.png" src="_images/5256e3647aae8b3c71766c077d75ea5b2c1350646c0dfdb36ccaa8694f739105.png" />
 </div>
 </div>
 <p>Now we have an extreme overfit model.</p>
@@ -1765,7 +1831,7 @@ Response Feature: [[&#39;Prod&#39;]]
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_neighbours</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">weights</span> <span class="o">=</span> <span class="s1">&#39;uniform&#39;</span>                 <span class="c1"># model hyperparameters</span>
 <span class="n">neigh</span> <span class="o">=</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">weights</span> <span class="o">=</span> <span class="n">weights</span><span class="p">,</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">n_neighbours</span><span class="p">,</span><span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="p">)</span> <span class="c1"># instantiate the prediction model</span>
 
-<span class="n">neigh_fit</span> <span class="o">=</span> <span class="n">neigh</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>                        <span class="c1"># train the model with the training data</span>
+<span class="n">neigh_fit</span> <span class="o">=</span> <span class="n">neigh</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">sX_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>                        <span class="c1"># train the model with the training data</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">221</span><span class="p">)</span>                                              <span class="c1"># training data vs. the model predictions</span>
 <span class="n">Z</span> <span class="o">=</span> <span class="n">visualize_model</span><span class="p">(</span><span class="n">neigh_fit</span><span class="p">,</span><span class="n">X_train</span><span class="p">[</span><span class="n">sel_spred</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span><span class="mf">3.5</span><span class="p">,</span><span class="n">X_train</span><span class="p">[</span><span class="n">sel_spred</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span><span class="mf">3.5</span><span class="p">,</span><span class="n">y_train</span><span class="p">[</span><span class="n">resp</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span>
@@ -1788,7 +1854,7 @@ Response Feature: [[&#39;Prod&#39;]]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/58118fcb46c0eb738a754ea3e1103828cda85f1f5eea8dc2d12b6e69215213d3.png" src="_images/58118fcb46c0eb738a754ea3e1103828cda85f1f5eea8dc2d12b6e69215213d3.png" />
+<img alt="_images/49b555c68eccd9eb73ddb4a58879f2f50d36489df02dd87d3208953d28bbfcb6.png" src="_images/49b555c68eccd9eb73ddb4a58879f2f50d36489df02dd87d3208953d28bbfcb6.png" />
 </div>
 </div>
 <p>Compare this prediction model to our first model, all we changes is the distance search for the k nearest samples to Manhattan from Euclidean distance.</p>
@@ -1820,14 +1886,14 @@ Response Feature: [[&#39;Prod&#39;]]
 <span class="n">dist_error</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">unif_error</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">k_mat</span> <span class="o">=</span> <span class="p">[]</span>                  <span class="c1"># make lists to store the results</span>
 <span class="k">while</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="mi">150</span><span class="p">:</span>                                               <span class="c1"># loop over the k hyperparameter</span>
     <span class="n">neigh_dist</span> <span class="o">=</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">weights</span> <span class="o">=</span> <span class="s1">&#39;distance&#39;</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># instantiate the model</span>
-    <span class="n">neigh_dist_fit</span> <span class="o">=</span> <span class="n">neigh_dist</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>          <span class="c1"># train the model with the training data</span>
-    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">neigh_dist_fit</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>                   <span class="c1"># predict over the testing cases</span>
+    <span class="n">neigh_dist_fit</span> <span class="o">=</span> <span class="n">neigh_dist</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">sX_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>          <span class="c1"># train the model with the training data</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">neigh_dist_fit</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">sX_test</span><span class="p">)</span>                   <span class="c1"># predict over the testing cases</span>
     <span class="n">MSE</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_pred</span><span class="p">)</span>           <span class="c1"># calculate the MSE testing</span>
     <span class="n">dist_error</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">MSE</span><span class="p">)</span>                                    <span class="c1"># add to the list of MSE</span>
     
     <span class="n">neigh_unif</span> <span class="o">=</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">weights</span> <span class="o">=</span> <span class="s1">&#39;uniform&#39;</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="n">neigh_unif_fit</span> <span class="o">=</span> <span class="n">neigh_unif</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>          <span class="c1"># train the model with the training data</span>
-    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">neigh_unif_fit</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>                   <span class="c1"># predict over the testing cases</span>
+    <span class="n">neigh_unif_fit</span> <span class="o">=</span> <span class="n">neigh_unif</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">sX_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>          <span class="c1"># train the model with the training data</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">neigh_unif_fit</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">sX_test</span><span class="p">)</span>                   <span class="c1"># predict over the testing cases</span>
     <span class="n">MSE</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_pred</span><span class="p">)</span>           <span class="c1"># calculate the MSE testing</span>
     <span class="n">unif_error</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">MSE</span><span class="p">)</span>                                    <span class="c1"># add to the list of MSE</span>
     
@@ -1845,18 +1911,18 @@ Response Feature: [[&#39;Prod&#39;]]
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">k_mat</span><span class="p">,</span><span class="n">unif_error</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;arithmetic average&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Testing Error vs. Number of Nearest Neighbours&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of Nearest Neighbours&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Mean Square Error&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">add_grid</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">750000</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">150</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">4000000</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/01eac05af310de41e5fc30ed84e0dd7ffbc211efc97eea008ec63bd1c8ef9a09.png" src="_images/01eac05af310de41e5fc30ed84e0dd7ffbc211efc97eea008ec63bd1c8ef9a09.png" />
+<img alt="_images/dc4aa253a89ac8cf1a227fa1e677c39f14011e201ba37d523d77a7ea42caeb72.png" src="_images/dc4aa253a89ac8cf1a227fa1e677c39f14011e201ba37d523d77a7ea42caeb72.png" />
 </div>
 </div>
 <p>What can we observe from this result?</p>
 <ul class="simple">
-<li><p>at <span class="math notranslate nohighlight">\(k = 12\)</span> nearest neighbours we minimize the mean square error in testing.</p></li>
+<li><p>at <span class="math notranslate nohighlight">\(k = 10\)</span> nearest neighbours we minimize the mean square error in testing.</p></li>
 <li><p>we have better performance with the inverse distance weighted than the arithmetic average (uniform weighting of k nearest training data in predictor feature space)</p></li>
 </ul>
 <p>There is an optimum degree of specificity / complexity to our model.</p>
@@ -1877,12 +1943,17 @@ Response Feature: [[&#39;Prod&#39;]]
 <p>Let’s try it out on our k nearest neighbour prediction with variable number of <span class="math notranslate nohighlight">\(k\)</span> nearest neighbours.  Note the cross validation is set to use 4 processors, but still will likely take a couple of minutes to run.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">score</span> <span class="o">=</span> <span class="p">[]</span>                                                  <span class="c1"># code modified from StackOverFlow by Dimosthenis</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">score</span> <span class="o">=</span> <span class="p">[]</span>                                             
 <span class="n">k_mat</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">150</span><span class="p">):</span>
-    <span class="n">neigh_dist</span> <span class="o">=</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">weights</span> <span class="o">=</span> <span class="s1">&#39;distance&#39;</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">neigh_dist</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;sPor&#39;</span><span class="p">],</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;sBrittle&#39;</span><span class="p">]],</span><span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Prod&#39;</span><span class="p">],</span> <span class="n">cv</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
-                             <span class="n">scoring</span> <span class="o">=</span> <span class="s2">&quot;neg_mean_squared_error&quot;</span><span class="p">)</span> <span class="c1"># Perform 7-fold cross validation</span>
+    <span class="n">pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+        <span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
+        <span class="p">(</span><span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">weights</span> <span class="o">=</span> <span class="s1">&#39;distance&#39;</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="p">])</span>
+
+    <span class="n">cv</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+    
+    <span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;neg_mean_squared_error&#39;</span><span class="p">)</span>
     <span class="n">score</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>
     <span class="n">k_mat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
 </pre></div>
@@ -1901,7 +1972,7 @@ Response Feature: [[&#39;Prod&#39;]]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3486b059575a23212d8aafc3a96a97665590c325236271232ebf8b699313ea39.png" src="_images/3486b059575a23212d8aafc3a96a97665590c325236271232ebf8b699313ea39.png" />
+<img alt="_images/d8db9b923413f9c5ae77c3b69e89cc3c4b8d896c24aae208f8d7cc6ba8543f91.png" src="_images/d8db9b923413f9c5ae77c3b69e89cc3c4b8d896c24aae208f8d7cc6ba8543f91.png" />
 </div>
 </div>
 <p>With the hyperparameter of 10 nearest neighbours we get the greatest accuracy in k-fold cross validation model testing.</p>
@@ -1918,19 +1989,17 @@ Response Feature: [[&#39;Prod&#39;]]
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train_orig</span><span class="p">,</span> <span class="n">X_test_orig</span><span class="p">,</span> <span class="n">y_train_orig</span><span class="p">,</span> <span class="n">y_test_orig</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="n">sel_pred</span><span class="p">],</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="n">resp</span><span class="p">],</span><span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">73073</span><span class="p">)</span>
-
-<span class="n">neigh</span> <span class="o">=</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">weights</span> <span class="o">=</span> <span class="s1">&#39;distance&#39;</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">neigh_fit</span> <span class="o">=</span> <span class="n">neigh</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_orig</span><span class="p">,</span><span class="n">y_train_orig</span><span class="p">)</span>                <span class="c1"># train the model with the training data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">neigh</span> <span class="o">=</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">weights</span> <span class="o">=</span> <span class="s1">&#39;distance&#39;</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">neigh_fit</span> <span class="o">=</span> <span class="n">neigh</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">[[</span><span class="n">sel_pred</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">sel_pred</span><span class="p">[</span><span class="mi">1</span><span class="p">]]],</span><span class="n">y_train</span><span class="p">)</span>                <span class="c1"># train the model with the training data</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>                                              <span class="c1"># training data vs. the model predictions</span>
-<span class="n">Z</span> <span class="o">=</span> <span class="n">visualize_model</span><span class="p">(</span><span class="n">neigh_fit</span><span class="p">,</span><span class="n">X_train_orig</span><span class="p">[</span><span class="n">sel_pred</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">Xmin</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">Xmax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">X_train_orig</span><span class="p">[</span><span class="n">sel_pred</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="n">Xmin</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">Xmax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">y_train</span><span class="p">[</span><span class="n">resp</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">visualize_model</span><span class="p">(</span><span class="n">neigh_fit</span><span class="p">,</span><span class="n">X_train</span><span class="p">[</span><span class="n">sel_pred</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">Xmin</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">Xmax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">X_train</span><span class="p">[</span><span class="n">sel_pred</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="n">Xmin</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">Xmax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">y_train</span><span class="p">[</span><span class="n">resp</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span>
                     <span class="s1">&#39;Training Data and k Nearest Neighbours&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Hyperparameters&#39;</span><span class="p">,[</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">3.2</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;weights: &#39;</span> <span class="o">+</span> <span class="n">weights</span><span class="p">,[</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">2.9</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;n neighbours: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n_neighbours</span><span class="p">),[</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">2.6</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;distance norm: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">),[</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">2.3</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>                                              <span class="c1"># testing data vs. the model predictions</span>
-<span class="n">visualize_model</span><span class="p">(</span><span class="n">neigh_fit</span><span class="p">,</span><span class="n">X_test_orig</span><span class="p">[</span><span class="n">sel_pred</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">Xmin</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">Xmax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">X_test_orig</span><span class="p">[</span><span class="n">sel_pred</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="n">Xmin</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">Xmax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">y_test</span><span class="p">[</span><span class="n">resp</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span>
+<span class="n">visualize_model</span><span class="p">(</span><span class="n">neigh_fit</span><span class="p">,</span><span class="n">X_test</span><span class="p">[</span><span class="n">sel_pred</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">Xmin</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">Xmax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">X_test</span><span class="p">[</span><span class="n">sel_pred</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="n">Xmin</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">Xmax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">y_test</span><span class="p">[</span><span class="n">resp</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span>
                 <span class="s1">&#39;Testing Data and k Nearest Neighbours&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Hyperparameters&#39;</span><span class="p">,[</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">3.2</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;weights: &#39;</span> <span class="o">+</span> <span class="n">weights</span><span class="p">,[</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">2.9</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;n neighbours: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n_neighbours</span><span class="p">),[</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">2.6</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;distance norm: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">),[</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">2.3</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
@@ -1940,7 +2009,7 @@ Response Feature: [[&#39;Prod&#39;]]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8c3133ce421b3030fdd8a00084845ccd1d24e4e798c75f636c0920eebed4d5c6.png" src="_images/8c3133ce421b3030fdd8a00084845ccd1d24e4e798c75f636c0920eebed4d5c6.png" />
+<img alt="_images/ac88fe82538116c871f7176e54f63ab82262a1cbfdd41bd450c8f1c94779b01b.png" src="_images/ac88fe82538116c871f7176e54f63ab82262a1cbfdd41bd450c8f1c94779b01b.png" />
 </div>
 </div>
 <p>Do you see the horizontal banding?  The larger range of magnitudes of brittleness vs. porosity results in this banding.</p>
@@ -1953,22 +2022,22 @@ Response Feature: [[&#39;Prod&#39;]]
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train_orig</span><span class="p">,</span> <span class="n">X_test_orig</span><span class="p">,</span> <span class="n">y_train_orig</span><span class="p">,</span> <span class="n">y_test_orig</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="n">sel_pred</span><span class="p">],</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="n">resp</span><span class="p">],</span><span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">73073</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train_mod</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span> <span class="o">=</span> <span class="kc">True</span><span class="p">);</span> <span class="n">X_test_mod</span> <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 
-<span class="n">X_train_orig</span><span class="p">[</span><span class="s1">&#39;Por&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X_train_orig</span><span class="p">[</span><span class="s1">&#39;Por&#39;</span><span class="p">]</span><span class="o">/</span><span class="mf">100.0</span>
-<span class="n">X_test_orig</span><span class="p">[</span><span class="s1">&#39;Por&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X_test_orig</span><span class="p">[</span><span class="s1">&#39;Por&#39;</span><span class="p">]</span><span class="o">/</span><span class="mf">100.0</span>
+<span class="n">X_train_mod</span><span class="p">[</span><span class="s1">&#39;Por&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X_train_mod</span><span class="p">[</span><span class="s1">&#39;Por&#39;</span><span class="p">]</span><span class="o">/</span><span class="mf">100.0</span>
+<span class="n">X_test_mod</span><span class="p">[</span><span class="s1">&#39;Por&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X_test_mod</span><span class="p">[</span><span class="s1">&#39;Por&#39;</span><span class="p">]</span><span class="o">/</span><span class="mf">100.0</span>
 
 <span class="n">neigh</span> <span class="o">=</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">weights</span> <span class="o">=</span> <span class="s1">&#39;distance&#39;</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">neigh_fit</span> <span class="o">=</span> <span class="n">neigh</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_orig</span><span class="p">,</span><span class="n">y_train_orig</span><span class="p">)</span>                <span class="c1"># train the model with the training data</span>
+<span class="n">neigh_fit</span> <span class="o">=</span> <span class="n">neigh</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">[[</span><span class="n">sel_pred</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">sel_pred</span><span class="p">[</span><span class="mi">1</span><span class="p">]]],</span><span class="n">y_train</span><span class="p">)</span>                <span class="c1"># train the model with the training data</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>                                              <span class="c1"># training data vs. the model predictions</span>
-<span class="n">Z</span> <span class="o">=</span> <span class="n">visualize_model</span><span class="p">(</span><span class="n">neigh_fit</span><span class="p">,</span><span class="n">X_train_orig</span><span class="p">[</span><span class="n">sel_pred</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">Xmin</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span><span class="n">Xmax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span><span class="n">X_train_orig</span><span class="p">[</span><span class="n">sel_pred</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="n">Xmin</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">Xmax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">y_train</span><span class="p">[</span><span class="n">resp</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">visualize_model</span><span class="p">(</span><span class="n">neigh_fit</span><span class="p">,</span><span class="n">X_train_mod</span><span class="p">[</span><span class="n">sel_pred</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">Xmin</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span><span class="n">Xmax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span><span class="n">X_train</span><span class="p">[</span><span class="n">sel_pred</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="n">Xmin</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">Xmax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">y_train</span><span class="p">[</span><span class="n">resp</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span>
                     <span class="s1">&#39;Training Data and k Nearest Neighbours&#39;</span><span class="p">,</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Hyperparameters&#39;</span><span class="p">,[</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">3.2</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;weights: &#39;</span> <span class="o">+</span> <span class="n">weights</span><span class="p">,[</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">2.9</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;n neighbours: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n_neighbours</span><span class="p">),[</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">2.6</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;distance norm: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">),[</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">2.3</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>                                              <span class="c1"># testing data vs. the model predictions</span>
-<span class="n">visualize_model</span><span class="p">(</span><span class="n">neigh_fit</span><span class="p">,</span><span class="n">X_test_orig</span><span class="p">[</span><span class="n">sel_pred</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">Xmin</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span><span class="n">Xmax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span><span class="n">X_test_orig</span><span class="p">[</span><span class="n">sel_pred</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="n">Xmin</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">Xmax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">y_test</span><span class="p">[</span><span class="n">resp</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span>
+<span class="n">visualize_model</span><span class="p">(</span><span class="n">neigh_fit</span><span class="p">,</span><span class="n">X_test_mod</span><span class="p">[</span><span class="n">sel_pred</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">Xmin</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span><span class="n">Xmax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span><span class="n">X_test</span><span class="p">[</span><span class="n">sel_pred</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="n">Xmin</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">Xmax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">y_test</span><span class="p">[</span><span class="n">resp</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span>
                 <span class="s1">&#39;Testing Data and k Nearest Neighbours&#39;</span><span class="p">,</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Hyperparameters&#39;</span><span class="p">,[</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">3.2</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;weights: &#39;</span> <span class="o">+</span> <span class="n">weights</span><span class="p">,[</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">2.9</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;n neighbours: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n_neighbours</span><span class="p">),[</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">2.6</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;distance norm: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">),[</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">2.3</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
@@ -1978,7 +2047,7 @@ Response Feature: [[&#39;Prod&#39;]]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e98632fa73beaf85be54462502e9cd2b26c6bc804f11e5ba193bd5a17f99b64d.png" src="_images/e98632fa73beaf85be54462502e9cd2b26c6bc804f11e5ba193bd5a17f99b64d.png" />
+<img alt="_images/5dfeace7a4ee2d36def49b67bbcff2ae8b88f60bc9ff76c4b6198b60d375c6a8.png" src="_images/5dfeace7a4ee2d36def49b67bbcff2ae8b88f60bc9ff76c4b6198b60d375c6a8.png" />
 </div>
 </div>
 <ul class="simple">
@@ -2064,7 +2133,7 @@ Response Feature: [[&#39;Prod&#39;]]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/83fd2c84c5d45efc2ab0262137bbbdafd882df6ec6ab4098a5b6e277724e7c05.png" src="_images/83fd2c84c5d45efc2ab0262137bbbdafd882df6ec6ab4098a5b6e277724e7c05.png" />
+<img alt="_images/4e6c62e58db3795b1566bcaad937b7f751781b9c55c7fa067f4ad32413260285.png" src="_images/4e6c62e58db3795b1566bcaad937b7f751781b9c55c7fa067f4ad32413260285.png" />
 </div>
 </div>
 </section>
@@ -2084,7 +2153,7 @@ Response Feature: [[&#39;Prod&#39;]]
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;knear__metric&#39;: &#39;euclidean&#39;,
- &#39;knear__n_neighbors&#39;: 11,
+ &#39;knear__n_neighbors&#39;: 10,
  &#39;knear__p&#39;: 2,
  &#39;knear__weights&#39;: &#39;distance&#39;,
  &#39;scaler&#39;: StandardScaler()}
@@ -2242,8 +2311,9 @@ Response Feature: [[&#39;Prod&#39;]]
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivations-for-k-nearest-neighbours-regression">Motivations for k-nearest Neighbours Regression</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convolution">Convolution</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbours-hyperparameters">k-nearest Neighbours Hyperparameters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstrations-of-convolution">Demonstrations of Convolution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbours-hyperparameters">k-nearest Neighbours Hyperparameters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-tabular-data">Loading Tabular Data</a></li>
@@ -2251,10 +2321,8 @@ Response Feature: [[&#39;Prod&#39;]]
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-dataframe">Visualize the DataFrame</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-statistics-for-tabular-data">Summary Statistics for Tabular Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-correlation-matrix-and-correlation-with-response-ranking">Calculate the Correlation Matrix and Correlation with Response Ranking</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-only-two-predictor-features">Working with Only Two Predictor Features</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standardizing-predictor-features">Standardizing Predictor Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train-and-test-split-and-standardizing-predictor-features">Train and Test Split and Standardizing Predictor Features</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-ranges">Feature Ranges</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train-and-test-split">Train and Test Split</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instantiate-fit-and-predict-with-k-nearest-neighbour">Instantiate, Fit and Predict with k-nearest Neighbour</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hyperparameter-tuning-for-k-nearest-neighbours">Hyperparameter Tuning for k-Nearest Neighbours</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuning-the-hyperparameters">Tuning the Hyperparameters</a></li>

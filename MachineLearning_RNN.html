@@ -1,0 +1,1354 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Recurrent Neural Networks &#8212; Applied Machine Learning in Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'MachineLearning_RNN';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/AppliedMachineLearning.jpg" class="logo__image only-light" alt="Applied Machine Learning in Python - Home"/>
+    <script>document.write(`<img src="_static/AppliedMachineLearning.jpg" class="logo__image only-dark" alt="Applied Machine Learning in Python - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_concepts.html">Machine Learning Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_training_tuning.html">Training and Tuning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_plotting_data_models.html">Loading and Plotting Data and Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_univariate_analysis.html">Univariate Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_multivariate_analysis.html">Multivariate Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_transformations.html">Feature Transformations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_ranking.html">Feature Ranking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_imputation.html">Feature Imputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_clustering.html">Cluster Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_density-based_clustering.html">Density-based Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_spectral_clustering.html">Spectral Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_PCA.html">Principal Components Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_multidimensional_scaling.html">Multidimensional Scaling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_random_projection.html">Random Projection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_predictive.html">Prediction with scikit-learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_linear_regression.html">Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_ridge_regression.html">Ridge Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_LASSO_regression.html">LASSO Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_Bayesian_linear_regression.html">Bayesian Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_naive_Bayes.html">Naive Bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_polynomial_regression.html">Polynomial Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_knearest_neighbours.html">k-Nearest Neighbours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_decision_tree.html">Decision Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_ensemble_trees.html">Bagging Tree and Random Forest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_gradient_boosting.html">Gradient Boosting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_support_vector_machines.html">Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_activation_functions.html">Neural Networks Activation Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_ANN.html">Artificial Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_CNN.html">Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_autoencoder.html">Autoencoder Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_GAN.html">Generative Adversarial Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_attention.html">Attention</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_time_series.html">Time Series Analysis and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_python.html">Python Code Snippets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/GeostatsPyDemos_Book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/GeostatsPyDemos_Book/issues/new?title=Issue%20on%20page%20%2FMachineLearning_RNN.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/MachineLearning_RNN.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Recurrent Neural Networks</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#artificial-neural-networks">Artificial Neural Networks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-recursion">Definition of Recursion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feed-forward-and-feedback-networks">Feed-forward and Feedback Networks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#series-data">Series Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recurrent-connections">Recurrent Connections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forward-pass-through-a-recurrent-neural-network">Forward Pass Through a Recurrent Neural Network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-neural-networks-steps">Training Neural Networks Steps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-networks-backpropagation-building-blocks">Neural Networks Backpropagation Building Blocks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-loss-derivative">Calculating the Loss Derivative</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#backpropagation-through-output-node-with-identity-activation">Backpropagation through Output Node with Identity Activation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#backpropagation-along-connections">Backpropagation along Connections</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-required-packages">Import Required Packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-simple-recurrent-neural-network">Visualize the Simple Recurrent Neural Network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-a-simple-dataset">Make a Simple DataSet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train-the-model">Train the Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-rnn-convergence">Check the RNN Convergence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <figure style="text-align: center;">
+  <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
+</figure>
+<section id="recurrent-neural-networks">
+<h1>Recurrent Neural Networks<a class="headerlink" href="#recurrent-neural-networks" title="Permalink to this heading">#</a></h1>
+<p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
+<div class="remove-from-content-only admonition">
+<p class="admonition-title">Cite this e-Book as:</p>
+<p>Pyrcz, M.J., 2024, <em>Applied Machine Learning in Python: A Hands-on Guide with Code</em> [e-book]. Zenodo. doi:10.5281/zenodo.15169138 <a class="reference external" href="https://doi.org/10.5281/zenodo.15169138"><img alt="DOI" src="https://zenodo.org/badge/863274676.svg" /></a></p>
+</div>
+<p>The workflows in this book and more are available here:</p>
+<div class="remove-from-content-only admonition">
+<p class="admonition-title">Cite the MachineLearningDemos GitHub Repository as:</p>
+<p>Pyrcz, M.J., 2024, <em>MachineLearningDemos: Python Machine Learning Demonstration Workflows Repository</em> (0.0.3) [Software]. Zenodo. DOI: 10.5281/zenodo.13835312. GitHub repository: <a class="github reference external" href="https://github.com/GeostatsGuy/MachineLearningDemos">GeostatsGuy/MachineLearningDemos</a> <a class="reference external" href="https://zenodo.org/doi/10.5281/zenodo.13835312"><img alt="DOI" src="https://zenodo.org/badge/862519860.svg" /></a></p>
+</div>
+<p>By Michael J. Pyrcz <br />
+© Copyright 2024.</p>
+<p>This chapter is a tutorial for / demonstration of <strong>Recurrent Neural Networks</strong>.</p>
+<p><strong>YouTube Lecture</strong>: check out my lectures on:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://youtu.be/A9PiCMY_6nM?si=NxWSU_5RgQ4w55EL">Artificial Neural Networks</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/za2my_XDoOs?si=LeHU6p2_fc9dX4Yt">Convolutional Neural Networks</a></p></li>
+</ul>
+<p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
+<section id="motivation">
+<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this heading">#</a></h2>
+<p>Recurrent neural networks are very powerful, nature inspired computing based on an analogy of brain</p>
+<ul class="simple">
+<li><p>I suggest that they are like a reptilian brain, without planning and higher order reasoning</p></li>
+</ul>
+<p>In addition, artificial neural networks are a building block of many other deep learning methods, for example,</p>
+<ul class="simple">
+<li><p>convolutional neural networks</p></li>
+<li><p>recurrent neural networks</p></li>
+<li><p>generative adversarial networks</p></li>
+<li><p>autoencoders</p></li>
+</ul>
+<p>Nature inspired computing is looking to nature for inspiration to develop novel problem-solving methods,</p>
+<ul class="simple">
+<li><p><strong>artificial neural networks</strong> are inspired by biological neural networks</p></li>
+<li><p><strong>nodes</strong> -  in our model are artificial neurons, simple processors</p></li>
+<li><p><strong>connections</strong> between nodes are artificial synapses</p></li>
+</ul>
+<p>intelligence emerges from many connected simple processors. For the remainder of this chapter, I will used the terms nodes and connections to describe our artificial neural network.</p>
+</section>
+<section id="artificial-neural-networks">
+<h2>Artificial Neural Networks<a class="headerlink" href="#artificial-neural-networks" title="Permalink to this heading">#</a></h2>
+<p>If you have not, take this opportunity to review my previous chapters in the e-book on, <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/MachineLearning_ANN.html">Artificial Neural Networks</a>.</p>
+<p>The <strong>main takeaways</strong> from my artificial neural network chapter are as follows,</p>
+<ul class="simple">
+<li><p><strong>architecture of a neural network</strong>, including its fundamental components, nodes (neurons) and the weighted connections between them.</p></li>
+<li><p><strong>forward pass</strong> computation through the network, where each node computes a weighted sum of its inputs (including a bias term), followed by the application of a nonlinear activation function.</p></li>
+<li><p><strong>computation of the error derivative</strong>, which is then backpropagated through the network via the chain rule to determine the gradients of the loss function with respect to each weight and bias.</p></li>
+<li><p><strong>aggregation of these gradients</strong> across all samples in a training batch, typically by averaging, to update the model parameters.</p></li>
+<li><p><strong>iterative training process</strong>, where the model is trained over multiple batches and epochs (passes over all the data) to continually refine the weights and biases until the model achieves an acceptable error rate on the test data.</p></li>
+</ul>
+<p>The main takeaways from my convolutional neural network chapter are as follows,</p>
+<ul class="simple">
+<li><p><strong>regularization</strong> of image data with receptive fields to preserve spatial information and to avoid overfit.</p></li>
+<li><p><strong>convolutional kernels</strong> with learnable weights to extraction information from images.</p></li>
+</ul>
+<p>For both of these chapters, I have included links to my recorded lectures and to neural networks built from scratch with NumPy only!</p>
+</section>
+<section id="definition-of-recursion">
+<h2>Definition of Recursion<a class="headerlink" href="#definition-of-recursion" title="Permalink to this heading">#</a></h2>
+<p>Recursive neural networks are built upon the concept of recusion. Let’s start by defining recursion,</p>
+<p>From Oxford English Dictionary,</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.oed.com/dictionary/recursion_n?tab=meaning_and_use#26307813">Recursion</a> - “the repeated application of a recursive procedure or definition”</p></li>
+</ul>
+<p>Recursion is a recursive procedure, is a recursive procedure, is a recursive procedure, …</p>
+<p>From Wikipedia,</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Recursion">Recursion</a> - “recursion occurs when the definition of a concept or process depends on a simpler or previous version of itself”</p></li>
+</ul>
+<p>Philosophically speaking we can describe recursion as,</p>
+<ul class="simple">
+<li><p>a complicated system built by repeated application of a simple step.</p></li>
+</ul>
+<p>Let’s take a simple mathematical operator that is solved with recursion, the factorial.</p>
+<div class="math notranslate nohighlight">
+\[
+n! = n \cdot n-1 \cdot n-2 \cdot \ldots \cdot 3 \cdot 2 \cdot 1
+\]</div>
+<p>Here’s a function that could be written in Python to solve any factorial of an integer,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        
+</pre></div>
+</div>
+<p>Did you see it? The function calls itself, this is recursion in programming.</p>
+</section>
+<section id="feed-forward-and-feedback-networks">
+<h2>Feed-forward and Feedback Networks<a class="headerlink" href="#feed-forward-and-feedback-networks" title="Permalink to this heading">#</a></h2>
+<p>A critical aspect of the <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/MachineLearning_ANN.html">Artificial Neural Networks</a> is that the network is fully connected, feed-forward.</p>
+<ul class="simple">
+<li><p>with a recurrent neural network, information can flow backwards.</p></li>
+</ul>
+<p>Heres an illustration of both,</p>
+<figure style="text-align: center;">
+  <img src="_static/RNN/forward_recurrent.png" style="display: block; margin: 0 auto; width: 80%;">
+  <figcaption style="text-align: center;"> Simple demonstration illustration of feed-forward (left) and feedback (right) networks.
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p><strong>Feed-forward</strong> – information from predictor feature to response is combined and compressed to map to predict the response feature.</p></li>
+<li><p><strong>Feedback</strong> – connections that take information to earlier layers or into the same layer in a later step</p></li>
+</ul>
+</section>
+<section id="series-data">
+<h2>Series Data<a class="headerlink" href="#series-data" title="Permalink to this heading">#</a></h2>
+<p>A sequence of observations collected over ordered intervals, typically through time but sometimes through space or another ordered dimension. Example include,</p>
+<ul class="simple">
+<li><p><strong>Time series data</strong> - by-second stock prices in financial markets, monthly rainfall measured at a weather station in meterology</p></li>
+<li><p><strong>Spatial series data</strong> - mineral grades along a borehole in depth or a oil production from a well over time in geoscience</p></li>
+<li><p><strong>Sequential process data</strong> - rate of failure of product from an assembly line</p></li>
+</ul>
+<p>Here’s a simple bivariate, sparial series dataset with porosity and permeability measured at regular intervals of a well based on extracted core data.</p>
+<figure style="text-align: center;">
+  <img src="_static/RNN/series_data.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> Series data in depth with ordered data with correlation between adjacent samples.
+</figcaption>
+</figure>
+<p>We could build a prediction model that predicts permeability from porosity at each depth separately.</p>
+<ul class="simple">
+<li><p>this may ignore important information / data structures between the locations in the series.</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/RNN/ann_series.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Schematic of a single artificial neural network trained to predict at each depth in the series separately. 
+</figcaption>
+</figure>
+</section>
+<section id="recurrent-connections">
+<h2>Recurrent Connections<a class="headerlink" href="#recurrent-connections" title="Permalink to this heading">#</a></h2>
+<p>The previous ANN ignores information from the adjacent prediction case. The recursive neural network (RNN),
+make the predictions in order and share information, add memory to our network!</p>
+<ol class="arabic simple">
+<li><p>Make the predictions in order and share information, add memory to our network!</p></li>
+</ol>
+<figure style="text-align: center;">
+  <img src="_static/RNN/recurrent_connection.png" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> A recurrent connection between adjacent prediction, the hidden layer combines the current input signal, \(I_t\), and the previous estimate's output from the hidden layer, $H_2^{t-1}$.
+</figcaption>
+</figure>
+<p>Here’s the new equation for the pre-activation result in the hidden layer node,</p>
+<div class="math notranslate nohighlight">
+\[
+H_2^t = \alpha \left( \lambda_{1,2} \cdot I_t + \lambda_{2^{t-1},2} \cdot H_2^{t-1} + b_2 \right)
+\]</div>
+<figure style="text-align: center;">
+  <img src="_static/RNN/recurrent_connection_output.png" style="display: block; margin: 0 auto; width: 75%;">
+  <figcaption style="text-align: center;"> A recurrent connection between adjacent prediction, the hidden layer combines the current input signal, \(I_t\), and the previous estimate's output from the hidden layer, $H_2^{t-1}$, including the connection to the output node and prediction.
+</figcaption>
+</figure>
+<div class="math notranslate nohighlight">
+\[
+O_3^t = \alpha \left( \lambda_{2,3} \cdot H_2^t + b_3 \right)
+\]</div>
+</section>
+<section id="forward-pass-through-a-recurrent-neural-network">
+<h2>Forward Pass Through a Recurrent Neural Network<a class="headerlink" href="#forward-pass-through-a-recurrent-neural-network" title="Permalink to this heading">#</a></h2>
+<p>Now here is a complete forward pass through our recurrent neural network.</p>
+<ul class="simple">
+<li><p>start with the first prediction in the sequence, and calculate the hidden layer output only.</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/RNN/forward_pass1.png" style="display: block; margin: 0 auto; width: 75%;">
+  <figcaption style="text-align: center;"> Our recurrent neural network forward pass, calculate the hidden hode post activation output from the network for the first prediction in the series.
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>we don’t have a previous prediction with a hidden layer output, so the common approach is to assume the signal, <span class="math notranslate nohighlight">\(H_2^{t-1}\)</span>, as <span class="math notranslate nohighlight">\(H_2^{0}=0.0\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+H_2^1 = \alpha \left( \lambda_{1,2} \cdot I_1^1 + \lambda_{2^{(t-1)},2} \cdot \cancelto{0}{H_2^0} + b_2 \right)
+\]</div>
+<ul class="simple">
+<li><p>now let’s proceed to the second prediction in the data series, we can pass the output signal from the first prediction hidden layer, <span class="math notranslate nohighlight">\(H_2^{t-1} = H_2^{1}\)</span> to our current <span class="math notranslate nohighlight">\(t=2\)</span> hidden layer.</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/RNN/forward_pass2.png" style="display: block; margin: 0 auto; width: 75%;">
+  <figcaption style="text-align: center;"> Our recurrent neural network forward pass, calculate the output from the network for the first prediction in the series and combine with the input from the second prediction.
+</figcaption>
+</figure>
+<div class="math notranslate nohighlight">
+\[
+H_2^2 = \alpha \left( \lambda_{1,2} \cdot I_1^2 + \lambda_{2^{(t-1)},2} \cdot H_2^1 + b_2 \right)
+\]</div>
+<figure style="text-align: center;">
+  <img src="_static/RNN/forward_pass3.png" style="display: block; margin: 0 auto; width: 75%;">
+  <figcaption style="text-align: center;"> Our recurrent neural network forward pass, calculate the output from the network for the second prediction combined with the out  prediction in the series and combine with the pred
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>now let’s proceed to the third prediction in the data series, we pass the output signal from the first prediction hidden layer, <span class="math notranslate nohighlight">\(H_2^{1}\)</span> to our previous <span class="math notranslate nohighlight">\(H_2^{2}\)</span> hidden layer, combine these signals and pass this hidden layer output to the current hidden layer and combine with the current data to calculate the output of the current hidden layer node, <span class="math notranslate nohighlight">\(H_2^{3}\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+H_2^3 = \alpha \left( \lambda_{1,2} \cdot I_1^3 + \lambda_{2^{(t-1)},2} \cdot H_2^2 + b_2 \right)
+\]</div>
+<p>No let’s combine these euqations together to show the combination of the previous data in the sequence to the current prediction. Substituting the equation for <span class="math notranslate nohighlight">\(H_2^2\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+H_2^3 = \alpha \left( \lambda_{1,2} \cdot I_1^3 + \lambda_{2^{(t-1)},2} \cdot \alpha \left( \lambda_{1,2} \cdot I_1^2 + \lambda_{2^{(t-1)},2} \cdot H_2^1 + b_2 \right) + b_2 \right)
+\]</div>
+<p>and substituting the equation for <span class="math notranslate nohighlight">\(H_2^1\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+H_2^3 = \alpha \left( \lambda_{1,2} \cdot I_1^3 + \lambda_{2^{(t-1)},2} \cdot \alpha \left( \lambda_{1,2} \cdot I_1^2 + \lambda_{2^{(t-1)},2} \cdot \alpha \left( \lambda_{1,2} \cdot I_1^1 + \lambda_{2^{(t-1)},2} \cdot \cancelto{0}{H_2^0} + b_2 \right) + b_2 \right) + b_2 \right)
+\]</div>
+<p>We continue until we have calculated the output for all our hidden layers for each of our predictions in the series.</p>
+<figure style="text-align: center;">
+  <img src="_static/RNN/forward_pass7.png" style="display: block; margin: 0 auto; width: 75%;">
+  <figcaption style="text-align: center;"> Our recurrent neural network with all hidden layer outputs over the series of predictions calculated.
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>we have finished integrating the recursive aspect of our neural network.</p></li>
+</ul>
+<p>Now we can proceed along the hidden layer to output layer connections to the output node and then pass through the output node to calculate the prediction at each step in our series data.</p>
+<figure style="text-align: center;">
+  <img src="_static/RNN/forward_pass_output.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Our recurrent neural network with all hidden layer outputs over the series of predictions calculated, and then passed to the network output for predictions over the series.
+</figcaption>
+</figure>
+<p>The pre-activation in the output node is,</p>
+<div class="math notranslate nohighlight">
+\[
+O_{3_{in}} = \lambda_{2,3} \cdot H_2 + b_3
+\]</div>
+<p>and since for regression we commonly use identity activation,</p>
+<div class="math notranslate nohighlight">
+\[
+O_3 = \alpha(O_{3_{in}}) = O_{3_{in}}
+\]</div>
+</section>
+<section id="training-neural-networks-steps">
+<h2>Training Neural Networks Steps<a class="headerlink" href="#training-neural-networks-steps" title="Permalink to this heading">#</a></h2>
+<p>Training an artificial neural network proceeds iteratively by these steps,</p>
+<ol class="arabic simple" start="0">
+<li><p>initialized the model parameters</p></li>
+<li><p>forward pass to make a prediction</p></li>
+<li><p>calculate the error derivative based on the prediction and truth over training data</p></li>
+<li><p>backpropagate the error derivative back through the artificial neural network to calculate the derivatives of the error over all the model weights and biases parameters</p></li>
+<li><p>update the model parameters based on the derivatives and learning rates</p></li>
+<li><p>repeat until convergence.</p></li>
+</ol>
+<figure style="text-align: center;">
+  <img src="_static/ANN/training_cycle.png" style="display: block; margin: 0 auto; width: 90%;">
+  <figcaption style="text-align: center;"> The iterative steps for training an artificial neural network. 
+</figcaption>
+</figure>
+<p>Here’s some details on each step,</p>
+<ol class="arabic simple" start="0">
+<li><p><strong>Initializing the Model Parameters</strong> - initialize all model parameters with typically small (near zero) random values.</p></li>
+<li><p><strong>Forward Pass</strong> - see the workflow in the previous section for the forward pass through our recurrent neural network.</p></li>
+<li><p><strong>Calculate the Error Derivative</strong> - given a loss of,</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+L = \frac{1}{2} \left(\hat{y}(\bf{u}_t) - y(\bf{u}_t) \right)^2
+\]</div>
+<p>     and the error derivative, i.e., rate of change of in error given a change in model estimate is,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial L}{\partial \hat{y}(\bf{u}_t)} = \hat{Y} - Y
+\]</div>
+<p>     For now, let’s only consider a single estimate, and we will address more than 1 training data later.</p>
+<ol class="arabic simple" start="3">
+<li><p><strong>Backpropagate the Error Derivative</strong> - we shift back through the artificial neural network to calculate the derivatives of the error over all the model weights and biases parameters, with the chain rule, for example the loss derivative backpropagated to the output of node <span class="math notranslate nohighlight">\(H_4\)</span>,</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial L}{\partial H_2} 
+= \frac{\partial O_{3_{\text{in}}}}{\partial H_2} \cdot \frac{\partial O_3}{\partial O_{3_{\text{in}}}} \cdot \frac{\partial L}{\partial O_3} 
+= \lambda_{2,3} \cdot \bigl( (1 - O_3) \cdot O_3 \bigr) \cdot (O_3 - y(\bf{u}_t))
+\]</div>
+<ol class="arabic simple" start="4">
+<li><p><strong>Update the Model Parameters</strong> - based on the derivatives, <span class="math notranslate nohighlight">\(\frac{\partial L}{\partial \lambda_{i,j}}\)</span> and learning rates, <span class="math notranslate nohighlight">\(\eta\)</span>, like this,</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\lambda_{i,j}^{\ell} = \lambda_{i,j}^{\ell - 1} + \eta \cdot \frac{\partial L}{\partial \lambda_{i,j}}
+\]</div>
+<ol class="arabic simple" start="5">
+<li><p><strong>Repeat Until Convergence</strong> - return to step 1, until the error, <span class="math notranslate nohighlight">\(L\)</span>, is reduced to an acceptable level, i.e., model convergence is the condition to stop the iterations</p></li>
+</ol>
+<p>These are the steps, now let’s dive into the details for each.</p>
+</section>
+<section id="neural-networks-backpropagation-building-blocks">
+<h2>Neural Networks Backpropagation Building Blocks<a class="headerlink" href="#neural-networks-backpropagation-building-blocks" title="Permalink to this heading">#</a></h2>
+<p>Let’s cover the numerical building blocks for backpropagation. Once you understand these backpropagation building blocks, you will be able to backpropagate our simple network and even any complicated artificial neural networks by hand,</p>
+<ol class="arabic simple">
+<li><p>calculating the loss derivative</p></li>
+<li><p>backpropagation through nodes</p></li>
+<li><p>backpropagation along connections</p></li>
+<li><p>accounting for recurrent paths</p></li>
+<li><p>calculation of the loss derivatives with respect to weights and biases</p></li>
+</ol>
+<p>For now I demonstrate backpropagation of this loss derivative for a single training data sample, <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<ul class="simple">
+<li><p>I address multiple samples later, <span class="math notranslate nohighlight">\(y_i, i=1, \ldots, n\)</span></p></li>
+</ul>
+<p>Let’s start with calculating the loss derivative.</p>
+<section id="calculating-the-loss-derivative">
+<h3>Calculating the Loss Derivative<a class="headerlink" href="#calculating-the-loss-derivative" title="Permalink to this heading">#</a></h3>
+<p>Backpropagation is based on the concept of allocating or propagating the loss derivative backwards through the neural network,</p>
+<ul class="simple">
+<li><p>we calculate the loss derivative and then distribute it sequentially, in reverse direction, from network output back towards the network input</p></li>
+<li><p>it is important to know that we are working with derivatives, and that backpropagation is NOT distributing error, although as you will see it may look that way!</p></li>
+</ul>
+<p>We start by defining the loss, given the truth, <span class="math notranslate nohighlight">\(𝑦\)</span>, and our prediction, <span class="math notranslate nohighlight">\(\hat{y} = O_3\)</span>, we calculate our <span class="math notranslate nohighlight">\(L^2\)</span> loss as,</p>
+<div class="math notranslate nohighlight">
+\[
+L = \frac{1}{2} \left( \hat{y}(\bf{u}_t) - y(\bf{u}_t) \right)^2
+\]</div>
+<p>our choice of loss function allows us to use the prediction error as the loss derivative! We calculate the loss derivative as the partial derivative of the loss with respect to the estimate, <span class="math notranslate nohighlight">\(\frac{\partial 𝐿}{\partial \hat{y}}\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial \hat{y}(\bf{u}_t)} = \frac{\partial \frac{1}{2} \left( \hat{y}(\bf{u_t}) - y(\bf{u}_t) \right)^2 }{\partial \hat{y}(\bf{u}_t)} = \hat{y}(\bf{u}_t) - y(\bf{u}_t)
+\]</div>
+<p>You see what I mean, we are backpropagating the loss derivative, but due to our formulation of the <span class="math notranslate nohighlight">\(L^2\)</span> loss, we only have to calculate the error at our output node output, but once again - it is the loss derivative.</p>
+<figure style="text-align: center;">
+  <img src="_static/RNN/back_loss.png" style="display: block; margin: 0 auto; width: 65%;">
+  <figcaption style="text-align: center;"> Calculation of the loss derivative at the output of an output layer node, $O_3$.
+</figcaption>
+</figure>
+<p>For the example of our simple artificial neural network with the output at node, <span class="math notranslate nohighlight">\(O_3\)</span>, our loss derivative is,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial O_3} = \frac{\partial \mathcal{L}}{\hat{y}} = \hat{y}(\bf{u}_t) - y(\bf{u}_t) = O^t_3 - y(\bf{u}_t)
+\]</div>
+<p>So this is our loss derivative backpropagated to the output our output node, and we are now we are ready to backpropagate this loss derivative through our artificial neural network, let’s talk about how we step through nodes and along connections.</p>
+</section>
+<section id="backpropagation-through-output-node-with-identity-activation">
+<h3>Backpropagation through Output Node with Identity Activation<a class="headerlink" href="#backpropagation-through-output-node-with-identity-activation" title="Permalink to this heading">#</a></h3>
+<p>Let’s backpropagate through our output node, <span class="math notranslate nohighlight">\(O^t_3\)</span>, from post-activation to pre-activation. To do this we need the partial derivative our activation function.</p>
+<ul class="simple">
+<li><p>since this is an output node with a regression artificial neural network I have selected the identity or linear activation function.</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/RNN/back_node.png" style="display: block; margin: 0 auto; width: 65%;">
+  <figcaption style="text-align: center;"> Backpropagation of the loss derivative through the node, \(O^t_3\), from \(O^t_3\) post-activation output to \(O^t_{3_{in}}\) pre-activation input.
+</figcaption>
+</figure>
+<p>The identity activation at output node <span class="math notranslate nohighlight">\(O_6\)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+O^t_3 = \sigma(O^t_{3_{in}}) = O_3
+\]</div>
+<p>The derivative of the identity activation at node <span class="math notranslate nohighlight">\(O_3\)</span> with respect to its input <span class="math notranslate nohighlight">\(O_{3_{in}}\)</span>, i.e., crossing node <span class="math notranslate nohighlight">\(O_3\)</span> is,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial O_3}{\partial O_{3_{in}}} = \frac{\partial \left(O_{3_{in}} \right)}{\partial O_{3_{in}}} = 1.0
+\]</div>
+<p>Note, we just need <span class="math notranslate nohighlight">\(O_3\)</span> the output signal from the node. Now we can add this to our chain rule to backpropagate from loss derivative with respect to the node output, <span class="math notranslate nohighlight">\(\frac{\partial \mathcal{L}}{\partial O_3}\)</span>, and to the loss derivative with respect to the node input, <span class="math notranslate nohighlight">\(\frac{\partial \mathcal{L}}{\partial O_{3_{\text{in}}}}\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial O_{3_{\text{in}}}} 
+= \frac{\partial O^t_3}{\partial O^t_{3_{\text{in}}}} \cdot \frac{\partial \mathcal{L}}{\partial O^t_3} 
+= 1.0 \cdot (O^t_3 - y(\bf{u}_t))
+\]</div>
+<p>Now that we have backpropagated through an output node, let’s backpropagation along the <span class="math notranslate nohighlight">\(H_2\)</span> to <span class="math notranslate nohighlight">\(O_3\)</span> connection from the hidden layer.</p>
+</section>
+<section id="backpropagation-along-connections">
+<h3>Backpropagation along Connections<a class="headerlink" href="#backpropagation-along-connections" title="Permalink to this heading">#</a></h3>
+<p>Now let’s backpropagate along the connection between output node <span class="math notranslate nohighlight">\(O_3\)</span> and and the hidden layer node <span class="math notranslate nohighlight">\(H_2\)</span>.</p>
+<figure style="text-align: center;">
+  <img src="_static/RNN/back_weight.png" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Backpropagation of the loss derivative through node \(O_3\), from \(O_3\) post-activation output to $O_{3_{in}}$ pre-activation input and then along the connection to the output from node \(H_2\).
+</figcaption>
+</figure>
+<p>Preactivation, the input to node <span class="math notranslate nohighlight">\(O_3\)</span> is calculated as,</p>
+<div class="math notranslate nohighlight">
+\[
+O^t_{3_{\text{in}}} = \lambda_{2,3} \cdot H^t_2 + b_3
+\]</div>
+<p>We calculate the derivative along the connection as,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial O^t_{3_{\text{in}}}}{\partial H^t_2} 
+= \frac{\partial}{\partial H_2} \left( \lambda_{2,3} \cdot H^t_2 + b_3 \right) 
+= \lambda_{4,6}
+\]</div>
+<p>by resolving the above partial derivative, we see that backpropagation along a connection by applying the connection weight.</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial O^t_{3_{\text{in}}}}{\partial H^t_2} = \lambda_{2,3}
+\]</div>
+<p>Note, we just need the current connection weight <span class="math notranslate nohighlight">\(\lambda_{2,3}\)</span>. Now we can add this to our chain rule to backpropagate along the <span class="math notranslate nohighlight">\(H_2\)</span> to <span class="math notranslate nohighlight">\(O_3\)</span> connection from loss derivative with respect to the output layer node input <span class="math notranslate nohighlight">\(\frac{\partial \mathcal{L}}{\partial O_{3_{\text{in}}}}\)</span>, to the loss derivative with respect to the hidden layer node output <span class="math notranslate nohighlight">\(\frac{\partial \mathcal{L}}{\partial H_2}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial H_2} 
+= \frac{\partial O^t_{3_{\text{in}}}}{\partial H_2} \cdot \frac{\partial O^t_3}{\partial O^t_{3_{\text{in}}}} \cdot \frac{\partial \mathcal{L}}{\partial O^t_3} 
+= \lambda_{2,3} \cdot 1.0 \cdot (O^t_3 - y(\bf{u}_t))
+\]</div>
+<p>Up to now we have used the standard methods from our regular artificial neural network.</p>
+<p>TBA</p>
+</section>
+</section>
+<section id="import-required-packages">
+<h2>Import Required Packages<a class="headerlink" href="#import-required-packages" title="Permalink to this heading">#</a></h2>
+<p>We will also need some standard packages. These should have been installed with Anaconda 3.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">suppress_warnings</span> <span class="o">=</span> <span class="kc">True</span>                                      <span class="c1"># toggle to supress warnings</span>
+<span class="kn">import</span> <span class="nn">os</span>                                                     <span class="c1"># to set current working directory </span>
+<span class="kn">import</span> <span class="nn">math</span>                                                   <span class="c1"># square root operator</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                                            <span class="c1"># arrays and matrix math</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>                               <span class="c1"># for plotting</span>
+<span class="kn">import</span> <span class="nn">matplotlib.patches</span> <span class="k">as</span> <span class="nn">patches</span>                          <span class="c1"># draw neural network nodes</span>
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="p">(</span><span class="n">MultipleLocator</span><span class="p">,</span> <span class="n">AutoMinorLocator</span><span class="p">,</span> <span class="n">AutoLocator</span><span class="p">)</span> <span class="c1"># control of axes ticks</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">axisbelow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                                <span class="c1"># grid behind plotting elements</span>
+<span class="k">if</span> <span class="n">suppress_warnings</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>  
+    <span class="kn">import</span> <span class="nn">warnings</span>                                           <span class="c1"># supress any warnings for this demonstration</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span> 
+<span class="n">seed</span> <span class="o">=</span> <span class="mi">13</span>                                                     <span class="c1"># random number seed for workflow repeatability</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you get a package import error, you may have to first install some of these packages. This can usually be accomplished by opening up a command window on Windows and then typing ‘python -m pip install [package-name]’. More assistance is available with the respective package docs.</p>
+</section>
+<section id="declare-functions">
+<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
+<p>Here’s the functions to make, train and visualize our recurrent neural network.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_grid</span><span class="p">():</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">)</span> <span class="c1"># add y grids</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span><span class="n">length</span><span class="o">=</span><span class="mi">7</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">AutoMinorLocator</span><span class="p">());</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">AutoMinorLocator</span><span class="p">())</span> <span class="c1"># turn on minor ticks   </span>
+
+<span class="k">def</span> <span class="nf">initialize_rnn_weights</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Initialize weights and biases for a single-node RNN.</span>
+<span class="sd">    Returns a dictionary of parameters.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;w12&quot;</span><span class="p">:</span>  <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="n">scale</span><span class="p">,</span> <span class="n">scale</span><span class="p">),</span>  <span class="c1"># input → hidden</span>
+        <span class="s2">&quot;w2t2&quot;</span><span class="p">:</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="n">scale</span><span class="p">,</span> <span class="n">scale</span><span class="p">),</span>  <span class="c1"># hidden (t-1) → hidden (t)</span>
+        <span class="s2">&quot;w23&quot;</span><span class="p">:</span>  <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="n">scale</span><span class="p">,</span> <span class="n">scale</span><span class="p">),</span>  <span class="c1"># hidden → output</span>
+        <span class="s2">&quot;b2&quot;</span><span class="p">:</span>   <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="n">scale</span><span class="p">,</span> <span class="n">scale</span><span class="p">),</span>  <span class="c1"># hidden bias</span>
+        <span class="s2">&quot;b3&quot;</span><span class="p">:</span>   <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="n">scale</span><span class="p">,</span> <span class="n">scale</span><span class="p">),</span>  <span class="c1"># output bias</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">params</span>
+
+<span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">z</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">sigmoid_deriv</span><span class="p">(</span><span class="n">h</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">h</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">forward_pass</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+    <span class="n">w12</span><span class="p">,</span> <span class="n">w2t2</span><span class="p">,</span> <span class="n">w23</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">b3</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">h2</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">T</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">T</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+        <span class="n">h_prev</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="k">if</span> <span class="n">t</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">h2</span><span class="p">[</span><span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">a2</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">w12</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+</span> <span class="n">w2t2</span> <span class="o">*</span> <span class="n">h_prev</span> <span class="o">+</span> <span class="n">b2</span>
+        <span class="n">h2</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">a2</span><span class="p">[</span><span class="n">t</span><span class="p">])</span>
+        <span class="n">y_pred</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">w23</span> <span class="o">*</span> <span class="n">h2</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+</span> <span class="n">b3</span>
+    <span class="k">return</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">h2</span><span class="p">,</span> <span class="n">a2</span>
+
+<span class="k">def</span> <span class="nf">mse_loss</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">y_pred</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">backward_pass</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">h2</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+    <span class="n">w12</span><span class="p">,</span> <span class="n">w2t2</span><span class="p">,</span> <span class="n">w23</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">b3</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    
+    <span class="c1"># initialize gradients</span>
+    <span class="n">grads</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="mf">0.0</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">keys</span><span class="p">()}</span>
+    <span class="n">delta_h_next</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">T</span><span class="p">)):</span>
+        <span class="n">dL_dy</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">y_pred</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">-</span> <span class="n">y</span><span class="p">[</span><span class="n">t</span><span class="p">])</span> <span class="o">/</span> <span class="n">T</span>  <span class="c1"># loss derivative wrt y_pred[t]</span>
+        
+        <span class="c1"># output layer</span>
+        <span class="n">grads</span><span class="p">[</span><span class="s2">&quot;w23&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">dL_dy</span> <span class="o">*</span> <span class="n">h2</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>
+        <span class="n">grads</span><span class="p">[</span><span class="s2">&quot;b3&quot;</span><span class="p">]</span>  <span class="o">+=</span> <span class="n">dL_dy</span>
+        
+        <span class="c1"># hidden layer</span>
+        <span class="n">delta_h</span> <span class="o">=</span> <span class="p">(</span><span class="n">dL_dy</span> <span class="o">*</span> <span class="n">w23</span> <span class="o">+</span> <span class="n">delta_h_next</span> <span class="o">*</span> <span class="n">w2t2</span><span class="p">)</span> <span class="o">*</span> <span class="n">sigmoid_deriv</span><span class="p">(</span><span class="n">h2</span><span class="p">[</span><span class="n">t</span><span class="p">])</span>
+        <span class="n">grads</span><span class="p">[</span><span class="s2">&quot;w12&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">delta_h</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>
+        <span class="n">grads</span><span class="p">[</span><span class="s2">&quot;w2t2&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">delta_h</span> <span class="o">*</span> <span class="p">(</span><span class="mi">0</span> <span class="k">if</span> <span class="n">t</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">h2</span><span class="p">[</span><span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">grads</span><span class="p">[</span><span class="s2">&quot;b2&quot;</span><span class="p">]</span>  <span class="o">+=</span> <span class="n">delta_h</span>
+
+        <span class="n">delta_h_next</span> <span class="o">=</span> <span class="n">delta_h</span>  <span class="c1"># pass to previous time step</span>
+
+    <span class="k">return</span> <span class="n">grads</span>
+
+<span class="k">def</span> <span class="nf">update_weights</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">grads</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Update RNN weights using gradient descent.</span>
+<span class="sd">    </span>
+<span class="sd">    params : dict</span>
+<span class="sd">        Current weights and biases (e.g., {&#39;w12&#39;: ..., &#39;b3&#39;: ...})</span>
+<span class="sd">    grads : dict</span>
+<span class="sd">        Gradients for each parameter (same keys as params)</span>
+<span class="sd">    lr : float</span>
+<span class="sd">        Learning rate</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">updated_params</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+        <span class="n">updated_params</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">-</span> <span class="n">lr</span> <span class="o">*</span> <span class="n">grads</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">updated_params</span>
+
+<span class="k">def</span> <span class="nf">draw_node</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xy</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">):</span>               <span class="c1"># draw and label a circular node</span>
+    <span class="n">circ</span> <span class="o">=</span> <span class="n">patches</span><span class="o">.</span><span class="n">Circle</span><span class="p">(</span><span class="n">xy</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.35</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+                          <span class="n">facecolor</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">circ</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">xy</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">xy</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">text</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+            <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">draw_arrow</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">):</span> <span class="c1"># draw arrows with optional label</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                <span class="n">xy</span><span class="o">=</span><span class="n">p2</span><span class="p">,</span> <span class="n">xytext</span><span class="o">=</span><span class="n">p1</span><span class="p">,</span>
+                <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;-&gt;&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.3</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">text</span><span class="p">:</span>
+        <span class="n">tx</span> <span class="o">=</span> <span class="p">(</span><span class="n">p1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">p2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">offset</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">ty</span> <span class="o">=</span> <span class="p">(</span><span class="n">p1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">p2</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">offset</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">tx</span><span class="p">,</span> <span class="n">ty</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualize-the-simple-recurrent-neural-network">
+<h2>Visualize the Simple Recurrent Neural Network<a class="headerlink" href="#visualize-the-simple-recurrent-neural-network" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">15</span><span class="p">))</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>                                    <span class="c1"># time steps top → bottom</span>
+
+<span class="n">x_data</span>   <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>                                                 <span class="c1"># column x-positions</span>
+<span class="n">x_input</span>  <span class="o">=</span>  <span class="mi">0</span>
+<span class="n">x_hidden</span> <span class="o">=</span>  <span class="mi">2</span>
+<span class="n">x_output</span> <span class="o">=</span>  <span class="mi">4</span>
+<span class="n">x_target</span> <span class="o">=</span>  <span class="mi">6</span>
+
+<span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ys</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>                           <span class="c1"># draw nodes (with subscripts)</span>
+
+    <span class="n">draw_node</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="p">(</span><span class="n">x_data</span><span class="p">,</span>  <span class="n">y</span><span class="p">),</span>  <span class="sa">rf</span><span class="s2">&quot;$X_</span><span class="se">{{</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="se">}}</span><span class="s2">$&quot;</span><span class="p">,</span>   <span class="s2">&quot;white&quot;</span><span class="p">)</span>
+    <span class="n">draw_node</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="p">(</span><span class="n">x_input</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span>  <span class="sa">rf</span><span class="s2">&quot;$I_1^</span><span class="se">{{</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="se">}}</span><span class="s2">$&quot;</span><span class="p">,</span>   <span class="s2">&quot;lightgray&quot;</span><span class="p">)</span>
+    <span class="n">draw_node</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="p">(</span><span class="n">x_hidden</span><span class="p">,</span><span class="n">y</span><span class="p">),</span>  <span class="sa">rf</span><span class="s2">&quot;$H_2^</span><span class="se">{{</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="se">}}</span><span class="s2">$&quot;</span><span class="p">,</span>   <span class="s2">&quot;red&quot;</span><span class="p">)</span>
+    <span class="n">draw_node</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="p">(</span><span class="n">x_output</span><span class="p">,</span><span class="n">y</span><span class="p">),</span>  <span class="sa">rf</span><span class="s2">&quot;$O_3^</span><span class="se">{{</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="se">}}</span><span class="s2">$&quot;</span><span class="p">,</span>   <span class="s2">&quot;orange&quot;</span><span class="p">)</span>
+    <span class="n">draw_node</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="p">(</span><span class="n">x_target</span><span class="p">,</span><span class="n">y</span><span class="p">),</span>  <span class="sa">rf</span><span class="s2">&quot;$y_</span><span class="se">{{</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="se">}}</span><span class="s2">$&quot;</span><span class="p">,</span>   <span class="s2">&quot;white&quot;</span><span class="p">)</span>
+
+<span class="n">bias_hidden_y</span> <span class="o">=</span> <span class="n">ys</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mf">1.0</span>                                   <span class="c1"># bias nodes at top (with subscripts)</span>
+<span class="n">bias_output_y</span> <span class="o">=</span> <span class="n">ys</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mf">1.0</span>
+
+<span class="n">draw_node</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="p">(</span><span class="n">x_hidden</span><span class="p">,</span> <span class="n">bias_hidden_y</span><span class="p">),</span> <span class="sa">r</span><span class="s2">&quot;$b_2$&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">draw_node</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="p">(</span><span class="n">x_output</span><span class="p">,</span> <span class="n">bias_output_y</span><span class="p">),</span> <span class="sa">r</span><span class="s2">&quot;$b_3$&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">ys</span><span class="p">:</span>                                                  <span class="c1"># input to hidden layer connections</span>
+    <span class="n">draw_arrow</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="p">(</span><span class="n">x_data</span><span class="o">+</span><span class="mf">0.35</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="n">x_input</span><span class="o">-</span><span class="mf">0.35</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">ys</span><span class="p">:</span>                                                  <span class="c1"># input to hidden layer connection labels</span>
+    <span class="n">draw_arrow</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="p">(</span><span class="n">x_input</span><span class="o">+</span><span class="mf">0.35</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="n">x_hidden</span><span class="o">-</span><span class="mf">0.35</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span>
+               <span class="sa">r</span><span class="s2">&quot;$\lambda_{1,2}$&quot;</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.1</span><span class="p">),</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">ys</span><span class="p">:</span>                                                  <span class="c1"># hidden to output layer connection labels</span>
+    <span class="n">draw_arrow</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="p">(</span><span class="n">x_hidden</span><span class="o">+</span><span class="mf">0.35</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="n">x_output</span><span class="o">-</span><span class="mf">0.35</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span>
+               <span class="sa">r</span><span class="s2">&quot;$\lambda_{2,3}$&quot;</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.1</span><span class="p">),</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="c1"># O → y</span>
+<span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">ys</span><span class="p">:</span>                                                  <span class="c1"># hidden to output layer connections</span>
+    <span class="n">draw_arrow</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="p">(</span><span class="n">x_output</span><span class="o">+</span><span class="mf">0.35</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="n">x_target</span><span class="o">-</span><span class="mf">0.35</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">T</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>                                          <span class="c1"># recurrent connection connections with labels</span>
+    <span class="n">y1</span> <span class="o">=</span> <span class="n">ys</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>
+    <span class="n">y2</span> <span class="o">=</span> <span class="n">ys</span><span class="p">[</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">draw_arrow</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span>
+               <span class="p">(</span><span class="n">x_hidden</span><span class="p">,</span> <span class="n">y1</span><span class="o">-</span><span class="mf">0.35</span><span class="p">),</span>
+               <span class="p">(</span><span class="n">x_hidden</span><span class="p">,</span> <span class="n">y2</span><span class="o">+</span><span class="mf">0.35</span><span class="p">),</span>
+               <span class="sa">rf</span><span class="s2">&quot;$\lambda_</span><span class="se">{{</span><span class="s2">2^</span><span class="se">{{</span><span class="si">{</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="se">}}</span><span class="s2">,2^</span><span class="se">{{</span><span class="si">{</span><span class="n">t</span><span class="o">+</span><span class="mi">2</span><span class="si">}</span><span class="se">}}}}</span><span class="s2">$&quot;</span><span class="p">,</span>
+               <span class="n">offset</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.6</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">bias_hidden_y</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b5a908fb130869562c6d79e97638a6c5f2041225e1f4df022140e30b7053a272.png" src="_images/b5a908fb130869562c6d79e97638a6c5f2041225e1f4df022140e30b7053a272.png" />
+</div>
+</div>
+</section>
+<section id="make-a-simple-dataset">
+<h2>Make a Simple DataSet<a class="headerlink" href="#make-a-simple-dataset" title="Permalink to this heading">#</a></h2>
+<p>Assume a small dataset,</p>
+<ul class="simple">
+<li><p>assume a linear relationship plus a random residual, calculated in advance</p></li>
+<li><p>apply min-max normalization to force the minimum and maximum values of 0 and 1 respectively</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">depth</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ox</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">13.0</span><span class="p">,</span><span class="mf">11.0</span><span class="p">,</span><span class="mf">9.0</span><span class="p">,</span><span class="mf">9.0</span><span class="p">,</span><span class="mf">10.0</span><span class="p">,</span><span class="mf">8.0</span><span class="p">,</span><span class="mf">7.0</span><span class="p">])</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">ox</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">ox</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">ox</span><span class="p">)</span><span class="o">-</span><span class="nb">min</span><span class="p">(</span><span class="n">ox</span><span class="p">))</span>
+<span class="n">oy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">122</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">72</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">45</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">oy</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">oy</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">oy</span><span class="p">)</span><span class="o">-</span><span class="nb">min</span><span class="p">(</span><span class="n">oy</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ox</span><span class="p">,</span><span class="n">oy</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">40</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x - Porosity (fraction)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y - Permeability (mD)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Training Data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mf">5.0</span><span class="p">,</span><span class="mf">15.0</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">150.0</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">40</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x - N</span><span class="si">{Porosity}</span><span class="s1">&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y - N</span><span class="si">{Permeability}</span><span class="s1">&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Training Data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/61670979cdf0584cf2dca5f011d8fb939ba453ba31c90d11db348833cd8f8397.png" src="_images/61670979cdf0584cf2dca5f011d8fb939ba453ba31c90d11db348833cd8f8397.png" />
+</div>
+</div>
+<p>But remember, it is important for our data to be series data. Let’s plot the data as series so we can see the relationships between adjacent ordered samples.</p>
+<ul class="simple">
+<li><p>in this case our series data is 1D spatial, ordered over depth, e.g., a core sample extracted from a well</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">depth</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">7</span><span class="p">,</span><span class="mi">1</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x - N</span><span class="si">{Porosity}</span><span class="s1">&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Depth (m)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Training Data&#39;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">depth</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">7</span><span class="p">,</span><span class="mi">1</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;y - N</span><span class="si">{Permeability}</span><span class="s1">&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Depth (m)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Training Data&#39;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8b714aa400f035aff86d14520ffa13c1476f1010af658803cfdf718d13bfe2e4.png" src="_images/8b714aa400f035aff86d14520ffa13c1476f1010af658803cfdf718d13bfe2e4.png" />
+</div>
+</div>
+</section>
+<section id="train-the-model">
+<h2>Train the Model<a class="headerlink" href="#train-the-model" title="Permalink to this heading">#</a></h2>
+<p>Now that we have our RNN functions and the training data, let’s train our model weights.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="n">initialize_rnn_weights</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">nepoch</span> <span class="o">=</span> <span class="mi">200000</span>
+<span class="n">lr</span> <span class="o">=</span> <span class="mf">0.0005</span>
+
+<span class="n">epoch_history</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">loss_history</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">w12</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">w2t2</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">w23</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">b2</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">b3</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">pred_history</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">nepoch</span><span class="p">,</span><span class="mi">7</span><span class="p">])</span>
+
+<span class="n">iepoch</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nepoch</span><span class="p">):</span>
+    <span class="c1"># Forward</span>
+    <span class="n">y_pred</span><span class="p">,</span> <span class="n">h2</span><span class="p">,</span> <span class="n">a2</span> <span class="o">=</span> <span class="n">forward_pass</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+    
+    <span class="c1"># Loss</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">mse_loss</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">epoch_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">epoch</span><span class="p">);</span> <span class="n">loss_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+    
+    <span class="c1"># Backward</span>
+    <span class="n">grads</span> <span class="o">=</span> <span class="n">backward_pass</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">h2</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+    
+    <span class="c1"># Update</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="n">update_weights</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">grads</span><span class="p">,</span> <span class="n">lr</span><span class="p">)</span>
+
+    <span class="c1"># Store parameters</span>
+    <span class="n">w12</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;w12&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">());</span> <span class="n">w2t2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;w2t2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">());</span> <span class="n">w23</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;w23&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+    <span class="n">b2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;b2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">());</span> <span class="n">b3</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;b3&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+
+    <span class="n">pred_history</span><span class="p">[</span><span class="n">iepoch</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_pred</span>
+    
+    <span class="c1"># if (epoch+1) % 10 == 0 or epoch == 0:       </span>
+        <span class="c1"># print(f&quot;Epoch {epoch+1:02d} - Loss: {loss:.3f}&quot;)</span>
+    <span class="n">iepoch</span> <span class="o">=</span> <span class="n">iepoch</span> <span class="o">+</span> <span class="mi">1</span>
+     
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epoch_history</span><span class="p">,</span><span class="n">loss_history</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="n">nepoch</span><span class="p">]);</span> <span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Epochs&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Mean Square Error&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;RNN Training Performance&#39;</span><span class="p">)</span>
+        
+<span class="c1"># Final predictions</span>
+<span class="n">y_pred</span><span class="p">,</span> <span class="n">h2</span><span class="p">,</span> <span class="n">a2</span> <span class="o">=</span> <span class="n">forward_pass</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+<span class="c1"># print(&quot;\nFinal Predictions:&quot;, np.round(y_pred, 2))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">depth</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$y(\bf</span><span class="si">{u}</span><span class="s1">_i)$&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span><span class="mi">0</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">1.2</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span><span class="n">depth</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\hat</span><span class="si">{y}</span><span class="s1">(\bf</span><span class="si">{u}</span><span class="s1">_i)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;y - N</span><span class="si">{Permeability}</span><span class="s1">&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Depth (m)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Training Data&#39;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3d9d7bd711d9d734a2f616771084975f0f9e3ea8e2e965f41086ea088642eec3.png" src="_images/3d9d7bd711d9d734a2f616771084975f0f9e3ea8e2e965f41086ea088642eec3.png" />
+</div>
+</div>
+</section>
+<section id="check-the-rnn-convergence">
+<h2>Check the RNN Convergence<a class="headerlink" href="#check-the-rnn-convergence" title="Permalink to this heading">#</a></h2>
+<p>Now we plot the weights, biases and prediction over the epochs to check the training convergence.</p>
+<ul class="simple">
+<li><p>select a data point and visualize the evolution of the esitmate over time vs. the true value</p></li>
+<li><p>visualize the network weights and biases over time</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">idata</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">nepoch</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">pred_history</span><span class="p">[:,</span><span class="n">idata</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\hat</span><span class="si">{y}</span><span class="s1">$&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="n">nepoch</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">1.5</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Epochs&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\hat</span><span class="si">{y}</span><span class="s1">$&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Simple Artificial Neural Network Prediction&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="n">nepoch</span><span class="p">],[</span><span class="n">y</span><span class="p">[</span><span class="n">idata</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">idata</span><span class="p">]],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">);</span> 
+<span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">nepoch</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">w12</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightcoral&#39;</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$\lambda_{1,2}$&#39;</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">nepoch</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">w2t2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$\lambda_{2,2^{t-1}}$&#39;</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">nepoch</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">w23</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkred&#39;</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$\lambda_{2,3}$&#39;</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">nepoch</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">b2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;dodgerblue&#39;</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$b_2$&#39;</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">nepoch</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">b3</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$b_3$&#39;</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="n">nepoch</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="n">nepoch</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">3.0</span><span class="p">]);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Epochs&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\hat</span><span class="si">{y}</span><span class="s1">$&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Simple Artificial Neural Network Weights&#39;</span><span class="p">)</span>
+<span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/48f068ee45abee60f7d50ca80a292d38c1a1509dd4c76b59058846b840278526.png" src="_images/48f068ee45abee60f7d50ca80a292d38c1a1509dd4c76b59058846b840278526.png" />
+</div>
+</div>
+</section>
+<section id="comments">
+<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
+<p>This was a basic treatment of recurrent neural networks. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
+<p>I hope this is helpful,</p>
+<p><em>Michael</em></p>
+</section>
+<section id="about-the-author">
+<h2>About the Author<a class="headerlink" href="#about-the-author" title="Permalink to this heading">#</a></h2>
+<figure style="text-align: center;">
+  <img src="_static/intro/michael_pyrcz_officeshot_jacket.jpg" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
+</figcaption>
+</figure>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<ul class="simple">
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
+</ul>
+<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
+</section>
+<section id="want-to-work-together">
+<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<ul class="simple">
+<li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
+</ul>
+<p>I’m always happy to discuss,</p>
+<p><em>Michael</em></p>
+<p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#artificial-neural-networks">Artificial Neural Networks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-recursion">Definition of Recursion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feed-forward-and-feedback-networks">Feed-forward and Feedback Networks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#series-data">Series Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recurrent-connections">Recurrent Connections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forward-pass-through-a-recurrent-neural-network">Forward Pass Through a Recurrent Neural Network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-neural-networks-steps">Training Neural Networks Steps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-networks-backpropagation-building-blocks">Neural Networks Backpropagation Building Blocks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-loss-derivative">Calculating the Loss Derivative</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#backpropagation-through-output-node-with-identity-activation">Backpropagation through Output Node with Identity Activation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#backpropagation-along-connections">Backpropagation along Connections</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-required-packages">Import Required Packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-simple-recurrent-neural-network">Visualize the Simple Recurrent Neural Network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-a-simple-dataset">Make a Simple DataSet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train-the-model">Train the Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-rnn-convergence">Check the RNN Convergence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Michael J. Pyrcz
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024 CC BY-NC-ND 4.0.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

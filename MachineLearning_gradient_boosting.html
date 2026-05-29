@@ -206,6 +206,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_CNN.html">Convolutional Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_autoencoder.html">Autoencoder Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_GAN.html">Generative Adversarial Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_attention.html">Attention</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_time_series.html">Time Series Analysis and Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_python.html">Python Code Snippets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
@@ -1647,28 +1648,28 @@ F_{k+1}(X_i) = F_k(X_i) - 1 \frac{\partial J}{\partial F_k(X_i)}
 
 <span class="n">params1</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;loss&#39;</span><span class="p">:</span> <span class="s1">&#39;squared_error&#39;</span><span class="p">,</span>                                           <span class="c1"># L2 Norm - least squares</span>
-    <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>                                         <span class="c1"># maximum depth per tree</span>
+    <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>                                         <span class="c1"># maximum depth per tree</span>
     <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
     <span class="s1">&#39;criterion&#39;</span><span class="p">:</span> <span class="s1">&#39;squared_error&#39;</span>                                      <span class="c1"># tree construction criteria is mean square error over training</span>
 <span class="p">}</span>
 
 <span class="n">params2</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;loss&#39;</span><span class="p">:</span> <span class="s1">&#39;squared_error&#39;</span><span class="p">,</span>                                           <span class="c1"># L2 Norm - least squares</span>
-    <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>                                         <span class="c1"># maximum depth per tree</span>
+    <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>                                         <span class="c1"># maximum depth per tree</span>
     <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
     <span class="s1">&#39;criterion&#39;</span><span class="p">:</span> <span class="s1">&#39;squared_error&#39;</span>                                      <span class="c1"># tree construction criteria is mean square error over training</span>
 <span class="p">}</span>
 
 <span class="n">params3</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;loss&#39;</span><span class="p">:</span> <span class="s1">&#39;squared_error&#39;</span><span class="p">,</span>                                           <span class="c1"># L2 Norm - least squares</span>
-    <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>                                         <span class="c1"># maximum depth per tree</span>
+    <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>                                         <span class="c1"># maximum depth per tree</span>
     <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
     <span class="s1">&#39;criterion&#39;</span><span class="p">:</span> <span class="s1">&#39;squared_error&#39;</span>                                      <span class="c1"># tree construction criteria is mean square error over training</span>
 <span class="p">}</span>
 
 <span class="n">params4</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;loss&#39;</span><span class="p">:</span> <span class="s1">&#39;squared_error&#39;</span><span class="p">,</span>                                           <span class="c1"># L2 Norm - least squares</span>
-    <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>                                        <span class="c1"># maximum depth per tree</span>
+    <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>                                        <span class="c1"># maximum depth per tree</span>
     <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
     <span class="s1">&#39;criterion&#39;</span><span class="p">:</span> <span class="s1">&#39;squared_error&#39;</span>                                      <span class="c1"># tree construction criteria is mean square error over training</span>
 <span class="p">}</span>
@@ -1708,7 +1709,7 @@ F_{k+1}(X_i) = F_k(X_i) - 1 \frac{\partial J}{\partial F_k(X_i)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/011852fab9e64d42c5e7ac6bcaa69e4f061994730784f35584ff27e0d4ba9831.png" src="_images/011852fab9e64d42c5e7ac6bcaa69e4f061994730784f35584ff27e0d4ba9831.png" />
+<img alt="_images/b518761b00c45610b969e3a4e8e6e142252bb891d9494178ffceea25b7173cf1.png" src="_images/b518761b00c45610b969e3a4e8e6e142252bb891d9494178ffceea25b7173cf1.png" />
 </div>
 </div>
 <p>Once again, a very interesting result.</p>
