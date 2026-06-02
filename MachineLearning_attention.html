@@ -410,6 +410,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-and-why-attention">Motivation and Why Attention?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attention-concepts">Attention Concepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attention-concepts-with-all-computer-science-concepts">Attention Concepts with all Computer Science Concepts</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attention-workflow-conceptual-description">Attention Workflow Conceptual Description</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-and-matrix-math-reminder">Vector and Matrix Math Reminder</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attention-workflow-mathematical-formulation">Attention Workflow Mathematical Formulation</a><ul class="nav section-nav flex-column">
@@ -425,31 +426,25 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-required-packages">Import Required Packages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analog-data-table-attention-demonstration">Analog Data Table Attention Demonstration</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subsurface-analog-dataset-attention-keys-values">Subsurface Analog Dataset (Attention Keys &amp; Values)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#query-target-location">Query (Target Location)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attention-interpretation">Attention Interpretation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attention-based-permeability-prediction-workflow-steps">Attention-Based Permeability Prediction Workflow Steps</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-keys-k">Build Keys <span class="math notranslate nohighlight">\(K\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-values-v">Build Values <span class="math notranslate nohighlight">\(V\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-query-q">Build Query <span class="math notranslate nohighlight">\(Q\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-similarity-scores">Compute Similarity Scores</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-product-vs-distance-based-similarity-similarity-in-the-scalar-query-and-key-case">Dot Product vs. Distance-Based Similarity Similarity in the Scalar Query and Key Case</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-attention-weights">Compute Attention Weights</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predict-log-permeability">Predict Log-Permeability</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predict-permeability">Predict Permeability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analog-data-table-attention-demonstration">Analog Data Table Attention Demonstration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsurface-analog-dataset-attention-keys-values">Subsurface Analog Dataset (Attention Keys &amp; Values)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsurface-analog-query-target-location">Subsurface Analog Query (Target Location)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsurface-analog-attention-interpretation">Subsurface Analog Attention Interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsurface-analog-attention-based-permeability-prediction-workflow">Subsurface Analog Attention-Based Permeability Prediction Workflow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsurface-analog-attention-based-permeability-prediction-interpretation">Subsurface Analog Attention-Based Permeability Prediction Interpretation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attention-based-permeability-prediction-interpretation">Attention-based Permeability Prediction Interpretation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#well-log-1d-attention-demonstration">Well Log 1D Attention Demonstration</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#synthetic-well-log-generation-step-by-step">Synthetic Well Log Generation (Step-by-Step)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#well-log-1d-attention-demonstration-mathematical-formulation">Well Log 1D Attention Demonstration Mathematical Formulation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#well-log-1d-attention-demonstration-results">Well Log 1D Attention Demonstration Results</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attention-regimes-in-geological-sequence-modeling">Attention Regimes in Geological Sequence Modeling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-product-similarity-interpretation">Dot-Product Similarity Interpretation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-attention-weights-for-a-single-prediction">Visualize the Attention Weights for a Single Prediction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Visualize the Attention Weights for a Single Prediction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-full-attention-weight-matrix-for-all-well-log-queries">Visualize the Full Attention Weight Matrix for All Well Log Queries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#well-log-attention-based-permeability-prediction">Well Log Attention-Based Permeability Prediction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#synthetic-well-log-generation-workflow">Synthetic Well Log Generation Workflow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-formulation">Mathematical Formulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attention-regimes-in-geological-sequence-modeling">Attention Regimes in Geological Sequence Modeling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-product-similarity-interpretation">Dot-Product Similarity Interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-attention-weights-for-a-single-prediction">Visualize the Attention Weights for a Single Prediction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-attention-entropy-along-the-prediction-interval">Visualize Attention Entropy Along the Prediction Interval</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-full-attention-weight-matrix-for-all-well-log-queries">Visualize the Full Attention Weight Matrix for All Well Log Queries</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
@@ -491,74 +486,111 @@ document.write(`
 <p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
 <section id="motivation-and-why-attention">
 <h2>Motivation and Why Attention?<a class="headerlink" href="#motivation-and-why-attention" title="Permalink to this heading">#</a></h2>
-<p>In many machine learning models, we need to determine which parts of the input matter most for a prediction.</p>
-<p>Traditional approaches often treat inputs more uniformly or rely primarily on local relationships. This can become limiting when,</p>
+<p>In machine learning models, we need to determine which parts of the input matter most for each prediction.</p>
+<p>Traditional approaches often rely on fixed notions of importance or local relationships. This can become limiting when,</p>
 <ul class="simple">
 <li><p>dependencies are long-range</p></li>
 <li><p>relevance depends on context</p></li>
 <li><p>the system contains many interacting components</p></li>
 </ul>
-<p>Before attention mechanisms, many machine learning workflows relied on fixed local neighborhoods or sequential processing. For example,</p>
+<p>Before attention mechanisms, many machine learning workflows relied on fixed local neighborhoods or sequential processing to assign importance. For example,</p>
 <ul class="simple">
-<li><p>convolutional approaches focus on nearby local patterns</p></li>
-<li><p>recurrent approaches process information sequentially and may struggle to retain long-range relationships</p></li>
+<li><p>linear regression uses a fixed set of coefficients that do not change with prediction context</p></li>
+<li><p>k-nearest neighbours only use information from the k most similar training samples</p></li>
+<li><p>support vector machines only consider data in the margin</p></li>
+<li><p>convolutional neural networks focus on local patterns through finite receptive fields, requiring many layers to capture long-range relationships</p></li>
+<li><p>recurrent neural networks process information sequentially and may struggle to preserve information across long sequences</p></li>
 </ul>
-<p>In many real-world problems, important relationships may occur between locations, observations, or events that are far apart in space, depth, or time.</p>
-<p>Attention addresses this limitation by allowing the model to dynamically determine,</p>
+<p>In many real-world problems, important relationships may occur between locations, observations, or events that are far apart in feature space, geographic position, or time sequence. To illustrate with a book analogy, the important information that we need now may have been presented many pages previously.</p>
+<p>Attention addresses this limitation by allowing the model to dynamically determine:</p>
 <ul class="simple">
 <li><p>what information is relevant?</p></li>
 <li><p>where is the relevant information located?</p></li>
 <li><p>how strongly should each piece of information influence the prediction?</p></li>
 </ul>
-<p>Instead of only using nearby information, attention allows each query to compare itself against many candidate patterns and retrieve the most relevant information through weighted similarity.</p>
-<p>This makes attention both flexible and computationally efficient for capturing larger-scale relationships and complex patterns.</p>
+<p>Attention mechanisms dynamically determine which parts of the input are most relevant for a specific prediction regardless of their position or distance from one another.</p>
+<p>Instead of only using nearby information, attention allows each query to compare itself against many candidate observations, features, or patterns and retrieve information according to its weighted similarity.</p>
+<p>This enables the model to capture long-range relationships and complex interactions without requiring information to be propagated through many intermediate processing steps.</p>
 </section>
 <section id="attention-concepts">
 <h2>Attention Concepts<a class="headerlink" href="#attention-concepts" title="Permalink to this heading">#</a></h2>
-<p>The basic building blocks or concepts for attention include,</p>
+<p>Let’s start describing the attention mechanism conceptually. The basic building blocks for attention include,</p>
 <ul class="simple">
-<li><p><strong>Query (Q)</strong> — what I am looking for?</p></li>
-<li><p><strong>Key (K)</strong> — what each candidate piece of information offers (a descriptor of stored information)?</p></li>
-<li><p><strong>Value (V)</strong> — the actual information content associated with each key?</p></li>
+<li><p><strong>Query (Q)</strong> — what information do I need right now?</p></li>
+<li><p><strong>Key (K)</strong> — a descriptor used to determine whether stored analog information is relevant.</p></li>
+<li><p><strong>Value (V)</strong> — the actual information associated with each key</p></li>
 </ul>
-<p>Each key–value pair represents a stored piece of information, where the key describes it and the value contains the content.</p>
-<p>Then the conceptual mechanism is,</p>
+<p>Each key–value pair represents a reference (memory) piece of information, where the key describes the information and the value contains its content.</p>
+<p>Now we put this together with this flow of information,</p>
 <ul class="simple">
-<li><p>similarity between Query (Q) and Keys (K) <span class="math notranslate nohighlight">\(\rightarrow\)</span> measures compatibility and produces relevance scores</p></li>
+<li><p>similarity between the Query (Q) and Keys (K) <span class="math notranslate nohighlight">\(\rightarrow\)</span> measures compatibility and produces relevance scores for all reference (memory) information</p></li>
 <li><p>scores <span class="math notranslate nohighlight">\(\rightarrow\)</span> normalized (via softmax) into weights representing relative importance</p></li>
 <li><p>weighted sum of Values (V) <span class="math notranslate nohighlight">\(\rightarrow\)</span> produces a context-aware output representation</p></li>
 </ul>
-<p>We can state this qualitatively as, attention is a soft lookup mechanism over a set of stored information.</p>
-<p>Now let’s translate these concepts into geoscience improve our connections to subsurface resource modeling,</p>
+<div class="remove-from-content-only admonition">
+<p class="admonition-title">We can describe attention qualitatively as,</p>
+<p>a soft lookup mechanism over a set of stored analog information.</p>
+</div>
+<p>Now let’s specify these concepts for the geoscience context to strengthen our connections to subsurface resource modeling,</p>
 <ul class="simple">
-<li><p><strong>Query (Q)</strong> — “current geological context”</p></li>
-<li><p><strong>Key (K)</strong> — “historical analog descriptors”</p></li>
-<li><p><strong>Value (V)</strong> — “stored reservoir properties (e.g., permeability)”</p></li>
+<li><p><strong>Query (Q)</strong> — current geological context</p></li>
+<li><p><strong>Key (K)</strong> — descriptors of geological analogs stored in the reference (memory)</p></li>
+<li><p><strong>Value (V)</strong> — associated reservoir properties (e.g., permeability) or subsurface responses (e.g., flow rates or recovery factors)</p></li>
 </ul>
-<p>So attention becomes, a data-driven analog retrieval system. Now we put this all together by walking through the attention workflow with words, no math yet!</p>
+<p>So attention becomes a mechanism for identifying and combining information from relevant geological analogs. Now let’s put these concepts together by walking through the attention workflow with words first, no math yet!</p>
+</section>
+<section id="attention-concepts-with-all-computer-science-concepts">
+<h2>Attention Concepts with all Computer Science Concepts<a class="headerlink" href="#attention-concepts-with-all-computer-science-concepts" title="Permalink to this heading">#</a></h2>
+<p>For clarity, we have intentionally described attention using generic concepts such as stored analog information, descriptors, and context. In many computer science applications, especially natural language processing, these concepts are often expressed using more specialized terminology,</p>
+<ul class="simple">
+<li><p><strong>Token</strong> — an individual unit of input information (e.g., a word, subword, character, image patch, or observation)</p></li>
+<li><p><strong>Embedding</strong> — a numerical vector representation of a token or observation</p></li>
+<li><p><strong>Query (Q)</strong> — a learned representation describing what information is needed from the current context</p></li>
+<li><p><strong>Key (K)</strong> — a learned representation describing the characteristics of stored analog information</p></li>
+<li><p><strong>Value (V)</strong> — a learned representation containing the information associated with each key</p></li>
+<li><p><strong>Attention Score</strong> — a similarity measure between a query and a key</p></li>
+<li><p><strong>Attention Weight</strong> — a normalized relevance score indicating the importance of each value</p></li>
+<li><p><strong>Context Vector</strong> — the weighted combination of values produced by the attention mechanism</p></li>
+<li><p><strong>Transformer</strong> — a neural network architecture built around attention mechanisms. Rather than relying primarily on sequential processing or fixed local neighborhoods, transformers use attention to determine which parts of the input should interact and exchange information.</p></li>
+</ul>
+<p>In natural language models, tokens often correspond to words or word fragments. In subsurface resource modeling, tokens may instead represent locations, measurements, grid cells, wells, geological features, time steps, or other units of information.</p>
+<ul class="simple">
+<li><p>The underlying attention mechanism remains the same.</p></li>
+</ul>
+<p>Attention is the fundamental mechanism underlying transformer models.</p>
+<ul class="simple">
+<li><p>While transformers were originally developed for natural language processing, the same attention concepts are now applied to images, time series, scientific data, and subsurface resource modeling.</p></li>
+</ul>
 </section>
 <section id="attention-workflow-conceptual-description">
 <h2>Attention Workflow Conceptual Description<a class="headerlink" href="#attention-workflow-conceptual-description" title="Permalink to this heading">#</a></h2>
-<p>Let’s walk through the fundamental attention-based information flow. Dot-product similarity measures the alignment between the Query (Q) and each Key (K) by multiplying corresponding components and summing the result. Larger dot products indicate stronger similarity and greater compatibility between patterns,</p>
+<p>Let’s walk through the fundamental attention-based information flow, first with a flow chart and then with words.</p>
+<figure style="text-align: center;">
+  <img src="_static/attention/attention_workflow.png" style="display: block; margin: 0 auto; width: 40%;">
+  <figcaption style="text-align: center;"> General attention workflow from keys, values and query to prediction.
+</figcaption>
+</figure>
+<p>Dot-product similarity measures the alignment between the Query (Q) and each Key (K) by multiplying corresponding components and summing the result. Larger dot products indicate stronger similarity and greater compatibility between patterns,</p>
 <div class="math notranslate nohighlight">
 \[
-\text{Query (Q)} \cdot \text{Key (K)} = \text{Similarity} 
+\text{Query (Q)} \cdot \text{Key (K)} \rightarrow \text{Similarity} 
 \]</div>
-<p>The similarity calculation produces relevance scores that quantify how strongly each stored pattern matches the current query,</p>
+<p>The similarity calculation produces relevance scores that quantify how strongly each stored analog pattern matches the current query,</p>
 <div class="math notranslate nohighlight">
 \[
 \text{Similarity} \rightarrow \text{Scores} 
 \]</div>
-<p>Softmax normalization enforces closure by constraining the attention weights to sum to 1.0, producing a convex weighted combination of the values and helping maintain stable, unbiased predictions,</p>
+<p>Softmax normalization enforces closure by constraining the attention weights to sum to 1.0, producing a convex weighted combination of the values and Thus, the weights form a probability-like distribution that sums to one, producing a convex weighted combination of the values,</p>
 <div class="math notranslate nohighlight">
 \[
-\text{Softmax / Normalization(Scores)} = \text{Weights}
+\text{Softmax / Normalization(Scores)} \rightarrow \text{Weights}
 \]</div>
-<p>The attention weights are applied to the values to form a weighted combination that produces the final prediction or context-aware output. Larger weights contribute more strongly to the prediction, allowing the model to dynamically retrieve and combine the most relevant stored information for the current query,</p>
+<p>The attention weights are applied to the values to form a weighted combination that produces a context-aware output. Larger weights contribute more strongly to the prediction, allowing the model to dynamically retrieve and combine the most relevant stored analog information for the current query,</p>
 <div class="math notranslate nohighlight">
 \[
-\sum \text{Weights} \times \text{Values (V)} = \text{Prediction}
+\sum \text{Weights} \times \text{Values (V)} \rightarrow \text{Context Vector}
 \]</div>
+<p>This context vector can then be used directly or passed to subsequent layers to support the final prediction.</p>
 </section>
 <section id="vector-and-matrix-math-reminder">
 <h2>Vector and Matrix Math Reminder<a class="headerlink" href="#vector-and-matrix-math-reminder" title="Permalink to this heading">#</a></h2>
@@ -572,16 +604,16 @@ document.write(`
 <li><p><span class="math notranslate nohighlight">\(r\)</span> = number of rows</p></li>
 <li><p><span class="math notranslate nohighlight">\(c\)</span> = number of columns</p></li>
 </ul>
-<p>So <span class="math notranslate nohighlight">\(\mathbf{A}_{r \times c}\)</span> means a matrix with <span class="math notranslate nohighlight">\(r\)</span> rows and <span class="math notranslate nohighlight">\(c\)</span> columns.</p>
-<p>We use the same general notation for vectors, the following is a row vector of length, <span class="math notranslate nohighlight">\(c\)</span>,</p>
+<p>So <span class="math notranslate nohighlight">\(\mathbf{A}_{r \times c}\)</span> means a matrix with <span class="math notranslate nohighlight">\(r\)</span> row elements and <span class="math notranslate nohighlight">\(c\)</span> column elements.</p>
+<p>We use the same general notation for vectors, the following is a row vector of with <span class="math notranslate nohighlight">\(c\)</span> elements,</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbf{A}_{1 \times c}
+\mathbf{v}_{1 \times c}
 \]</div>
-<p>and the following is a column vector of length, <span class="math notranslate nohighlight">\(r\)</span>,</p>
+<p>and the following is a column vector with <span class="math notranslate nohighlight">\(r\)</span> elements,</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbf{A}_{r \times 1}
+\mathbf{v}_{r \times 1}
 \]</div>
 <p>For matrix multiplication,</p>
 <div class="math notranslate nohighlight">
@@ -591,12 +623,7 @@ document.write(`
 =
 \mathbf{C}_{m \times p}
 \]</div>
-<p>The inner dimensions must match,</p>
-<div class="math notranslate nohighlight">
-\[
-(n = n)
-\]</div>
-<p>and the resulting matrix takes the outer dimensions,</p>
+<p>The inner dimensions must match <span class="math notranslate nohighlight">\((n = n)\)</span> and the resulting matrix inherits the outer dimensions,</p>
 <div class="math notranslate nohighlight">
 \[
 (m \times p)
@@ -634,7 +661,7 @@ c_{ij}
 =
 \sum_{k=1}^{n} a_{ik} b_{kj}
 \]</div>
-<p>where each entry is a dot product between a row of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> and a column of <span class="math notranslate nohighlight">\(\mathbf{B}\)</span>:</p>
+<p>for example,</p>
 <div class="math notranslate nohighlight">
 \[
 c_{11} = a_{11}b_{11} + a_{12}b_{21} + a_{13}b_{31}
@@ -643,44 +670,24 @@ c_{11} = a_{11}b_{11} + a_{12}b_{21} + a_{13}b_{31}
 \[
 c_{12} = a_{11}b_{12} + a_{12}b_{22} + a_{13}b_{32}
 \]</div>
-<div class="math notranslate nohighlight">
-\[
-c_{13} = a_{11}b_{13} + a_{12}b_{23} + a_{13}b_{33}
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-c_{14} = a_{11}b_{14} + a_{12}b_{24} + a_{13}b_{34}
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-c_{21} = a_{21}b_{11} + a_{22}b_{21} + a_{23}b_{31}
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-c_{22} = a_{21}b_{12} + a_{22}b_{22} + a_{23}b_{32}
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-c_{23} = a_{21}b_{13} + a_{22}b_{23} + a_{23}b_{33}
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-c_{24} = a_{21}b_{14} + a_{22}b_{24} + a_{23}b_{34}
-\]</div>
-<p>With this vector and matrix notation you will be able to follow the mathematical formulation for attention.</p>
+<p>Notice that matrix multiplication is fundamentally a collection of dot products.</p>
+<ul class="simple">
+<li><p>this observation is important because attention relies heavily on dot-product similarity calculations between queries and keys,</p></li>
+</ul>
+<p>With this vector and matrix notation, you will be able to follow the mathematical formulation of attention, where similarities between queries and keys are calculated through dot products and combined through matrix operations.</p>
 </section>
 <section id="attention-workflow-mathematical-formulation">
 <h2>Attention Workflow Mathematical Formulation<a class="headerlink" href="#attention-workflow-mathematical-formulation" title="Permalink to this heading">#</a></h2>
 <p>Now let’s revisit the same attention workflow, but this time with the full mathematical formulation and notation, including the dimensions of every vector and matrix so the structure is explicit and easy to follow.</p>
 <p>Suppose we have,</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(N\)</span> stored patterns or observations</p></li>
+<li><p><span class="math notranslate nohighlight">\(N\)</span> stored analog patterns or observations</p></li>
 <li><p>each pattern or observation is a feature vector of size <span class="math notranslate nohighlight">\(d\)</span></p></li>
 <li><p>associated scalar or vector values to estimate or retrieve</p></li>
 </ul>
 <section id="query-vector">
 <h3>Query Vector<a class="headerlink" href="#query-vector" title="Permalink to this heading">#</a></h3>
-<p>The query vector represents the current pattern or context that we are trying to match against stored information.</p>
+<p>The query vector represents the current pattern or context that we are trying to match against stored analog information.</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbf{Q}_{1 \times d}
@@ -698,7 +705,7 @@ q_1 &amp; q_2 &amp; \cdots &amp; q_d
 </section>
 <section id="key-matrix">
 <h3>Key Matrix<a class="headerlink" href="#key-matrix" title="Permalink to this heading">#</a></h3>
-<p>The key matrix contains all candidate stored patterns, may be derived from data, physics-based models, analogs, etc.</p>
+<p>The key matrix contains all candidate stored analogs in the reference (memory), may be derived from data, physics-based models, analogs, etc.,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \mathbf{K}_{N \times d}
@@ -710,11 +717,11 @@ k_{21} &amp; k_{22} &amp; \cdots &amp; k_{2d} \\
 k_{N1} &amp; k_{N2} &amp; \cdots &amp; k_{Nd}
 \end{bmatrix}
 \end{split}\]</div>
-<p>where, <span class="math notranslate nohighlight">\(N\)</span> is the number of stored patterns, row <span class="math notranslate nohighlight">\(i\)</span> represents stored pattern <span class="math notranslate nohighlight">\(i\)</span>, and each row is paired with an associated value</p>
+<p>where, <span class="math notranslate nohighlight">\(N\)</span> is the number of stored analogs, row <span class="math notranslate nohighlight">\(i\)</span> represents stored analog <span class="math notranslate nohighlight">\(i\)</span>, and each row is paired with an associated value.</p>
 </section>
 <section id="value-vector">
 <h3>Value Vector<a class="headerlink" href="#value-vector" title="Permalink to this heading">#</a></h3>
-<p>The value vector contains the information associated with each stored key.</p>
+<p>The value vector contains the information associated with each stored analog key. For simplicity, we begin with scalar values. Vector-valued outputs generalize this formulation directly.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \mathbf{V}_{N \times 1}
@@ -726,7 +733,7 @@ v_2 \\
 v_N
 \end{bmatrix}
 \end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(v_i\)</span> is the value associated with key <span class="math notranslate nohighlight">\(i\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(v_i\)</span> is the value associated with key <span class="math notranslate nohighlight">\(i\)</span>. For simplicity, we begin with scalar values. The extension to vector-valued representations follows naturally.</p>
 </section>
 <section id="dot-product-similarity">
 <h3>Dot-Product Similarity<a class="headerlink" href="#dot-product-similarity" title="Permalink to this heading">#</a></h3>
@@ -740,27 +747,33 @@ s_i
 =
 \sum_{j=1}^{d} q_j k_{ij}
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(s_i\)</span> is the similarity score for stored pattern <span class="math notranslate nohighlight">\(i\)</span>, and larger values indicate stronger alignment between the query and key.</p>
-<p>Using all keys simultaneously,</p>
+<p>where <span class="math notranslate nohighlight">\(s_i\)</span> is the similarity score for stored analog <span class="math notranslate nohighlight">\(i\)</span>, and larger values indicate stronger alignment between the query and key.</p>
+<p>Using all keys simultaneously we calculate the scores for every key,</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbf{S}_{1 \times N}
 =
 \mathbf{Q}_{1 \times d}
-\mathbf{K}_{d \times N}^T
+\mathbf{K}_{N \times d}^T
 \]</div>
-<p>In scaled dot-product attention,</p>
+<p>note, the transposed matrix <span class="math notranslate nohighlight">\(K^T\)</span> has dimensions <span class="math notranslate nohighlight">\(d \times N\)</span>, i.e., <span class="math notranslate nohighlight">\(\{K^T\}_{d \times N}\)</span>; therefore, the inner dimensions match. In scaled dot-product attention,</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbf{S}
 =
-\alpha \mathbf{Q}\mathbf{K}^T
+\alpha\mathbf{Q}\mathbf{K}^T
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(\alpha\)</span> is the scaling factor or temperature parameter, and larger <span class="math notranslate nohighlight">\(\alpha\)</span> sharpens attention sensitivity.</p>
+<p>where <span class="math notranslate nohighlight">\(\alpha\)</span> is a scaling factor or temparature parameter to stabilize the magnitude of the similarity scores, where a larger <span class="math notranslate nohighlight">\(\alpha\)</span> sharpens attention sensitivity. In transformer architectures, <span class="math notranslate nohighlight">\(\alpha\)</span> is commonly chosen as <span class="math notranslate nohighlight">\(\frac{1}{\sqrt{d}}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{S}
+=
+\frac{\mathbf{Q}\mathbf{K}^T}{\sqrt{d}}
+\]</div>
 </section>
 <section id="similarity-scores">
 <h3>Similarity Scores<a class="headerlink" href="#similarity-scores" title="Permalink to this heading">#</a></h3>
-<p>The similarity operation produces a score for every stored pattern,</p>
+<p>The similarity operation produces a score for every stored analog,</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbf{S}_{1 \times N}
@@ -769,11 +782,11 @@ s_i
 s_1 &amp; s_2 &amp; \cdots &amp; s_N
 \end{bmatrix}
 \]</div>
-<p>These scores quantify the compatibility between the current query and each stored pattern.</p>
+<p>These scores quantify the compatibility between the current query and each stored analog.</p>
 </section>
 <section id="softmax-normalization">
 <h3>Softmax Normalization<a class="headerlink" href="#softmax-normalization" title="Permalink to this heading">#</a></h3>
-<p>The similarity scores are transformed into attention weights using softmax normalization. For each stored pattern,</p>
+<p>The similarity scores are transformed into attention weights using softmax normalization. For each stored analog,</p>
 <div class="math notranslate nohighlight">
 \[
 w_i
@@ -798,12 +811,12 @@ w_i
 \[
 \sum_{i=1}^{N} w_i = 1
 \]</div>
-<p>Thus, the weights form a probability-like distribution satisfying probability closure and once again producing a convex weighted combination of the values and helping maintain stable, unbiased predictions.</p>
-<p>Large similarity scores produce larger attention weights and greater influence on the final prediction.</p>
+<p>Thus, the weights form a probability-like distribution that sums to one, producing a convex weighted combination of the values.</p>
+<p>Large similarity scores produce larger attention weights and greater influence on the output context vector.</p>
 </section>
 <section id="attention-prediction">
 <h3>Attention Prediction<a class="headerlink" href="#attention-prediction" title="Permalink to this heading">#</a></h3>
-<p>The final prediction is obtained through a weighted combination of the stored values,</p>
+<p>The final output vector is obtained through a weighted combination of the stored analogs’ associated values,</p>
 <div class="math notranslate nohighlight">
 \[
 \hat{y}
@@ -819,19 +832,21 @@ w_i
 \mathbf{V}_{N \times 1}
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\hat{y}\)</span> is the predicted output or context-aware representation, and larger attention weights contribute more strongly to the prediction.</p>
-<p>Again, because the weights sum to 1.0, the prediction is a convex weighted combination of the stored values.</p>
+<p>Again, because the weights sum to 1.0, the output context-aware representation is a convex weighted combination of the stored analogs’ values.</p>
+<ul class="simple">
+<li><p>these normalized attention weights determine how strongly each stored analogs’ values contribute to the final context-aware representation.</p></li>
+</ul>
 </section>
 <section id="interpretation">
 <h3>Interpretation<a class="headerlink" href="#interpretation" title="Permalink to this heading">#</a></h3>
-<p>Attention dynamically retrieves and combines information according to similarity between the query and stored patterns.</p>
-<p>Qualitatively,</p>
+<p>Attention dynamically retrieves and combines information based on similarity between the query and stored analag. Qualitatively, we can state this as,</p>
 <ul class="simple">
-<li><p>attention acts as a soft lookup mechanism over a set of stored information.</p></li>
+<li><p>attention acts as a soft lookup mechanism over a set of stored analogs.</p></li>
 </ul>
-<p>I demonstrate attention with two demonstrations,</p>
+<p>We demonstrate attention with two examples,</p>
 <ul class="simple">
-<li><p>prediction given a set of analogs in a data table - using similarity of a single value</p></li>
-<li><p>prediction of a missing well log with an available common well log - using magnitude and shape</p></li>
+<li><p>prediction given a set of analogs in a data table - using similarity of a single scalar feature</p></li>
+<li><p>prediction of a missing well log with an available common well log - using both magnitude and shape similarity across features</p></li>
 </ul>
 </section>
 </section>
@@ -861,25 +876,26 @@ w_i
 </section>
 <section id="declare-functions">
 <h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
-<p>Here are the fundamental functions to apply attention for both of our prediction demonstrations and to visualize the results,</p>
+<p>To support the two prediction demonstrations and their visualizations, we define a set of helper functions that implement the attention workflow in both distance-based and dot-product forms.</p>
+<p>These functions operate on geoscience-style tabular data (e.g., well logs, spatial observations, or geological descriptors),</p>
 <ul class="simple">
-<li><p><strong>build_keys</strong> - retreive the keys that represent geological descriptors from a DataFrame</p></li>
-<li><p><strong>build_values</strong> - retreive the values that represent target property</p></li>
-<li><p><strong>build_query</strong> - set the query for the target location descriptor</p></li>
-<li><p><strong>similarity_basic</strong> - compute similarity between query and each key, simple negative squared distance</p></li>
-<li><p><strong>similarity</strong> - similarity with temperature control for more sensitivity, simple negative squared distance</p></li>
-<li><p><strong>dot_similarity</strong> - scaled dot-product similarity (attention-style) with temperature control</p></li>
-<li><p><strong>dot_similarity_norm</strong> - scaled dot-product similarity (attention-style) normalized to reduce magnitude bias with temperature control</p></li>
-<li><p><strong>softmax</strong> - softmax normalization</p></li>
-<li><p><strong>attention</strong> - attention mechanism, compute attention weights and weighted output</p></li>
-<li><p><strong>dot_attention</strong> - dot-product attention mechanism, compute attention weights and weighted output</p></li>
-<li><p><strong>dot_attention_norm</strong> - dot-product attention mechanism normalized, compute attention weights and weighted output</p></li>
-<li><p><strong>attention_entropy</strong> - calculate entropy of all attention weights for a query</p></li>
-<li><p><strong>plot_well_log_data</strong> - plot well log training and query</p></li>
-<li><p><strong>plot_attention_prediction_log</strong> - plot well log training, query and predictions</p></li>
-<li><p><strong>plot_attention_provenance</strong> - plot query window and keys with attention weights</p></li>
-<li><p><strong>plot_entropy_log</strong> - plot the keys with attention weights</p></li>
-<li><p><strong>plot_full_attention_matrix</strong> - plot the entire attention matrix as a heat map</p></li>
+<li><p><strong>build_keys</strong> — extract feature vectors representing geological descriptors from a DataFrame</p></li>
+<li><p><strong>build_values</strong> — extract target property values associated with each key</p></li>
+<li><p><strong>build_query</strong> — construct the query vector representing the target prediction location or interval</p></li>
+<li><p><strong>similarity_basic</strong> — compute similarity using negative squared Euclidean distance (basic distance-based weighting)</p></li>
+<li><p><strong>similarity</strong> — distance-based similarity with temperature control to adjust sensitivity</p></li>
+<li><p><strong>dot_similarity</strong> — scaled dot-product similarity (attention-style) with temperature control</p></li>
+<li><p><strong>dot_similarity_norm</strong> — scaled dot-product similarity with normalization to reduce magnitude bias</p></li>
+<li><p><strong>softmax</strong> — convert similarity scores into normalized attention weights</p></li>
+<li><p><strong>attention</strong> — full attention mechanism: compute weights and weighted output</p></li>
+<li><p><strong>dot_attention</strong> — dot-product attention mechanism</p></li>
+<li><p><strong>dot_attention_norm</strong> — normalized dot-product attention mechanism</p></li>
+<li><p><strong>attention_entropy</strong> — compute entropy of the attention weight distribution for a given query</p></li>
+<li><p><strong>plot_well_log_data</strong> — visualize training data and query location for well logs</p></li>
+<li><p><strong>plot_attention_prediction_log</strong> — visualize training data, query, and predictions</p></li>
+<li><p><strong>plot_attention_provenance</strong> — show query window, keys, and attention weights (interpretability view)</p></li>
+<li><p><strong>plot_entropy_log</strong> — visualize keys and attention weight distribution</p></li>
+<li><p><strong>plot_full_attention_matrix</strong> — display full attention matrix as a heatmap</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1011,7 +1027,7 @@ w_i
     <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.6</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">plot_attention_provenance</span><span class="p">(</span><span class="n">well1</span><span class="p">,</span><span class="n">well2</span><span class="p">,</span><span class="n">all_weights</span><span class="p">,</span><span class="n">Q2</span><span class="p">,</span><span class="n">depth_index</span><span class="p">,</span><span class="n">window</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span> <span class="c1"># plot query window and memory bank with attention weights</span>
+<span class="k">def</span> <span class="nf">plot_attention_provenance</span><span class="p">(</span><span class="n">well1</span><span class="p">,</span><span class="n">well2</span><span class="p">,</span><span class="n">all_weights</span><span class="p">,</span><span class="n">Q2</span><span class="p">,</span><span class="n">depth_index</span><span class="p">,</span><span class="n">window</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span> <span class="c1"># plot query window and reference (memory) well with attention weights</span>
     <span class="n">half</span> <span class="o">=</span> <span class="n">window</span> <span class="o">//</span> <span class="mi">2</span>
     <span class="n">q_idx</span> <span class="o">=</span> <span class="n">depth_index</span> <span class="o">-</span> <span class="n">half</span>
     <span class="k">if</span> <span class="n">q_idx</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">q_idx</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_weights</span><span class="p">):</span>
@@ -1030,7 +1046,7 @@ w_i
 
     <span class="n">ax1</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>                                             <span class="c1"># plot well 2 with attention weights</span>
     <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">well1</span><span class="p">[</span><span class="s2">&quot;phi&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">depth</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:blue&quot;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Well 1 Porosity&quot;</span><span class="p">)</span>
-    <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Well 1 Memory Bank&quot;</span><span class="p">);</span> <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Porosity&quot;</span><span class="p">);</span> <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="n">ax1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Well 1 - Reference (Memory) Well&quot;</span><span class="p">);</span> <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Porosity&quot;</span><span class="p">);</span> <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="n">ax1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 
     <span class="n">ax1b</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">twiny</span><span class="p">()</span>
     <span class="n">ax1b</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">weights</span><span class="p">))</span> <span class="o">+</span> <span class="n">window</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span><span class="n">weights</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:red&quot;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.35</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;attention weights&#39;</span><span class="p">)</span>
@@ -1126,7 +1142,8 @@ w_i
 </section>
 <section id="analog-data-table-attention-demonstration">
 <h2>Analog Data Table Attention Demonstration<a class="headerlink" href="#analog-data-table-attention-demonstration" title="Permalink to this heading">#</a></h2>
-<p>Let’s develop the simplest possible demonstration of attention. We consider an analog dataset consisting of 5 reservoir samples. For each sample we have:</p>
+<p>We now develop a simple, intuitive example of attention using a small analog reservoir dataset consisting of five samples. Each sample represents a geological analog with associated petrophysical properties.</p>
+<p>For each sample, we include,</p>
 <ol class="arabic simple">
 <li><p>Sample index</p></li>
 <li><p>Lithofacies</p></li>
@@ -1139,21 +1156,20 @@ w_i
 <p>We define,</p>
 <ul class="simple">
 <li><p><strong>Query (Q)</strong> — the porosity value at the location where we want to make a prediction</p></li>
-<li><p><strong>Keys (K)</strong> — the set of porosity values in the analog dataset (feature representations of stored samples)</p></li>
+<li><p><strong>Keys (K)</strong> — porosity as the feature used for similarity comparison with the analog dataset</p></li>
 <li><p><strong>Values (V)</strong> — the corresponding permeability values associated with each analog sample</p></li>
 </ul>
 <p>Attention then provides a way to determine which stored analogs are most relevant to the query by comparing similarity in feature space and using this to weight their contributions to the prediction.</p>
-<p>In this sense, attention answers the question,</p>
+<p>In this context, attention answers the question,</p>
 <ul class="simple">
-<li><p>which past geological analogs are most relevant for predicting the property at this location?</p></li>
+<li><p>which past geological analogs are most informative for predicting permeability at this location?</p></li>
 </ul>
-</section>
 <section id="subsurface-analog-dataset-attention-keys-values">
-<h2>Subsurface Analog Dataset (Attention Keys &amp; Values)<a class="headerlink" href="#subsurface-analog-dataset-attention-keys-values" title="Permalink to this heading">#</a></h2>
-<p>Now we define the analog dataset as a small set of geological examples representing different depositional environments. Each sample provides a <strong>key</strong> representation (porosity feature) and an associated <strong>value</strong> (permeability property) used by the attention mechanism.</p>
+<h3>Subsurface Analog Dataset (Attention Keys &amp; Values)<a class="headerlink" href="#subsurface-analog-dataset-attention-keys-values" title="Permalink to this heading">#</a></h3>
+<p>The analog dataset is defined below as a small set of geological examples representing different depositional environments. Each sample provides a key (porosity used for similarity comparison) and an associated value (permeability used for prediction).</p>
 <ul class="simple">
-<li><p><strong>Keys (K)</strong> are used to compute similarity with the query, keys determine “where to look”.</p></li>
-<li><p><strong>Values (V)</strong> are used to build the final weighted output (prediction), values determine “what you retrieve”.</p></li>
+<li><p><strong>Keys (K)</strong> define how similarity to the query is computed</p></li>
+<li><p><strong>Values (V)</strong> define what information is retrieved and combined</p></li>
 </ul>
 <table class="table">
 <thead>
@@ -1203,13 +1219,13 @@ w_i
 </tr>
 </tbody>
 </table>
-<p>In this formulation,</p>
+<p>In this formulation:</p>
 <ul class="simple">
-<li><p>key for each sample is the porosity value (or porosity feature representation)</p></li>
-<li><p>value is the associated permeability (or log-permeability)</p></li>
-<li><p>each row represents a stored geological analog in the attention “memory bank”</p></li>
+<li><p>each key corresponds to a porosity value (feature used for similarity comparison)</p></li>
+<li><p>each value corresponds to permeability (target property to be estimated)</p></li>
+<li><p>each row represents a stored geological analog in the attention reference (memory) data table</p></li>
 </ul>
-<p>This dataset forms the retrieval space over which attention computes similarity between a query location and stored geological examples.</p>
+<p>The dataset defines the reference (memory), i.e., retrieval space over which attention computes similarity between the query location and stored geological analogs.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>                                                      <span class="c1"># build geological analog dictionary</span>
@@ -1303,8 +1319,8 @@ w_i
 </div></div></div>
 </div>
 </section>
-<section id="query-target-location">
-<h2>Query (Target Location)<a class="headerlink" href="#query-target-location" title="Permalink to this heading">#</a></h2>
+<section id="subsurface-analog-query-target-location">
+<h3>Subsurface Analog Query (Target Location)<a class="headerlink" href="#subsurface-analog-query-target-location" title="Permalink to this heading">#</a></h3>
 <p>We define a target subsurface location where we want to estimate permeability,</p>
 <table class="table">
 <thead>
@@ -1321,31 +1337,31 @@ w_i
 </tbody>
 </table>
 </section>
-<section id="attention-interpretation">
-<h2>Attention Interpretation<a class="headerlink" href="#attention-interpretation" title="Permalink to this heading">#</a></h2>
+<section id="subsurface-analog-attention-interpretation">
+<h3>Subsurface Analog Attention Interpretation<a class="headerlink" href="#subsurface-analog-attention-interpretation" title="Permalink to this heading">#</a></h3>
 <p>In the attention framework:</p>
 <ul class="simple">
-<li><p><strong>Keys (K):</strong> geological descriptors of each analog (only porosity for simplicity)</p></li>
-<li><p><strong>Values (V):</strong> permeability (or log-permeability)</p></li>
-<li><p><strong>Query (Q):</strong> target location to be estimated (only a single porosity value for simplicity)</p></li>
+<li><p><strong>Keys (K)</strong> - geological descriptors of each analog (represented here only by porosity for simplicity)</p></li>
+<li><p><strong>Values (V)</strong> - permeability (or log-permeability)</p></li>
+<li><p><strong>Query (Q)</strong> - target location to be estimated (represented here only by porosity for simplicity)</p></li>
 </ul>
-<p>The goal is to compute,</p>
+<p>The goal is to determine,</p>
 <ul class="simple">
-<li><p>which geological analogs are most similar to the query; therefore, should contribute most strongly to the permeability estimate?</p></li>
+<li><p>which geological analogs are most similar to the query and should therefore contribute most strongly to the permeability estimate</p></li>
 </ul>
-<p>We will compute,</p>
-<ol class="arabic simple">
-<li><p>Similarity between query and each analog (Key–Query comparison)</p></li>
-<li><p>Attention weights (softmax normalization)</p></li>
-<li><p>Weighted permeability estimate</p></li>
-</ol>
-<p>This will produce a <strong>data-driven geological averaging system</strong>, where,</p>
+<p>We compute this in three steps:</p>
 <ul class="simple">
-<li><p>permeability is inferred as a weighted mixture of geologically similar analogs</p></li>
+<li><p>Similarity between the query and each analog (Key–Query comparison)</p></li>
+<li><p>Attention weights via softmax normalization</p></li>
+<li><p>Weighted permeability estimate using the attention weights</p></li>
+</ul>
+<p>This produces a data-driven geological averaging system, where,</p>
+<ul class="simple">
+<li><p>permeability is inferred as a weighted mixture of geologically similar analogs based on similarity in feature space</p></li>
 </ul>
 </section>
-<section id="attention-based-permeability-prediction-workflow-steps">
-<h2>Attention-Based Permeability Prediction Workflow Steps<a class="headerlink" href="#attention-based-permeability-prediction-workflow-steps" title="Permalink to this heading">#</a></h2>
+<section id="subsurface-analog-attention-based-permeability-prediction-workflow">
+<h3>Subsurface Analog Attention-Based Permeability Prediction Workflow<a class="headerlink" href="#subsurface-analog-attention-based-permeability-prediction-workflow" title="Permalink to this heading">#</a></h3>
 <p>The workflow below applies a very simple attention workflow to estimate permeability from geological analogs. The workflow steps are,</p>
 <ol class="arabic simple">
 <li><p>Build keys <span class="math notranslate nohighlight">\(K\)</span> from geological descriptors</p></li>
@@ -1355,136 +1371,107 @@ w_i
 <li><p>Normalize similarity scores into attention weights</p></li>
 <li><p>Predict permeability from the weighted combination of values</p></li>
 </ol>
-<section id="build-keys-k">
-<h3>Build Keys <span class="math notranslate nohighlight">\(K\)</span><a class="headerlink" href="#build-keys-k" title="Permalink to this heading">#</a></h3>
-<p>Keys represent the geological descriptor space used to compare analog similarity.</p>
-<p>In this simple demonstration, keys are constructed from porosity values,</p>
+<p>Now more details on each step,</p>
+<ol class="arabic simple">
+<li><p>Build Keys (K) - keys represent the geological descriptor space used to compare analog similarity. In this simple demonstration, keys are constructed from porosity values,</p></li>
+</ol>
 <div class="math notranslate nohighlight">
 \[
-K_i = [\phi_i]
+K_i = \phi_i
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(K_i\)</span> is the key vector for analog <span class="math notranslate nohighlight">\(i = 1, \ldots, 5\)</span>, and <span class="math notranslate nohighlight">\(\phi_i\)</span> is the porosity of analog <span class="math notranslate nohighlight">\(i\)</span>. For our simple problem, the individual keys, <span class="math notranslate nohighlight">\(K_i\)</span>, collapses to simply a scaler value, porosity of the <span class="math notranslate nohighlight">\(i\)</span> analog.</p>
-</section>
-<section id="build-values-v">
-<h3>Build Values <span class="math notranslate nohighlight">\(V\)</span><a class="headerlink" href="#build-values-v" title="Permalink to this heading">#</a></h3>
-<p>Values represent the quantities combined by the attention mechanism to produce the final prediction. Here, values are log-permeability,</p>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> where <span class="math notranslate nohighlight">\(K_i is the key for analog \)</span>i = 1,\ldots,5<span class="math notranslate nohighlight">\(, and \)</span>\phi_i$ is its porosity.</p>
+<ol class="arabic simple" start="2">
+<li><p>Build Values (V) - values represent the quantities combined by the attention mechanism to produce the final prediction. Here, values are log-permeability,</p></li>
+</ol>
 <div class="math notranslate nohighlight">
 \[
 V_i = \ln(k_i)
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(V_i\)</span> is the value for analog <span class="math notranslate nohighlight">\(i\)</span>, and <span class="math notranslate nohighlight">\(k_i\)</span> is the permeability of analog <span class="math notranslate nohighlight">\(i\)</span>.</p>
-</section>
-<section id="build-query-q">
-<h3>Build Query <span class="math notranslate nohighlight">\(Q\)</span><a class="headerlink" href="#build-query-q" title="Permalink to this heading">#</a></h3>
-<p>The query represents the target geological location where permeability will be estimated in the same feature(s) of the keys <span class="math notranslate nohighlight">\(K_i\)</span>,</p>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> where <span class="math notranslate nohighlight">\(k_i\)</span> is permeability of analog <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<ol class="arabic simple" start="3">
+<li><p>Build Query (Q) - the query represents the target location where permeability is to be estimated,</p></li>
+</ol>
 <div class="math notranslate nohighlight">
 \[
-Q = [\phi_{target}]
+Q = \phi_{\text{target}}
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(Q\)</span> is the query vector, and <span class="math notranslate nohighlight">\(\phi_{target}\)</span> is the target porosity.</p>
-</section>
-<section id="compute-similarity-scores">
-<h3>Compute Similarity Scores<a class="headerlink" href="#compute-similarity-scores" title="Permalink to this heading">#</a></h3>
-<p>Similarity scores measure geological affinity between the query and each analog.</p>
-<p>In many machine learning attention models, similarity is computed with a dot product,</p>
+<ol class="arabic simple" start="4">
+<li><p>Compute Similarity Scores - similarity scores measure geological affinity between the query and each analog. In general attention models, similarity is often computed using a dot product,</p></li>
+</ol>
 <div class="math notranslate nohighlight">
 \[
 s_i = Q \cdot K_i
 \]</div>
-<p>However, for this simple geological demonstration, we instead use negative squared distance,</p>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> For this demonstration, we instead use a distance-based formulation,</p>
 <div class="math notranslate nohighlight">
 \[
-s_i = -\alpha ||K_i - Q||^2
+s_i = -\alpha (K_i - Q)^2
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(s_i\)</span> is the similarity score for analog <span class="math notranslate nohighlight">\(i\)</span>, <span class="math notranslate nohighlight">\(\alpha\)</span> is the scaling (inverse temperature) factor, and <span class="math notranslate nohighlight">\(||K_i - Q||^2\)</span> is the squared mismatch between the query and analog.</p>
-<p>This formulation is convenient because it directly measures geological dissimilarity,</p>
+<p><span class="math notranslate nohighlight">\(\quad\)</span>  where <span class="math notranslate nohighlight">\(\alpha\)</span> is a scaling (inverse temperature) parameter.</p>
+<p><span class="math notranslate nohighlight">\(\quad\)</span>  This formulation directly measures mismatch in feature space,</p>
 <ul class="simple">
 <li><p>small distance <span class="math notranslate nohighlight">\(\rightarrow\)</span> high similarity</p></li>
 <li><p>large distance <span class="math notranslate nohighlight">\(\rightarrow\)</span> low similarity</p></li>
 </ul>
-<p>The negative sign converts mismatch into similarity, so analogs closer to the query receive larger attention weights after softmax normalization.</p>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> The negative sign converts dissimilarity into similarity.</p>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> The scaling parameter <span class="math notranslate nohighlight">\(\alpha\)</span> controls sensitivity:</p>
 <ul class="simple">
-<li><p>higher scores (less negative values) therefore indicate stronger geological similarity.</p></li>
+<li><p>larger values produce sharper attention, while smaller values produce smoother averaging.</p></li>
 </ul>
-</section>
-<section id="dot-product-vs-distance-based-similarity-similarity-in-the-scalar-query-and-key-case">
-<h3>Dot Product vs. Distance-Based Similarity Similarity in the Scalar Query and Key Case<a class="headerlink" href="#dot-product-vs-distance-based-similarity-similarity-in-the-scalar-query-and-key-case" title="Permalink to this heading">#</a></h3>
-<p>It may be instructive to make some more comments about switching to negative squared distance vs. the usual dot product for similarity scores for the scalar feature case. For this simple demonstration, each key and the query can be viewed as a single scalar feature (porosity only),</p>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> Let’s compare dot product vs distance-based similarity for the scalar case). For scalar features,</p>
 <div class="math notranslate nohighlight">
 \[
-K_i = [k_i], \quad Q = [q]
+K_i = k_i, \quad Q = q
 \]</div>
-<p>In this case, the dot-product similarity reduces to,</p>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> dot-product similarity becomes,</p>
 <div class="math notranslate nohighlight">
 \[
-s_i = Q \cdot K_i = q \, k_i
+s_i = qk_i
 \]</div>
-<p>So similarity is driven purely by the product of magnitudes of the query and the stored analog,</p>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> In this case, similarity is driven by both magnitude and sign agreement, rather than explicit distance between values.</p>
 <ul class="simple">
-<li><p>there is no notion of pattern shape or structure</p></li>
-<li><p>similarity is determined only by co-magnitude (how large or small the values are together)</p></li>
-<li><p>the result does not explicitly measure <em>distance</em> or <em>proximity</em> between geological states</p></li>
+<li><p>to obtain a more geometrically interpretable measure of geological similarity, we use,</p></li>
 </ul>
-<p>As a result, dot-product similarity in one dimension is less intuitive as a measure of geological affinity, since it does not directly penalize mismatch between values.</p>
-<p>To obtain a more interpretable notion of geological similarity, we instead use a distance-based formulation,</p>
-<div class="math notranslate nohighlight">
-\[
-s_i = -\alpha \|K_i - Q\|^2
-\]</div>
-<p>In the scalar case,</p>
 <div class="math notranslate nohighlight">
 \[
 s_i = -\alpha (k_i - q)^2
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(s_i\)</span> is the similarity score for analog <span class="math notranslate nohighlight">\(i\)</span>, <span class="math notranslate nohighlight">\(\alpha\)</span> is a scaling (inverse temperature) parameter, and <span class="math notranslate nohighlight">\((k_i - q)^2\)</span> measures mismatch in feature space.</p>
-<p>The scaling factor <span class="math notranslate nohighlight">\(\alpha\)</span> controls the sensitivity of the attention mechanism to differences between the query and stored keys. Larger values of <span class="math notranslate nohighlight">\(\alpha\)</span> sharpen the attention response, causing the model to focus more strongly on the most similar patterns, while smaller values produce smoother, more distributed attention across many analogs.</p>
-<p>In this sense, <span class="math notranslate nohighlight">\(\alpha\)</span> acts similarly to an inverse temperature parameter, controlling the balance between concentrated analog retrieval and broader averaging across the memory bank.</p>
-<p>This formulation has a clear geometric meaning,</p>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> This formulation has a clear geometric meaning,</p>
 <ul class="simple">
 <li><p>small distance <span class="math notranslate nohighlight">\(\rightarrow\)</span> high similarity</p></li>
 <li><p>large distance <span class="math notranslate nohighlight">\(\rightarrow\)</span> low similarity</p></li>
-<li><p>the negative sign converts mismatch into similarity</p></li>
 </ul>
-<p>After softmax normalization, nearby geological analogs receive higher attention weights, producing a more intuitive and stable notion of similarity for scalar reservoir properties.</p>
-</section>
-<section id="compute-attention-weights">
-<h3>Compute Attention Weights<a class="headerlink" href="#compute-attention-weights" title="Permalink to this heading">#</a></h3>
-<p>The similarity scores are normalized with the softmax function to produce attention weights,</p>
+<ol class="arabic simple" start="5">
+<li><p>Compute Attention Weights - similarity scores are normalized using softmax,</p></li>
+</ol>
 <div class="math notranslate nohighlight">
 \[
 w_i = \frac{e^{s_i}}{\sum_{j=1}^{N} e^{s_j}}
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(w_i\)</span> is the attention weight for analog <span class="math notranslate nohighlight">\(i\)</span>, <span class="math notranslate nohighlight">\(N\)</span> is the number of geological analogs.</p>
-<p>The weights satisfy,</p>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> These weights form a probability-like distribution over geological analogs,</p>
 <div class="math notranslate nohighlight">
 \[
 \sum_{i=1}^{N} w_i = 1
 \]</div>
-<p>Thus, attention satisfies probability closure for a probabilistic weighting system over geological analogs.</p>
-</section>
-<section id="predict-log-permeability">
-<h3>Predict Log-Permeability<a class="headerlink" href="#predict-log-permeability" title="Permalink to this heading">#</a></h3>
-<p>The predicted log-permeability is computed as the weighted average of the values,</p>
+<ol class="arabic simple" start="6">
+<li><p>Predict Log-Permeability - the predicted log-permeability is computed as a weighted average,</p></li>
+</ol>
 <div class="math notranslate nohighlight">
 \[
 \hat{V} = \sum_{i=1}^{N} w_i V_i
 \]</div>
-<p>or equivalently,</p>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> or equivalently,</p>
 <div class="math notranslate nohighlight">
 \[
 \widehat{\ln(k)} = \sum_{i=1}^{N} w_i \ln(k_i)
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(\hat{V}\)</span> is the predicted log-permeability.</p>
-</section>
-<section id="predict-permeability">
-<h3>Predict Permeability<a class="headerlink" href="#predict-permeability" title="Permalink to this heading">#</a></h3>
-<p>Finally, permeability is recovered by exponentiation,</p>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> Because we modeled permeability in log-space, the final estimate is obtained by exponentiation,</p>
 <div class="math notranslate nohighlight">
 \[
 \hat{k} = e^{\hat{V}}
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(\hat{k}\)</span> is the predicted permeability.</p>
-<p>Now here’s the code for our simple attention-based permeability prediction workflow.</p>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> Now we implement this workflow in code to verify the numerical behavior of attention in this simple geological analog system.</p>
+<p>Here is the code for our simple attention-based permeability prediction workflow.</p>
 <ul class="simple">
 <li><p>to check the numerical details, please review the functions declared above</p></li>
 </ul>
@@ -1551,140 +1538,150 @@ w_i = \frac{e^{s_i}}{\sum_{j=1}^{N} e^{s_j}}
 </div>
 </div>
 </section>
-</section>
-<section id="attention-based-permeability-prediction-interpretation">
-<h2>Attention-based Permeability Prediction Interpretation<a class="headerlink" href="#attention-based-permeability-prediction-interpretation" title="Permalink to this heading">#</a></h2>
-<p>This simple attention model performs a data-driven geological averaging process,</p>
+<section id="subsurface-analog-attention-based-permeability-prediction-interpretation">
+<h3>Subsurface Analog Attention-Based Permeability Prediction Interpretation<a class="headerlink" href="#subsurface-analog-attention-based-permeability-prediction-interpretation" title="Permalink to this heading">#</a></h3>
+<p>This simple attention model performs a data-driven geological averaging process:</p>
 <ul class="simple">
 <li><p>geological similarity determines attention weights</p></li>
-<li><p>similar analogs receive larger weights</p></li>
-<li><p>permeability prediction is formed from a weighted combination of geological analog responses</p></li>
+<li><p>more similar analogs receive higher weights</p></li>
+<li><p>permeability is estimated as a weighted combination of analog responses</p></li>
 </ul>
-<p>The scaling parameter <span class="math notranslate nohighlight">\(\alpha\)</span> controls the selectivity of attention,</p>
+<p>The scaling parameter <span class="math notranslate nohighlight">\(\alpha\)</span> (or temperature) controls the selectivity of the attention mechanism,</p>
 <ul class="simple">
-<li><p>low <span class="math notranslate nohighlight">\(\alpha\)</span> produces diffuse averaging</p></li>
-<li><p>high <span class="math notranslate nohighlight">\(\alpha\)</span> produces sharper analog selection</p></li>
+<li><p>low <span class="math notranslate nohighlight">\(\alpha \rightarrow\)</span> diffuse averaging across many analogs</p></li>
+<li><p>high <span class="math notranslate nohighlight">\(\alpha \rightarrow\)</span> sharper selection of the most similar analogs</p></li>
 </ul>
-<p>The temperature parameter controls the selectivity of geological analogy matching, transitioning from diffuse similarity to near-deterministic analog selection. Note, a very large scale can cause,</p>
+<p>In this sense, the temperature parameter controls the transition from smooth probabilistic blending to near-deterministic analog selection.</p>
+<p>For very large values of <span class="math notranslate nohighlight">\(\alpha\)</span>, the softmax can exhibit,</p>
 <ul class="simple">
-<li><p>numerical saturation in softmax</p></li>
-<li><p>effectively one-hot weights</p></li>
-<li><p>loss of uncertainty representation</p></li>
+<li><p>saturation effects in the weight distribution</p></li>
+<li><p>convergence toward one-hot (or near one-hot) weights</p></li>
+<li><p>reduced representation of uncertainty across multiple analogs</p></li>
 </ul>
-<p>So,</p>
+<p>Thus:</p>
 <ul class="simple">
-<li><p>high scale = deterministic analog model</p></li>
-<li><p>low scale = probabilistic blending model</p></li>
+<li><p>high <span class="math notranslate nohighlight">\(\alpha \rightarrow\)</span> nearest-analog behavior (hard selection limit)</p></li>
+<li><p>low <span class="math notranslate nohighlight">\(\alpha \rightarrow\)</span> probabilistic blending across multiple geological analogs</p></li>
 </ul>
 </section>
-<section id="well-log-1d-attention-demonstration">
-<h2>Well Log 1D Attention Demonstration<a class="headerlink" href="#well-log-1d-attention-demonstration" title="Permalink to this heading">#</a></h2>
-<p>As a starting point, we first considered a very simple attention model,</p>
+</section>
+<section id="well-log-attention-based-permeability-prediction">
+<h2>Well Log Attention-Based Permeability Prediction<a class="headerlink" href="#well-log-attention-based-permeability-prediction" title="Permalink to this heading">#</a></h2>
+<p>As a first step, we introduced a simple attention model in which:</p>
 <ul class="simple">
 <li><p>the query and key were scalars (single values)</p></li>
 <li><p>similarity was defined using negative squared difference</p></li>
 </ul>
-<p>In this next step, we increase both realism and complexity by moving to:</p>
+<p>We now extend this formulation to a more realistic setting by introducing:</p>
 <ul class="simple">
 <li><p>vector-valued queries and keys (local windows of the well log)</p></li>
-<li><p>dot-product similarity between these feature vectors</p></li>
+<li><p>dot-product similarity between feature vectors</p></li>
 </ul>
+<p>This extension allows the model to capture local spatial structure in addition to pointwise similarity.</p>
 <p>We consider a well log prediction problem involving two wells:</p>
 <ul class="simple">
-<li><p><strong>Well 1</strong> — contains both porosity and permeability measured along the full interval (41 regularly spaced samples). This can be interpreted as a “memory bank,” where both input features and target properties are fully observed (e.g., from core analysis).</p></li>
-<li><p><strong>Well 2</strong> — contains porosity only, and we aim to estimate the missing permeability along the full interval (e.g., log-only data without core measurements).</p></li>
+<li><p><strong>Well 1 reference (memory) well</strong> — contains both porosity and permeability measurements along the full interval (41 regularly spaced samples). This serves as the source of known geological patterns and responses.</p></li>
+<li><p><strong>Well 2 target well</strong> — contains porosity only, and the goal is to estimate the missing permeability along the same interval.</p></li>
 </ul>
 <p>Within the attention framework,</p>
 <ul class="simple">
-<li><p><strong>Keys (K)</strong>: Local porosity window vectors extracted from Well 1, centered at location i</p></li>
-<li><p><strong>Values (V)</strong>: Permeability (or log-permeability) values from Well 1 associated with each key location i</p></li>
-<li><p><strong>Queries (Q)</strong>: Local porosity window vectors extracted from Well 2, centered at location j, where predictions are required</p></li>
+<li><p><strong>Keys (K)</strong> — local porosity window vectors extracted from Well 1, centered at each depth location (i)</p></li>
+<li><p><strong>Values (V)</strong> — permeability (or log-permeability) values from Well 1, aligned at the same depth locations as the keys</p></li>
+<li><p><strong>Queries (Q)</strong> — local porosity window vectors extracted from Well 2, centered at each prediction location (j)</p></li>
 </ul>
-</section>
-<section id="synthetic-well-log-generation-step-by-step">
-<h2>Synthetic Well Log Generation (Step-by-Step)<a class="headerlink" href="#synthetic-well-log-generation-step-by-step" title="Permalink to this heading">#</a></h2>
+<p>In this formulation, attention compares local porosity patterns between wells and uses similarity to transfer permeability information from the reference well to the target well in a data-driven manner.</p>
+<section id="synthetic-well-log-generation-workflow">
+<h3>Synthetic Well Log Generation Workflow<a class="headerlink" href="#synthetic-well-log-generation-workflow" title="Permalink to this heading">#</a></h3>
 <p>We construct a simple but geologically meaningful synthetic dataset consisting of two wells with different levels of available information.</p>
 <ol class="arabic simple">
-<li><p>Set up workflow and depth coordinate, we begin by ensuring reproducibility and defining a pseudo-depth axis,</p></li>
+<li><p>Depth coordinate and workflow setup - we begin by defining a normalized depth coordinate to ensure reproducibility,</p></li>
 </ol>
-<ul class="simple">
-<li><p>define well length,</p></li>
-</ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">41</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>define normalized depth coordinate:
-$<span class="math notranslate nohighlight">\(
-z \in [0,1], \quad z = \text{linspace}(0,1,n)
-\)</span>$</p></li>
-</ul>
+<div class="math notranslate nohighlight">
+\[
+z \in [0,n], \quad z = \text{linspace}(0,1,n)
+\]</div>
 <ol class="arabic simple" start="2">
-<li><p>Generate Well 1 porosity (composite geological signal)</p></li>
+<li><p>Well 1 porosity (composite geological signal) - porosity is generated as a superposition of geological processes including large-scale trends, cyclic bedding, fine-scale layering, and noise.</p></li>
 </ol>
-<ul class="simple">
-<li><p>porosity is constructed as a superposition of geological processes, trend, cyclic bedding, fine layering and noise</p></li>
-<li><p>then we enforce physical bounds, <span class="math notranslate nohighlight">\(\phi \in [0.02, 0.32]\)</span></p></li>
-</ul>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> Physical bounds are enforced:</p>
+<div class="math notranslate nohighlight">
+\[
+\phi \in [0.02, 0.32]
+\]</div>
 <ol class="arabic simple" start="3">
-<li><p>Define implicit, rule-based facies structure by classifying depositional behavior using porosity thresholds,</p></li>
+<li><p>Implicit facies structure (rule-based classification) - we define depositional behavior using porosity thresholds:</p></li>
 </ol>
 <ul class="simple">
-<li><p><strong>Massive sand:</strong> <span class="math notranslate nohighlight">\(\phi &gt; 0.22\)</span></p></li>
-<li><p><strong>Thin bed / shale-like:</strong> <span class="math notranslate nohighlight">\(\phi &lt; 0.10\)</span></p></li>
-<li><p><strong>Transitional:</strong> otherwise</p></li>
+<li><p><strong>Massive sand:</strong> (\phi &gt; 0.22)</p></li>
+<li><p><strong>Thin bed / shale-like:</strong> (\phi &lt; 0.10)</p></li>
+<li><p><strong>Transitional facies:</strong> otherwise</p></li>
 </ul>
 <ol class="arabic simple" start="4">
-<li><p>Construct Well 1 permeability model, permeability is assigned conditionally,</p></li>
+<li><p>Well 1 permeability model - permeability is assigned conditionally based on facies:</p></li>
 </ol>
 <ul class="simple">
-<li><p>Massive sand <span class="math notranslate nohighlight">\(k \sim \mathcal{N}(800, \sigma^2)\)</span></p></li>
-<li><p>Thin beds, <span class="math notranslate nohighlight">\(k \sim \mathcal{N}(5, \sigma^2)\)</span></p></li>
-<li><p>Transitional facies with a nonlinear relationship, <span class="math notranslate nohighlight">\(k = 50 + 300(\phi - 0.10)^2 \cdot 10 + \epsilon\)</span>, where <span class="math notranslate nohighlight">\(\epsilon\)</span> is Gaussian noise.</p></li>
-<li><p>Finally we enforce physical constraint, <span class="math notranslate nohighlight">\(k \ge 0\)</span> and then compute log-transform <span class="math notranslate nohighlight">\(\log k\)</span></p></li>
+<li><p>Massive sand,
+$<span class="math notranslate nohighlight">\(
+k \sim \mathcal{N}(800, \sigma^2)
+\)</span>$</p></li>
+<li><p>Thin beds,
+$<span class="math notranslate nohighlight">\(
+k \sim \mathcal{N}(5, \sigma^2)
+\)</span>$</p></li>
+<li><p>Transitional facies,
+$<span class="math notranslate nohighlight">\(
+k = 50 + 3000(\phi - 0.10)^2 + \epsilon
+\)</span>$</p></li>
 </ul>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> where <span class="math notranslate nohighlight">\(\epsilon\)</span> is Gaussian noise.</p>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> Physical constraints are enforced,</p>
+<div class="math notranslate nohighlight">
+\[
+k \ge 0
+\]</div>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> We then compute:</p>
+<div class="math notranslate nohighlight">
+\[
+\log k
+\]</div>
 <ol class="arabic simple" start="5">
-<li><p>Assemble Well 1 dataset, we store all variables in a structured table,</p></li>
+<li><p>Well 1 dataset assembly - we store all variables in a structured dataset,</p></li>
 </ol>
 <div class="math notranslate nohighlight">
 \[
-\text{Well 1} =
-\{\text{depth}, \phi, k, \log k\}
+\text{Well 1} = {\text{depth}, \phi, k, \log k}
 \]</div>
 <ol class="arabic simple" start="6">
-<li><p>Generate Well 2 porosity (prediction-only well), we construct a second porosity log with similar but not identical structure,</p></li>
+<li><p>Well 2 porosity (prediction-only well) - we construct a second porosity log with similar large-scale structure but different fine-scale variability,</p></li>
 </ol>
 <div class="math notranslate nohighlight">
 \[
-\phi_2(z)
-=
-0.18
-+ 0.06 \sin(2\pi \cdot 2z)
-+ 0.03 \sin(2\pi \cdot 6z + 4.0)
-+ \epsilon
+\phi_2(z) = 0.18 +  0.06 \sin(2\pi \cdot 2z) + 0.03 \sin(2\pi \cdot 6z + 4.0) + \epsilon
 \]</div>
-<ul class="simple">
-<li><p>key difference is phase shift in fine-scale layering introduces geological mismatch. Again we enforce bounds,</p></li>
-</ul>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> The phase shift in fine-scale layering introduces realistic geological mismatch between wells.</p>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> Physical bounds are enforced,</p>
 <div class="math notranslate nohighlight">
 \[
 \phi_2 \in [0.02, 0.32]
 \]</div>
 <ol class="arabic simple" start="7">
-<li><p>Assemble Well 2 dataset, well 2 contains only porosity,</p></li>
+<li><p>Well 2 dataset assembly - Well 2 contains only porosity,</p></li>
 </ol>
 <div class="math notranslate nohighlight">
 \[
-\text{Well 2} =
-\{\text{depth}, \phi_2\}
+\text{Well 2} = {\text{depth}, \phi_2}
 \]</div>
 <ol class="arabic simple" start="8">
-<li><p>Finalize workflow variables and visualization, we reset indexing consistency and extract depth,</p></li>
+<li><p>Final dataset structure - the final workflow produces,</p></li>
 </ol>
-<div class="math notranslate nohighlight">
-\[
-\text{depth} = 0,1,2,\dots,n-1
-\]</div>
+<ul class="simple">
+<li><p>a fully observed reference well (Well 1)</p></li>
+<li><p>a partially observed target well (Well 2)</p></li>
+</ul>
+<p>This setup forms a controlled analog-to-target prediction problem suitable for testing attention-based permeability estimation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">suppress_warnings</span> <span class="o">=</span> <span class="kc">True</span>                                      <span class="c1"># toggle to supress warnings</span>
@@ -1733,8 +1730,8 @@ z \in [0,1], \quad z = \text{linspace}(0,1,n)
 </div>
 </div>
 </section>
-<section id="well-log-1d-attention-demonstration-mathematical-formulation">
-<h2>Well Log 1D Attention Demonstration Mathematical Formulation<a class="headerlink" href="#well-log-1d-attention-demonstration-mathematical-formulation" title="Permalink to this heading">#</a></h2>
+<section id="mathematical-formulation">
+<h3>Mathematical Formulation<a class="headerlink" href="#mathematical-formulation" title="Permalink to this heading">#</a></h3>
 <p>Now that we have introduced the general attention framework, we can summarize the specific workflow used for our well log permeability prediction problem.</p>
 <ul class="simple">
 <li><p>yes this is quite verbose with the intention to describe a repeatable workflow, with every possible detail included.</p></li>
@@ -1771,7 +1768,7 @@ z \in [0,1], \quad z = \text{linspace}(0,1,n)
 \mathbf{K}_N
 \end{bmatrix}
 \end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(N\)</span> is the number of valid moving-window samples extracted from Well 1, and each <span class="math notranslate nohighlight">\(\mathbf{K}_k\)</span> is a row vector that represents a stored local geological pattern in the memory bank. For example, a single key vector centered at location <span class="math notranslate nohighlight">\(i\)</span> with a window size of <span class="math notranslate nohighlight">\(d=3\)</span> is:</p>
+<p>where <span class="math notranslate nohighlight">\(N\)</span> is the number of valid moving-window samples extracted from Well 1, and each <span class="math notranslate nohighlight">\(\mathbf{K}_k\)</span> is a row vector that represents a stored local geological analog in the reference (memory) well. For example, a single key vector centered at location <span class="math notranslate nohighlight">\(i\)</span> with a window size of <span class="math notranslate nohighlight">\(d=3\)</span> is:</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbf{K}_i
@@ -1795,7 +1792,7 @@ z \in [0,1], \quad z = \text{linspace}(0,1,n)
 \phi_{N-1} &amp; \phi_{N} &amp; \phi_{N+1}
 \end{bmatrix}
 \end{split}\]</div>
-<p>where each row represents a local porosity window (local geological pattern) extracted from Well 1 and centered at location <span class="math notranslate nohighlight">\(i\)</span> and the full key matrix stacks all local geological patterns into the attention memory bank.</p>
+<p>where each row represents a local porosity window (local geological pattern) extracted from Well 1 and centered at location <span class="math notranslate nohighlight">\(i\)</span> and the full key matrix stacks all local geological patterns into the attention reference (memory) analog.</p>
 <ol class="arabic simple" start="2">
 <li><p>Pair each key window with the collocated permeability value from Well 1 to form the <strong>values (V)</strong></p></li>
 </ol>
@@ -1826,7 +1823,7 @@ v_N
 \ln(k_N)
 \end{bmatrix}
 \end{split}\]</div>
-<p>Each value represents the target reservoir property retrieved from the memory bank during attention-based prediction.</p>
+<p>Each value represents the target reservoir property retrieved from the reference (memory) well during attention-based prediction.</p>
 <ol class="arabic simple" start="3">
 <li><p>Extract local porosity windows from Well 2 to form the <strong>queries (Q)</strong></p></li>
 </ol>
@@ -1866,7 +1863,7 @@ v_N
 <li><p><span class="math notranslate nohighlight">\(d\)</span> = window size</p></li>
 <li><p><span class="math notranslate nohighlight">\(N\)</span> = number of key windows in Well 1</p></li>
 </ul>
-<p>The similarity between query <span class="math notranslate nohighlight">\(j\)</span> and key <span class="math notranslate nohighlight">\(i\)</span> is:</p>
+<p>The similarity between query <span class="math notranslate nohighlight">\(j\)</span> and key <span class="math notranslate nohighlight">\(i\)</span> is,</p>
 <div class="math notranslate nohighlight">
 \[
 s_{j,i} = \alpha \, \mathbf{Q}_j \cdot \mathbf{K}_i^{T}
@@ -1875,11 +1872,9 @@ s_{j,i} = \alpha \, \mathbf{Q}_j \cdot \mathbf{K}_i^{T}
 <p>Now let’s look at this in matrix form with all keys at once. For a fixed query <span class="math notranslate nohighlight">\(\mathbf{Q}_j\)</span>, we compute similarity against all keys,</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbf{s}_j
-=
-\alpha \, \mathbf{K} \mathbf{Q}_j^{T}
+\mathbf{s}_j = \alpha \mathbf{Q}_j \mathbf{K}^T
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(\mathbf{K} \in \mathbb{R}^{N \times d}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{Q}_j^{T} \in \mathbb{R}^{d \times 1}\)</span>, and <span class="math notranslate nohighlight">\(\mathbf{s}_j \in \mathbb{R}^{N \times 1}\)</span></p>
+<p>where this is equivalent to computing dot products between <span class="math notranslate nohighlight">\(Q_j\)</span> and each row of <span class="math notranslate nohighlight">\(K\)</span>.</p>
 <p>Now let’s work with the full attention score matrix with all queries vs all keys. If we compute similarities for all queries in Well 2,</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1893,11 +1888,11 @@ s_{j,i} = \alpha \, \mathbf{Q}_j \cdot \mathbf{K}_i^{T}
 \[
 S_{j,i} = \alpha \sum_{m=1}^{d} Q_{j,m} K_{i,m}
 \]</div>
-<p>represents the similarity between query location <span class="math notranslate nohighlight">\(j\)</span> and memory bank location <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<p>represents the similarity between query location <span class="math notranslate nohighlight">\(j\)</span> and location <span class="math notranslate nohighlight">\(i\)</span> in the reference (memory) well</p>
 <ol class="arabic simple" start="5">
 <li><p>Convert similarity scores into normalized attention weights using softmax</p></li>
 </ol>
-<p>For a fixed query window <span class="math notranslate nohighlight">\(\mathbf{Q}_j\)</span>, we first compute a vector of similarity scores against all keys:</p>
+<p>For a fixed query window <span class="math notranslate nohighlight">\(\mathbf{Q}_j\)</span>, we first compute a vector of similarity scores against all keys,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \mathbf{s}_j =
@@ -1909,11 +1904,8 @@ s_{j,N}
 \end{bmatrix}
 \in \mathbb{R}^{N \times 1}
 \end{split}\]</div>
-<p>where:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(s_{j,i} = \alpha \, \mathbf{Q}_j \cdot \mathbf{K}_i^T\)</span></p></li>
-</ul>
-<p>The attention weights are obtained from the similarity scores, <span class="math notranslate nohighlight">\(s_{j,k}\)</span>, by applying the softmax operator across all <span class="math notranslate nohighlight">\(N\)</span> candidate analogs:</p>
+<p>where <span class="math notranslate nohighlight">\(s_{j,i} = \alpha \, \mathbf{Q}_j \cdot \mathbf{K}_i^T\)</span></p>
+<p>The attention weights are obtained from the similarity scores, <span class="math notranslate nohighlight">\(s_{j,k}\)</span>, by applying the softmax operator across all <span class="math notranslate nohighlight">\(N\)</span> candidate analogs,</p>
 <div class="math notranslate nohighlight">
 \[
 w_{j,i}
@@ -1921,17 +1913,16 @@ w_{j,i}
 \frac{\exp(s_{j,i})}
 {\sum_{k=1}^{N} \exp(s_{j,k})} \quad i = 1, \dots, N
 \]</div>
-<p>This can be written compactly as:</p>
+<p>This can be written compactly as,</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbf{w}_j = \text{softmax}(\mathbf{s}_j)
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\mathbf{w}_j \in \mathbb{R}^{N \times 1}\)</span>, <span class="math notranslate nohighlight">\(\sum_{i=1}^{N} w_{j,i} = 1\)</span>, and <span class="math notranslate nohighlight">\(w_{j,i} \ge 0 \;\; \forall i\)</span></p>
-<p>The softmax operator converts raw similarity scores into a probability distribution over all stored geological analogs.</p>
 <ol class="arabic simple" start="6">
 <li><p>Compute the permeability prediction as the weighted combination of permeability values retrieved from the most similar porosity patterns</p></li>
 </ol>
-<p>For a fixed query location <span class="math notranslate nohighlight">\(j\)</span>, the predicted permeability is obtained by combining all stored values using the attention weights:</p>
+<p>For a fixed query location <span class="math notranslate nohighlight">\(j\)</span>, the predicted permeability is obtained by combining all stored analogs’ values using the attention weights,</p>
 <div class="math notranslate nohighlight">
 \[
 \hat{y}_j
@@ -1952,11 +1943,10 @@ w_{j,i}
 \mathbf{W} \mathbf{v}
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\mathbf{W} \in \mathbb{R}^{M \times N}\)</span> is the attention weight matrix, <span class="math notranslate nohighlight">\(\mathbf{v} \in \mathbb{R}^{N \times 1}\)</span> is the value vector from Well 1, and <span class="math notranslate nohighlight">\(\hat{\mathbf{y}} \in \mathbb{R}^{M \times 1}\)</span> are the predicted permeability values for Well 2.</p>
-<p>Each prediction <span class="math notranslate nohighlight">\(\hat{y}_j\)</span> is a convex combination of permeability values from the most similar geological analogs, where the weights are determined dynamically by similarity between porosity patterns.</p>
-<p>In this formulation, the model dynamically searches for similar porosity patterns in the reference well and retrieves permeability information from the most relevant geological analogs.</p>
+<p>In this formulation, the model performs similarity-based retrieval of geological analog patterns from the reference well and transfers associated permeability information to the target well.</p>
 </section>
-<section id="well-log-1d-attention-demonstration-results">
-<h2>Well Log 1D Attention Demonstration Results<a class="headerlink" href="#well-log-1d-attention-demonstration-results" title="Permalink to this heading">#</a></h2>
+<section id="results">
+<h3>Results<a class="headerlink" href="#results" title="Permalink to this heading">#</a></h3>
 <p>Now here’s the code for our attention-based permeability prediction from well log patterns workflow.</p>
 <ul class="simple">
 <li><p>to check the numerical details, please review the functions declared above</p></li>
@@ -2004,7 +1994,7 @@ w_{j,i}
 <p>To understand these results, let’s talk about attention regimes and dot-product similarity interpretation.</p>
 </section>
 <section id="attention-regimes-in-geological-sequence-modeling">
-<h2>Attention Regimes in Geological Sequence Modeling<a class="headerlink" href="#attention-regimes-in-geological-sequence-modeling" title="Permalink to this heading">#</a></h2>
+<h3>Attention Regimes in Geological Sequence Modeling<a class="headerlink" href="#attention-regimes-in-geological-sequence-modeling" title="Permalink to this heading">#</a></h3>
 <p>To interpret how the scaling parameter <span class="math notranslate nohighlight">\(\alpha\)</span> shapes model behavior, we examine different attention regimes and how they influence similarity-based retrieval in geological sequence modeling.</p>
 <table class="table">
 <thead>
@@ -2043,31 +2033,35 @@ w_{j,i}
 </tbody>
 </table>
 <p>Overall, increasing <span class="math notranslate nohighlight">\(\alpha\)</span> transitions the system from smooth global averaging toward highly selective analog retrieval, where predictions shift from mean-field behavior to facies-controlled, pattern-driven reconstruction of permeability.</p>
+<ul class="simple">
+<li><p>the numerical ranges above are illustrative for this synthetic well-log example and depend on the scale and normalization of the query and key vectors.</p></li>
+</ul>
+<p>In geological terms, increasing <span class="math notranslate nohighlight">\(\alpha\)</span> shifts the model from broad averaging across many depositional analogs toward retrieval of a small number of highly similar local geological patterns.</p>
 </section>
 <section id="dot-product-similarity-interpretation">
-<h2>Dot-Product Similarity Interpretation<a class="headerlink" href="#dot-product-similarity-interpretation" title="Permalink to this heading">#</a></h2>
+<h3>Dot-Product Similarity Interpretation<a class="headerlink" href="#dot-product-similarity-interpretation" title="Permalink to this heading">#</a></h3>
 <p>In this formulation, similarity is defined as:</p>
 <div class="math notranslate nohighlight">
 \[
 s_i = \alpha \, (\mathbf{Q} \cdot \mathbf{K}_i)
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\mathbf{Q} \in \mathbb{R}^{1 \times d}\)</span> is the query window, <span class="math notranslate nohighlight">\(\mathbf{K}_i \in \mathbb{R}^{1 \times d}\)</span> is the <span class="math notranslate nohighlight">\(i\)</span>-th key window, <span class="math notranslate nohighlight">\(\mathbf{Q} \cdot \mathbf{K}_i = \sum_{m=1}^{d} Q_m K_{i,m}\)</span> measures alignment between local geological patterns, and <span class="math notranslate nohighlight">\(\alpha\)</span> is a scaling (inverse temperature) parameter</p>
-<p>Positive values of <span class="math notranslate nohighlight">\(\mathbf{Q} \cdot \mathbf{K}_i\)</span> indicate <strong>aligned porosity structures</strong>, while negative values indicate <strong>anti-correlated or mismatched patterns</strong>, leading to lower attention weights after softmax normalization.</p>
+<p>Larger dot products indicate stronger alignment between porosity patterns, while smaller dot products indicate weaker similarity, leading to lower attention weights after softmax normalization.</p>
 <p>This formulation contrasts with Euclidean distance-based similarity, which measures geometric separation rather than directional agreement in feature space,</p>
 <ul class="simple">
 <li><p>Before (Euclidean similarity), Which patterns are close in feature space?</p></li>
-<li><p>Now (dot-product similarity), Which patterns behave similarly in structure and trend?”</p></li>
+<li><p>Now (dot-product similarity), Which patterns behave similarly in structure and trend?</p></li>
 </ul>
 <p>This represents a subtle but important shift in interpretation:</p>
 <ul class="simple">
-<li><p>Euclidean distance <span class="math notranslate nohighlight">\(\rightarrow\)</span> lithology similarity (absolute proximity)</p></li>
-<li><p>Dot product <span class="math notranslate nohighlight">\(rightarrow\)</span> pattern alignment (structural agreement)</p></li>
+<li><p>Euclidean distance <span class="math notranslate nohighlight">\(\rightarrow\)</span> similarity through proximity in feature space</p></li>
+<li><p>Dot product <span class="math notranslate nohighlight">\(\rightarrow\)</span> similarity through directional alignment and magnitude</p></li>
 </ul>
 <p>Because the dot product is <strong>scale-sensitive</strong>, the magnitude of <span class="math notranslate nohighlight">\(\alpha\)</span> strongly controls model behavior,</p>
 <ul class="simple">
-<li><p>small <span class="math notranslate nohighlight">\(\alpha\)</span> → diffuse, nearly uniform attention</p></li>
-<li><p>moderate <span class="math notranslate nohighlight">\(\alpha\)</span> → balanced analog selection</p></li>
-<li><p>large <span class="math notranslate nohighlight">\(\alpha\)</span> → highly selective, near-nearest-neighbor retrieval</p></li>
+<li><p>small <span class="math notranslate nohighlight">\(\alpha\)</span> <span class="math notranslate nohighlight">\(\rightarrow\)</span> diffuse, nearly uniform attention</p></li>
+<li><p>moderate <span class="math notranslate nohighlight">\(\alpha\)</span> <span class="math notranslate nohighlight">\(\rightarrow\)</span> balanced analog selection</p></li>
+<li><p>large <span class="math notranslate nohighlight">\(\alpha\)</span> <span class="math notranslate nohighlight">\(\rightarrow\)</span> highly selective, near-nearest-neighbor retrieval</p></li>
 </ul>
 <p>In practice, stability is often improved by:</p>
 <ul class="simple">
@@ -2077,13 +2071,13 @@ s_i = \alpha \, (\mathbf{Q} \cdot \mathbf{K}_i)
 <p>This ensures attention reflects meaningful geological similarity rather than being dominated by magnitude effects.</p>
 </section>
 <section id="visualize-the-attention-weights-for-a-single-prediction">
-<h2>Visualize the Attention Weights for a Single Prediction<a class="headerlink" href="#visualize-the-attention-weights-for-a-single-prediction" title="Permalink to this heading">#</a></h2>
-<p>To make the attention mechanism tangible, we now visualize a specific prediction location in Well 2 and trace how its local porosity pattern is matched against the full Well 1 memory bank.</p>
+<h3>Visualize the Attention Weights for a Single Prediction<a class="headerlink" href="#visualize-the-attention-weights-for-a-single-prediction" title="Permalink to this heading">#</a></h3>
+<p>To make the attention mechanism tangible, we now visualize a specific prediction location in Well 2 and trace how its local porosity pattern is matched against the reference (memory) well, recall Well 1.</p>
 <ul class="simple">
 <li><p>well 2 porosity log with the query window highlighted at the chosen depth index (left)</p></li>
 <li><p>well 1 reference log alongside the corresponding attention weights computed at every candidate location (right)</p></li>
 </ul>
-<p>Together, these plots illustrate how a single query activates a distributed set of geological analogs, and how the attention mechanism concentrates or disperses retrieval depending on pattern similarity across the memory bank.</p>
+<p>Together, these plots illustrate how a single query activates a distributed set of geological analogs, and how the attention mechanism concentrates or disperses retrieval depending on pattern similarity across the reference (memory) well.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">depth_index</span> <span class="o">=</span> <span class="mi">4</span>                                               <span class="c1"># set the depth index and the observe the attention weights</span>
@@ -2093,24 +2087,26 @@ s_i = \alpha \, (\mathbf{Q} \cdot \mathbf{K}_i)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/02ec792455e62e9b8623ea70c1ceaecea441c7210da5452491452a6ae8cb2e19.png" src="_images/02ec792455e62e9b8623ea70c1ceaecea441c7210da5452491452a6ae8cb2e19.png" />
+<img alt="_images/3239c7c5f5806ec0c947eb9f39445a5384dbf8221c18d1d8df8e44f716a4e995.png" src="_images/3239c7c5f5806ec0c947eb9f39445a5384dbf8221c18d1d8df8e44f716a4e995.png" />
 </div>
 </div>
-<p>From inspection of the attention weights, it is clear that the model is not simply matching values, but retrieving analogs based on local geological structure. Higher weights are consistently assigned to key windows that exhibit,</p>
+<p>From inspection of the attention weights, it is clear that the model is not simply matching porosity values, but retrieving geological analogs based on local pattern similarity. Higher attention weights are consistently assigned to key windows that exhibit,</p>
 <ul class="simple">
 <li><p>similar porosity magnitudes</p></li>
-<li><p>similar multi-point patterns (shape and local trend across the window)</p></li>
+<li><p>similar local patterns (shape and trend across the window)</p></li>
 </ul>
-<p>In other words, attention is responding to pattern alignment over a spatial context, rather than pointwise similarity alone, with both level and local variability contributing to the retrieval behavior.</p>
+<p>In other words, attention responds to pattern alignment over a spatial context rather than pointwise similarity alone. Both the porosity level and the local geological structure contribute to the retrieval behavior.</p>
+<p>This illustrates one of the key advantages of attention-based prediction: analog selection is performed using local geological context rather than individual measurements, allowing the model to identify and transfer information from structurally similar patterns in the reference well.</p>
 </section>
-<section id="id1">
-<h2>Visualize the Attention Weights for a Single Prediction<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
-<p>Next, we examine how the uncertainty or concentration of the attention mechanism changes along the full Well 2 prediction interval. We display,</p>
+<section id="visualize-attention-entropy-along-the-prediction-interval">
+<h3>Visualize Attention Entropy Along the Prediction Interval<a class="headerlink" href="#visualize-attention-entropy-along-the-prediction-interval" title="Permalink to this heading">#</a></h3>
+<p>Next, we examine how the concentration of the attention mechanism varies along the full Well 2 prediction interval. We display,</p>
 <ul class="simple">
-<li><p>well 2 porosity log (left)</p></li>
-<li><p>attention entropy at each prediction location, providing a measure of how distributed or focused the attention weights are across the Well 1 memory bank.</p></li>
+<li><p>the Well 2 porosity log (left)</p></li>
+<li><p>attention entropy at each prediction location (right), providing a measure of how distributed or concentrated the attention weights are across the reference (memory) well</p></li>
 </ul>
-<p>Low entropy indicates that the model concentrates attention on a small number of highly similar geological analogs, while higher entropy suggests that multiple candidate patterns contribute to the prediction, reflecting greater ambiguity in geological similarity.</p>
+<p>Attention entropy summarizes the uncertainty associated with analog retrieval. Low entropy indicates that attention is concentrated on a small number of highly similar geological analogs, while higher entropy indicates that attention is distributed across many candidate analogs.</p>
+<p>Consequently, low-entropy regions correspond to locations where the model identifies a small set of strong geological matches, whereas high-entropy regions indicate greater ambiguity, with multiple analog patterns contributing to the prediction.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_entropy_log</span><span class="p">(</span><span class="n">well2</span><span class="p">,</span><span class="n">all_weights</span><span class="p">)</span>                           <span class="c1"># plot the attention weight entropy over all predictions</span>
@@ -2121,27 +2117,32 @@ s_i = \alpha \, (\mathbf{Q} \cdot \mathbf{K}_i)
 <img alt="_images/e5c5cd104830c01a31e686f5eb7427853bf00659fe776e3a76f9b4542a27989c.png" src="_images/e5c5cd104830c01a31e686f5eb7427853bf00659fe776e3a76f9b4542a27989c.png" />
 </div>
 </div>
-<p>Locations with lower attention entropy are primarily those where the query and the memory bank exhibit strong structural disagreement.</p>
+<p>Attention entropy provides insight into how uniquely the model can identify geological analogs within the reference (memory) well.</p>
+<p>Locations with low attention entropy are characterized by highly concentrated attention weights, indicating that the model has identified a small number of dominant analogs. In some cases, this occurs because the query exhibits a distinctive local pattern that closely matches only a few locations in the reference well. In other cases, the query may differ substantially from the available analogs, causing the model to concentrate attention on the “least dissimilar” candidates.</p>
 <ul class="simple">
-<li><p>in these cases, the model becomes highly selective, assigning most of the weight to a small number of analogs that are actually poor matches to the query (e.g., low vs high magnitude regimes or concave-up vs convex-up curvature).</p></li>
-<li><p>in contrast, higher entropy tends to occur where multiple geological patterns partially match the query, leading to a more distributed attention response across competing analogs.</p></li>
+<li><p>low entropy <span class="math notranslate nohighlight">\(\rightarrow\)</span> attention concentrated on a small number of analogs</p></li>
+<li><p>high entropy <span class="math notranslate nohighlight">\(\rightarrow\)</span> attention distributed across many competing analogs</p></li>
 </ul>
+<p>Higher entropy tends to occur when multiple geological patterns exhibit similar levels of compatibility with the query. In these regions, no single analog clearly dominates, and the prediction is constructed from a broader combination of candidate geological patterns.</p>
+<p>Thus, attention entropy should be interpreted as a measure of retrieval concentration rather than prediction quality. Low entropy indicates confident analog selection, while high entropy indicates greater ambiguity in the retrieval process.</p>
 </section>
 <section id="visualize-the-full-attention-weight-matrix-for-all-well-log-queries">
-<h2>Visualize the Full Attention Weight Matrix for All Well Log Queries<a class="headerlink" href="#visualize-the-full-attention-weight-matrix-for-all-well-log-queries" title="Permalink to this heading">#</a></h2>
+<h3>Visualize the Full Attention Weight Matrix for All Well Log Queries<a class="headerlink" href="#visualize-the-full-attention-weight-matrix-for-all-well-log-queries" title="Permalink to this heading">#</a></h3>
 <p>Now we step back from individual predictions and examine the full attention weight matrix,</p>
 <ul class="simple">
-<li><p>where every query in Well 2 is compared against every stored analog in Well 1</p></li>
+<li><p>every query in Well 2 is compared against every analog in the reference (memory) well</p></li>
 </ul>
 <p>This matrix provides a complete view of the retrieval process,</p>
 <ul class="simple">
 <li><p>rows correspond to prediction locations (queries)</p></li>
-<li><p>columns correspond to memory bank analogs (keys)</p></li>
-<li><p>each entry represents the strength of geological similarity between them.</p></li>
+<li><p>columns correspond to reference (memory) analogs (keys)</p></li>
+<li><p>each entry represents the attention weight (geological similarity) between a query and a stored analog</p></li>
 </ul>
-<p>In effect, this is the full “geological matching map”, and it’s where the structure of attention really becomes visible, almost like a fingerprint of how the model organizes and reuses subsurface patterns.</p>
+<p>In effect, this matrix serves as a complete geological matching map. It reveals how information is retrieved from the reference well and transferred to the target well through similarity-based analog selection.</p>
+<p>Patterns within the matrix often highlight recurring geological structures, intervals with strong analog matches, and regions where multiple competing analogs contribute to the prediction. As a result, the organization of attention becomes directly visible.</p>
+<p>At this point, attention stops looking like a collection of equations and starts looking like a map of geological relationships. In many ways, the attention matrix becomes a fingerprint of how the model organizes, retrieves, and reuses subsurface patterns.</p>
 <ul class="simple">
-<li><p>at this point, it stops being just a calculation and starts looking like something you could print on a T-shirt!</p></li>
+<li><p>and yes, it is beginning to look like something that belongs on a T-shirt!</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2153,16 +2154,19 @@ s_i = \alpha \, (\mathbf{Q} \cdot \mathbf{K}_i)
 <img alt="_images/9903d12bfd42b02c6ac30e51a32ea698aef58bd2d3985fb95d8dbda3847e15b7.png" src="_images/9903d12bfd42b02c6ac30e51a32ea698aef58bd2d3985fb95d8dbda3847e15b7.png" />
 </div>
 </div>
-<p>“The pre-activation scores form a relative energy landscape, where higher (less negative) values indicate stronger geological affinity.”</p>
-<p>When similarity contrast is weak, attention behaves like a smoothing kernel, producing ensemble-mean predictions. As similarity sharpens, attention transitions into a selective analog retrieval mechanism, increasing output variability and geological realism.</p>
+<p>The attention matrix reveals how geological information is transferred from the reference (memory) well to the target well through similarity-based analog retrieval.</p>
+<ul class="simple">
+<li><p>bright regions indicate stored analogs that strongly influence the prediction, while diffuse regions indicate that multiple analogs contribute to the retrieved permeability estimate.</p></li>
+</ul>
+</section>
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
 <p>In this chapter, we introduced the core ideas behind attention mechanisms through a geoscience-driven analog and missing well log prediction examples.</p>
 <ul class="simple">
-<li><p>starting from simple analog matching and progressively building toward full matrix-based retrieval, we showed how attention provides a flexible framework for linking a query location to a set of stored geological patterns, keys.</p></li>
+<li><p>starting from simple analog matching and progressively building toward full matrix-based retrieval, we showed how attention provides a flexible framework for linking a query location to a set of stored geological analogs represented by keys.</p></li>
 </ul>
-<p>Attention is now a foundational component of modern machine learning systems, including large language models, where it enables the learning of complex, multiscale relationships.</p>
+<p>Attention is now a foundational component of modern machine learning systems, including transformer architectures and large language models, where it enables the learning of complex, multiscale relationships.</p>
 <ul class="simple">
 <li><p>by using similarity measures such as the dot product, these models are able to capture not just local pointwise similarity, but coherent structure, trends, and dependencies across extended contexts.</p></li>
 </ul>
@@ -2172,8 +2176,15 @@ s_i = \alpha \, (\mathbf{Q} \cdot \mathbf{K}_i)
 <li><p>integrate information from distributed analogs</p></li>
 <li><p>adaptively weight their contributions to prediction.</p></li>
 </ul>
-<p>The result is a powerful mechanism that naturally bridges local measurements and large-scale structure, making it particularly well suited for spatial and subsurface data.</p>
-<p>Ultimately, attention can be interpreted as a learnable pattern retrieval system, one that replaces fixed local assumptions with dynamic, data-driven matching across scales.</p>
+<p>The result is a powerful mechanism that naturally connects local observations with larger-scale geological structure, making attention particularly well suited for spatial and subsurface prediction problems.</p>
+<div class="remove-from-content-only admonition">
+<p class="admonition-title">Ultimately, attention can be interpreted as,</p>
+<p>a learnable pattern retrieval system: one that replaces fixed local assumptions with dynamic, data-driven matching across scales.</p>
+</div>
+<p>From this perspective, attention is less about neural networks and more about a familiar scientific task,</p>
+<ul class="simple">
+<li><p>finding the most relevant analogs and learning how strongly they should influence our prediction.</p></li>
+</ul>
 <p>Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
@@ -2273,6 +2284,7 @@ s_i = \alpha \, (\mathbf{Q} \cdot \mathbf{K}_i)
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-and-why-attention">Motivation and Why Attention?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attention-concepts">Attention Concepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attention-concepts-with-all-computer-science-concepts">Attention Concepts with all Computer Science Concepts</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attention-workflow-conceptual-description">Attention Workflow Conceptual Description</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-and-matrix-math-reminder">Vector and Matrix Math Reminder</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attention-workflow-mathematical-formulation">Attention Workflow Mathematical Formulation</a><ul class="nav section-nav flex-column">
@@ -2288,31 +2300,25 @@ s_i = \alpha \, (\mathbf{Q} \cdot \mathbf{K}_i)
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-required-packages">Import Required Packages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analog-data-table-attention-demonstration">Analog Data Table Attention Demonstration</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subsurface-analog-dataset-attention-keys-values">Subsurface Analog Dataset (Attention Keys &amp; Values)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#query-target-location">Query (Target Location)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attention-interpretation">Attention Interpretation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attention-based-permeability-prediction-workflow-steps">Attention-Based Permeability Prediction Workflow Steps</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-keys-k">Build Keys <span class="math notranslate nohighlight">\(K\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-values-v">Build Values <span class="math notranslate nohighlight">\(V\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-query-q">Build Query <span class="math notranslate nohighlight">\(Q\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-similarity-scores">Compute Similarity Scores</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-product-vs-distance-based-similarity-similarity-in-the-scalar-query-and-key-case">Dot Product vs. Distance-Based Similarity Similarity in the Scalar Query and Key Case</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-attention-weights">Compute Attention Weights</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predict-log-permeability">Predict Log-Permeability</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predict-permeability">Predict Permeability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analog-data-table-attention-demonstration">Analog Data Table Attention Demonstration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsurface-analog-dataset-attention-keys-values">Subsurface Analog Dataset (Attention Keys &amp; Values)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsurface-analog-query-target-location">Subsurface Analog Query (Target Location)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsurface-analog-attention-interpretation">Subsurface Analog Attention Interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsurface-analog-attention-based-permeability-prediction-workflow">Subsurface Analog Attention-Based Permeability Prediction Workflow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsurface-analog-attention-based-permeability-prediction-interpretation">Subsurface Analog Attention-Based Permeability Prediction Interpretation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attention-based-permeability-prediction-interpretation">Attention-based Permeability Prediction Interpretation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#well-log-1d-attention-demonstration">Well Log 1D Attention Demonstration</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#synthetic-well-log-generation-step-by-step">Synthetic Well Log Generation (Step-by-Step)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#well-log-1d-attention-demonstration-mathematical-formulation">Well Log 1D Attention Demonstration Mathematical Formulation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#well-log-1d-attention-demonstration-results">Well Log 1D Attention Demonstration Results</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attention-regimes-in-geological-sequence-modeling">Attention Regimes in Geological Sequence Modeling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-product-similarity-interpretation">Dot-Product Similarity Interpretation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-attention-weights-for-a-single-prediction">Visualize the Attention Weights for a Single Prediction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Visualize the Attention Weights for a Single Prediction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-full-attention-weight-matrix-for-all-well-log-queries">Visualize the Full Attention Weight Matrix for All Well Log Queries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#well-log-attention-based-permeability-prediction">Well Log Attention-Based Permeability Prediction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#synthetic-well-log-generation-workflow">Synthetic Well Log Generation Workflow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-formulation">Mathematical Formulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attention-regimes-in-geological-sequence-modeling">Attention Regimes in Geological Sequence Modeling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-product-similarity-interpretation">Dot-Product Similarity Interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-attention-weights-for-a-single-prediction">Visualize the Attention Weights for a Single Prediction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-attention-entropy-along-the-prediction-interval">Visualize Attention Entropy Along the Prediction Interval</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-full-attention-weight-matrix-for-all-well-log-queries">Visualize the Full Attention Weight Matrix for All Well Log Queries</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
