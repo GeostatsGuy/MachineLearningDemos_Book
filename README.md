@@ -6,7 +6,7 @@ Michael J. Pyrcz, Professor, The University of Texas at Austin
 
 e-book "Applied Machine Learning in Python: a Hands-on Guide with Code". 
 
-Cite as: Pyrcz, M.J., 2024, Applied Machine Learning in Python: a Hands-on Guide with Code, https://geostatsguy.github.io/MachineLearningDemos_Book. 
+Cite as: Pyrcz, M. J. (2024). Applied Machine Learning in Python: A Hands-on Guide with Code. https://doi.org/10.5281/zenodo.15169139
 
 By Michael J. Pyrcz <br />
 &copy; Copyright 2024.
