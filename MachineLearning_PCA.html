@@ -178,8 +178,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_plotting_data_models.html">Loading and Plotting Data and Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_univariate_statistics.html">Univariate Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_univariate_analysis.html">Univariate Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_multivariate_analysis.html">Multivariate Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_declustering.html">Spatial Data Debiasing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_bootstrap.html">Bootstrap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_monte_carlo_simulation.html">Monte Carlo Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_transformations.html">Feature Transformations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_ranking.html">Feature Ranking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_imputation.html">Feature Imputation</a></li>
@@ -204,10 +208,14 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_activation_functions.html">Neural Networks Activation Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ANN.html">Artificial Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_CNN.html">Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_RNN.html">Recurrent Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_autoencoder.html">Autoencoder Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_GAN.html">Generative Adversarial Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_attention.html">Attention</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_time_series.html">Time Series Analysis and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_volume_variance.html">Volume-variance Relations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_model_checking.html">Model Checking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_decision_making.html">Decision Making with Uncertainty</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_python.html">Python Code Snippets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
@@ -411,7 +419,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-for-principal-component-analysis">Motivation for Principal Component Analysis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#curse-of-dimensionality">Curse of Dimensionality</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inferential-machine-learning">Inferential Machine Learning</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Principal Component Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-component-analysis-method">Principal Component Analysis Method</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonal-transformation">Orthogonal Transformation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#best-fitting-interpretation">Best Fitting Interpretation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotation-based-intepretation">Rotation-based Intepretation</a></li>
@@ -438,7 +446,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstration-of-dimensional-reduction">Demonstration of Dimensional Reduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#all-predictor-features">All Predictor Features</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scree-plots">Scree Plots</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Independence of Principal Component Scores</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Independence of Principal Component Scores</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduced-dimensionality-impact-on-a-2-feature-relationship">Reduced Dimensionality Impact on a 2 Feature Relationship</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduced-dimensionality-impact-on-matrix-scatter-plots-of-all-features">Reduced Dimensionality Impact on Matrix Scatter Plots of All Features</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-components-analysis-on-uncorrelated-data">Principal Components Analysis on Uncorrelated Data</a></li>
@@ -475,7 +483,7 @@ document.write(`
 <p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite this e-Book as:</p>
-<p>Pyrcz, M.J., 2024, <em>Applied Machine Learning in Python: A Hands-on Guide with Code</em> [e-book]. Zenodo. doi:10.5281/zenodo.15169138 <a class="reference external" href="https://doi.org/10.5281/zenodo.15169138"><img alt="DOI" src="https://zenodo.org/badge/863274676.svg" /></a></p>
+<p>Pyrcz, M.J., 2024, <em>Applied Machine Learning in Python: A Hands-on Guide with Code</em> [e-book]. Zenodo. doi:10.5281/zenodo.15169139 <a class="reference external" href="https://doi.org/10.5281/zenodo.15169139"><img alt="DOI" src="https://zenodo.org/badge/863274676.svg" /></a></p>
 </div>
 <p>The workflows in this book and more are available here:</p>
 <div class="remove-from-content-only admonition">
@@ -637,8 +645,8 @@ c =  c_1^m
 <li><p>We focus on inference of the population, the natural system, instead of prediction of response features.</p></li>
 </ul>
 </section>
-<section id="id1">
-<h2>Principal Component Analysis<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<section id="principal-component-analysis-method">
+<h2>Principal Component Analysis Method<a class="headerlink" href="#principal-component-analysis-method" title="Permalink to this heading">#</a></h2>
 <p>Principal Component Analysis one of a variety of methods for dimensional reduction:</p>
 <p>Dimensional reduction transforms the data to a lower dimension</p>
 <ul class="simple">
@@ -2104,8 +2112,8 @@ Variance Transformed Por = [&#39;Por&#39;, &#39;LogPerm&#39;, &#39;AI&#39;, &#39
 </div>
 <p>We can see that about 46% of the variance is described by the 1st principal component and then about 25% is described by the 2nd principal component etc.</p>
 </section>
-<section id="id2">
-<h2>Independence of Principal Component Scores<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<section id="id1">
+<h2>Independence of Principal Component Scores<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>Let’s check the pairwise feature correlations before and after the projection.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2353,29 +2361,29 @@ Correlation Matrix of the 6 principle components&#39; scores:
 Proportion of variance of original features:  [0.2 0.2 0.2 0.2 0.2]
 Correlation Matrix of original features:
 
-[[ 0.08  0.   -0.    0.    0.  ]
- [ 0.    0.08 -0.    0.   -0.  ]
- [-0.   -0.    0.08 -0.    0.  ]
- [ 0.    0.   -0.    0.08 -0.  ]
- [ 0.   -0.    0.   -0.    0.08]]
+[[ 0.08  0.    0.    0.    0.  ]
+ [ 0.    0.08  0.   -0.    0.  ]
+ [ 0.    0.    0.08 -0.    0.  ]
+ [ 0.   -0.   -0.    0.08  0.  ]
+ [ 0.    0.    0.    0.    0.08]]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PCA Variance Explained  [0.21 0.2  0.2  0.2  0.19]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PCA Variance Explained  [0.2 0.2 0.2 0.2 0.2]
 
 Correlation Matrix of scores:
 
-[[ 0.09 -0.    0.   -0.    0.  ]
- [-0.    0.08  0.   -0.    0.  ]
- [ 0.    0.    0.08  0.    0.  ]
- [-0.   -0.    0.    0.08 -0.  ]
- [ 0.    0.    0.   -0.    0.08]]
+[[ 0.08 -0.   -0.    0.    0.  ]
+ [-0.    0.08 -0.    0.   -0.  ]
+ [-0.   -0.    0.08  0.    0.  ]
+ [ 0.    0.    0.    0.08 -0.  ]
+ [ 0.   -0.    0.   -0.    0.08]]
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.98, &#39;Principal Component Scores&#39;)
 </pre></div>
 </div>
-<img alt="_images/5aa9e53f3951fb0b3154c64eddecea5a9b65f2805a920a949f168c860ceda837.png" src="_images/5aa9e53f3951fb0b3154c64eddecea5a9b65f2805a920a949f168c860ceda837.png" />
-<img alt="_images/f3336ac8d05b9c191bdafd90d138f87b61ba431909c392e85ba8cc427d606d04.png" src="_images/f3336ac8d05b9c191bdafd90d138f87b61ba431909c392e85ba8cc427d606d04.png" />
+<img alt="_images/6758f8af456557580d86635638fae2198b22e23f6e2706b6e301d021a41068fb.png" src="_images/6758f8af456557580d86635638fae2198b22e23f6e2706b6e301d021a41068fb.png" />
+<img alt="_images/1535faa71fc280f096e4b16507b271628259d357a54633cce67e7e16ce0f3246.png" src="_images/1535faa71fc280f096e4b16507b271628259d357a54633cce67e7e16ce0f3246.png" />
 </div>
 </div>
 <p>What happens when principal component analysis is applied to uncorrelated, uniformly distributed features?</p>
@@ -2828,7 +2836,7 @@ Correlation Matrix of scores:
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
 <p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
@@ -2911,7 +2919,7 @@ Correlation Matrix of scores:
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-for-principal-component-analysis">Motivation for Principal Component Analysis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#curse-of-dimensionality">Curse of Dimensionality</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inferential-machine-learning">Inferential Machine Learning</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Principal Component Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-component-analysis-method">Principal Component Analysis Method</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonal-transformation">Orthogonal Transformation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#best-fitting-interpretation">Best Fitting Interpretation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotation-based-intepretation">Rotation-based Intepretation</a></li>
@@ -2938,7 +2946,7 @@ Correlation Matrix of scores:
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstration-of-dimensional-reduction">Demonstration of Dimensional Reduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#all-predictor-features">All Predictor Features</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scree-plots">Scree Plots</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Independence of Principal Component Scores</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Independence of Principal Component Scores</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduced-dimensionality-impact-on-a-2-feature-relationship">Reduced Dimensionality Impact on a 2 Feature Relationship</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduced-dimensionality-impact-on-matrix-scatter-plots-of-all-features">Reduced Dimensionality Impact on Matrix Scatter Plots of All Features</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-components-analysis-on-uncorrelated-data">Principal Components Analysis on Uncorrelated Data</a></li>

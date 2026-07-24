@@ -70,7 +70,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Multivariate Analysis" href="MachineLearning_multivariate_analysis.html" />
-    <link rel="prev" title="Loading and Plotting Data and Models" href="MachineLearning_plotting_data_models.html" />
+    <link rel="prev" title="Univariate Statistics" href="MachineLearning_univariate_statistics.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -178,8 +178,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_plotting_data_models.html">Loading and Plotting Data and Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_univariate_statistics.html">Univariate Statistics</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Univariate Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_multivariate_analysis.html">Multivariate Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_declustering.html">Spatial Data Debiasing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_bootstrap.html">Bootstrap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_monte_carlo_simulation.html">Monte Carlo Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_transformations.html">Feature Transformations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_ranking.html">Feature Ranking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_imputation.html">Feature Imputation</a></li>
@@ -204,10 +208,14 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_activation_functions.html">Neural Networks Activation Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ANN.html">Artificial Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_CNN.html">Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_RNN.html">Recurrent Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_autoencoder.html">Autoencoder Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_GAN.html">Generative Adversarial Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_attention.html">Attention</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_time_series.html">Time Series Analysis and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_volume_variance.html">Volume-variance Relations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_model_checking.html">Model Checking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_decision_making.html">Decision Making with Uncertainty</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_python.html">Python Code Snippets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
@@ -410,14 +418,14 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-for-univariate-analysis">Motivation for Univariate Analysis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions">Definitions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histograms">Histograms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram">Histogram</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalized-histogram">Normalized Histogram</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-bin-size">Histogram Bin Size</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function-pdf">Probability Density Function (PDF)</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function">Probability Density Function</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-a-pdf">Calculating a PDF</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cumulative-distribution-function-cdf">Cumulative Distribution Function (CDF)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cumulative-distribution-function">Cumulative Distribution Function</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-variable">Random Variable</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-functions">Define Functions</a></li>
@@ -426,7 +434,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-dataframe">Visualizing the DataFrame</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-univariate-statistics-for-tabular-data">Summary Univariate Statistics for Tabular Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weighted-univariate-statistics">Weighted Univariate Statistics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Histograms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histograms">Histograms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-bins-number-of-bins-and-bin-size">Histogram Bins, Number of Bins and Bin Size</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-a-histogram-with-the-matplotlib-package">Plotting a Histogram with the matplotlib Package</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalized-histograms">Normalized Histograms</a></li>
@@ -458,7 +466,7 @@ document.write(`
 <p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite this e-Book as:</p>
-<p>Pyrcz, M.J., 2024, <em>Applied Machine Learning in Python: A Hands-on Guide with Code</em> [e-book]. Zenodo. doi:10.5281/zenodo.15169138 <a class="reference external" href="https://doi.org/10.5281/zenodo.15169138"><img alt="DOI" src="https://zenodo.org/badge/863274676.svg" /></a></p>
+<p>Pyrcz, M.J., 2024, <em>Applied Machine Learning in Python: A Hands-on Guide with Code</em> [e-book]. Zenodo. doi:10.5281/zenodo.15169139 <a class="reference external" href="https://doi.org/10.5281/zenodo.15169139"><img alt="DOI" src="https://zenodo.org/badge/863274676.svg" /></a></p>
 </div>
 <p>The workflows in this book and more are available here:</p>
 <div class="remove-from-content-only admonition">
@@ -517,8 +525,8 @@ document.write(`
 </li>
 </ul>
 </section>
-<section id="histograms">
-<h2>Histograms<a class="headerlink" href="#histograms" title="Permalink to this heading">#</a></h2>
+<section id="histogram">
+<h2>Histogram<a class="headerlink" href="#histogram" title="Permalink to this heading">#</a></h2>
 <p>A histogram is a bar plot of frequency over an exhaustive set of bins or categories. A histogram is calculated with the following steps:</p>
 <ol class="arabic simple">
 <li><p>Divide the continuous feature  range of possible values into 𝐾 equal size bins, ∆𝑥, or categories,</p></li>
@@ -598,8 +606,8 @@ document.write(`
 <li><p>the distribution may appear to approach a uniform distribution as the bin size approaches extremely too small or too large</p></li>
 </ul>
 </section>
-<section id="probability-density-function-pdf">
-<h2>Probability Density Function (PDF)<a class="headerlink" href="#probability-density-function-pdf" title="Permalink to this heading">#</a></h2>
+<section id="probability-density-function">
+<h2>Probability Density Function<a class="headerlink" href="#probability-density-function" title="Permalink to this heading">#</a></h2>
 <p>A function, <span class="math notranslate nohighlight">\(𝑓_x(𝑥)\)</span>, of probability density across the range of all possible feature values, <span class="math notranslate nohighlight">\(𝑥\)</span>, with the following constraints:</p>
 <ul class="simple">
 <li><p>non-negativity, note for continuous variables (features) density may be <span class="math notranslate nohighlight">\(&gt; 1.0\)</span></p></li>
@@ -703,8 +711,8 @@ area_{triangle} = \frac{1}{2} \cdot w \cdot h = \frac{1}{2} \cdot 0.1 \cdot 1.0 
 </figure>
 </section>
 </section>
-<section id="cumulative-distribution-function-cdf">
-<h2>Cumulative Distribution Function (CDF)<a class="headerlink" href="#cumulative-distribution-function-cdf" title="Permalink to this heading">#</a></h2>
+<section id="cumulative-distribution-function">
+<h2>Cumulative Distribution Function<a class="headerlink" href="#cumulative-distribution-function" title="Permalink to this heading">#</a></h2>
 <p>The cumulative distribution function (CDF) is the sum of a discrete PDF or the integral of a continuous PDF.</p>
 <ul class="simple">
 <li><p>the cumulative distribution function <span class="math notranslate nohighlight">\(𝑭_𝒙 (𝒙)\)</span> is the probability that a random sample, <span class="math notranslate nohighlight">\(𝑿\)</span>, is less than or equal to a value <span class="math notranslate nohighlight">\(𝒙\)</span>.</p></li>
@@ -784,7 +792,7 @@ min(F_x(x)) = 0.0 \quad \quad max(F_x(x)) = 1.0
 <p>Look carefully, the CDFs above are from the PDFs in the previous example!</p>
 <p>Now let’s challenge ourselves with 1 last example, is this a valid CDF?</p>
 <figure style="text-align: center;">
-  <img src="_static/univariate/cdf_valid2.png" style="display: block; margin: 0 auto; width: 30%;">
+  <img src="_static/univariate/cdf_valid3.png" style="display: block; margin: 0 auto; width: 30%;">
   <figcaption style="text-align: center;"> Four schematics of CDFs, 1, 2, 3 and 4, from left to right.
 </figcaption>
 </figure>
@@ -793,7 +801,7 @@ min(F_x(x)) = 0.0 \quad \quad max(F_x(x)) = 1.0
 <li><p><strong>Yes</strong> - this is a data spike, 80% of the samples are 0.1 leading to a vertical segment in the CDF that extends for 0.8 cumulative probability.</p></li>
 </ul>
 <figure style="text-align: center;">
-  <img src="_static/univariate/cdf_valid2_soln.png" style="display: block; margin: 0 auto; width: 60%;">
+  <img src="_static/univariate/cdf_valid3_soln.png" style="display: block; margin: 0 auto; width: 60%;">
   <figcaption style="text-align: center;"> Four schematics of CDFs, 1, 2, 3 and 4, from left to right and assessments of validity.
 </figcaption>
 </figure>
@@ -1238,8 +1246,8 @@ more latter on this!</p></li>
 </div></div></div>
 </div>
 <p>We can also use a wide variety of statistical summaries built into NumPy’s ndarrays.  When we use the command:</p>
-<div class="highlight-p notranslate"><div class="highlight"><pre><span></span>df[&#39;Porosity&#39;]                       # returns an Pandas series
-df[&#39;Porosity&#39;].values                # returns an ndarray
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span>                       <span class="c1"># returns an Pandas series</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>                <span class="c1"># returns an ndarray</span>
 </pre></div>
 </div>
 <p>Panda’s DataFrame returns all the porosity data as a series and if we add ‘values’ it returns a NumPy ndarray and we have access to a lot of NumPy methods. I also like to use the round function to round the answer to a limited number of digits for accurate reporting of precision and ease of reading.</p>
@@ -1365,8 +1373,8 @@ Porosity kurtosis is -1.56
 </div>
 </div>
 </section>
-<section id="id1">
-<h2>Histograms<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<section id="histograms">
+<h2>Histograms<a class="headerlink" href="#histograms" title="Permalink to this heading">#</a></h2>
 <p>Let’s display some histograms. I reimplemented the hist function from GSLIB. Preview the parameters by typing the command without parameters.</p>
 <ul class="simple">
 <li><p>also to learn about function parameters the alt-tab key combination with cursor in the function parentheses is often available to access the “docstrings” or check the Python package docs.</p></li>
@@ -1682,7 +1690,7 @@ Band Width = 0.3, bandwidth x standard deviation = 0.014906191711808122
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
 <p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
@@ -1730,12 +1738,12 @@ Band Width = 0.3, bandwidth x standard deviation = 0.014906191711808122
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="MachineLearning_plotting_data_models.html"
+       href="MachineLearning_univariate_statistics.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Loading and Plotting Data and Models</p>
+        <p class="prev-next-title">Univariate Statistics</p>
       </div>
     </a>
     <a class="right-next"
@@ -1764,14 +1772,14 @@ Band Width = 0.3, bandwidth x standard deviation = 0.014906191711808122
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-for-univariate-analysis">Motivation for Univariate Analysis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions">Definitions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histograms">Histograms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram">Histogram</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalized-histogram">Normalized Histogram</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-bin-size">Histogram Bin Size</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function-pdf">Probability Density Function (PDF)</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function">Probability Density Function</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-a-pdf">Calculating a PDF</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cumulative-distribution-function-cdf">Cumulative Distribution Function (CDF)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cumulative-distribution-function">Cumulative Distribution Function</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-variable">Random Variable</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-functions">Define Functions</a></li>
@@ -1780,7 +1788,7 @@ Band Width = 0.3, bandwidth x standard deviation = 0.014906191711808122
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-dataframe">Visualizing the DataFrame</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-univariate-statistics-for-tabular-data">Summary Univariate Statistics for Tabular Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weighted-univariate-statistics">Weighted Univariate Statistics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Histograms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histograms">Histograms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-bins-number-of-bins-and-bin-size">Histogram Bins, Number of Bins and Bin Size</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-a-histogram-with-the-matplotlib-package">Plotting a Histogram with the matplotlib Package</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalized-histograms">Normalized Histograms</a></li>

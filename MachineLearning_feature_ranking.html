@@ -178,8 +178,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_plotting_data_models.html">Loading and Plotting Data and Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_univariate_statistics.html">Univariate Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_univariate_analysis.html">Univariate Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_multivariate_analysis.html">Multivariate Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_declustering.html">Spatial Data Debiasing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_bootstrap.html">Bootstrap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_monte_carlo_simulation.html">Monte Carlo Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_transformations.html">Feature Transformations</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Feature Ranking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_imputation.html">Feature Imputation</a></li>
@@ -204,10 +208,14 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_activation_functions.html">Neural Networks Activation Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ANN.html">Artificial Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_CNN.html">Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_RNN.html">Recurrent Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_autoencoder.html">Autoencoder Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_GAN.html">Generative Adversarial Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_attention.html">Attention</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_time_series.html">Time Series Analysis and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_volume_variance.html">Volume-variance Relations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_model_checking.html">Model Checking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_decision_making.html">Decision Making with Uncertainty</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_python.html">Python Code Snippets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
@@ -432,9 +440,9 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semipartial-correlation-coefficient">Semipartial Correlation Coefficient</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-ranking-with-feature-transformations">Feature Ranking with Feature Transformations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-statistics">Conditional Statistics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-inflation-factor-vif">Variance Inflation Factor (VIF)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-coefficients-beta-weights"><span class="math notranslate nohighlight">\(B\)</span> Coefficients / Beta Weights</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beta-coefficients-beta-weights"><span class="math notranslate nohighlight">\(\beta\)</span> Coefficients / Beta Weights</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-inflation-factor">Variance Inflation Factor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-coefficients">B Coefficients</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beta-weights">Beta Weights</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-importance">Feature Importance</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mutual-information">Mutual Information</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mutual-information-accounting-for-relevance-and-redundancy">Mutual Information Accounting For Relevance and Redundancy</a></li>
@@ -479,7 +487,7 @@ document.write(`
 <p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite this e-Book as:</p>
-<p>Pyrcz, M.J., 2024, <em>Applied Machine Learning in Python: A Hands-on Guide with Code</em> [e-book]. Zenodo. doi:10.5281/zenodo.15169138 <a class="reference external" href="https://doi.org/10.5281/zenodo.15169138"><img alt="DOI" src="https://zenodo.org/badge/863274676.svg" /></a></p>
+<p>Pyrcz, M.J., 2024, <em>Applied Machine Learning in Python: A Hands-on Guide with Code</em> [e-book]. Zenodo. doi:10.5281/zenodo.15169139 <a class="reference external" href="https://doi.org/10.5281/zenodo.15169139"><img alt="DOI" src="https://zenodo.org/badge/863274676.svg" /></a></p>
 </div>
 <p>The workflows in this book and more are available here:</p>
 <div class="remove-from-content-only admonition">
@@ -1215,8 +1223,8 @@ c =  c_1^m
 <ul class="simple">
 <li><p>We can also establish the feature ranges for plotting. We could calculate the feature range directly from the data with code like this:</p></li>
 </ul>
-<div class="highlight-p notranslate"><div class="highlight"><pre><span></span>Pormin = np.min(df[&#39;Por&#39;].values)                             # extract ndarray of data table column
-Pormax = np.max(df[&#39;Por&#39;].values)                             # and calculate min and max
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Pormin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Por&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>                             <span class="c1"># extract ndarray of data table column</span>
+<span class="n">Pormax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Por&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>                             <span class="c1"># and calculate min and max</span>
 </pre></div>
 </div>
 <p>but, this would not result in easy to understand color bars and axis scales, let’s pick convenient round numbers. We will also declare feature labels for ease of plotting.</p>
@@ -1856,7 +1864,7 @@ C_{xy}  = \frac{\sum_{i=1}^{n} (x_i - \overline{x})(y_i - \overline{y})}{(n-1)}
 <li><p>sensitive to the dispersion / variance of both the predictor and response</p></li>
 </ul>
 <p>We can use the follow command to build a covariance matrix:</p>
-<div class="highlight-p notranslate"><div class="highlight"><pre><span></span>df.iloc[:,1:8].cov()                                    # covariance matrix sliced predictors vs. response
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span>                                    <span class="c1"># covariance matrix sliced predictors vs. response</span>
 </pre></div>
 </div>
 <p>the output is a new Pandas DataFrame, so we can slice the last column to get a Pandas series (ndarray with names) with the covariances between all predictors features and the response.</p>
@@ -1904,7 +1912,7 @@ C_{xy}  = \frac{\sum_{i=1}^{n} (x_i - \overline{x})(y_i - \overline{y})}{(n-1)}
 <li><p>removes the sensitivity to the dispersion / variance of both the predictor and response features, by normalizing by the product of the standard deviation of each feature</p></li>
 </ul>
 <p>We can use the follow command to build a correlation matrix:</p>
-<div class="highlight-p notranslate"><div class="highlight"><pre><span></span>df.iloc[:,1:8].corr()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>the output is a new Pandas DataFrame, so we can slice the last column to get a Pandas series (ndarray with names) with the correlations between all predictors features and the response.</p>
@@ -1962,7 +1970,7 @@ R_{x_i} = i
 <li><p>removes the sensitivity to the dispersion / variance of both the predictor and response, by normalizing by the product of the standard deviation of each.</p></li>
 </ul>
 <p>We can use the follow command to build a rank correlation matrix and calculate the p-value:</p>
-<div class="highlight-p notranslate"><div class="highlight"><pre><span></span>stats.spearmanr(df.iloc[:,1:8])
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stats</span><span class="o">.</span><span class="n">spearmanr</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>the output is a new Pandas DataFrame, so we can slice the last column to get a Pandas series (ndarray with names) with
@@ -2582,8 +2590,8 @@ H_1: \rho_{R_x R_y} \ne 0
 <li><p>We can observed the outliers in porosity, permeability (upper tail), total organic carbon (lower tail) and vitrinite reflectance.</p></li>
 </ul>
 </section>
-<section id="variance-inflation-factor-vif">
-<h2>Variance Inflation Factor (VIF)<a class="headerlink" href="#variance-inflation-factor-vif" title="Permalink to this heading">#</a></h2>
+<section id="variance-inflation-factor">
+<h2>Variance Inflation Factor<a class="headerlink" href="#variance-inflation-factor" title="Permalink to this heading">#</a></h2>
 <p>A measure of linear multicollinearity between a predictor feature (<span class="math notranslate nohighlight">\(X_i\)</span>) a nd all other predictor features (<span class="math notranslate nohighlight">\(X_j, \forall j \ne i\)</span>).</p>
 <p>First we calculate a linear regression for a predictor feature given all the other predictor features.</p>
 <div class="math notranslate nohighlight">
@@ -2634,8 +2642,8 @@ VIF = \frac{1}{1 - R^2}
 </ul>
 <p>Now let’s cover model-based feature ranking methods.</p>
 </section>
-<section id="b-coefficients-beta-weights">
-<h2><span class="math notranslate nohighlight">\(B\)</span> Coefficients / Beta Weights<a class="headerlink" href="#b-coefficients-beta-weights" title="Permalink to this heading">#</a></h2>
+<section id="b-coefficients">
+<h2>B Coefficients<a class="headerlink" href="#b-coefficients" title="Permalink to this heading">#</a></h2>
 <p>We could also consider <span class="math notranslate nohighlight">\(B\)</span> coefficients.  These are the linear regression coefficients without standardization of the variables. Let’s use the linear regression method that is available in the SciPy package.</p>
 <p>The estimator for <span class="math notranslate nohighlight">\(Y\)</span> is simply the linear equation:</p>
 <p>\begin{equation}
@@ -2664,8 +2672,8 @@ Y^* = \sum_{i=1}^{m} b_i X_i + c
 </ul>
 <p>We can remove this sensitivity by working with standardized features.</p>
 </section>
-<section id="beta-coefficients-beta-weights">
-<h2><span class="math notranslate nohighlight">\(\beta\)</span> Coefficients / Beta Weights<a class="headerlink" href="#beta-coefficients-beta-weights" title="Permalink to this heading">#</a></h2>
+<section id="beta-weights">
+<h2>Beta Weights<a class="headerlink" href="#beta-weights" title="Permalink to this heading">#</a></h2>
 <p><span class="math notranslate nohighlight">\(\beta\)</span> coefficients are calculated as the linear regression of the coefficients after we have standardized the predictor and response features to have a variance of one.</p>
 <p>\begin{equation}
 \sigma^2_{X^s_i} = 1.0 \quad \forall \quad i = 1,\ldots,m, \quad \sigma^2_{Y^s} = 1.0
@@ -3377,7 +3385,7 @@ Rank #6 AI
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
 <p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
@@ -3481,9 +3489,9 @@ Rank #6 AI
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semipartial-correlation-coefficient">Semipartial Correlation Coefficient</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-ranking-with-feature-transformations">Feature Ranking with Feature Transformations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-statistics">Conditional Statistics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-inflation-factor-vif">Variance Inflation Factor (VIF)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-coefficients-beta-weights"><span class="math notranslate nohighlight">\(B\)</span> Coefficients / Beta Weights</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beta-coefficients-beta-weights"><span class="math notranslate nohighlight">\(\beta\)</span> Coefficients / Beta Weights</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-inflation-factor">Variance Inflation Factor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-coefficients">B Coefficients</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beta-weights">Beta Weights</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-importance">Feature Importance</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mutual-information">Mutual Information</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mutual-information-accounting-for-relevance-and-redundancy">Mutual Information Accounting For Relevance and Redundancy</a></li>
