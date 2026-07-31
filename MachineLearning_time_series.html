@@ -174,6 +174,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_concepts.html">Machine Learning Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_subsurface_modeling.html">Subsurface Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_training_tuning.html">Training and Tuning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
@@ -219,7 +220,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_python.html">Python Code Snippets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_a_c.html">Glossary A-C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_d_f.html">Glossary D-F</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_g_l.html">Glossary G-L</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_m_r.html">Glossary M-R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_s_z.html">Glossary S-Z</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -441,7 +446,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
 </ul>
             </nav>
         </div>
@@ -481,34 +485,34 @@ document.write(`
 <p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
 <section id="motivation-for-time-series-analysis-and-modeling">
 <h2>Motivation for Time Series Analysis and Modeling<a class="headerlink" href="#motivation-for-time-series-analysis-and-modeling" title="Permalink to this heading">#</a></h2>
-<p>Time series data is typically 1D over time. This data may be univariate, bivariate or multivariate. So why not just apply regular machine learning methods in 1D? There are many unique aspects for time series analysis and modeling that preclude this:</p>
+<p>Time series data is typically 1D over time. This data may be <a class="reference internal" href="MachineLearning_glossary_s_z.html#univariate"><span class="std std-doc">univariate</span></a>, <a class="reference internal" href="MachineLearning_glossary_a_c.html#bivariate"><span class="std std-doc">bivariate</span></a> or <a class="reference internal" href="MachineLearning_glossary_m_r.html#multivariate"><span class="std std-doc">multivariate</span></a>. So why not just apply regular machine learning methods in 1D? There are many unique aspects for time series analysis and modeling that preclude this:</p>
 <ul class="simple">
-<li><p>time series phenomenon are often highly nonstationary with trends and cyclicity</p></li>
+<li><p>time series phenomenon are often highly nonstationary with <a class="reference internal" href="MachineLearning_glossary_s_z.html#trend"><span class="std std-doc">trend</span></a>s and cyclicity</p></li>
 <li><p>time series models are often focused on forecasting, i.e., significant extrapolation</p></li>
-<li><p>over the observed time interval the data is usually dense, and often exhaustive with sampling at the same rate as applied in the trained model</p></li>
+<li><p>over the observed time interval the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> is usually dense, and often exhaustive with sampling at the same rate as applied in the trained model</p></li>
 </ul>
 <p>As result, we need a unique set of tools, analysis and models to address time series phenomenon.</p>
 </section>
 <section id="id1">
 <h2>Time Series Analysis and Modeling<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
-<p>Time series analysis for learning from time series data. Here are some key aspects of time series analysis and modeling.</p>
+<p>Time series analysis for learning from time series <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>. Here are some <a class="reference internal" href="MachineLearning_glossary_g_l.html#key"><span class="std std-doc">key</span></a> aspects of time series analysis and modeling.</p>
 <p><strong>One Dimensional</strong></p>
 <ul class="simple">
-<li><p>whereas spatial data is typically over 2 or 3 dimensions and multivariate data may have any dimension in feature space, time series data is fundamentally a 1D dataset with measures over <span class="math notranslate nohighlight">\(y(\bf{t_{\alpha}})\)</span>, for <span class="math notranslate nohighlight">\(\alpha = 1, \dots, n\)</span> samples typically observed at a constant rate.</p></li>
+<li><p>whereas spatial data is typically over 2 or 3 dimensions and <a class="reference internal" href="MachineLearning_glossary_m_r.html#multivariate"><span class="std std-doc">multivariate</span></a> data may have any dimension in <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-space"><span class="std std-doc">feature space</span></a>, time series data is fundamentally a 1D dataset with measures over <span class="math notranslate nohighlight">\(y(\bf{t_{\alpha}})\)</span>, for <span class="math notranslate nohighlight">\(\alpha = 1, \dots, n\)</span> <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s typically observed at a constant rate.</p></li>
 </ul>
 <p><strong>Compositional</strong></p>
 <ul class="simple">
-<li><p>time series data may often be decomposed into separate additive or multiplicative trend, seasonal and residual components.</p></li>
+<li><p>time series data may often be decomposed into separate additive or multiplicative <a class="reference internal" href="MachineLearning_glossary_s_z.html#trend"><span class="std std-doc">trend</span></a>, seasonal and residual components.</p></li>
 <li><p>any model will need to account for each of these components</p></li>
 </ul>
 <p><strong>Autocorrelation</strong></p>
 <ul class="simple">
 <li><p>the autocorrelation is commonly applied to quantify the degree information shared over intervals of time.</p></li>
-<li><p>note autocorrelation is known as the correlogram in geostatistics and the principals, calculation and modeling procedures are the same.</p></li>
+<li><p>note autocorrelation is known as the <a class="reference internal" href="MachineLearning_glossary_a_c.html#correlogram"><span class="std std-doc">correlogram</span></a> in <a class="reference internal" href="MachineLearning_glossary_g_l.html#geostatistics"><span class="std std-doc">geostatistics</span></a> and the principals, calculation and modeling procedures are the same.</p></li>
 </ul>
 <p><strong>Nonstationary</strong></p>
 <ul class="simple">
-<li><p>time series data are often nonstationary and are commonly evaluated with moving window statistics to characterize and model changes over time</p></li>
+<li><p>time series data are often nonstationary and are commonly evaluated with moving window <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">statistics</span></a> to characterize and model changes over time</p></li>
 <li><p>the choice of moving window size is analogous (although not exactly equivalent) to the k hyperparameter for k-nearest neighbour models.</p></li>
 </ul>
 </section>
@@ -520,22 +524,22 @@ document.write(`
 <li><p>mill efficiency measured as recover rate of mineral extraction from the plan feed to forecast mineral production</p></li>
 <li><p>rate of natural gas production for a well in a specific reservoir to determine the number of well needed to meet local energy needs</p></li>
 </ol>
-<p>In addition, there are many systems with mixed multivariate with time series phenomenon. For the above,</p>
+<p>In addition, there are many systems with mixed <a class="reference internal" href="MachineLearning_glossary_m_r.html#multivariate"><span class="std std-doc">multivariate</span></a> with time series phenomenon. For the above,</p>
 <ol class="arabic simple">
-<li><p>inclusion of population, GDP and efficiency measures to improve the CO2 emission forecasts</p></li>
+<li><p>inclusion of <a class="reference internal" href="MachineLearning_glossary_m_r.html#population"><span class="std std-doc">population</span></a>, GDP and efficiency measures to improve the CO2 emission forecasts</p></li>
 <li><p>inclusion of mineral grades, mining schedule and plant down time to improve mill mineral production forecasts</p></li>
-<li><p>inclusion of local models of facies, porosity and permeability models to improve well natural gas production forecasts.</p></li>
+<li><p>inclusion of local models of <a class="reference internal" href="MachineLearning_glossary_d_f.html#facies"><span class="std std-doc">facies</span></a>, porosity and permeability models to improve well natural gas production forecasts.</p></li>
 </ol>
-<p>While multivariate is important, for this brevity I only cover univariate time series analysis and modeling here.</p>
+<p>While multivariate is important, for this brevity I only cover <a class="reference internal" href="MachineLearning_glossary_s_z.html#univariate"><span class="std std-doc">univariate</span></a> time series analysis and modeling here.</p>
 </section>
 <section id="what-do-i-cover">
 <h2>What Do I Cover?<a class="headerlink" href="#what-do-i-cover" title="Permalink to this heading">#</a></h2>
-<p>For time series analysis, modeling and prediction the following is included:</p>
+<p>For time series analysis, modeling and <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a> the following is included:</p>
 <ul class="simple">
 <li><p>Formatting time series dataset</p></li>
 <li><p>Basic time series visualization</p></li>
 <li><p>Autocorrelation analysis</p></li>
-<li><p>Trend modeling and differencing for detrending</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_s_z.html#trend"><span class="std std-doc">Trend</span></a> modeling and differencing for detrending</p></li>
 <li><p>Time Series Decomposition with ARIMA modeling and forecasting</p></li>
 </ul>
 </section>
@@ -588,26 +592,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">20</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="kn">from</span> <span class="nn">statsmodels.tsa.seasonal</span> <span class="kn">import</span> <span class="n">seasonal_decompose</span>       <span class="c1"># decomposition time series model</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="kn">from</span> <span class="nn">statsmodels.tsa.arima.model</span> <span class="kn">import</span> <span class="n">ARIMA</span>                 <span class="c1"># ARIMA time series model</span>
-<span class="ne">---&gt; </span><span class="mi">20</span> <span class="kn">import</span> <span class="nn">pmdarima</span> <span class="k">as</span> <span class="nn">pm</span>                                         <span class="c1"># autotune for ARIMA</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">axisbelow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                                <span class="c1"># plot all grids below the plot elements</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="k">if</span> <span class="n">ignore_warnings</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>                                   
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;pmdarima&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <p>If you get a package import error, you may have to first install some of these packages. This can usually be accomplished by opening up a command window on Windows and then typing ‘python -m pip install [package-name]’. More assistance is available with the respective package docs.</p>
 </section>
 <section id="declare-functions">
 <h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
-<p>Let’s define a couple of functions to streamline plotting correlation matrices and visualization of a decision tree regression model.</p>
+<p>Let’s define a couple of functions to streamline plotting correlation matrices and visualization of a <a class="reference internal" href="MachineLearning_glossary_d_f.html#decision-tree"><span class="std std-doc">decision tree</span></a> <a class="reference internal" href="MachineLearning_glossary_m_r.html#regression"><span class="std std-doc">regression</span></a> model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">comma_format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
@@ -637,8 +627,8 @@ document.write(`
 <h2>Generating a Synthetic Time Series<a class="headerlink" href="#generating-a-synthetic-time-series" title="Permalink to this heading">#</a></h2>
 <p>We will build a simple time series representing production at an hypothetical lithium (Li) mine, where we have daily measurements of lithium recovery in tonnes per day.</p>
 <ul class="simple">
-<li><p>We will use an additive model with trend, cycles and stochastic noise (short scale continuity) features</p></li>
-<li><p>I have left the synthetic data generation workflow here, instead of just putting the resulting dataset on GitHub, to allow you to change the synthetic dataset and experiment with the following time series analysis and modeling workflow</p></li>
+<li><p>We will use an additive model with <a class="reference internal" href="MachineLearning_glossary_s_z.html#trend"><span class="std std-doc">trend</span></a>, cycles and stochastic noise (short scale continuity) <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s</p></li>
+<li><p>I have left the synthetic <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> generation workflow here, instead of just putting the resulting dataset on GitHub, to allow you to change the synthetic dataset and experiment with the following time series analysis and modeling workflow</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -696,20 +686,20 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/de9908e995c114d15936a149e8038b104ebd9312a2e5619ea3ae939d77c5c075.png" src="_images/de9908e995c114d15936a149e8038b104ebd9312a2e5619ea3ae939d77c5c075.png" />
+<img alt="_images/36da5fefba397496d9c5c4f677ba3712732a12c34385c1763edafd11c2e564f1.png" src="_images/36da5fefba397496d9c5c4f677ba3712732a12c34385c1763edafd11c2e564f1.png" />
 </div>
 </div>
 </section>
 <section id="time-series-dataframe">
 <h2>Time Series DataFrame<a class="headerlink" href="#time-series-dataframe" title="Permalink to this heading">#</a></h2>
-<p>Let’s make a pandas DataFrame with the lithium production data indexed by date of the production. We utilize the useful functionality with Pandas’ DataFrames to work with time series data, this includes:</p>
+<p>Let’s make a pandas DataFrame with the lithium <a class="reference internal" href="MachineLearning_glossary_m_r.html#production-data"><span class="std std-doc">production data</span></a> indexed by date of the production. We utilize the useful functionality with Pandas’ DataFrames to work with time series <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>, this includes:</p>
 <ul class="simple">
 <li><p>the ability to use various time formats for display</p></li>
 <li><p>to do calculations in time, like the number of day between to 2 dates in year, month and day of the month, i.e., Pandas knows the calendar!</p></li>
 </ul>
-<p>To do this we make date index parameterized by a start date, the number of periods (number of values in our model above, nx) and the sampling frequency ‘D’ indicating daily.</p>
+<p>To do this we make date index parameterized by a start date, the number of periods (number of <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s in our model above, nx) and the sampling frequency ‘D’ indicating daily.</p>
 <ul class="simple">
-<li><p>we set this as the data field for the DataFrame and set this to be the DataFrame’s index.</p></li>
+<li><p>we set this as the data field for the <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a> and set this to be the DataFrame’s index.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -740,15 +730,15 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e691ad67c088494bca1902ca2eccbeca888e1e181a07805002afcfce2d221c69.png" src="_images/e691ad67c088494bca1902ca2eccbeca888e1e181a07805002afcfce2d221c69.png" />
+<img alt="_images/1d58e59336f44ea66f254bb461ae0512f9bc7364a1b7bf3dcc8f19f6eafb310e.png" src="_images/1d58e59336f44ea66f254bb461ae0512f9bc7364a1b7bf3dcc8f19f6eafb310e.png" />
 </div>
 </div>
 <p>That’s a good plot for time series data. Now let’s start doing analysis with our lithium production data.</p>
 </section>
 <section id="autocorrelation">
 <h2>Autocorrelation<a class="headerlink" href="#autocorrelation" title="Permalink to this heading">#</a></h2>
-<p>Autocorrelation is applied in time series analysis to detect relationships over lags in time.  The autocorrelation is the correlogram (standardized covariance function) commonly used in geostatistics applied to the one dimensional time series data.</p>
-<p>Also, for the calculation of a predictive model we often check for the presence of autocorrelation between error residual values.</p>
+<p>Autocorrelation is applied in time series analysis to detect relationships over lags in time.  The autocorrelation is the <a class="reference internal" href="MachineLearning_glossary_a_c.html#correlogram"><span class="std std-doc">correlogram</span></a> (standardized <a class="reference internal" href="MachineLearning_glossary_a_c.html#covariance-function"><span class="std std-doc">covariance function</span></a>) commonly used in <a class="reference internal" href="MachineLearning_glossary_g_l.html#geostatistics"><span class="std std-doc">geostatistics</span></a> applied to the one dimensional time series <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>.</p>
+<p>Also, for the calculation of a predictive model we often check for the presence of autocorrelation between error residual <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s.</p>
 <ul class="simple">
 <li><p>we will use the autocorrelation and partial autocorrelation of our residual</p></li>
 </ul>
@@ -789,18 +779,18 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/571951ece6642a61469be64befcecce7f481183db4c66b738006213d06193ae3.png" src="_images/571951ece6642a61469be64befcecce7f481183db4c66b738006213d06193ae3.png" />
+<img alt="_images/13e253d6227a74ed87f0b4be18fac938dc2f2fa59a60f62cbb826b091afd9cc9.png" src="_images/13e253d6227a74ed87f0b4be18fac938dc2f2fa59a60f62cbb826b091afd9cc9.png" />
 </div>
 </div>
 </section>
 <section id="test-for-stationarity">
 <h2>Test for Stationarity<a class="headerlink" href="#test-for-stationarity" title="Permalink to this heading">#</a></h2>
-<p>Is this dataset stationary? Does the mean change locally? We use the Dickey-Fuller Test to test for stationarity of our time series with the following hypotheses:</p>
+<p>Is this dataset stationary? Does the <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a> change locally? We use the Dickey-Fuller Test to test for <a class="reference internal" href="MachineLearning_glossary_s_z.html#stationarity"><span class="std std-doc">stationarity</span></a> of our time series with the following hypotheses:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(H_0 =\)</span> time series is non-stationary</p></li>
 <li><p><span class="math notranslate nohighlight">\(H_1 =\)</span> time series is stationary</p></li>
 </ul>
-<p>If the <strong>Test Statistic</strong> is less then the <strong>Critical Value</strong> at an alpha level (1 - significance level) then we reject the null hypothesis and state that the time series is stationary.</p>
+<p>If the <strong>Test <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistic"><span class="std std-doc">Statistic</span></a></strong> is less then the <strong>Critical <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">Value</span></a></strong> at an alpha level (1 - significance level) then we reject the null hypothesis and state that the time series is stationary.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dickey-Fuller Test Results:&#39;</span><span class="p">)</span>
@@ -814,13 +804,13 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dickey-Fuller Test Results:
-Test Statistic                  -3.639408
-p-value                          0.005051
-#Lags Used                       8.000000
-Number of Observations Used    991.000000
-Critical Value (1%)             -3.436966
-Critical Value (5%)             -2.864461
-Critical Value (10%)            -2.568325
+Test Statistic                  -3.602892
+p-value                          0.005706
+#Lags Used                       7.000000
+Number of Observations Used    992.000000
+Critical Value (1%)             -3.436959
+Critical Value (5%)             -2.864458
+Critical Value (10%)            -2.568324
 dtype: float64
 </pre></div>
 </div>
@@ -833,21 +823,21 @@ dtype: float64
 </section>
 <section id="stationarity-transformations-for-time-series">
 <h2>Stationarity Transformations for Time Series<a class="headerlink" href="#stationarity-transformations-for-time-series" title="Permalink to this heading">#</a></h2>
-<p>Most time series models (like spatial models) require a stationarity assumption.</p>
+<p>Most time series models (like spatial models) require a <a class="reference internal" href="MachineLearning_glossary_s_z.html#stationarity"><span class="std std-doc">stationarity</span></a> assumption.</p>
 <p>To transform time series to stationary we must model and remove:</p>
 <ul class="simple">
-<li><p>trends - locally variable mean over the domain of the time series</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_s_z.html#trend"><span class="std std-doc">trend</span></a>s - locally <a class="reference internal" href="MachineLearning_glossary_s_z.html#variable"><span class="std std-doc">variable</span></a> <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a> over the domain of the time series</p></li>
 <li><p>seasonality - repeating cycles with a specific wavelength</p></li>
 </ul>
 </section>
 <section id="rolling-moving-window-statistics">
 <h2>Rolling, Moving Window Statistics<a class="headerlink" href="#rolling-moving-window-statistics" title="Permalink to this heading">#</a></h2>
-<p>We calculate moving window statistics to evaluate the local change in these statistics.</p>
+<p>We calculate moving window <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">statistics</span></a> to evaluate the local change in these statistics.</p>
 <ul class="simple">
 <li><p>visually observe the local changes continuously over the time series</p></li>
-<li><p>can be calculated on a wide range of statistics</p></li>
+<li><p>can be calculated on a wide range of <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistic"><span class="std std-doc">statistic</span></a>s</p></li>
 </ul>
-<p>We evaluate the moving window mean and sample standard deviation over a window of 20 days.</p>
+<p>We evaluate the moving window <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a> and <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a> <a class="reference internal" href="MachineLearning_glossary_s_z.html#standard-deviation"><span class="std std-doc">standard deviation</span></a> over a window of 20 days.</p>
 <ul class="simple">
 <li><p>assuming a uniform weighting of the statistics</p></li>
 <li><p>could consider triangular and Gaussian weighting templates for smoother results</p></li>
@@ -889,13 +879,13 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/bb7afd6d82a71cc3220fbb879a209780fea1f7b9e54d215deec73cd2448990e1.png" src="_images/bb7afd6d82a71cc3220fbb879a209780fea1f7b9e54d215deec73cd2448990e1.png" />
+<img alt="_images/4e540e46fd3c3c275fef539af7cb8145b7463499c6b02850e4891dd9eeeff097.png" src="_images/4e540e46fd3c3c275fef539af7cb8145b7463499c6b02850e4891dd9eeeff097.png" />
 </div>
 </div>
 </section>
 <section id="working-with-residuals">
 <h2>Working with Residuals<a class="headerlink" href="#working-with-residuals" title="Permalink to this heading">#</a></h2>
-<p>Let’s remove (subtract) the moving window average from the original production time series and calculate the residual.</p>
+<p>Let’s remove (subtract) the moving window <a class="reference internal" href="MachineLearning_glossary_a_c.html#average"><span class="std std-doc">average</span></a> from the original production time series and calculate the residual.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;residual&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;production&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;rolling_mean&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="c1"># calculate residual</span>
@@ -942,7 +932,7 @@ dtype: float64
   <tbody>
     <tr>
       <th>2016-01-01</th>
-      <td>92.256458</td>
+      <td>92.186601</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -951,7 +941,7 @@ dtype: float64
     </tr>
     <tr>
       <th>2016-01-02</th>
-      <td>92.126548</td>
+      <td>92.062129</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -960,7 +950,7 @@ dtype: float64
     </tr>
     <tr>
       <th>2016-01-03</th>
-      <td>90.593619</td>
+      <td>90.541494</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -969,7 +959,7 @@ dtype: float64
     </tr>
     <tr>
       <th>2016-01-04</th>
-      <td>88.403908</td>
+      <td>88.367271</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -978,7 +968,7 @@ dtype: float64
     </tr>
     <tr>
       <th>2016-01-05</th>
-      <td>86.129658</td>
+      <td>86.108886</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -987,7 +977,7 @@ dtype: float64
     </tr>
     <tr>
       <th>2016-01-06</th>
-      <td>84.041801</td>
+      <td>84.035938</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -996,7 +986,7 @@ dtype: float64
     </tr>
     <tr>
       <th>2016-01-07</th>
-      <td>82.224334</td>
+      <td>82.232043</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -1005,7 +995,7 @@ dtype: float64
     </tr>
     <tr>
       <th>2016-01-08</th>
-      <td>80.794563</td>
+      <td>80.813739</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -1014,7 +1004,7 @@ dtype: float64
     </tr>
     <tr>
       <th>2016-01-09</th>
-      <td>80.045364</td>
+      <td>80.072736</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -1023,7 +1013,7 @@ dtype: float64
     </tr>
     <tr>
       <th>2016-01-10</th>
-      <td>80.389419</td>
+      <td>80.419458</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -1032,7 +1022,7 @@ dtype: float64
     </tr>
     <tr>
       <th>2016-01-11</th>
-      <td>82.188769</td>
+      <td>82.214329</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -1041,7 +1031,7 @@ dtype: float64
     </tr>
     <tr>
       <th>2016-01-12</th>
-      <td>85.573237</td>
+      <td>86.291646</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -1050,7 +1040,7 @@ dtype: float64
     </tr>
     <tr>
       <th>2016-01-13</th>
-      <td>90.404332</td>
+      <td>90.397908</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -1087,7 +1077,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a3fb0472861e1dbe98bdbe9bafc7d72ac680e93d48234be5848b7787946de66a.png" src="_images/a3fb0472861e1dbe98bdbe9bafc7d72ac680e93d48234be5848b7787946de66a.png" />
+<img alt="_images/02caba2ba045817beb31b969c83a4268fd22c6177e82f29d8960fb5181c18bab.png" src="_images/02caba2ba045817beb31b969c83a4268fd22c6177e82f29d8960fb5181c18bab.png" />
 </div>
 </div>
 <p>The residual after we remove the trend is more stationary as anticipated.</p>
@@ -1127,32 +1117,32 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ce60b8b0262921db88aa3f3ddeb74753c6ee9a2153189e8fcfd0fd5331769c3d.png" src="_images/ce60b8b0262921db88aa3f3ddeb74753c6ee9a2153189e8fcfd0fd5331769c3d.png" />
+<img alt="_images/5e6e5e9679c54285a230b6bb6c7c2bce461f505c0d1629758f9abd181e5e6dbe.png" src="_images/5e6e5e9679c54285a230b6bb6c7c2bce461f505c0d1629758f9abd181e5e6dbe.png" />
 </div>
 </div>
 </section>
 <section id="additivity-of-variance-trend-and-residual-components-and-residual-distribution-checks">
 <h2>Additivity of Variance Trend and Residual Components and Residual Distribution Checks<a class="headerlink" href="#additivity-of-variance-trend-and-residual-components-and-residual-distribution-checks" title="Permalink to this heading">#</a></h2>
-<p>When we work with a trend and residual model we are decomposing the temporal phenomenon into:</p>
+<p>When we work with a <a class="reference internal" href="MachineLearning_glossary_s_z.html#trend"><span class="std std-doc">trend</span></a> and residual model we are decomposing the temporal phenomenon into:</p>
 <ol class="arabic simple">
 <li><p>deterministic trend - known</p></li>
 <li><p>stochastic residual - unknown</p></li>
 </ol>
-<p>We will calculated the proportion of variance in the trend and the residual.  This includes the following steps:</p>
+<p>We will calculated the proportion of <a class="reference internal" href="MachineLearning_glossary_s_z.html#variance"><span class="std std-doc">variance</span></a> in the trend and the residual.  This includes the following steps:</p>
 <ul class="simple">
-<li><p>calculate the representative weighted standard deviation of the original data, convert to variance, <span class="math notranslate nohighlight">\(\sigma\)</span></p></li>
-<li><p>calculate the standard deviation of the trend model, convert to variance, <span class="math notranslate nohighlight">\(\sigma_t\)</span></p></li>
-<li><p>calculate the variance of the residual at the data locations, <span class="math notranslate nohighlight">\(\sigma_r\)</span></p></li>
-<li><p>back calculate the covariance form the relationship:</p></li>
+<li><p>calculate the representative weighted <a class="reference internal" href="MachineLearning_glossary_s_z.html#standard-deviation"><span class="std std-doc">standard deviation</span></a> of the original data, convert to variance, <span class="math notranslate nohighlight">\(\sigma\)</span></p></li>
+<li><p>calculate the standard deviation of the <a class="reference internal" href="MachineLearning_glossary_s_z.html#trend-model"><span class="std std-doc">trend model</span></a>, convert to variance, <span class="math notranslate nohighlight">\(\sigma_t\)</span></p></li>
+<li><p>calculate the variance of the residual at the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> locations, <span class="math notranslate nohighlight">\(\sigma_r\)</span></p></li>
+<li><p>back calculate the <a class="reference internal" href="MachineLearning_glossary_a_c.html#covariance"><span class="std std-doc">covariance</span></a> form the relationship:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
 \sigma^2 = \sigma^2_t + \sigma^2_r + 2 \times C_{tr}
 \]</div>
-<p>We also check the residual univariate distribution. We are checking for:</p>
+<p>We also check the residual <a class="reference internal" href="MachineLearning_glossary_s_z.html#univariate"><span class="std std-doc">univariate</span></a> distribution. We are checking for:</p>
 <ul class="simple">
-<li><p>residual mean close to zero</p></li>
-<li><p>minimum and maximum residual for extreme values</p></li>
+<li><p>residual <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a> close to zero</p></li>
+<li><p>minimum and maximum residual for extreme <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s</p></li>
 <li><p>monomodal, symmetric distribution shape</p></li>
 </ul>
 <div class="cell docutils container">
@@ -1203,18 +1193,18 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/adc04c151d330adbf3356705047bb1bb36e11aad3d20c17b76a2145fbc8ad491.png" src="_images/adc04c151d330adbf3356705047bb1bb36e11aad3d20c17b76a2145fbc8ad491.png" />
+<img alt="_images/03b0e425cf4a0afc9d8d450637b02bbfbeda26ed24ed38697fecfb097b8772d1.png" src="_images/03b0e425cf4a0afc9d8d450637b02bbfbeda26ed24ed38697fecfb097b8772d1.png" />
 </div>
 </div>
 </section>
 <section id="test-for-stationarity-on-the-de-trended-time-series">
 <h2>Test for Stationarity on the De-trended Time Series<a class="headerlink" href="#test-for-stationarity-on-the-de-trended-time-series" title="Permalink to this heading">#</a></h2>
-<p>We use the Dickey-Fuller Test to test for stationarity of our detrened time series</p>
+<p>We use the Dickey-Fuller Test to test for <a class="reference internal" href="MachineLearning_glossary_s_z.html#stationarity"><span class="std std-doc">stationarity</span></a> of our detrened time series</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(H_0 =\)</span> time series is non-stationary</p></li>
 <li><p><span class="math notranslate nohighlight">\(H_1 =\)</span> time series is stationary</p></li>
 </ul>
-<p>If the <strong>Test Statistic</strong> is less then the <strong>Critical Value</strong> at an alpha level (1 - significance level) then we reject the null hypothesis and state that the time series is stationary.</p>
+<p>If the <strong>Test <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistic"><span class="std std-doc">Statistic</span></a></strong> is less then the <strong>Critical <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">Value</span></a></strong> at an alpha level (1 - significance level) then we reject the null hypothesis and state that the time series is stationary.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dickey-Fuller Test Results:&#39;</span><span class="p">)</span>
@@ -1230,8 +1220,8 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dickey-Fuller Test Results:
-Test Statistic                -9.362547e+00
-p-value                        7.753045e-16
+Test Statistic                -9.442178e+00
+p-value                        4.861531e-16
 #Lags Used                     8.000000e+00
 Number of Observations Used    9.420000e+02
 Critical Value (1%)           -3.437311e+00
@@ -1248,12 +1238,12 @@ dtype: float64
 <h2>Differencing to Remove Nonstationarity<a class="headerlink" href="#differencing-to-remove-nonstationarity" title="Permalink to this heading">#</a></h2>
 <p>Differencing is a common approach applied to tine series to remove nonstationarity. Differencing proceeds as:</p>
 <p><span class="math notranslate nohighlight">\(y(\bf{u_i}) = z(\bf{u}_{i+1}) - z(\bf{u}_i)\)</span></p>
-<p>where <span class="math notranslate nohighlight">\(z(\bf{u}_{i+1}) - z(\bf{u}_i)\)</span> is the difference between the current and the next value in the time series.</p>
-<p>NumPy has a function for differencing ndarrays.</p>
+<p>where <span class="math notranslate nohighlight">\(z(\bf{u}_{i+1}) - z(\bf{u}_i)\)</span> is the difference between the current and the next <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a> in the time series.</p>
+<p>NumPy has a function for differencing <a class="reference internal" href="MachineLearning_glossary_m_r.html#ndarray"><span class="std std-doc">ndarray</span></a>s.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Comments on differencing:</p>
+<p><a class="reference internal" href="MachineLearning_glossary_s_z.html#comments"><span class="std std-doc">Comments</span></a> on differencing:</p>
 <ul class="simple">
 <li><p>if the series is already stationary then there is no need to apply differencing</p></li>
 <li><p>the order of differencing is the number of differencing operations applied in sequence.</p>
@@ -1265,7 +1255,7 @@ dtype: float64
 </li>
 </ul>
 <p>We demonstrate differencing on our production dataset.</p>
-<p>We will plot the autocorrelation of the result to demonstrate that we have actually removed the trend.</p>
+<p>We will plot the autocorrelation of the result to demonstrate that we have actually removed the <a class="reference internal" href="MachineLearning_glossary_s_z.html#trend"><span class="std std-doc">trend</span></a>.</p>
 <ul class="simple">
 <li><p>trend structure in autocorrelation is a linear shift over lag distances downward toward 0.0 and beyond into negative values.</p></li>
 </ul>
@@ -1337,7 +1327,7 @@ dtype: float64
   <tbody>
     <tr>
       <th>2016-01-01</th>
-      <td>92.256458</td>
+      <td>92.186601</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -1349,12 +1339,12 @@ dtype: float64
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>-0.129910</td>
-      <td>-1.403020</td>
+      <td>-0.124472</td>
+      <td>-1.396163</td>
     </tr>
     <tr>
       <th>2016-01-02</th>
-      <td>92.126548</td>
+      <td>92.062129</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -1366,12 +1356,12 @@ dtype: float64
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>-1.532930</td>
-      <td>-0.656781</td>
+      <td>-1.520635</td>
+      <td>-0.653588</td>
     </tr>
     <tr>
       <th>2016-01-03</th>
-      <td>90.593619</td>
+      <td>90.541494</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -1383,12 +1373,12 @@ dtype: float64
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>-2.189710</td>
-      <td>-0.084540</td>
+      <td>-2.174223</td>
+      <td>-0.084161</td>
     </tr>
     <tr>
       <th>2016-01-04</th>
-      <td>88.403908</td>
+      <td>88.367271</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -1400,12 +1390,12 @@ dtype: float64
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>-2.274251</td>
-      <td>0.186395</td>
+      <td>-2.258384</td>
+      <td>0.185436</td>
     </tr>
     <tr>
       <th>2016-01-05</th>
-      <td>86.129658</td>
+      <td>86.108886</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -1417,8 +1407,8 @@ dtype: float64
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>-2.087856</td>
-      <td>0.270389</td>
+      <td>-2.072948</td>
+      <td>0.269053</td>
     </tr>
   </tbody>
 </table>
@@ -1462,7 +1452,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/112872e74da6d6eabb1e43bf7def4ac56497e186ae8966bbf86f0670219909d1.png" src="_images/112872e74da6d6eabb1e43bf7def4ac56497e186ae8966bbf86f0670219909d1.png" />
+<img alt="_images/104bd551b53d320c4b21ab04bb36da1258b07d08b2d71fc9f4ef39597eec73a0.png" src="_images/104bd551b53d320c4b21ab04bb36da1258b07d08b2d71fc9f4ef39597eec73a0.png" />
 </div>
 </div>
 <p>Observe that the result becomes more stationary as we mover from original production to first difference and then to second difference.</p>
@@ -1470,12 +1460,12 @@ dtype: float64
 </section>
 <section id="test-for-stationarity-on-the-first-and-second-differenced-time-series">
 <h2>Test for Stationarity on the First and Second Differenced Time Series<a class="headerlink" href="#test-for-stationarity-on-the-first-and-second-differenced-time-series" title="Permalink to this heading">#</a></h2>
-<p>We use the Dickey-Fuller Test for stationarity of our first and second difference of our production time series</p>
+<p>We use the Dickey-Fuller Test for <a class="reference internal" href="MachineLearning_glossary_s_z.html#stationarity"><span class="std std-doc">stationarity</span></a> of our first and second difference of our production time series</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(H_0 =\)</span> time series is non-stationary</p></li>
 <li><p><span class="math notranslate nohighlight">\(H_1 =\)</span> time series is stationary</p></li>
 </ul>
-<p>If the <strong>Test Statistic</strong> is less than the <strong>Critical Value</strong> at an alpha level (1 - significance level) then we reject the null hypothesis and state that the time series is stationary.</p>
+<p>If the <strong>Test <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistic"><span class="std std-doc">Statistic</span></a></strong> is less than the <strong>Critical <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">Value</span></a></strong> at an alpha level (1 - significance level) then we reject the null hypothesis and state that the time series is stationary.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dickey-Fuller Test Results - First Differenced Production:&#39;</span><span class="p">)</span>
@@ -1500,22 +1490,22 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dickey-Fuller Test Results - First Differenced Production:
-Test Statistic                -1.022681e+01
-p-value                        5.151322e-18
-#Lags Used                     1.000000e+01
-Number of Observations Used    9.890000e+02
-Critical Value (1%)           -3.436979e+00
-Critical Value (5%)           -2.864467e+00
-Critical Value (10%)          -2.568328e+00
+Test Statistic                -1.084715e+01
+p-value                        1.561860e-19
+#Lags Used                     6.000000e+00
+Number of Observations Used    9.930000e+02
+Critical Value (1%)           -3.436953e+00
+Critical Value (5%)           -2.864455e+00
+Critical Value (10%)          -2.568322e+00
 dtype: float64
 Dickey-Fuller Test Results - Second Differenced Production:
-Test Statistic                -1.266754e+01
-p-value                        1.265190e-23
-#Lags Used                     1.900000e+01
-Number of Observations Used    9.800000e+02
-Critical Value (1%)           -3.437040e+00
-Critical Value (5%)           -2.864494e+00
-Critical Value (10%)          -2.568343e+00
+Test Statistic                -1.204387e+01
+p-value                        2.693011e-22
+#Lags Used                     2.000000e+01
+Number of Observations Used    9.790000e+02
+Critical Value (1%)           -3.437047e+00
+Critical Value (5%)           -2.864497e+00
+Critical Value (10%)          -2.568344e+00
 dtype: float64
 </pre></div>
 </div>
@@ -1532,7 +1522,7 @@ dtype: float64
 <h2>Time Series Decomposition<a class="headerlink" href="#time-series-decomposition" title="Permalink to this heading">#</a></h2>
 <p>Let’s demonstrate an automated method to decompose a time series into multiple components. With time series decomposition we will decompose the time series into the following components.</p>
 <ul class="simple">
-<li><p>trend</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_s_z.html#trend"><span class="std std-doc">trend</span></a></p></li>
 <li><p>seasonality</p></li>
 <li><p>noise / residual</p></li>
 </ul>
@@ -1547,7 +1537,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f0c7e6e744308178d192304cb16773cabc8cf9be3d5c0cbebbdff9a49c42dde2.png" src="_images/f0c7e6e744308178d192304cb16773cabc8cf9be3d5c0cbebbdff9a49c42dde2.png" />
+<img alt="_images/4943586f012ce8b1c247765667660d8e1333e4acf269daaf88b6beee0c47869b.png" src="_images/4943586f012ce8b1c247765667660d8e1333e4acf269daaf88b6beee0c47869b.png" />
 </div>
 </div>
 <p>Let’s also check the variance components, were <span class="math notranslate nohighlight">\(t\)</span> is trend, <span class="math notranslate nohighlight">\(s\)</span> is seasonal and <span class="math notranslate nohighlight">\(r\)</span> is residual.</p>
@@ -1577,7 +1567,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/177f5c1cff1d57fcd7ad46d7587ebdc5f0ff7a35ec424bbb040fa40a57333dd7.png" src="_images/177f5c1cff1d57fcd7ad46d7587ebdc5f0ff7a35ec424bbb040fa40a57333dd7.png" />
+<img alt="_images/e5b3926aa64fad4b9ea908fdd6718cb4a44421334217542847b007d26604b093.png" src="_images/e5b3926aa64fad4b9ea908fdd6718cb4a44421334217542847b007d26604b093.png" />
 </div>
 </div>
 <p>Note, that our model sees the cyclicity that we added to the synthetic data as the trend component and found a higher frequency, lower amplitude cyclicity as the seasonal component and the remaining noise residual component has an amplitude about twice the amplitude of the seasonal and about one fifth the trend amplitude.</p>
@@ -1597,13 +1587,13 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dickey-Fuller Test Results:
-Test Statistic                -9.629883e+00
-p-value                        1.622897e-16
-#Lags Used                     2.100000e+01
-Number of Observations Used    9.780000e+02
-Critical Value (1%)           -3.437054e+00
-Critical Value (5%)           -2.864500e+00
-Critical Value (10%)          -2.568346e+00
+Test Statistic                -1.098416e+01
+p-value                        7.330893e-20
+#Lags Used                     1.700000e+01
+Number of Observations Used    9.820000e+02
+Critical Value (1%)           -3.437027e+00
+Critical Value (5%)           -2.864488e+00
+Critical Value (10%)          -2.568340e+00
 dtype: float64
 </pre></div>
 </div>
@@ -1642,7 +1632,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/951e14fc6d8b4d471ae77577378e1d096649a60c4c5fdd37254905af176ef03a.png" src="_images/951e14fc6d8b4d471ae77577378e1d096649a60c4c5fdd37254905af176ef03a.png" />
+<img alt="_images/96c8f13a812268260a0f589c0ced89f5e6aa2905131428e54524564223bf05ff.png" src="_images/96c8f13a812268260a0f589c0ced89f5e6aa2905131428e54524564223bf05ff.png" />
 </div>
 </div>
 <p>From these plots we can determine that there is no autocorrelation nor partial autocorrelation over any lag</p>
@@ -1657,7 +1647,7 @@ dtype: float64
 </section>
 <section id="train-and-test-split">
 <h2>Train and Test Split<a class="headerlink" href="#train-and-test-split" title="Permalink to this heading">#</a></h2>
-<p>Let’s split the data with train and test and attempt time series forecasting.</p>
+<p>Let’s split the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> with train and test and attempt time series forecasting.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_frac</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">;</span> <span class="n">split_index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">*</span><span class="n">train_frac</span><span class="p">)</span>       <span class="c1"># specify train and test split</span>
@@ -1682,10 +1672,10 @@ Train samples dates = 800, Test samples dates = 200
 </section>
 <section id="arima-auto-regressive-integrated-moving-average-model-for-time-series">
 <h2>ARIMA (Auto-Regressive Integrated Moving Average) Model for Time Series<a class="headerlink" href="#arima-auto-regressive-integrated-moving-average-model-for-time-series" title="Permalink to this heading">#</a></h2>
-<p>The ARIMA model is based on the following parameters:</p>
+<p>The ARIMA model is based on the following <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a>s:</p>
 <ul class="simple">
 <li><p>number of auto-regressive terms (p) is the number of lags for autocorrelation - we find this from the number of significant lags in the partial autocorrelation.  There was only one lag (see above). <span class="math notranslate nohighlight">\(p=1\)</span></p></li>
-<li><p>number of moving average terms (q) is the number of differencing required remove the trend.  From above we demonstrated that we had a stationary dataset after the first difference, but we improved the removal of the cycles after the second difference, let’s use second difference.  <span class="math notranslate nohighlight">\(q = 2\)</span></p></li>
+<li><p>number of moving <a class="reference internal" href="MachineLearning_glossary_a_c.html#average"><span class="std std-doc">average</span></a> terms (q) is the number of differencing required remove the <a class="reference internal" href="MachineLearning_glossary_s_z.html#trend"><span class="std std-doc">trend</span></a>.  From above we demonstrated that we had a stationary dataset after the first difference, but we improved the removal of the cycles after the second difference, let’s use second difference.  <span class="math notranslate nohighlight">\(q = 2\)</span></p></li>
 <li><p>number of non-seasonal differences (d) is the seasonal effect, our dataset did not show any significant seasonal cyclicity in the decomposition above, so we will just set it to one.  <span class="math notranslate nohighlight">\(d=1\)</span></p></li>
 </ul>
 <div class="cell docutils container">
@@ -1705,28 +1695,28 @@ Train samples dates = 800, Test samples dates = 200
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                    SARIMAX Results                                    
 =======================================================================================
 Dep. Variable:                      production   No. Observations:                  800
-Model:             ARIMA(1, 0, 2)x(1, 1, 2, 5)   Log Likelihood               -1782.716
-Date:                         Mon, 10 Nov 2025   AIC                           3581.431
-Time:                                 10:23:50   BIC                           3618.858
-Sample:                             01-01-2016   HQIC                          3595.813
+Model:             ARIMA(1, 0, 2)x(1, 1, 2, 5)   Log Likelihood               -1673.775
+Date:                         Fri, 31 Jul 2026   AIC                           3363.550
+Time:                                 16:42:25   BIC                           3400.977
+Sample:                             01-01-2016   HQIC                          3377.932
                                   - 03-10-2018                                         
 Covariance Type:                           opg                                         
 ==============================================================================
                  coef    std err          z      P&gt;|z|      [0.025      0.975]
 ------------------------------------------------------------------------------
-x1             0.0493      0.026      1.900      0.057      -0.002       0.100
-ar.L1          0.9844      0.009    108.184      0.000       0.967       1.002
-ma.L1          0.2975      0.023     13.100      0.000       0.253       0.342
-ma.L2          0.4637      0.020     23.428      0.000       0.425       0.502
-ar.S.L5        0.0763      0.258      0.296      0.768      -0.430       0.583
-ma.S.L5       -1.2598      0.248     -5.077      0.000      -1.746      -0.773
-ma.S.L10       0.2619      0.252      1.041      0.298      -0.231       0.755
-sigma2         5.0193      0.311     16.158      0.000       4.410       5.628
+x1             0.0503      0.028      1.783      0.075      -0.005       0.106
+ar.L1          0.9864      0.008    117.056      0.000       0.970       1.003
+ma.L1          0.4145      0.025     16.388      0.000       0.365       0.464
+ma.L2          0.5050      0.023     21.915      0.000       0.460       0.550
+ar.S.L5        0.0169      0.232      0.073      0.942      -0.437       0.471
+ma.S.L5       -1.2246      0.244     -5.009      0.000      -1.704      -0.745
+ma.S.L10       0.2259      0.226      1.000      0.317      -0.217       0.669
+sigma2         3.8204      0.354     10.804      0.000       3.127       4.513
 ===================================================================================
-Ljung-Box (L1) (Q):                  12.83   Jarque-Bera (JB):              2726.60
+Ljung-Box (L1) (Q):                  22.46   Jarque-Bera (JB):              2244.75
 Prob(Q):                              0.00   Prob(JB):                         0.00
-Heteroskedasticity (H):               1.22   Skew:                             0.02
-Prob(H) (two-sided):                  0.11   Kurtosis:                        12.07
+Heteroskedasticity (H):               1.08   Skew:                             0.01
+Prob(H) (two-sided):                  0.55   Kurtosis:                        11.23
 ===================================================================================
 
 Warnings:
@@ -1765,7 +1755,7 @@ Warnings:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6c401429286c436cc2e2e5029ce0b158e1ea3594f3e675dc28003ee2972b57da.png" src="_images/6c401429286c436cc2e2e5029ce0b158e1ea3594f3e675dc28003ee2972b57da.png" />
+<img alt="_images/9ded515e388f2dbfff9de000ce658695109acd7c9fdff7a877358bf4014153b2.png" src="_images/9ded515e388f2dbfff9de000ce658695109acd7c9fdff7a877358bf4014153b2.png" />
 </div>
 </div>
 <p>Let’s look at the predictions from our model.</p>
@@ -1797,7 +1787,7 @@ Warnings:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/102081a1ad816405529cc1ea24a35e337476f4d2a7881bde0ce41501e0ba8859.png" src="_images/102081a1ad816405529cc1ea24a35e337476f4d2a7881bde0ce41501e0ba8859.png" />
+<img alt="_images/b28a368c3a9b3ffac0cf9d031dede40f46538f724ca3ba11cf35464bc28b66f7.png" src="_images/b28a368c3a9b3ffac0cf9d031dede40f46538f724ca3ba11cf35464bc28b66f7.png" />
 </div>
 </div>
 <p>Some observations about our ability to forecast:</p>
@@ -1811,8 +1801,8 @@ Warnings:
 <h2>Time Series Analysis and Modeling Summary<a class="headerlink" href="#time-series-analysis-and-modeling-summary" title="Permalink to this heading">#</a></h2>
 <p>Here’s some observations:</p>
 <ul class="simple">
-<li><p>We need to check time series data for stationarity</p></li>
-<li><p>If time series are nonstationary we should mitigate this with trend removal or differencing</p></li>
+<li><p>We need to check time series <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> for <a class="reference internal" href="MachineLearning_glossary_s_z.html#stationarity"><span class="std std-doc">stationarity</span></a></p></li>
+<li><p>If time series are nonstationary we should mitigate this with <a class="reference internal" href="MachineLearning_glossary_s_z.html#trend"><span class="std std-doc">trend</span></a> removal or differencing</p></li>
 <li><p>We can measure the degree of temporal correlation and see nonstationarity or trend structures with autocorrelation</p></li>
 <li><p>ARIMA models allow us to simultaneously capture trend, seasonality and residual components in a single model</p></li>
 </ul>
@@ -1826,25 +1816,23 @@ Warnings:
 <section id="the-author">
 <h2>The Author:<a class="headerlink" href="#the-author" title="Permalink to this heading">#</a></h2>
 <p>Michael Pyrcz, Professor, The University of Texas at Austin
-<em>Novel Data Analytics, Geostatistics and Machine Learning Subsurface Solutions</em></p>
+<em>Novel <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">Data Analytics</span></a>, <a class="reference internal" href="MachineLearning_glossary_g_l.html#geostatistics"><span class="std std-doc">Geostatistics</span></a> and Machine Learning Subsurface Solutions</em></p>
 <p>With over 17 years of experience in subsurface consulting, research and development, Michael has returned to academia driven by his passion for teaching and enthusiasm for enhancing engineers’ and geoscientists’ impact in subsurface resource development.</p>
 <p>For more about Michael check out these links:</p>
 <p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
-<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a> and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
-<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">Data</span></a> Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>. We are solving challenging subsurface problems!</p></li>
 <li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
 </ul>
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-</section>
-<section id="more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">
-<h2>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin" title="Permalink to this heading">#</a></h2>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -1936,7 +1924,6 @@ Warnings:
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
 </ul>
   </nav></div>
 

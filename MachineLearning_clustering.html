@@ -174,6 +174,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_concepts.html">Machine Learning Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_subsurface_modeling.html">Subsurface Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_training_tuning.html">Training and Tuning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
@@ -219,7 +220,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_python.html">Python Code Snippets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_a_c.html">Glossary A-C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_d_f.html">Glossary D-F</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_g_l.html">Glossary G-L</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_m_r.html">Glossary M-R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_s_z.html">Glossary S-Z</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -496,24 +501,24 @@ document.write(`
 <p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
 <section id="motivation-for-cluster-analysis">
 <h2>Motivation for Cluster Analysis<a class="headerlink" href="#motivation-for-cluster-analysis" title="Permalink to this heading">#</a></h2>
-<p>Mixing distinct populations to train prediction models often reduces model accuracy.</p>
+<p>Mixing distinct <a class="reference internal" href="MachineLearning_glossary_m_r.html#population"><span class="std std-doc">population</span></a>s to train prediction models often reduces model accuracy.</p>
 <ul class="simple">
 <li><p>clustering is an inferential machine learning method to automate the segmentation of the dataset into separate groups, known as clusters and specified by an integer index.</p></li>
 <li><p>the computer does not provide meaning nor description of the groups, that is our job!</p></li>
 </ul>
-<p>We need to learn and segment distinct populations to improve our prediction models,</p>
+<p>We need to learn and segment distinct populations to improve our <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a> models,</p>
 <figure style="text-align: center;">
   <img src="_static/cluster/cluster1.png" style="display: block; margin: 0 auto; width: 60%;">
   <figcaption style="text-align: center;"> Example dataset divided into 5 groups.
 </figcaption>
 </figure>
-<p>Yet, the above figure is misleading. If we calculate the boundaries as shown above, we would actually have a predictive classification model for the any new cases,</p>
+<p>Yet, the above figure is misleading. If we calculate the boundaries as shown above, we would actually have a predictive <a class="reference internal" href="MachineLearning_glossary_a_c.html#classification"><span class="std std-doc">classification</span></a> model for the any new cases,</p>
 <ul class="simple">
 <li><p>given normalized porosity of 0.7 and noramlized acoustic impedance of 0.18 classify as group #5</p></li>
 </ul>
 <p>Clustering does not do this, it is an inferential, unsupervised machine learning method,</p>
 <ul class="simple">
-<li><p>it is learning structures in the data</p></li>
+<li><p>it is learning structures in the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a></p></li>
 <li><p>clustering assigns labels to the data</p></li>
 </ul>
 <figure style="text-align: center;">
@@ -524,41 +529,41 @@ document.write(`
 </section>
 <section id="inferential-machine-learning">
 <h2>Inferential Machine Learning<a class="headerlink" href="#inferential-machine-learning" title="Permalink to this heading">#</a></h2>
-<p>There are no response features, <span class="math notranslate nohighlight">\(y\)</span>, just predictor features,</p>
+<p>There are no response <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s, <span class="math notranslate nohighlight">\(y\)</span>, just <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a>s,</p>
 <div class="math notranslate nohighlight">
 \[
 𝑋_1,\ldots,𝑋_𝑚
 \]</div>
 <ul class="simple">
-<li><p>Machine learns by mimicry a compact representation of the data</p></li>
-<li><p>Captures patterns as feature projections, group assignments, neural network latent features, etc.</p></li>
-<li><p>We focus on inference of the population, the natural system, instead of prediction of response features.</p></li>
+<li><p>Machine learns by mimicry a compact representation of the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a></p></li>
+<li><p>Captures patterns as <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-projection"><span class="std std-doc">feature projection</span></a>s, group assignments, <a class="reference internal" href="MachineLearning_glossary_m_r.html#neural-network"><span class="std std-doc">neural network</span></a> <a class="reference internal" href="MachineLearning_glossary_g_l.html#latent-feature"><span class="std std-doc">latent feature</span></a>s, etc.</p></li>
+<li><p>We focus on <a class="reference internal" href="MachineLearning_glossary_g_l.html#inference"><span class="std std-doc">inference</span></a> of the <a class="reference internal" href="MachineLearning_glossary_m_r.html#population"><span class="std std-doc">population</span></a>, the natural system, instead of <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a> of <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a>s.</p></li>
 </ul>
 </section>
 <section id="k-means-clustering-method">
 <h2>K-Means Clustering Method<a class="headerlink" href="#k-means-clustering-method" title="Permalink to this heading">#</a></h2>
-<p>The K-means clustering approach is primarily applied as an unsupervised machine learning method for clustering, group assignment to unlabeled data, where dissimilarity within clustered groups is minimized. The loss function that is minimized for K-means clustering, known as intertia, is,</p>
+<p>The <a class="reference internal" href="MachineLearning_glossary_g_l.html#k-means-clustering"><span class="std std-doc">K-means clustering</span></a> approach is primarily applied as an unsupervised machine learning method for clustering, group assignment to unlabeled data, where dissimilarity within clustered groups is minimized. The <a class="reference internal" href="MachineLearning_glossary_g_l.html#loss-function"><span class="std std-doc">loss function</span></a> that is minimized for K-means clustering, known as intertia, is,</p>
 <div class="math notranslate nohighlight">
 \[ 
 J = \sum^k_{i=1} \sum_{\alpha \in C_i} || X_{\alpha} - \mu_i ||
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(i\)</span> is the cluster index, <span class="math notranslate nohighlight">\(\alpha\)</span> is the data sample index, <span class="math notranslate nohighlight">\(X\)</span> is the data sample and <span class="math notranslate nohighlight">\(\mu_i\)</span> is the <span class="math notranslate nohighlight">\(i\)</span> cluster prototype, <span class="math notranslate nohighlight">\(k\)</span> is the total number of clusters, and <span class="math notranslate nohighlight">\(|| X_m - \mu_m ||\)</span> is the Euclidean distance from a sample to the cluster prototype in <span class="math notranslate nohighlight">\(M\)</span> dimensional space calculated as:</p>
+<p>where <span class="math notranslate nohighlight">\(i\)</span> is the cluster index, <span class="math notranslate nohighlight">\(\alpha\)</span> is the data sample index, <span class="math notranslate nohighlight">\(X\)</span> is the data sample and <span class="math notranslate nohighlight">\(\mu_i\)</span> is the <span class="math notranslate nohighlight">\(i\)</span> cluster <a class="reference internal" href="MachineLearning_glossary_m_r.html#prototype"><span class="std std-doc">prototype</span></a>, <span class="math notranslate nohighlight">\(k\)</span> is the total number of clusters, and <span class="math notranslate nohighlight">\(|| X_m - \mu_m ||\)</span> is the Euclidean distance from a sample to the cluster prototype in <span class="math notranslate nohighlight">\(M\)</span> dimensional space calculated as:</p>
 <div class="math notranslate nohighlight">
 \[
 || X_{m,\alpha} - \mu_i || =  \sqrt{ \sum_m^M \left( X_{m,\alpha} - \mu_{m,i} \right)^2 }
 \]</div>
-<p>Here’s a schematic illustration of this loss function, summing the distances between group prototypes and the samples in the groups,</p>
+<p>Here’s a schematic illustration of this loss function, summing the distances between group prototypes and the <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s in the groups,</p>
 <figure style="text-align: center;">
   <img src="_static/cluster/cluster_loss.png" style="display: block; margin: 0 auto; width: 60%;">
   <figcaption style="text-align: center;"> Schematic of the K-means clustering loss function, intertia. Note, for clarity only some of the distances from samples to prototypes are annotated and some of the data labels are included.
 </figcaption>
 </figure>
-<p>Here is a summary of import aspects for K-means clustering:</p>
+<p>Here is a summary of import aspects for <a class="reference internal" href="MachineLearning_glossary_g_l.html#k-means-clustering"><span class="std std-doc">K-means clustering</span></a>:</p>
 <ul class="simple">
-<li><p><strong>Prototype Method</strong> - represents the training data with number of synthetic cases in the features space. For K-means clustering we assign and iteratively update <span class="math notranslate nohighlight">\(K\)</span> prototypes.</p></li>
-<li><p><strong>Iterative Solution</strong> - the initial prototypes are assigned randomly in the feature space, the labels for each training sample are updated to the nearest prototype, then the prototypes are adjusted to the centroid of their assigned training data, repeat until there is no further update to the training data assignments.</p></li>
-<li><p><strong>Unsupervised Learning</strong> - the training data are not labeled and are assigned <span class="math notranslate nohighlight">\(K\)</span> labels based on their proximity to the prototypes in the feature space. The idea is that similar things, proximity in feature space, should belong to the same cluster group.</p></li>
-<li><p><strong>Feature Weighting</strong> - the procedure depends on the Euclidian distance between training samples and prototypes in feature space. Distance is treated as the ‘inverse’ of similarity. If the features have significantly different magnitudes, the feature(s) with the largest magnitudes and ranges will dominate the loss function and cluster groups will become anisotropic aligned orthogonal to the high range feature(s). While the common approach is to standardize / normalize the variables, by-feature weighting may be applied through unequal variances. Note, in this demonstration we normalize the features to range from 0.0 to 1.0.</p></li>
+<li><p><strong>Prototype Method</strong> - represents the training data with number of synthetic cases in the <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s space. For K-means clustering we assign and iteratively update <span class="math notranslate nohighlight">\(K\)</span> prototypes.</p></li>
+<li><p><strong>Iterative Solution</strong> - the initial prototypes are assigned randomly in the <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-space"><span class="std std-doc">feature space</span></a>, the labels for each training sample are updated to the nearest prototype, then the prototypes are adjusted to the centroid of their assigned training data, repeat until there is no further update to the training data assignments.</p></li>
+<li><p><strong><a class="reference internal" href="MachineLearning_glossary_s_z.html#unsupervised-learning"><span class="std std-doc">Unsupervised Learning</span></a></strong> - the training data are not labeled and are assigned <span class="math notranslate nohighlight">\(K\)</span> labels based on their proximity to the prototypes in the feature space. The idea is that similar things, proximity in feature space, should belong to the same cluster group.</p></li>
+<li><p><strong>Feature Weighting</strong> - the procedure depends on the Euclidian distance between training samples and prototypes in feature space. Distance is treated as the ‘inverse’ of similarity. If the features have significantly different magnitudes, the feature(s) with the largest magnitudes and ranges will dominate the loss function and cluster groups will become anisotropic aligned orthogonal to the high range feature(s). While the common approach is to standardize / normalize the <a class="reference internal" href="MachineLearning_glossary_s_z.html#variable"><span class="std std-doc">variable</span></a>s, by-feature weighting may be applied through unequal <a class="reference internal" href="MachineLearning_glossary_s_z.html#variance"><span class="std std-doc">variance</span></a>s. Note, in this demonstration we normalize the features to range from 0.0 to 1.0.</p></li>
 </ul>
 </section>
 <section id="solution-heuristic">
@@ -567,15 +572,15 @@ J = \sum^k_{i=1} \sum_{\alpha \in C_i} || X_{\alpha} - \mu_i ||
 <ul class="simple">
 <li><p><strong>Heuristic</strong> - a shortcut the sacrifices accuracy for practicality, i.e., the solution is usually good enough and has a reasonable run time.</p></li>
 </ul>
-<p>For the K-means clustering problem of assigning one of <span class="math notranslate nohighlight">\(k\)</span> categorical labels to <span class="math notranslate nohighlight">\(n\)</span> sample data, the solution space includes,</p>
+<p>For the K-means clustering problem of assigning one of <span class="math notranslate nohighlight">\(k\)</span> categorical labels to <span class="math notranslate nohighlight">\(n\)</span> <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a> data, the solution space includes,</p>
 <div class="math notranslate nohighlight">
 \[
 k^n
 \]</div>
 <p>possible solutions.</p>
-<p>The k-means clustering solution heuristic includes these steps:</p>
+<p>The <a class="reference internal" href="MachineLearning_glossary_g_l.html#k-means-clustering"><span class="std std-doc">K-means clustering</span></a> solution heuristic includes these steps:</p>
 <ol class="arabic simple">
-<li><p>Assign initial random prototype with labels.</p></li>
+<li><p>Assign initial random <a class="reference internal" href="MachineLearning_glossary_m_r.html#prototype"><span class="std std-doc">prototype</span></a> with labels.</p></li>
 </ol>
 <figure style="text-align: center;">
   <img src="_static/cluster/random.png" style="display: block; margin: 0 auto; width: 60%;">
@@ -609,21 +614,21 @@ k^n
 </section>
 <section id="demonstration">
 <h2>Demonstration<a class="headerlink" href="#demonstration" title="Permalink to this heading">#</a></h2>
-<p>I start with a ‘by-hand’ approach to calculate the K-means clustering group assignments.</p>
+<p>I start with a ‘by-hand’ approach to calculate the <a class="reference internal" href="MachineLearning_glossary_g_l.html#k-means-clustering"><span class="std std-doc">K-means clustering</span></a> group assignments.</p>
 <ul class="simple">
 <li><p>this allows us to be able to watch the method in action, as opposed to just getting a result. I think this is more instructive.</p></li>
 <li><p>afterwards, I show the function from scikit-learn to complete the calculation in one line of code.</p></li>
 </ul>
-<p>I have also developed a set of <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_kMeans_Clustering.ipynb">interactive k-means clustering dashboards</a> to explore the k-mean clustering heuristic, including this one that shows each solution for multiple random prototypes and the cumulative distribution function of intertia to explore the consistency in the solution.</p>
+<p>I have also developed a set of <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_kMeans_Clustering.ipynb">interactive k-means clustering dashboards</a> to explore the k-mean clustering heuristic, including this one that shows each solution for multiple random prototypes and the <a class="reference internal" href="MachineLearning_glossary_a_c.html#cumulative-distribution-function"><span class="std std-doc">cumulative distribution function</span></a> of intertia to explore the consistency in the solution.</p>
 <figure style="text-align: center;">
   <img src="_static/cluster/interactive_clustering.png" style="display: block; margin: 0 auto; width: 100%;">
   <figcaption style="text-align: center;"> Interactive Python dashboard to explore the performance of the k-means clustering solution heuristic.
 </figcaption>
 </figure>
-<p>Note, for the workflow below I have modified code from the tutorial provided by Ben Keen as functions to take care of the steps (assign training data to the nearest prototype, update the prototype to the centroid of the assigned data).</p>
+<p>Note, for the workflow below I have modified code from the tutorial provided by Ben Keen as functions to take care of the steps (assign training data to the nearest <a class="reference internal" href="MachineLearning_glossary_m_r.html#prototype"><span class="std std-doc">prototype</span></a>, update the prototype to the centroid of the assigned data).</p>
 <ul class="simple">
 <li><p>The original tutorial is available at <a class="reference external" href="http://benalexkeen.com/k-means-clustering-in-python">here</a>.</p></li>
-<li><p>My modifications tailor this workflow for my specific example, and to include the normalized and original data. Appreciation to Ben!</p></li>
+<li><p>My modifications tailor this workflow for my specific example, and to include the normalized and original <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>. Appreciation to Ben!</p></li>
 </ul>
 </section>
 <section id="load-the-required-libraries">
@@ -656,10 +661,10 @@ k^n
 </section>
 <section id="declare-functions">
 <h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
-<p>The following functions perform the steps required by K-means clustering.</p>
+<p>The following functions perform the steps required by <a class="reference internal" href="MachineLearning_glossary_g_l.html#k-means-clustering"><span class="std std-doc">K-means clustering</span></a>.</p>
 <ul class="simple">
-<li><p>assign the training data to the nearest prototype</p></li>
-<li><p>update the prototype to the centroid of the assigned training data</p></li>
+<li><p>assign the training data to the nearest <a class="reference internal" href="MachineLearning_glossary_m_r.html#prototype"><span class="std std-doc">prototype</span></a></p></li>
+<li><p>update the prototype to the centroid of the assigned training <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a></p></li>
 </ul>
 <p>Don’t be concerned if you don’t understand the code, we have used some advanced approaches for the benefit of concise code.</p>
 <p>I also added a convenience function to add major and minor gridlines to improve plot interpretability.</p>
@@ -711,11 +716,11 @@ k^n
 </section>
 <section id="loading-tabular-data">
 <h2>Loading Tabular Data<a class="headerlink" href="#loading-tabular-data" title="Permalink to this heading">#</a></h2>
-<p>Here’s the command to load our comma delimited data file in to a Pandas’ DataFrame object.</p>
-<p>Let’s load the provided multivariate, spatial dataset ‘12_sample_data.csv’. It is a comma delimited file with:</p>
+<p>Here’s the command to load our comma delimited data file in to a Pandas’ <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a> object.</p>
+<p>Let’s load the provided <a class="reference internal" href="MachineLearning_glossary_m_r.html#multivariate"><span class="std std-doc">multivariate</span></a>, spatial dataset ‘12_sample_data.csv’. It is a comma delimited file with:</p>
 <ul class="simple">
 <li><p>X and Y coordinates (<span class="math notranslate nohighlight">\(m\)</span>)</p></li>
-<li><p>facies 0 and 1</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_d_f.html#facies"><span class="std std-doc">facies</span></a> 0 and 1</p></li>
 <li><p>porosity (fraction)</p></li>
 <li><p>permeability (<span class="math notranslate nohighlight">\(mD\)</span>)</p></li>
 <li><p>acoustic impedance (<span class="math notranslate nohighlight">\(\frac{kg}{m^3} \cdot \frac{m}{s} \cdot 10^3\)</span>).</p></li>
@@ -729,17 +734,17 @@ k^n
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>but read csv has required input parameters. The essential one is the name of the file. For our circumstance all the other default parameters are fine. If you want to see all the possible parameters for this function, just go to the docs <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html">here</a>.</p>
+<p>but read csv has required input <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a>s. The essential one is the name of the file. For our circumstance all the other default parameters are fine. If you want to see all the possible parameters for this function, just go to the docs <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html">here</a>.</p>
 <ul class="simple">
 <li><p>The docs are always helpful</p></li>
 <li><p>There is often a lot of flexibility for Python functions, possible through using various inputs parameters</p></li>
 </ul>
-<p>also, the program has an output, a pandas DataFrame loaded from the data. So we have to specify the name / variable representing that new object.</p>
+<p>also, the program has an output, a pandas DataFrame loaded from the data. So we have to specify the name or <a class="reference internal" href="MachineLearning_glossary_s_z.html#variable"><span class="std std-doc">variable</span></a> representing that new object.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;12_sample_data.csv&quot;</span><span class="p">)</span>  
 </pre></div>
 </div>
-<p>Let’s run this command to load the data and then this command to extract a random subset of the data.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mf">.30</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">73073</span><span class="p">);</span> 
+<p>Let’s run this command to load the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> and then this command to extract a random subset of the data.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mf">.30</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">73073</span><span class="p">)</span> 
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -758,7 +763,7 @@ k^n
 <section id="summary-statistics-for-tabular-data">
 <h2>Summary Statistics for Tabular Data<a class="headerlink" href="#summary-statistics-for-tabular-data" title="Permalink to this heading">#</a></h2>
 <p>The table includes porosity (fraction) and acoustic impedance (<span class="math notranslate nohighlight">\(\frac{kg}{m^3} \cdot \frac{m}{s} \cdot 10^3\)</span>) that we will work with in the demonstration below.</p>
-<p>There are a lot of efficient methods to calculate summary statistics from tabular data in DataFrames. The describe command provides count, mean, minimum, maximum, and quartiles all in a nice data table. We use transpose just to flip the table so that features are on the rows and the statistics are on the columns.</p>
+<p>There are a lot of efficient methods to calculate summary <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">statistics</span></a> from <a class="reference internal" href="MachineLearning_glossary_s_z.html#tabular-data"><span class="std std-doc">tabular data</span></a> in <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a>s. The describe command provides count, <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a>, minimum, maximum, and quartiles all in a nice <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> table. We use transpose just to flip the table so that <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s are on the rows and the <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistic"><span class="std std-doc">statistic</span></a>s are on the columns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>                                     <span class="c1"># DataFrame summary statistics</span>
@@ -868,9 +873,9 @@ k^n
 </section>
 <section id="normalize-the-features">
 <h2>Normalize the Features<a class="headerlink" href="#normalize-the-features" title="Permalink to this heading">#</a></h2>
-<p>The two features are quite incompatible.  They have dramatically different:</p>
+<p>The two <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s are quite incompatible.  They have dramatically different:</p>
 <ul class="simple">
-<li><p>variances / ranges</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_s_z.html#variance"><span class="std std-doc">variance</span></a>s / ranges</p></li>
 </ul>
 <p>We should normalize each feature to range between 0 to 1. The equation is:</p>
 <div class="math notranslate nohighlight">
@@ -880,7 +885,7 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 <ul class="simple">
 <li><p>This is a distribution, shift, stretch or squeeze without any distribution shape change.</p></li>
 </ul>
-<p>Now we can use these normalized values for calculating distance in our workflow:</p>
+<p>Now we can use these normalized features for calculating distance in our workflow:</p>
 <ul class="simple">
 <li><p>to remove the influence of magnitude and range on our similarity calculation</p></li>
 </ul>
@@ -1033,9 +1038,9 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 </section>
 <section id="extract-features-of-interest">
 <h2>Extract Features of Interest<a class="headerlink" href="#extract-features-of-interest" title="Permalink to this heading">#</a></h2>
-<p>Now let’s slice out the porosity and acoustic impedance features and then look at the resulting DataFrame to ensure that we loaded and reformatted as expected.</p>
+<p>Now let’s slice out the porosity and acoustic impedance features and then look at the resulting <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a> to ensure that we loaded and reformatted as expected.</p>
 <ul class="simple">
-<li><p>I often separate only the feature of interest to simplify my workflows and to reduce the probability of blunders, such as accidentally referring to a feature not being used in the current workflow!</p></li>
+<li><p>I often separate only the <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> of interest to simplify my workflows and to reduce the probability of blunders, such as accidentally referring to a feature not being used in the current workflow!</p></li>
 <li><p>Beware, this is a shallow copy; therefore, any changes to the df_subset DataFrame will be reflected in the original df DataFrame. The slice is actually a reference to the original DataFrame in memory.</p></li>
 </ul>
 <div class="cell docutils container">
@@ -1113,7 +1118,7 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 </section>
 <section id="infer-model-parameters">
 <h2>Infer Model Parameters<a class="headerlink" href="#infer-model-parameters" title="Permalink to this heading">#</a></h2>
-<p>From the summary statistics we can assign a reasonable minimum and maximum for each feature.</p>
+<p>From the summary <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">statistics</span></a> we can assign a reasonable minimum and maximum for each <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>.</p>
 <ul class="simple">
 <li><p>We will use this for plotting.</p></li>
 </ul>
@@ -1121,7 +1126,7 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 <ul class="simple">
 <li><p>Change the seed number for a different result</p></li>
 </ul>
-<p>We will set the number of prototypes / clusters, <em>K</em></p>
+<p>We will set the number of <a class="reference internal" href="MachineLearning_glossary_m_r.html#prototype"><span class="std std-doc">prototype</span></a>s / clusters, <em>K</em></p>
 <p>We define a dictionary with the color code for each cluster, <span class="math notranslate nohighlight">\(k = 1,\ldots,K\)</span>.  Given 7 codes currently, there will be an error if <span class="math notranslate nohighlight">\(K\)</span> is set larger than 7.  Add more color codes to the dictionary to allow for more categories.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1138,13 +1143,13 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 </section>
 <section id="visualize-the-training-data">
 <h2>Visualize the Training Data<a class="headerlink" href="#visualize-the-training-data" title="Permalink to this heading">#</a></h2>
-<p>In this exercise, we want to use K-means clustering provide facies based on acoustic impedance and porosity predictor features.</p>
+<p>In this exercise, we want to use K-<a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a>s clustering provide <a class="reference internal" href="MachineLearning_glossary_d_f.html#facies"><span class="std std-doc">facies</span></a> based on acoustic impedance and porosity <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a>s.</p>
 <ul class="simple">
 <li><p>This allows use to group rock with similar petrophysical and geophysical properties.</p></li>
 </ul>
-<p>Let’s start by looking at the scatterplot of our training data features, porosity and acoustic impedance.</p>
+<p>Let’s start by looking at the scatterplot of our training data <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s, porosity and acoustic impedance.</p>
 <ul class="simple">
-<li><p>We will look at the data in original units and normalized units through this entire exercise.</p></li>
+<li><p>We will look at the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> in original units and normalized units through this entire exercise.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1168,12 +1173,12 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 </section>
 <section id="calculating-k-means-clustering-by-hand">
 <h2>Calculating k-Means Clustering By-hand<a class="headerlink" href="#calculating-k-means-clustering-by-hand" title="Permalink to this heading">#</a></h2>
-<p>Here’s the steps to calculate k-means clusters for our unlabelled dataset.</p>
+<p>Here’s the steps to calculate <a class="reference internal" href="MachineLearning_glossary_g_l.html#k-means-clustering"><span class="std std-doc">K-means cluster</span></a>s for our unlabelled dataset.</p>
 <section id="initialize-k-prototypes">
 <h3>Initialize k Prototypes<a class="headerlink" href="#initialize-k-prototypes" title="Permalink to this heading">#</a></h3>
-<p>First we will assign k prototypes in the feature space randomly.</p>
+<p>First we will assign k prototypes in the <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-space"><span class="std std-doc">feature space</span></a> randomly.</p>
 <ul class="simple">
-<li><p>for K prototypes assign a random porosity and acoustic impedance</p></li>
+<li><p>for K <a class="reference internal" href="MachineLearning_glossary_m_r.html#prototype"><span class="std std-doc">prototype</span></a>s assign a random porosity and acoustic impedance</p></li>
 <li><p>don’t worry, these prototypes won’t make much sense initially, but they will improve</p></li>
 </ul>
 <p>We will do this and then visualize the prototypes as red, green, blue etc. dots.</p>
@@ -1449,37 +1454,37 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 </section>
 <section id="selecting-the-optimum-number-of-clusters">
 <h2>Selecting the Optimum Number of Clusters<a class="headerlink" href="#selecting-the-optimum-number-of-clusters" title="Permalink to this heading">#</a></h2>
-<p>For K-means clustering, the K number of clusters is an input.</p>
+<p>For <a class="reference internal" href="MachineLearning_glossary_g_l.html#k-means-clustering"><span class="std std-doc">K-means clustering</span></a>, the K number of clusters is an input.</p>
 <ul class="simple">
-<li><p>in some cases this choice is easy or constrained by the context of the problem, for example, we know that there are 3 distinct facies in our subsurface dataset</p></li>
+<li><p>in some cases this choice is easy or constrained by the context of the problem, for example, we know that there are 3 distinct <a class="reference internal" href="MachineLearning_glossary_d_f.html#facies"><span class="std std-doc">facies</span></a> in our subsurface dataset</p></li>
 <li><p>this can be seen as a strength for K-means clustering as we can use our expert knowledge to constrain the number of clusters</p></li>
-<li><p>or this may be seen as a weekness for K-means clustering as the method is unable to determine the number of clusters, as with methods such as DBSCAN</p></li>
+<li><p>or this may be seen as a weekness for K-means clustering as the method is unable to determine the number of clusters, as with methods such as <a class="reference internal" href="MachineLearning_glossary_d_f.html#dbscan"><span class="std std-doc">DBSCAN</span></a></p></li>
 </ul>
-<p>When the number of clusters, K, is not know there are multiple methods to quantitatively determine an optimum K value, including,</p>
+<p>When the number of clusters, K, is not known there are multiple methods to quantitatively determine an optimum K, including,</p>
 <ul class="simple">
-<li><p><strong>Elbow Method</strong> - perform k-means clustering for a range of K values and the within-cluster sum of squares (WCSS) or inertia (the sum of squared distances from each point to its assigned cluster centroid) against the number of clusters (K) and look for the “elbow” point where the rate of decrease in WCSS slows down.</p></li>
+<li><p><strong>Elbow Method</strong> - perform k-means clustering for a range of K values and the within-cluster sum of squares (WCSS) or <a class="reference internal" href="MachineLearning_glossary_g_l.html#inertia"><span class="std std-doc">inertia</span></a> (the sum of squared distances from each point to its assigned cluster centroid) against the number of clusters (K) and look for the “elbow” point where the rate of decrease in WCSS slows down.</p></li>
 <li><p><strong>Silhouette Score</strong> - the silhouette score measures how similar an object is to its own cluster compared to other clusters.</p></li>
 </ul>
 </section>
 <section id="elbow-method">
 <h2>Elbow Method<a class="headerlink" href="#elbow-method" title="Permalink to this heading">#</a></h2>
-<p>The <strong>Elbow Method</strong> is a heuristic used to determine the optimal number of clusters, <span class="math notranslate nohighlight">\(K\)</span>, in a clustering algorithm, such as <strong>K-Means</strong>.</p>
+<p>The <strong>Elbow Method</strong> is a heuristic used to determine the optimal number of clusters, <span class="math notranslate nohighlight">\(K\)</span>, in a clustering algorithm, such as K-means clustering.</p>
 <ul class="simple">
-<li><p>The idea is to run the clustering algorithm for a range of cluster values <span class="math notranslate nohighlight">\(K\)</span>, calculate a performance metric, and plot it. The <strong>elbow</strong> point on the plot represents the optimal number of clusters, where adding more clusters doesn’t significantly improve the model, that is, further reduce the loss function.</p></li>
-<li><p>The method is based on the K-means loss function, inertia, also known more decriptively as Within-Cluster Sum of Squares (WCSS), once again this is,</p></li>
+<li><p>The idea is to run the clustering algorithm for a range of cluster values <span class="math notranslate nohighlight">\(K\)</span>, calculate a performance metric, and plot it. The <strong>elbow</strong> point on the plot represents the optimal number of clusters, where adding more clusters doesn’t significantly improve the model, that is, further reduce the <a class="reference internal" href="MachineLearning_glossary_g_l.html#loss-function"><span class="std std-doc">loss function</span></a>.</p></li>
+<li><p>The method is based on the K-means loss function, <a class="reference internal" href="MachineLearning_glossary_g_l.html#inertia"><span class="std std-doc">inertia</span></a>, also known more decriptively as Within-Cluster Sum of Squares (WCSS), once again this is,</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[ 
 J = \sum^k_{i=1} \sum_{\alpha \in C_i} || X_{\alpha} - \mu_i ||
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(i\)</span> is the cluster index, <span class="math notranslate nohighlight">\(\alpha\)</span> is the data sample index, <span class="math notranslate nohighlight">\(X\)</span> is the data sample and <span class="math notranslate nohighlight">\(\mu_i\)</span> is the <span class="math notranslate nohighlight">\(i\)</span> cluster prototype, <span class="math notranslate nohighlight">\(k\)</span> is the total number of clusters, and <span class="math notranslate nohighlight">\(|| X_m - \mu_m ||\)</span> is the Euclidean distance from a sample to the cluster prototype in <span class="math notranslate nohighlight">\(M\)</span> dimensional space calculated as:</p>
+<p>where <span class="math notranslate nohighlight">\(i\)</span> is the cluster index, <span class="math notranslate nohighlight">\(\alpha\)</span> is the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a> index, <span class="math notranslate nohighlight">\(X\)</span> is the data sample and <span class="math notranslate nohighlight">\(\mu_i\)</span> is the <span class="math notranslate nohighlight">\(i\)</span> cluster <a class="reference internal" href="MachineLearning_glossary_m_r.html#prototype"><span class="std std-doc">prototype</span></a>, <span class="math notranslate nohighlight">\(k\)</span> is the total number of clusters, and <span class="math notranslate nohighlight">\(|| X_m - \mu_m ||\)</span> is the Euclidean distance from a sample to the cluster prototype in <span class="math notranslate nohighlight">\(M\)</span> dimensional space calculated as:</p>
 <div class="math notranslate nohighlight">
 \[
 || X_{m,\alpha} - \mu_i || =  \sqrt{ \sum_m^M \left( X_{m,\alpha} - \mu_{m,i} \right)^2 }
 \]</div>
 <p>The elbow method proceeds with the following steps,</p>
 <ol class="arabic simple">
-<li><p><strong>Fit K-Means for different values of <span class="math notranslate nohighlight">\(K\)</span></strong>, select a range of possible values for (K) and for each value of (K), fit the K-Means algorithm and calculate the inertia.</p></li>
+<li><p><strong>Fit K-Means for different <span class="math notranslate nohighlight">\(K\)</span> assignments</strong>, select a range of possible values for (K) and for each value of (K), fit the K-Means algorithm and calculate the inertia.</p></li>
 <li><p><strong>Plot the Intertia vs. <span class="math notranslate nohighlight">\(K\)</span></strong>, create a plot where the x-axis represents the number of clusters (<span class="math notranslate nohighlight">\(K\)</span>) and the y-axis represents the inertia.</p></li>
 <li><p><strong>Look for the “elbow”</strong>, The <strong>elbow</strong> point on the plot is where the decrease in WCSS starts to slow down, indicating that increasing the number of clusters beyond this point provides diminishing returns in terms of reducing inertia.</p></li>
 </ol>
@@ -1489,7 +1494,7 @@ J = \sum^k_{i=1} \sum_{\alpha \in C_i} || X_{\alpha} - \mu_i ||
 </ul>
 <p>The limitations of sihouette score include,</p>
 <ul class="simple">
-<li><p>The inertia method, can only be applied to K means clustering, but an elbow approach with k-distance plots is applied with density-based clustering, for example, DBSCAN.</p></li>
+<li><p>The inertia method, can only be applied to <a class="reference internal" href="MachineLearning_glossary_g_l.html#k-means-clustering"><span class="std std-doc">K means clustering</span></a>, but an elbow approach with k-distance plots is applied with density-based clustering, for example, <a class="reference internal" href="MachineLearning_glossary_d_f.html#dbscan"><span class="std std-doc">DBSCAN</span></a>.</p></li>
 <li><p>It may not provide clear results for complex datasets with overlapping or irregularly shaped clusters.</p></li>
 </ul>
 <div class="cell docutils container">
@@ -1522,12 +1527,14 @@ J = \sum^k_{i=1} \sum_{\alpha \in C_i} || X_{\alpha} - \mu_i ||
 </section>
 <section id="silhouette-method">
 <h2>Silhouette Method<a class="headerlink" href="#silhouette-method" title="Permalink to this heading">#</a></h2>
-<p>Description: The Silhouette Score measures how similar an object is to its own cluster compared to other clusters.
-How it works: Compute the silhouette score for each K value. The silhouette score ranges from -1 (poor fit) to +1 (good fit), where higher values indicate better clustering.
-Interpretation: The optimal K corresponds to the highest average silhouette score.
-Pros: Provides both cohesion and separation metrics.
-Cons: Can be computationally expensive for large datasets.</p>
-<p>The silhouette calculation proceeds as, for a given data point (i), the silhouette score is calculated using the following steps:</p>
+<p>The Silhouette Score measures how similar an object is to its own cluster compared to other clusters.</p>
+<ul class="simple">
+<li><p>How it works - compute the silhouette score for each K. The silhouette score ranges from -1 (poor fit) to +1 (good fit), where higher values indicate better clustering.</p></li>
+<li><p>Interpretation - the optimal K corresponds to the highest <a class="reference internal" href="MachineLearning_glossary_a_c.html#average"><span class="std std-doc">average</span></a> silhouette score.</p></li>
+<li><p>Advantages - provides both cohesion and separation metrics.</p></li>
+<li><p>Disadvantages - can be computationally expensive for large datasets.</p></li>
+</ul>
+<p>The silhouette calculation proceeds as, for a given <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> point (i), the silhouette score is calculated using the following steps:</p>
 <ol class="arabic simple">
 <li><p>Calculate the <strong>average distance within the same cluster</strong>,</p></li>
 </ol>
@@ -1570,7 +1577,7 @@ S = \frac{1}{n} \sum_{i=1}^{n} s(i)
 <p>Advantages of the silhouette method include,</p>
 <ul class="simple">
 <li><p>The silhouette score provides an understanding of both the compactness and separation of clusters.</p></li>
-<li><p>Can be applied to any clustering algorithm, not just K-Means, i.e., the input is the data and cluster assignments.</p></li>
+<li><p>Can be applied to any clustering algorithm, not just <a class="reference internal" href="MachineLearning_glossary_g_l.html#k-means-clustering"><span class="std std-doc">K-means clustering</span></a>, i.e., the input is the data and cluster assignments.</p></li>
 </ul>
 <p>The limitations of sihouette score include,</p>
 <ul class="simple">
@@ -1606,7 +1613,7 @@ S = \frac{1}{n} \sum_{i=1}^{n} s(i)
 </section>
 <section id="clustering-without-normalization-standardization">
 <h2>Clustering without Normalization / Standardization<a class="headerlink" href="#clustering-without-normalization-standardization" title="Permalink to this heading">#</a></h2>
-<p>One of the critical assumptions of clustering is that the variability is the same over each feature.</p>
+<p>One of the critical assumptions of clustering is that the variability is the same over each <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>.</p>
 <ul class="simple">
 <li><p>an exception would be if the features have the same units and the variability differences are meaningful</p></li>
 </ul>
@@ -1617,7 +1624,7 @@ S = \frac{1}{n} \sum_{i=1}^{n} s(i)
 </ul>
 <p>Here’s what our plot looks like with equal aspect ratio between the 2 features.</p>
 <ul class="simple">
-<li><p>the plot becomes a line and the data does not show up properly.</p></li>
+<li><p>the plot becomes a line and the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> does not show up properly.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1670,10 +1677,10 @@ S = \frac{1}{n} \sum_{i=1}^{n} s(i)
 <p>You can select any of these datasets or modify the code and add your own to do this.</p>
 <section id="dataset-0-unconventional-multivariate-v4">
 <h3>Dataset 0, Unconventional Multivariate v4<a class="headerlink" href="#dataset-0-unconventional-multivariate-v4" title="Permalink to this heading">#</a></h3>
-<p>Let’s load the provided multivariate, dataset <a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets/blob/master/unconv_MV_v4.csv">unconv_MV.csv</a>. This dataset has variables from 1,000 unconventional wells including:</p>
+<p>Let’s load the provided <a class="reference internal" href="MachineLearning_glossary_m_r.html#multivariate"><span class="std std-doc">multivariate</span></a>, dataset <a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets/blob/master/unconv_MV_v4.csv">unconv_MV.csv</a>. This dataset has variables from 1,000 unconventional wells including:</p>
 <ul class="simple">
-<li><p>well average porosity</p></li>
-<li><p>log transform of permeability (to linearize the relationships with other variables)</p></li>
+<li><p>well <a class="reference internal" href="MachineLearning_glossary_a_c.html#average"><span class="std std-doc">average</span></a> porosity</p></li>
+<li><p>log transform of permeability (to linearize the relationships with other <a class="reference internal" href="MachineLearning_glossary_s_z.html#variable"><span class="std std-doc">variable</span></a>s)</p></li>
 <li><p>acoustic impedance (kg/m^3 x m/s x 10^6)</p></li>
 <li><p>brittleness ratio (%)</p></li>
 <li><p>total organic carbon (%)</p></li>
@@ -1686,7 +1693,7 @@ S = \frac{1}{n} \sum_{i=1}^{n} s(i)
 <p>Let’s load the provided multivariate, 2D spatial dataset <a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets/blob/master/12_sample_data.csv">12_sample_data.csv</a>. This dataset has variables from 480 unconventional wells including:</p>
 <ul class="simple">
 <li><p>X (m), Y (m) location coordinates</p></li>
-<li><p>facies (0 - shale, 1 - sand)</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_d_f.html#facies"><span class="std std-doc">facies</span></a> (0 - shale, 1 - sand)</p></li>
 <li><p>porosity (%) after units conversion</p></li>
 <li><p>permeability (mD)</p></li>
 <li><p>acoustic impedance (kg/m^3 x m/s x 10^6)</p></li>
@@ -1708,14 +1715,14 @@ S = \frac{1}{n} \sum_{i=1}^{n} s(i)
 <li><p>Shear velocity (m/s)</p></li>
 <li><p>Shear modulus (GPa)</p></li>
 </ul>
-<p>We load the tabular data with the pandas ‘read_csv’ function into a DataFrame we called ‘my_data’ and then preview it to make sure it loaded correctly.</p>
+<p>We load the <a class="reference internal" href="MachineLearning_glossary_s_z.html#tabular-data"><span class="std std-doc">tabular data</span></a> with the pandas ‘read_csv’ function into a <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a> we called ‘my_data’ and then preview it to make sure it loaded correctly.</p>
 <ul class="simple">
-<li><p>we also populate lists with data ranges and labels for ease of plotting</p></li>
+<li><p>we also populate lists with <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> ranges and labels for ease of plotting</p></li>
 </ul>
 <p>Load and format the data,</p>
 <ul class="simple">
-<li><p>drop the response feature</p></li>
-<li><p>reformate the features as needed</p></li>
+<li><p>drop the <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a></p></li>
+<li><p>reformate the <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s as needed</p></li>
 <li><p>also, I like to store the metadata in lists</p></li>
 </ul>
 <div class="cell docutils container">
@@ -1925,7 +1932,7 @@ S = \frac{1}{n} \sum_{i=1}^{n} s(i)
 </section>
 <section id="perform-cluster-analysis">
 <h3>Perform Cluster Analysis<a class="headerlink" href="#perform-cluster-analysis" title="Permalink to this heading">#</a></h3>
-<p>Now calculate the silhouette plot to calculate a good number of categories and perform K-means clustering with that ‘K’.</p>
+<p>Now calculate the silhouette plot to calculate a good number of categories and perform <a class="reference internal" href="MachineLearning_glossary_g_l.html#k-means-clustering"><span class="std std-doc">K-means clustering</span></a> with that ‘K’.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_K</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df_new</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>                                 <span class="c1"># maximum number of clusters, K</span>
@@ -2004,20 +2011,20 @@ S = \frac{1}{n} \sum_{i=1}^{n} s(i)
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
 </figcaption>
 </figure>
-<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a>, <a class="reference internal" href="MachineLearning_glossary_g_l.html#geostatistics"><span class="std std-doc">geostatistics</span></a>, and machine learning. Michael is also,</p>
 <ul class="simple">
-<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a <a class="reference internal" href="MachineLearning_glossary_a_c.html#core"><span class="std std-doc">core</span></a> faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>Michael has written over 100 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
 <p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
-<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a> and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
-<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">Data</span></a> Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>. We are solving challenging subsurface problems!</p></li>
 <li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
 </ul>
 <p>I’m always happy to discuss,</p>

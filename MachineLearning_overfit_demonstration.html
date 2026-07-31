@@ -172,6 +172,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_concepts.html">Machine Learning Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_subsurface_modeling.html">Subsurface Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_training_tuning.html">Training and Tuning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
@@ -217,7 +218,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_python.html">Python Code Snippets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_a_c.html">Glossary A-C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_d_f.html">Glossary D-F</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_g_l.html">Glossary G-L</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_m_r.html">Glossary M-R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_s_z.html">Glossary S-Z</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -455,7 +460,7 @@ document.write(`
 <p>TBD</p>
 <section id="danger-of-overfit">
 <h2>Danger of Overfit<a class="headerlink" href="#danger-of-overfit" title="Permalink to this heading">#</a></h2>
-<p>It follows that a sufficiently flexible, complicated trend model can perfectly fit the data. For example, a trend based on spatial interpolation would exactly honor the data at the data locations.</p>
+<p>It follows that a sufficiently flexible, complicated <a class="reference internal" href="MachineLearning_glossary_s_z.html#trend-model"><span class="std std-doc">trend model</span></a> can perfectly fit the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>. For example, a <a class="reference internal" href="MachineLearning_glossary_s_z.html#trend"><span class="std std-doc">trend</span></a> based on spatial interpolation would exactly honor the data at the data locations.</p>
 <p>What would be the issue with that?</p>
 <p>\begin{equation}
 \sigma^2_{Y} \to 0
@@ -464,13 +469,13 @@ document.write(`
 Prop_{Known} = \frac{\sigma^2_{m}}{\sigma^2_{m}} = 100%, \quad
 Prop_{Unknown} = \frac{0}{\sigma^2_{m}} = 0%
 \end{equation}</p>
-<p>The result is a model that assumes that all variance is described by the deterministic trend; therefore is variance is partitioned to the known bin! This is a model without uncertainty.</p>
-<p>There’s another aspect, the model that is very flexible will have more parameters to fit with the same number of data; therefore, the uncertainty in the fit of the model will increase. The model variance increases, in other words the model is more sensitive to the actually data available and is likely to be quite inaccurate away from the data.</p>
+<p>The result is a model that assumes that all <a class="reference internal" href="MachineLearning_glossary_s_z.html#variance"><span class="std std-doc">variance</span></a> is described by the deterministic trend; therefore is variance is partitioned to the known bin! This is a model without uncertainty.</p>
+<p>There’s another aspect, the model that is very flexible will have more <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a>s to fit with the same number of data; therefore, the uncertainty in the fit of the model will increase. The <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-variance"><span class="std std-doc">model variance</span></a> increases, in other words the model is more sensitive to the actually data available and is likely to be quite inaccurate away from the data.</p>
 <p>We can observe the impact of overfit with a very simple 1D problem.</p>
 </section>
 <section id="objective">
 <h2>Objective<a class="headerlink" href="#objective" title="Permalink to this heading">#</a></h2>
-<p>In the PGE 383: Stochastic Subsurface Modeling class I want to provide hands-on experience with building subsurface modeling workflows. Python provides an excellent vehicle to accomplish this. I have coded a package called GeostatsPy with GSLIB: Geostatistical Library (Deutsch and Journel, 1998) functionality that provides basic building blocks for building subsurface modeling workflows.</p>
+<p>In the PGE 383: Stochastic Subsurface Modeling class I want to provide hands-on experience with building <a class="reference internal" href="MachineLearning_glossary_s_z.html#subsurface-modeling-workflow"><span class="std std-doc">subsurface modeling workflow</span></a>s. Python provides an excellent vehicle to accomplish this. I have coded a package called GeostatsPy with GSLIB: Geostatistical Library (Deutsch and Journel, 1998) functionality that provides basic building blocks for building subsurface modeling workflows.</p>
 <p>The objective is to remove the hurdles of subsurface modeling workflow construction by providing building blocks and sufficient examples. This is not a coding class per se, but we need the ability to ‘script’ workflows working with numerical methods.</p>
 </section>
 <section id="getting-started">
@@ -482,9 +487,9 @@ Prop_{Unknown} = \frac{0}{\sigma^2_{m}} = 0%
 <li><p>In the terminal type: pip install geostatspy.</p></li>
 <li><p>Open Jupyter and in the top block get started by copy and pasting the code block below from this Jupyter Notebook to start using the geostatspy functionality.</p></li>
 </ol>
-<p>You will need to copy the data file to your working directory.  They are available here:</p>
+<p>You will need to copy the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> file to your working directory.  They are available here:</p>
 <ul class="simple">
-<li><p>Tabular data - sample_data_biased.csv at <a class="reference external" href="https://git.io/fh0CW">https://git.io/fh0CW</a></p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_s_z.html#tabular-data"><span class="std std-doc">Tabular data</span></a> - sample_data_biased.csv at <a class="reference external" href="https://git.io/fh0CW">https://git.io/fh0CW</a></p></li>
 </ul>
 <p>There are exampled below with these functions. You can go here to see a list of the available functions, <a class="reference external" href="https://git.io/fh4eX">https://git.io/fh4eX</a>, other example workflows and source code.</p>
 <div class="cell docutils container">
@@ -532,7 +537,7 @@ Prop_{Unknown} = \frac{0}{\sigma^2_{m}} = 0%
 </section>
 <section id="simple-dataset">
 <h2>Simple Dataset<a class="headerlink" href="#simple-dataset" title="Permalink to this heading">#</a></h2>
-<p>Let’s make a simple dataset, permeability in 1D over the x coordinate, input in ndarrays and then combined into a Pandas DataFrame. We will also make sure that what we made are in fact ndarrays and a DataFrame.</p>
+<p>Let’s make a simple dataset, permeability in 1D over the x coordinate, input in <a class="reference internal" href="MachineLearning_glossary_m_r.html#ndarray"><span class="std std-doc">ndarray</span></a>s and then combined into a Pandas <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a>. We will also make sure that what we made are in fact ndarrays and a DataFrame.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">130</span><span class="p">,</span><span class="mi">190</span><span class="p">,</span><span class="mi">210</span><span class="p">,</span><span class="mi">250</span><span class="p">,</span><span class="mi">290</span><span class="p">])</span>
@@ -893,8 +898,8 @@ df is type &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
-<p>This was a basic demonstration of overfitting in trend modeling. Much more could be done, such as randomizing the data and training observe model variance directly and use of other types of trend models (e.g. moving window averaging / convoluational models).</p>
-<p>I have other demonstrations on the basics of working with DataFrames, ndarrays and many other workflows availble at <a class="github reference external" href="https://github.com/GeostatsGuy/PythonNumericalDemos">GeostatsGuy/PythonNumericalDemos</a> and <a class="github reference external" href="https://github.com/GeostatsGuy/GeostatsPy">GeostatsGuy/GeostatsPy</a>.</p>
+<p>This was a basic demonstration of overfitting in <a class="reference internal" href="MachineLearning_glossary_s_z.html#trend"><span class="std std-doc">trend</span></a> modeling. Much more could be done, such as randomizing the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> and training observe <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-variance"><span class="std std-doc">model variance</span></a> directly and use of other types of <a class="reference internal" href="MachineLearning_glossary_s_z.html#trend-model"><span class="std std-doc">trend model</span></a>s (e.g. moving window averaging / convoluational models).</p>
+<p>I have other demonstrations on the basics of working with <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a>s, <a class="reference internal" href="MachineLearning_glossary_m_r.html#ndarray"><span class="std std-doc">ndarray</span></a>s and many other workflows availble at <a class="github reference external" href="https://github.com/GeostatsGuy/PythonNumericalDemos">GeostatsGuy/PythonNumericalDemos</a> and <a class="github reference external" href="https://github.com/GeostatsGuy/GeostatsPy">GeostatsGuy/GeostatsPy</a>.</p>
 <p>I hope this was helpful,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Associate Professor The Hildebrand Department of Petroleum and Geosystems Engineering, Bureau of Economic Geology, The Jackson School of Geosciences, The University of Texas at Austin</p>

@@ -174,6 +174,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_concepts.html">Machine Learning Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_subsurface_modeling.html">Subsurface Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_training_tuning.html">Training and Tuning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
@@ -219,7 +220,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_python.html">Python Code Snippets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_a_c.html">Glossary A-C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_d_f.html">Glossary D-F</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_g_l.html">Glossary G-L</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_m_r.html">Glossary M-R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_s_z.html">Glossary S-Z</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -487,17 +492,17 @@ document.write(`
 <p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
 <section id="motivation-for-feature-imputation">
 <h2>Motivation for Feature Imputation<a class="headerlink" href="#motivation-for-feature-imputation" title="Permalink to this heading">#</a></h2>
-<p>Most spatial, subsurface datasets are not complete, missing values from the database.</p>
+<p>Most spatial, subsurface datasets are not complete, missing <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s from the database.</p>
 <ul class="simple">
-<li><p>many data analytics and machine learning workflows require complete data, <span class="math notranslate nohighlight">\(𝑥_(1,𝑖),\dots,𝑥_(𝑚,𝑖)\)</span> for each of the data samples <span class="math notranslate nohighlight">\(𝑖 = 1,\ldots,𝑛\)</span>.</p></li>
+<li><p>many <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a> and machine learning workflows require complete data, <span class="math notranslate nohighlight">\(𝑥_(1,𝑖),\dots,𝑥_(𝑚,𝑖)\)</span> for each of the data <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s <span class="math notranslate nohighlight">\(𝑖 = 1,\ldots,𝑛\)</span>.</p></li>
 </ul>
-<p><strong>Inferential Machine Learning</strong> - methods the require complete data, for example,</p>
+<p><strong>Inferential Machine Learning</strong> - methods the require complete <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>, for example,</p>
 <ol class="arabic simple">
-<li><p>principal components analysis - require covariance matrix and covariance needs all feature values</p></li>
-<li><p>multidimensional scaling - we cannot calculate the dissimilarity matrix without all features available</p></li>
-<li><p>cluster analysis - we cannot calculate distances in feature space without all features values</p></li>
+<li><p>principal components analysis - require <a class="reference internal" href="MachineLearning_glossary_a_c.html#covariance"><span class="std std-doc">covariance</span></a> matrix and covariance needs all feature values</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_m_r.html#multidimensional-scaling"><span class="std std-doc">multidimensional scaling</span></a> - we cannot calculate the dissimilarity matrix without all features available</p></li>
+<li><p>cluster analysis - we cannot calculate distances in <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-space"><span class="std std-doc">feature space</span></a> without all features values</p></li>
 </ol>
-<p><strong>Predictive Machine Learning</strong> - always require all features to train and test the model,</p>
+<p><strong>Predictive Machine Learning</strong> - always require all <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s to train and test the model,</p>
 <div class="math notranslate nohighlight">
 \[
 y = f(X_1,\ldots,X_m)
@@ -509,29 +514,29 @@ y = f(X_1,\ldots,X_m)
 </section>
 <section id="cause-of-missing-feature-values">
 <h2>Cause of Missing Feature Values<a class="headerlink" href="#cause-of-missing-feature-values" title="Permalink to this heading">#</a></h2>
-<p>Missing at random (MAR) is not common and is difficult to evaluated, in this case,</p>
+<p><a class="reference internal" href="MachineLearning_glossary_m_r.html#missing-at-random"><span class="std std-doc">Missing at random</span></a> (MAR) is not common and is difficult to evaluated, in this case,</p>
 <ul class="simple">
-<li><p>global random omission may not result in data bias and bias in the resulting models</p></li>
+<li><p>global random omission may not result in <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a> <a class="reference internal" href="MachineLearning_glossary_a_c.html#bias"><span class="std std-doc">bias</span></a> and bias in the resulting models</p></li>
 </ul>
-<p>MAR is not typically the case as missing data often is related to a confounding feature, for example,</p>
+<p>MAR is not typically the case as missing data often is related to a confounding <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>, for example,</p>
 <ul class="simple">
 <li><p><strong>sampling cost</strong> - for example, low permeability test takes too long</p></li>
-<li><p><strong>rock rheology or other sample survivorship biases</strong> - for example, not possible to recover the mudstone samples</p></li>
+<li><p><strong>rock rheology or other <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a> survivorship biases</strong> - for example, not possible to recover the mudstone samples</p></li>
 <li><p><strong>sample design</strong> - sampling to reduce uncertainty and maximize profitability instead of statistical representativity, dual purpose samples for information and production</p></li>
-<li><p><strong>sampling accessibility</strong> - there are locations in the subsurface that are difficult or impossible to samples, for example, near lakes or communities, or subsalt for seismic imaging</p></li>
+<li><p><strong>sampling accessibility</strong> - there are locations in the subsurface that are difficult or impossible to samples, for example, near lakes or communities, or subsalt for <a class="reference internal" href="MachineLearning_glossary_s_z.html#seismic"><span class="std std-doc">seismic</span></a> imaging</p></li>
 </ul>
 </section>
 <section id="consequences-of-missing-feature-values">
 <h2>Consequences of Missing Feature Values<a class="headerlink" href="#consequences-of-missing-feature-values" title="Permalink to this heading">#</a></h2>
-<p>This will result in clustering of missing values over locations and feature space.</p>
+<p>This will result in clustering of missing values over locations and <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-space"><span class="std std-doc">feature space</span></a>.</p>
 <ul class="simple">
-<li><p>omission of these feature values may bias global statistics, and degrade accuracy of local predictions</p></li>
-<li><p>the use of global distributions for imputing missing values may not be reasonable</p></li>
+<li><p>omission of these feature values may bias global <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistic"><span class="std std-doc">statistic</span></a>s, and degrade accuracy of local <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a>s</p></li>
+<li><p>the use of global distributions for imputing missing <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s may not be reasonable</p></li>
 </ul>
-<p>More than reducing the amount of training and testing data, missing data, if not completely at random will result in:</p>
+<p>More than reducing the amount of training and testing <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>, missing data, if not completely at random will result in:</p>
 <ul class="simple">
-<li><p>Biased sample statistics resulting in biased model training and testing</p></li>
-<li><p>Biased models with biased predictions with potentially no indication of the bias!</p></li>
+<li><p>Biased <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a> <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">statistics</span></a> resulting in biased model training and testing</p></li>
+<li><p>Biased models with biased predictions with potentially no indication of the <a class="reference internal" href="MachineLearning_glossary_a_c.html#bias"><span class="std std-doc">bias</span></a>!</p></li>
 </ul>
 <p>If you reread the above looking for solutions, I offer my Canadian, “I’m sorry”. Those who know us know that we say sorry a lot and have a cool pronunciation of the word.</p>
 <p>I say all of the above as a cautionary note but,</p>
@@ -541,7 +546,7 @@ y = f(X_1,\ldots,X_m)
 <li><p>the solutions integrate the entire subsurface, spatial project team, i.e., domain expertise is critical</p></li>
 <li><p>I’m going to leave this at the level of awareness</p></li>
 </ul>
-<p>We must move beyond the commonly applied likewise deletion, removal of all samples with any missing features.</p>
+<p>We must move beyond the commonly applied likewise deletion, removal of all samples with any missing <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s.</p>
 </section>
 <section id="load-the-required-libraries">
 <h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
@@ -616,13 +621,13 @@ y = f(X_1,\ldots,X_m)
 </section>
 <section id="loading-tabular-data">
 <h2>Loading Tabular Data<a class="headerlink" href="#loading-tabular-data" title="Permalink to this heading">#</a></h2>
-<p>Here’s the command to load our comma delimited data file in to a Pandas’ DataFrame object.</p>
+<p>Here’s the command to load our comma delimited data file in to a Pandas’ <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a> object.</p>
 <section id="dataset-0-unconventional-multivariate-v4">
 <h3>Dataset 0, Unconventional Multivariate v4<a class="headerlink" href="#dataset-0-unconventional-multivariate-v4" title="Permalink to this heading">#</a></h3>
-<p>Let’s load the provided multivariate, dataset <a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets/blob/master/unconv_MV_v4.csv">unconv_MV.csv</a>. This dataset has variables from 1,000 unconventional wells including:</p>
+<p>Let’s load the provided <a class="reference internal" href="MachineLearning_glossary_m_r.html#multivariate"><span class="std std-doc">multivariate</span></a>, dataset <a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets/blob/master/unconv_MV_v4.csv">unconv_MV.csv</a>. This dataset has variables from 1,000 unconventional wells including:</p>
 <ul class="simple">
-<li><p>well average porosity</p></li>
-<li><p>log transform of permeability (to linearize the relationships with other variables)</p></li>
+<li><p>well <a class="reference internal" href="MachineLearning_glossary_a_c.html#average"><span class="std std-doc">average</span></a> porosity</p></li>
+<li><p>log transform of permeability (to linearize the relationships with other <a class="reference internal" href="MachineLearning_glossary_s_z.html#variable"><span class="std std-doc">variable</span></a>s)</p></li>
 <li><p>acoustic impedance (kg/m^3 x m/s x 10^6)</p></li>
 <li><p>brittleness ratio (%)</p></li>
 <li><p>total organic carbon (%)</p></li>
@@ -649,16 +654,16 @@ y = f(X_1,\ldots,X_m)
 <li><p>Porosity (%) after units conversion</p></li>
 <li><p>Permeability (mD)</p></li>
 <li><p>Acoustic Impedance (kg/m2s*10^6) after units conversion</p></li>
-<li><p>Facies (categorical) - ordinal with ordering from Shale, Sandy Shale, Shaley Sand, to Sandstone.</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_d_f.html#facies"><span class="std std-doc">Facies</span></a> (categorical) - ordinal with ordering from Shale, Sandy Shale, Shaley Sand, to Sandstone.</p></li>
 <li><p>Density (g/cm^3)</p></li>
 <li><p>Compressible velocity (m/s)</p></li>
 <li><p>Youngs modulus (GPa)</p></li>
 <li><p>Shear velocity (m/s)</p></li>
 <li><p>Shear modulus (GPa)</p></li>
 </ul>
-<p>We load the tabular data with the pandas ‘read_csv’ function into a DataFrame we called ‘my_data’ and then preview it to make sure it loaded correctly.</p>
+<p>We load the <a class="reference internal" href="MachineLearning_glossary_s_z.html#tabular-data"><span class="std std-doc">tabular data</span></a> with the pandas ‘read_csv’ function into a DataFrame we called ‘my_data’ and then preview it to make sure it loaded correctly.</p>
 <ul class="simple">
-<li><p>we also populate lists with data ranges and labels for ease of plotting</p></li>
+<li><p>we also populate lists with <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> ranges and labels for ease of plotting</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -724,13 +729,13 @@ y = f(X_1,\ldots,X_m)
 </section>
 <section id="visualize-the-dataframe">
 <h2>Visualize the DataFrame<a class="headerlink" href="#visualize-the-dataframe" title="Permalink to this heading">#</a></h2>
-<p>Visualizing the DataFrame is useful first check of the data.</p>
+<p>Visualizing the <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a> is useful first check of the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>.</p>
 <ul class="simple">
-<li><p>many things can go wrong, e.g., we loaded the wrong data, all the features did not load, etc.</p></li>
+<li><p>many things can go wrong, e.g., we loaded the wrong data, all the <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s did not load, etc.</p></li>
 </ul>
 <p>We can preview by utilizing the ‘head’ DataFrame member function (with a nice and clean format, see below).</p>
 <ul class="simple">
-<li><p>add parameter ‘n=13’ to see the first 13 rows of the dataset.</p></li>
+<li><p>add <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a> ‘n=13’ to see the first 13 rows of the dataset.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -905,19 +910,19 @@ y = f(X_1,\ldots,X_m)
 </section>
 <section id="remove-some-data">
 <h2>Remove Some Data<a class="headerlink" href="#remove-some-data" title="Permalink to this heading">#</a></h2>
-<p>Let’s select a proportion of NaN values, values to set as missing,</p>
+<p>Let’s select a proportion of NaN <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s, values to set as missing,</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">proportion_NaN</span> <span class="o">=</span> <span class="mf">0.1</span>
 </pre></div>
 </div>
 <p>Then we can make a boolean array</p>
 <ol class="arabic simple">
-<li><p>make an ndarray of same shape (number rows and columns) as the DataFrame of uniform[0,1] distributed values</p></li>
+<li><p>make an ndarray of same shape (number rows and columns) as the <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a> of uniform[0,1] distributed values</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li><p>check condition of less than the identified proportion to make a boolean ndarray of same size, true if less than the proportion. The result will be the correct proportion (within error) of random true values.</p></li>
+<li><p>check condition of less than the identified proportion to make a boolean <a class="reference internal" href="MachineLearning_glossary_m_r.html#ndarray"><span class="std std-doc">ndarray</span></a> of same size, true if less than the proportion. The result will be the correct proportion (within error) of random true values.</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">remove</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">proportion_NaN</span>
 </pre></div>
@@ -928,9 +933,9 @@ y = f(X_1,\ldots,X_m)
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_mask</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">mask</span><span class="p">(</span><span class="n">remove</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Full disclosure, for this demonstration our data is missing at random, MAR, and this simplifies our task.</p>
+<p>Full disclosure, for this demonstration our <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> is <a class="reference internal" href="MachineLearning_glossary_m_r.html#missing-at-random"><span class="std std-doc">missing at random</span></a>, MAR, and this simplifies our task.</p>
 <ul class="simple">
-<li><p>this allows us to focus on the mechanics of feature imputation without the additional domain expertise topics. This is a good first step!</p></li>
+<li><p>this allows us to focus on the mechanics of <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-imputation"><span class="std std-doc">feature imputation</span></a> without the additional domain expertise topics. This is a good first step!</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1133,7 +1138,7 @@ Fraction of nan values in the DataFrame = 0.093.
 </section>
 <section id="evaluation-of-the-data-coverage">
 <h2>Evaluation of the Data Coverage<a class="headerlink" href="#evaluation-of-the-data-coverage" title="Permalink to this heading">#</a></h2>
-<p>Let’s calculate the amount of missing data.</p>
+<p>Let’s calculate the amount of missing <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_mask</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>                                <span class="c1"># DataFrame summary statistics</span>
@@ -1274,15 +1279,15 @@ Fraction of nan values in the DataFrame = 0.093.
 </section>
 <section id="imputation-method-1-feature-selection">
 <h2>Imputation Method #1 - Feature Selection<a class="headerlink" href="#imputation-method-1-feature-selection" title="Permalink to this heading">#</a></h2>
-<p>Data completeness should be considered in feature selection.</p>
+<p><a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">Data</span></a> completeness should be considered in <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-selection"><span class="std std-doc">feature selection</span></a>.</p>
 <ul class="simple">
-<li><p>if there is low data completeness, high percentage of missing samples, for a feature then the feature may be removed.</p></li>
+<li><p>if there is low data completeness, high percentage of missing <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s, for a <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> then the feature may be removed.</p></li>
 </ul>
-<p>One method is to use the .drop() DataFrame function.</p>
+<p>One method is to use the .drop() <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a> function.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_test</span> <span class="o">=</span> <span class="n">df_mask</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;VR&#39;</span><span class="p">,</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>We use axis = 1 to drop a feature (as above) to remove features with more than 10% of feature values missing.</p>
+<p>We use axis = 1 to drop a feature (as above) to remove features with more than 10% of feature <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s missing.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">idata</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -1309,13 +1314,13 @@ Fraction of nan values in the DataFrame = 0.093.
 </section>
 <section id="imputation-method-2-sample-selection">
 <h2>Imputation Method #2 - Sample Selection<a class="headerlink" href="#imputation-method-2-sample-selection" title="Permalink to this heading">#</a></h2>
-<p>There may be samples with more missing feature values.</p>
+<p>There may be samples with more <a class="reference internal" href="MachineLearning_glossary_m_r.html#missing-feature-values"><span class="std std-doc">missing feature values</span></a>.</p>
 <ul class="simple">
-<li><p>a specific vintage of data, for example, older data, or sample locations that experienced data collection problems</p></li>
+<li><p>a specific vintage of <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>, for example, older data, or <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a> locations that experienced data collection problems</p></li>
 </ul>
-<p>Let’s check the coverage by sample in the DataFrame.</p>
+<p>Let’s check the coverage by sample in the <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a>.</p>
 <ul class="simple">
-<li><p>we use the axis=1 parameter in the sum command to sum NaN values over the rows, samples, of the DataFrame.</p></li>
+<li><p>we use the axis=1 <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a> in the sum command to sum NaN <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s over the rows, samples, of the DataFrame.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1383,27 +1388,27 @@ Fraction of nan values in the DataFrame = 0.093.
 </section>
 <section id="imputation-method-3-listwise-deletion">
 <h2>Imputation Method #3 - Listwise Deletion<a class="headerlink" href="#imputation-method-3-listwise-deletion" title="Permalink to this heading">#</a></h2>
-<p>This is the method of removing all samples that have any missing feature values.</p>
+<p>This is the method of removing all <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s that have any <a class="reference internal" href="MachineLearning_glossary_m_r.html#missing-feature-values"><span class="std std-doc">missing feature values</span></a>.</p>
 <ul class="simple">
-<li><p>this approach ensures complete data while technically avoiding the need for imputation</p></li>
+<li><p>this approach ensures complete <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> while technically avoiding the need for imputation</p></li>
 <li><p>no need for a imputation model decision</p></li>
 <li><p>often removes important information</p></li>
-<li><p>maximizes data bias if information is not missing at random (MAR)</p></li>
+<li><p>maximizes data <a class="reference internal" href="MachineLearning_glossary_a_c.html#bias"><span class="std std-doc">bias</span></a> if information is not <a class="reference internal" href="MachineLearning_glossary_m_r.html#missing-at-random"><span class="std std-doc">missing at random</span></a> (MAR)</p></li>
 </ul>
-<p>We must consider data completeness, coverage for each feature, as visualized above. Consider that,</p>
+<p>We must consider data completeness, coverage for each <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>, as visualized above. Consider that,</p>
 <ul class="simple">
 <li><p>missing records in one feature may be different than the missing features in another feature</p></li>
 <li><p>the union of missing over all features, may result in loss of much more than the largest proportion of missing over the features</p></li>
 </ul>
-<p>Also, if missing not at random (MNAR), the sample bias is maximized</p>
+<p>Also, if <a class="reference internal" href="MachineLearning_glossary_m_r.html#missing-not-at-random"><span class="std std-doc">missing not at random</span></a> (MNAR), the sample bias is maximized</p>
 <ul class="simple">
 <li><p>while likewise deletion is often applied, it is not recommended.</p></li>
 </ul>
 <p>We can use the dropna() function.</p>
 <ul class="simple">
 <li><p>with subset we can only consider a list of features</p></li>
-<li><p>how can be set to ‘any’ for drop if any missing values and ‘all’ drop if all are missing</p></li>
-<li><p>inplace true will overwrite the DataFrame and has no output while false will pass the new dataframe as a copy</p></li>
+<li><p>how can be set to ‘any’ for drop if any missing <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s and ‘all’ drop if all are missing</p></li>
+<li><p>inplace true will overwrite the <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a> and has no output while false will pass the new dataframe as a copy</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1422,16 +1427,16 @@ Fraction of nan values in the DataFrame = 0.093.
 </section>
 <section id="modeling-methods-for-imputation">
 <h2>Modeling Methods for Imputation<a class="headerlink" href="#modeling-methods-for-imputation" title="Permalink to this heading">#</a></h2>
-<p>These are methods for feature imputation that treat feature imputation as a prediction problem, i.e., predict missing feature value with other available data, for example,</p>
+<p>These are methods for <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-imputation"><span class="std std-doc">feature imputation</span></a> that treat feature imputation as a prediction problem, i.e., predict missing feature <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a> with other available <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>, for example,</p>
 <ul class="simple">
-<li><p>the collocated other available feature values</p></li>
-<li><p>the same feature values available at other sample locations</p></li>
+<li><p>the collocated other available <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> values</p></li>
+<li><p>the same feature values available at other <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a> locations</p></li>
 </ul>
-<p>There are many prediction methods applied for feature imputation,</p>
+<p>There are many <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a> methods applied for feature imputation,</p>
 <ul class="simple">
-<li><p>we start with the most simple prediction model possible, predicting with the global mean and proceed from there to more complicated models</p></li>
+<li><p>we start with the most simple prediction model possible, predicting with the global <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a> and proceed from there to more complicated models</p></li>
 </ul>
-<p>To help us visualize the results, let’s add a feature indicating if there are any missing feature values for a specific sample</p>
+<p>To help us visualize the results, let’s add a feature indicating if there are any <a class="reference internal" href="MachineLearning_glossary_m_r.html#missing-feature-values"><span class="std std-doc">missing feature values</span></a> for a specific sample</p>
 <ul class="simple">
 <li><p>this way we can label the samples that have had features imputed for evaluation and visualization of the feature imputation results</p></li>
 </ul>
@@ -1534,11 +1539,11 @@ Fraction of nan values in the DataFrame = 0.093.
 </section>
 <section id="imputation-method-4-replace-with-a-constant">
 <h2>Imputation Method #4 - Replace with a Constant<a class="headerlink" href="#imputation-method-4-replace-with-a-constant" title="Permalink to this heading">#</a></h2>
-<p>This is the method of replacing the missing values with a constant value.</p>
+<p>This is the method of replacing the missing <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s with a constant value.</p>
 <ul class="simple">
-<li><p>here’s an example of replacing the missing feature values with a very low value</p></li>
+<li><p>here’s an example of replacing the <a class="reference internal" href="MachineLearning_glossary_m_r.html#missing-feature-values"><span class="std std-doc">missing feature values</span></a> with a very low value</p></li>
 </ul>
-<p>This results in bias and should not be done.</p>
+<p>This results in <a class="reference internal" href="MachineLearning_glossary_a_c.html#bias"><span class="std std-doc">bias</span></a> and should not be done.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_constant</span> <span class="o">=</span> <span class="n">df_mask</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                         <span class="c1"># make a deep copy of the DataFrame</span>
@@ -1644,13 +1649,13 @@ Fraction of nan values in the DataFrame = 0.093.
 </section>
 <section id="imputation-method-6-replace-with-the-mean">
 <h2>Imputation Method #6 - Replace with the Mean<a class="headerlink" href="#imputation-method-6-replace-with-the-mean" title="Permalink to this heading">#</a></h2>
-<p>This is the method of replacing the missing values with the mean, arithmetic average, over the feature.</p>
+<p>This is the method of replacing the missing values with the <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a>, arithmetic <a class="reference internal" href="MachineLearning_glossary_a_c.html#average"><span class="std std-doc">average</span></a>, over the <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>.</p>
 <div class="math notranslate nohighlight">
 \[
 𝑥_𝑖 = 𝐸\{𝑋_𝑖\}
 \]</div>
 <ul class="simple">
-<li><p>the global mean is globally unbiased, but may result in local bias, i.e., low values are overestimated and high values are underestimated</p></li>
+<li><p>the global mean is globally unbiased, but may result in local <a class="reference internal" href="MachineLearning_glossary_a_c.html#bias"><span class="std std-doc">bias</span></a>, i.e., low <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s are overestimated and high values are underestimated</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1758,9 +1763,9 @@ Fraction of nan values in the DataFrame = 0.093.
 </section>
 <section id="imputation-method-6-replace-with-the-mode">
 <h2>Imputation Method #6 - Replace with the Mode<a class="headerlink" href="#imputation-method-6-replace-with-the-mode" title="Permalink to this heading">#</a></h2>
-<p>This is the method of replacing the missing values with the most frequent value, mode, over the feature.</p>
+<p>This is the method of replacing the missing <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s with the most frequent value, mode, over the <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>.</p>
 <ul class="simple">
-<li><p>in the presence of outliers the mean may not be reliable. My recommendation is to first deal with outliers prior to feature imputation</p></li>
+<li><p>in the presence of <a class="reference internal" href="MachineLearning_glossary_m_r.html#outlier"><span class="std std-doc">outlier</span></a>s the <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a> may not be reliable. My recommendation is to first deal with outliers <a class="reference internal" href="MachineLearning_glossary_m_r.html#prior"><span class="std std-doc">prior</span></a> to <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-imputation"><span class="std std-doc">feature imputation</span></a></p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1868,16 +1873,16 @@ Fraction of nan values in the DataFrame = 0.093.
 </section>
 <section id="imputation-method-7-replace-with-the-n-nearest-neighbor-estimation">
 <h2>Imputation Method #7 - Replace with the n-nearest Neighbor estimation<a class="headerlink" href="#imputation-method-7-replace-with-the-n-nearest-neighbor-estimation" title="Permalink to this heading">#</a></h2>
-<p>This is the method of replacing the missing values with the k-nearest neighbour prediction model based on the other available collocated feature values</p>
+<p>This is the method of replacing the missing values with the k-nearest neighbour <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a> model based on the other available collocated feature values</p>
 <ul class="simple">
 <li><p>see the k-nearest neighbour chapter in this e-book for explanation of the method, assumptions and hyperparameters</p></li>
-<li><p>the available data is applied to predict at the missing values in features space</p></li>
+<li><p>the available <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> is applied to predict at the missing values in <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s space</p></li>
 </ul>
-<p>Since the k-nearest neighbor method is a lazy learner, imputed values are calculated in a single pass over the missing values</p>
+<p>Since the k-nearest neighbor method is a lazy learner, imputed <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s are calculated in a single pass over the missing values</p>
 <ul class="simple">
 <li><p>there is not a separate train and predict step</p></li>
 </ul>
-<p>This method should be globally unbiased and will reduce local bias relative to global mean feature imputation</p>
+<p>This method should be globally unbiased and will reduce local <a class="reference internal" href="MachineLearning_glossary_a_c.html#bias"><span class="std std-doc">bias</span></a> relative to global <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a> <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-imputation"><span class="std std-doc">feature imputation</span></a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_knn</span> <span class="o">=</span> <span class="n">df_mask</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                         <span class="c1"># make a deep copy of the DataFrame</span>
@@ -1984,12 +1989,12 @@ Fraction of nan values in the DataFrame = 0.093.
 </section>
 <section id="imputation-method-8-multiple-imputation-by-chained-equations">
 <h2>Imputation Method #8 - Multiple imputation by chained equations<a class="headerlink" href="#imputation-method-8-multiple-imputation-by-chained-equations" title="Permalink to this heading">#</a></h2>
-<p>This is the method of replacing the missing values with the k-nearest neighbour prediction model</p>
+<p>This is the method of replacing the missing values with the k-nearest neighbour <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a> model</p>
 <ol class="arabic simple">
-<li><p>Substitute random values from <span class="math notranslate nohighlight">\(𝐹_{𝑋_{𝑖=1,\ldots,𝑚}}(𝑋_{𝑖=1,\ldots,𝑚})\)</span> for missing values</p></li>
-<li><p>Sequentially predict missing values for a feature with others</p></li>
-<li><p>Iterative until convergence criteria, usually multivariate statistics</p></li>
-<li><p>Repeat for multiple realizations of the dataset</p></li>
+<li><p>Substitute random <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s from <span class="math notranslate nohighlight">\(𝐹_{𝑋_{𝑖=1,\ldots,𝑚}}(𝑋_{𝑖=1,\ldots,𝑚})\)</span> for missing values</p></li>
+<li><p>Sequentially predict missing values for a <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> with others</p></li>
+<li><p>Iterative until convergence criteria, usually <a class="reference internal" href="MachineLearning_glossary_m_r.html#multivariate"><span class="std std-doc">multivariate</span></a> <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">statistics</span></a></p></li>
+<li><p>Repeat for multiple <a class="reference internal" href="MachineLearning_glossary_m_r.html#realizations"><span class="std std-doc">realizations</span></a> of the dataset</p></li>
 </ol>
 <p>The default predictor is BayesianRidge().</p>
 <ul class="simple">
@@ -2101,7 +2106,7 @@ Fraction of nan values in the DataFrame = 0.093.
 </section>
 <section id="save-the-imputed-dataframe">
 <h2>Save the Imputed DataFrame<a class="headerlink" href="#save-the-imputed-dataframe" title="Permalink to this heading">#</a></h2>
-<p>Write out the imputed data file.</p>
+<p>Write out the imputed <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">save_imputed</span> <span class="o">=</span> <span class="kc">False</span>                                          <span class="c1"># save the imputed DataFrame?</span>
@@ -2120,7 +2125,7 @@ Fraction of nan values in the DataFrame = 0.093.
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
-<p>This was a basic treatment of feature imputation. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
+<p>This was a basic treatment of <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-imputation"><span class="std std-doc">feature imputation</span></a>. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
@@ -2131,20 +2136,20 @@ Fraction of nan values in the DataFrame = 0.093.
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
 </figcaption>
 </figure>
-<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a>, <a class="reference internal" href="MachineLearning_glossary_g_l.html#geostatistics"><span class="std std-doc">geostatistics</span></a>, and machine learning. Michael is also,</p>
 <ul class="simple">
-<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a <a class="reference internal" href="MachineLearning_glossary_a_c.html#core"><span class="std std-doc">core</span></a> faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>Michael has written over 100 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
 <p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
-<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a> and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
-<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">Data</span></a> Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>. We are solving challenging subsurface problems!</p></li>
 <li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
 </ul>
 <p>I’m always happy to discuss,</p>

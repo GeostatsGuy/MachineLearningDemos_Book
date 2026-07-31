@@ -174,6 +174,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_concepts.html">Machine Learning Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_subsurface_modeling.html">Subsurface Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_training_tuning.html">Training and Tuning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
@@ -219,7 +220,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_python.html">Python Code Snippets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_a_c.html">Glossary A-C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_d_f.html">Glossary D-F</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_g_l.html">Glossary G-L</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_m_r.html">Glossary M-R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_s_z.html">Glossary S-Z</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -486,65 +491,65 @@ document.write(`
 <p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
 <section id="motivations-for-polynomial-regression">
 <h2>Motivations for Polynomial Regression<a class="headerlink" href="#motivations-for-polynomial-regression" title="Permalink to this heading">#</a></h2>
-<p>By moving from linear regression to polynomial regression we,</p>
+<p>By moving from linear regression to <a class="reference internal" href="MachineLearning_glossary_m_r.html#polynomial-regression"><span class="std std-doc">polynomial regression</span></a> we,</p>
 <ul class="simple">
-<li><p>add prediction flexibility by modeling non-linearity in our data</p></li>
-<li><p>build on the feature engineering concept of feature expansion</p></li>
+<li><p>add <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a> flexibility by modeling non-linearity in our <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a></p></li>
+<li><p>build on the <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-engineering"><span class="std std-doc">feature engineering</span></a> concept of feature expansion</p></li>
 </ul>
-<p>while benefiting from the analytical solutions for training model parameters like linear regression.</p>
-<p>We accomplish all of this with basis expansion,</p>
+<p>while benefiting from the analytical solutions for training <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter"><span class="std std-doc">model parameter</span></a>s like <a class="reference internal" href="MachineLearning_glossary_g_l.html#linear-regression"><span class="std std-doc">linear regression</span></a>.</p>
+<p>We accomplish all of this with <a class="reference internal" href="MachineLearning_glossary_a_c.html#basis-expansion"><span class="std std-doc">basis expansion</span></a>,</p>
 <ul class="simple">
-<li><p>we transform and expand the features <span class="math notranslate nohighlight">\(\rightarrow\)</span> introduce basis expansion!</p></li>
-<li><p>we can increase our predictive model complexity and flexibility <span class="math notranslate nohighlight">\(\rightarrow\)</span> nonlinear basis!</p></li>
+<li><p>we transform and expand the <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s <span class="math notranslate nohighlight">\(\rightarrow\)</span> introduce basis expansion!</p></li>
+<li><p>we can increase our predictive <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-complexity"><span class="std std-doc">model complexity</span></a> and flexibility <span class="math notranslate nohighlight">\(\rightarrow\)</span> nonlinear basis!</p></li>
 <li><p>we can improve the model robustness by removing multicollinearity <span class="math notranslate nohighlight">\(\rightarrow\)</span> orthogonal basis!</p></li>
 </ul>
-<p>Let’s start with linear regression and then build to polynomial regression.</p>
+<p>Let’s start with linear <a class="reference internal" href="MachineLearning_glossary_m_r.html#regression"><span class="std std-doc">regression</span></a> and then build to polynomial regression.</p>
 </section>
 <section id="linear-regression">
 <h2>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this heading">#</a></h2>
-<p>Linear regression for prediction, let’s start by looking at a linear model fit to a set of data.</p>
+<p><a class="reference internal" href="MachineLearning_glossary_g_l.html#linear-regression"><span class="std std-doc">Linear regression</span></a> for prediction, let’s start by looking at a linear model fit to a set of data.</p>
 <figure style="text-align: center;">
   <img src="_static/linear/linear_example.png" style="display: block; margin: 0 auto; width: 50%;">
   <figcaption style="text-align: center;">Example linear regression model.</figcaption>
 </figure>
 <p>Let’s start by defining some terms,</p>
 <ul class="simple">
-<li><p><strong>predictor feature</strong> - an input feature for the prediction model, given we are only discussing linear regression and not multilinear regression we have only one predictor feature, <span class="math notranslate nohighlight">\(x\)</span>. On out plots (including above) the predictor feature is on the x-axis.</p></li>
-<li><p><strong>response feature</strong> - the output feature for the prediction model, in this case, <span class="math notranslate nohighlight">\(y\)</span>. On our plots (including above) the response feature is on the y-axis.</p></li>
+<li><p><strong><a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a></strong> - an input feature for the prediction model, given we are only discussing linear regression and not multilinear regression we have only one predictor feature, <span class="math notranslate nohighlight">\(x\)</span>. On out plots (including above) the predictor feature is on the x-axis.</p></li>
+<li><p><strong><a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a></strong> - the output feature for the prediction model, in this case, <span class="math notranslate nohighlight">\(y\)</span>. On our plots (including above) the response feature is on the y-axis.</p></li>
 </ul>
-<p>Now, here are some key aspects of linear regression:</p>
-<p><strong>Parametric Model</strong></p>
-<p>This is a parametric predictive machine learning model, we accept an a prior assumption of linearity and then gain a very low parametric representation that is easy to train without a onerous amount of data.</p>
+<p>Now, here are some <a class="reference internal" href="MachineLearning_glossary_g_l.html#key"><span class="std std-doc">key</span></a> aspects of linear regression:</p>
+<p><strong><a class="reference internal" href="MachineLearning_glossary_m_r.html#parametric-model"><span class="std std-doc">Parametric Model</span></a></strong></p>
+<p>This is a parametric predictive machine learning model, we accept an a <a class="reference internal" href="MachineLearning_glossary_m_r.html#prior"><span class="std std-doc">prior</span></a> assumption of linearity and then gain a very low parametric representation that is easy to train without a onerous amount of data.</p>
 <ul class="simple">
-<li><p>the fit model is a simple weighted linear additive model based on all the available features, <span class="math notranslate nohighlight">\(x_1,\ldots,x_m\)</span>.</p></li>
+<li><p>the fit model is a simple weighted linear additive model based on all the available <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s, <span class="math notranslate nohighlight">\(x_1,\ldots,x_m\)</span>.</p></li>
 <li><p>the parametric model takes the form of:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
 y = \sum_{\alpha = 1}^m b_{\alpha} x_{\alpha} + b_0
 \]</div>
-<p>Here’s the visualization of the linear model parameters,</p>
+<p>Here’s the visualization of the linear <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter"><span class="std std-doc">model parameter</span></a>s,</p>
 <figure style="text-align: center;">
   <img src="_static/linear/linear_model.png" style="display: block; margin: 0 auto; width: 50%;">
   <figcaption style="text-align: center;">The linear model parameters.</figcaption>
 </figure>
 <p><strong>Least Squares</strong></p>
-<p>The analytical solution for the model parameters, <span class="math notranslate nohighlight">\(b_1,\ldots,b_m,b_0\)</span>, is available for the L2 norm loss function, the errors are summed and squared known a least squares.</p>
+<p>The analytical solution for the model parameters, <span class="math notranslate nohighlight">\(b_1,\ldots,b_m,b_0\)</span>, is available for the L2 norm <a class="reference internal" href="MachineLearning_glossary_g_l.html#loss-function"><span class="std std-doc">loss function</span></a>, the errors are summed and squared known a least squares.</p>
 <ul class="simple">
-<li><p>we minimize the error, residual sum of squares (RSS) over the training data:</p></li>
+<li><p>we minimize the error, <a class="reference internal" href="MachineLearning_glossary_m_r.html#residual-sum-of-squares"><span class="std std-doc">residual sum of squares</span></a> (RSS) over the training data:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
 RSS = \sum_{i=1}^n \left(y_i - (\sum_{\alpha = 1}^m b_{\alpha} x_{\alpha,i} + b_0) \right)^2
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(y_i\)</span> is the actual response feature values and <span class="math notranslate nohighlight">\(\sum_{\alpha = 1}^m b_{\alpha} x_{\alpha} + b_0\)</span> are the model predictions, over the <span class="math notranslate nohighlight">\(\alpha = 1,\ldots,n\)</span> training data.</p>
-<p>Here’s a visualization of the L2 norm loss function, MSE,</p>
+<p>where <span class="math notranslate nohighlight">\(y_i\)</span> is the actual response feature <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s and <span class="math notranslate nohighlight">\(\sum_{\alpha = 1}^m b_{\alpha} x_{\alpha} + b_0\)</span> are the model <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a>s, over the <span class="math notranslate nohighlight">\(\alpha = 1,\ldots,n\)</span> training data.</p>
+<p>Here’s a visualization of the L2 <a class="reference internal" href="MachineLearning_glossary_m_r.html#norm"><span class="std std-doc">norm</span></a> loss function, MSE,</p>
 <figure style="text-align: center;">
   <img src="_static/linear/linear_MSE.png" style="display: block; margin: 0 auto; width: 50%;">
   <figcaption style="text-align: center;">The linear model loss function, mean square error.</figcaption>
 </figure>
 <ul class="simple">
-<li><p>this may be simplified as the sum of square error over the training data,</p></li>
+<li><p>this may be simplified as the sum of square error over the training <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>,</p></li>
 </ul>
 <p>\begin{equation}
 \sum_{i=1}^n (\Delta y_i)^2
@@ -553,23 +558,23 @@ RSS = \sum_{i=1}^n \left(y_i - (\sum_{\alpha = 1}^m b_{\alpha} x_{\alpha,i} + b_
 <p><strong>Assumptions</strong></p>
 <p>There are important assumption with our linear regression model,</p>
 <ul class="simple">
-<li><p><strong>Error-free</strong> - predictor variables are error free, not random variables</p></li>
+<li><p><strong>Error-free</strong> - predictor <a class="reference internal" href="MachineLearning_glossary_s_z.html#variable"><span class="std std-doc">variable</span></a>s are error free, not <a class="reference internal" href="MachineLearning_glossary_m_r.html#random-variable"><span class="std std-doc">random variable</span></a>s</p></li>
 <li><p><strong>Linearity</strong> - response is linear combination of feature(s)</p></li>
-<li><p><strong>Constant Variance</strong> - error in response is constant over predictor(s) value</p></li>
-<li><p><strong>Independence of Error</strong> - error in response are uncorrelated with each other</p></li>
+<li><p><strong>Constant <a class="reference internal" href="MachineLearning_glossary_s_z.html#variance"><span class="std std-doc">Variance</span></a></strong> - error in response is constant over predictor(s) value</p></li>
+<li><p><strong><a class="reference internal" href="MachineLearning_glossary_g_l.html#independence"><span class="std std-doc">Independence</span></a> of Error</strong> - error in response are uncorrelated with each other</p></li>
 <li><p><strong>No multicollinearity</strong> - none of the features are redundant with other features</p></li>
 </ul>
 </section>
 <section id="predictor-feature-basis-expansion">
 <h2>Predictor Feature Basis Expansion<a class="headerlink" href="#predictor-feature-basis-expansion" title="Permalink to this heading">#</a></h2>
-<p>We can improve model flexibility and complexity by applying basis expansion with basis functions applied to our predictor features. The fundamental idea is to utilize a suite of basis functions, <span class="math notranslate nohighlight">\(h_1, h_2, \ldots, h_k\)</span>, that provide new predictor features.</p>
+<p>We can improve model flexibility and complexity by applying <a class="reference internal" href="MachineLearning_glossary_a_c.html#basis-expansion"><span class="std std-doc">basis expansion</span></a> with basis functions applied to our <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a>s. The fundamental idea is to utilize a suite of basis functions, <span class="math notranslate nohighlight">\(h_1, h_2, \ldots, h_k\)</span>, that provide new predictor features.</p>
 <div class="math notranslate nohighlight">
 \[
 h(x_i) = (h_1(x_i),h_1(x_i),\ldots,h_k(x_i))
 \]</div>
-<p>where we from one feature <span class="math notranslate nohighlight">\(X\)</span> to an expanded basis of <span class="math notranslate nohighlight">\(k\)</span> features, <span class="math notranslate nohighlight">\(X_1, X_2,\ldots, X_k\)</span>.</p>
+<p>where we from one <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> <span class="math notranslate nohighlight">\(X\)</span> to an expanded basis of <span class="math notranslate nohighlight">\(k\)</span> features, <span class="math notranslate nohighlight">\(X_1, X_2,\ldots, X_k\)</span>.</p>
 <ul class="simple">
-<li><p>if we had <span class="math notranslate nohighlight">\(m\)</span> features in our data table, we now have <span class="math notranslate nohighlight">\(k \times m\)</span> features</p></li>
+<li><p>if we had <span class="math notranslate nohighlight">\(m\)</span> features in our <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> table, we now have <span class="math notranslate nohighlight">\(k \times m\)</span> features</p></li>
 </ul>
 <figure style="text-align: center;">
   <img src="_static/polynomial/basis_expansion.png" style="display: block; margin: 0 auto; width: 90%;">
@@ -578,24 +583,24 @@ h(x_i) = (h_1(x_i),h_1(x_i),\ldots,h_k(x_i))
 </section>
 <section id="id1">
 <h2>Polynomial Regression<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
-<p>It can be shown that polynomial regression is just linear regression applied to a polynomial expansion of the predictor features.</p>
+<p>It can be shown that <a class="reference internal" href="MachineLearning_glossary_m_r.html#polynomial-regression"><span class="std std-doc">polynomial regression</span></a> is just linear regression applied to a polynomial expansion of the predictor features.</p>
 <div class="math notranslate nohighlight">
 \[
 X_{j} \rightarrow X_{j}, X_{j}^2, X_{j}^3, \ldots X_{j}^k 
 \]</div>
-<p>where we have <span class="math notranslate nohighlight">\(j = 1, \ldots, m\)</span> original features.</p>
-<p>We now have a expanded set of predictor features.</p>
+<p>where we have <span class="math notranslate nohighlight">\(j = 1, \ldots, m\)</span> original <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s.</p>
+<p>We now have a expanded set of <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a>s.</p>
 <div class="math notranslate nohighlight">
 \[
 h_{j,k}(X_j) = X_j^k 
 \]</div>
 <p>were we have <span class="math notranslate nohighlight">\(j = 1, \ldots, m\)</span> original features and <span class="math notranslate nohighlight">\(k = 1, \ldots, K\)</span> polynomial orders.</p>
-<p>We can now state our model as a linear regression of the transformed features.</p>
+<p>We can now state our model as a <a class="reference internal" href="MachineLearning_glossary_g_l.html#linear-regression"><span class="std std-doc">linear regression</span></a> of the transformed features.</p>
 <div class="math notranslate nohighlight">
 \[
 y = f(x) = \sum_{j=1}^{m} \sum_{k = 1}^{K} \beta_{j,k} h_{j,m}(X_j) + \beta_0
 \]</div>
-<p>after the <span class="math notranslate nohighlight">\(h_l, l=1,\ldots,k\)</span> transforms, over the <span class="math notranslate nohighlight">\(j=1,\ldots,m\)</span> predictor features we have the same linear equation and the ability to utilize the previously discussed analytical solution, see the chapter on linear regression.</p>
+<p>after the <span class="math notranslate nohighlight">\(h_l, l=1,\ldots,k\)</span> transforms, over the <span class="math notranslate nohighlight">\(j=1,\ldots,m\)</span> predictor features we have the same linear equation and the ability to utilize the previously discussed analytical solution, see the chapter on linear <a class="reference internal" href="MachineLearning_glossary_m_r.html#regression"><span class="std std-doc">regression</span></a>.</p>
 <p>We are assuming linearity after application of our basis transforms.</p>
 <ul class="simple">
 <li><p>now the model coefficients, <span class="math notranslate nohighlight">\(\beta_{l,i}\)</span>, relate to a transformed version of the initial predictor feature, <span class="math notranslate nohighlight">\(h_l(X_i)\)</span>.</p></li>
@@ -606,35 +611,35 @@ y = f(x) = \sum_{j=1}^{m} \sum_{k = 1}^{K} \beta_{j,k} h_{j,m}(X_j) + \beta_0
 \[
 y = \beta_{1,1}X_1 + \beta_{1,1}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \beta_0
 \]</div>
-<p>where the model parameter notation is <span class="math notranslate nohighlight">\(\beta_{m,k}\)</span>, were <span class="math notranslate nohighlight">\(m\)</span> is the feature and <span class="math notranslate nohighlight">\(k\)</span> is the order. To clarify here is the case for <span class="math notranslate nohighlight">\(m = 2\)</span>,</p>
+<p>where the <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter"><span class="std std-doc">model parameter</span></a> notation is <span class="math notranslate nohighlight">\(\beta_{m,k}\)</span>, were <span class="math notranslate nohighlight">\(m\)</span> is the feature and <span class="math notranslate nohighlight">\(k\)</span> is the order. To clarify here is the case for <span class="math notranslate nohighlight">\(m = 2\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
 y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \beta_{2,1}X_2 + \beta_{2,2}X_2^2 + \beta_{2,3}X_2^3 + \beta_{2,4}X_2^4 + \beta_0
 \]</div>
 <p>So our predictive modeling workflow is:</p>
 <ul class="simple">
-<li><p>apply polynomial basis expansion</p></li>
+<li><p>apply polynomial <a class="reference internal" href="MachineLearning_glossary_a_c.html#basis-expansion"><span class="std std-doc">basis expansion</span></a></p></li>
 <li><p>perform linear regression on the polynomial basis expansion</p></li>
 </ul>
 </section>
 <section id="advantage-and-disadvantages-of-polynomial-regression">
 <h2>Advantage and Disadvantages of Polynomial Regression<a class="headerlink" href="#advantage-and-disadvantages-of-polynomial-regression" title="Permalink to this heading">#</a></h2>
-<p>The advantages of polynomial regression vs. linear regression, include,</p>
+<p>The advantages of <a class="reference internal" href="MachineLearning_glossary_m_r.html#polynomial-regression"><span class="std std-doc">polynomial regression</span></a> vs. <a class="reference internal" href="MachineLearning_glossary_g_l.html#linear-regression"><span class="std std-doc">linear regression</span></a>, include,</p>
 <ul class="simple">
-<li><p>improved flexibility to fit nonlinear phenomenon, with linear analysis and an analytical solution to train the model parameters.</p></li>
+<li><p>improved flexibility to fit nonlinear phenomenon, with linear analysis and an analytical solution to train the <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter"><span class="std std-doc">model parameter</span></a>s.</p></li>
 </ul>
 <p>Disadvantages</p>
-<p>Generally, significantly higher model variance! May have unstable interpolation and especially extrapolation.</p>
-<p>sensitivity to outliers, especially with <span class="math notranslate nohighlight">\(ℎ_𝑘 \left(𝑥_{𝑖,𝑗}\right)=𝑥_{𝑖,𝑗}^𝑘\)</span> where <span class="math notranslate nohighlight">\(𝑘\)</span> is large</p>
-<p>we lose model parameter interpretability, <span class="math notranslate nohighlight">\(𝛽_{𝑗,𝑘}\)</span> is related to <span class="math notranslate nohighlight">\(ℎ_𝑘 \left(𝑋_j \right)\)</span>.</p>
+<p>Generally, significantly higher <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-variance"><span class="std std-doc">model variance</span></a>! May have unstable interpolation and especially extrapolation.</p>
+<p>sensitivity to <a class="reference internal" href="MachineLearning_glossary_m_r.html#outlier"><span class="std std-doc">outlier</span></a>s, especially with <span class="math notranslate nohighlight">\(ℎ_𝑘 \left(𝑥_{𝑖,𝑗}\right)=𝑥_{𝑖,𝑗}^𝑘\)</span> where <span class="math notranslate nohighlight">\(𝑘\)</span> is large</p>
+<p>we lose model <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a> interpretability, <span class="math notranslate nohighlight">\(𝛽_{𝑗,𝑘}\)</span> is related to <span class="math notranslate nohighlight">\(ℎ_𝑘 \left(𝑋_j \right)\)</span>.</p>
 </section>
 <section id="adding-elementary-functions">
 <h2>Adding Elementary Functions<a class="headerlink" href="#adding-elementary-functions" title="Permalink to this heading">#</a></h2>
-<p>An alternative interpretation of polynomial regression is the construction of a regression model by adding elementary functions, i.e., the basis functions.</p>
-<p>Let’s work with a single predictor feature and <span class="math notranslate nohighlight">\(K\)</span> basis expansion.</p>
+<p>An alternative interpretation of <a class="reference internal" href="MachineLearning_glossary_m_r.html#polynomial-regression"><span class="std std-doc">polynomial regression</span></a> is the construction of a <a class="reference internal" href="MachineLearning_glossary_m_r.html#regression"><span class="std std-doc">regression</span></a> model by adding elementary functions, i.e., the basis functions.</p>
+<p>Let’s work with a single <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a> and <span class="math notranslate nohighlight">\(K\)</span> <a class="reference internal" href="MachineLearning_glossary_a_c.html#basis-expansion"><span class="std std-doc">basis expansion</span></a>.</p>
 <div class="math notranslate nohighlight">
 \[ y = \sum_{l=1}^{k} \beta_{1,k} h_k (X_j) \]</div>
-<p>For our simple, single predictor feature, <span class="math notranslate nohighlight">\(X\)</span>, polynomial problem this is,</p>
+<p>For our simple, single predictor <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>, <span class="math notranslate nohighlight">\(X\)</span>, polynomial problem this is,</p>
 <div class="math notranslate nohighlight">
 \[ y = \beta_{1,K} X^K + \beta_{1,K-1} X^{K-1} + \dots + \beta_{1,2} X^2 + \beta_{1,1} X + \beta_0 \]</div>
 <p>Let’s work with a 4th order polynomial expansion, <span class="math notranslate nohighlight">\(K=4\)</span>, of standardized depth.</p>
@@ -642,7 +647,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
   <img src="_static/polynomial/basis.png" style="display: block; margin: 0 auto; width: 100%;">
   <figcaption style="text-align: center;">Polynomial basis for up to \(K=4\).</figcaption>
 </figure>
-<p>To build our function we are moving, scaling and adding these elementary functions. Let’s review how we perform moving and scaling of an elementary function with the example of the <span class="math notranslate nohighlight">\(k=2\)</span> basis function, i.e., a parabola, <span class="math notranslate nohighlight">\(h_2: 𝑦=𝑥^2\)</span>. Consider the following changes:</p>
+<p>To build our function we are moving, scaling and adding these elementary functions. Let’s review how we perform moving and scaling of an elementary function with the example of the <span class="math notranslate nohighlight">\(k=2\)</span> <a class="reference internal" href="MachineLearning_glossary_a_c.html#basis-function"><span class="std std-doc">basis function</span></a>, i.e., a parabola, <span class="math notranslate nohighlight">\(h_2: 𝑦=𝑥^2\)</span>. Consider the following changes:</p>
 <ul class="simple">
 <li><p>shifting on the X-axis</p></li>
 <li><p>shifting on the Y-axis</p></li>
@@ -690,33 +695,33 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 \[ y = \uparrow \beta_2 x^2, \text{narrower / deeper} \]</div>
 <p>Let’s make some observations from above,</p>
 <ul class="simple">
-<li><p>shifting on the Y-axis only requires modification of the contant term of the model parameters in the polynomial equation</p></li>
-<li><p>shifting on the X-axis requires modification of the lower order model parameters in the polynomial equation</p></li>
+<li><p>shifting on the Y-axis only requires modification of the contant term of the <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter"><span class="std std-doc">model parameter</span></a>s in the polynomial equation</p></li>
+<li><p>shifting on the X-axis requires modification of the lower order model <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a>s in the polynomial equation</p></li>
 <li><p>flipping on the X-axis requires change in sign of the current order model parameter in the polynomial equation</p></li>
 <li><p>increasing the slope requires increasing the current order model parameter in the polynomial equation</p></li>
 </ul>
 </section>
 <section id="assumptions-of-polynomial-regression">
 <h2>Assumptions of Polynomial Regression<a class="headerlink" href="#assumptions-of-polynomial-regression" title="Permalink to this heading">#</a></h2>
-<p>There are important assumption with our polynomial regression model, extended from the assumptions of linear regression above,</p>
+<p>There are important assumption with our <a class="reference internal" href="MachineLearning_glossary_m_r.html#polynomial-regression"><span class="std std-doc">polynomial regression</span></a> model, extended from the assumptions of <a class="reference internal" href="MachineLearning_glossary_g_l.html#linear-regression"><span class="std std-doc">linear regression</span></a> above,</p>
 <ul class="simple">
-<li><p><strong>Error-free</strong> - predictor features basis expansions are error free, not random variables</p></li>
-<li><p><strong>Constant Variance</strong> - error in response is constant over predictor(s) value</p></li>
-<li><p><strong>Linearity</strong> - response is linear combination of basis features</p></li>
+<li><p><strong>Error-free</strong> - <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a>s basis expansions are error free, not <a class="reference internal" href="MachineLearning_glossary_m_r.html#random-variable"><span class="std std-doc">random variable</span></a>s</p></li>
+<li><p><strong>Constant <a class="reference internal" href="MachineLearning_glossary_s_z.html#variance"><span class="std std-doc">Variance</span></a></strong> - error in response is constant over predictor(s) <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a></p></li>
+<li><p><strong>Linearity</strong> - response is linear combination of basis <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s</p></li>
 <li><p><strong>Polynomial</strong> - relationships between 𝑋 and Y is polynomial</p></li>
-<li><p><strong>Independence of Error</strong> - error in response are uncorrelated with each other</p></li>
+<li><p><strong><a class="reference internal" href="MachineLearning_glossary_g_l.html#independence"><span class="std std-doc">Independence</span></a> of Error</strong> - error in response are uncorrelated with each other</p></li>
 <li><p><strong>No Multicollinearity</strong> - none of the basis feature expansions are linearly redundant with other features</p></li>
 </ul>
-<p>Consider the polynomial basis expansion above, are the colinearities between our basis. To check, I calculated the correlation matrix for the basis expansion used in the demonstration below.</p>
+<p>Consider the polynomial <a class="reference internal" href="MachineLearning_glossary_a_c.html#basis-expansion"><span class="std std-doc">basis expansion</span></a> above, are the colinearities between our basis. To check, I calculated the correlation matrix for the basis expansion used in the demonstration below.</p>
 <figure style="text-align: center;">
   <img src="_static/polynomial/corr_matrix.png" style="display: block; margin: 0 auto; width: 50%;">
   <figcaption style="text-align: center;">Correlation matrix from a polynomial basis expansion with $K=4$.</figcaption>
 </figure>
 <p>There is strong collinearity between the <span class="math notranslate nohighlight">\(K=1\)</span> and <span class="math notranslate nohighlight">\(K=3\)</span> bases and the <span class="math notranslate nohighlight">\(k=2\)</span> and <span class="math notranslate nohighlight">\(k=4\)</span> bases.</p>
 <ul class="simple">
-<li><p>recall, collinearity and multicolinearity may increase model variance</p></li>
+<li><p>note, collinearity and multicolinearity may increase <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-variance"><span class="std std-doc">model variance</span></a></p></li>
 </ul>
-<p>To remove this collinearity we can apply Hermite polynomials.</p>
+<p>To remove this collinearity we can apply <a class="reference internal" href="MachineLearning_glossary_g_l.html#hermite-polynomial"><span class="std std-doc">Hermite polynomial</span></a>s.</p>
 </section>
 <section id="hermite-polynomials">
 <h2><strong>Hermite Polynomials</strong><a class="headerlink" href="#hermite-polynomials" title="Permalink to this heading">#</a></h2>
@@ -724,7 +729,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-center"><p>Order</p></th>
-<th class="head text-center"><p>Hermite Polynomial <span class="math notranslate nohighlight">\(H_e(x)\)</span></p></th>
+<th class="head text-center"><p><a class="reference internal" href="MachineLearning_glossary_g_l.html#hermite-polynomial"><span class="std std-doc">Hermite Polynomial</span></a> <span class="math notranslate nohighlight">\(H_e(x)\)</span></p></th>
 </tr>
 </thead>
 <tbody>
@@ -750,15 +755,15 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 \[
 𝑤(𝑥)=𝑒^{−\frac{𝑥^2}{2}}
 \]</div>
-<p>this is the standard Gaussian probability density function without the scaler, <span class="math notranslate nohighlight">\(\frac{1}{\sqrt{2\pi}}\)</span>. The definition of orthogonality is stated as,</p>
+<p>this is the standard Gaussian <a class="reference internal" href="MachineLearning_glossary_m_r.html#probability-density-function"><span class="std std-doc">probability density function</span></a> without the scaler, <span class="math notranslate nohighlight">\(\frac{1}{\sqrt{2\pi}}\)</span>. The definition of orthogonality is stated as,</p>
 <div class="math notranslate nohighlight">
 \[ 
 \int_{-\infty}^{\infty} H_m(x) H_n(x) w(x) \, dx = 0 
 \]</div>
 <p>The Hermite polynomials are orthogonal over the interval <span class="math notranslate nohighlight">\([−\infty,\infty]\)</span> for the standard normal probability distribution.</p>
-<p>By applying hermite polynomials instead of regular polynomials for polynomial basis expandion in polynomial regression were remove the multicolinearity between the predictor features,</p>
+<p>By applying hermite polynomials instead of regular polynomials for polynomial basis expandion in <a class="reference internal" href="MachineLearning_glossary_m_r.html#polynomial-regression"><span class="std std-doc">polynomial regression</span></a> were remove the multicolinearity between the predictor <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s,</p>
 <ul class="simple">
-<li><p>recall, independence of the predictor features is an assumption of the linear system applied in polynomial regression with the polynomial basis expansion</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_m_r.html#recall"><span class="std std-doc">recall</span></a>, <a class="reference internal" href="MachineLearning_glossary_g_l.html#independence"><span class="std std-doc">independence</span></a> of the <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a>s is an assumption of the linear system applied in polynomial <a class="reference internal" href="MachineLearning_glossary_m_r.html#regression"><span class="std std-doc">regression</span></a> with the polynomial <a class="reference internal" href="MachineLearning_glossary_a_c.html#basis-expansion"><span class="std std-doc">basis expansion</span></a></p></li>
 </ul>
 </section>
 <section id="load-the-required-libraries">
@@ -848,12 +853,12 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </section>
 <section id="loading-data">
 <h2>Loading Data<a class="headerlink" href="#loading-data" title="Permalink to this heading">#</a></h2>
-<p>Let’s load the provided bivariate, spatial dataset <a class="reference external" href="https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/Density_Por_data.csv">Density_Por_data.csv</a> available in my GeoDataSet repo. It is a comma delimited file with:</p>
+<p>Let’s load the provided <a class="reference internal" href="MachineLearning_glossary_a_c.html#bivariate"><span class="std std-doc">bivariate</span></a>, spatial dataset <a class="reference external" href="https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/Density_Por_data.csv">Density_Por_data.csv</a> available in my GeoDataSet repo. It is a comma delimited file with:</p>
 <ul class="simple">
 <li><p>depth (m)</p></li>
 <li><p>Gaussian transformed porosity (%)</p></li>
 </ul>
-<p>We load it with the pandas ‘read_csv’ function into a data frame we called ‘df’.</p>
+<p>We load it with the pandas ‘read_csv’ function into a <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> frame we called ‘df’.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/1D_Porosity.csv&quot;</span><span class="p">)</span> <span class="c1"># data from Dr. Pyrcz&#39;s github repository</span>
@@ -864,9 +869,9 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </section>
 <section id="visualize-the-dataframe">
 <h2>Visualize the DataFrame<a class="headerlink" href="#visualize-the-dataframe" title="Permalink to this heading">#</a></h2>
-<p>Visualizing the train and test DataFrame is useful check before we build our models.</p>
+<p>Visualizing the train and test <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a> is useful check before we build our models.</p>
 <ul class="simple">
-<li><p>many things can go wrong, e.g., we loaded the wrong data, all the features did not load, etc.</p></li>
+<li><p>many things can go wrong, e.g., we loaded the wrong <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>, all the <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s did not load, etc.</p></li>
 </ul>
 <p>We can preview by utilizing the ‘head’ DataFrame member function (with a nice and clean format, see below).</p>
 <div class="cell docutils container">
@@ -971,9 +976,9 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </section>
 <section id="summary-statistics-for-tabular-data">
 <h2>Summary Statistics for Tabular Data<a class="headerlink" href="#summary-statistics-for-tabular-data" title="Permalink to this heading">#</a></h2>
-<p>There are a lot of efficient methods to calculate summary statistics from tabular data in DataFrames.</p>
+<p>There are a lot of efficient methods to calculate summary <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">statistics</span></a> from <a class="reference internal" href="MachineLearning_glossary_s_z.html#tabular-data"><span class="std std-doc">tabular data</span></a> in <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a>s.</p>
 <ul class="simple">
-<li><p>The describe command provides count, mean, standard deviation, percentiles, minimum, maximum in a nice data table.</p></li>
+<li><p>The describe command provides count, <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a>, <a class="reference internal" href="MachineLearning_glossary_s_z.html#standard-deviation"><span class="std std-doc">standard deviation</span></a>, percentiles, minimum, maximum in a nice <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> table.</p></li>
 <li><p>I like to specify the percentiles, otherwise P25, P50 and P75 quartiles are the default</p></li>
 </ul>
 <div class="cell docutils container">
@@ -1065,17 +1070,17 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </section>
 <section id="linear-regression-model">
 <h2>Linear Regression Model<a class="headerlink" href="#linear-regression-model" title="Permalink to this heading">#</a></h2>
-<p>Let’s first calculate the linear regression model with the LinearRegression class from scikit-learn. The steps include,</p>
+<p>Let’s first calculate the <a class="reference internal" href="MachineLearning_glossary_g_l.html#linear-regression"><span class="std std-doc">linear regression</span></a> model with the LinearRegression class from scikit-learn. The steps include,</p>
 <ol class="arabic simple">
-<li><p><strong>instantiate</strong> - the linear regression object, note there are no hyperparameters to specify.</p></li>
-<li><p><strong>fit</strong> - train the instantiated linear regression object with the training data</p></li>
+<li><p><strong>instantiate</strong> - the linear <a class="reference internal" href="MachineLearning_glossary_m_r.html#regression"><span class="std std-doc">regression</span></a> object, note there are no hyperparameters to specify.</p></li>
+<li><p><strong>fit</strong> - train the instantiated linear regression object with the training <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a></p></li>
 <li><p><strong>predict</strong> - with the trained linear regression object</p></li>
 </ol>
 <p>Here’s the instantiation and fit steps for our linear regression model.</p>
 <ul class="simple">
-<li><p>note, we add the reshape to our predictor feature because scikit-learn assumes more than one predictor feature and expects a 2D array. We reshape our 1D ndarray to a 2D array with only 1 column.</p></li>
+<li><p>note, we add the reshape to our <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a> because scikit-learn assumes more than one predictor <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> and expects a 2D array. We reshape our 1D <a class="reference internal" href="MachineLearning_glossary_m_r.html#ndarray"><span class="std std-doc">ndarray</span></a> to a 2D array with only 1 column.</p></li>
 </ul>
-<p>After we train the model we plot it with the data for visual model checking.</p>
+<p>After we train the model we plot it with the data for visual <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-checking"><span class="std std-doc">model checking</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lin</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>                                      <span class="c1"># instantiate linear regression object, note no hyperparameters </span>
@@ -1108,12 +1113,12 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </section>
 <section id="comparison-to-a-nonparametric-predictive-machine-learning-model">
 <h2>Comparison to a Nonparametric Predictive Machine Learning Model<a class="headerlink" href="#comparison-to-a-nonparametric-predictive-machine-learning-model" title="Permalink to this heading">#</a></h2>
-<p>Let’s run a couple nonparametric predictive machine learning models to contrast with the linear and polynomial parametric models. First we train a quick decision tree model and then a random forest model.</p>
+<p>Let’s run a couple nonparametric predictive machine learning models to contrast with the linear and polynomial <a class="reference internal" href="MachineLearning_glossary_m_r.html#parametric-model"><span class="std std-doc">parametric model</span></a>s. First we train a quick decision tree model and then a <a class="reference internal" href="MachineLearning_glossary_m_r.html#random-forest"><span class="std std-doc">random forest</span></a> model.</p>
 <ul class="simple">
-<li><p>we gain significant flexibility to fit any patterns from the data</p></li>
-<li><p>requires more inference as nonparametric is actually parameter rich!</p></li>
+<li><p>we gain significant flexibility to fit any patterns from the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a></p></li>
+<li><p>requires more <a class="reference internal" href="MachineLearning_glossary_g_l.html#inference"><span class="std std-doc">inference</span></a> as nonparametric is actually <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a> rich!</p></li>
 </ul>
-<p>For more details, see the chapter on decision trees and random forest.</p>
+<p>For more details, see the chapter on <a class="reference internal" href="MachineLearning_glossary_d_f.html#decision-tree"><span class="std std-doc">decision tree</span></a>s and random forest.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>                                      <span class="c1"># tree program from scikit learn </span>
@@ -1174,16 +1179,16 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </section>
 <section id="gaussian-anamorphosis-gaussian-transform">
 <h2>Gaussian Anamorphosis \ Gaussian Transform<a class="headerlink" href="#gaussian-anamorphosis-gaussian-transform" title="Permalink to this heading">#</a></h2>
-<p>Let’s transform the features to standard normal,</p>
+<p>Let’s transform the <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s to standard normal,</p>
 <ul class="simple">
 <li><p>Gaussian distribution</p></li>
-<li><p>mean of 0.0</p></li>
-<li><p>standard deviation of 1.0</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a> of 0.0</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_s_z.html#standard-deviation"><span class="std std-doc">standard deviation</span></a> of 1.0</p></li>
 </ul>
 <p>The porosity feature was ‘transformed’ to Gaussian previously, but there is an opportunity to clean it up.</p>
 <ul class="simple">
 <li><p>compare the original and transformed below</p></li>
-<li><p>note, I use my GeostatsPy Gaussian transform ported from the original GSLIB (Deutsch and Journel, 1997) because the scikit-learn Gaussian transform creates truncation spikes / outliers.</p></li>
+<li><p>note, I use my GeostatsPy Gaussian transform ported from the original GSLIB (Deutsch and Journel, 1997) because the scikit-learn Gaussian transform creates truncation spikes / <a class="reference internal" href="MachineLearning_glossary_m_r.html#outlier"><span class="std std-doc">outlier</span></a>s.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1248,7 +1253,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </section>
 <section id="linear-regression-model-with-standardized-features">
 <h2>Linear Regression Model with Standardized Features<a class="headerlink" href="#linear-regression-model-with-standardized-features" title="Permalink to this heading">#</a></h2>
-<p>Let’s repeat the linear regression model, now with the standardized features.</p>
+<p>Let’s repeat the <a class="reference internal" href="MachineLearning_glossary_g_l.html#linear-regression"><span class="std std-doc">linear regression</span></a> model, now with the standardized <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lin_ns</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>                                   <span class="c1"># instantiate linear regression object, note no hyperparameters </span>
@@ -1281,14 +1286,14 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </section>
 <section id="id2">
 <h2>Polynomial Regression<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
-<p>We will do polynomial regression by hand:</p>
+<p>We will do <a class="reference internal" href="MachineLearning_glossary_m_r.html#polynomial-regression"><span class="std std-doc">polynomial regression</span></a> by hand:</p>
 <ul class="simple">
-<li><p>create the polynomial basis expansion of the original predictor feature</p></li>
-<li><p>perform linear regression on the polynomial basis expansion</p></li>
+<li><p>create the polynomial basis expansion of the original <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a></p></li>
+<li><p>perform <a class="reference internal" href="MachineLearning_glossary_g_l.html#linear-regression"><span class="std std-doc">linear regression</span></a> on the polynomial basis expansion</p></li>
 </ul>
 <section id="polynomial-basis-expansion">
 <h3>Polynomial Basis Expansion<a class="headerlink" href="#polynomial-basis-expansion" title="Permalink to this heading">#</a></h3>
-<p>Let’s start with calculating the polynomial basis expansion for the 1 predictor feature.</p>
+<p>Let’s start with calculating the polynomial <a class="reference internal" href="MachineLearning_glossary_a_c.html#basis-expansion"><span class="std std-doc">basis expansion</span></a> for the 1 predictor <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">poly4</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>                        <span class="c1"># instantiate polynomial expansion </span>
@@ -1408,7 +1413,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/fa3ce641f039eca6aa286a7034b75517d3867a8b34ae5406d757e347449e6ce6.png" src="_images/fa3ce641f039eca6aa286a7034b75517d3867a8b34ae5406d757e347449e6ce6.png" />
+<img alt="_images/bb6682072250b9be0e729394f0e678478d46fd4933f2f652fb4a718faea667a5.png" src="_images/bb6682072250b9be0e729394f0e678478d46fd4933f2f652fb4a718faea667a5.png" />
 </div>
 </div>
 <p>Let’s visualize the polynomial expansion over the Gaussian transformed depth.</p>
@@ -1484,9 +1489,9 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </section>
 <section id="regression-with-hermite-basis-expansion">
 <h2>Regression with Hermite Basis Expansion<a class="headerlink" href="#regression-with-hermite-basis-expansion" title="Permalink to this heading">#</a></h2>
-<p>We can use Hermite polynomials to reduce the correlation between the basis predictor features.</p>
+<p>We can use <a class="reference internal" href="MachineLearning_glossary_g_l.html#hermite-polynomial"><span class="std std-doc">Hermite polynomial</span></a>s to reduce the correlation between the basis <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a>s.</p>
 <ul class="simple">
-<li><p>We transform the predictor feature, depth, to standard normal since the Hermite polynomial expansion approach independence over the range of negative infinity to positive infinity under the assumption of standard normal probability density function.</p></li>
+<li><p>We transform the predictor <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>, depth, to standard normal since the Hermite polynomial expansion approach <a class="reference internal" href="MachineLearning_glossary_g_l.html#independence"><span class="std std-doc">independence</span></a> over the range of negative infinity to positive infinity under the assumption of standard normal <a class="reference internal" href="MachineLearning_glossary_m_r.html#probability-density-function"><span class="std std-doc">probability density function</span></a>.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1597,7 +1602,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ef58ce0e646b2f0d337aa81b087f3ba2fd2ae1fca77aa26a2ef55bbdc37d7064.png" src="_images/ef58ce0e646b2f0d337aa81b087f3ba2fd2ae1fca77aa26a2ef55bbdc37d7064.png" />
+<img alt="_images/ac3728fb86b7a1d3be638b2bae2439215481c176fb6f032b3beb2b216aabd1d3.png" src="_images/ac3728fb86b7a1d3be638b2bae2439215481c176fb6f032b3beb2b216aabd1d3.png" />
 </div>
 </div>
 <p>We can check the arithmetic averages of all the Hermite basis expansions.</p>
@@ -1670,11 +1675,11 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </section>
 <section id="orthogonal-polynomials">
 <h2>Orthogonal Polynomials<a class="headerlink" href="#orthogonal-polynomials" title="Permalink to this heading">#</a></h2>
-<p>Let’s try the orthogonal polynomial basis expansion reimplemented in Python by Dave Moore from the poly() function in R.</p>
+<p>Let’s try the orthogonal polynomial <a class="reference internal" href="MachineLearning_glossary_a_c.html#basis-expansion"><span class="std std-doc">basis expansion</span></a> reimplemented in Python by Dave Moore from the poly() function in R.</p>
 <ul class="simple">
 <li><p>the functions below for fit and predict are directly from Dave’s <a class="reference external" href="http://davmre.github.io/blog/python/2013/12/15/orthogonal_poly">blog</a></p></li>
-<li><p>note during the fit to the training data the norm2 and alpha model parameters are calcluated</p></li>
-<li><p>these parameters must be passed to each subsequent predict to ensure the results are consistent</p></li>
+<li><p>note during the fit to the training <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> the norm2 and alpha <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter"><span class="std std-doc">model parameter</span></a>s are calcluated</p></li>
+<li><p>these <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a>s must be passed to each subsequent predict to ensure the results are consistent</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1822,10 +1827,10 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x14d07a70b20&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x1945b0a3b80&gt;
 </pre></div>
 </div>
-<img alt="_images/8305319a0f2d3945b16665146622be168682fa4b947e356b71c623105b490dc1.png" src="_images/8305319a0f2d3945b16665146622be168682fa4b947e356b71c623105b490dc1.png" />
+<img alt="_images/d606af1ea366e272004601ccd92d405e1f24848c6aa902bd0cc8f78517e17036.png" src="_images/d606af1ea366e272004601ccd92d405e1f24848c6aa902bd0cc8f78517e17036.png" />
 </div>
 </div>
 <p>Let’s visualize orthogonal polynomial basis orders over the range of the standardized depth.</p>
@@ -1887,27 +1892,27 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </section>
 <section id="polynomial-regression-in-scikit-learn-with-pipelines">
 <h2>Polynomial Regression in scikit-learn with Pipelines<a class="headerlink" href="#polynomial-regression-in-scikit-learn-with-pipelines" title="Permalink to this heading">#</a></h2>
-<p>The need to first perform basis expansion and then train the resulting (after basis transformations) linear model may seem a bit complicated.</p>
+<p>The need to first perform <a class="reference internal" href="MachineLearning_glossary_a_c.html#basis-expansion"><span class="std std-doc">basis expansion</span></a> and then train the resulting (after basis transformations) linear model may seem a bit complicated.</p>
 <ul class="simple">
 <li><p>one solution is to use the Pipeline object from scikit-learn. Here are some highlights on Pipelines.</p></li>
 </ul>
 <p>Machine learning workflows can be complicated, with various steps:</p>
 <ul class="simple">
-<li><p>data preparation, feature engineering transformations</p></li>
-<li><p>model parameter fitting</p></li>
-<li><p>model hyperparameter tuning</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> preparation, <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-engineering"><span class="std std-doc">feature engineering</span></a> transformations</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter"><span class="std std-doc">model parameter</span></a> fitting</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_m_r.html#model-hyperparameter-tuning"><span class="std std-doc">model hyperparameter tuning</span></a></p></li>
 <li><p>modeling method selection</p></li>
 <li><p>searching over a large combinatorial of hyperparameters</p></li>
 <li><p>training and testing model runs</p></li>
 </ul>
-<p>Pipelines are a scikit-learn class that allows for the encapsulation of a sequence of data preparation and modeling steps</p>
+<p>Pipelines are a scikit-learn class that allows for the encapsulation of a sequence of <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-preparation"><span class="std std-doc">data preparation</span></a> and modeling steps</p>
 <ul class="simple">
 <li><p>then we can treat the pipeline as an object in our much condensed workflow</p></li>
 </ul>
 <p>The pipeline class allows us to:</p>
 <ul class="simple">
 <li><p>improve code readability and to keep everything straight</p></li>
-<li><p>avoid common workflow problems like data leakage, testing data informing model parameter training</p></li>
+<li><p>avoid common workflow problems like data leakage, testing data informing <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter-training"><span class="std std-doc">model parameter training</span></a></p></li>
 <li><p>abstract common machine learning modeling and focus on building the best model possible</p></li>
 </ul>
 <p>The fundamental philosophy is to treat machine learning as a combinatorial search to find the best model (AutoML)</p>
@@ -1950,7 +1955,7 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
-<p>This was a basic treatment of polynomial regression. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
+<p>This was a basic treatment of <a class="reference internal" href="MachineLearning_glossary_m_r.html#polynomial-regression"><span class="std std-doc">polynomial regression</span></a>. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
@@ -1961,20 +1966,20 @@ y = \beta_{1,1}X_1 + \beta_{1,2}X_1^2 + \beta_{1,3}X_1^3 + \beta_{1,4}X_1^4 + \b
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
 </figcaption>
 </figure>
-<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a>, <a class="reference internal" href="MachineLearning_glossary_g_l.html#geostatistics"><span class="std std-doc">geostatistics</span></a>, and machine learning. Michael is also,</p>
 <ul class="simple">
-<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a <a class="reference internal" href="MachineLearning_glossary_a_c.html#core"><span class="std std-doc">core</span></a> faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>Michael has written over 100 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
 <p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
-<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a> and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
-<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">Data</span></a> Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>. We are solving challenging subsurface problems!</p></li>
 <li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
 </ul>
 <p>I’m always happy to discuss,</p>

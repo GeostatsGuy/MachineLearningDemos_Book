@@ -174,6 +174,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_concepts.html">Machine Learning Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_subsurface_modeling.html">Subsurface Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_training_tuning.html">Training and Tuning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
@@ -219,7 +220,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_python.html">Python Code Snippets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_a_c.html">Glossary A-C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_d_f.html">Glossary D-F</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_g_l.html">Glossary G-L</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_m_r.html">Glossary M-R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_s_z.html">Glossary S-Z</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -500,49 +505,49 @@ document.write(`
 <p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
 <section id="motivation">
 <h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this heading">#</a></h2>
-<p>Decision trees are not the most powerful, cutting edge method in machine learning, so why cover decision trees?</p>
+<p><a class="reference internal" href="MachineLearning_glossary_d_f.html#decision-tree"><span class="std std-doc">Decision tree</span></a>s are not the most powerful, cutting edge method in machine learning, so why cover decision trees?</p>
 <ul class="simple">
 <li><p>one of the most understandable, interpretable predictive machine learning models</p></li>
-<li><p>decision trees are enhanced with random forests, bagging and boosting to be one of the best machine learning predictive models in many cases</p></li>
+<li><p>decision trees are enhanced with <a class="reference internal" href="MachineLearning_glossary_m_r.html#random-forest"><span class="std std-doc">random forest</span></a>s, bagging and boosting to be one of the best machine learning predictive models in many cases</p></li>
 </ul>
 <figure style="text-align: center;">
   <img src="_static/decision_tree/blackspruce.png" style="display: block; margin: 0 auto; width: 50%;">
   <figcaption style="text-align: center;"> A single proud black spruce tree within the Boreal Forest in Alaska, similar to the northern region of my home province of Alberta. Crop of photo from https://www.britannica.com/plant/spruce#/media/1/561445/8933, access date May 1, 2025. 
 </figcaption>
 </figure>
-<p>Let’s cover some key aspects of decision trees.</p>
+<p>Let’s cover some <a class="reference internal" href="MachineLearning_glossary_g_l.html#key"><span class="std std-doc">key</span></a> aspects of decision trees.</p>
 </section>
 <section id="model-formulation">
 <h2>Model Formulation<a class="headerlink" href="#model-formulation" title="Permalink to this heading">#</a></h2>
-<p>The prediction feature space is partitioned into <span class="math notranslate nohighlight">\(J\)</span> exhaustive, mutually exclusive regions <span class="math notranslate nohighlight">\(R_1, R_2, \ldots, R_J\)</span>. For a given prediction case <span class="math notranslate nohighlight">\(x_1,\ldots,x_m \in R_j\)</span>, the prediction is:</p>
-<p><strong>Regression</strong> - the average of the training data in the region, <span class="math notranslate nohighlight">\(R_j\)</span></p>
+<p>The prediction <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-space"><span class="std std-doc">feature space</span></a> is partitioned into <span class="math notranslate nohighlight">\(J\)</span> exhaustive, mutually exclusive regions <span class="math notranslate nohighlight">\(R_1, R_2, \ldots, R_J\)</span>. For a given prediction case <span class="math notranslate nohighlight">\(x_1,\ldots,x_m \in R_j\)</span>, the prediction is:</p>
+<p><strong><a class="reference internal" href="MachineLearning_glossary_m_r.html#regression"><span class="std std-doc">Regression</span></a></strong> - the <a class="reference internal" href="MachineLearning_glossary_a_c.html#average"><span class="std std-doc">average</span></a> of the training data in the region, <span class="math notranslate nohighlight">\(R_j\)</span></p>
 <div class="math notranslate nohighlight">
 \[
 \hat{y} = \frac{1}{|R_j|} \sum_{\mathbf{x}_i \in R_j} y_i
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(\hat{y}\)</span> is the predicted value for input <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, <span class="math notranslate nohighlight">\(R_j\)</span> is the region (leaf node) that <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> falls into, <span class="math notranslate nohighlight">\(|R_j|\)</span> is the number of training samples in region <span class="math notranslate nohighlight">\(R_j\)</span>, and <span class="math notranslate nohighlight">\(y_i\)</span> is the actual target values of those training samples in <span class="math notranslate nohighlight">\(R_j\)</span>.</p>
-<p><strong>Classification</strong> - category with the plurality of training cases (most common case) in region <span class="math notranslate nohighlight">\(R_j\)</span>:</p>
+<p>where <span class="math notranslate nohighlight">\(\hat{y}\)</span> is the predicted property for input <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, <span class="math notranslate nohighlight">\(R_j\)</span> is the region (leaf <a class="reference internal" href="MachineLearning_glossary_m_r.html#node"><span class="std std-doc">node</span></a>) that <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> falls into, <span class="math notranslate nohighlight">\(|R_j|\)</span> is the number of training <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s in region <span class="math notranslate nohighlight">\(R_j\)</span>, and <span class="math notranslate nohighlight">\(y_i\)</span> is the actual target values of those training samples in <span class="math notranslate nohighlight">\(R_j\)</span>.</p>
+<p><strong><a class="reference internal" href="MachineLearning_glossary_a_c.html#classification"><span class="std std-doc">Classification</span></a></strong> - category with the plurality of training cases (most common case) in region <span class="math notranslate nohighlight">\(R_j\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
 \hat{y} = \arg\max_{c \in C} \left( \frac{1}{|R_j|} \sum_{\mathbf{x}_i \in R_j} \mathbb{1}(y_i = c) \right)
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(C\)</span> is the set of all possible categories, <span class="math notranslate nohighlight">\(\mathbb{1}(y_i = c)\)</span> is indicator transform, 1 if <span class="math notranslate nohighlight">\(y_i = c\)</span>, 0 otherwise, <span class="math notranslate nohighlight">\(|R_j|\)</span> is the number of training samples in region <span class="math notranslate nohighlight">\(R_j\)</span>, and <span class="math notranslate nohighlight">\(\hat{y}\)</span> is the predicted class label.</p>
+<p>where <span class="math notranslate nohighlight">\(C\)</span> is the set of all possible categories, <span class="math notranslate nohighlight">\(\mathbb{1}(y_i = c)\)</span> is <a class="reference internal" href="MachineLearning_glossary_g_l.html#indicator-transform"><span class="std std-doc">indicator transform</span></a>, 1 if <span class="math notranslate nohighlight">\(y_i = c\)</span>, 0 otherwise, <span class="math notranslate nohighlight">\(|R_j|\)</span> is the number of training samples in region <span class="math notranslate nohighlight">\(R_j\)</span>, and <span class="math notranslate nohighlight">\(\hat{y}\)</span> is the predicted class label.</p>
 <p>The predictor space, <span class="math notranslate nohighlight">\(𝑋_1,\ldots,𝑋_𝑚\)</span>, is segmented into <span class="math notranslate nohighlight">\(J\)</span> mutually exclusive, exhaustive regions, <span class="math notranslate nohighlight">\(R_j, j = 1,\ldots,J\)</span>, where the regions are,</p>
 <ul class="simple">
-<li><p><strong>mutually exclusive</strong> – any combination of predictor features, <span class="math notranslate nohighlight">\(x_1,\ldots,x_𝑚\)</span>, only belongs to a single region, <span class="math notranslate nohighlight">\(R_j\)</span></p></li>
-<li><p><strong>exhaustive</strong> – all combinations of predictor feature values belong a region, <span class="math notranslate nohighlight">\(R_j\)</span>, i.e., all the regions, <span class="math notranslate nohighlight">\(R_j, j = 1,\ldots,J\)</span>, cover entire predictor  feature space</p></li>
+<li><p><strong>mutually exclusive</strong> – any combination of <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a>s, <span class="math notranslate nohighlight">\(x_1,\ldots,x_𝑚\)</span>, only belongs to a single region, <span class="math notranslate nohighlight">\(R_j\)</span></p></li>
+<li><p><strong>exhaustive</strong> – all combinations of predictor <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> values belong a region, <span class="math notranslate nohighlight">\(R_j\)</span>, i.e., all the regions, <span class="math notranslate nohighlight">\(R_j, j = 1,\ldots,J\)</span>, cover entire predictor  feature space</p></li>
 </ul>
-<p>All prediction cases, <span class="math notranslate nohighlight">\(x_1,\ldots,x_m\)</span> that fall in the same region, <span class="math notranslate nohighlight">\(R_j\)</span>, are estimated with the same value.</p>
+<p>All <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a> cases, <span class="math notranslate nohighlight">\(x_1,\ldots,x_m\)</span> that fall in the same region, <span class="math notranslate nohighlight">\(R_j\)</span>, are estimated with the same value.</p>
 <ul class="simple">
 <li><p>the prediction model inherently discontinuous at the region boundaries</p></li>
 </ul>
-<p>For example, consider this decision tree prediction model for the production response feature, <span class="math notranslate nohighlight">\(\hat{Y}\)</span> ̂from porosity, <span class="math notranslate nohighlight">\(X_1\)</span>, predictor feature,</p>
+<p>For example, consider this decision tree prediction model for the production <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a>, <span class="math notranslate nohighlight">\(\hat{Y}\)</span> ̂from porosity, <span class="math notranslate nohighlight">\(X_1\)</span>, predictor feature,</p>
 <figure style="text-align: center;">
   <img src="_static/decision_tree/regions.png" style="display: block; margin: 0 auto; width: 80%;">
   <figcaption style="text-align: center;"> Four region decision tree with data and predictions, \(\hat{Y}(R_j) = \overline{Y}(R_j)\) by region, \(R_j, j=1,…,4\). For example, given a predictor feature value of 13% porosity, the model predicts about 2,000 MCFPD for production.
 </figcaption>
 </figure>
-<p>How do we segment the predictor feature space?</p>
+<p>How do we segment the <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature-space"><span class="std std-doc">predictor feature space</span></a>?</p>
 <p>Look at this example with predictor features porosity and brittleness to predict the production response feature.</p>
 <figure style="text-align: center;">
   <img src="_static/decision_tree/complexboundaries.png" style="display: block; margin: 0 auto; width: 80%;">
@@ -554,13 +559,13 @@ document.write(`
 </ul>
 <p>But, this model would be quite complicated,</p>
 <ul class="simple">
-<li><p>requiring a large number of model parameters</p></li>
+<li><p>requiring a large number of <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter"><span class="std std-doc">model parameter</span></a>s</p></li>
 <li><p>difficult to train for a large number of prediction features, i.e., high dimensionality</p></li>
 </ul>
 <p>If I can convince you to accept these regions instead, then you would have a model that,</p>
 <ul class="simple">
 <li><p>is very easy to train</p></li>
-<li><p>has very few parameters</p></li>
+<li><p>has very few <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a>s</p></li>
 <li><p>very compact and interpretable</p></li>
 </ul>
 <figure style="text-align: center;">
@@ -572,18 +577,18 @@ document.write(`
 </section>
 <section id="predictor-feature-space">
 <h2>Predictor Feature Space<a class="headerlink" href="#predictor-feature-space" title="Permalink to this heading">#</a></h2>
-<p>Let’s step back and establish the concept of predictor feature space. We define it as,</p>
+<p>Let’s step back and establish the concept of <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature-space"><span class="std std-doc">predictor feature space</span></a>. We define it as,</p>
 <ul class="simple">
-<li><p>the space that includes all possible estimation problems, i.e., the combination of all possible predictor feature values, <span class="math notranslate nohighlight">\(x_1, x_2,\ldots,x_m\)</span>.</p></li>
+<li><p>the space that includes all possible <a class="reference internal" href="MachineLearning_glossary_d_f.html#estimation"><span class="std std-doc">estimation</span></a> problems, i.e., the combination of all possible <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a> values, <span class="math notranslate nohighlight">\(x_1, x_2,\ldots,x_m\)</span>.</p></li>
 </ul>
 <figure style="text-align: center;">
   <img src="_static/decision_tree/predictorspace.png" style="display: block; margin: 0 auto; width: 60%;">
   <figcaption style="text-align: center;"> Illustration of predictor feature space for the case of 3 predictor features with specified minimum and maximum values per feature resulting in a rectangular cuboid of possible predictions, $x_1, x_2, x_3$.
 </figcaption>
 </figure>
-<p>Typically this is defined by the range of possible values, <span class="math notranslate nohighlight">\(x_{\alpha} \in \left[X_{\alpha,\text{𝑚𝑖𝑛}},𝑋_{\alpha,\text{max}} \right]\)</span>​, resulting in,</p>
+<p>Typically this is defined by the range of possible results, <span class="math notranslate nohighlight">\(x_{\alpha} \in \left[X_{\alpha,\text{𝑚𝑖𝑛}},𝑋_{\alpha,\text{max}} \right]\)</span>​, resulting in,</p>
 <ul class="simple">
-<li><p>1 predictor feature <span class="math notranslate nohighlight">\(\rightarrow\)</span> line segment</p></li>
+<li><p>1 predictor <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> <span class="math notranslate nohighlight">\(\rightarrow\)</span> line segment</p></li>
 <li><p>2 predictor features <span class="math notranslate nohighlight">\(\rightarrow\)</span> rectangle</p></li>
 <li><p>3 predictor features <span class="math notranslate nohighlight">\(\rightarrow\)</span> rectangular cuboid</p></li>
 <li><p><span class="math notranslate nohighlight">\(&gt;\)</span>3 predictor features <span class="math notranslate nohighlight">\(\rightarrow\)</span> hyperrectangle</p></li>
@@ -596,28 +601,28 @@ document.write(`
 </section>
 <section id="tree-loss-functions">
 <h2>Tree Loss Functions<a class="headerlink" href="#tree-loss-functions" title="Permalink to this heading">#</a></h2>
-<p>For regression trees we minimize the residual sum of squares and for classification trees we minimize the weighted average Gini impurity.</p>
-<p>The Residual Sum of Squares (RSS) measures the total squared difference between the actual values and predicted values in a regression tree,</p>
+<p>For regression trees we minimize the <a class="reference internal" href="MachineLearning_glossary_m_r.html#residual-sum-of-squares"><span class="std std-doc">residual sum of squares</span></a> and for classification trees we minimize the weighted <a class="reference internal" href="MachineLearning_glossary_a_c.html#average"><span class="std std-doc">average</span></a> Gini impurity.</p>
+<p>The Residual Sum of Squares (RSS) measures the total squared difference between the actual property and predicted properties in a <a class="reference internal" href="MachineLearning_glossary_m_r.html#regression"><span class="std std-doc">regression</span></a> tree,</p>
 <div class="math notranslate nohighlight">
 \[
 \text{RSS} = \sum_{j=1}^{J} \sum_{i \in R_j} (y_i - \hat{y}_{R_j})^2
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(J\)</span> is the total number of regions in the tree, <span class="math notranslate nohighlight">\(R_j\)</span> is the <span class="math notranslate nohighlight">\(j\)</span> region, <span class="math notranslate nohighlight">\(y_i\)</span> is the truth value of the response feature at observation the <span class="math notranslate nohighlight">\(i\)</span> training data, and <span class="math notranslate nohighlight">\(\hat{y}_{R_j}\)</span> is the predicted value for region <span class="math notranslate nohighlight">\(R_j\)</span>, the mean of <span class="math notranslate nohighlight">\(y_i \; \forall \; i \in R_j\)</span>.</p>
-<p>When a parent node splits into two child nodes ( t_L ) and ( t_R ), the weighted Gini impurity is:</p>
+<p>where <span class="math notranslate nohighlight">\(J\)</span> is the total number of regions in the tree, <span class="math notranslate nohighlight">\(R_j\)</span> is the <span class="math notranslate nohighlight">\(j\)</span> region, <span class="math notranslate nohighlight">\(y_i\)</span> is the truth value of the <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a> at observation the <span class="math notranslate nohighlight">\(i\)</span> training data, and <span class="math notranslate nohighlight">\(\hat{y}_{R_j}\)</span> is the predicted value for region <span class="math notranslate nohighlight">\(R_j\)</span>, the <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a> of <span class="math notranslate nohighlight">\(y_i \; \forall \; i \in R_j\)</span>.</p>
+<p>When a parent <a class="reference internal" href="MachineLearning_glossary_m_r.html#node"><span class="std std-doc">node</span></a> splits into two child nodes ( t_L ) and ( t_R ), the weighted Gini impurity is:</p>
 <div class="math notranslate nohighlight">
 \[
 \text{Gini}_{\text{total}} = \sum_{j=1}^{J} \frac{N_j}{N} \cdot \text{Gini}(j)
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(J\)</span> is the total number of regions in the tree, <span class="math notranslate nohighlight">\(N\)</span> is the total number of samples in the dataset,   <span class="math notranslate nohighlight">\(N_j\)</span> is the number of samples in leaf node <span class="math notranslate nohighlight">\(j\)</span>, and <span class="math notranslate nohighlight">\(\text{Gini}(j)\)</span> is the Gini impurity of leaf node <span class="math notranslate nohighlight">\(j\)</span>.</p>
-<p>The Gini impurity for a single decision tree node is calculated as,</p>
+<p>where <span class="math notranslate nohighlight">\(J\)</span> is the total number of regions in the tree, <span class="math notranslate nohighlight">\(N\)</span> is the total number of <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s in the dataset,   <span class="math notranslate nohighlight">\(N_j\)</span> is the number of samples in leaf node <span class="math notranslate nohighlight">\(j\)</span>, and <span class="math notranslate nohighlight">\(\text{Gini}(j)\)</span> is the Gini impurity of leaf node <span class="math notranslate nohighlight">\(j\)</span>.</p>
+<p>The Gini impurity for a single <a class="reference internal" href="MachineLearning_glossary_d_f.html#decision-tree"><span class="std std-doc">decision tree</span></a> node is calculated as,</p>
 <div class="math notranslate nohighlight">
 \[
 \text{Gini}(j) = 1 - \sum_{c=1}^{C} p_{j,c}^2
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(p_{j,c}\)</span> is the proportion of class <span class="math notranslate nohighlight">\(c\)</span> samples in node <span class="math notranslate nohighlight">\(j\)</span>.</p>
-<p>For classification our loss function does not compare the predictions to the truth values like our regression loss!</p>
+<p>For <a class="reference internal" href="MachineLearning_glossary_a_c.html#classification"><span class="std std-doc">classification</span></a> our <a class="reference internal" href="MachineLearning_glossary_g_l.html#loss-function"><span class="std std-doc">loss function</span></a> does not compare the <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a>s to the truth values like our regression loss!</p>
 <ul class="simple">
-<li><p>the Gini impurity penalizes mixtures of training data categories! A region of all one category of training data will have a Gini impurity of 0 to contribute to the over all loss.</p></li>
+<li><p>the Gini impurity penalizes mixtures of training <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> categories! A region of all one category of training data will have a Gini impurity of 0 to contribute to the over all loss.</p></li>
 </ul>
 <p>Note that the by-region Gini impurity is,</p>
 <ul class="simple">
@@ -633,17 +638,17 @@ document.write(`
 </section>
 <section id="training-the-tree-model">
 <h2>Training the Tree Model<a class="headerlink" href="#training-the-tree-model" title="Permalink to this heading">#</a></h2>
-<p>How do we calculate these mutually exclusive, exhaustive regions? This is accomplished through hierarchical binary segmentation of the predictor feature space.</p>
-<p>Training a decision tree model is both,</p>
+<p>How do we calculate these mutually exclusive, exhaustive regions? This is accomplished through hierarchical binary segmentation of the <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature-space"><span class="std std-doc">predictor feature space</span></a>.</p>
+<p>Training a <a class="reference internal" href="MachineLearning_glossary_d_f.html#decision-tree"><span class="std std-doc">decision tree</span></a> model is both,</p>
 <ol class="arabic simple">
 <li><p>assigning the mutual exclusive, exhaustive regions</p></li>
-<li><p>building a decision tree, each region is a terminal node, also known as a leaf node</p></li>
+<li><p>building a decision tree, each region is a terminal <a class="reference internal" href="MachineLearning_glossary_m_r.html#node"><span class="std std-doc">node</span></a>, also known as a leaf node</p></li>
 </ol>
 <p>These are the same thing! Let’s list the steps and then walk through a training a tree to demonstrate this.</p>
 <ol class="arabic simple" start="0">
-<li><p><strong>Assign All Data to a Single Region</strong> - this region covers the entire predictor feature space</p></li>
-<li><p><strong>Scan All Possible Splits</strong> - over all regions and over all features</p></li>
-<li><p><strong>Select the Best Split</strong> - this is greedy optimization, i.e., the best split minimizes the residual sum of squares of errors over all the training data <span class="math notranslate nohighlight">\(y_i\)</span> over all of the regions <span class="math notranslate nohighlight">\(j = 1,\ldots,J\)</span>.</p></li>
+<li><p><strong>Assign All Data to a Single Region</strong> - this region covers the entire <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a> space</p></li>
+<li><p><strong>Scan All Possible Splits</strong> - over all regions and over all <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s</p></li>
+<li><p><strong>Select the Best Split</strong> - this is greedy optimization, i.e., the best split minimizes the <a class="reference internal" href="MachineLearning_glossary_m_r.html#residual-sum-of-squares"><span class="std std-doc">residual sum of squares</span></a> of errors over all the training data <span class="math notranslate nohighlight">\(y_i\)</span> over all of the regions <span class="math notranslate nohighlight">\(j = 1,\ldots,J\)</span>.</p></li>
 <li><p><strong>Iterate Until Very Overfit</strong> - return to step 1 for the next split until the tree is very overfit.</p></li>
 </ol>
 <p>Note, this method for training a decision tree is a solution heuristic,</p>
@@ -652,14 +657,14 @@ document.write(`
 </ul>
 <p>Also, the decision tree is constructed from the top down.</p>
 <ul class="simple">
-<li><p>we begin with a single region that covers the entire predictor feature space and then proceed with a sequence of region splits / tree branches.</p></li>
+<li><p>we begin with a single region that covers the entire predictor <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-space"><span class="std std-doc">feature space</span></a> and then proceed with a sequence of region splits / tree branches.</p></li>
 </ul>
-<p>Now let’s illustrate this with an example, predicting natural gas production response feature with 2 predictor features,</p>
+<p>Now let’s illustrate this with an example, predicting natural gas production <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a> with 2 predictor features,</p>
 <ul class="simple">
 <li><p>porosity - impacting pore volume and flow</p></li>
 <li><p>brittleness - impacting the ability to induce and hold open fractures</p></li>
 </ul>
-<p>We start with all our predictor feature space in a single region with the single possible prediction as the average of all the training data.</p>
+<p>We start with all our predictor feature space in a single region with the single possible <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a> as the <a class="reference internal" href="MachineLearning_glossary_a_c.html#average"><span class="std std-doc">average</span></a> of all the training data.</p>
 <figure style="text-align: center;">
   <img src="_static/decision_tree/tree_1nodes.png" style="display: block; margin: 0 auto; width: 100%;">
   <figcaption style="text-align: center;"> Initial data all in 1 region, i.e., hyperparameter number of leaf nodes of 1, predict with the global mean of the response feature.
@@ -689,7 +694,7 @@ document.write(`
   <figcaption style="text-align: center;"> Hyperparameter number of leaf nodes of 5.
 </figcaption>
 </figure>
-<p>The next best split divides the region in the middle of porosity, capturing the trend of low production for low brittleness, even with high porosity.</p>
+<p>The next best split divides the region in the middle of porosity, capturing the <a class="reference internal" href="MachineLearning_glossary_s_z.html#trend"><span class="std std-doc">trend</span></a> of low production for low brittleness, even with high porosity.</p>
 <figure style="text-align: center;">
   <img src="_static/decision_tree/tree_6nodes.png" style="display: block; margin: 0 auto; width: 100%;">
   <figcaption style="text-align: center;"> Hyperparameter number of leaf nodes of 6.
@@ -711,32 +716,32 @@ document.write(`
 <ul class="simple">
 <li><p>hierarchical, binary segmentation is the same as sequentially building a decision tree, each split adds a new decision node and increases the number of leaf nodes by one.</p></li>
 <li><p>the simple decision trees are in the complicated decision tree, i.e., if we build an <span class="math notranslate nohighlight">\(8\)</span> leaf node model, we have the <span class="math notranslate nohighlight">\(8, 7, \ldots, 2\)</span> leaf node model by sequentially removing the decision nodes, in the order of last one is the first one to remove.</p></li>
-<li><p>the ultimate overfit model is number of leaf nodes equal to the number of training data. In this case, the training error is 0.0 as have one region for each training data a we estimate with the training data response feature values for all the at the training data cases.</p></li>
+<li><p>the ultimate <a class="reference internal" href="MachineLearning_glossary_m_r.html#overfit-model"><span class="std std-doc">overfit model</span></a> is number of leaf nodes equal to the number of training data. In this case, the training error is 0.0 as have one region for each training data a we estimate with the training data response feature for all the at the training data cases.</p></li>
 </ul>
 </section>
 <section id="updating-the-loss-function-with-a-new-split">
 <h2>Updating the Loss Function with a New Split<a class="headerlink" href="#updating-the-loss-function-with-a-new-split" title="Permalink to this heading">#</a></h2>
-<p>To find the next best split, we must scan over all regions, and over all features with the regions. This may sound like a lot of computation, but it is quite efficient.</p>
+<p>To find the next best split, we must scan over all regions, and over all <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s with the regions. This may sound like a lot of computation, but it is quite efficient.</p>
 <ul class="simple">
-<li><p>we only need to check the midpoints between sorted training data for each feature in each region, because any split that does not change the region assignment of a training data will not change the training loss.</p></li>
+<li><p>we only need to check the midpoints between sorted training <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> for each feature in each region, because any split that does not change the region assignment of a training data will not change the training loss.</p></li>
 </ul>
 <p>For a region <span class="math notranslate nohighlight">\(R\)</span> split into candidate regions <span class="math notranslate nohighlight">\(R_L\)</span> and <span class="math notranslate nohighlight">\(R_R\)</span>, the RSS after the split is:</p>
 <div class="math notranslate nohighlight">
 \[
 \text{RSS}_{\text{split}} = \sum_{i \in R_L} (y_i - \hat{y}_{R_L})^2 + \sum_{i \in R_R} (y_i - \hat{y}_{R_R})^2
 \]</div>
-<p>where, <span class="math notranslate nohighlight">\(y_i\)</span> is the actual response feature for training data observation <span class="math notranslate nohighlight">\(i\)</span>, and <span class="math notranslate nohighlight">\(\hat{y}_{R_L}\)</span>, <span class="math notranslate nohighlight">\(\hat{y}_{R_R}\)</span> is the mean of training data response feature in candidate regions <span class="math notranslate nohighlight">\(R_L\)</span> and <span class="math notranslate nohighlight">\(R_R\)</span>.</p>
+<p>where, <span class="math notranslate nohighlight">\(y_i\)</span> is the actual <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a> for training data observation <span class="math notranslate nohighlight">\(i\)</span>, and <span class="math notranslate nohighlight">\(\hat{y}_{R_L}\)</span>, <span class="math notranslate nohighlight">\(\hat{y}_{R_R}\)</span> is the <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a> of training data response feature in candidate regions <span class="math notranslate nohighlight">\(R_L\)</span> and <span class="math notranslate nohighlight">\(R_R\)</span>.</p>
 <p>Note, we add in the RSS components from all the other regions to get the total model RSS to find the best split over all the regions,</p>
 <ul class="simple">
 <li><p>the split with the lowest <span class="math notranslate nohighlight">\(\text{RSS}_{\text{split}}\)</span> is selected for the region and compared to all other best splits in the other regions to find the next best split, greedy solution.</p></li>
 </ul>
-<p>Now we are prepared for tuning a decision tree model.</p>
+<p>Now we are prepared for tuning a <a class="reference internal" href="MachineLearning_glossary_d_f.html#decision-tree"><span class="std std-doc">decision tree</span></a> model.</p>
 </section>
 <section id="tuning-the-tree-model">
 <h2>Tuning the Tree Model<a class="headerlink" href="#tuning-the-tree-model" title="Permalink to this heading">#</a></h2>
-<p>To tune the decision tree we take the very overfit trained tree model,</p>
+<p>To tune the <a class="reference internal" href="MachineLearning_glossary_d_f.html#decision-tree"><span class="std std-doc">decision tree</span></a> we take the very overfit trained tree model,</p>
 <ul class="simple">
-<li><p>sequentially cut the last decision node</p></li>
+<li><p>sequentially cut the last decision <a class="reference internal" href="MachineLearning_glossary_m_r.html#node"><span class="std std-doc">node</span></a></p></li>
 <li><p>i.e., prune the last branch of the decision tree</p></li>
 </ul>
 <p>Since the simpler trees are inside the complicated tree!</p>
@@ -820,7 +825,7 @@ document.write(`
   <figcaption style="text-align: center;"> Very overfit decision tree, train and test error vs. model complexity (left) and decision tree (right).
 </figcaption>
 </figure>
-<p>Now let’s return and look at the very overfit model and add some more information over different levels of complexity.</p>
+<p>Now let’s return and look at the very <a class="reference internal" href="MachineLearning_glossary_m_r.html#overfit-model"><span class="std std-doc">overfit model</span></a> and add some more information over different levels of complexity.</p>
 <figure style="text-align: center;">
   <img src="_static/decision_tree/overfit.png" style="display: block; margin: 0 auto; width: 100%;">
   <figcaption style="text-align: center;"> Very overfit decision tree, hyperparameter number of leaf nodes of 100 (left), train and test cross validation plot (center) and train and test error over number of leaf nodes (right).
@@ -828,7 +833,7 @@ document.write(`
 </figure>
 <p>I include the,</p>
 <ul class="simple">
-<li><p>train and test cross validation plot with nearly perfect training prediction and very poor testing prediction for the 100 leaf node overfit decision tree</p></li>
+<li><p>train and test cross validation plot with nearly perfect training <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a> and very poor testing prediction for the 100 leaf node overfit decision tree</p></li>
 <li><p>train and test error versus number of leaf nodes.</p></li>
 </ul>
 <p>This demonstrates that the decision tree model is indeed very overfit, for example, see the falling training error and rising testing error.</p>
@@ -838,7 +843,7 @@ document.write(`
   <figcaption style="text-align: center;"> Tuned decision tree, hyperparameter number of leaf nodes of 20 (left), train and test cross validation plot (center) and train and test error over number of leaf nodes indicating that testing error is minimized (right).
 </figcaption>
 </figure>
-<p>For completeness, I have included an underfit model, i.e., if we prune our decision tree too much, with only 8 leaf nodes.</p>
+<p>For completeness, I have included an <a class="reference internal" href="MachineLearning_glossary_s_z.html#underfit-model"><span class="std std-doc">underfit model</span></a>, i.e., if we prune our decision tree too much, with only 8 leaf nodes.</p>
 <figure style="text-align: center;">
   <img src="_static/decision_tree/underfit.png" style="display: block; margin: 0 auto; width: 100%;">
   <figcaption style="text-align: center;"> Underfit decision tree, hyperparameter number of leaf nodes of 8 (left), train and test cross validation plot (center) and train and test error over number of leaf nodes indicating that testing error is minimized (right).
@@ -854,13 +859,13 @@ document.write(`
 <p>There are other common decision tree hyperparameters including,</p>
 <ul class="simple">
 <li><p><strong>Minimum reduction in RSS</strong> – related to the idea that incremental increase in complexity must be offset by sufficient reduction in training error. This could stop the model early, for example, a split with low reduction in training error could lead to a subsequent split with a much larger reduction in training error</p></li>
-<li><p><strong>Minimum number of training data in each region</strong> – related to the concept of accuracy of the by-region estimates, i.e., we need at least <span class="math notranslate nohighlight">\(n\)</span> data for a reliable mean and most common category</p></li>
+<li><p><strong>Minimum number of training <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> in each region</strong> – related to the concept of accuracy of the by-region estimates, i.e., we need at least <span class="math notranslate nohighlight">\(n\)</span> data for a reliable <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a> and most common category</p></li>
 <li><p><strong>Maximum number of levels</strong> – forces symmetric trees, similar number of splits to get to each leaf node. There is a large change in model complexity with change in the hyperparameter.</p></li>
 </ul>
 </section>
 <section id="the-prediction-model">
 <h2>The Prediction Model<a class="headerlink" href="#the-prediction-model" title="Permalink to this heading">#</a></h2>
-<p>The decision tree prediction model is represented as <strong>set of nested if statements</strong>, for example:</p>
+<p>The <a class="reference internal" href="MachineLearning_glossary_d_f.html#decision-tree"><span class="std std-doc">decision tree</span></a> prediction model is represented as <strong>set of nested if statements</strong>, for example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">porosity</span> <span class="o">&gt;</span> <span class="mf">0.15</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">brittleness</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">:</span>
         <span class="n">initial_production</span> <span class="o">=</span> <span class="mi">1000</span>
@@ -873,25 +878,25 @@ document.write(`
         <span class="n">initial_production</span> <span class="o">=</span> <span class="mi">3000</span>
 </pre></div>
 </div>
-<p>and the predictions as stated above are either the,</p>
+<p>and the <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a>s as stated above are either the,</p>
 <ul class="simple">
-<li><p>regression - average of the training data in the region</p></li>
-<li><p>classification - the plurality, most common category, of the training data in the region</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_m_r.html#regression"><span class="std std-doc">regression</span></a> - <a class="reference internal" href="MachineLearning_glossary_a_c.html#average"><span class="std std-doc">average</span></a> of the training data in the region</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_a_c.html#classification"><span class="std std-doc">classification</span></a> - the plurality, most common category, of the training <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> in the region</p></li>
 </ul>
 </section>
 <section id="shapley-values-from-decision-trees">
 <h2>Shapley Values from Decision Trees<a class="headerlink" href="#shapley-values-from-decision-trees" title="Permalink to this heading">#</a></h2>
-<p>Recall, we need to take a single model, for example, <span class="math notranslate nohighlight">\(f(x_1,x_2,x_3,x_4)\)</span>, and make an estimate for all possible combinations of feature subsets, for example,</p>
+<p>We need to take a single model, for example, <span class="math notranslate nohighlight">\(f(x_1,x_2,x_3,x_4)\)</span>, and make an estimate for all possible combinations of <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> subsets, for example,</p>
 <div class="math notranslate nohighlight">
 \[
 f(x_1) \quad f(x_2,x_4) \quad f(x_1,x_2,x_3)
 \]</div>
 <ul class="simple">
-<li><p>note, the naïve approach to calculate Shapley values is to train the full combinatorial of models with different predictor features, but we don’t want to make new models if our goal is feature importance to diagnose our specific model, <span class="math notranslate nohighlight">\(f\)</span>, to support model explainability.</p></li>
+<li><p>note, the naïve approach to calculate <a class="reference internal" href="MachineLearning_glossary_s_z.html#shapley-value"><span class="std std-doc">Shapley value</span></a>s is to train the full combinatorial of models with different <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a>s, but we don’t want to make new models if our goal is <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-importance"><span class="std std-doc">feature importance</span></a> to diagnose our specific model, <span class="math notranslate nohighlight">\(f\)</span>, to support model explainability.</p></li>
 </ul>
 <p>One solution is to apply a variety of approaches, similar to imputation methods, including,</p>
 <ul class="simple">
-<li><p>replace the excluded feature(s) with the expected value, global mean,</p></li>
+<li><p>replace the excluded feature(s) with the <a class="reference internal" href="MachineLearning_glossary_d_f.html#expectation"><span class="std std-doc">expectation</span></a>, global <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a>,</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
@@ -904,13 +909,13 @@ f(x_1,x_2,x_3) = f(x_1,x_2,x_3,x_4=E[x_4])
 \[
 f(x_1,x_2,x_3) = f(x_1,x_2,x_3,x_4=P50_{x_4})
 \]</div>
-<p>There is a more accurate, unique method with tree-based models, we can actually remove the influence of any of the features from the decision tree after the model is trained, for example,</p>
+<p>There is a more accurate, unique method with tree-based models, we can actually remove the influence of any of the features from the <a class="reference internal" href="MachineLearning_glossary_d_f.html#decision-tree"><span class="std std-doc">decision tree</span></a> after the model is trained, for example,</p>
 <ul class="simple">
-<li><p>remove all <span class="math notranslate nohighlight">\(x_4\)</span> branches, and then the model does not use <span class="math notranslate nohighlight">\(x_4\)</span> to make the prediction</p></li>
+<li><p>remove all <span class="math notranslate nohighlight">\(x_4\)</span> branches, and then the model does not use <span class="math notranslate nohighlight">\(x_4\)</span> to make the <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a></p></li>
 </ul>
 <p>Of course, we cannot just remove branches and ‘wood glue’ the tree back together!</p>
 <ul class="simple">
-<li><p>we must make new predictions that don’t introduce bias.</p></li>
+<li><p>we must make new predictions that don’t introduce prediction-bias.</p></li>
 </ul>
 <p>Let’s demonstrate the procedure for removing a feature from a decision tree, with a couple of prediction cases,</p>
 <ol class="arabic simple">
@@ -940,7 +945,7 @@ f(x_1=25) = 20
 x_2 = 60
 \]</div>
 <ul class="simple">
-<li><p>we effectively go down both paths, by weighting, by number of training data, the solution over both paths!</p></li>
+<li><p>we effectively go down both paths, by weighting, by number of training <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>, the solution over both paths!</p></li>
 </ul>
 <figure style="text-align: center;">
   <img src="_static/decision_tree/shaptree2.png" style="display: block; margin: 0 auto; width: 60%;">
@@ -997,7 +1002,7 @@ f(x_2=60) = 86.5
 </section>
 <section id="declare-functions">
 <h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
-<p>Let’s define a couple of functions to streamline plotting correlation matrices and visualization of a decision tree regression model.</p>
+<p>Let’s define a couple of functions to streamline plotting correlation matrices and visualization of a <a class="reference internal" href="MachineLearning_glossary_d_f.html#decision-tree"><span class="std std-doc">decision tree</span></a> <a class="reference internal" href="MachineLearning_glossary_m_r.html#regression"><span class="std std-doc">regression</span></a> model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">comma_format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
@@ -1259,7 +1264,7 @@ f(x_2=60) = 86.5
 </section>
 <section id="loading-data">
 <h2>Loading Data<a class="headerlink" href="#loading-data" title="Permalink to this heading">#</a></h2>
-<p>Let’s load the provided multivariate, spatial dataset <a class="reference external" href="https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/unconv_MV.csv">unconv_MV.csv</a> available in my GeoDataSet repo. It is a comma delimited file with:</p>
+<p>Let’s load the provided <a class="reference internal" href="MachineLearning_glossary_m_r.html#multivariate"><span class="std std-doc">multivariate</span></a>, spatial dataset <a class="reference external" href="https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/unconv_MV.csv">unconv_MV.csv</a> available in my GeoDataSet repo. It is a comma delimited file with:</p>
 <ul class="simple">
 <li><p>well index (integer)</p></li>
 <li><p>porosity (%)</p></li>
@@ -1268,9 +1273,9 @@ f(x_2=60) = 86.5
 <li><p>brittleness (%)</p></li>
 <li><p>total organic carbon (%)</p></li>
 <li><p>vitrinite reflectance (%)</p></li>
-<li><p>initial gas production (90 day average) (MCFPD)</p></li>
+<li><p>initial gas production (90 day <a class="reference internal" href="MachineLearning_glossary_a_c.html#average"><span class="std std-doc">average</span></a>) (MCFPD)</p></li>
 </ul>
-<p>We load it with the pandas ‘read_csv’ function into a data frame we called ‘df’ and then preview it to make sure it loaded correctly.</p>
+<p>We load it with the pandas ‘read_csv’ function into a <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> frame we called ‘df’ and then preview it to make sure it loaded correctly.</p>
 <p><strong>Python Tip: using functions from a package</strong> just type the label for the package that we declared at the beginning:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </pre></div>
@@ -1279,12 +1284,12 @@ f(x_2=60) = 86.5
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>but read csv has required input parameters. The essential one is the name of the file. For our circumstance all the other default parameters are fine. If you want to see all the possible parameters for this function, just go to the docs <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html">here</a>.</p>
+<p>but read csv has required input <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a>s. The essential one is the name of the file. For our circumstance all the other default parameters are fine. If you want to see all the possible parameters for this function, just go to the docs <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html">here</a>.</p>
 <ul class="simple">
 <li><p>The docs are always helpful</p></li>
 <li><p>There is often a lot of flexibility for Python functions, possible through using various inputs parameters</p></li>
 </ul>
-<p>also, the program has an output, a pandas DataFrame loaded from the data.  So we have to specify the name / variable representing that new object.</p>
+<p>also, the program has an output, a pandas <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a> loaded from the data.  So we have to specify the name or <a class="reference internal" href="MachineLearning_glossary_s_z.html#variable"><span class="std std-doc">variable</span></a> representing that new object.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;unconv_MV.csv&quot;</span><span class="p">)</span>  
 </pre></div>
 </div>
@@ -1296,22 +1301,22 @@ f(x_2=60) = 86.5
 </section>
 <section id="feature-engineering">
 <h2>Feature Engineering<a class="headerlink" href="#feature-engineering" title="Permalink to this heading">#</a></h2>
-<p>Let’s make some changes to the data to improve the workflow:</p>
+<p>Let’s make some changes to the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> to improve the workflow:</p>
 <ul class="simple">
-<li><p><strong>Select the predictor features (x2) and the response feature (x1)</strong>, make sure the metadata is also consistent.</p></li>
-<li><p><strong>Metadata</strong> encoding such as the units, labels and display ranges for each feature.</p></li>
+<li><p><strong>Select the <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a>s (x2) and the <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a> (x1)</strong>, make sure the metadata is also consistent.</p></li>
+<li><p><strong>Metadata</strong> encoding such as the units, labels and display ranges for each <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>.</p></li>
 <li><p><strong>Reduce the number of data</strong> for ease of visualization (hard to see if too many points on our plots).</p></li>
 <li><p><strong>Train and test data split</strong> to demonstrate and visualize simple hyperparameter tuning.</p></li>
 <li><p><strong>Add random noise to the data</strong> to demonstrate model overfit. The original data is error free and does not readily demonstrate overfit.</p></li>
 </ul>
 <p>Given this is properly set, one should be able to use any dataset and features for this demonstration.</p>
 <ul class="simple">
-<li><p>for brevity we don’t show any feature selection here. Previous chapter, e.g., k-nearest neighbours include some feature selection methods, but see the feature selection chapter for many possible methods with codes for feature selection.</p></li>
+<li><p>for brevity we don’t show any <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-selection"><span class="std std-doc">feature selection</span></a> here. Previous chapter, e.g., k-nearest neighbours include some feature selection methods, but see the feature selection chapter for many possible methods with codes for feature selection.</p></li>
 </ul>
 </section>
 <section id="optional-add-random-noise-to-the-response-feature">
 <h2>Optional: Add Random Noise to the Response Feature<a class="headerlink" href="#optional-add-random-noise-to-the-response-feature" title="Permalink to this heading">#</a></h2>
-<p>We can do this to observe the impact of data noise on overfit and hyperparameter tuning.</p>
+<p>We can do this to observe the impact of <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> noise on overfit and hyperparameter tuning.</p>
 <ul class="simple">
 <li><p>This is for experiential learning, of course we wouldn’t add random noise to our data</p></li>
 <li><p>We set the random number seed for reproducibility</p></li>
@@ -1359,7 +1364,7 @@ f(x_2=60) = 86.5
 </section>
 <section id="calculate-the-correlation-matrix-and-correlation-with-response-ranking">
 <h2>Calculate the Correlation Matrix and Correlation with Response Ranking<a class="headerlink" href="#calculate-the-correlation-matrix-and-correlation-with-response-ranking" title="Permalink to this heading">#</a></h2>
-<p>Let’s start with correlation analysis. We can calculate and view the correlation matrix and correlation to the response features with these previously declared functions.</p>
+<p>Let’s start with correlation analysis. We can calculate and view the correlation matrix and correlation to the <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a>s with these previously declared functions.</p>
 <ul class="simple">
 <li><p>correlation analysis is based on the assumption of linear relationships, but it is a good start</p></li>
 </ul>
@@ -1407,7 +1412,7 @@ f(x_2=60) = 86.5
 </section>
 <section id="train-and-test-split">
 <h2>Train and Test Split<a class="headerlink" href="#train-and-test-split" title="Permalink to this heading">#</a></h2>
-<p>For convenience and simplicity we use scikit-learn’s random train and test split.</p>
+<p>For convenience and simplicity we use scikit-learn’s random <a class="reference internal" href="MachineLearning_glossary_s_z.html#train-and-test-split"><span class="std std-doc">train and test split</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">73073</span><span class="p">)</span> <span class="c1"># train and test split</span>
@@ -1420,9 +1425,9 @@ f(x_2=60) = 86.5
 </section>
 <section id="visualize-the-dataframe">
 <h2>Visualize the DataFrame<a class="headerlink" href="#visualize-the-dataframe" title="Permalink to this heading">#</a></h2>
-<p>Visualizing the train and test DataFrame is useful check before we build our models.</p>
+<p>Visualizing the train and test <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a> is useful check before we build our models.</p>
 <ul class="simple">
-<li><p>many things can go wrong, e.g., we loaded the wrong data, all the features did not load, etc.</p></li>
+<li><p>many things can go wrong, e.g., we loaded the wrong <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>, all the <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s did not load, etc.</p></li>
 </ul>
 <p>We can preview by utilizing the ‘head’ DataFrame member function (with a nice and clean format, see below).</p>
 <div class="cell docutils container">
@@ -1523,9 +1528,9 @@ f(x_2=60) = 86.5
 </section>
 <section id="summary-statistics-for-tabular-data">
 <h2>Summary Statistics for Tabular Data<a class="headerlink" href="#summary-statistics-for-tabular-data" title="Permalink to this heading">#</a></h2>
-<p>There are a lot of efficient methods to calculate summary statistics from tabular data in DataFrames.</p>
+<p>There are a lot of efficient methods to calculate summary <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">statistics</span></a> from <a class="reference internal" href="MachineLearning_glossary_s_z.html#tabular-data"><span class="std std-doc">tabular data</span></a> in <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a>s.</p>
 <ul class="simple">
-<li><p>The describe command provides count, mean, minimum, maximum in a nice data table.</p></li>
+<li><p>The describe command provides count, <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a>, minimum, maximum in a nice <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> table.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1630,10 +1635,10 @@ f(x_2=60) = 86.5
 </section>
 <section id="visualize-the-train-and-test-splits">
 <h2>Visualize the Train and Test Splits<a class="headerlink" href="#visualize-the-train-and-test-splits" title="Permalink to this heading">#</a></h2>
-<p>Let’s check the consistency and coverage of training and testing with histograms and scatter plots.</p>
+<p>Let’s check the consistency and coverage of training and testing with <a class="reference internal" href="MachineLearning_glossary_g_l.html#histogram"><span class="std std-doc">histogram</span></a>s and <a class="reference internal" href="MachineLearning_glossary_s_z.html#scatter-plot"><span class="std std-doc">scatter plot</span></a>s.</p>
 <ul class="simple">
-<li><p>check to make sure the training and testing cover the range of possible feature combinations</p></li>
-<li><p>ensure we are not extrapolating beyond the training data with the testing cases</p></li>
+<li><p>check to make sure the training and testing cover the range of possible <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> combinations</p></li>
+<li><p>ensure we are not extrapolating beyond the training <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> with the testing cases</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1743,21 +1748,21 @@ f(x_2=60) = 86.5
 <p>Let’s build our predictive machine learning model, by instantiate, fit and predict with scikit-learn.</p>
 <ul class="simple">
 <li><p><strong>instantiate</strong> the model object with the hyperparameters, k-nearest neighbours</p></li>
-<li><p><strong>fit</strong> by training the model with the training data, we use the member function fit</p></li>
-<li><p><strong>predict</strong> with the trained model. After fit is run, predict is available to make predictions</p></li>
+<li><p><strong>fit</strong> by training the model with the training <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>, we use the member function fit</p></li>
+<li><p><strong>predict</strong> with the trained model. After fit is run, predict is available to make <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a>s</p></li>
 </ul>
 </section>
 <section id="training-a-decision-tree-regression-tree">
 <h2>Training a Decision Tree (Regression Tree)<a class="headerlink" href="#training-a-decision-tree-regression-tree" title="Permalink to this heading">#</a></h2>
-<p>Now we are ready to run the DecisionTreeRegressor command to build our regression tree to predict our response feature given our 2 predictor features (recall we limit ourselves here to 2 predictor features for ease of visualization).</p>
+<p>Now we are ready to run the DecisionTreeRegressor command to build our <a class="reference internal" href="MachineLearning_glossary_m_r.html#regression"><span class="std std-doc">regression</span></a> tree to predict our <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a> given our 2 <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a>s (<a class="reference internal" href="MachineLearning_glossary_m_r.html#recall"><span class="std std-doc">recall</span></a> we limit ourselves here to 2 predictor <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s for ease of visualization).</p>
 <ul class="simple">
-<li><p>We will use our two functions defined above to visualize the decision tree prediction over the feature space and the cross plot of actual and estimated production for the training data along with three model metrics from the sklearn.metric module.</p></li>
+<li><p>We will use our two functions defined above to visualize the <a class="reference internal" href="MachineLearning_glossary_d_f.html#decision-tree"><span class="std std-doc">decision tree</span></a> <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a> over the <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-space"><span class="std std-doc">feature space</span></a> and the cross plot of actual and estimated production for the training data along with three model metrics from the sklearn.metric module.</p></li>
 </ul>
-<p><strong>Hyper Parameters</strong> - we constrain our tree complexity with:</p>
+<p><strong>Hyper <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">Parameter</span></a>s</strong> - we constrain our tree complexity with:</p>
 <ul class="simple">
-<li><p><em>max_leaf_nodes</em> - maximum number of regions, also called terminal or lead nodes in the decision tree</p></li>
+<li><p><em>max_leaf_nodes</em> - maximum number of regions, also called terminal or lead <a class="reference internal" href="MachineLearning_glossary_m_r.html#node"><span class="std std-doc">node</span></a>s in the decision tree</p></li>
 <li><p><em>max_depth</em> - maximum number of levels, e.g., max_depth = 1 is a stump tree with only 1 decision and two regions</p></li>
-<li><p><em>min_samples_leaf</em> - minimum number of data in a new region, good constraint to ensure each region has enough data to make a reasonable estimate</p></li>
+<li><p><em>min_samples_leaf</em> - minimum number of <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> in a new region, good constraint to ensure each region has enough data to make a reasonable estimate</p></li>
 </ul>
 <p>For now lets just try out some hyperparameters.</p>
 <section id="underfit-decision-tree-model">
@@ -1887,21 +1892,21 @@ f(x_2=60) = 86.5
 <h2>Tuning a Decision Tree (Regression Tree)<a class="headerlink" href="#tuning-a-decision-tree-regression-tree" title="Permalink to this heading">#</a></h2>
 <p>Let’s perform hyperparameter tuning. To do this we,</p>
 <ol class="arabic simple">
-<li><p>See the range of possible hyperparameter values.</p></li>
+<li><p>See the range of possible hyperparameters.</p></li>
 <li><p>Loop over the range of possible hyperparameter values.</p>
 <ul class="simple">
-<li><p>Train on the training data with the current hyperparameter values.</p></li>
+<li><p>Train on the training <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> with the current hyperparameter values.</p></li>
 <li><p>Predict at the testing data</p></li>
 <li><p>Summarize the error over all the testing data</p></li>
 </ul>
 </li>
 <li><p>Select the hyperparameters that minimize the error at for the testing data</p></li>
 </ol>
-<p>When I teach this to my students, I suggest that this is a model dress rehearsal. We add value by making predictions for cases not used to train the model. We want the model that performs best for cases not in the training, so we are simulating real world use of the model!</p>
-<p>Now let’s do hyperparameter tuning ‘by-hand’, by varying the decision tree complexity and find the complexity that minimizes MSE in testing</p>
+<p>When I teach this to my students, I suggest that this is a model dress rehearsal. We add value by making <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a>s for cases not used to train the model. We want the model that performs best for cases not in the training, so we are simulating real world use of the model!</p>
+<p>Now let’s do hyperparameter tuning ‘by-hand’, by varying the <a class="reference internal" href="MachineLearning_glossary_d_f.html#decision-tree"><span class="std std-doc">decision tree</span></a> complexity and find the complexity that minimizes MSE in testing</p>
 <ul class="simple">
-<li><p>for simplicity the code below loops only over the maximum leaf nodes hyperparameter</p></li>
-<li><p>we set minimum number of samples to 1, and maximum depth to 9 to ensure that these hyperparameters will not have any impact (we set them to very complicated so they don’t limit the model complexity)</p></li>
+<li><p>for simplicity the code below loops only over the maximum leaf <a class="reference internal" href="MachineLearning_glossary_m_r.html#node"><span class="std std-doc">node</span></a>s hyperparameter</p></li>
+<li><p>we set minimum number of <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s to 1, and maximum depth to 9 to ensure that these hyperparameters will not have any impact (we set them to very complicated so they don’t limit the <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-complexity"><span class="std std-doc">model complexity</span></a>)</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1973,7 +1978,7 @@ f(x_2=60) = 86.5
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f3de24d4a71b2069478dd2985e6e2eb44c35e3f44df8cd4a0190282ec7cd5b8d.png" src="_images/f3de24d4a71b2069478dd2985e6e2eb44c35e3f44df8cd4a0190282ec7cd5b8d.png" />
+<img alt="_images/3d1b8188404f687d39db325b229bce22564531185916e8c07ca1a9d274cf98cd.png" src="_images/3d1b8188404f687d39db325b229bce22564531185916e8c07ca1a9d274cf98cd.png" />
 </div>
 </div>
 <p>The k-fold cross validation provides a smoother plot of MSE vs. the hyperparameter.</p>
@@ -1984,7 +1989,7 @@ f(x_2=60) = 86.5
 </section>
 <section id="build-the-final-model">
 <h2>Build the Final Model<a class="headerlink" href="#build-the-final-model" title="Permalink to this heading">#</a></h2>
-<p>Now let’s take that hyperparameter and train on all the data, this is our <strong>final model</strong></p>
+<p>Now let’s take that hyperparameter and train on all the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>, this is our <strong>final model</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pruned_tree_model</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_leaf_nodes</span><span class="o">=</span><span class="n">tuned_node_kF</span><span class="p">)</span>
@@ -2012,7 +2017,7 @@ f(x_2=60) = 86.5
 </section>
 <section id="interrogating-decision-trees">
 <h2>Interrogating Decision Trees<a class="headerlink" href="#interrogating-decision-trees" title="Permalink to this heading">#</a></h2>
-<p>It may be useful to evaluate for any possible feature combination, the order of decision nodes that resulted in the specific prediction.  The following function provides the list of nodes that the prediction cases passes.</p>
+<p>It may be useful to evaluate for any possible <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> combination, the order of decision <a class="reference internal" href="MachineLearning_glossary_m_r.html#node"><span class="std std-doc">node</span></a>s that resulted in the specific <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a>.  The following function provides the list of nodes that the prediction cases passes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="o">=</span> <span class="mf">7.0</span><span class="p">;</span> <span class="n">x2</span> <span class="o">=</span> <span class="mf">10.0</span>                                          <span class="c1"># the predictor feature values for the decision path</span>
@@ -2034,7 +2039,7 @@ f(x_2=60) = 86.5
 </section>
 <section id="extracting-the-decision-tree-prediction-model-as-a-function">
 <h2>Extracting the Decision Tree Prediction Model as a Function<a class="headerlink" href="#extracting-the-decision-tree-prediction-model-as-a-function" title="Permalink to this heading">#</a></h2>
-<p>Furthermore it may be useful to convert the decision tree to code, a nested set of ‘if’ statements.</p>
+<p>Furthermore it may be useful to convert the <a class="reference internal" href="MachineLearning_glossary_d_f.html#decision-tree"><span class="std std-doc">decision tree</span></a> to code, a nested set of ‘if’ statements.</p>
 <ul class="simple">
 <li><p>This creates a portable model that could be copied and applied as a standalone function.</p></li>
 </ul>
@@ -2085,13 +2090,13 @@ f(x_2=60) = 86.5
 </section>
 <section id="decision-tree-based-feature-importance">
 <h2>Decision Tree-based Feature Importance<a class="headerlink" href="#decision-tree-based-feature-importance" title="Permalink to this heading">#</a></h2>
-<p>Feature importance is calculated from a decision trees by summarizing the reduction in mean square error through inclusion of each feature and is summarized as:</p>
+<p><a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-importance"><span class="std std-doc">Feature importance</span></a> is calculated from a <a class="reference internal" href="MachineLearning_glossary_d_f.html#decision-tree"><span class="std std-doc">decision tree</span></a>s by summarizing the reduction in <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean-square-error"><span class="std std-doc">mean square error</span></a> through inclusion of each feature and is summarized as:</p>
 <div class="math notranslate nohighlight">
 \[
 FI(x) = \sum_{t \in T_f} \frac{N_t}{N} \Delta_{MSE_t}
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(T_f\)</span> are all nodes with feature <span class="math notranslate nohighlight">\(x\)</span> as the split, <span class="math notranslate nohighlight">\(N_t\)</span> is the number of training samples reaching node <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(N\)</span> is the total number of samples in the dataset and <span class="math notranslate nohighlight">\(\Delta_{MSE_t}\)</span> is the reduction in MSE with the <span class="math notranslate nohighlight">\(t\)</span> split.</p>
-<p>Note, feature importance can be calculated in a similar manner to MSE above for the case of classification trees with <strong>Gini Impurity</strong>.</p>
+<p>where <span class="math notranslate nohighlight">\(T_f\)</span> are all <a class="reference internal" href="MachineLearning_glossary_m_r.html#node"><span class="std std-doc">node</span></a>s with <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> <span class="math notranslate nohighlight">\(x\)</span> as the split, <span class="math notranslate nohighlight">\(N_t\)</span> is the number of training <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s reaching node <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(N\)</span> is the total number of samples in the dataset and <span class="math notranslate nohighlight">\(\Delta_{MSE_t}\)</span> is the reduction in MSE with the <span class="math notranslate nohighlight">\(t\)</span> split.</p>
+<p>Note, feature importance can be calculated in a similar manner to MSE above for the case of <a class="reference internal" href="MachineLearning_glossary_a_c.html#classification"><span class="std std-doc">classification</span></a> trees with <strong>Gini Impurity</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>                                              <span class="c1"># plot the feature importance </span>
@@ -2133,11 +2138,11 @@ FI(x) = \sum_{t \in T_f} \frac{N_t}{N} \Delta_{MSE_t}
 <h2>Simple Code to Make a Decision Tree Machine and Calculate a Prediction<a class="headerlink" href="#simple-code-to-make-a-decision-tree-machine-and-calculate-a-prediction" title="Permalink to this heading">#</a></h2>
 <p>To support those just getting started, here’s a minimal amount of code to:</p>
 <ul class="simple">
-<li><p>load the scikit-learn package for decision trees</p></li>
-<li><p>load data</p></li>
+<li><p>load the scikit-learn package for <a class="reference internal" href="MachineLearning_glossary_d_f.html#decision-tree"><span class="std std-doc">decision tree</span></a>s</p></li>
+<li><p>load <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a></p></li>
 <li><p>instantiate a decision tree with hyperparameters (no tuning is shown)</p></li>
 <li><p>train the decision tree with the training data</p></li>
-<li><p>make a prediction with the decision tree</p></li>
+<li><p>make a <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a> with the decision tree</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2161,7 +2166,7 @@ FI(x) = \sum_{t \in T_f} \frac{N_t}{N} \Delta_{MSE_t}
 </section>
 <section id="machine-learning-pipelines-for-clean-compact-machine-learning-code">
 <h2>Machine Learning Pipelines for Clean, Compact Machine Learning Code<a class="headerlink" href="#machine-learning-pipelines-for-clean-compact-machine-learning-code" title="Permalink to this heading">#</a></h2>
-<p>Pipelines are a scikit-learn class that allows for the encapsulation of a sequence of data preparation and modeling steps</p>
+<p>Pipelines are a scikit-learn class that allows for the encapsulation of a sequence of <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-preparation"><span class="std std-doc">data preparation</span></a> and modeling steps</p>
 <ul class="simple">
 <li><p>then we can treat the pipeline as an object in our much condensed workflow</p></li>
 </ul>
@@ -2169,7 +2174,7 @@ FI(x) = \sum_{t \in T_f} \frac{N_t}{N} \Delta_{MSE_t}
 <ul class="simple">
 <li><p>improve code readability and to keep everything straight</p></li>
 <li><p>build complete workflows with very few lines of readable code</p></li>
-<li><p>avoid common workflow problems like data leakage, testing data informing model parameter training</p></li>
+<li><p>avoid common workflow problems like <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> leakage, testing data informing <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter-training"><span class="std std-doc">model parameter training</span></a></p></li>
 <li><p>abstract common machine learning modeling and focus on building the best model possible</p></li>
 </ul>
 <p>The fundamental philosophy is to treat machine learning as a combinatorial search to find the best model (AutoML)</p>
@@ -2206,7 +2211,7 @@ Estimated Production for Porosity = 0.25 and Brittleness = 0.3 is 1879.2 MCFPD
 </section>
 <section id="practice-on-a-new-dataset">
 <h2>Practice on a New Dataset<a class="headerlink" href="#practice-on-a-new-dataset" title="Permalink to this heading">#</a></h2>
-<p>Ok, time to get to work. Let’s load up a dataset and build a decision tree prediction model with,</p>
+<p>Ok, time to get to work. Let’s load up a dataset and build a <a class="reference internal" href="MachineLearning_glossary_d_f.html#decision-tree"><span class="std std-doc">decision tree</span></a> <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a> model with,</p>
 <ul class="simple">
 <li><p>compact code</p></li>
 <li><p>basic visaulizations</p></li>
@@ -2215,10 +2220,10 @@ Estimated Production for Porosity = 0.25 and Brittleness = 0.3 is 1879.2 MCFPD
 <p>You can select any of these datasets or modify the code and add your own to do this.</p>
 <section id="dataset-0-unconventional-multivariate-v4">
 <h3>Dataset 0, Unconventional Multivariate v4<a class="headerlink" href="#dataset-0-unconventional-multivariate-v4" title="Permalink to this heading">#</a></h3>
-<p>Let’s load the provided multivariate, dataset <a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets/blob/master/unconv_MV_v4.csv">unconv_MV.csv</a>. This dataset has variables from 1,000 unconventional wells including:</p>
+<p>Let’s load the provided <a class="reference internal" href="MachineLearning_glossary_m_r.html#multivariate"><span class="std std-doc">multivariate</span></a>, dataset <a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets/blob/master/unconv_MV_v4.csv">unconv_MV.csv</a>. This dataset has variables from 1,000 unconventional wells including:</p>
 <ul class="simple">
-<li><p>well average porosity</p></li>
-<li><p>log transform of permeability (to linearize the relationships with other variables)</p></li>
+<li><p>well <a class="reference internal" href="MachineLearning_glossary_a_c.html#average"><span class="std std-doc">average</span></a> porosity</p></li>
+<li><p>log transform of permeability (to linearize the relationships with other <a class="reference internal" href="MachineLearning_glossary_s_z.html#variable"><span class="std std-doc">variable</span></a>s)</p></li>
 <li><p>acoustic impedance (kg/m^3 x m/s x 10^6)</p></li>
 <li><p>brittleness ratio (%)</p></li>
 <li><p>total organic carbon (%)</p></li>
@@ -2235,7 +2240,7 @@ Estimated Production for Porosity = 0.25 and Brittleness = 0.3 is 1879.2 MCFPD
 <li><p>Porosity (%) after units conversion</p></li>
 <li><p>Permeability (mD)</p></li>
 <li><p>Acoustic Impedance (kg/m2s*10^6) after units conversion</p></li>
-<li><p>Facies (categorical) - ordinal with ordering from Shale, Sandy Shale, Shaley Sand, to Sandstone.</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_d_f.html#facies"><span class="std std-doc">Facies</span></a> (categorical) - ordinal with ordering from Shale, Sandy Shale, Shaley Sand, to Sandstone.</p></li>
 <li><p>Density (g/cm^3)</p></li>
 <li><p>Compressible velocity (m/s)</p></li>
 <li><p>Youngs modulus (GPa)</p></li>
@@ -2243,14 +2248,14 @@ Estimated Production for Porosity = 0.25 and Brittleness = 0.3 is 1879.2 MCFPD
 <li><p>Shear modulus (GPa)</p></li>
 <li><p>3 year cumulative oil production (Mbbl)</p></li>
 </ul>
-<p>We load the tabular data with the pandas ‘read_csv’ function into a DataFrame we called ‘my_data’ and then preview it to make sure it loaded correctly.</p>
+<p>We load the <a class="reference internal" href="MachineLearning_glossary_s_z.html#tabular-data"><span class="std std-doc">tabular data</span></a> with the pandas ‘read_csv’ function into a <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a> we called ‘my_data’ and then preview it to make sure it loaded correctly.</p>
 <ul class="simple">
-<li><p>we also populate lists with data ranges and labels for ease of plotting</p></li>
+<li><p>we also populate lists with <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> ranges and labels for ease of plotting</p></li>
 </ul>
 <p>Load and format the data,</p>
 <ul class="simple">
-<li><p>drop the response feature</p></li>
-<li><p>reformate the features as needed</p></li>
+<li><p>drop the <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a></p></li>
+<li><p>reformate the <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s as needed</p></li>
 <li><p>also, I like to store the metadata in lists</p></li>
 </ul>
 <div class="cell docutils container">
@@ -2538,7 +2543,7 @@ Estimated Production for Porosity = 0.25 and Brittleness = 0.3 is 1879.2 MCFPD
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
-<p>This was a basic treatment of decision tree. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
+<p>This was a basic treatment of <a class="reference internal" href="MachineLearning_glossary_d_f.html#decision-tree"><span class="std std-doc">decision tree</span></a>. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
@@ -2549,20 +2554,20 @@ Estimated Production for Porosity = 0.25 and Brittleness = 0.3 is 1879.2 MCFPD
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
 </figcaption>
 </figure>
-<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a>, <a class="reference internal" href="MachineLearning_glossary_g_l.html#geostatistics"><span class="std std-doc">geostatistics</span></a>, and machine learning. Michael is also,</p>
 <ul class="simple">
-<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a <a class="reference internal" href="MachineLearning_glossary_a_c.html#core"><span class="std std-doc">core</span></a> faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>Michael has written over 100 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
 <p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
-<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a> and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
-<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">Data</span></a> Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows. We are solving challenging subsurface problems!</p></li>
 <li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
 </ul>
 <p>I’m always happy to discuss,</p>

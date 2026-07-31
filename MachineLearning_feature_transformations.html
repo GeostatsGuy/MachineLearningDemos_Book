@@ -174,6 +174,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_concepts.html">Machine Learning Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_subsurface_modeling.html">Subsurface Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_training_tuning.html">Training and Tuning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
@@ -219,7 +220,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_python.html">Python Code Snippets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_a_c.html">Glossary A-C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_d_f.html">Glossary D-F</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_g_l.html">Glossary G-L</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_m_r.html">Glossary M-R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_s_z.html">Glossary S-Z</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -481,16 +486,16 @@ document.write(`
 <p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
 <section id="motivations-for-feature-transformations">
 <h2>Motivations for Feature Transformations<a class="headerlink" href="#motivations-for-feature-transformations" title="Permalink to this heading">#</a></h2>
-<p>There are many reasons that we may want to perform feature transformations.</p>
+<p>There are many reasons that we may want to perform <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-transformation"><span class="std std-doc">feature transformation</span></a>s.</p>
 <ul class="simple">
-<li><p>the make the features consistent for visualization and comparison</p></li>
-<li><p>to avoid bias or impose feature weighting for methods (e.g. k-nearest neighbours regression) that rely on distances calculated in predictor feature space</p></li>
-<li><p>the method requires the variables to have a specific range or distribution:</p>
+<li><p>the make the <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s consistent for visualization and comparison</p></li>
+<li><p>to avoid <a class="reference internal" href="MachineLearning_glossary_a_c.html#bias"><span class="std std-doc">bias</span></a> or impose feature weighting for methods (e.g. k-nearest neighbours <a class="reference internal" href="MachineLearning_glossary_m_r.html#regression"><span class="std std-doc">regression</span></a>) that rely on distances calculated in <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature-space"><span class="std std-doc">predictor feature space</span></a></p></li>
+<li><p>the method requires the <a class="reference internal" href="MachineLearning_glossary_s_z.html#variable"><span class="std std-doc">variable</span></a>s to have a specific range or distribution:</p>
 <ul>
-<li><p>artificial neural networks may require all features to range from [-1,1]</p></li>
-<li><p>partial correlation coefficients require a Gaussian distribution.</p></li>
+<li><p>artificial <a class="reference internal" href="MachineLearning_glossary_m_r.html#neural-network"><span class="std std-doc">neural network</span></a>s may require all features to range from [-1,1]</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_m_r.html#partial-correlation-coefficient"><span class="std std-doc">partial correlation coefficient</span></a>s require a Gaussian distribution.</p></li>
 <li><p>statistical tests may require a specific distribution</p></li>
-<li><p>geostatistical sequential simulation requires an indicator or Gaussian transform</p></li>
+<li><p>geostatistical sequential <a class="reference internal" href="MachineLearning_glossary_s_z.html#simulation"><span class="std std-doc">simulation</span></a> requires an indicator or Gaussian transform</p></li>
 </ul>
 </li>
 </ul>
@@ -501,7 +506,7 @@ document.write(`
 </section>
 <section id="feature-transformation-workflow">
 <h2>Feature Transformation Workflow<a class="headerlink" href="#feature-transformation-workflow" title="Permalink to this heading">#</a></h2>
-<p>A common feature transformation workflow involves the transformation of the features to a new space, completed the machine learning workflow in the new space and then backtransform to the original space.</p>
+<p>A common <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-transformation"><span class="std std-doc">feature transformation</span></a> workflow involves the transformation of the <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s to a new space, completed the machine learning workflow in the new space and then backtransform to the original space.</p>
 <figure style="text-align: center;">
   <img src="_static/feature_transformations/transform_workflow.png" style="display: block; margin: 0 auto; width: 100%;">
   <figcaption style="text-align: center;"> The common feature transformation workflow, transform predictor features, \(X_1,\ldots,X_m\), to \(X^{\prime}_1,\ldots,X^{\prime}_m\), apply data analytics, geostatistics or machine learning steps to predict transformed response feature, \(Y^{\prime}\), and then backtransform to original response feature, \(Y\).
@@ -605,11 +610,11 @@ document.write(`
 </section>
 <section id="loading-tabular-data">
 <h2>Loading Tabular Data<a class="headerlink" href="#loading-tabular-data" title="Permalink to this heading">#</a></h2>
-<p>Here’s the command to load our comma delimited data file in to a Pandas’ DataFrame object.</p>
-<p>Let’s load the provided multivariate, spatial dataset ‘unconv_MV.csv’. This dataset has variables from 1,000 unconventional wells including:</p>
+<p>Here’s the command to load our comma delimited <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> file in to a Pandas’ <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a> object.</p>
+<p>Let’s load the provided <a class="reference internal" href="MachineLearning_glossary_m_r.html#multivariate"><span class="std std-doc">multivariate</span></a>, spatial dataset ‘unconv_MV.csv’. This dataset has variables from 1,000 unconventional wells including:</p>
 <ul class="simple">
-<li><p>well average porosity</p></li>
-<li><p>log transform of permeability (to linearize the relationships with other variables)</p></li>
+<li><p>well <a class="reference internal" href="MachineLearning_glossary_a_c.html#average"><span class="std std-doc">average</span></a> porosity</p></li>
+<li><p>log transform of permeability (to linearize the relationships with other <a class="reference internal" href="MachineLearning_glossary_s_z.html#variable"><span class="std std-doc">variable</span></a>s)</p></li>
 <li><p>acoustic impedance (kg/m^3 x m/s x 10^6)</p></li>
 <li><p>brittleness ratio (%)</p></li>
 <li><p>total organic carbon (%)</p></li>
@@ -655,13 +660,13 @@ document.write(`
 </section>
 <section id="visualize-the-dataframe">
 <h2>Visualize the DataFrame<a class="headerlink" href="#visualize-the-dataframe" title="Permalink to this heading">#</a></h2>
-<p>Visualizing the DataFrame is useful first check of the data.</p>
+<p>Visualizing the <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a> is useful first check of the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>.</p>
 <ul class="simple">
-<li><p>many things can go wrong, e.g., we loaded the wrong data, all the features did not load, etc.</p></li>
+<li><p>many things can go wrong, e.g., we loaded the wrong data, all the <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s did not load, etc.</p></li>
 </ul>
 <p>We can preview by utilizing the ‘head’ DataFrame member function (with a nice and clean format, see below).</p>
 <ul class="simple">
-<li><p>add parameter ‘n=13’ to see the first 13 rows of the dataset.</p></li>
+<li><p>add <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a> ‘n=13’ to see the first 13 rows of the dataset.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -835,9 +840,9 @@ document.write(`
 </section>
 <section id="summary-statistics-for-tabular-data">
 <h2>Summary Statistics for Tabular Data<a class="headerlink" href="#summary-statistics-for-tabular-data" title="Permalink to this heading">#</a></h2>
-<p>There are a lot of efficient methods to calculate summary statistics from tabular data in DataFrames. The describe command provides count, mean, minimum, maximum, and quartiles all in a nice data table.</p>
+<p>There are a lot of efficient methods to calculate summary <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistic"><span class="std std-doc">statistic</span></a>s from <a class="reference internal" href="MachineLearning_glossary_s_z.html#tabular-data"><span class="std std-doc">tabular data</span></a> in <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a>s. The describe command provides count, <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a>, minimum, maximum, and quartiles all in a nice <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> table.</p>
 <ul class="simple">
-<li><p>We use transpose just to flip the table so that features are on the rows and the statistics are on the columns.</p></li>
+<li><p>We use transpose just to flip the table so that <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s are on the rows and the <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">statistics</span></a> are on the columns.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -959,9 +964,9 @@ document.write(`
 </section>
 <section id="data-visualization">
 <h2>Data Visualization<a class="headerlink" href="#data-visualization" title="Permalink to this heading">#</a></h2>
-<p>We should also take a look at the histograms.</p>
+<p>We should also take a look at the <a class="reference internal" href="MachineLearning_glossary_g_l.html#histogram"><span class="std std-doc">histogram</span></a>s.</p>
 <ul class="simple">
-<li><p>get a sense of the range, modes, skew, outliers etc. for each feature</p></li>
+<li><p>get a sense of the range, modes, skew, <a class="reference internal" href="MachineLearning_glossary_m_r.html#outlier"><span class="std std-doc">outlier</span></a>s etc. for each <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a></p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -989,12 +994,12 @@ document.write(`
 </section>
 <section id="truncation">
 <h2>Truncation<a class="headerlink" href="#truncation" title="Permalink to this heading">#</a></h2>
-<p>It is possible that the features may extend beyond the plausible range of values.</p>
+<p>It is possible that the <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s may extend beyond the plausible range of values.</p>
 <ul class="simple">
-<li><p>truncation is simply assigning values outside the range with a specific value</p></li>
-<li><p>it is common to assign the minimum permissible value to outliers on the lower tail and visa versa</p></li>
+<li><p>truncation is simply assigning <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s outside the range with a specific value</p></li>
+<li><p>it is common to assign the minimum permissible value to <a class="reference internal" href="MachineLearning_glossary_m_r.html#outlier"><span class="std std-doc">outlier</span></a>s on the lower tail and visa versa</p></li>
 </ul>
-<p>Truncation can be handled easily with numpy operators applied to the feature array within the Pandas DataFrame</p>
+<p>Truncation can be handled easily with numpy operators applied to the feature array within the Pandas <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">num</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">_get_numeric_data</span><span class="p">()</span> 
 <span class="n">num</span><span class="p">[</span><span class="n">num</span> <span class="o">&lt;</span> <span class="n">data_min</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_min</span>
 <span class="n">num</span><span class="p">[</span><span class="n">num</span> <span class="o">&gt;</span> <span class="n">data_max</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_max</span>
@@ -1151,22 +1156,22 @@ document.write(`
 </section>
 <section id="affine-correction">
 <h2>Affine Correction<a class="headerlink" href="#affine-correction" title="Permalink to this heading">#</a></h2>
-<p>The affine correction is the transform of the feature distribution to a new mean and variance.</p>
+<p>The <a class="reference internal" href="MachineLearning_glossary_a_c.html#affine-correction"><span class="std std-doc">affine correction</span></a> is the transform of the feature distribution to a new mean and <a class="reference internal" href="MachineLearning_glossary_s_z.html#variance"><span class="std std-doc">variance</span></a>.</p>
 <ul class="simple">
 <li><p>this is a shift and stretch / squeeze of the original property distribution</p></li>
 <li><p>no shape change is assumed</p></li>
 </ul>
-<p>The following equation is applied to each sample in the original distribution</p>
+<p>The following equation is applied to each <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a> in the original distribution</p>
 <div class="math notranslate nohighlight">
 \[
 y = \frac{\sigma_y}{\sigma_x}\left( x - \overline{x} \right) + \overline{y}
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(\sigma_x\)</span> is the original standard deviation, <span class="math notranslate nohighlight">\(\sigma_y\)</span> is the target standard deviation, <span class="math notranslate nohighlight">\(\overline{x}\)</span> is the original mean and <span class="math notranslate nohighlight">\(\overline{y}\)</span> is the target mean.</p>
+<p>where <span class="math notranslate nohighlight">\(\sigma_x\)</span> is the original <a class="reference internal" href="MachineLearning_glossary_s_z.html#standard-deviation"><span class="std std-doc">standard deviation</span></a>, <span class="math notranslate nohighlight">\(\sigma_y\)</span> is the target standard deviation, <span class="math notranslate nohighlight">\(\overline{x}\)</span> is the original mean and <span class="math notranslate nohighlight">\(\overline{y}\)</span> is the target mean.</p>
 <ul class="simple">
 <li><p>there is an affine function in GeostatsPy that we may use</p></li>
-<li><p>for brevity we will just transform a single feature, note the function is not set up to transform more than one feature at a time, nor does the function handle the back transformation.</p></li>
+<li><p>for brevity we will just transform a single <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>, note the function is not set up to transform more than one feature at a time, nor does the function handle the back transformation.</p></li>
 </ul>
-<p>Let’s transform porosity to have an arbitrary mean and standard deviation (<span class="math notranslate nohighlight">\(\overline{x} = 20\%\)</span> and <span class="math notranslate nohighlight">\(\sigma_x = 3\%\)</span>)</p>
+<p>Let’s transform porosity to have an arbitrary <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a> and standard deviation (<span class="math notranslate nohighlight">\(\overline{x} = 20\%\)</span> and <span class="math notranslate nohighlight">\(\sigma_x = 3\%\)</span>)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;aPor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">GSLIB</span><span class="o">.</span><span class="n">affine</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Por&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">tmean</span> <span class="o">=</span> <span class="mf">22.0</span><span class="p">,</span><span class="n">tstdev</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">)</span> <span class="c1"># affine correction</span>
@@ -1226,30 +1231,30 @@ Name: aPor, dtype: float64
 </section>
 <section id="standardization">
 <h2>Standardization<a class="headerlink" href="#standardization" title="Permalink to this heading">#</a></h2>
-<p>Standardization is the transform of the feature distribution to a mean of zero and a variance of one.</p>
+<p><a class="reference internal" href="MachineLearning_glossary_s_z.html#standardization"><span class="std std-doc">Standardization</span></a> is the transform of the feature distribution to a mean of zero and a variance of one.</p>
 <ul class="simple">
 <li><p>this is a shift and stretch / squeeze of the original property distribution</p></li>
 <li><p>no shape change is assumed</p></li>
 </ul>
-<p>The transform is effectively a specific case of the affine correction, with <span class="math notranslate nohighlight">\(\overline{y} = 0\)</span> and <span class="math notranslate nohighlight">\(\sigma_y = 1.0\)</span>.</p>
+<p>The transform is effectively a specific case of the <a class="reference internal" href="MachineLearning_glossary_a_c.html#affine-correction"><span class="std std-doc">affine correction</span></a>, with <span class="math notranslate nohighlight">\(\overline{y} = 0\)</span> and <span class="math notranslate nohighlight">\(\sigma_y = 1.0\)</span>.</p>
 <p>\begin{equation}
 y = \frac{1}{\sigma_x}\left( x - \overline{x} \right)
 \end{equation}</p>
-<p>where <span class="math notranslate nohighlight">\(\sigma_x\)</span> is the original standard deviation and <span class="math notranslate nohighlight">\(\overline{x}\)</span> is the original mean.</p>
-<p>Let’s standardize the feature to have:</p>
+<p>where <span class="math notranslate nohighlight">\(\sigma_x\)</span> is the original <a class="reference internal" href="MachineLearning_glossary_s_z.html#standard-deviation"><span class="std std-doc">standard deviation</span></a> and <span class="math notranslate nohighlight">\(\overline{x}\)</span> is the original mean.</p>
+<p>Let’s standardize the <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> to have:</p>
 <ul class="simple">
-<li><p>mean = 0.0</p></li>
-<li><p>variance = standard deviation = 1.0</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a> = 0.0</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_s_z.html#variance"><span class="std std-doc">variance</span></a> = standard deviation = 1.0</p></li>
 </ul>
 <p>To do this we:</p>
 <ol class="arabic simple">
-<li><p>instantiate the StandardScaler from scikit learn. We assign it as ‘scaler’ object so we can use it to conveniently use this object to reverse the transformation, we will need to do that to get our predictions back into regular production units. The “scaler” object takes care of all the bookkeeping for us.</p></li>
+<li><p>instantiate the StandardScaler from scikit learn. We assign it as ‘scaler’ object so we can use it to conveniently use this object to reverse the transformation, we will need to do that to get our <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a>s back into regular production units. The “scaler” object takes care of all the bookkeeping for us.</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li><p>we then extract all the values from our DataFrame and apply the by-column standardization.  The result is a 2D ndarray</p></li>
+<li><p>we then extract all the values from our <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a> and apply the by-column standardization.  The result is a 2D <a class="reference internal" href="MachineLearning_glossary_m_r.html#ndarray"><span class="std std-doc">ndarray</span></a></p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sfeatures</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_mv</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 </pre></div>
@@ -1261,7 +1266,7 @@ y = \frac{1}{\sigma_x}\left( x - \overline{x} \right)
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
-<li><p>then we add the transformed value to the new DataFrame while keeping the sample index and feature names from the old DataFramae</p></li>
+<li><p>then we add the transformed value to the new DataFrame while keeping the <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a> index and feature names from the old DataFramae</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_nmv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sfeatures</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">df_mv</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">df_mv</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
 </pre></div>
@@ -1356,12 +1361,12 @@ y = \frac{1}{\sigma_x}\left( x - \overline{x} \right)
 </section>
 <section id="normalization">
 <h2>Normalization<a class="headerlink" href="#normalization" title="Permalink to this heading">#</a></h2>
-<p>Also known as the min / max transform, recales the features to have a minimum of 0 and a maximum of 1.</p>
+<p>Also known as the min / max transform, recales the <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s to have a minimum of 0 and a maximum of 1.</p>
 <div class="math notranslate nohighlight">
 \[
 y = \frac{x - min(x)}{max(x) - min(x)}
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(min(x)\)</span> and <span class="math notranslate nohighlight">\(max(x)\)</span> are the minimum and maximum values for each feature.</p>
+<p>where <span class="math notranslate nohighlight">\(min(x)\)</span> and <span class="math notranslate nohighlight">\(max(x)\)</span> are the minimum and maximum <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s for each feature.</p>
 <ul class="simple">
 <li><p>scikit learn has a built in min / max transform method</p></li>
 </ul>
@@ -1558,21 +1563,21 @@ y = \frac{x - min(x)}{max(x) - min(x)}
 </section>
 <section id="l1-l2-normalizer">
 <h2>L1 / L2 Normalizer<a class="headerlink" href="#l1-l2-normalizer" title="Permalink to this heading">#</a></h2>
-<p>Another type of normalization is performed independently on each sample to force the <span class="math notranslate nohighlight">\(L1\)</span> or <span class="math notranslate nohighlight">\(L2\)</span> norm to be 1.0.</p>
-<p>For the L1 norm:</p>
+<p>Another type of <a class="reference internal" href="MachineLearning_glossary_m_r.html#normalization"><span class="std std-doc">normalization</span></a> is performed independently on each sample to force the <span class="math notranslate nohighlight">\(L1\)</span> or <span class="math notranslate nohighlight">\(L2\)</span> norm to be 1.0.</p>
+<p>For the L1 <a class="reference internal" href="MachineLearning_glossary_m_r.html#norm"><span class="std std-doc">norm</span></a>:</p>
 <div class="math notranslate nohighlight">
 \[
 \sum^m_{i,\alpha = 1} x_{i, \alpha} = 1.0, \quad i = 1, \ldots, n
 \]</div>
-<p>where we have <span class="math notranslate nohighlight">\(x_{i, \alpha}, \alpha = 1, \dots, m\)</span> features over <span class="math notranslate nohighlight">\(i = 1, \dots, n\)</span> samples.</p>
+<p>where we have <span class="math notranslate nohighlight">\(x_{i, \alpha}, \alpha = 1, \dots, m\)</span> <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s over <span class="math notranslate nohighlight">\(i = 1, \dots, n\)</span> samples.</p>
 <p>For the L2 norm:</p>
 <div class="math notranslate nohighlight">
 \[
 \sum^m_{i,\alpha = 1}\left( x_{i, \alpha} \right)^2 = 1.0, \quad i = 1, \ldots, n
 \]</div>
-<p>where we have <span class="math notranslate nohighlight">\(x_{i, \alpha}, \alpha = 1, \dots, m\)</span> features over <span class="math notranslate nohighlight">\(i = 1, \dots, n\)</span> samples.</p>
+<p>where we have <span class="math notranslate nohighlight">\(x_{i, \alpha}, \alpha = 1, \dots, m\)</span> features over <span class="math notranslate nohighlight">\(i = 1, \dots, n\)</span> <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s.</p>
 <ul class="simple">
-<li><p>this may be applied in text classification or clustering</p></li>
+<li><p>this may be applied in text <a class="reference internal" href="MachineLearning_glossary_a_c.html#classification"><span class="std std-doc">classification</span></a> or clustering</p></li>
 </ul>
 <p>We demonstrate the L1 and L2 normalizer below.</p>
 <ul class="simple">
@@ -1688,10 +1693,10 @@ y = \frac{x - min(x)}{max(x) - min(x)}
 </section>
 <section id="binary-or-indictor-transform">
 <h2>Binary or Indictor Transform<a class="headerlink" href="#binary-or-indictor-transform" title="Permalink to this heading">#</a></h2>
-<p>For the many problems that we need to perform a binary transform to convert our continuous feature to 0’s and 1’s based on a threshold, <span class="math notranslate nohighlight">\(x_t\)</span></p>
+<p>For the many problems that we need to perform a binary transform to convert our <a class="reference internal" href="MachineLearning_glossary_a_c.html#continuous-feature"><span class="std std-doc">continuous feature</span></a> to 0’s and 1’s based on a threshold, <span class="math notranslate nohighlight">\(x_t\)</span></p>
 <ul class="simple">
-<li><p>for the binary transform, <span class="math notranslate nohighlight">\(x_i = 0\)</span> if <span class="math notranslate nohighlight">\(&lt;= x_t\)</span> and <span class="math notranslate nohighlight">\(x_i = 1\)</span> otherwise</p></li>
-<li><p>for the indicator transform, <span class="math notranslate nohighlight">\(x_i = 1\)</span> if <span class="math notranslate nohighlight">\(&lt;= x_t\)</span> and <span class="math notranslate nohighlight">\(x_i = 0\)</span> otherwise</p></li>
+<li><p>for the <a class="reference internal" href="MachineLearning_glossary_a_c.html#binary-transform"><span class="std std-doc">binary transform</span></a>, <span class="math notranslate nohighlight">\(x_i = 0\)</span> if <span class="math notranslate nohighlight">\(&lt;= x_t\)</span> and <span class="math notranslate nohighlight">\(x_i = 1\)</span> otherwise</p></li>
+<li><p>for the <a class="reference internal" href="MachineLearning_glossary_g_l.html#indicator-transform"><span class="std std-doc">indicator transform</span></a>, <span class="math notranslate nohighlight">\(x_i = 1\)</span> if <span class="math notranslate nohighlight">\(&lt;= x_t\)</span> and <span class="math notranslate nohighlight">\(x_i = 0\)</span> otherwise</p></li>
 </ul>
 <p>There is a scikit-learn function for the binary transform</p>
 <div class="cell docutils container">
@@ -1719,11 +1724,11 @@ y = \frac{x - min(x)}{max(x) - min(x)}
 </section>
 <section id="k-bins-discretization">
 <h2>k Bins Discretization<a class="headerlink" href="#k-bins-discretization" title="Permalink to this heading">#</a></h2>
-<p>With k bins discretization we bin the range of the feature into K bins and then expand each sample for our continuous feature to K features with the assignment of a value of 1 if the sample is within a bin and 0 if outsize the bin</p>
+<p>With <a class="reference internal" href="MachineLearning_glossary_g_l.html#k-bins-discretization"><span class="std std-doc">k bins discretization</span></a> we bin the range of the <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> into K bins and then expand each <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a> for our <a class="reference internal" href="MachineLearning_glossary_a_c.html#continuous-feature"><span class="std std-doc">continuous feature</span></a> to K features with the assignment of a value of 1 if the sample is within a bin and 0 if outsize the bin</p>
 <ul class="simple">
-<li><p>strategies include uniform width bins (uniform) and uniform number of data in each bin (quantile)</p></li>
+<li><p>strategies include uniform width bins (uniform) and uniform number of <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> in each bin (quantile)</p></li>
 </ul>
-<p>Let’s make 5 uniform bins and then concatenate the original porosity values so we can compare the original porosity values and our K bins discretization.</p>
+<p>Let’s make 5 uniform bins and then concatenate the original porosity <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s so we can compare the original porosity values and our K bins discretization.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nbins</span> <span class="o">=</span> <span class="mi">5</span>
@@ -1828,9 +1833,9 @@ y = \frac{x - min(x)}{max(x) - min(x)}
 </section>
 <section id="general-distribution-transformation">
 <h2>General Distribution Transformation<a class="headerlink" href="#general-distribution-transformation" title="Permalink to this heading">#</a></h2>
-<p>The distribution transformation may be applied to transform any distribution, <span class="math notranslate nohighlight">\(F_x(x)\)</span> to any other distribution, <span class="math notranslate nohighlight">\(F_y(y)\)</span>.</p>
+<p>The <a class="reference internal" href="MachineLearning_glossary_d_f.html#distribution-transformation"><span class="std std-doc">distribution transformation</span></a> may be applied to transform any distribution, <span class="math notranslate nohighlight">\(F_x(x)\)</span> to any other distribution, <span class="math notranslate nohighlight">\(F_y(y)\)</span>.</p>
 <ul class="simple">
-<li><p>the target distribution, <span class="math notranslate nohighlight">\(F_y(y)\)</span>, could be nonparametric, i.e., a set of values. In this case the data is converted to a CDF and some form of interpolation is applied to find the inverse of the target CDF, <span class="math notranslate nohighlight">\(F_y^{-1}(p)\)</span>, for any cumulative probability, <span class="math notranslate nohighlight">\(p\)</span></p></li>
+<li><p>the target distribution, <span class="math notranslate nohighlight">\(F_y(y)\)</span>, could be nonparametric, i.e., a set of <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s. In this case the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> is converted to a CDF and some form of interpolation is applied to find the inverse of the target CDF, <span class="math notranslate nohighlight">\(F_y^{-1}(p)\)</span>, for any cumulative probability, <span class="math notranslate nohighlight">\(p\)</span></p></li>
 <li><p>the target distribution, <span class="math notranslate nohighlight">\(F_y(y)\)</span>, could be any parametric distribution, and the calculation of the inverse of the target CDF, <span class="math notranslate nohighlight">\(F_y^{-1}(p)\)</span>, for any cumulative probability, <span class="math notranslate nohighlight">\(p\)</span> is available through an analytical solution</p></li>
 </ul>
 <p>I have built out an interactive Python dashboard <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_Distribution_Transformations.ipynb">Distribution Transformation</a> with a transformation to a parametric distribution,</p>
@@ -1848,17 +1853,17 @@ y = \frac{x - min(x)}{max(x) - min(x)}
 </section>
 <section id="distribution-transformation-to-a-parametric-distribution">
 <h2>Distribution Transformation to a Parametric Distribution<a class="headerlink" href="#distribution-transformation-to-a-parametric-distribution" title="Permalink to this heading">#</a></h2>
-<p>We can transform our data feature distribution to any parametric distribution with this workflow.</p>
+<p>We can transform our data <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> distribution to any parametric distribution with this workflow.</p>
 <ol class="arabic simple">
-<li><p>Calculate the cumulative probability value of each of our data values, <span class="math notranslate nohighlight">\(p_{\alpha} = F_x(x_\alpha)\)</span>, <span class="math notranslate nohighlight">\(\forall\)</span> <span class="math notranslate nohighlight">\(\alpha = 1,\ldots, n\)</span>.</p></li>
-<li><p>Apply the inverse of the target parametric cumulative distribution function (CDF) to calculate the transformed values. <span class="math notranslate nohighlight">\(y_{\alpha} = G_y^{-1}\left(F_x(x_\alpha)\right)\)</span>, <span class="math notranslate nohighlight">\(\forall\)</span> <span class="math notranslate nohighlight">\(\alpha = 1,\ldots, n\)</span>.</p></li>
+<li><p>Calculate the cumulative probability <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a> of each of our data values, <span class="math notranslate nohighlight">\(p_{\alpha} = F_x(x_\alpha)\)</span>, <span class="math notranslate nohighlight">\(\forall\)</span> <span class="math notranslate nohighlight">\(\alpha = 1,\ldots, n\)</span>.</p></li>
+<li><p>Apply the inverse of the target parametric <a class="reference internal" href="MachineLearning_glossary_a_c.html#cumulative-distribution-function"><span class="std std-doc">cumulative distribution function</span></a> (CDF) to calculate the transformed values. <span class="math notranslate nohighlight">\(y_{\alpha} = G_y^{-1}\left(F_x(x_\alpha)\right)\)</span>, <span class="math notranslate nohighlight">\(\forall\)</span> <span class="math notranslate nohighlight">\(\alpha = 1,\ldots, n\)</span>.</p></li>
 </ol>
 <p>While assigning the cumulative probabilities you must make an assumption about the distribution tails (minimum and maximum values).</p>
 <ul class="simple">
 <li><p><strong>known tail</strong> - the minimum or maximum value in the dataset is the minimum or maximum value of the distribution</p></li>
 <li><p><strong>unknown tail</strong> - the minimum or maximum value of the distribution is known</p></li>
 </ul>
-<p>For each possible case we calculate cumulative probability of the sorted in ascending order data as,</p>
+<p>For each possible case we calculate cumulative probability of the sorted in ascending order <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> as,</p>
 <ol class="arabic simple">
 <li><p>known lower and upper tail,</p></li>
 </ol>
@@ -1895,16 +1900,16 @@ F_i = \frac{i}{n+1}
 </section>
 <section id="gaussian-transformation">
 <h2>Gaussian Transformation<a class="headerlink" href="#gaussian-transformation" title="Permalink to this heading">#</a></h2>
-<p>We showed that the correction of the mean to 0.0 and standard deviation to 1.0 with affine correction does not change the shape; therefore, does not make a Gaussian distributed property.</p>
+<p>We showed that the correction of the mean to 0.0 and <a class="reference internal" href="MachineLearning_glossary_s_z.html#standard-deviation"><span class="std std-doc">standard deviation</span></a> to 1.0 with <a class="reference internal" href="MachineLearning_glossary_a_c.html#affine-correction"><span class="std std-doc">affine correction</span></a> does not change the shape; therefore, does not make a Gaussian distributed property.</p>
 <ul class="simple">
-<li><p>for many statistic or geostatistical methods the assumption of Gaussian distributed is required. We need normal score transforms in many subsurface modeling workflows</p></li>
+<li><p>for many <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistic"><span class="std std-doc">statistic</span></a> or geostatistical methods the assumption of Gaussian distributed is required. We need normal score transforms in many <a class="reference internal" href="MachineLearning_glossary_s_z.html#subsurface-modeling-workflow"><span class="std std-doc">subsurface modeling workflow</span></a>s</p></li>
 </ul>
 <p>Gaussian transformation is also known as,</p>
 <ul class="simple">
 <li><p>normal score transform</p></li>
-<li><p>Gaussian anamorphosis</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_g_l.html#gaussian-anamorphosis"><span class="std std-doc">Gaussian anamorphosis</span></a></p></li>
 </ul>
-<p>Gaussian anamorphosis is applied through the cumulative distribution functions (CDF)s, <span class="math notranslate nohighlight">\(F_{X}\)</span>, to a new CDF , <span class="math notranslate nohighlight">\(G_{Y}\)</span>. This can be generalized with the quantile - quantile transformation applied to all the sample data:</p>
+<p>Gaussian anamorphosis is applied through the <a class="reference internal" href="MachineLearning_glossary_a_c.html#cumulative-distribution-function"><span class="std std-doc">cumulative distribution function</span></a>s (CDF)s, <span class="math notranslate nohighlight">\(F_{X}\)</span>, to a new CDF , <span class="math notranslate nohighlight">\(G_{Y}\)</span>. This can be generalized with the quantile - quantile transformation applied to all the <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a> <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>:</p>
 <ul class="simple">
 <li><p>The forward transform:</p></li>
 </ul>
@@ -1925,7 +1930,7 @@ X = F_{X}^{-1}(G_{Y}(Y))
   <figcaption style="text-align: center;"> Gaussian anamorphosis to transform the original distribution to standard normal, Gaussian shape with a mean of 0.0 and variance of 1.0.
 </figcaption>
 </figure>
-<p>Let’s look at the original cumulative distribution function and Gaussian transformed cumulative distribution function for a single feature by-hand.</p>
+<p>Let’s look at the original cumulative distribution function and Gaussian transformed cumulative distribution function for a single <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> by-hand.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">por</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Por&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>                 <span class="c1"># make a deepcopy of the feature from the DataFrame</span>
@@ -2047,7 +2052,7 @@ x = F_x^{-1}(G_y(y))
 </section>
 <section id="quantile-uniform-0-1-transform">
 <h2>Quantile / Uniform[0,1] Transform<a class="headerlink" href="#quantile-uniform-0-1-transform" title="Permalink to this heading">#</a></h2>
-<p>We can also perform a uniform transform, this is known as the quantile transformation to the cumulative probability values.</p>
+<p>We can also perform a uniform transform, this is known as the quantile transformation to the cumulative probability <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s.</p>
 <ul class="simple">
 <li><p>the cumulative probability values have a uniform distribution.</p></li>
 </ul>
@@ -2101,9 +2106,9 @@ x = F_x^{-1}(G_y(y))
 </section>
 <section id="custom-feature-transforms">
 <h2>Custom Feature Transforms<a class="headerlink" href="#custom-feature-transforms" title="Permalink to this heading">#</a></h2>
-<p>We can also create our own custom feature transformation.  We can specify our own transform within a scikit-learn preprocessing function</p>
+<p>We can also create our own custom <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-transformation"><span class="std std-doc">feature transformation</span></a>.  We can specify our own transform within a scikit-learn preprocessing function</p>
 <ul class="simple">
-<li><p>this allows us to have a convenient method for forward and reverse transforms of our features as we have seen above</p></li>
+<li><p>this allows us to have a convenient method for forward and reverse transforms of our <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s as we have seen above</p></li>
 </ul>
 <p>Let’s demonstrate with the natural log for the forward transform and the exponential for the reverse transform.</p>
 <div class="math notranslate nohighlight">
@@ -2173,7 +2178,7 @@ x = exp(y)
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
-<p>This was a basic treatment of feature transformations. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
+<p>This was a basic treatment of <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-transformation"><span class="std std-doc">feature transformation</span></a>s. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
@@ -2184,20 +2189,20 @@ x = exp(y)
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
 </figcaption>
 </figure>
-<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a>, <a class="reference internal" href="MachineLearning_glossary_g_l.html#geostatistics"><span class="std std-doc">geostatistics</span></a>, and machine learning. Michael is also,</p>
 <ul class="simple">
-<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a <a class="reference internal" href="MachineLearning_glossary_a_c.html#core"><span class="std std-doc">core</span></a> faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>Michael has written over 100 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
 <p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
-<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a> and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
-<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">Data</span></a> Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>. We are solving challenging subsurface problems!</p></li>
 <li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
 </ul>
 <p>I’m always happy to discuss,</p>

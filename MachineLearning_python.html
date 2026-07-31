@@ -174,6 +174,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_concepts.html">Machine Learning Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_subsurface_modeling.html">Subsurface Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_training_tuning.html">Training and Tuning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
@@ -219,7 +220,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Python Code Snippets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_a_c.html">Glossary A-C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_d_f.html">Glossary D-F</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_g_l.html">Glossary G-L</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_m_r.html">Glossary M-R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_s_z.html">Glossary S-Z</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -530,7 +535,7 @@ document.write(`
 <p>on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
 <section id="motivation">
 <h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this heading">#</a></h2>
-<p>I taught a high school hackathon with great students from all over Texas and beyond and I felt that they could use some additional resources in the form of a <strong>code snippets</strong> to help them over the hurdles of completing their first data science workflow in Python.</p>
+<p>I taught a high school hackathon with great students from all over Texas and beyond and I felt that they could use some additional resources in the form of a <strong>code snippets</strong> to help them over the hurdles of completing their first <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> science workflow in Python.</p>
 <p>Remember the definition of a code snippet is,</p>
 <ul class="simple">
 <li><p>a small, reusable section of code that programmers can quickly insert into a larger codebase</p></li>
@@ -552,7 +557,7 @@ document.write(`
 <ol class="arabic simple">
 <li><p>Import some python packages</p></li>
 <li><p>Declare a couple of convenience functions</p></li>
-<li><p>Load some data to demonstrate the code snippets</p></li>
+<li><p>Load some <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> to demonstrate the code snippets</p></li>
 </ol>
 <p>After we load the data the remaining codes with be in alphabetical and not any logical workflow order for ease of search and retrieval.</p>
 </section>
@@ -619,9 +624,9 @@ document.write(`
 <h2>Load a Couple Datasets<a class="headerlink" href="#load-a-couple-datasets" title="Permalink to this heading">#</a></h2>
 <p>We load a couple of datasets,</p>
 <ol class="arabic simple">
-<li><p>df - an exhaustive data table as a pandas DataFrame</p></li>
-<li><p>df_missing an data table with some missing data as a pandas DataFrame</p></li>
-<li><p>ndarray_2D - a 2D array map as a NumPy ndarray</p></li>
+<li><p>df - an exhaustive data table as a pandas <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a></p></li>
+<li><p>df_missing an <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> table with some missing data as a pandas DataFrame</p></li>
+<li><p>ndarray_2D - a 2D array map as a NumPy <a class="reference internal" href="MachineLearning_glossary_m_r.html#ndarray"><span class="std std-doc">ndarray</span></a></p></li>
 </ol>
 <p>To demonstrat the methods below.</p>
 <div class="cell docutils container">
@@ -660,7 +665,7 @@ document.write(`
 </section>
 <section id="beta-beta-coefficients">
 <h2>Beta, <span class="math notranslate nohighlight">\(\beta\)</span>, Coefficients<a class="headerlink" href="#beta-beta-coefficients" title="Permalink to this heading">#</a></h2>
-<p>Feature importance based on the multilinear regression coefficients of the normalized features.</p>
+<p><a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-importance"><span class="std std-doc">Feature importance</span></a> based on the multilinear <a class="reference internal" href="MachineLearning_glossary_m_r.html#regression"><span class="std std-doc">regression</span></a> coefficients of the normalized <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">normalizer</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>                                   <span class="c1"># instantiate the min/max normalizer</span>
@@ -756,7 +761,7 @@ document.write(`
 </section>
 <section id="dataframe-add-noise-to-a-feature">
 <h2>DataFrame (add noise to a feature)<a class="headerlink" href="#dataframe-add-noise-to-a-feature" title="Permalink to this heading">#</a></h2>
-<p>I do this to experiment and make educational content, e.g., add noise to the response feature to demonstrate overfit.</p>
+<p>I do this to experiment and make educational content, e.g., add noise to the <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a> to demonstrate overfit.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_temp</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                                  <span class="c1"># make a deep copy of the DataFrame</span>
@@ -1027,7 +1032,7 @@ document.write(`
 </section>
 <section id="dataframe-preview">
 <h2>DataFrame (preview)<a class="headerlink" href="#dataframe-preview" title="Permalink to this heading">#</a></h2>
-<p>Display the first ‘n’ rows of the DataFrame</p>
+<p>Display the first ‘n’ rows of the <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>                                                 <span class="c1"># display the first n rows of the DataFrame</span>
@@ -1614,7 +1619,7 @@ document.write(`
 </section>
 <section id="decision-tree-prediction-at-testing-data">
 <h2>Decision Tree (prediction at testing data)<a class="headerlink" href="#decision-tree-prediction-at-testing-data" title="Permalink to this heading">#</a></h2>
-<p>Apply our model to predict at withheld testing data.</p>
+<p>Apply our model to predict at withheld testing <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">leaf_node</span> <span class="o">=</span> <span class="mi">5</span>                                                 <span class="c1"># decision tree model hyperparameters</span>
@@ -1681,7 +1686,7 @@ document.write(`
 </section>
 <section id="decision-tree-prediction-at-training-data">
 <h2>Decision Tree (prediction at training data)<a class="headerlink" href="#decision-tree-prediction-at-training-data" title="Permalink to this heading">#</a></h2>
-<p>Apply our model to predict at the retained training data.</p>
+<p>Apply our model to predict at the retained training <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">leaf_node</span> <span class="o">=</span> <span class="mi">5</span>                                                 <span class="c1"># decision tree model hyperparameters</span>
@@ -1748,9 +1753,9 @@ document.write(`
 </section>
 <section id="decision-tree-train">
 <h2>Decision Tree (train)<a class="headerlink" href="#decision-tree-train" title="Permalink to this heading">#</a></h2>
-<p>Train model parameters on training data with specified model hyperparameters</p>
+<p>Train model <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a>s on training <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> with specified <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-hyperparameter"><span class="std std-doc">model hyperparameter</span></a>s</p>
 <ul class="simple">
-<li><p>let’s look at the trained model parameters, by visualizing the trained decision tree.</p></li>
+<li><p>let’s look at the trained <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter"><span class="std std-doc">model parameter</span></a>s, by visualizing the trained <a class="reference internal" href="MachineLearning_glossary_d_f.html#decision-tree"><span class="std std-doc">decision tree</span></a>.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1767,9 +1772,9 @@ document.write(`
 </section>
 <section id="decision-tree-retrain-tuned-model">
 <h2>Decision Tree (retrain tuned model)<a class="headerlink" href="#decision-tree-retrain-tuned-model" title="Permalink to this heading">#</a></h2>
-<p>Apply tuned hyperparameters and retrain the model with all the data.</p>
+<p>Apply tuned hyperparameters and retrain the model with all the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>.</p>
 <ul class="simple">
-<li><p>this is the model that we will use for future predictions, real-world use</p></li>
+<li><p>this is the model that we will use for future <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a>s, real-world use</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1790,11 +1795,11 @@ document.write(`
 </section>
 <section id="decision-tree-tune-prune">
 <h2>Decision Tree (tune/prune)<a class="headerlink" href="#decision-tree-tune-prune" title="Permalink to this heading">#</a></h2>
-<p>Train model parameters on training data with a range of model hyperparameters, select the model hyperparameters with minimum error over the withheld testing data</p>
+<p>Train <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter"><span class="std std-doc">model parameter</span></a>s on training data with a range of <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-hyperparameter"><span class="std std-doc">model hyperparameter</span></a>s, select the model hyperparameters with minimum error over the withheld testing data</p>
 <p>This requires the following steps,</p>
-<p>Loop over the hyperparameter(s) values,</p>
+<p>Loop over the hyperparameter(s) <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s,</p>
 <ol class="arabic simple">
-<li><p>train the model with the retained training data</p></li>
+<li><p>train the model with the retained training <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a></p></li>
 <li><p>predict at the withheld testing data</p></li>
 <li><p>calculate the testing error</p></li>
 </ol>
@@ -1829,12 +1834,12 @@ document.write(`
 </section>
 <section id="features-extraction-by-name">
 <h2>Features Extraction (by name)<a class="headerlink" href="#features-extraction-by-name" title="Permalink to this heading">#</a></h2>
-<p>Build a new DataFrame with only the selected predictor feature and the response feature</p>
+<p>Build a new DataFrame with only the selected <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a> and the response feature</p>
 <ol class="arabic simple">
-<li><p>specify the selected predictor features</p></li>
-<li><p>specify the response feature</p></li>
+<li><p>specify the selected predictor <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s</p></li>
+<li><p>specify the <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a></p></li>
 <li><p>build a list with both</p></li>
-<li><p>make a new DataFrame with first the predictor features and then the response feature as the last column</p></li>
+<li><p>make a new <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a> with first the predictor features and then the response feature as the last column</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1920,12 +1925,12 @@ document.write(`
 </section>
 <section id="features-extraction-by-number">
 <h2>Features Extraction (by number)<a class="headerlink" href="#features-extraction-by-number" title="Permalink to this heading">#</a></h2>
-<p>Build a new DataFrame with only the selected predictor feature.</p>
+<p>Build a new DataFrame with only the selected <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a>.</p>
 <ol class="arabic simple">
-<li><p>specify the selected predictor features</p></li>
-<li><p>specify the response feature</p></li>
+<li><p>specify the selected predictor <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s</p></li>
+<li><p>specify the <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a></p></li>
 <li><p>build a list with both</p></li>
-<li><p>make a new DataFrame with first the predictor features and then the response feature as the last column</p></li>
+<li><p>make a new <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a> with first the predictor features and then the response feature as the last column</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2009,9 +2014,9 @@ document.write(`
 </section>
 <section id="features-extraction-make-x-and-y-dataframes">
 <h2>Features Extraction (make X and y DataFrames)<a class="headerlink" href="#features-extraction-make-x-and-y-dataframes" title="Permalink to this heading">#</a></h2>
-<p>Build a two new DataFrames, one with only the selected predictor feature and the other with the response feature,</p>
+<p>Build a two new <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a>s, one with only the selected <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a> and the other with the response feature,</p>
 <ul class="simple">
-<li><p>assuming that the last feature is the response feature</p></li>
+<li><p>assuming that the last <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> is the <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a></p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2031,9 +2036,9 @@ Response feature: Prod
 </section>
 <section id="features-extraction-make-x-and-y-dataframes-assumed-feature-order">
 <h2>Features Extraction (make X and y DataFrames assumed feature order)<a class="headerlink" href="#features-extraction-make-x-and-y-dataframes-assumed-feature-order" title="Permalink to this heading">#</a></h2>
-<p>Build a two new DataFrames, one with only the selected predictor feature and the other with the response feature,</p>
+<p>Build a two new <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a>s, one with only the selected <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a> and the other with the response feature,</p>
 <ul class="simple">
-<li><p>assuming that the last feature is the response feature</p></li>
+<li><p>assuming that the last <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> is the <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a></p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2052,7 +2057,7 @@ Response feature: Prod
 </section>
 <section id="histogram">
 <h2>Histogram<a class="headerlink" href="#histogram" title="Permalink to this heading">#</a></h2>
-<p>Simple histogram,</p>
+<p>Simple <a class="reference internal" href="MachineLearning_glossary_g_l.html#histogram"><span class="std std-doc">histogram</span></a>,</p>
 <ul class="simple">
 <li><p>you can set the histogram limits by specifying the exact bins with a method like, np.linspace(min,max,n)</p></li>
 </ul>
@@ -2070,7 +2075,7 @@ Response feature: Prod
 </section>
 <section id="histogram-normalized">
 <h2>Histogram (normalized)<a class="headerlink" href="#histogram-normalized" title="Permalink to this heading">#</a></h2>
-<p>A histogram with probability on the y axis and the sum of all bars is one, i.e., probability closure.</p>
+<p>A <a class="reference internal" href="MachineLearning_glossary_g_l.html#histogram"><span class="std std-doc">histogram</span></a> with probability on the y axis and the sum of all bars is one, i.e., <a class="reference internal" href="MachineLearning_glossary_m_r.html#probability-closure"><span class="std std-doc">probability closure</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Por&#39;</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">),</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> <span class="c1"># normalized histogram</span>
@@ -2123,11 +2128,11 @@ Response feature: Prod
 </section>
 <section id="k-nearest-neighbours-feature-imputation">
 <h2>K-Nearest Neighbours (feature imputation)<a class="headerlink" href="#k-nearest-neighbours-feature-imputation" title="Permalink to this heading">#</a></h2>
-<p>Feature imputation by estimating missing features with the nearest neighbours,</p>
+<p><a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-imputation"><span class="std std-doc">Feature imputation</span></a> by estimating missing features with the nearest neighbours,</p>
 <ul class="simple">
-<li><p>distance is accessed with all samples that have all features present in the sample with a missing feature</p></li>
+<li><p>distance is accessed with all <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s that have all <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s present in the sample with a missing feature</p></li>
 <li><p>only one pass is applied, there is no iteration</p></li>
-<li><p>not as robust as MICE is there is a lot of missing data, it does not learn the structure between the features to fill in missing data</p></li>
+<li><p>not as robust as MICE is there is a lot of missing <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>, it does not learn the structure between the features to fill in missing data</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2245,7 +2250,7 @@ Response feature: Prod
 </section>
 <section id="k-nearest-neighbours-prediction-at-testing-data">
 <h2>K-Nearest Neighbours (prediction at testing data)<a class="headerlink" href="#k-nearest-neighbours-prediction-at-testing-data" title="Permalink to this heading">#</a></h2>
-<p>Apply our model to predict at withheld testing data.</p>
+<p>Apply our model to predict at withheld testing <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_neighbours</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">weights</span> <span class="o">=</span> <span class="s1">&#39;uniform&#39;</span>                 <span class="c1"># KNN model hyperparameters</span>
@@ -2312,7 +2317,7 @@ Response feature: Prod
 </section>
 <section id="k-nearest-neighbours-prediction-at-training-data">
 <h2>K-Nearest Neighbours (prediction at training data)<a class="headerlink" href="#k-nearest-neighbours-prediction-at-training-data" title="Permalink to this heading">#</a></h2>
-<p>Apply our model to predict at the retained training data.</p>
+<p>Apply our model to predict at the retained training <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_neighbours</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">weights</span> <span class="o">=</span> <span class="s1">&#39;uniform&#39;</span>                 <span class="c1"># KNN model hyperparameters</span>
@@ -2379,10 +2384,10 @@ Response feature: Prod
 </section>
 <section id="k-nearest-neighbours-train">
 <h2>K-Nearest Neighbours (train)<a class="headerlink" href="#k-nearest-neighbours-train" title="Permalink to this heading">#</a></h2>
-<p>Train model parameters on training data with specified model hyperparameters</p>
+<p>Train model <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a>s on training <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> with specified <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-hyperparameter"><span class="std std-doc">model hyperparameter</span></a>s</p>
 <ul class="simple">
-<li><p>since K-nearest neighbours is a lazy learning model, there are no trained model parameters to display</p></li>
-<li><p>instead we look at the cross validation plot</p></li>
+<li><p>since K-nearest neighbours is a <a class="reference internal" href="MachineLearning_glossary_g_l.html#lazy-learning"><span class="std std-doc">lazy learning</span></a> model, there are no trained <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter"><span class="std std-doc">model parameter</span></a>s to display</p></li>
+<li><p>instead we look at the <a class="reference internal" href="MachineLearning_glossary_a_c.html#cross-validation"><span class="std std-doc">cross validation</span></a> plot</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2406,9 +2411,9 @@ Response feature: Prod
 </section>
 <section id="k-nearest-neighbours-retrain-tuned-model">
 <h2>K-Nearest Neighbours (retrain tuned model)<a class="headerlink" href="#k-nearest-neighbours-retrain-tuned-model" title="Permalink to this heading">#</a></h2>
-<p>Apply tuned hyperparameters and retrain the model with all the data.</p>
+<p>Apply tuned hyperparameters and retrain the model with all the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>.</p>
 <ul class="simple">
-<li><p>this is the model that we will use for future predictions, real-world use</p></li>
+<li><p>this is the model that we will use for future <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a>s, real-world use</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2428,11 +2433,11 @@ Response feature: Prod
 </section>
 <section id="k-nearest-neighbours-tune">
 <h2>K-Nearest Neighbours (tune)<a class="headerlink" href="#k-nearest-neighbours-tune" title="Permalink to this heading">#</a></h2>
-<p>Train model parameters on training data with a range of model hyperparameters, select the model hyperparameters with minimum error over the withheld testing data</p>
+<p>Train <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter"><span class="std std-doc">model parameter</span></a>s on training data with a range of <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-hyperparameter"><span class="std std-doc">model hyperparameter</span></a>s, select the model hyperparameters with minimum error over the withheld testing data</p>
 <p>This requires the following steps,</p>
-<p>Loop over the hyperparameter(s) values,</p>
+<p>Loop over the hyperparameter(s) <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s,</p>
 <ol class="arabic simple">
-<li><p>train the model with the retained training data</p></li>
+<li><p>train the model with the retained training <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a></p></li>
 <li><p>predict at the withheld testing data</p></li>
 <li><p>calculate the testing error</p></li>
 </ol>
@@ -2466,7 +2471,7 @@ Response feature: Prod
 </section>
 <section id="linear-regression-model-model-parameters">
 <h2>Linear Regression Model (model parameters)<a class="headerlink" href="#linear-regression-model-model-parameters" title="Permalink to this heading">#</a></h2>
-<p>Retreive the model parameters.</p>
+<p>Retreive the <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter"><span class="std std-doc">model parameter</span></a>s.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coef_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Feature&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Intercept&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">),</span><span class="s1">&#39;Coefficient&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">linear_model</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">linear_model</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">ravel</span><span class="p">())})</span>
@@ -2668,7 +2673,7 @@ Response feature: Prod
 </section>
 <section id="linear-regression-model-train">
 <h2>Linear Regression Model (train)<a class="headerlink" href="#linear-regression-model-train" title="Permalink to this heading">#</a></h2>
-<p>Train model parameters on training data, no hyperparameters</p>
+<p>Train <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter"><span class="std std-doc">model parameter</span></a>s on training <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>, no hyperparameters</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">linear_model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>        <span class="c1"># instantiate and train linear regression model, no hyperparmeters</span>
@@ -2743,10 +2748,10 @@ Response feature: Prod
 </section>
 <section id="listwise-deletion">
 <h2>Listwise Deletion<a class="headerlink" href="#listwise-deletion" title="Permalink to this heading">#</a></h2>
-<p>Remove all samples that are missing and features.</p>
+<p>Remove all <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s that are missing and <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s.</p>
 <ul class="simple">
-<li><p>the “sledge hammer” approach to avoid feature imputation</p></li>
-<li><p>not recommended, often removes too much data</p></li>
+<li><p>the “sledge hammer” approach to avoid <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-imputation"><span class="std std-doc">feature imputation</span></a></p></li>
+<li><p>not recommended, often removes too much <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a></p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2880,7 +2885,7 @@ Response feature: Prod
 </section>
 <section id="location-map">
 <h2>Location Map<a class="headerlink" href="#location-map" title="Permalink to this heading">#</a></h2>
-<p>For plotting sparsely sampled features with X and Y sample locations to inspect the spatial structures.</p>
+<p>For plotting sparsely sampled <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s with X and Y <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a> locations to inspect the spatial structures.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xmin</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">xmax</span><span class="o">=</span><span class="mi">10000</span><span class="p">;</span> <span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">ymax</span><span class="o">=</span><span class="mi">10000</span><span class="p">;</span> <span class="n">vmin</span><span class="o">=</span><span class="mf">0.1</span><span class="p">;</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.27</span>   <span class="c1"># set plot limits and feature limits</span>
@@ -2898,10 +2903,10 @@ Response feature: Prod
 </section>
 <section id="mean-imputation">
 <h2>Mean (imputation)<a class="headerlink" href="#mean-imputation" title="Permalink to this heading">#</a></h2>
-<p>A very simple approach for feature imputation, replace the missing values with the mean of the feature,</p>
+<p>A very simple approach for <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-imputation"><span class="std std-doc">feature imputation</span></a>, replace the missing <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s with the mean of the <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>,</p>
 <ul class="simple">
-<li><p>does on introduce a bias in the mean, but will introduce a bias in the standard deviation and variance</p></li>
-<li><p>will likely bias low the between predictor and response feature correlation</p></li>
+<li><p>does on introduce a bias in the <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a>, but will introduce a bias in the <a class="reference internal" href="MachineLearning_glossary_s_z.html#standard-deviation"><span class="std std-doc">standard deviation</span></a> and <a class="reference internal" href="MachineLearning_glossary_s_z.html#variance"><span class="std std-doc">variance</span></a></p></li>
+<li><p>will likely <a class="reference internal" href="MachineLearning_glossary_a_c.html#bias"><span class="std std-doc">bias</span></a> low the between predictor and <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a> correlation</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3077,9 +3082,9 @@ dtype: float64
 <h2>Model Plot (linear 1D)<a class="headerlink" href="#model-plot-linear-1d" title="Permalink to this heading">#</a></h2>
 <p>We use the follow steps,</p>
 <ol class="arabic simple">
-<li><p>make an array of equally spaced values of the predictor feature(s)</p></li>
-<li><p>predict at all of these predictor values</p></li>
-<li><p>cross plot the predictions with the predictor values</p></li>
+<li><p>make an array of equally spaced values of the <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a>(s)</p></li>
+<li><p>predict at all of these predictor <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s</p></li>
+<li><p>cross plot the <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a>s with the predictor values</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3099,10 +3104,10 @@ dtype: float64
 <h2>Model Plot (linear 2D)<a class="headerlink" href="#model-plot-linear-2d" title="Permalink to this heading">#</a></h2>
 <p>We use the follow steps,</p>
 <ol class="arabic simple">
-<li><p>make a mesh array of equally spaced values of the predictor feature(s)</p></li>
-<li><p>predict at all of these predictor values</p></li>
+<li><p>make a mesh array of equally spaced values of the <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a>(s)</p></li>
+<li><p>predict at all of these predictor <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s</p></li>
 <li><p>flatten all meshes to 1D</p></li>
-<li><p>plot with a colored scatter plot with square markers (s) scalled to fill in the plot</p></li>
+<li><p>plot with a colored <a class="reference internal" href="MachineLearning_glossary_s_z.html#scatter-plot"><span class="std std-doc">scatter plot</span></a> with square markers (s) scalled to fill in the plot</p></li>
 </ol>
 <p>I prefer this method because plt.imshow often is inconsistent with other plots when added as a subplot</p>
 <div class="cell docutils container">
@@ -3186,10 +3191,10 @@ dtype: float64
 </section>
 <section id="multiple-imputation-by-chained-equations">
 <h2>Multiple Imputation by Chained Equations<a class="headerlink" href="#multiple-imputation-by-chained-equations" title="Permalink to this heading">#</a></h2>
-<p>Feature imputation by iterative application of K-nearest neighbours,</p>
+<p><a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-imputation"><span class="std std-doc">Feature imputation</span></a> by iterative application of K-nearest neighbours,</p>
 <ul class="simple">
-<li><p>accomplished by multiple passes, the structure in the data is learned to improve the imputation</p></li>
-<li><p>robust with significant porportion of missing feature values</p></li>
+<li><p>accomplished by multiple passes, the structure in the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> is learned to improve the imputation</p></li>
+<li><p>robust with significant porportion of <a class="reference internal" href="MachineLearning_glossary_m_r.html#missing-feature-values"><span class="std std-doc">missing feature values</span></a></p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3307,19 +3312,19 @@ dtype: float64
 </section>
 <section id="mutual-information">
 <h2>Mutual Information<a class="headerlink" href="#mutual-information" title="Permalink to this heading">#</a></h2>
-<p>Measure of information shared between predictors and the response feature,</p>
+<p>Measure of information shared between predictors and the <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a>,</p>
 <ul class="simple">
 <li><p>robust in the presence of nonlinearity and heteroscedasticity,</p></li>
 </ul>
 <table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>MI Value Range</p></th>
+<tr class="row-odd"><th class="head"><p>MI <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">Value</span></a> Range</p></th>
 <th class="head"><p>Interpretation</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Close to 0</p></td>
-<td><p>Variables are nearly independent</p></td>
+<td><p><a class="reference internal" href="MachineLearning_glossary_s_z.html#variable"><span class="std std-doc">Variable</span></a>s are nearly independent</p></td>
 </tr>
 <tr class="row-odd"><td><p>Low (small positive)</p></td>
 <td><p>Weak dependency or little shared information</p></td>
@@ -3352,10 +3357,10 @@ dtype: float64
 </section>
 <section id="mutual-information-normalized">
 <h2>Mutual Information (normalized)<a class="headerlink" href="#mutual-information-normalized" title="Permalink to this heading">#</a></h2>
-<p>Measure of information shared between predictors and the response feature,</p>
+<p>Measure of information shared between predictors and the <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a>,</p>
 <ul class="simple">
 <li><p>robust in the presence of nonlinearity and heteroscedasticity</p></li>
-<li><p>normalized by marginal entropies to have a maximum value of 1.0, 0.0 = no information, 1.0 = perfect information</p></li>
+<li><p>normalized by marginal entropies to have a maximum <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a> of 1.0, 0.0 = no information, 1.0 = perfect information</p></li>
 </ul>
 <p>Here’s the common rule of thumb to assist with interpretation,</p>
 <table class="table">
@@ -3407,11 +3412,11 @@ dtype: float64
 </section>
 <section id="normalize-predictor-features">
 <h2>Normalize Predictor Features<a class="headerlink" href="#normalize-predictor-features" title="Permalink to this heading">#</a></h2>
-<p>Normalize the predictor features to remove any sensitivity to feature range or variance, for example,</p>
+<p>Normalize the <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a>s to remove any sensitivity to feature range or <a class="reference internal" href="MachineLearning_glossary_s_z.html#variance"><span class="std std-doc">variance</span></a>, for example,</p>
 <ul class="simple">
-<li><p>put features all on equal playing field for distance calculations</p></li>
+<li><p>put <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s all on equal playing field for distance calculations</p></li>
 </ul>
-<p>Min / max normalization forces the minimum to be 0.0 and the maximum to be 1.0</p>
+<p>Min / max <a class="reference internal" href="MachineLearning_glossary_m_r.html#normalization"><span class="std std-doc">normalization</span></a> forces the minimum to be 0.0 and the maximum to be 1.0</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">normalizer</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>                                   <span class="c1"># instantiate min / max normalizer </span>
@@ -3530,7 +3535,7 @@ dtype: float64
 <h2>Random Forest (retrain tuned model)<a class="headerlink" href="#random-forest-retrain-tuned-model" title="Permalink to this heading">#</a></h2>
 <p>Apply tuned hyperparameters and retrain the model.</p>
 <ul class="simple">
-<li><p>this is the model that we will use for future predictions, real-world use</p></li>
+<li><p>this is the model that we will use for future <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a>s, real-world use</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3626,11 +3631,11 @@ dtype: float64
 </section>
 <section id="standardize-predictor-features">
 <h2>Standardize Predictor Features<a class="headerlink" href="#standardize-predictor-features" title="Permalink to this heading">#</a></h2>
-<p>Standardize the predictor features to remove any sensitivity to feature range or variance, for example,</p>
+<p>Standardize the <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a>s to remove any sensitivity to feature range or <a class="reference internal" href="MachineLearning_glossary_s_z.html#variance"><span class="std std-doc">variance</span></a>, for example,</p>
 <ul class="simple">
-<li><p>put features all on equal playing field for distance calculations</p></li>
+<li><p>put <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s all on equal playing field for distance calculations</p></li>
 </ul>
-<p>Standardization forces the mean to be 0.0 and the standard deviation to be 1.0</p>
+<p><a class="reference internal" href="MachineLearning_glossary_s_z.html#standardization"><span class="std std-doc">Standardization</span></a> forces the <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a> to be 0.0 and the <a class="reference internal" href="MachineLearning_glossary_s_z.html#standard-deviation"><span class="std std-doc">standard deviation</span></a> to be 1.0</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>                                     <span class="c1"># instantiate standardizer </span>
@@ -3898,7 +3903,7 @@ dtype: float64
 </section>
 <section id="train-and-test-split">
 <h2>Train and Test Split<a class="headerlink" href="#train-and-test-split" title="Permalink to this heading">#</a></h2>
-<p>Random splitting of the data into train and test splits.</p>
+<p>Random splitting of the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> into <a class="reference internal" href="MachineLearning_glossary_s_z.html#train-and-test-split"><span class="std std-doc">train and test split</span></a>s.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_proportion</span> <span class="o">=</span> <span class="mf">0.2</span>                                         <span class="c1"># set the proportion of withheld testing data</span>
@@ -3910,10 +3915,10 @@ dtype: float64
 </section>
 <section id="variance-inflation-factor">
 <h2>Variance Inflation Factor<a class="headerlink" href="#variance-inflation-factor" title="Permalink to this heading">#</a></h2>
-<p>Feature ranking method that only considers the linear redundancy between the predictor features,</p>
+<p><a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">Feature</span></a> ranking method that only considers the linear redundancy between the <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a>s,</p>
 <ul class="simple">
-<li><p>relationship with the response feature, relevancy is not considered</p></li>
-<li><p>general used as a screening method to remove features before more comprehensive feature ranking</p></li>
+<li><p>relationship with the <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a>, relevancy is not considered</p></li>
+<li><p>general used as a screening method to remove features before more comprehensive <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-ranking"><span class="std std-doc">feature ranking</span></a></p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3944,20 +3949,20 @@ dtype: float64
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
 </figcaption>
 </figure>
-<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a>, <a class="reference internal" href="MachineLearning_glossary_g_l.html#geostatistics"><span class="std std-doc">geostatistics</span></a>, and machine learning. Michael is also,</p>
 <ul class="simple">
-<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a <a class="reference internal" href="MachineLearning_glossary_a_c.html#core"><span class="std std-doc">core</span></a> faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>Michael has written over 100 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
 <p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
-<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a> and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
-<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">Data</span></a> Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>. We are solving challenging subsurface problems!</p></li>
 <li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
 </ul>
 <p>I’m always happy to discuss,</p>

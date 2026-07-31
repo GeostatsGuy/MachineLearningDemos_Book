@@ -174,6 +174,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_concepts.html">Machine Learning Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_subsurface_modeling.html">Subsurface Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_training_tuning.html">Training and Tuning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
@@ -219,7 +220,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_python.html">Python Code Snippets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_a_c.html">Glossary A-C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_d_f.html">Glossary D-F</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_g_l.html">Glossary G-L</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_m_r.html">Glossary M-R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_s_z.html">Glossary S-Z</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -480,64 +485,64 @@ document.write(`
 <p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
 <section id="motivations-for-bayesian-linear-regression">
 <h2>Motivations for Bayesian Linear Regression<a class="headerlink" href="#motivations-for-bayesian-linear-regression" title="Permalink to this heading">#</a></h2>
-<p>Bayesian machine learning methods apply probability to make predictions with an intrinsic uncertainty model. In addition, the Bayesian methods integrate the concept of Bayesian updating, a prior model updated with a likelihood model from data to calculate a posterior model.</p>
-<p>There are additional complexities with model training due to working with these probabilities, represented by continuous probability density functions. Due to the resulting high complexity, we can’t solve for the model parameters directly, instead we must apply a sampling method such as Markov Chain Monte Carlo (MCMC) simulation.</p>
-<p>This is a simple, very accessible demonstration of Bayesian linear regression with McMC Metropolis-Hastings sampling. My students struggled with these concepts so I challenged myself to built a workflow from scratch with all details explained clearly. Let’s explain the critical prerequisites, starting with Bayesian updating.</p>
+<p>Bayesian machine learning methods apply probability to make <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a>s with an intrinsic uncertainty model. In addition, the Bayesian methods integrate the concept of <a class="reference internal" href="MachineLearning_glossary_a_c.html#bayesian-updating"><span class="std std-doc">Bayesian updating</span></a>, a <a class="reference internal" href="MachineLearning_glossary_m_r.html#prior"><span class="std std-doc">prior</span></a> model updated with a likelihood model from <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> to calculate a <a class="reference internal" href="MachineLearning_glossary_m_r.html#posterior"><span class="std std-doc">posterior</span></a> model.</p>
+<p>There are additional complexities with model training due to working with these probabilities, represented by continuous <a class="reference internal" href="MachineLearning_glossary_m_r.html#probability-density-function"><span class="std std-doc">probability density function</span></a>s. Due to the resulting high complexity, we can’t solve for the <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter"><span class="std std-doc">model parameter</span></a>s directly, instead we must apply a sampling method such as <a class="reference internal" href="MachineLearning_glossary_m_r.html#markov-chain-monte-carlo"><span class="std std-doc">Markov Chain Monte Carlo</span></a> (MCMC) <a class="reference internal" href="MachineLearning_glossary_s_z.html#simulation"><span class="std std-doc">simulation</span></a>.</p>
+<p>This is a simple, very accessible demonstration of <a class="reference internal" href="MachineLearning_glossary_a_c.html#bayesian-linear-regression"><span class="std std-doc">Bayesian linear regression</span></a> with McMC Metropolis-Hastings sampling. My students struggled with these concepts so I challenged myself to built a workflow from scratch with all details explained clearly. Let’s explain the critical prerequisites, starting with Bayesian updating.</p>
 </section>
 <section id="linear-regression">
 <h2>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this heading">#</a></h2>
-<p>Let’s start by recalling the salient points for linear regression for prediction, let’s start by looking at a linear model fit to a set of data.</p>
+<p>Let’s start by recalling the salient points for <a class="reference internal" href="MachineLearning_glossary_g_l.html#linear-regression"><span class="std std-doc">linear regression</span></a> for prediction, let’s start by looking at a linear model fit to a set of data.</p>
 <figure style="text-align: center;">
   <img src="_static/linear/linear_example.png" style="display: block; margin: 0 auto; width: 50%;">
   <figcaption style="text-align: center;">Example linear regression model.</figcaption>
 </figure>
-<p><strong>Parametric Model</strong></p>
-<p>This is a parametric predictive machine learning model, we accept an a prior assumption of linearity and then gain a very low parametric representation that is easy to train without a onerous amount of data.</p>
+<p><strong><a class="reference internal" href="MachineLearning_glossary_m_r.html#parametric-model"><span class="std std-doc">Parametric Model</span></a></strong></p>
+<p>This is a parametric predictive machine learning model, we accept an a <a class="reference internal" href="MachineLearning_glossary_m_r.html#prior"><span class="std std-doc">prior</span></a> assumption of linearity and then gain a very low parametric representation that is easy to train without a onerous amount of data.</p>
 <ul class="simple">
-<li><p>the fit model is a simple weighted linear additive model based on all the available features, <span class="math notranslate nohighlight">\(x_1,\ldots,x_m\)</span>.</p></li>
+<li><p>the fit model is a simple weighted linear additive model based on all the available <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s, <span class="math notranslate nohighlight">\(x_1,\ldots,x_m\)</span>.</p></li>
 <li><p>the parametric model takes the form of:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
 y = \sum_{\alpha = 1}^m b_{\alpha} x_{\alpha} + b_0
 \]</div>
-<p>Here’s the visualization of the linear model parameters,</p>
+<p>Here’s the visualization of the linear <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter"><span class="std std-doc">model parameter</span></a>s,</p>
 <figure style="text-align: center;">
   <img src="_static/linear/linear_model.png" style="display: block; margin: 0 auto; width: 50%;">
   <figcaption style="text-align: center;">The linear model parameters.</figcaption>
 </figure>
 <p><strong>Least Squares</strong></p>
-<p>The analytical solution for the model parameters, <span class="math notranslate nohighlight">\(b_1,\ldots,b_m,b_0\)</span>, is available for the L2 norm loss function, the errors are summed and squared known a least squares.</p>
+<p>The analytical solution for the model parameters, <span class="math notranslate nohighlight">\(b_1,\ldots,b_m,b_0\)</span>, is available for the L2 norm <a class="reference internal" href="MachineLearning_glossary_g_l.html#loss-function"><span class="std std-doc">loss function</span></a>, the errors are summed and squared known a least squares.</p>
 <ul class="simple">
-<li><p>we minimize the error, residual sum of squares (RSS) over the training data:</p></li>
+<li><p>we minimize the error, <a class="reference internal" href="MachineLearning_glossary_m_r.html#residual-sum-of-squares"><span class="std std-doc">residual sum of squares</span></a> (RSS) over the training data:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
 RSS = \sum_{i=1}^n \left(y_i - (\sum_{\alpha = 1}^m b_{\alpha} x_{\alpha,i} + b_0) \right)^2
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(y_i\)</span> is the actual response feature values and <span class="math notranslate nohighlight">\(\sum_{\alpha = 1}^m b_{\alpha} x_{\alpha} + b_0\)</span> are the model predictions, over the <span class="math notranslate nohighlight">\(\alpha = 1,\ldots,n\)</span> training data.</p>
-<p>Here’s a visualization of the L2 norm loss function, MSE,</p>
+<p>where <span class="math notranslate nohighlight">\(y_i\)</span> is the actual <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a> <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s and <span class="math notranslate nohighlight">\(\sum_{\alpha = 1}^m b_{\alpha} x_{\alpha} + b_0\)</span> are the model predictions, over the <span class="math notranslate nohighlight">\(\alpha = 1,\ldots,n\)</span> training data.</p>
+<p>Here’s a visualization of the L2 <a class="reference internal" href="MachineLearning_glossary_m_r.html#norm"><span class="std std-doc">norm</span></a> loss function, MSE,</p>
 <figure style="text-align: center;">
   <img src="_static/linear/linear_MSE.png" style="display: block; margin: 0 auto; width: 50%;">
   <figcaption style="text-align: center;">The linear model loss function, mean square error.</figcaption>
 </figure>
 <ul class="simple">
-<li><p>this may be simplified as the sum of square error over the training data,</p></li>
+<li><p>this may be simplified as the sum of square error over the training <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>,</p></li>
 </ul>
 <p>\begin{equation}
 \sum_{i=1}^n (\Delta y_i)^2
 \end{equation}</p>
-<p>where <span class="math notranslate nohighlight">\(\Delta y_i\)</span> is actual response feature observation <span class="math notranslate nohighlight">\(y_i\)</span> minus the model prediction <span class="math notranslate nohighlight">\(\sum_{\alpha = 1}^m b_{\alpha} x_{\alpha} + b_0\)</span>, over the <span class="math notranslate nohighlight">\(i = 1,\ldots,n\)</span> training data.</p>
+<p>where <span class="math notranslate nohighlight">\(\Delta y_i\)</span> is actual response feature observation <span class="math notranslate nohighlight">\(y_i\)</span> minus the model <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a> <span class="math notranslate nohighlight">\(\sum_{\alpha = 1}^m b_{\alpha} x_{\alpha} + b_0\)</span>, over the <span class="math notranslate nohighlight">\(i = 1,\ldots,n\)</span> training data.</p>
 <p><strong>Assumptions</strong></p>
 <p>There are important assumption with our linear regression model,</p>
 <ul class="simple">
-<li><p><strong>Error-free</strong> - predictor variables are error free, not random variables</p></li>
+<li><p><strong>Error-free</strong> - predictor <a class="reference internal" href="MachineLearning_glossary_s_z.html#variable"><span class="std std-doc">variable</span></a>s are error free, not <a class="reference internal" href="MachineLearning_glossary_m_r.html#random-variable"><span class="std std-doc">random variable</span></a>s</p></li>
 <li><p><strong>Linearity</strong> - response is linear combination of feature(s)</p></li>
-<li><p><strong>Constant Variance</strong> - error in response is constant over predictor(s) value</p></li>
-<li><p><strong>Independence of Error</strong> - error in response are uncorrelated with each other</p></li>
+<li><p><strong>Constant <a class="reference internal" href="MachineLearning_glossary_s_z.html#variance"><span class="std std-doc">Variance</span></a></strong> - error in response is constant over predictor(s) value</p></li>
+<li><p><strong><a class="reference internal" href="MachineLearning_glossary_g_l.html#independence"><span class="std std-doc">Independence</span></a> of Error</strong> - error in response are uncorrelated with each other</p></li>
 <li><p><strong>No multicollinearity</strong> - none of the features are redundant with other features</p></li>
 </ul>
-<p>Now’s let’s recall Bayesian updating and then update our linear regression model to Bayesian linear regression.</p>
+<p>Now’s let’s <a class="reference internal" href="MachineLearning_glossary_m_r.html#recall"><span class="std std-doc">recall</span></a> <a class="reference internal" href="MachineLearning_glossary_a_c.html#bayesian-updating"><span class="std std-doc">Bayesian updating</span></a> and then update our linear regression model to <a class="reference internal" href="MachineLearning_glossary_a_c.html#bayesian-linear-regression"><span class="std std-doc">Bayesian linear regression</span></a>.</p>
 </section>
 <section id="bayesian-updating">
 <h2>Bayesian Updating<a class="headerlink" href="#bayesian-updating" title="Permalink to this heading">#</a></h2>
@@ -545,86 +550,86 @@ RSS = \sum_{i=1}^n \left(y_i - (\sum_{\alpha = 1}^m b_{\alpha} x_{\alpha,i} + b_
 <ul class="simple">
 <li><p>this approach to probability is powerful and can be applied to solve problems that we cannot be solved with the frequentist approach to probability</p></li>
 </ul>
-<p>Bayesian updating is represented by Bayes’ Theorem,</p>
+<p><a class="reference internal" href="MachineLearning_glossary_a_c.html#bayesian-updating"><span class="std std-doc">Bayesian updating</span></a> is represented by Bayes’ Theorem,</p>
 <div class="math notranslate nohighlight">
 \[
 P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(P(A)\)</span> is the prior, <span class="math notranslate nohighlight">\(P(B|A)\)</span> is the likelihood, <span class="math notranslate nohighlight">\(P(B)\)</span> is the evidence term that is responsible for probability closure, and <span class="math notranslate nohighlight">\(P(A|B)\)</span> is the posterior.</p>
+<p>where <span class="math notranslate nohighlight">\(P(A)\)</span> is the <a class="reference internal" href="MachineLearning_glossary_m_r.html#prior"><span class="std std-doc">prior</span></a>, <span class="math notranslate nohighlight">\(P(B|A)\)</span> is the likelihood, <span class="math notranslate nohighlight">\(P(B)\)</span> is the <a class="reference internal" href="MachineLearning_glossary_d_f.html#evidence"><span class="std std-doc">evidence</span></a> term that is responsible for <a class="reference internal" href="MachineLearning_glossary_m_r.html#probability-closure"><span class="std std-doc">probability closure</span></a>, and <span class="math notranslate nohighlight">\(P(A|B)\)</span> is the <a class="reference internal" href="MachineLearning_glossary_m_r.html#posterior"><span class="std std-doc">posterior</span></a>.</p>
 </section>
 <section id="bayesian-linear-regression-method">
 <h2>Bayesian Linear Regression Method<a class="headerlink" href="#bayesian-linear-regression-method" title="Permalink to this heading">#</a></h2>
-<p>The frequentist formulation of the linear regression model is,</p>
+<p>The frequentist formulation of the <a class="reference internal" href="MachineLearning_glossary_g_l.html#linear-regression"><span class="std std-doc">linear regression</span></a> model is,</p>
 <div class="math notranslate nohighlight">
 \[
 y = b_1 \times x + b_0 + \sigma
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(x\)</span> is the predictor feature, <span class="math notranslate nohighlight">\(b_1\)</span> is the slope parameter, <span class="math notranslate nohighlight">\(b_0\)</span> is the intercept parameter and <span class="math notranslate nohighlight">\(\sigma\)</span> is the error or noise. There is an analytical form for the ordinary least squares solution to fit the available data while minimizing the L2 norm of the data error vector.</p>
-<p>We can represent the multilinear regression model with matrix notation as,</p>
+<p>where <span class="math notranslate nohighlight">\(x\)</span> is the <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a>, <span class="math notranslate nohighlight">\(b_1\)</span> is the slope parameter, <span class="math notranslate nohighlight">\(b_0\)</span> is the intercept parameter and <span class="math notranslate nohighlight">\(\sigma\)</span> is the error or noise. There is an analytical form for the ordinary least squares solution to fit the available data while minimizing the L2 <a class="reference internal" href="MachineLearning_glossary_m_r.html#norm"><span class="std std-doc">norm</span></a> of the data error vector.</p>
+<p>We can represent the multilinear <a class="reference internal" href="MachineLearning_glossary_m_r.html#regression"><span class="std std-doc">regression</span></a> model with matrix notation as,</p>
 <div class="math notranslate nohighlight">
 \[
 y = \beta^{T} X + \sigma
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(\beta\)</span> is a vector of model parameters, <span class="math notranslate nohighlight">\(\beta_1,\ldots,\beta_m\)</span>. We can add another term <span class="math notranslate nohighlight">\(\beta_0\)</span> to the vector for the model intercept.</p>
+<p>where <span class="math notranslate nohighlight">\(\beta\)</span> is a vector of <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter"><span class="std std-doc">model parameter</span></a>s, <span class="math notranslate nohighlight">\(\beta_1,\ldots,\beta_m\)</span>. We can add another term <span class="math notranslate nohighlight">\(\beta_0\)</span> to the vector for the model intercept.</p>
 <ul class="simple">
-<li><p>when <span class="math notranslate nohighlight">\(\beta_0\)</span> is added, we also add a column of <span class="math notranslate nohighlight">\(1\)</span>s to the data <span class="math notranslate nohighlight">\(X\)</span> matrix</p></li>
+<li><p>when <span class="math notranslate nohighlight">\(\beta_0\)</span> is added, we also add a column of <span class="math notranslate nohighlight">\(1\)</span>s to the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> <span class="math notranslate nohighlight">\(X\)</span> matrix</p></li>
 </ul>
-<p>For the Bayesian formulation of linear regression is we pose the model as a prediction of the distribution of the response, <span class="math notranslate nohighlight">\(Y\)</span>, now a random variable:</p>
+<p>For the Bayesian formulation of linear regression is we pose the model as a <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a> of the distribution of the response, <span class="math notranslate nohighlight">\(Y\)</span>, now a <a class="reference internal" href="MachineLearning_glossary_m_r.html#random-variable"><span class="std std-doc">random variable</span></a>:</p>
 <div class="math notranslate nohighlight">
 \[
 Y \sim N(\beta^{T}X, \sigma^{2} I)
 \]</div>
-<p>We estimate the model parameter distributions through Bayesian updating for inferring the model parameters from a prior and likelihood from training data.</p>
+<p>We estimate the model parameter distributions through <a class="reference internal" href="MachineLearning_glossary_a_c.html#bayesian-updating"><span class="std std-doc">Bayesian updating</span></a> for inferring the model parameters from a prior and likelihood from training data.</p>
 <div class="math notranslate nohighlight">
 \[
 p(\beta | y, X) = \frac{p(y,X| \beta) p(\beta)}{p(y,X)}
 \]</div>
 <p>Let’s talk about each term,</p>
 <ol class="arabic simple">
-<li><p>Prior, <span class="math notranslate nohighlight">\(𝑃(\beta)\)</span> - initial, prior to new data, inference of the model parameters over the predictor features based on,</p></li>
+<li><p>Prior, <span class="math notranslate nohighlight">\(𝑃(\beta)\)</span> - initial, prior to new data, <a class="reference internal" href="MachineLearning_glossary_g_l.html#inference"><span class="std std-doc">inference</span></a> of the model parameters over the predictor <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s based on,</p></li>
 </ol>
 <ul class="simple">
 <li><p>expert knowledge</p></li>
-<li><p>naïve prior, in the case of non-informative priors the likelihood will dominate</p></li>
+<li><p>naïve <a class="reference internal" href="MachineLearning_glossary_m_r.html#prior"><span class="std std-doc">prior</span></a>, in the case of non-informative priors the likelihood will dominate</p></li>
 <li><p>informative prior, in the case of a low uncertainty prior the prior will dominate the likelihood</p></li>
 <li><p>cannot include the new training data, prior to integration of the training data</p></li>
 </ul>
 <ol class="arabic simple" start="2">
-<li><p>Likelihood, <span class="math notranslate nohighlight">\(𝑃(𝑦,𝑋│\beta)\)</span> - conditional distribution of the training data given assumed model parameters based on,</p></li>
+<li><p>Likelihood, <span class="math notranslate nohighlight">\(𝑃(𝑦,𝑋│\beta)\)</span> - conditional distribution of the training data given assumed model <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a>s based on,</p></li>
 </ol>
 <ul class="simple">
 <li><p>the new data, data-driven</p></li>
-<li><p>as the number of sample data increases the likelihood overwhelms the prior distribution</p></li>
+<li><p>as the number of <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a> data increases the likelihood overwhelms the prior distribution</p></li>
 </ul>
 <ol class="arabic simple" start="3">
-<li><p>Evidence, <span class="math notranslate nohighlight">\(P(y,X)\)</span> - normalization constant to ensure probability closure, i.e., a valid posterior probability density function</p></li>
+<li><p>Evidence, <span class="math notranslate nohighlight">\(P(y,X)\)</span> - <a class="reference internal" href="MachineLearning_glossary_m_r.html#normalization"><span class="std std-doc">normalization</span></a> constant to ensure <a class="reference internal" href="MachineLearning_glossary_m_r.html#probability-closure"><span class="std std-doc">probability closure</span></a>, i.e., a valid posterior <a class="reference internal" href="MachineLearning_glossary_m_r.html#probability-density-function"><span class="std std-doc">probability density function</span></a></p></li>
 </ol>
 <ul class="simple">
 <li><p>independent of the model parameters</p></li>
 <li><p>solved by marginalization of the numerator, collapses by integrating over all possible model parameters</p></li>
-<li><p>for some solution methods, e.g., MCMC Metropolis-Hastings the evidence term cancels out</p></li>
+<li><p>for some solution methods, e.g., MCMC Metropolis-Hastings the <a class="reference internal" href="MachineLearning_glossary_d_f.html#evidence"><span class="std std-doc">evidence</span></a> term cancels out</p></li>
 </ul>
 <ol class="arabic simple" start="4">
-<li><p>Posterior, <span class="math notranslate nohighlight">\(P(\beta│y,X)\)</span> - conditional distribution of the model parameters given the data-driven likelihood and prior based on expert knowledge and belief</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_m_r.html#posterior"><span class="std std-doc">Posterior</span></a>, <span class="math notranslate nohighlight">\(P(\beta│y,X)\)</span> - conditional distribution of the model parameters given the data-driven likelihood and prior based on expert knowledge and belief</p></li>
 </ol>
 <ul class="simple">
 <li><p>as the number of data, <span class="math notranslate nohighlight">\(𝑛 \rightarrow \infty\)</span>, the model parameters, <span class="math notranslate nohighlight">\(\beta\)</span>, converge to ordinary least squares linear regression, the prior is overwhelmed by the data.</p></li>
 </ul>
-<p>In general for continuous features we are not able to directly calculate the posterior and we must use a sampling method, such as Markov chain Monte Carlo (McMC) to sample the posterior.</p>
-<p>Here’s a McMC Metropolis Hastings workflow and more details.</p>
+<p>In general for <a class="reference internal" href="MachineLearning_glossary_a_c.html#continuous-feature"><span class="std std-doc">continuous feature</span></a>s we are not able to directly calculate the posterior and we must use a sampling method, such as <a class="reference internal" href="MachineLearning_glossary_m_r.html#markov-chain-monte-carlo"><span class="std std-doc">Markov chain Monte Carlo</span></a> (McMC) to sample the posterior.</p>
+<p>Here’s a McMC <a class="reference internal" href="MachineLearning_glossary_m_r.html#metropolis-hastings"><span class="std std-doc">Metropolis Hastings</span></a> workflow and more details.</p>
 </section>
 <section id="markov-chain-monte-carlo-mcmc">
 <h2>Markov Chain Monte Carlo (MCMC)<a class="headerlink" href="#markov-chain-monte-carlo-mcmc" title="Permalink to this heading">#</a></h2>
-<p>Is a set of algorithms to sample from a probability distribution such that the samples match the distribution statistics.</p>
+<p>Is a set of algorithms to sample from a probability distribution such that the samples match the distribution <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">statistics</span></a>.</p>
 <ul class="simple">
-<li><p><strong>Markov</strong> - screening assumption, the next sample is only dependent on the previous sample</p></li>
-<li><p><strong>Chain</strong> - the samples form a sequence often demonstrating a transition from burn-in chain with inaccurate statistics and equilibrium chain with accurate statistics</p></li>
-<li><p><strong>Monte Carlo</strong> - use of Monte Carlo simulation, random sampling from a statistical distribution</p></li>
+<li><p><strong>Markov</strong> - screening assumption, the next <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a> is only dependent on the previous sample</p></li>
+<li><p><strong>Chain</strong> - the samples form a sequence often demonstrating a transition from burn-in chain with inaccurate <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistic"><span class="std std-doc">statistic</span></a>s and equilibrium chain with accurate statistics</p></li>
+<li><p><strong>Monte Carlo</strong> - use of <a class="reference internal" href="MachineLearning_glossary_m_r.html#monte-carlo-simulation"><span class="std std-doc">Monte Carlo simulation</span></a>, random sampling from a <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistical-distribution"><span class="std std-doc">statistical distribution</span></a></p></li>
 </ul>
 <p>Why is this useful?</p>
 <ul class="simple">
 <li><p>we often don’t have the target distribution, it is unknown</p></li>
-<li><p>but we can sample with the correct frequencies with other form of information such as conditional probability density functions</p></li>
+<li><p>but we can sample with the correct frequencies with other form of information such as conditional <a class="reference internal" href="MachineLearning_glossary_m_r.html#probability-density-function"><span class="std std-doc">probability density function</span></a>s</p></li>
 </ul>
 </section>
 <section id="bayesian-linear-regression-with-the-metropolis-hastings-sampler">
@@ -632,16 +637,16 @@ p(\beta | y, X) = \frac{p(y,X| \beta) p(\beta)}{p(y,X)}
 <p>Here’s the basic steps of the Metropolis-Hastings MCMC Sampler:</p>
 <p>For <span class="math notranslate nohighlight">\(\ell = 1, \ldots, L\)</span>:</p>
 <ol class="arabic simple">
-<li><p>Assign random values for the initial sample of model parameters, <span class="math notranslate nohighlight">\(\beta(\ell = 1) = b_1(\ell = 1)\)</span>, <span class="math notranslate nohighlight">\(b_0(\ell = 1)\)</span> and <span class="math notranslate nohighlight">\(\sigma^2(\ell = 1)\)</span>.</p></li>
-<li><p>Propose new model parameters based on a proposal function, <span class="math notranslate nohighlight">\(\beta^{\prime} = b_1\)</span>, <span class="math notranslate nohighlight">\(b_0\)</span> and <span class="math notranslate nohighlight">\(\sigma^2\)</span>.</p></li>
-<li><p>Calculate probability of acceptance of the new proposal, as the ratio of the posterior probability of the new model parameters given the data to the previous model parameters given the data multiplied by the probability of the old step given the new step divided by the probability of the new step given the old.</p></li>
+<li><p>Assign random values for the initial sample of <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter"><span class="std std-doc">model parameter</span></a>s, <span class="math notranslate nohighlight">\(\beta(\ell = 1) = b_1(\ell = 1)\)</span>, <span class="math notranslate nohighlight">\(b_0(\ell = 1)\)</span> and <span class="math notranslate nohighlight">\(\sigma^2(\ell = 1)\)</span>.</p></li>
+<li><p>Propose new model <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a>s based on a proposal function, <span class="math notranslate nohighlight">\(\beta^{\prime} = b_1\)</span>, <span class="math notranslate nohighlight">\(b_0\)</span> and <span class="math notranslate nohighlight">\(\sigma^2\)</span>.</p></li>
+<li><p>Calculate <a class="reference internal" href="MachineLearning_glossary_m_r.html#probability-of-acceptance"><span class="std std-doc">probability of acceptance</span></a> of the new proposal, as the ratio of the posterior probability of the new model parameters given the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> to the previous model parameters given the data multiplied by the probability of the old step given the new step divided by the probability of the new step given the old.</p></li>
 </ol>
 <div class="math notranslate nohighlight">
 \[
 P(\beta \rightarrow \beta^{\prime}) = min\left(\frac{p(\beta^{\prime}|y,X) }{ p(\beta | y,X)} \cdot \frac{p(\beta^{\prime}|\beta) }{ p(\beta | \beta^{\prime})},1\right)
 \]</div>
 <ol class="arabic simple" start="4">
-<li><p>Apply Monte Carlo simulation to conditionally accept the proposal, if accepted, <span class="math notranslate nohighlight">\(\ell = \ell + 1\)</span>, and sample <span class="math notranslate nohighlight">\(\beta(\ell) = \beta^{\prime}\)</span></p></li>
+<li><p>Apply <a class="reference internal" href="MachineLearning_glossary_m_r.html#monte-carlo-simulation"><span class="std std-doc">Monte Carlo simulation</span></a> to conditionally accept the proposal, if accepted, <span class="math notranslate nohighlight">\(\ell = \ell + 1\)</span>, and sample <span class="math notranslate nohighlight">\(\beta(\ell) = \beta^{\prime}\)</span></p></li>
 <li><p>Go to step 2.</p></li>
 </ol>
 <p>Let’s talk about this system. First the left hand side:</p>
@@ -649,11 +654,11 @@ P(\beta \rightarrow \beta^{\prime}) = min\left(\frac{p(\beta^{\prime}|y,X) }{ p(
 \[
 \frac{p(\beta^{\prime}|y,X) }{ p(\beta | y,X)}
 \]</div>
-<p>We are calculating the ratio of the posterior probability (likelihood times prior) of the model parameters given the data and prior model for proposed sample over the current sample.</p>
+<p>We are calculating the ratio of the <a class="reference internal" href="MachineLearning_glossary_m_r.html#posterior"><span class="std std-doc">posterior</span></a> probability (likelihood times prior) of the model parameters given the data and prior model for proposed sample over the current sample.</p>
 <ul class="simple">
 <li><p>As you will see below it is quite practical to calculate this ratio.</p></li>
-<li><p>If the proposed sampled is more likely than the current sample, we will have a value greater than 1.0, it will truncate to 1.0 and we accept the proposed sample.</p></li>
-<li><p>If the proposed sample is less likely than the current sample, we will have a value less than 1.0, then we will use Monte Carlo sampling to randomly choice the proposed sample with this probability of acceptance.</p></li>
+<li><p>If the proposed sampled is more likely than the current <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>, we will have a value greater than 1.0, it will truncate to 1.0 and we accept the proposed sample.</p></li>
+<li><p>If the proposed sample is less likely than the current sample, we will have a <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a> less than 1.0, then we will use Monte Carlo sampling to randomly choice the proposed sample with this probability of acceptance.</p></li>
 </ul>
 <p>This procedure allows us to walk through the model parameter space and sample the parameters with the current rates, after the burn-in chain.</p>
 <p>Now, what about this part of the equation?</p>
@@ -663,8 +668,8 @@ P(\beta \rightarrow \beta^{\prime}) = min\left(\frac{p(\beta^{\prime}|y,X) }{ p(
 \]</div>
 <p>There is a problem with this procedure if we use asymmetric probability distributions for the model parameters!</p>
 <ul class="simple">
-<li><p>E.g. for example, if we use a positively skewed distribution (e.g., log normal) then we are more likely to step to larger values due to this distribution, and not due to the prior nor the likelihood.</p></li>
-<li><p>This term removes this bias, so that we have fair samples!</p></li>
+<li><p>E.g. for example, if we use a positively skewed distribution (e.g., log normal) then we are more likely to step to larger values due to this distribution, and not due to the <a class="reference internal" href="MachineLearning_glossary_m_r.html#prior"><span class="std std-doc">prior</span></a> nor the likelihood.</p></li>
+<li><p>This term removes this <a class="reference internal" href="MachineLearning_glossary_a_c.html#bias"><span class="std std-doc">bias</span></a>, so that we have fair samples!</p></li>
 </ul>
 <p>You will see below that we remove this issue by assuming symmetric model parameter distributions, even though many use an asymmetric gamma distribution for sigma, given it cannot have negative values.</p>
 <ul class="simple">
@@ -675,7 +680,7 @@ P(\beta \rightarrow \beta^{\prime}) = min\left(\frac{p(\beta^{\prime}|y,X) }{ p(
 <h2>Our Simplified Demonstration Metropolis Sampling<a class="headerlink" href="#our-simplified-demonstration-metropolis-sampling" title="Permalink to this heading">#</a></h2>
 <p>Let’s further specify this workflow for our simple demonstration.</p>
 <ul class="simple">
-<li><p>I have assumed a Gaussian, symmetric distribution for all model parameters as a result this relationship holds for all possible model parameter, current and proposed.</p></li>
+<li><p>I have assumed a Gaussian, symmetric distribution for all <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter"><span class="std std-doc">model parameter</span></a>s as a result this relationship holds for all possible model <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a>, current and proposed.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
@@ -686,17 +691,17 @@ P(\beta \rightarrow \beta^{\prime}) = min\left(\frac{p(\beta^{\prime}|y,X) }{ p(
 \[
 P(\beta \rightarrow \beta^{\prime}) = min \left( \frac{p(\beta^{\prime}|y,X) }{ p(\beta | y,X)},1 \right) 
 \]</div>
-<p>Now, let’s substitute our Bayesian formulation for our Bayesian linear regression model.</p>
+<p>Now, let’s substitute our Bayesian formulation for our <a class="reference internal" href="MachineLearning_glossary_a_c.html#bayesian-linear-regression"><span class="std std-doc">Bayesian linear regression</span></a> model.</p>
 <div class="math notranslate nohighlight">
 \[
 p(\beta^{\prime} | y, X) = \frac{p(y,X| \beta^{\prime}) p(\beta^{\prime})}{p(y,X)} \quad \text{      and        } \quad p(\beta | y, X) = \frac{p(y,X| \beta) p(\beta)}{p(y,X)}
 \]</div>
-<p>If we substitute these into our probability of acceptance above we get this.</p>
+<p>If we substitute these into our <a class="reference internal" href="MachineLearning_glossary_m_r.html#probability-of-acceptance"><span class="std std-doc">probability of acceptance</span></a> above we get this.</p>
 <div class="math notranslate nohighlight">
 \[
 P(\beta \rightarrow \beta^{\prime}) = min \left( \frac{p(\beta^{\prime}|y,X) }{ p(\beta | y,X)},1 \right) = min \left( \frac{ \left( \frac{p(y,X| \beta_{new}) p(\beta_{new}) } {p(y,X)} \right) }{ \left( \frac{ p(y,X| \beta) p(\beta)}{p(y,X)} \right) },1 \right)
 \]</div>
-<p>Note that the evidence terms cancel out.</p>
+<p>Note that the <a class="reference internal" href="MachineLearning_glossary_d_f.html#evidence"><span class="std std-doc">evidence</span></a> terms cancel out.</p>
 <div class="math notranslate nohighlight">
 \[
 P(\beta \rightarrow \beta^{\prime}) = min \left( \frac{ p(y,X| \beta_{new}) p(\beta_{new}) }{ p(y,X| \beta) p(\beta)},1 \right)
@@ -716,12 +721,12 @@ ln(P(\beta \rightarrow \beta^{\prime})) = min \left( ln \left[ \frac{ f(y,X| \be
 = min \left( \left[ln(f(y,X| \beta_{new})) + ln(f(\beta_{new})) \right] - \left[ ln(f(y,X| \beta)) + ln(f(\beta)) \right],0 \right)
 \]</div>
 <p>We calculate probability of proposal acceptance, as exponentiation of the above.</p>
-<p>How do we calculate the likelihood density? If we assume independence between all of the data we can take the product sum of the probabilities (densities) of all the response values given the predictor and model parameter sample! Given, the Gaussian assumption for the response feature, we can calculate the densities for each data from the Gaussian PDF.</p>
+<p>How do we calculate the likelihood density? If we assume independence between all of the data we can take the product sum of the probabilities (densities) of all the response <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s given the predictor and model parameter <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>! Given, the Gaussian assumption for the <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a>, we can calculate the densities for each data from the Gaussian PDF.</p>
 <div class="math notranslate nohighlight">
 \[
 f_{y,X | \beta}(y) \sim N [ b_1 \cdot X + b_0, \sigma ]
 \]</div>
-<p>and under the assumption of independence we can take the produce sum over all training data.</p>
+<p>and under the assumption of <a class="reference internal" href="MachineLearning_glossary_g_l.html#independence"><span class="std std-doc">independence</span></a> we can take the produce sum over all training <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>.</p>
 <div class="math notranslate nohighlight">
 \[
 f(y,X| \beta) = \prod_{\alpha = 1}^{n} f_{y,X | \beta}(y_{\alpha})
@@ -764,9 +769,9 @@ f(y,X| \beta) = \prod_{\alpha = 1}^{n} f_{y,X | \beta}(y_{\alpha})
 <h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
 <p>The following functions include:</p>
 <ul class="simple">
-<li><p><strong>next_proposal</strong> - propose a next model parameters from previous model parameters, this is the proposal method, parameterized by step standard deviation and Gaussian distribution.</p></li>
-<li><p><strong>likelihood_density</strong> - calculate the product of all the densities for all the data given the model parameters. Since we are working with the log densities, we sum over all the data.</p></li>
-<li><p><strong>prior_density</strong> - calculate the product of the densities for all the model parameters given the prior model. Since we are working with the log densities, we sum over all the model parameters. This is an assumption of independence.</p></li>
+<li><p><strong>next_proposal</strong> - propose a next model <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a>s from previous model parameters, this is the proposal method, parameterized by step <a class="reference internal" href="MachineLearning_glossary_s_z.html#standard-deviation"><span class="std std-doc">standard deviation</span></a> and Gaussian distribution.</p></li>
+<li><p><strong>likelihood_density</strong> - calculate the product of all the densities for all the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> given the <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter"><span class="std std-doc">model parameter</span></a>s. Since we are working with the log densities, we sum over all the data.</p></li>
+<li><p><strong>prior_density</strong> - calculate the product of the densities for all the model parameters given the <a class="reference internal" href="MachineLearning_glossary_m_r.html#prior"><span class="std std-doc">prior</span></a> model. Since we are working with the log densities, we sum over all the model parameters. This is an assumption of <a class="reference internal" href="MachineLearning_glossary_g_l.html#independence"><span class="std std-doc">independence</span></a>.</p></li>
 <li><p><strong>add_grid</strong> - improved grid for the plotting.</p></li>
 </ul>
 <div class="cell docutils container">
@@ -806,9 +811,9 @@ f(y,X| \beta) = \prod_{\alpha = 1}^{n} f_{y,X | \beta}(y_{\alpha})
 </section>
 <section id="build-a-synthetic-dataset-with-known-truth-linear-regression-model-parameters">
 <h2>Build a Synthetic Dataset with Known Truth Linear Regression Model Parameters<a class="headerlink" href="#build-a-synthetic-dataset-with-known-truth-linear-regression-model-parameters" title="Permalink to this heading">#</a></h2>
-<p>Let’s build a simple dataset with known linear regression model parameters, <span class="math notranslate nohighlight">\(b_1\)</span> is the slope parameter, <span class="math notranslate nohighlight">\(b_0\)</span> is the intercept parameter and <span class="math notranslate nohighlight">\(\sigma\)</span> is the error or noise.</p>
+<p>Let’s build a simple dataset with known <a class="reference internal" href="MachineLearning_glossary_g_l.html#linear-regression"><span class="std std-doc">linear regression</span></a> model <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a>s, <span class="math notranslate nohighlight">\(b_1\)</span> is the slope parameter, <span class="math notranslate nohighlight">\(b_0\)</span> is the intercept parameter and <span class="math notranslate nohighlight">\(\sigma\)</span> is the error or noise.</p>
 <ul class="simple">
-<li><p>we build the data based on these parameters, and then we train a linear regression model and show that we get the correct slope and intercept model parameters.</p></li>
+<li><p>we build the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> based on these parameters, and then we train a linear <a class="reference internal" href="MachineLearning_glossary_m_r.html#regression"><span class="std std-doc">regression</span></a> model and show that we get the correct slope and intercept <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter"><span class="std std-doc">model parameter</span></a>s.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -855,15 +860,15 @@ f(y,X| \beta) = \prod_{\alpha = 1}^{n} f_{y,X | \beta}(y_{\alpha})
 </section>
 <section id="id1">
 <h2>Bayesian Linear Regression<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
-<p>It all begins with a prior model, for that we assume a reasonable prior model.</p>
+<p>It all begins with a <a class="reference internal" href="MachineLearning_glossary_m_r.html#prior"><span class="std std-doc">prior</span></a> model, for that we assume a reasonable prior model.</p>
 <section id="assume-the-prior-model">
 <h3>Assume the Prior Model<a class="headerlink" href="#assume-the-prior-model" title="Permalink to this heading">#</a></h3>
-<p>We assume a multivariate Gaussian distribution for the slope and intercept parameters, <span class="math notranslate nohighlight">\(f_{b_1,b_0,\sigma}(b_1,b_0,\sigma)\)</span> with independence between <span class="math notranslate nohighlight">\(b_1\)</span>, <span class="math notranslate nohighlight">\(b_0\)</span>, and <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
+<p>We assume a <a class="reference internal" href="MachineLearning_glossary_m_r.html#multivariate"><span class="std std-doc">multivariate</span></a> Gaussian distribution for the slope and intercept <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a>s, <span class="math notranslate nohighlight">\(f_{b_1,b_0,\sigma}(b_1,b_0,\sigma)\)</span> with <a class="reference internal" href="MachineLearning_glossary_g_l.html#independence"><span class="std std-doc">independence</span></a> between <span class="math notranslate nohighlight">\(b_1\)</span>, <span class="math notranslate nohighlight">\(b_0\)</span>, and <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
 <ul class="simple">
-<li><p>For a naive prior assume a very large standard deviation.
+<li><p>For a naive prior assume a very large <a class="reference internal" href="MachineLearning_glossary_s_z.html#standard-deviation"><span class="std std-doc">standard deviation</span></a>.
 We will work in log probability and log density to improve stability of the system.</p></li>
-<li><p>We want to avoid product sums of a many values near zero as the probabilities will disappear due to computer floating point precision.</p></li>
-<li><p>In log space, we can add calculate probabilities of independent events by summing (instead of multiplication) these negative values</p></li>
+<li><p>We want to avoid product sums of a many values near zero as the probabilities will disappear due to computer floating point <a class="reference internal" href="MachineLearning_glossary_m_r.html#precision"><span class="std std-doc">precision</span></a>.</p></li>
+<li><p>In log space, we can add calculate probabilities of independent events by summing (instead of multiplication) these negative <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1030,7 +1035,7 @@ We will work in log probability and log density to improve stability of the syst
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
-<p>This was a basic treatment of Bayesian linear regression. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
+<p>This was a basic treatment of <a class="reference internal" href="MachineLearning_glossary_a_c.html#bayesian-linear-regression"><span class="std std-doc">Bayesian linear regression</span></a>. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
@@ -1041,20 +1046,20 @@ We will work in log probability and log density to improve stability of the syst
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
 </figcaption>
 </figure>
-<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a>, <a class="reference internal" href="MachineLearning_glossary_g_l.html#geostatistics"><span class="std std-doc">geostatistics</span></a>, and machine learning. Michael is also,</p>
 <ul class="simple">
-<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a <a class="reference internal" href="MachineLearning_glossary_a_c.html#core"><span class="std std-doc">core</span></a> faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>Michael has written over 100 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
 <p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
-<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a> and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
-<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">Data</span></a> Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>. We are solving challenging subsurface problems!</p></li>
 <li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
 </ul>
 <p>I’m always happy to discuss,</p>

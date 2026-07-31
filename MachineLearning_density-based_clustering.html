@@ -174,6 +174,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_concepts.html">Machine Learning Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_subsurface_modeling.html">Subsurface Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_training_tuning.html">Training and Tuning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
@@ -219,7 +220,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_python.html">Python Code Snippets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_a_c.html">Glossary A-C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_d_f.html">Glossary D-F</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_g_l.html">Glossary G-L</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_m_r.html">Glossary M-R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_s_z.html">Glossary S-Z</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -477,60 +482,60 @@ document.write(`
 <p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
 <section id="motivation-for-density-based-cluster-analysis">
 <h2>Motivation for Density-based Cluster Analysis<a class="headerlink" href="#motivation-for-density-based-cluster-analysis" title="Permalink to this heading">#</a></h2>
-<p>We need to learn and segment distinct populations to improve our prediction models,</p>
+<p>We need to learn and segment distinct <a class="reference internal" href="MachineLearning_glossary_m_r.html#population"><span class="std std-doc">population</span></a>s to improve our prediction models,</p>
 <ul class="simple">
-<li><p>mixing distinct populations to train prediction models often reduces model accuracy</p></li>
+<li><p>mixing distinct populations to train <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a> models often reduces model accuracy</p></li>
 <li><p>clustering is an inferential machine learning method to automate the segmentation of the dataset into separate groups, known as clusters and specified by an integer index</p></li>
-<li><p>common methods for cluster analysis like k-means clustering are easy to apply but are quite inflexible; therefore, it is essential to add more flexible clustering methods, like density-based clustering, to our toolkit</p></li>
+<li><p>common methods for cluster analysis like <a class="reference internal" href="MachineLearning_glossary_g_l.html#k-means-clustering"><span class="std std-doc">K-means clustering</span></a> are easy to apply but are quite inflexible; therefore, it is essential to add more flexible clustering methods, like density-based clustering, to our toolkit</p></li>
 <li><p>always remember, the computer does not provide meaning nor description of the groups, that is our job!</p></li>
 </ul>
-<p>Here’s a simple workflow, demonstration of K-means, density- and spectral-based clustering (for automated category assignment) for subsurface modeling workflows. This should help you get started with inferential methods to find patterns in your subsurface data sets.</p>
+<p>Here’s a simple workflow, demonstration of <a class="reference internal" href="MachineLearning_glossary_g_l.html#k-means-clustering"><span class="std std-doc">K-means clustering</span></a>, <a class="reference internal" href="MachineLearning_glossary_d_f.html#density-based-clustering"><span class="std std-doc">density-based clustering</span></a> and <a class="reference internal" href="MachineLearning_glossary_s_z.html#spectral-clustering"><span class="std std-doc">spectral clustering</span></a> (for automated category assignment) for <a class="reference internal" href="MachineLearning_glossary_s_z.html#subsurface-modeling-workflow"><span class="std std-doc">subsurface modeling workflow</span></a>s. This should help you get started with inferential methods to find patterns in your subsurface <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> sets.</p>
 </section>
 <section id="k-means-clustering">
 <h2>k-Means Clustering<a class="headerlink" href="#k-means-clustering" title="Permalink to this heading">#</a></h2>
-<p>Let’s recall K-means clustering, a common clustering approach for clustering, group assignment to unlabeled data, where dissimilarity within clustered groups is mini minimized. The loss function that is minimized is,</p>
+<p><a class="reference internal" href="MachineLearning_glossary_g_l.html#k-means-clustering"><span class="std std-doc">K-means clustering</span></a>, a common clustering approach for clustering, group assignment to unlabeled data, where dissimilarity within clustered groups is mini minimized. The <a class="reference internal" href="MachineLearning_glossary_g_l.html#loss-function"><span class="std std-doc">loss function</span></a> that is minimized is,</p>
 <div class="math notranslate nohighlight">
 \[ 
 J = \sum^k_{i=1} \sum_{\alpha \in C_i} || X_{\alpha} - \mu_i ||
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(i\)</span> is the cluster index, <span class="math notranslate nohighlight">\(\alpha\)</span> is the data sample index, <span class="math notranslate nohighlight">\(X\)</span> is the data sample and <span class="math notranslate nohighlight">\(\mu_i\)</span> is the <span class="math notranslate nohighlight">\(i\)</span> cluster prototype, <span class="math notranslate nohighlight">\(k\)</span> is the total number of clusters, and <span class="math notranslate nohighlight">\(|| X_m - \mu_m ||\)</span> is the Euclidean distance from a sample to the cluster prototype in <span class="math notranslate nohighlight">\(M\)</span> dimensional space calculated as,</p>
+<p>where <span class="math notranslate nohighlight">\(i\)</span> is the cluster index, <span class="math notranslate nohighlight">\(\alpha\)</span> is the data <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a> index, <span class="math notranslate nohighlight">\(X\)</span> is the data sample and <span class="math notranslate nohighlight">\(\mu_i\)</span> is the <span class="math notranslate nohighlight">\(i\)</span> cluster <a class="reference internal" href="MachineLearning_glossary_m_r.html#prototype"><span class="std std-doc">prototype</span></a>, <span class="math notranslate nohighlight">\(k\)</span> is the total number of clusters, and <span class="math notranslate nohighlight">\(|| X_m - \mu_m ||\)</span> is the Euclidean distance from a sample to the cluster prototype in <span class="math notranslate nohighlight">\(M\)</span> dimensional space calculated as,</p>
 <div class="math notranslate nohighlight">
 \[
 || X_{m,\alpha} - \mu_i || =  \sqrt{ \sum_m^M \left( X_{m,\alpha} - \mu_{m,i} \right)^2 }
 \]</div>
-<p>Here is a summary of import aspects for k-means clustering:</p>
+<p>Here is a summary of import aspects for <a class="reference internal" href="MachineLearning_glossary_g_l.html#k-means-clustering"><span class="std std-doc">K-means clustering</span></a>:</p>
 <ul class="simple">
-<li><p><strong>Prototype Method</strong> - represents the training data with number of synthetic cases in the features space. For K-means clustering we assign and iteratively update <span class="math notranslate nohighlight">\(K\)</span> prototypes.</p></li>
-<li><p><strong>Iterative Solution</strong> - the initial prototypes are assigned randomly in the feature space, the labels for each training sample are updated to the nearest prototype, then the prototypes are adjusted to the centroid of their assigned training data, repeat until there is no further update to the training data assignments.</p></li>
-<li><p><strong>Unsupervised Learning</strong> - the training data are not labeled and are assigned <span class="math notranslate nohighlight">\(K\)</span> labels based on their proximity to the prototypes in the feature space. The idea is that similar things, proximity in feature space, should belong to the same cluster group.</p></li>
-<li><p><strong>Feature Weighting</strong> - the procedure depends on the Euclidian distance between training samples and prototypes in feature space. Distance is treated as the ‘inverse’ of similarity. If the features have significantly different magnitudes, the feature(s) with the largest magnitudes and ranges will dominate the loss function and cluster groups will become anisotropic aligned orthogonal to the high range feature(s). While the common approach is to standardize / normalize the variables, by-feature weighting may be applied through unequal variances. Note, in this demonstration we normalize the features to range from 0.0 to 1.0.</p></li>
+<li><p><strong>Prototype Method</strong> - represents the <a class="reference internal" href="MachineLearning_glossary_s_z.html#training-data"><span class="std std-doc">training data</span></a> with number of synthetic cases in the <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s space. For K-means clustering we assign and iteratively update <span class="math notranslate nohighlight">\(K\)</span> prototypes.</p></li>
+<li><p><strong>Iterative Solution</strong> - the initial prototypes are assigned randomly in the <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-space"><span class="std std-doc">feature space</span></a>, the labels for each training sample are updated to the nearest prototype, then the prototypes are adjusted to the centroid of their assigned training data, repeat until there is no further update to the training data assignments.</p></li>
+<li><p><strong><a class="reference internal" href="MachineLearning_glossary_s_z.html#unsupervised-learning"><span class="std std-doc">Unsupervised Learning</span></a></strong> - the training data are not labeled and are assigned <span class="math notranslate nohighlight">\(K\)</span> labels based on their proximity to the prototypes in the feature space. The idea is that similar things, proximity in feature space, should belong to the same cluster group.</p></li>
+<li><p><strong>Feature Weighting</strong> - the procedure depends on the Euclidian distance between training samples and prototypes in feature space. Distance is treated as the ‘inverse’ of similarity. If the features have significantly different magnitudes, the feature(s) with the largest magnitudes and ranges will dominate the loss function and cluster groups will become anisotropic aligned orthogonal to the high range feature(s). While the common approach is to standardize / normalize the <a class="reference internal" href="MachineLearning_glossary_s_z.html#variable"><span class="std std-doc">variable</span></a>s, by-feature weighting may be applied through unequal <a class="reference internal" href="MachineLearning_glossary_s_z.html#variance"><span class="std std-doc">variance</span></a>s. Note, in this demonstration we normalize the features to range from 0.0 to 1.0.</p></li>
 </ul>
 </section>
 <section id="assumptions-of-k-means-clustering">
 <h2>Assumptions of k-means Clustering<a class="headerlink" href="#assumptions-of-k-means-clustering" title="Permalink to this heading">#</a></h2>
-<p>These are the assumptions that result in significant reduction in flexibility of k-means clustering:</p>
+<p>These are the assumptions that result in significant reduction in flexibility of <a class="reference internal" href="MachineLearning_glossary_g_l.html#k-means-clustering"><span class="std std-doc">K-means clustering</span></a>:</p>
 <ol class="arabic simple">
-<li><p>The clusters are spherical, convex, and isotropic within the predictor feature space.</p></li>
+<li><p>The clusters are spherical, convex, and isotropic within the <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature-space"><span class="std std-doc">predictor feature space</span></a>.</p></li>
 </ol>
 <ul class="simple">
-<li><p>This is due to the model loss based on minimizes difference within clusters, this is accomplished through this simple spherical geometry in the predictor feature space.</p></li>
+<li><p>This is due to the model loss based on minimizes difference within clusters, this is accomplished through this simple spherical geometry in the <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a> space.</p></li>
 </ul>
 <ol class="arabic simple" start="2">
-<li><p>There is equal variance for all features</p></li>
+<li><p>There is equal <a class="reference internal" href="MachineLearning_glossary_s_z.html#variance"><span class="std std-doc">variance</span></a> for all <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s</p></li>
 </ol>
 <div class="math notranslate nohighlight">
 \[
 \sigma_{X_1}^2 = \sigma_{X_2}^2= \ldots = \sigma_{X_m}^2
 \]</div>
 <ul class="simple">
-<li><p>this assumed with the between sample distance / dissimilarity calculation</p></li>
+<li><p>this assumed with the between <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a> distance / dissimilarity calculation</p></li>
 </ul>
 <ol class="arabic simple" start="3">
 <li><p>The clusters have similar sizes and frequency (number of samples in the clusters)</p></li>
 </ol>
 <ul class="simple">
 <li><p>larger cluster are divided to minimize the overall squared difference within clusters</p></li>
-<li><p>clusters with few samples in feature space are overwhelmed!</p></li>
+<li><p>clusters with few samples in <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-space"><span class="std std-doc">feature space</span></a> are overwhelmed!</p></li>
 </ul>
 <p>The limitations are quite significant, it is useful to have a more flexible method for clustering.</p>
 </section>
@@ -550,32 +555,32 @@ J = \sum^k_{i=1} \sum_{\alpha \in C_i} || X_{\alpha} - \mu_i ||
 <ul class="simple">
 <li><p>the only reason I know about pointillism is because my sister Susan Weckesser was an incredible artist and musician. Rest in peace, Suse.</p></li>
 </ul>
-<p>With density-based clustering the cluster groups are seeded or grown in feature space at locations with sufficient point density determined by hyperparameters,</p>
+<p>With density-based clustering the cluster groups are seeded or grown in <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-space"><span class="std std-doc">feature space</span></a> at locations with sufficient point density determined by hyperparameters,</p>
 <figure style="text-align: center;">
   <img src="_static/density_cluster/hyperparameters.png" style="display: block; margin: 0 auto; width: 30%;">
   <figcaption style="text-align: center;"> Density-based clustering hyperparameters require to check for sufficient local density to instantiate a cluster.
 </figcaption>
 </figure>
-<p><span class="math notranslate nohighlight">\(\epsilon\)</span> – the radius of the local neighbourhood in the metric of normalized features. The is the scale / resolution of the clusters. If this values is set too small, too many samples are left as outliers and if set too large, all the clusters merge to one single cluster.</p>
-<p><span class="math notranslate nohighlight">\(min_{Pts}\)</span> – the minimum number of points to assign a core point, where core points are applied to initialize or grow a cluster group.</p>
-<p>as you can see above, density is quantified by number of samples over a volume, where the volume is based on a radius over all dimensions of feature space.</p>
-<p>Automated or guided <span class="math notranslate nohighlight">\(\epsilon\)</span> parameter estimation is available by k-distance graph (in this case is k nearest neighbor),</p>
+<p><span class="math notranslate nohighlight">\(\epsilon\)</span> – the radius of the local neighbourhood in the metric of normalized <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s. The is the scale / resolution of the clusters. If this <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s is set too small, too many samples are left as outliers and if set too large, all the clusters merge to one single cluster.</p>
+<p><span class="math notranslate nohighlight">\(min_{Pts}\)</span> – the minimum number of points to assign a <a class="reference internal" href="MachineLearning_glossary_a_c.html#core-point"><span class="std std-doc">core point</span></a>, where <a class="reference internal" href="MachineLearning_glossary_a_c.html#core"><span class="std std-doc">core</span></a> points are applied to initialize or grow a cluster group.</p>
+<p>as you can see above, density is quantified by number of <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s over a volume, where the volume is based on a radius over all dimensions of feature space.</p>
+<p>Automated or guided <span class="math notranslate nohighlight">\(\epsilon\)</span> <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a> <a class="reference internal" href="MachineLearning_glossary_d_f.html#estimation"><span class="std std-doc">estimation</span></a> is available by k-distance graph (in this case is k nearest neighbor),</p>
 <figure style="text-align: center;">
   <img src="_static/density_cluster/kdistance.png" style="display: block; margin: 0 auto; width: 100%;">
   <figcaption style="text-align: center;"> k-distance graph with elbow about 0.07 distance in predictor feature space.
 </figcaption>
 </figure>
 <ol class="arabic simple">
-<li><p>Calculate the nearest neighbor distance in normalized feature space for all the sample data (1,700 in this case).</p></li>
+<li><p>Calculate the nearest neighbor distance in normalized feature space for all the sample <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> (1,700 in this case).</p></li>
 <li><p>Sort in ascending order and plot.</p></li>
 <li><p>Select the distance that maximizes the positive curvature (the elbow).</p></li>
 </ol>
-<p>Here is a summary of the important aspects for DBSCAN clustering,</p>
+<p>Here is a summary of the important aspects for <a class="reference internal" href="MachineLearning_glossary_d_f.html#dbscan"><span class="std std-doc">DBSCAN</span></a> clustering,</p>
 <ul class="simple">
 <li><p><strong>DBSCAN</strong> - stands for <a class="reference external" href="https://cdn.aaai.org/KDD/1996/KDD96-037.pdf">Density-Based Spatial Clustering of Applications with Noise</a> (Ester et al.,1996).</p></li>
 <li><p><strong>Advantages</strong> - include minimum domain knowledge to estimate hyperparameters, the ability to represent any arbitrary shape of cluster groups and efficient to apply for large data sets</p></li>
-<li><p><strong>Hierarchical Bottom-up / Agglomerative Clustering</strong> – all data samples start as their own group, called ‘unvisited’ but practically as outliers until assigned to a group, and then the cluster group grow iteratively.</p></li>
-<li><p><strong>Mutually Exclusive</strong> – like k-means clustering, all samples may only belong to a single cluster group.</p></li>
+<li><p><strong>Hierarchical Bottom-up / Agglomerative Clustering</strong> – all data samples start as their own group, called ‘unvisited’ but practically as <a class="reference internal" href="MachineLearning_glossary_m_r.html#outlier"><span class="std std-doc">outlier</span></a>s until assigned to a group, and then the cluster group grow iteratively.</p></li>
+<li><p><strong>Mutually Exclusive</strong> – like <a class="reference internal" href="MachineLearning_glossary_g_l.html#k-means-clustering"><span class="std std-doc">K-means clustering</span></a>, all samples may only belong to a single cluster group.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
@@ -591,34 +596,34 @@ P(C_1 \cup C_2 \cup \dots C_k) \le 1.0
 </section>
 <section id="dbscan-iterative-solution">
 <h2>DBSCAN Iterative Solution<a class="headerlink" href="#dbscan-iterative-solution" title="Permalink to this heading">#</a></h2>
-<p>All data samples are initialized as unvisited and then the method proceeds through the dataset and assigns the samples as,</p>
+<p>All <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s are initialized as unvisited and then the method proceeds through the dataset and assigns the samples as,</p>
 <ul class="simple">
-<li><p><strong>core</strong> point if there are <span class="math notranslate nohighlight">\(\ge\)</span> <strong>min_samples</strong> within <strong>eps</strong> distance from the sample, start of a new cluster</p></li>
-<li><p><strong>border</strong> point if there are <span class="math notranslate nohighlight">\(lt\)</span> <strong>min_samples</strong> within <strong>eps</strong> distance from the sample, but the sample is within <strong>eps</strong> distance of a core point, potential growth of an existing cluster</p></li>
-<li><p><strong>outlier</strong> point if there are <span class="math notranslate nohighlight">\(lt\)</span> <strong>min_samples</strong> within <strong>eps</strong> distance from the sample and the sample is not within <strong>eps</strong> distance of a core point</p></li>
+<li><p><strong><a class="reference internal" href="MachineLearning_glossary_a_c.html#core"><span class="std std-doc">core</span></a></strong> point if there are <span class="math notranslate nohighlight">\(\ge\)</span> <strong>min_samples</strong> within <strong>eps</strong> distance from the sample, start of a new cluster</p></li>
+<li><p><strong>border</strong> point if there are <span class="math notranslate nohighlight">\(lt\)</span> <strong>min_samples</strong> within <strong>eps</strong> distance from the sample, but the sample is within <strong>eps</strong> distance of a <a class="reference internal" href="MachineLearning_glossary_a_c.html#core-point"><span class="std std-doc">core point</span></a>, potential growth of an existing cluster</p></li>
+<li><p><strong><a class="reference internal" href="MachineLearning_glossary_m_r.html#outlier"><span class="std std-doc">outlier</span></a></strong> point if there are <span class="math notranslate nohighlight">\(lt\)</span> <strong>min_samples</strong> within <strong>eps</strong> distance from the sample and the sample is not within <strong>eps</strong> distance of a core point</p></li>
 </ul>
-<p>If you would like to see DBSCAN in action, check out my <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_DBSCAN.ipynb">DBSCAN interactive Python dashboard</a>,</p>
+<p>If you would like to see <a class="reference internal" href="MachineLearning_glossary_d_f.html#dbscan"><span class="std std-doc">DBSCAN</span></a> in action, check out my <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_DBSCAN.ipynb">DBSCAN interactive Python dashboard</a>,</p>
 <figure style="text-align: center;">
   <img src="_static/density_cluster/interactive_density.png" style="display: block; margin: 0 auto; width: 100%;">
   <figcaption style="text-align: center;"> My interactive Python dashboard for DBSCAN.
 </figcaption>
 </figure>
-<p>Once the points are assigned these labels, all connected core points and their associate border points are assigned to an unique cluster.  Outlier points are left as outliers without an assigned cluster. To understand the cluster assignments we should explain the following forms of connection.</p>
-<p><strong>directly density reachable</strong> - point X is directly density reachable from A, if A is a core point and X belongs to the neighborhood (distance <span class="math notranslate nohighlight">\(le\)</span> eps) from A.</p>
-<p><strong>density-reachable</strong> - point Y is density reachable from A if Y belongs to a neighborhood of a core point that can reached from A. This would require a chain of core points each belonging the previous core points and the last core point including point Y.</p>
+<p>Once the points are assigned these labels, all connected core points and their associate border points are assigned to an unique cluster.  Outlier points are left as outliers without an assigned cluster. To understand the cluster assignments we should explain the following terms.</p>
+<p><strong><a class="reference internal" href="MachineLearning_glossary_d_f.html#directly-density-reachable"><span class="std std-doc">directly density reachable</span></a></strong> - point X is directly density reachable from A, if A is a core point and X belongs to the neighborhood (distance <span class="math notranslate nohighlight">\(le\)</span> eps) from A.</p>
+<p><strong>density-reachable</strong> - point Y is <a class="reference internal" href="MachineLearning_glossary_d_f.html#density-reachable"><span class="std std-doc">density reachable</span></a> from A if Y belongs to a neighborhood of a core point that can reached from A. This would require a chain of core points each belonging the previous core points and the last core point including point Y.</p>
 <figure style="text-align: center;">
   <img src="_static/density_cluster/densityreachable.png" style="display: block; margin: 0 auto; width: 70%;">
-  <figcaption style="text-align: center;"> Directly density reachable and density reachable.
+  <figcaption style="text-align: center;"> Directly density reachable and density reachable.</figcaption>
 </figure>
 <p><strong>density-connected</strong> - points A and B are density-connected if there is a point Z that is density-reachable from both points A and B.</p>
 <figure style="text-align: center;">
   <img src="_static/density_cluster/densityconnected.png" style="display: block; margin: 0 auto; width: 70%;">
-  <figcaption style="text-align: center;"> Density connected.
+  <figcaption style="text-align: center;">Density connected.</figcaption>
 </figure>
 <p><strong>density-based cluster</strong> - a nonempty set where all points are density-connected to each other.</p>
 <figure style="text-align: center;">
   <img src="_static/density_cluster/clusters.png" style="display: block; margin: 0 auto; width: 70%;">
-  <figcaption style="text-align: center;"> Density-based clusters.
+  <figcaption style="text-align: center;"> Density-based clusters.</figcaption>
 </figure>
 <p>Here’s a concise summary of these steps for solving DBSCAN,</p>
 <ol class="arabic simple">
@@ -677,7 +682,7 @@ P(C_1 \cup C_2 \cup \dots C_k) \le 1.0
 </section>
 <section id="custom-colormap">
 <h2>Custom Colormap<a class="headerlink" href="#custom-colormap" title="Permalink to this heading">#</a></h2>
-<p>Custom colormap for DBSCAN for several groups and 0 set as an outlier.</p>
+<p>Custom colormap for <a class="reference internal" href="MachineLearning_glossary_d_f.html#dbscan"><span class="std std-doc">DBSCAN</span></a> for several groups and 0 set as an <a class="reference internal" href="MachineLearning_glossary_m_r.html#outlier"><span class="std std-doc">outlier</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">paired</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;Paired&#39;</span><span class="p">)</span>                               <span class="c1"># build on categorical colormap</span>
@@ -702,18 +707,18 @@ P(C_1 \cup C_2 \cup \dots C_k) \le 1.0
 </section>
 <section id="loading-data">
 <h2>Loading Data<a class="headerlink" href="#loading-data" title="Permalink to this heading">#</a></h2>
-<p>Let’s load one of the provided multivariate, spatial datasets:</p>
+<p>Let’s load one of the provided <a class="reference internal" href="MachineLearning_glossary_m_r.html#multivariate"><span class="std std-doc">multivariate</span></a>, spatial datasets:</p>
 <ul class="simple">
 <li><p>you can select datasets 1-4 below.</p></li>
 </ul>
 <p>These are diverse multivariate datasets with:</p>
 <ul class="simple">
-<li><p>facies (integers)</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_d_f.html#facies"><span class="std std-doc">facies</span></a> (integers)</p></li>
 <li><p>porosity (fraction)</p></li>
 <li><p>permeability (<span class="math notranslate nohighlight">\(mD\)</span>)</p></li>
 </ul>
 <p>Yes, cluster analysis is unsupervised, inferential machine learning and does not use labels. We have facies available so we can evaluate our cluster groups with respect to the facies assigned.</p>
-<p>We load the selected dataset with the pandas ‘read_csv’ function into a data frame we called ‘df’ and then preview it to make sure it loaded correctly.</p>
+<p>We load the selected dataset with the pandas ‘read_csv’ function into a <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> frame we called ‘df’ and then preview it to make sure it loaded correctly.</p>
 <p><strong>Python Tip: using functions from a package</strong> just type the label for the package that we declared at the beginning:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </pre></div>
@@ -722,11 +727,11 @@ P(C_1 \cup C_2 \cup \dots C_k) \le 1.0
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>but read_csv() has required input parameters. The essential one is the name of the file. For our circumstance all the other default parameters are fine. If you want to see all the possible parameters for this function, just go to the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html">docs</a>.</p>
+<p>but read_csv() has required input <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a>s. The essential one is the name of the file. For our circumstance all the other default parameters are fine. If you want to see all the possible parameters for this function, just go to the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html">docs</a>.</p>
 <ul class="simple">
 <li><p><strong>Tip</strong> - established Python packages like pandas have excellent documentation. They are an excellent first stop to learn new packages. I also find examples critical and this motivates all the workflow examples and codes in my courses!</p></li>
 </ul>
-<p>also, the program has an output, a pandas DataFrame loaded from the data file. So we have to specficy the name / variable representing this new DataFrame object.</p>
+<p>also, the program has an output, a pandas <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a> loaded from the data file. So we have to specficy the name / <a class="reference internal" href="MachineLearning_glossary_s_z.html#variable"><span class="std std-doc">variable</span></a> representing this new DataFrame object.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;nonlinear_facies_v1.csv&quot;</span><span class="p">)</span>  
 </pre></div>
 </div>
@@ -839,7 +844,7 @@ P(C_1 \cup C_2 \cup \dots C_k) \le 1.0
 <section id="summary-statistics-and-histograms-for-the-tabular-data">
 <h2>Summary Statistics and Histograms for the Tabular Data<a class="headerlink" href="#summary-statistics-and-histograms-for-the-tabular-data" title="Permalink to this heading">#</a></h2>
 <p>The table includes porosity (fraction) and acoustic impedance (<span class="math notranslate nohighlight">\(\frac{kg}{m^3} \cdot \frac{m}{s} \cdot 10^3\)</span>) that we will work with in the demonstration below.</p>
-<p>There are a lot of efficient methods to calculate summary statistics from tabular data in DataFrames. The describe command provides count, mean, minimum, maximum, and quartiles all in a nice data table. We use transpose just to flip the table so that features are on the rows and the statistics are on the columns.</p>
+<p>There are a lot of efficient methods to calculate summary <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">statistics</span></a> from <a class="reference internal" href="MachineLearning_glossary_s_z.html#tabular-data"><span class="std std-doc">tabular data</span></a> in <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a>s. The describe command provides count, <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a>, minimum, maximum, and quartiles all in a nice <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> table. We use transpose just to flip the table so that <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s are on the rows and the <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistic"><span class="std std-doc">statistic</span></a>s are on the columns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>                                     <span class="c1"># DataFrame summary statistics</span>
@@ -953,18 +958,18 @@ P(C_1 \cup C_2 \cup \dots C_k) \le 1.0
 </section>
 <section id="feature-normalization">
 <h2>Feature Normalization<a class="headerlink" href="#feature-normalization" title="Permalink to this heading">#</a></h2>
-<p>The two considered features are quite incompatible. They have dramatically different:</p>
+<p>The two considered <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s are quite incompatible. They have dramatically different:</p>
 <ul class="simple">
-<li><p>magnitudes / averages</p></li>
-<li><p>variances / ranges</p></li>
+<li><p>magnitudes / <a class="reference internal" href="MachineLearning_glossary_a_c.html#average"><span class="std std-doc">average</span></a>s</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_s_z.html#variance"><span class="std std-doc">variance</span></a>s / ranges</p></li>
 </ul>
 <p>Since the difference in ranges between the features is arbitrary we need to remove this by transforming each of the features. We normalize each of the features to range from 0.0 (minimum) to 1.0 (maximum).</p>
 <ul class="simple">
-<li><p>Note, with normalization there is no distribution shape change so we would typically check for issues like outliers before the transformation, for brevity this step is not included here given there are no outliers in the provided datasets.</p></li>
+<li><p>Note, with <a class="reference internal" href="MachineLearning_glossary_m_r.html#normalization"><span class="std std-doc">normalization</span></a> there is no distribution shape change so we would typically check for issues like <a class="reference internal" href="MachineLearning_glossary_m_r.html#outlier"><span class="std std-doc">outlier</span></a>s before the transformation, for brevity this step is not included here given there are no outliers in the provided datasets.</p></li>
 </ul>
-<p>Now we use these normalized feature values for the clustering workflows, e.g., for calculating the required distances distance between samples and prototypes in our workflow:</p>
+<p>Now we use these normalized feature <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s for the clustering workflows, e.g., for calculating the required distances distance between samples and <a class="reference internal" href="MachineLearning_glossary_m_r.html#prototype"><span class="std std-doc">prototype</span></a>s in our workflow:</p>
 <ul class="simple">
-<li><p>note, for each data sample we have original feature and transformed feature values; therefore, it is very easy to go back and forth without the need for backtransformation.</p></li>
+<li><p>note, for each <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a> we have original feature and transformed feature values; therefore, it is very easy to go back and forth without the need for backtransformation.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1163,7 +1168,7 @@ P(C_1 \cup C_2 \cup \dots C_k) \le 1.0
 </section>
 <section id="quick-peek-at-available-labels-for-educational-purposes">
 <h2>Quick Peek at Available Labels for Educational Purposes<a class="headerlink" href="#quick-peek-at-available-labels-for-educational-purposes" title="Permalink to this heading">#</a></h2>
-<p>I know this is cheating, but to calibrate our eye’s and to check the natural clusters in our dataset, let’s cheat and look at the features scatter plotted colored by the facies labels.</p>
+<p>I know this is cheating, but to calibrate our eye’s and to check the natural clusters in our dataset, let’s cheat and look at the <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s scatter plotted colored by the <a class="reference internal" href="MachineLearning_glossary_d_f.html#facies"><span class="std std-doc">facies</span></a> labels.</p>
 <ul class="simple">
 <li><p>for this demonstration workflow this is our inaccessible truth model, we are using this as only a teaching tool</p></li>
 <li><p>after this we will leave these labels out and attempt to automate their assignment with cluster analysis</p></li>
@@ -1200,10 +1205,10 @@ P(C_1 \cup C_2 \cup \dots C_k) \le 1.0
 </section>
 <section id="visualize-the-unlabeled-data">
 <h2>Visualize the Unlabeled Data<a class="headerlink" href="#visualize-the-unlabeled-data" title="Permalink to this heading">#</a></h2>
-<p>In this exercise, we want to use clustering for automated assignment of facies based on two features.</p>
+<p>In this exercise, we want to use clustering for automated assignment of <a class="reference internal" href="MachineLearning_glossary_d_f.html#facies"><span class="std std-doc">facies</span></a> based on two <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s.</p>
 <ul class="simple">
 <li><p>I limit us two features for each of visualization</p></li>
-<li><p>Let’s start by visualizing the unlabeled data</p></li>
+<li><p>Let’s start by visualizing the unlabeled <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a></p></li>
 <li><p>We look at the data in original units and normalized units through this entire exercise.</p></li>
 </ul>
 <div class="cell docutils container">
@@ -1229,18 +1234,17 @@ P(C_1 \cup C_2 \cup \dots C_k) \le 1.0
 </section>
 <section id="id1">
 <h2>k-Means Clustering<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
-<p>First we start with k-means clustering. From our previous analysis we may know that this will not go well!</p>
+<p>First we start with k-means clustering (see the <a class="reference internal" href="MachineLearning_clustering.html"><span class="doc std std-doc">Cluster Analysis</span></a> chapter). From our previous analysis we may know that this will not go well!</p>
 <ul class="simple">
-<li><p>I have an entire demonstration dedicated to <a class="reference external" href="https://github.com/GeostatsGuy/PythonNumericalDemos/blob/master/SubsurfaceDataAnalytics_Clustering.ipynb">k-means cluster</a>.</p></li>
 <li><p>Here we use k-means Clustering to compare and contrast with the subsequent density-based method that we will attempt.</p></li>
 </ul>
 <p>Once again, let’s be mindful of the assumptions of k-means clustering:</p>
 <ul class="simple">
-<li><p>spherical variability over the features</p></li>
-<li><p>same variability over each feature (after our min/max normalization)</p></li>
-<li><p>prior probability of membership in all clusters, equal number of samples in each</p></li>
+<li><p>spherical variability over the <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s</p></li>
+<li><p>same variability over each feature (after our min/max <a class="reference internal" href="MachineLearning_glossary_m_r.html#normalization"><span class="std std-doc">normalization</span></a>)</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_m_r.html#prior"><span class="std std-doc">prior</span></a> probability of membership in all clusters, equal number of <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s in each</p></li>
 </ul>
-<p>This dataset violates these assumptions with non-spherical shapes, unequal proportions of samples in each cluster (we know this because we have the truth facies and we did peak).</p>
+<p>This dataset violates these assumptions with non-spherical shapes, unequal <a class="reference internal" href="MachineLearning_glossary_m_r.html#proportions"><span class="std std-doc">proportions</span></a> of samples in each cluster (we know this because we have the truth <a class="reference internal" href="MachineLearning_glossary_d_f.html#facies"><span class="std std-doc">facies</span></a> and we did peak).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
@@ -1289,11 +1293,11 @@ P(C_1 \cup C_2 \cup \dots C_k) \le 1.0
 </section>
 <section id="dbscan-clustering">
 <h2>DBSCAN Clustering<a class="headerlink" href="#dbscan-clustering" title="Permalink to this heading">#</a></h2>
-<p>The DBSCAN approach that seeds and grows clusters groups based on high density is well suited to working with data with an arbitrary (even non-convex) shape and with noise.</p>
-<p>Once again the two parameters include:</p>
+<p>The <a class="reference internal" href="MachineLearning_glossary_d_f.html#dbscan"><span class="std std-doc">DBSCAN</span></a> approach that seeds and grows clusters groups based on high density is well suited to working with <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> with an arbitrary (even non-convex) shape and with noise.</p>
+<p>Once again the two <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a>s include:</p>
 <ul class="simple">
-<li><p><strong>eps</strong> - maximum distance between to samples in features space for a sample to be included in the neighbourhood of the other sample. Too small a value will result in many clusters and outliers, and too large a value will result in one cluster with all the samples together.</p></li>
-<li><p><strong>min_samples</strong> - minimum number of samples in a neighbourhood to spawn a new cluster. Use a larger value for noisy data to prevent identifying clusters due to a few grouped outliers.</p></li>
+<li><p><strong>eps</strong> - maximum distance between to <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s in <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s space for a sample to be included in the neighbourhood of the other sample. Too small a value will result in many clusters and outliers, and too large a value will result in one cluster with all the samples together.</p></li>
+<li><p><strong>min_samples</strong> - minimum number of samples in a neighbourhood to spawn a new cluster. Use a larger <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a> for noisy data to prevent identifying clusters due to a few grouped <a class="reference internal" href="MachineLearning_glossary_m_r.html#outlier"><span class="std std-doc">outlier</span></a>s.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1390,20 +1394,20 @@ P(C_1 \cup C_2 \cup \dots C_k) \le 1.0
 </section>
 <section id="calculating-the-dbscan-parameters">
 <h2>Calculating the DBSCAN Parameters<a class="headerlink" href="#calculating-the-dbscan-parameters" title="Permalink to this heading">#</a></h2>
-<p>Now let’s try to use a more repeatable method to calculate the DBSCAN hyperparameters.</p>
+<p>Now let’s try to use a more repeatable method to calculate the <a class="reference internal" href="MachineLearning_glossary_d_f.html#dbscan"><span class="std std-doc">DBSCAN</span></a> hyperparameters.</p>
 <ul class="simple">
-<li><p><strong>min samples</strong> - we set with expert knowledge, there is a rule of thumb, <span class="math notranslate nohighlight">\(min_{sample} \ge D + 1\)</span> or <span class="math notranslate nohighlight">\(min_{sample} \ge 2 \times D + 1\)</span> for large, noisy datasets</p></li>
+<li><p><strong>min <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s</strong> - we set with expert knowledge, there is a rule of thumb, <span class="math notranslate nohighlight">\(min_{sample} \ge D + 1\)</span> or <span class="math notranslate nohighlight">\(min_{sample} \ge 2 \times D + 1\)</span> for large, noisy datasets</p></li>
 <li><p><strong>eps</strong> - we will use the nearest neighbour function to estimate it given the minimum number of samples</p></li>
 </ul>
-<p>Let’s calculate the nearest neighbour distance for each sample data to the min sample nearest neighbour in normalized feature space with the command:</p>
+<p>Let’s calculate the nearest neighbour distance for each sample data to the min sample nearest neighbour in normalized <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-space"><span class="std std-doc">feature space</span></a> with the command:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">neigh</span> <span class="o">=</span> <span class="n">NearestNeighbors</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">min_sample</span><span class="p">)</span>
 <span class="n">nbrs</span> <span class="o">=</span> <span class="n">neigh</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;nPor&#39;</span><span class="p">,</span><span class="s1">&#39;nPerm&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 <span class="n">distances</span><span class="p">,</span> <span class="n">indices</span> <span class="o">=</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;nPor&#39;</span><span class="p">,</span><span class="s1">&#39;nPerm&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>We have a <span class="math notranslate nohighlight">\(n \times k\)</span> array with the distances and the sample data indices:</p>
+<p>We have a <span class="math notranslate nohighlight">\(n \times k\)</span> array with the distances and the sample <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> indices:</p>
 <ul class="simple">
-<li><p>for each <span class="math notranslate nohighlight">\(n\)</span> sample we have a row of nearest neighbour distances up to k nearest neighbours (closest to furthest in the columns), note the first neighbour is sample itself; therefore the first column is 0.</p></li>
+<li><p>for each <span class="math notranslate nohighlight">\(n\)</span> sample we have a row of nearest neighbour distances up to <a class="reference internal" href="MachineLearning_glossary_g_l.html#k-nearest-neighbours"><span class="std std-doc">k nearest neighbours</span></a> (closest to furthest in the columns), note the first neighbour is sample itself; therefore the first column is 0.</p></li>
 <li><p>we will then sort the rows in ascending order and plot relative to the sample index, <span class="math notranslate nohighlight">\(i = 1,\ldots,n-1\)</span></p></li>
 </ul>
 <p>Then we will plot the distances vs. the sample index in the ascending order</p>
@@ -1486,7 +1490,7 @@ P(C_1 \cup C_2 \cup \dots C_k) \le 1.0
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
-<p>This was a basic treatment of density-based clustering with DBSCAN. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
+<p>This was a basic treatment of density-based clustering with <a class="reference internal" href="MachineLearning_glossary_d_f.html#dbscan"><span class="std std-doc">DBSCAN</span></a>. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
@@ -1497,20 +1501,20 @@ P(C_1 \cup C_2 \cup \dots C_k) \le 1.0
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
 </figcaption>
 </figure>
-<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a>, <a class="reference internal" href="MachineLearning_glossary_g_l.html#geostatistics"><span class="std std-doc">geostatistics</span></a>, and machine learning. Michael is also,</p>
 <ul class="simple">
-<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a <a class="reference internal" href="MachineLearning_glossary_a_c.html#core"><span class="std std-doc">core</span></a> faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>Michael has written over 100 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
 <p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
-<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a> and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
-<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">Data</span></a> Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>. We are solving challenging subsurface problems!</p></li>
 <li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
 </ul>
 <p>I’m always happy to discuss,</p>

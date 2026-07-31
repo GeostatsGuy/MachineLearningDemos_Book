@@ -174,6 +174,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_concepts.html">Machine Learning Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_subsurface_modeling.html">Subsurface Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_training_tuning.html">Training and Tuning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
@@ -219,7 +220,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_python.html">Python Code Snippets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_a_c.html">Glossary A-C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_d_f.html">Glossary D-F</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_g_l.html">Glossary G-L</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_m_r.html">Glossary M-R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_s_z.html">Glossary S-Z</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -508,41 +513,41 @@ document.write(`
 <p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
 <section id="motivation-for-feature-ranking">
 <h2>Motivation for Feature Ranking<a class="headerlink" href="#motivation-for-feature-ranking" title="Permalink to this heading">#</a></h2>
-<p>There are often many predictor features (input variables), available for us to work with for building our prediction models.</p>
+<p>There are often many <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a>s (input <a class="reference internal" href="MachineLearning_glossary_s_z.html#variable"><span class="std std-doc">variable</span></a>s), available for us to work with for building our prediction models.</p>
 <ul class="simple">
-<li><p>there are good reasons to be selective, throwing in every possible feature is not a good idea!</p></li>
+<li><p>there are good reasons to be selective, throwing in every possible <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> is not a good idea!</p></li>
 </ul>
-<p>In general, for the best prediction model, careful selection of the fewest features that provide the most amount of information is the best practice.</p>
+<p>In general, for the best <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a> model, careful selection of the fewest features that provide the most amount of information is the best practice.</p>
 <p>Here’s why:</p>
 <ul class="simple">
 <li><p><strong>blunders</strong> - more predictor features result in more complicated workflows that require more professional time and have increased opportunity for mistakes in the workflow</p></li>
 <li><p><strong>difficult to visualize</strong> - higher dimensional models, i.e., larger number of predictor features, are more difficult to visualize</p></li>
-<li><p><strong>model checking</strong> - more complicated models may be more difficult to interrogate, interpret and QC</p></li>
-<li><p><strong>predictor feature redundancy</strong> - more likely to have redundant predictor features. The inclusion of highly redundant and collinear or multicollinear features increases model variance, increase model instability and decreases prediction accuracy for testing</p></li>
+<li><p><strong><a class="reference internal" href="MachineLearning_glossary_m_r.html#model-checking"><span class="std std-doc">model checking</span></a></strong> - more complicated models may be more difficult to interrogate, interpret and QC</p></li>
+<li><p><strong>predictor feature redundancy</strong> - more likely to have redundant predictor features. The inclusion of highly redundant and collinear or multicollinear features increases <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-variance"><span class="std std-doc">model variance</span></a>, increase model instability and decreases prediction accuracy for testing</p></li>
 <li><p><strong>computational time</strong> - more predictor features generally increase the computational time required to train the model and the computational storage, i.e., the model may be less compact and portable</p></li>
-<li><p><strong>model overfit</strong> - the risk of overfit increases with the more features, due to increase in model complexity</p></li>
-<li><p><strong>model extrapolation</strong> - many predictor features results in high dimensional model space with less data coverage and more likelihood for model extrapolation that may be inaccurate</p></li>
+<li><p><strong>model overfit</strong> - the risk of overfit increases with the more features, due to increase in <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-complexity"><span class="std std-doc">model complexity</span></a></p></li>
+<li><p><strong>model extrapolation</strong> - many predictor features results in high dimensional model space with less <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> coverage and more likelihood for model extrapolation that may be inaccurate</p></li>
 </ul>
-<p>The primary concern with many predictor features is the curse of dimensionality. Let’s summarize the curse!</p>
+<p>The primary concern with many predictor features is the <a class="reference internal" href="MachineLearning_glossary_a_c.html#curse-of-dimensionality"><span class="std std-doc">curse of dimensionality</span></a>. Let’s summarize the curse!</p>
 </section>
 <section id="curse-of-dimensionality">
 <h2>Curse of Dimensionality<a class="headerlink" href="#curse-of-dimensionality" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p><strong>Data and Model Visualization</strong> - we cannot visualize beyond 3D, i.e., access the model fit to data, evaluate interpolation vs. extrapolation.</p></li>
+<li><p><strong><a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">Data</span></a> and Model Visualization</strong> - we cannot visualize beyond 3D, i.e., access the model fit to data, evaluate interpolation vs. extrapolation.</p></li>
 </ol>
 <ul class="simple">
-<li><p>consider a 5D example shown as a matrix scatter plot, even in this case there is an extreme marginalization to 2D for each plot,</p></li>
+<li><p>consider a 5D example shown as a matrix <a class="reference internal" href="MachineLearning_glossary_s_z.html#scatter-plot"><span class="std std-doc">scatter plot</span></a>, even in this case there is an extreme marginalization to 2D for each plot,</p></li>
 </ul>
 <figure style="text-align: center;">
   <img src="_static\feature_ranking\matrix_scatterplot.png" style="display: block; margin: 0 auto; width: 100%;">
   <figcaption style="text-align: center;">Example 5D data as a matrix scatter plot.</figcaption>
 </figure>
 <ol class="arabic simple" start="2">
-<li><p><strong>Sampling</strong> - the number of samples sufficient to infer statistics like the joint probability, <span class="math notranslate nohighlight">\(P(x_1,\ldots,x_m)\)</span>.</p></li>
+<li><p><strong>Sampling</strong> - the number of samples sufficient to infer <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">statistics</span></a> like the <a class="reference internal" href="MachineLearning_glossary_g_l.html#joint-probability"><span class="std std-doc">joint probability</span></a>, <span class="math notranslate nohighlight">\(P(x_1,\ldots,x_m)\)</span>.</p></li>
 </ol>
 <ul class="simple">
-<li><p>recall the calculation of a histogram or normalized histogram: we establish bins and calculate frequencies or probabilities in each bin.</p></li>
-<li><p>we require a nominal number of data samples for each bin, so we require <span class="math notranslate nohighlight">\(𝑛=𝑛_{𝑠/𝑏𝑖𝑛} \cdot 𝑛_{𝑏𝑖𝑛𝑠}\)</span> samples in 1D</p></li>
+<li><p>recall the calculation of a <a class="reference internal" href="MachineLearning_glossary_g_l.html#histogram"><span class="std std-doc">histogram</span></a> or <a class="reference internal" href="MachineLearning_glossary_m_r.html#normalized-histogram"><span class="std std-doc">normalized histogram</span></a>: we establish bins and calculate frequencies or probabilities in each bin.</p></li>
+<li><p>we require a nominal number of data <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s for each bin, so we require <span class="math notranslate nohighlight">\(𝑛=𝑛_{𝑠/𝑏𝑖𝑛} \cdot 𝑛_{𝑏𝑖𝑛𝑠}\)</span> samples in 1D</p></li>
 <li><p>but in mD we required <span class="math notranslate nohighlight">\(n\)</span> samples to calculate the discretized joint probability,</p></li>
 </ul>
 <div class="math notranslate nohighlight">
@@ -557,7 +562,7 @@ document.write(`
   <figcaption style="text-align: center;">Example 2D data with 35 bins for each feature.</figcaption>
 </figure>
 <ol class="arabic simple" start="3">
-<li><p><strong>Sample Coverage</strong> - the range of the sample values cover the predictor feature space.</p></li>
+<li><p><strong>Sample Coverage</strong> - the range of the sample <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s cover the <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature-space"><span class="std std-doc">predictor feature space</span></a>.</p></li>
 </ol>
 <ul class="simple">
 <li><p>fraction of the possible solution space that is sampled, for 1 feature we assume 80% coverage</p></li>
@@ -593,7 +598,7 @@ c =  c_1^m
 \frac{\pi^{\frac{m}{2}}}{m 2^{m-1} \Gamma\left(\frac{m}{2}\right)} \to 0 \quad \text{as} \quad m \to \infty
 \]</div>
 <ul class="simple">
-<li><p>recall, <span class="math notranslate nohighlight">\(\Gamma(𝑛)=(𝑛−1)!\)</span>.</p></li>
+<li><p>note, <span class="math notranslate nohighlight">\(\Gamma(𝑛)=(𝑛−1)!\)</span>.</p></li>
 <li><p>high dimensional space is all corners and no middle and most of high dimensional space is far from the middle (all corners!).</p></li>
 <li><p>as a result distances in high dimensional space lose sensitivity, i.e., for any random points in the space the expected pairwise distances all become the same,</p></li>
 </ul>
@@ -602,7 +607,7 @@ c =  c_1^m
 \lim_{m \to \infty} \left( \mathbb{E}\left[\text{dist}_{\text{max}}(m) - \text{dist}_{\text{min}}(m)\right] \right) \to 0
 \]</div>
 <ul class="simple">
-<li><p>the limit of the expectation of the range of pairwise distances over random points in hyper-dimensional space tends to zero. If distances are almost all the same, Euclidian distance is no longer meaningful!</p></li>
+<li><p>the limit of the <a class="reference internal" href="MachineLearning_glossary_d_f.html#expectation"><span class="std std-doc">expectation</span></a> of the range of pairwise distances over random points in hyper-dimensional space tends to zero. If distances are almost all the same, Euclidian distance is no longer meaningful!</p></li>
 </ul>
 <figure style="text-align: center;">
   <img src="_static/feature_ranking/distortion_chart.png" style="display: block; margin: 0 auto; width: 60%;">
@@ -636,20 +641,20 @@ c =  c_1^m
 <li><p><strong>Multicollinearity</strong> - higher dimensional datasets are more likely to have collinearity or multicollinearity.</p></li>
 </ol>
 <ul class="simple">
-<li><p>Feature linearly described by other features resulting in high model variance.</p></li>
+<li><p>Feature linearly described by other features resulting in high <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-variance"><span class="std std-doc">model variance</span></a>.</p></li>
 </ul>
 </section>
 <section id="what-is-feature-ranking">
 <h2>What is Feature Ranking?<a class="headerlink" href="#what-is-feature-ranking" title="Permalink to this heading">#</a></h2>
-<p>Feature ranking is a set of metrics that assign relative importance or value to each predictor feature with respect to information contained for inference and importance in predicting a response feature. There are a wide variety of possible methods to accomplish this. My recommendation is a <strong>‘wide-array’</strong> approach with multiple analyses and metrics, while understanding the assumptions and limitations of each method.</p>
-<p>Here’s the general types of metrics that we consider for feature ranking.</p>
+<p>Feature ranking is a set of metrics that assign relative importance or <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a> to each <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a> with respect to information contained for <a class="reference internal" href="MachineLearning_glossary_g_l.html#inference"><span class="std std-doc">inference</span></a> and importance in predicting a <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a>. There are a wide variety of possible methods to accomplish this. My recommendation is a <strong>‘wide-array’</strong> approach with multiple analyses and metrics, while understanding the assumptions and limitations of each method.</p>
+<p>Here’s the general types of metrics that we consider for <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-ranking"><span class="std std-doc">feature ranking</span></a>.</p>
 <ol class="arabic simple">
-<li><p>Visual Inspection of Data Distributions and Scatter Plots</p></li>
+<li><p>Visual Inspection of <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">Data</span></a> Distributions and <a class="reference internal" href="MachineLearning_glossary_s_z.html#scatter-plot"><span class="std std-doc">Scatter Plot</span></a>s</p></li>
 <li><p>Statistical Summaries</p></li>
 <li><p>Model-based</p></li>
-<li><p>Recursive Feature Elimination</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_m_r.html#recursive-feature-elimination"><span class="std std-doc">Recursive Feature Elimination</span></a></p></li>
 </ol>
-<p>Also, we should not neglect expert knowledge. If additional information is known about physical processes, causation, reliability and availability of predictor features this should be integrated into assigning feature ranking.</p>
+<p>Also, we should not neglect expert knowledge. If additional information is known about physical processes, <a class="reference internal" href="MachineLearning_glossary_a_c.html#causation"><span class="std std-doc">causation</span></a>, reliability and availability of predictor <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s this should be integrated into assigning feature ranking.</p>
 </section>
 <section id="load-the-required-libraries">
 <h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
@@ -727,7 +732,7 @@ c =  c_1^m
 </section>
 <section id="design-custom-color-map">
 <h2>Design Custom Color Map<a class="headerlink" href="#design-custom-color-map" title="Permalink to this heading">#</a></h2>
-<p>Accounting for significance by masking nonsignificant values</p>
+<p>Accounting for significance by masking nonsignificant <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s</p>
 <ul class="simple">
 <li><p>for demonstration only currently, could be updated for each plot based on results confidence and uncertainty</p></li>
 </ul>
@@ -758,14 +763,14 @@ c =  c_1^m
 <p>Here’s a couple of functions to assist with calculating metrics for ranking and other plots:</p>
 <ul class="simple">
 <li><p><strong>plot_corr</strong> - plot a correlation matrix</p></li>
-<li><p><strong>partial_corr</strong> - partial correlation coefficient</p></li>
-<li><p><strong>semipar_corr</strong> - semipartial correlation coefficient</p></li>
-<li><p><strong>mutual_matrix</strong> - mutual information matrix, matrix of all pairwise mutual information</p></li>
-<li><p><strong>mutual_information_objective</strong> - my modified version of the MRMR loss function (Ixy - average(Ixx)) for feature ranking (uses all other predictor features)</p></li>
-<li><p><strong>delta_mutual_information_quotient</strong> - change in mutual information quotient by adding and removing a specific feature (uses all other predictor features for the comparison)</p></li>
-<li><p><strong>weighted_avg_and_std</strong> - average and standard deviation account for data weights</p></li>
-<li><p><strong>weighted_percentile</strong> - percentile accounting for data weights</p></li>
-<li><p><strong>histogram_bounds</strong> - add confidence intervals to histograms</p></li>
+<li><p><strong>partial_corr</strong> - <a class="reference internal" href="MachineLearning_glossary_m_r.html#partial-correlation-coefficient"><span class="std std-doc">partial correlation coefficient</span></a></p></li>
+<li><p><strong>semipar_corr</strong> - semipartial <a class="reference internal" href="MachineLearning_glossary_a_c.html#correlation-coefficient"><span class="std std-doc">correlation coefficient</span></a></p></li>
+<li><p><strong>mutual_matrix</strong> - <a class="reference internal" href="MachineLearning_glossary_m_r.html#mutual-information"><span class="std std-doc">mutual information</span></a> matrix, matrix of all pairwise mutual information</p></li>
+<li><p><strong>mutual_information_objective</strong> - my modified version of the MRMR <a class="reference internal" href="MachineLearning_glossary_g_l.html#loss-function"><span class="std std-doc">loss function</span></a> (Ixy - average(Ixx)) for <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-ranking"><span class="std std-doc">feature ranking</span></a> (uses all other <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a>s)</p></li>
+<li><p><strong>delta_mutual_information_quotient</strong> - change in mutual information quotient by adding and removing a specific <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> (uses all other predictor features for the comparison)</p></li>
+<li><p><strong>weighted_avg_and_std</strong> - <a class="reference internal" href="MachineLearning_glossary_a_c.html#average"><span class="std std-doc">average</span></a> and <a class="reference internal" href="MachineLearning_glossary_s_z.html#standard-deviation"><span class="std std-doc">standard deviation</span></a> account for data weights</p></li>
+<li><p><strong>weighted_percentile</strong> - percentile accounting for <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> <a class="reference internal" href="MachineLearning_glossary_s_z.html#weight"><span class="std std-doc">weight</span></a>s</p></li>
+<li><p><strong>histogram_bounds</strong> - add <a class="reference internal" href="MachineLearning_glossary_a_c.html#confidence-interval"><span class="std std-doc">confidence interval</span></a>s to <a class="reference internal" href="MachineLearning_glossary_g_l.html#histogram"><span class="std std-doc">histogram</span></a>s</p></li>
 <li><p><strong>add_grid</strong> - convenience function to add major and minor gridlines to improve plot interpretability</p></li>
 </ul>
 <p>Here are the functions:</p>
@@ -939,11 +944,11 @@ c =  c_1^m
 </section>
 <section id="loading-tabular-data">
 <h2>Loading Tabular Data<a class="headerlink" href="#loading-tabular-data" title="Permalink to this heading">#</a></h2>
-<p>Here’s the command to load our comma delimited data file in to a Pandas’ DataFrame object.</p>
-<p>Let’s load the provided multivariate, spatial dataset ‘unconv_MV.csv’. This dataset has variables from 1,000 unconventional wells including:</p>
+<p>Here’s the command to load our comma delimited <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> file in to a Pandas’ <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a> object.</p>
+<p>Let’s load the provided <a class="reference internal" href="MachineLearning_glossary_m_r.html#multivariate"><span class="std std-doc">multivariate</span></a>, spatial dataset ‘unconv_MV.csv’. This dataset has variables from 1,000 unconventional wells including:</p>
 <ul class="simple">
-<li><p>well average porosity</p></li>
-<li><p>log transform of permeability (to linearize the relationships with other variables)</p></li>
+<li><p>well <a class="reference internal" href="MachineLearning_glossary_a_c.html#average"><span class="std std-doc">average</span></a> porosity</p></li>
+<li><p>log transform of permeability (to linearize the relationships with other <a class="reference internal" href="MachineLearning_glossary_s_z.html#variable"><span class="std std-doc">variable</span></a>s)</p></li>
 <li><p>acoustic impedance (kg/m^3 x m/s x 10^6)</p></li>
 <li><p>brittleness ratio (%)</p></li>
 <li><p>total organic carbon (%)</p></li>
@@ -1231,13 +1236,13 @@ c =  c_1^m
 </section>
 <section id="visualize-the-dataframe">
 <h2>Visualize the DataFrame<a class="headerlink" href="#visualize-the-dataframe" title="Permalink to this heading">#</a></h2>
-<p>Visualizing the DataFrame is useful first check of the data.</p>
+<p>Visualizing the <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a> is useful first check of the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>.</p>
 <ul class="simple">
-<li><p>many things can go wrong, e.g., we loaded the wrong data, all the features did not load, etc.</p></li>
+<li><p>many things can go wrong, e.g., we loaded the wrong data, all the <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s did not load, etc.</p></li>
 </ul>
 <p>We can preview by utilizing the ‘head’ DataFrame member function (with a nice and clean format, see below).</p>
 <ul class="simple">
-<li><p>add parameter ‘n=13’ to see the first 13 rows of the dataset.</p></li>
+<li><p>add <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a> ‘n=13’ to see the first 13 rows of the dataset.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1425,9 +1430,9 @@ c =  c_1^m
 </section>
 <section id="summary-statistics-for-tabular-data">
 <h2>Summary Statistics for Tabular Data<a class="headerlink" href="#summary-statistics-for-tabular-data" title="Permalink to this heading">#</a></h2>
-<p>There are a lot of efficient methods to calculate summary statistics from tabular data in DataFrames. The describe command provides count, mean, minimum, maximum, and quartiles all in a nice data table.</p>
+<p>There are a lot of efficient methods to calculate summary <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistic"><span class="std std-doc">statistic</span></a>s from <a class="reference internal" href="MachineLearning_glossary_s_z.html#tabular-data"><span class="std std-doc">tabular data</span></a> in <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a>s. The describe command provides count, <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a>, minimum, maximum, and quartiles all in a nice <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> table.</p>
 <ul class="simple">
-<li><p>We use transpose just to flip the table so that features are on the rows and the statistics are on the columns.</p></li>
+<li><p>We use transpose just to flip the table so that <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s are on the rows and the <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">statistics</span></a> are on the columns.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1561,11 +1566,11 @@ c =  c_1^m
 </section>
 <section id="coverage">
 <h2>Coverage<a class="headerlink" href="#coverage" title="Permalink to this heading">#</a></h2>
-<p>Let’s start with the concept of feature coverage.</p>
+<p>Let’s start with the concept of <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> coverage.</p>
 <ul class="simple">
-<li><p>If a feature is available over a small proportion of the samples then we may not want to include it as it will result in issues with feature imputation, estimation of missing data.</p></li>
-<li><p>By removing a couple features with poor coverage we may improve our model because there are limitations with feature imputation, feature imputation can actually impose bias in statistics and additional error in our prediction models</p></li>
-<li><p>if likewise deletion is applied to deal with missing values, features with low coverage result in a lot of removed data!</p></li>
+<li><p>If a feature is available over a small proportion of the <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s then we may not want to include it as it will result in issues with <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-imputation"><span class="std std-doc">feature imputation</span></a>, <a class="reference internal" href="MachineLearning_glossary_d_f.html#estimation"><span class="std std-doc">estimation</span></a> of missing data.</p></li>
+<li><p>By removing a couple features with poor coverage we may improve our model because there are limitations with feature imputation, feature imputation can actually impose <a class="reference internal" href="MachineLearning_glossary_a_c.html#bias"><span class="std std-doc">bias</span></a> in <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">statistics</span></a> and additional error in our <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a> models</p></li>
+<li><p>if likewise deletion is applied to deal with missing <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s, features with low coverage result in a lot of removed <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>!</p></li>
 </ul>
 <p>Let’s start with a bar chart with the proportion of missing records:</p>
 <div class="cell docutils container">
@@ -1636,13 +1641,13 @@ c =  c_1^m
 </section>
 <section id="summary-statistics">
 <h2>Summary Statistics<a class="headerlink" href="#summary-statistics" title="Permalink to this heading">#</a></h2>
-<p>In any multivariate work we should start with the univariate analysis, summary statistics of one variable at a time. The summary statistic ranking method is qualitative, we are asking:</p>
+<p>In any <a class="reference internal" href="MachineLearning_glossary_m_r.html#multivariate"><span class="std std-doc">multivariate</span></a> work we should start with the <a class="reference internal" href="MachineLearning_glossary_s_z.html#univariate"><span class="std std-doc">univariate</span></a> analysis, summary <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">statistics</span></a> of one <a class="reference internal" href="MachineLearning_glossary_s_z.html#variable"><span class="std std-doc">variable</span></a> at a time. The summary statistic ranking method is qualitative, we are asking:</p>
 <ul class="simple">
-<li><p>Are there data issues?</p></li>
-<li><p>Do we trust the features? Do we trust the features all equally?</p></li>
+<li><p>Are there <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> issues?</p></li>
+<li><p>Do we trust the <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s? Do we trust the features all equally?</p></li>
 <li><p>Are there issues that need to be taken care of before we develop any multivariate workflows?</p></li>
 </ul>
-<p>There are a lot of efficient methods to calculate summary statistics from tabular data in DataFrames. The describe command provides count, mean, minimum, maximum, and quartiles all in a compact data table. We use transpose() command to flip the table so that features are on the rows and the statistics are on the columns.</p>
+<p>There are a lot of efficient methods to calculate summary <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistic"><span class="std std-doc">statistic</span></a>s from <a class="reference internal" href="MachineLearning_glossary_s_z.html#tabular-data"><span class="std std-doc">tabular data</span></a> in <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a>s. The describe command provides count, <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a>, minimum, maximum, and quartiles all in a compact data table. We use transpose() command to flip the table so that features are on the rows and the statistics are on the columns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>                                     <span class="c1"># DataFrame summary statistics</span>
@@ -1781,7 +1786,7 @@ c =  c_1^m
 </section>
 <section id="univariate-distributions">
 <h2>Univariate Distributions<a class="headerlink" href="#univariate-distributions" title="Permalink to this heading">#</a></h2>
-<p>As with summary statistics, this ranking method is a qualitative check for issues with the data and to assess our confidence with each feature. It is better to not include a feature with low confidence of quality as it may be misleading (while adding to model complexity as discussed previously).</p>
+<p>As with summary <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">statistics</span></a>, this ranking method is a qualitative check for issues with the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> and to assess our confidence with each <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>. It is better to not include a feature with low confidence of quality as it may be misleading (while adding to <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-complexity"><span class="std std-doc">model complexity</span></a> as discussed previously).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nbins</span> <span class="o">=</span> <span class="mi">20</span>                                                    <span class="c1"># number of histogram bins</span>
@@ -1812,10 +1817,10 @@ c =  c_1^m
 </section>
 <section id="bivariate-distributions">
 <h2>Bivariate Distributions<a class="headerlink" href="#bivariate-distributions" title="Permalink to this heading">#</a></h2>
-<p>Matrix scatter plots are a very efficient method to observe the bivariate relationships between the variables.</p>
+<p><a class="reference internal" href="MachineLearning_glossary_m_r.html#matrix-scatter-plots"><span class="std std-doc">Matrix scatter plots</span></a> are a very efficient method to observe the <a class="reference internal" href="MachineLearning_glossary_a_c.html#bivariate"><span class="std std-doc">bivariate</span></a> relationships between the <a class="reference internal" href="MachineLearning_glossary_s_z.html#variable"><span class="std std-doc">variable</span></a>s.</p>
 <ul class="simple">
-<li><p>this is another opportunity through data visualization to identify data issues</p></li>
-<li><p>we can assess if we have collinearity, specifically simpler form between two features at a time.</p></li>
+<li><p>this is another opportunity through <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> visualization to identify data issues</p></li>
+<li><p>we can assess if we have collinearity, specifically simpler form between two <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s at a time.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1843,17 +1848,17 @@ c =  c_1^m
 </section>
 <section id="pairwise-covariance">
 <h2>Pairwise Covariance<a class="headerlink" href="#pairwise-covariance" title="Permalink to this heading">#</a></h2>
-<p>Pairwise covariance provides a measure of the strength of the linear relationship between each predictor feature and the response feature. At this point, we specify that the goal of this study is to predict production, our response variable, from the other available predictor features. We are thinking predictively now, not inferentially, we want to estimate the function, <span class="math notranslate nohighlight">\(\hat{f}\)</span>, to accomplish this:</p>
+<p>Pairwise covariance provides a measure of the strength of the linear relationship between each <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a> and the response feature. At this point, we specify that the goal of this study is to predict production, our response <a class="reference internal" href="MachineLearning_glossary_s_z.html#variable"><span class="std std-doc">variable</span></a>, from the other available predictor features. We are thinking predictively now, not inferentially, we want to estimate the function, <span class="math notranslate nohighlight">\(\hat{f}\)</span>, to accomplish this:</p>
 <div class="math notranslate nohighlight">
 \[
 Y = \hat{f}(X_1,\ldots,X_n) 
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(Y\)</span> is our response feature and <span class="math notranslate nohighlight">\(X_1,\ldots,X_n\)</span> are our predictor features. If we retained all of our predictor features to predict the response we would have:</p>
+<p>where <span class="math notranslate nohighlight">\(Y\)</span> is our <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a> and <span class="math notranslate nohighlight">\(X_1,\ldots,X_n\)</span> are our predictor <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s. If we retained all of our predictor features to predict the response we would have:</p>
 <div class="math notranslate nohighlight">
 \[
 Prod = \hat{f}(Por,Perm,AI,Brittle,TOC,VR) 
 \]</div>
-<p>Now back to the covariance, the covariance is defined as:</p>
+<p>Now back to the <a class="reference internal" href="MachineLearning_glossary_a_c.html#covariance"><span class="std std-doc">covariance</span></a>, the covariance is defined as:</p>
 <div class="math notranslate nohighlight">
 \[
 C_{xy}  = \frac{\sum_{i=1}^{n} (x_i - \overline{x})(y_i - \overline{y})}{(n-1)}
@@ -1861,13 +1866,13 @@ C_{xy}  = \frac{\sum_{i=1}^{n} (x_i - \overline{x})(y_i - \overline{y})}{(n-1)}
 <p>Covariance:</p>
 <ul class="simple">
 <li><p>measures the linear relationship</p></li>
-<li><p>sensitive to the dispersion / variance of both the predictor and response</p></li>
+<li><p>sensitive to the dispersion / <a class="reference internal" href="MachineLearning_glossary_s_z.html#variance"><span class="std std-doc">variance</span></a> of both the predictor and response</p></li>
 </ul>
 <p>We can use the follow command to build a covariance matrix:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span>                                    <span class="c1"># covariance matrix sliced predictors vs. response</span>
 </pre></div>
 </div>
-<p>the output is a new Pandas DataFrame, so we can slice the last column to get a Pandas series (ndarray with names) with the covariances between all predictors features and the response.</p>
+<p>the output is a new Pandas <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a>, so we can slice the last column to get a Pandas series (<a class="reference internal" href="MachineLearning_glossary_m_r.html#ndarray"><span class="std std-doc">ndarray</span></a> with names) with the covariances between all predictors features and the response.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">covariance</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_indexer</span><span class="p">(</span><span class="n">features</span><span class="p">)]</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">features</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,:</span><span class="nb">len</span><span class="p">(</span><span class="n">features</span><span class="p">)]</span> <span class="c1"># calculate covariance matrix and slice for only pred - resp</span>
@@ -1901,7 +1906,7 @@ C_{xy}  = \frac{\sum_{i=1}^{n} (x_i - \overline{x})(y_i - \overline{y})}{(n-1)}
 </section>
 <section id="pairwise-correlation-coefficient">
 <h2>Pairwise Correlation Coefficient<a class="headerlink" href="#pairwise-correlation-coefficient" title="Permalink to this heading">#</a></h2>
-<p>Pairwise correlation coefficient provides a measure of the strength of the linear relationship between each predictor feature and the response feature.</p>
+<p>Pairwise <a class="reference internal" href="MachineLearning_glossary_a_c.html#correlation-coefficient"><span class="std std-doc">correlation coefficient</span></a> provides a measure of the strength of the linear relationship between each <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a> and the response feature.</p>
 <div class="math notranslate nohighlight">
 \[
 \rho_{xy}  = \frac{\sum_{i=1}^{n} (x_i - \overline{x})(y_i - \overline{y})}{(n-1)\sigma_x \sigma_y}, \, -1.0 \le \rho_{xy} \le 1.0
@@ -1909,13 +1914,13 @@ C_{xy}  = \frac{\sum_{i=1}^{n} (x_i - \overline{x})(y_i - \overline{y})}{(n-1)}
 <p>The correlation coefficient:</p>
 <ul class="simple">
 <li><p>measures the linear relationship</p></li>
-<li><p>removes the sensitivity to the dispersion / variance of both the predictor and response features, by normalizing by the product of the standard deviation of each feature</p></li>
+<li><p>removes the sensitivity to the dispersion / <a class="reference internal" href="MachineLearning_glossary_s_z.html#variance"><span class="std std-doc">variance</span></a> of both the predictor and <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a>s, by normalizing by the product of the <a class="reference internal" href="MachineLearning_glossary_s_z.html#standard-deviation"><span class="std std-doc">standard deviation</span></a> of each feature</p></li>
 </ul>
 <p>We can use the follow command to build a correlation matrix:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>the output is a new Pandas DataFrame, so we can slice the last column to get a Pandas series (ndarray with names) with the correlations between all predictors features and the response.</p>
+<p>the output is a new Pandas <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a>, so we can slice the last column to get a Pandas series (<a class="reference internal" href="MachineLearning_glossary_m_r.html#ndarray"><span class="std std-doc">ndarray</span></a> with names) with the correlations between all predictors <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s and the response.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">correlation</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_indexer</span><span class="p">(</span><span class="n">features</span><span class="p">)]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">features</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,:</span><span class="nb">len</span><span class="p">(</span><span class="n">features</span><span class="p">)]</span> <span class="c1"># calculate covariance matrix and slice for only pred - resp</span>
@@ -1951,7 +1956,7 @@ C_{xy}  = \frac{\sum_{i=1}^{n} (x_i - \overline{x})(y_i - \overline{y})}{(n-1)}
 </section>
 <section id="pairwise-spearman-rank-correlation-coefficient">
 <h2>Pairwise Spearman Rank Correlation Coefficient<a class="headerlink" href="#pairwise-spearman-rank-correlation-coefficient" title="Permalink to this heading">#</a></h2>
-<p>The rank correlation coefficient applies the rank transform to the data prior to calculating the correlation coefficient. To calculate the rank transform simply replace the data values with the rank <span class="math notranslate nohighlight">\(R_x = 1,\dots,n\)</span>, where <span class="math notranslate nohighlight">\(n\)</span> is the maximum value and <span class="math notranslate nohighlight">\(1\)</span> is the minimum value.</p>
+<p>The rank <a class="reference internal" href="MachineLearning_glossary_a_c.html#correlation-coefficient"><span class="std std-doc">correlation coefficient</span></a> applies the rank transform to the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> <a class="reference internal" href="MachineLearning_glossary_m_r.html#prior"><span class="std std-doc">prior</span></a> to calculating the correlation coefficient. To calculate the rank transform simply replace the data values with the rank <span class="math notranslate nohighlight">\(R_x = 1,\dots,n\)</span>, where <span class="math notranslate nohighlight">\(n\)</span> is the maximum value and <span class="math notranslate nohighlight">\(1\)</span> is the minimum value.</p>
 <div class="math notranslate nohighlight">
 \[
 \rho_{R_x R_y}  = \frac{\sum_{i=1}^{n} (R_{x_i} - \overline{R_x})(R_{y_i} - \overline{R_y})}{(n-1)\sigma_{R_x} \sigma_{R_y}}, \, -1.0 \le \rho_{xy} \le 1.0
@@ -1967,15 +1972,15 @@ R_{x_i} = i
 <p>The rank correlation:</p>
 <ul class="simple">
 <li><p>measures the monotonic relationship, relaxes the linear assumption</p></li>
-<li><p>removes the sensitivity to the dispersion / variance of both the predictor and response, by normalizing by the product of the standard deviation of each.</p></li>
+<li><p>removes the sensitivity to the dispersion / <a class="reference internal" href="MachineLearning_glossary_s_z.html#variance"><span class="std std-doc">variance</span></a> of both the predictor and response, by normalizing by the product of the <a class="reference internal" href="MachineLearning_glossary_s_z.html#standard-deviation"><span class="std std-doc">standard deviation</span></a> of each.</p></li>
 </ul>
-<p>We can use the follow command to build a rank correlation matrix and calculate the p-value:</p>
+<p>We can use the follow command to build a rank correlation matrix and calculate the p-<a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stats</span><span class="o">.</span><span class="n">spearmanr</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>the output is a new Pandas DataFrame, so we can slice the last column to get a Pandas series (ndarray with names) with
-the correlations between all predictors features and the response.</p>
-<p>Also, we get a very convenient <em>pval</em> 2D ndarray with the two-sided (two-tail summing symmetric over both tails) p-value for a hypothesis test with:</p>
+<p>the output is a new Pandas <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a>, so we can slice the last column to get a Pandas series (ndarray with names) with
+the correlations between all predictors <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s and the response.</p>
+<p>Also, we get a very convenient <em>pval</em> 2D <a class="reference internal" href="MachineLearning_glossary_m_r.html#ndarray"><span class="std std-doc">ndarray</span></a> with the two-sided (two-tail summing symmetric over both tails) p-value for a hypothesis test with:</p>
 <div class="math notranslate nohighlight">
 \[
 H_o: \rho_{R_x R_y} = 0
@@ -1984,7 +1989,7 @@ H_o: \rho_{R_x R_y} = 0
 \[
 H_1: \rho_{R_x R_y} \ne 0
 \]</div>
-<p>Let’s keep the p-values between all the predictor features and our response feature.</p>
+<p>Let’s keep the p-values between all the <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a>s and our <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rank_correlation</span><span class="p">,</span> <span class="n">rank_correlation_pval</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">spearmanr</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_indexer</span><span class="p">(</span><span class="n">features</span><span class="p">)])</span> <span class="c1"># calculate the rank correlation coefficient</span>
@@ -2050,25 +2055,25 @@ H_1: \rho_{R_x R_y} \ne 0
 </section>
 <section id="partial-correlation-coefficient">
 <h2>Partial Correlation Coefficient<a class="headerlink" href="#partial-correlation-coefficient" title="Permalink to this heading">#</a></h2>
-<p>This is a linear correlation coefficient that controls for the effects all the remaining variables, <span class="math notranslate nohighlight">\(\rho_{XY.Z}\)</span> and <span class="math notranslate nohighlight">\(\rho_{YX.Z}\)</span> is the partial correlation between <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>, <span class="math notranslate nohighlight">\(Y\)</span> and <span class="math notranslate nohighlight">\(X\)</span>, after controlling for <span class="math notranslate nohighlight">\(Z\)</span>.</p>
-<p>To calculate the partial correlation coefficient between <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> given <span class="math notranslate nohighlight">\(Z_i, \forall \quad i = 1,\ldots, m-1\)</span> remaining features we use the following steps:</p>
+<p>This is a linear <a class="reference internal" href="MachineLearning_glossary_a_c.html#correlation-coefficient"><span class="std std-doc">correlation coefficient</span></a> that controls for the effects all the remaining variables, <span class="math notranslate nohighlight">\(\rho_{XY.Z}\)</span> and <span class="math notranslate nohighlight">\(\rho_{YX.Z}\)</span> is the partial correlation between <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>, <span class="math notranslate nohighlight">\(Y\)</span> and <span class="math notranslate nohighlight">\(X\)</span>, after controlling for <span class="math notranslate nohighlight">\(Z\)</span>.</p>
+<p>To calculate the <a class="reference internal" href="MachineLearning_glossary_m_r.html#partial-correlation-coefficient"><span class="std std-doc">partial correlation coefficient</span></a> between <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> given <span class="math notranslate nohighlight">\(Z_i, \forall \quad i = 1,\ldots, m-1\)</span> remaining features we use the following steps:</p>
 <ol class="arabic simple">
-<li><p>perform linear, least-squares regression to predict <span class="math notranslate nohighlight">\(X\)</span> from <span class="math notranslate nohighlight">\(Z_i, \forall \quad i = 1,\ldots, m-1\)</span>. <span class="math notranslate nohighlight">\(X\)</span> is regressed on the predictors to calculate the estimate, <span class="math notranslate nohighlight">\(X^*\)</span></p></li>
-<li><p>calculate the residuals in Step #1, <span class="math notranslate nohighlight">\(X-X^*\)</span>, where <span class="math notranslate nohighlight">\(X^* = f(Z_{1,\ldots,m-1})\)</span>, linear regression model</p></li>
+<li><p>perform linear, least-squares <a class="reference internal" href="MachineLearning_glossary_m_r.html#regression"><span class="std std-doc">regression</span></a> to predict <span class="math notranslate nohighlight">\(X\)</span> from <span class="math notranslate nohighlight">\(Z_i, \forall \quad i = 1,\ldots, m-1\)</span>. <span class="math notranslate nohighlight">\(X\)</span> is regressed on the predictors to calculate the estimate, <span class="math notranslate nohighlight">\(X^*\)</span></p></li>
+<li><p>calculate the residuals in Step #1, <span class="math notranslate nohighlight">\(X-X^*\)</span>, where <span class="math notranslate nohighlight">\(X^* = f(Z_{1,\ldots,m-1})\)</span>, <a class="reference internal" href="MachineLearning_glossary_g_l.html#linear-regression"><span class="std std-doc">linear regression</span></a> model</p></li>
 <li><p>perform linear, least-squares regression to predict <span class="math notranslate nohighlight">\(Y\)</span> from <span class="math notranslate nohighlight">\(Z_i, \forall \quad i = 1,\ldots, m-1\)</span>. <span class="math notranslate nohighlight">\(Y\)</span> is regressed on the predictors to calculate the estimate, <span class="math notranslate nohighlight">\(Y^*\)</span></p></li>
 <li><p>calculate the residuals in Step #3, <span class="math notranslate nohighlight">\(Y-Y^*\)</span>, where <span class="math notranslate nohighlight">\(Y^* = f(Z_{1,\ldots,m-1})\)</span>, linear regression model</p></li>
 <li><p>calculate the correlation coefficient between the residuals from Steps #2 and #4, <span class="math notranslate nohighlight">\(\rho_{X-X^*,Y-Y^*}\)</span></p></li>
 </ol>
-<p>The partial correlation, provides a measure of the linear relationship between <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> while controlling for the effect of <span class="math notranslate nohighlight">\(Z\)</span> other features on both, <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>.  We use the function declared previously taken from Fabian Pedregosa-Izquierdo, <a class="reference external" href="mailto:f&#37;&#52;&#48;bianp&#46;net">f<span>&#64;</span>bianp<span>&#46;</span>net</a>. The original code is on GitHub at <a class="reference external" href="https://git.io/fhyHB">https://git.io/fhyHB</a>.</p>
+<p>The partial correlation, provides a measure of the linear relationship between <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> while controlling for the effect of <span class="math notranslate nohighlight">\(Z\)</span> other <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s on both, <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>.  We use the function declared previously taken from Fabian Pedregosa-Izquierdo, <a class="reference external" href="mailto:f&#37;&#52;&#48;bianp&#46;net">f<span>&#64;</span>bianp<span>&#46;</span>net</a>. The original code is on GitHub at <a class="reference external" href="https://git.io/fhyHB">https://git.io/fhyHB</a>.</p>
 <p>To use this method we must assume:</p>
 <ol class="arabic simple">
-<li><p>two variables to compare, <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span></p></li>
+<li><p>two <a class="reference internal" href="MachineLearning_glossary_s_z.html#variable"><span class="std std-doc">variable</span></a>s to compare, <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span></p></li>
 <li><p>other variables to control, <span class="math notranslate nohighlight">\(Z_{1,\ldots,m-2}\)</span></p></li>
 <li><p>linear relationships between all variables</p></li>
-<li><p>no significant outliers</p></li>
-<li><p>approximately bivariate normality between the variables</p></li>
+<li><p>no significant <a class="reference internal" href="MachineLearning_glossary_m_r.html#outlier"><span class="std std-doc">outlier</span></a>s</p></li>
+<li><p>approximately <a class="reference internal" href="MachineLearning_glossary_a_c.html#bivariate"><span class="std std-doc">bivariate</span></a> normality between the variables</p></li>
 </ol>
-<p>We are in pretty good shape, but we have some departures from bivariate normality. We could consider Gaussian univariate transforms to improve this. This option is provided later.</p>
+<p>We are in pretty good shape, but we have some departures from bivariate normality. We could consider Gaussian <a class="reference internal" href="MachineLearning_glossary_s_z.html#univariate"><span class="std std-doc">univariate</span></a> transforms to improve this. This option is provided later.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">partial_correlation</span> <span class="o">=</span> <span class="n">partial_corr</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_indexer</span><span class="p">(</span><span class="n">features</span><span class="p">)])</span> <span class="c1"># calculate the partial correlation coefficients</span>
@@ -2100,12 +2105,12 @@ H_1: \rho_{R_x R_y} \ne 0
 </section>
 <section id="semipartial-correlation-coefficient">
 <h2>Semipartial Correlation Coefficient<a class="headerlink" href="#semipartial-correlation-coefficient" title="Permalink to this heading">#</a></h2>
-<p>This is a linear correlation coefficient that controls for the effects all the remaining features, <span class="math notranslate nohighlight">\(Z\)</span> on <span class="math notranslate nohighlight">\(X\)</span>, and then calculates the correlation between the residual <span class="math notranslate nohighlight">\(X^*-X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>.  Note: we do not control for influence of <span class="math notranslate nohighlight">\(Z\)</span> features on the response feature, <span class="math notranslate nohighlight">\(Y\)</span>.</p>
-<p>To calculate the semipartial correlation coefficient between <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> given <span class="math notranslate nohighlight">\(Z_i, \forall \quad i = 1,\ldots, m-1\)</span> remaining features we use the following steps:</p>
+<p>This is a linear <a class="reference internal" href="MachineLearning_glossary_a_c.html#correlation-coefficient"><span class="std std-doc">correlation coefficient</span></a> that controls for the effects all the remaining features, <span class="math notranslate nohighlight">\(Z\)</span> on <span class="math notranslate nohighlight">\(X\)</span>, and then calculates the correlation between the residual <span class="math notranslate nohighlight">\(X^*-X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>.  Note: we do not control for influence of <span class="math notranslate nohighlight">\(Z\)</span> features on the response feature, <span class="math notranslate nohighlight">\(Y\)</span>.</p>
+<p>To calculate the semipartial correlation coefficient between <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> given <span class="math notranslate nohighlight">\(Z_i, \forall \quad i = 1,\ldots, m-1\)</span> remaining <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s we use the following steps:</p>
 <ol class="arabic simple">
-<li><p>perform linear, least-squares regression to predict <span class="math notranslate nohighlight">\(X\)</span> from <span class="math notranslate nohighlight">\(Z_i, \forall \quad i = 1,\ldots, m-1\)</span>. <span class="math notranslate nohighlight">\(X\)</span> is regressed on the remaining predictor features to calculate the estimate, <span class="math notranslate nohighlight">\(X^*\)</span></p></li>
-<li><p>calculate the residuals in Step #1, <span class="math notranslate nohighlight">\(X-X^*\)</span>, where <span class="math notranslate nohighlight">\(X^* = f(Z_{1,\ldots,m-1})\)</span>, linear regression model</p></li>
-<li><p>calculate the correlation coefficient between the residuals from Steps #2 and <span class="math notranslate nohighlight">\(Y\)</span> response feature, <span class="math notranslate nohighlight">\(\rho_{X-X^*,Y}\)</span></p></li>
+<li><p>perform linear, least-squares <a class="reference internal" href="MachineLearning_glossary_m_r.html#regression"><span class="std std-doc">regression</span></a> to predict <span class="math notranslate nohighlight">\(X\)</span> from <span class="math notranslate nohighlight">\(Z_i, \forall \quad i = 1,\ldots, m-1\)</span>. <span class="math notranslate nohighlight">\(X\)</span> is regressed on the remaining <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a>s to calculate the estimate, <span class="math notranslate nohighlight">\(X^*\)</span></p></li>
+<li><p>calculate the residuals in Step #1, <span class="math notranslate nohighlight">\(X-X^*\)</span>, where <span class="math notranslate nohighlight">\(X^* = f(Z_{1,\ldots,m-1})\)</span>, <a class="reference internal" href="MachineLearning_glossary_g_l.html#linear-regression"><span class="std std-doc">linear regression</span></a> model</p></li>
+<li><p>calculate the correlation coefficient between the residuals from Steps #2 and <span class="math notranslate nohighlight">\(Y\)</span> <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a>, <span class="math notranslate nohighlight">\(\rho_{X-X^*,Y}\)</span></p></li>
 </ol>
 <p>The semipartial correlation coefficient, provides a measure of the linear relationship between <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> while controlling for the effect of <span class="math notranslate nohighlight">\(Z\)</span> other predictor features on the predictor feature, <span class="math notranslate nohighlight">\(X\)</span>, to get the unique contribution of <span class="math notranslate nohighlight">\(X\)</span> with respect to <span class="math notranslate nohighlight">\(Y\)</span>. We use a modified version of the partial correlation function that we declared previously. The original code is on GitHub at <a class="reference external" href="https://git.io/fhyHB">https://git.io/fhyHB</a>.</p>
 <div class="cell docutils container">
@@ -2164,14 +2169,14 @@ H_1: \rho_{R_x R_y} \ne 0
 </section>
 <section id="feature-ranking-with-feature-transformations">
 <h2>Feature Ranking with Feature Transformations<a class="headerlink" href="#feature-ranking-with-feature-transformations" title="Permalink to this heading">#</a></h2>
-<p>There are many reasons to perform feature transformations (see the associated chapter) and as mentioned above for partial and semipartial correlation a distribution transformation may assist with compliance to metric assumptions.</p>
+<p>There are many reasons to perform <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-transformation"><span class="std std-doc">feature transformation</span></a>s (see the associated chapter) and as mentioned above for partial and semipartial correlation a <a class="reference internal" href="MachineLearning_glossary_d_f.html#distribution-transformation"><span class="std std-doc">distribution transformation</span></a> may assist with compliance to metric assumptions.</p>
 <ul class="simple">
-<li><p>As an exercise and check, let’s standardize all the features and repeat the previously calculated quantitative methods. We know this will have an impact on covariance, what about the other metrics?</p></li>
+<li><p>As an exercise and check, let’s standardize all the features and repeat the previously calculated quantitative methods. We know this will have an impact on <a class="reference internal" href="MachineLearning_glossary_a_c.html#covariance"><span class="std std-doc">covariance</span></a>, what about the other metrics?</p></li>
 </ul>
-<p>There is a bunch of code to get this done, but it isn’t too complicated. First, lets make a new DataFrame with all variables standardized. Then we can make a minor edit (change the DataFrame name) and reuse the code from above. You can choose between:</p>
+<p>There is a bunch of code to get this done, but it isn’t too complicated. First, lets make a new <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a> with all <a class="reference internal" href="MachineLearning_glossary_s_z.html#variable"><span class="std std-doc">variable</span></a>s standardized. Then we can make a minor edit (change the DataFrame name) and reuse the code from above. You can choose between:</p>
 <ol class="arabic simple">
-<li><p>Standardization - affine correction to scale the distributions to have <span class="math notranslate nohighlight">\(\overline{x} = 0\)</span> and <span class="math notranslate nohighlight">\(\sigma_x = 1.0\)</span>.</p></li>
-<li><p>Normal Score Transform - distribution transform of each feature to standard normal, Gaussian shape with <span class="math notranslate nohighlight">\(\overline{x} = 0\)</span> and <span class="math notranslate nohighlight">\(\sigma_x = 1.0\)</span>.</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_s_z.html#standardization"><span class="std std-doc">Standardization</span></a> - <a class="reference internal" href="MachineLearning_glossary_a_c.html#affine-correction"><span class="std std-doc">affine correction</span></a> to scale the distributions to have <span class="math notranslate nohighlight">\(\overline{x} = 0\)</span> and <span class="math notranslate nohighlight">\(\sigma_x = 1.0\)</span>.</p></li>
+<li><p>Normal Score Transform - distribution transform of each <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> to standard normal, Gaussian shape with <span class="math notranslate nohighlight">\(\overline{x} = 0\)</span> and <span class="math notranslate nohighlight">\(\sigma_x = 1.0\)</span>.</p></li>
 </ol>
 <p>Use this block to perform affine correction of the features:</p>
 <div class="cell docutils container">
@@ -2493,14 +2498,14 @@ H_1: \rho_{R_x R_y} \ne 0
 </section>
 <section id="conditional-statistics">
 <h2>Conditional Statistics<a class="headerlink" href="#conditional-statistics" title="Permalink to this heading">#</a></h2>
-<p>We will separate the wells into low, mid and high production and access the difference in the conditional statistics.</p>
+<p>We will separate the wells into low, mid and high production and access the difference in the conditional <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">statistics</span></a>.</p>
 <ul class="simple">
-<li><p>This will provide a more flexible method to compare the relationship between each feature and production</p></li>
-<li><p>If the conditional statistics change significantly then that feature is informative</p></li>
+<li><p>This will provide a more flexible method to compare the relationship between each <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> and production</p></li>
+<li><p>If the conditional <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistic"><span class="std std-doc">statistic</span></a>s change significantly then that feature is informative</p></li>
 </ul>
 <p>We are going to make a single violin plot over all of our features</p>
 <ul class="simple">
-<li><p>We need a categorical feature for production, so we truncate production to High or Low with this code,</p></li>
+<li><p>We need a <a class="reference internal" href="MachineLearning_glossary_a_c.html#categorical-feature"><span class="std std-doc">categorical feature</span></a> for production, so we truncate production to High or Low with this code,</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;tProd&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Prod&#39;</span><span class="p">]</span><span class="o">&gt;=</span><span class="mi">4000</span><span class="p">,</span> <span class="s1">&#39;High&#39;</span><span class="p">,</span> <span class="s1">&#39;Low&#39;</span><span class="p">)</span> 
 </pre></div>
@@ -2513,30 +2518,30 @@ H_1: \rho_{R_x R_y} \ne 0
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>This code extracted the features into a new DataFrame ‘x’, then applied the standardization operation on each column (feature)</p></li>
+<li><p>This code extracted the features into a new DataFrame ‘x’, then applied the <a class="reference internal" href="MachineLearning_glossary_s_z.html#standardization"><span class="std std-doc">standardization</span></a> operation on each column (feature)</p></li>
 <li><p>Then we add the truncated production feature into the standardized features</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;tProd&#39;</span><span class="p">],</span><span class="n">x_stand</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">]],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>We can then apply the melt command to unpivot the DataFrame</p></li>
+<li><p>We can then apply the melt command to unpivot the <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a></p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">id_vars</span><span class="o">=</span><span class="s2">&quot;tProd&quot;</span><span class="p">,</span><span class="n">var_name</span><span class="o">=</span><span class="s2">&quot;Predictors&quot;</span><span class="p">,</span><span class="n">value_name</span><span class="o">=</span><span class="s1">&#39;Standardized_Value&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>We now have a long DataFrame (6 features x 200 samples = 12000 rows) with:</p>
+<li><p>We now have a long DataFrame (6 features x 200 <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s = 12000 rows) with:</p>
 <ul>
 <li><p>production: Low or High</p></li>
 <li><p>features: Por, Perm, AI, Brittle, TOC or VR</p></li>
-<li><p>standardized feature value</p></li>
+<li><p>standardized feature <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a></p></li>
 </ul>
 </li>
 </ul>
 <p>We can then build our violin plot</p>
 <ul class="simple">
-<li><p>x is our predictor features</p></li>
+<li><p>x is our <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a>s</p></li>
 <li><p>y is the standardized values for the predictor features (all now in one column)</p></li>
 <li><p>hue is the production level High or Low</p></li>
 <li><p>split is True so the violins are split in half</p></li>
@@ -2592,14 +2597,14 @@ H_1: \rho_{R_x R_y} \ne 0
 </section>
 <section id="variance-inflation-factor">
 <h2>Variance Inflation Factor<a class="headerlink" href="#variance-inflation-factor" title="Permalink to this heading">#</a></h2>
-<p>A measure of linear multicollinearity between a predictor feature (<span class="math notranslate nohighlight">\(X_i\)</span>) a nd all other predictor features (<span class="math notranslate nohighlight">\(X_j, \forall j \ne i\)</span>).</p>
-<p>First we calculate a linear regression for a predictor feature given all the other predictor features.</p>
+<p>A measure of linear multicollinearity between a <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a> (<span class="math notranslate nohighlight">\(X_i\)</span>) a nd all other predictor <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s (<span class="math notranslate nohighlight">\(X_j, \forall j \ne i\)</span>).</p>
+<p>First we calculate a <a class="reference internal" href="MachineLearning_glossary_g_l.html#linear-regression"><span class="std std-doc">linear regression</span></a> for a predictor feature given all the other predictor features.</p>
 <div class="math notranslate nohighlight">
 \[
 X_i = \sum_{j, j \ne i}^m X_j + \epsilon
 \]</div>
-<p>From this model we determine the coefficient of determination, <span class="math notranslate nohighlight">\(R^2\)</span>, known as variance explained.</p>
-<p>Then we calculate the Variance Inflation Factor as:</p>
+<p>From this model we determine the coefficient of determination, <span class="math notranslate nohighlight">\(R^2\)</span>, known as <a class="reference internal" href="MachineLearning_glossary_s_z.html#variance"><span class="std std-doc">variance</span></a> explained.</p>
+<p>Then we calculate the <a class="reference internal" href="MachineLearning_glossary_s_z.html#variance-inflation-factor"><span class="std std-doc">Variance Inflation Factor</span></a> as:</p>
 <div class="math notranslate nohighlight">
 \[
 VIF = \frac{1}{1 - R^2}
@@ -2644,12 +2649,12 @@ VIF = \frac{1}{1 - R^2}
 </section>
 <section id="b-coefficients">
 <h2>B Coefficients<a class="headerlink" href="#b-coefficients" title="Permalink to this heading">#</a></h2>
-<p>We could also consider <span class="math notranslate nohighlight">\(B\)</span> coefficients.  These are the linear regression coefficients without standardization of the variables. Let’s use the linear regression method that is available in the SciPy package.</p>
+<p>We could also consider <span class="math notranslate nohighlight">\(B\)</span> coefficients.  These are the <a class="reference internal" href="MachineLearning_glossary_g_l.html#linear-regression"><span class="std std-doc">linear regression</span></a> coefficients without <a class="reference internal" href="MachineLearning_glossary_s_z.html#standardization"><span class="std std-doc">standardization</span></a> of the <a class="reference internal" href="MachineLearning_glossary_s_z.html#variable"><span class="std std-doc">variable</span></a>s. Let’s use the linear <a class="reference internal" href="MachineLearning_glossary_m_r.html#regression"><span class="std std-doc">regression</span></a> method that is available in the SciPy package.</p>
 <p>The estimator for <span class="math notranslate nohighlight">\(Y\)</span> is simply the linear equation:</p>
 <p>\begin{equation}
 Y^* = \sum_{i=1}^{m} b_i X_i + c
 \end{equation}</p>
-<p>The <span class="math notranslate nohighlight">\(b_i\)</span> coefficients are solved to minimize the squared error between the estimates, <span class="math notranslate nohighlight">\(Y^*\)</span> and the values in the training dataset, <span class="math notranslate nohighlight">\(Y\)</span>.</p>
+<p>The <span class="math notranslate nohighlight">\(b_i\)</span> coefficients are solved to minimize the squared error between the estimates, <span class="math notranslate nohighlight">\(Y^*\)</span> and the <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s in the training dataset, <span class="math notranslate nohighlight">\(Y\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reg</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>                                      <span class="c1"># instantiate a linear regression model                   </span>
@@ -2674,7 +2679,7 @@ Y^* = \sum_{i=1}^{m} b_i X_i + c
 </section>
 <section id="beta-weights">
 <h2>Beta Weights<a class="headerlink" href="#beta-weights" title="Permalink to this heading">#</a></h2>
-<p><span class="math notranslate nohighlight">\(\beta\)</span> coefficients are calculated as the linear regression of the coefficients after we have standardized the predictor and response features to have a variance of one.</p>
+<p><span class="math notranslate nohighlight">\(\beta\)</span> coefficients are calculated as the <a class="reference internal" href="MachineLearning_glossary_g_l.html#linear-regression"><span class="std std-doc">linear regression</span></a> of the coefficients after we have standardized the predictor and <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a>s to have a <a class="reference internal" href="MachineLearning_glossary_s_z.html#variance"><span class="std std-doc">variance</span></a> of one.</p>
 <p>\begin{equation}
 \sigma^2_{X^s_i} = 1.0 \quad \forall \quad i = 1,\ldots,m, \quad \sigma^2_{Y^s} = 1.0
 \end{equation}</p>
@@ -2682,7 +2687,7 @@ Y^* = \sum_{i=1}^{m} b_i X_i + c
 <p>\begin{equation}
 Y^{s*} = \sum_{i=1}^{m} \beta_i X^s_i + c
 \end{equation}</p>
-<p>It is convenient that we have just standardized all our variables to have a variance of 1.0 just recently (see above). Let’s use the same linear regression method again on the standardized features to get <span class="math notranslate nohighlight">\(\beta\)</span> coefficients.</p>
+<p>It is convenient that we have just standardized all our <a class="reference internal" href="MachineLearning_glossary_s_z.html#variable"><span class="std std-doc">variable</span></a>s to have a variance of 1.0 just recently (see above). Let’s use the same linear <a class="reference internal" href="MachineLearning_glossary_m_r.html#regression"><span class="std std-doc">regression</span></a> method again on the standardized <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s to get <span class="math notranslate nohighlight">\(\beta\)</span> coefficients.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reg</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
@@ -2706,18 +2711,18 @@ Y^{s*} = \sum_{i=1}^{m} \beta_i X^s_i + c
 </section>
 <section id="feature-importance">
 <h2>Feature Importance<a class="headerlink" href="#feature-importance" title="Permalink to this heading">#</a></h2>
-<p>A variety of machine learning methods provide measures of feature importance, for example decision trees the reduction in mean square error through inclusion of each feature and is summarized as:</p>
+<p>A variety of machine learning methods provide measures of <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-importance"><span class="std std-doc">feature importance</span></a>, for example <a class="reference internal" href="MachineLearning_glossary_d_f.html#decision-tree"><span class="std std-doc">decision tree</span></a>s the reduction in <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean-square-error"><span class="std std-doc">mean square error</span></a> through inclusion of each feature and is summarized as:</p>
 <div class="math notranslate nohighlight">
 \[
 FI(x) = \sum_{t \in T_f} \frac{N_t}{N} \Delta_{MSE_t}
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(T_f\)</span> are all nodes with feature <span class="math notranslate nohighlight">\(x\)</span> as the split, <span class="math notranslate nohighlight">\(N_t\)</span> is the number of training samples reaching node <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(N\)</span> is the total number of samples in the dataset and <span class="math notranslate nohighlight">\(\Delta_{MSE_t}\)</span> is the reduction in MSE with the <span class="math notranslate nohighlight">\(t\)</span> split.</p>
-<p>Note, feature importance can be calculated in a similar manner to MSE above for the case of classification trees with <strong>Gini Impurity</strong>.</p>
-<p>Let’s look at the feature importance from a random forest regression model fit to our data.</p>
+<p>where <span class="math notranslate nohighlight">\(T_f\)</span> are all <a class="reference internal" href="MachineLearning_glossary_m_r.html#node"><span class="std std-doc">node</span></a>s with <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> <span class="math notranslate nohighlight">\(x\)</span> as the split, <span class="math notranslate nohighlight">\(N_t\)</span> is the number of training <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s reaching node <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(N\)</span> is the total number of samples in the dataset and <span class="math notranslate nohighlight">\(\Delta_{MSE_t}\)</span> is the reduction in MSE with the <span class="math notranslate nohighlight">\(t\)</span> split.</p>
+<p>Note, feature importance can be calculated in a similar manner to MSE above for the case of <a class="reference internal" href="MachineLearning_glossary_a_c.html#classification"><span class="std std-doc">classification</span></a> trees with <strong>Gini Impurity</strong>.</p>
+<p>Let’s look at the feature importance from a <a class="reference internal" href="MachineLearning_glossary_m_r.html#random-forest"><span class="std std-doc">random forest</span></a> <a class="reference internal" href="MachineLearning_glossary_m_r.html#regression"><span class="std std-doc">regression</span></a> model fit to our <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>.</p>
 <ul class="simple">
 <li><p>We instantiate a random forest with default hyperparameters. This results in unlimited complexity, over-trained trees in our forest. The averaging of these trees takes care of the overfit issue.</p></li>
 <li><p>Then we train our random forest and extract the feature importances, calculated as the expectated feature importance over all the trees in the forest.</p></li>
-<li><p>we can also extract the feature importances over all the trees in the forest and summarize with the standard deviation to access the robustness, uncertainty of our feature importance measure</p></li>
+<li><p>we can also extract the feature importances over all the trees in the forest and summarize with the <a class="reference internal" href="MachineLearning_glossary_s_z.html#standard-deviation"><span class="std std-doc">standard deviation</span></a> to access the robustness, uncertainty of our feature importance measure</p></li>
 </ul>
 <p>For more information check out my lecture on <a class="reference external" href="https://www.youtube.com/watch?v=m5_wk310fho&amp;list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;index=39">random forest</a> predictive machine learning.</p>
 <div class="cell docutils container">
@@ -2784,24 +2789,24 @@ FI(x) = \sum_{t \in T_f} \frac{N_t}{N} \Delta_{MSE_t}
 </section>
 <section id="mutual-information">
 <h2>Mutual Information<a class="headerlink" href="#mutual-information" title="Permalink to this heading">#</a></h2>
-<p>Mutual information is a generalized approach that quantifies the mutual dependence between two features.</p>
+<p><a class="reference internal" href="MachineLearning_glossary_m_r.html#mutual-information"><span class="std std-doc">Mutual information</span></a> is a generalized approach that quantifies the mutual dependence between two features.</p>
 <ul class="simple">
-<li><p>quantifies the amount of information gained from observing one feature about the other</p></li>
+<li><p>quantifies the amount of information gained from observing one <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> about the other</p></li>
 <li><p>avoids any assumption about the form of the relationship (e.g. no assumption of linear relationship)</p></li>
 <li><p>compares the joint probabilities to the product of the marginal probabilities</p></li>
 </ul>
-<p>For discrete or binned continuous features <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>, mutual information is calculated as:</p>
+<p>For discrete or binned <a class="reference internal" href="MachineLearning_glossary_a_c.html#continuous-feature"><span class="std std-doc">continuous feature</span></a>s <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>, mutual information is calculated as:</p>
 <div class="math notranslate nohighlight">
 \[
 I(X;Y) = \sum_{y \in Y} \sum_{x \in X}P_{X,Y}(x,y) log \left( \frac{P_{X,Y}(x,y)}{P_X(x) \cdot P_Y(y)} \right)
 \]</div>
-<p>recall, given independence between <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>:</p>
+<p>Note, given <a class="reference internal" href="MachineLearning_glossary_g_l.html#independence"><span class="std std-doc">independence</span></a> between <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
 P_{X,Y}(x,y) = P_X(x) \cdot P_Y(y)
 \]</div>
 <p>therefore if the two features are independent then the <span class="math notranslate nohighlight">\(log \left( \frac{P_{X,Y}(x,y)}{P_X(x) \cdot P_Y(y)} \right) = 0\)</span></p>
-<p>The joint probability <span class="math notranslate nohighlight">\(P_{X,Y}(x,y)\)</span> is a weighting term on the sum and enforces closure.</p>
+<p>The <a class="reference internal" href="MachineLearning_glossary_g_l.html#joint-probability"><span class="std std-doc">joint probability</span></a> <span class="math notranslate nohighlight">\(P_{X,Y}(x,y)\)</span> is a weighting term on the sum and enforces closure.</p>
 <ul class="simple">
 <li><p>parts of the joint distribution with greater density have greater impact on the mutual information metric</p></li>
 </ul>
@@ -2814,7 +2819,7 @@ I(X;Y) = \int_{Y} \int_{X}P_{X,Y}(x,y) log \left( \frac{P_{X,Y}(x,y)}{P_X(x) \cd
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">importances</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>the slice reverses the order, for descending order of feature importance.</p>
+<p>the slice reverses the order, for descending order of <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-importance"><span class="std std-doc">feature importance</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="n">pred</span><span class="p">]</span>                            <span class="c1"># separate DataFrames for predictor and response features</span>
@@ -2877,17 +2882,17 @@ MIQ = \frac{ \frac{1}{|S|}{\sum_{\alpha \in S}^m I(X_{\alpha},Y) } }{ \frac{1}{|
 </section>
 <section id="mutual-information-accounting-for-relevance-and-redundancy-ofat-variants">
 <h2>Mutual Information Accounting For Relevance and Redundancy OFAT Variants<a class="headerlink" href="#mutual-information-accounting-for-relevance-and-redundancy-ofat-variants" title="Permalink to this heading">#</a></h2>
-<p>I propose that for one-feature-at-a-time (OFAT) predictor feature ranking (predictor feature subset, <span class="math notranslate nohighlight">\(S = [X_i]\)</span> and <span class="math notranslate nohighlight">\(|S| = 1\)</span>) we modify this to the following calculation:</p>
+<p>I propose that for one-feature-at-a-time (OFAT) <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a> ranking (predictor feature subset, <span class="math notranslate nohighlight">\(S = [X_i]\)</span> and <span class="math notranslate nohighlight">\(|S| = 1\)</span>) we modify this to the following calculation:</p>
 <ul class="simple">
-<li><p><strong>relevance</strong> - the mutual information between the selected predictor feature, <span class="math notranslate nohighlight">\(X_i\)</span>, and the response feature, <span class="math notranslate nohighlight">\(Y\)</span></p></li>
-<li><p><strong>redundancy</strong> - the average mutual information between the selected predictor feature, <span class="math notranslate nohighlight">\(X_i\)</span>, and the remaining predictor features, <span class="math notranslate nohighlight">\(X_{\alpha}, \alpha \ne i\)</span>.</p></li>
+<li><p><strong>relevance</strong> - the <a class="reference internal" href="MachineLearning_glossary_m_r.html#mutual-information"><span class="std std-doc">mutual information</span></a> between the selected predictor feature, <span class="math notranslate nohighlight">\(X_i\)</span>, and the response feature, <span class="math notranslate nohighlight">\(Y\)</span></p></li>
+<li><p><strong>redundancy</strong> - the <a class="reference internal" href="MachineLearning_glossary_a_c.html#average"><span class="std std-doc">average</span></a> mutual information between the selected predictor feature, <span class="math notranslate nohighlight">\(X_i\)</span>, and the remaining predictor features, <span class="math notranslate nohighlight">\(X_{\alpha}, \alpha \ne i\)</span>.</p></li>
 <li><p>we use the quotient form of the calculation from Gulgezen, Cataltepe and Yu (2009).</p></li>
 </ul>
-<p>Our modified version of the Maximum Relevance - Minumum Redundancy (MRMR) objective function for OFAT ranking scores the selected predictor feature <span class="math notranslate nohighlight">\(X_i\)</span>’s <strong>relevance</strong> as its mutual information with the response feature:</p>
+<p>Our modified version of the Maximum Relevance - Minumum Redundancy (MRMR) objective function for OFAT ranking scores the selected predictor feature <span class="math notranslate nohighlight">\(X_i\)</span>’s <strong>relevance</strong> as its mutual information with the <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a>:</p>
 <p>\begin{equation}
 I(X_i,Y)
 \end{equation}</p>
-<p>and <strong>redundancy</strong> between the selected predictor feature, <span class="math notranslate nohighlight">\(X_i\)</span>, and the remaining predictor features:</p>
+<p>and <strong>redundancy</strong> between the selected predictor <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>, <span class="math notranslate nohighlight">\(X_i\)</span>, and the remaining predictor features:</p>
 <p>\begin{equation}
 \frac{1}{|S|-1} \sum_{\alpha=1, \alpha \ne i}^m I(X_i,X_{\alpha})
 \end{equation}</p>
@@ -3001,12 +3006,12 @@ MIQ = \frac{ \frac{1}{|S|}{\sum_{\alpha=1}^m I(X_{\alpha},Y) } }{ \frac{1}{|S|^2
 </section>
 <section id="summary-of-all-bivariate-metrics">
 <h2>Summary of All Bivariate Metrics<a class="headerlink" href="#summary-of-all-bivariate-metrics" title="Permalink to this heading">#</a></h2>
-<p>We have a wide array of criteria to rank our features.</p>
+<p>We have a wide array of criteria to rank our <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s.</p>
 <ul class="simple">
-<li><p>the <span class="math notranslate nohighlight">\(B\)</span> coefficient have the same issue as covariance, sensitivity to the univariate variance</p></li>
+<li><p>the <span class="math notranslate nohighlight">\(B\)</span> coefficient have the same issue as <a class="reference internal" href="MachineLearning_glossary_a_c.html#covariance"><span class="std std-doc">covariance</span></a>, sensitivity to the <a class="reference internal" href="MachineLearning_glossary_s_z.html#univariate"><span class="std std-doc">univariate</span></a> <a class="reference internal" href="MachineLearning_glossary_s_z.html#variance"><span class="std std-doc">variance</span></a></p></li>
 <li><p>the <span class="math notranslate nohighlight">\(\beta\)</span> coefficients remove this sensitivity and are consistent with previous results.</p></li>
 </ul>
-<p>Given all of these methods, I would rank the variables as:</p>
+<p>Given all of these methods, I would rank the <a class="reference internal" href="MachineLearning_glossary_s_z.html#variable"><span class="std std-doc">variable</span></a>s as:</p>
 <ol class="arabic simple">
 <li><p>Porosity</p></li>
 <li><p>Vitrinite Reflectance</p></li>
@@ -3015,19 +3020,19 @@ MIQ = \frac{ \frac{1}{|S|}{\sum_{\alpha=1}^m I(X_{\alpha},Y) } }{ \frac{1}{|S|^2
 <li><p>Total Organic Carbon</p></li>
 <li><p>Brittleness</p></li>
 </ol>
-<p>I have assigned these ranks by observing the general trend in these metrics. Of course, we could make a more quantitative score and rank by weighting each method.</p>
-<p>As mentioned before, we should not neglect expert knowledge. If additional information is known about physical processes, causation, and reliability and availability of variables this should be integrated into assigning ranks.</p>
-<p>We include a bonus method here, recursive feature elimination, but only provide a simple linear regression model example. More could be done with more complicated models.</p>
+<p>I have assigned these ranks by observing the general <a class="reference internal" href="MachineLearning_glossary_s_z.html#trend"><span class="std std-doc">trend</span></a> in these metrics. Of course, we could make a more quantitative score and rank by weighting each method.</p>
+<p>As mentioned before, we should not neglect expert knowledge. If additional information is known about physical processes, <a class="reference internal" href="MachineLearning_glossary_a_c.html#causation"><span class="std std-doc">causation</span></a>, and reliability and availability of variables this should be integrated into assigning ranks.</p>
+<p>We include a bonus method here, <a class="reference internal" href="MachineLearning_glossary_m_r.html#recursive-feature-elimination"><span class="std std-doc">recursive feature elimination</span></a>, but only provide a simple <a class="reference internal" href="MachineLearning_glossary_g_l.html#linear-regression"><span class="std std-doc">linear regression</span></a> model example. More could be done with more complicated models.</p>
 </section>
 <section id="recursive-feature-elimination">
 <h2>Recursive Feature Elimination<a class="headerlink" href="#recursive-feature-elimination" title="Permalink to this heading">#</a></h2>
-<p>Recursive Feature Elimination (RFE) method works by recursively removing features and building a model with the remaining features.</p>
+<p><a class="reference internal" href="MachineLearning_glossary_m_r.html#recursive-feature-elimination"><span class="std std-doc">Recursive Feature Elimination</span></a> (RFE) method works by recursively removing features and building a model with the remaining features.</p>
 <ul class="simple">
-<li><p>for the first step, all features are used to build a model and the features are ranked by feature importance or the <span class="math notranslate nohighlight">\(\beta\)</span> coefficient</p></li>
-<li><p>the least important feature is pruned and the model is rebuilt</p></li>
+<li><p>for the first step, all features are used to build a model and the features are ranked by <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-importance"><span class="std std-doc">feature importance</span></a> or the <span class="math notranslate nohighlight">\(\beta\)</span> coefficient</p></li>
+<li><p>the least important <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> is pruned and the model is rebuilt</p></li>
 <li><p>this is repeated until there is only one feature remaining</p></li>
 </ul>
-<p>In this code we make a prediction model based on multilinear regression and indicate that we want to find the best feature based on recursive feature elimination. The algorithm assigns rank <span class="math notranslate nohighlight">\(1,\ldots,m\)</span> for all features.</p>
+<p>In this code we make a <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a> model based on multilinear <a class="reference internal" href="MachineLearning_glossary_m_r.html#regression"><span class="std std-doc">regression</span></a> and indicate that we want to find the best feature based on recursive feature elimination. The algorithm assigns rank <span class="math notranslate nohighlight">\(1,\ldots,m\)</span> for all features.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rfe_linear</span> <span class="o">=</span> <span class="n">RFE</span><span class="p">(</span><span class="n">LinearRegression</span><span class="p">(),</span><span class="n">n_features_to_select</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># set up RFE linear regression model</span>
@@ -3103,17 +3108,17 @@ Rank #6 AI
 </section>
 <section id="shapley-values-for-feature-ranking">
 <h2>Shapley Values for Feature Ranking<a class="headerlink" href="#shapley-values-for-feature-ranking" title="Permalink to this heading">#</a></h2>
-<p>Let’s take a random subset of the data, as background values to evaluate our model.</p>
+<p>Let’s take a random subset of the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>, as background <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s to evaluate our model.</p>
 <ul class="simple">
 <li><p>we subset for faster calculation</p></li>
-<li><p>we should evaluate / enforce efficient coverage of the predictor feature space</p></li>
+<li><p>we should evaluate / enforce efficient coverage of the <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature-space"><span class="std std-doc">predictor feature space</span></a></p></li>
 </ul>
-<p>Since Shapley values are model based, we must start with building a model</p>
+<p>Since <a class="reference internal" href="MachineLearning_glossary_s_z.html#shapley-value"><span class="std std-doc">Shapley value</span></a>s are model based, we must start with building a model</p>
 <section id="build-a-random-forest-model">
 <h3>Build a Random Forest Model<a class="headerlink" href="#build-a-random-forest-model" title="Permalink to this heading">#</a></h3>
 <p>Since Shapley is model based we need to build a model</p>
 <ul class="simple">
-<li><p>Let’s start with a good random forest model, observe Shapley and then return here and modify the model</p></li>
+<li><p>Let’s start with a good <a class="reference internal" href="MachineLearning_glossary_m_r.html#random-forest"><span class="std std-doc">random forest</span></a> model, observe Shapley and then return here and modify the model</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3173,14 +3178,14 @@ Rank #6 AI
 </section>
 <section id="calculate-shapley-values">
 <h2>Calculate Shapley Values<a class="headerlink" href="#calculate-shapley-values" title="Permalink to this heading">#</a></h2>
-<p>Let’s select some background data at random to calculate local Shapley values and then summarize with global Shapley measures.</p>
-<p>Background Samples are selected as a random subset from all the data. Why not just use all the data as background?</p>
+<p>Let’s select some background data at random to calculate local <a class="reference internal" href="MachineLearning_glossary_s_z.html#shapley-value"><span class="std std-doc">Shapley value</span></a>s and then summarize with global Shapley measures.</p>
+<p>Background <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">Sample</span></a>s are selected as a random subset from all the data. Why not just use all the data as background?</p>
 <ul class="simple">
-<li><p><strong>Shapley values can be computationally expensive to calculate</strong>, we need all the combinations of models to get all the predictions for marginal contributions that are summarized as Shapley values</p></li>
-<li><p><strong>The original data may be sampled in a biased manner</strong>, then we would want to ensure that the background data are representative, i.e., sampled from the original data to reduce bias to avoid bias in our feature importance assessment</p></li>
-<li><p><strong>Generalization vs. specific prediction cases</strong>, if all the data are used as background we get an overall data assessment of feature importance, but we may want to carefully select data to explore specific prediction cases</p></li>
+<li><p><strong>Shapley <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s can be computationally expensive to calculate</strong>, we need all the combinations of models to get all the <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a>s for marginal contributions that are summarized as Shapley values</p></li>
+<li><p><strong>The original data may be sampled in a biased manner</strong>, then we would want to ensure that the background data are representative, i.e., sampled from the original data to reduce <a class="reference internal" href="MachineLearning_glossary_a_c.html#bias"><span class="std std-doc">bias</span></a> to avoid bias in our <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-importance"><span class="std std-doc">feature importance</span></a> assessment</p></li>
+<li><p><strong>Generalization vs. specific prediction cases</strong>, if all the data are used as background we get an overall data assessment of <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> importance, but we may want to carefully select data to explore specific prediction cases</p></li>
 </ul>
-<p>For simplicity here, we just select randomly selection <span class="math notranslate nohighlight">\(n\)</span> data.</p>
+<p>For simplicity here, we just select randomly selection <span class="math notranslate nohighlight">\(n\)</span> <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">background</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">nsamples</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">73073</span><span class="p">)</span> 
@@ -3193,7 +3198,7 @@ Rank #6 AI
 </section>
 <section id="local-shapley-values">
 <h2>Local Shapley Values<a class="headerlink" href="#local-shapley-values" title="Permalink to this heading">#</a></h2>
-<p>Let’s start by looking at the local Shapley values to demonstrate the concept of efficiency.</p>
+<p>Let’s start by looking at the local <a class="reference internal" href="MachineLearning_glossary_s_z.html#shapley-value"><span class="std std-doc">Shapley value</span></a>s to demonstrate the concept of efficiency.</p>
 <ul class="simple">
 <li><p>first let’s confirm that the output from the shap function is a <span class="math notranslate nohighlight">\(\left[n_{background}, m\right]\)</span> nd array.</p></li>
 </ul>
@@ -3270,11 +3275,11 @@ Rank #6 AI
 </section>
 <section id="shapley-force-plot">
 <h2>Shapley Force Plot<a class="headerlink" href="#shapley-force-plot" title="Permalink to this heading">#</a></h2>
-<p>We can simulaneously visualize all of the Shapley values for all of the sample data in the order of the background data set.</p>
+<p>We can simulaneously visualize all of the <a class="reference internal" href="MachineLearning_glossary_s_z.html#shapley-value"><span class="std std-doc">Shapley value</span></a>s for all of the sample <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> in the order of the background data set.</p>
 <ul class="simple">
 <li><p>blue indicates reduction in the predicted production and red indicates increase in predicted production</p></li>
 </ul>
-<p>We are visualizing over all background sample data at once. Reorder by original sample ordering and select the nback index to compare to the above plot.</p>
+<p>We are visualizing over all background <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a> data at once. Reorder by original sample ordering and select the nback index to compare to the above plot.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shap</span><span class="o">.</span><span class="n">force_plot</span><span class="p">(</span><span class="n">model_explainer</span><span class="o">.</span><span class="n">expected_value</span><span class="p">,</span><span class="n">shap_values</span><span class="p">,</span><span class="n">background</span><span class="p">,</span><span class="n">out_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Production&#39;</span><span class="p">],</span><span class="n">feature_names</span><span class="o">=</span><span class="n">pred</span><span class="p">,)</span>  
@@ -3301,9 +3306,9 @@ Rank #6 AI
 </section>
 <section id="local-force-plot">
 <h2>Local Force Plot<a class="headerlink" href="#local-force-plot" title="Permalink to this heading">#</a></h2>
-<p>We pick a specific sample from the background and visualize the force plot.</p>
+<p>We pick a specific <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a> from the background and visualize the force plot.</p>
 <ul class="simple">
-<li><p>We can see the genesis of the plot above, Shapley values for all features given a local set of values in sample <span class="math notranslate nohighlight">\(i\)</span>, (<span class="math notranslate nohighlight">\(x_i\)</span>).</p></li>
+<li><p>We can see the genesis of the plot above, <a class="reference internal" href="MachineLearning_glossary_s_z.html#shapley-value"><span class="std std-doc">Shapley value</span></a>s for all <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s given a local set of <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s in sample <span class="math notranslate nohighlight">\(i\)</span>, (<span class="math notranslate nohighlight">\(x_i\)</span>).</p></li>
 </ul>
 <p>Compare this result to the above custom plot that I made and you will see that it communicates the same information.</p>
 <div class="cell docutils container">
@@ -3335,11 +3340,11 @@ Rank #6 AI
 <h2>Global Shapley Values<a class="headerlink" href="#global-shapley-values" title="Permalink to this heading">#</a></h2>
 <p>Let’s review the global Shapley measures.</p>
 <ul class="simple">
-<li><p>sorted bar chart of the arithmetic average of the absolute SHAP value over the background data</p></li>
-<li><p>sorted plot of the SHAP value over the background data</p></li>
-<li><p>plot of the SHAP value over the background data as a violin plot</p></li>
+<li><p>sorted bar chart of the arithmetic <a class="reference internal" href="MachineLearning_glossary_a_c.html#average"><span class="std std-doc">average</span></a> of the absolute SHAP value over the background data</p></li>
+<li><p>sorted plot of the SHAP <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a> over the background data</p></li>
+<li><p>plot of the SHAP value over the background <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> as a violin plot</p></li>
 </ul>
-<p>Note: all of these methods are applying the global average (<span class="math notranslate nohighlight">\(E[X_i]\)</span>) for each feature to impute for those cases not including feature <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<p>Note: all of these methods are applying the global average (<span class="math notranslate nohighlight">\(E[X_i]\)</span>) for each <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> to impute for those cases not including feature <span class="math notranslate nohighlight">\(i\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>
@@ -3368,7 +3373,7 @@ Rank #6 AI
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
-<p>This was a basic treatment of feature ranking. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
+<p>This was a basic treatment of <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-ranking"><span class="std std-doc">feature ranking</span></a>. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
@@ -3379,20 +3384,20 @@ Rank #6 AI
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
 </figcaption>
 </figure>
-<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a>, <a class="reference internal" href="MachineLearning_glossary_g_l.html#geostatistics"><span class="std std-doc">geostatistics</span></a>, and machine learning. Michael is also,</p>
 <ul class="simple">
-<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a <a class="reference internal" href="MachineLearning_glossary_a_c.html#core"><span class="std std-doc">core</span></a> faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>Michael has written over 100 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
 <p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
-<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a> and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
-<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">Data</span></a> Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>. We are solving challenging subsurface problems!</p></li>
 <li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
 </ul>
 <p>I’m always happy to discuss,</p>

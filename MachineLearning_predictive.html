@@ -174,6 +174,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_concepts.html">Machine Learning Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_subsurface_modeling.html">Subsurface Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_training_tuning.html">Training and Tuning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
@@ -219,7 +220,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_python.html">Python Code Snippets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_a_c.html">Glossary A-C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_d_f.html">Glossary D-F</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_g_l.html">Glossary G-L</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_m_r.html">Glossary M-R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_s_z.html">Glossary S-Z</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -500,17 +505,17 @@ document.write(`
 <ul class="simple">
 <li><p>I provide this as the most basic, minimum Python workflow to assist those learning predictive machine learning</p></li>
 <li><p>I demonstration model training and tuning (by-hand and automatically), including the pipeline approach</p></li>
-<li><p>Given the 1 predictor feature and 1 response for ease of data and model visualization</p></li>
+<li><p>Given the 1 <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a> and 1 response for ease of <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> and model visualization</p></li>
 </ul>
 <p>This provides an opportunity to run and visualize a variety of machine learning models for experiential learning.</p>
 </section>
 <section id="id1">
 <h2>Machine Learning-based Prediction<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
-<p>We build a decision tree-based predictive machine learning models with supervised learning:</p>
-<p><strong>Prediction</strong></p>
+<p>We build a <a class="reference internal" href="MachineLearning_glossary_d_f.html#decision-tree"><span class="std std-doc">decision tree</span></a>-based predictive machine learning models with <a class="reference internal" href="MachineLearning_glossary_s_z.html#supervised-learning"><span class="std std-doc">supervised learning</span></a>:</p>
+<p><strong><a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">Prediction</span></a></strong></p>
 <ul class="simple">
-<li><p>non-parametric method for regression (continuous response) and classification (categorical response)</p></li>
-<li><p>a function <span class="math notranslate nohighlight">\(\hat{f}\)</span> of the nearest <span class="math notranslate nohighlight">\(k\)</span> training data in predictor feature space such that we predict a response feature <span class="math notranslate nohighlight">\(Y\)</span> from a set of predictor features <span class="math notranslate nohighlight">\(X_1,\ldots,X_m\)</span>.</p></li>
+<li><p>non-parametric method for <a class="reference internal" href="MachineLearning_glossary_m_r.html#regression"><span class="std std-doc">regression</span></a> (continuous response) and <a class="reference internal" href="MachineLearning_glossary_a_c.html#classification"><span class="std std-doc">classification</span></a> (categorical response)</p></li>
+<li><p>a function <span class="math notranslate nohighlight">\(\hat{f}\)</span> of the nearest <span class="math notranslate nohighlight">\(k\)</span> training data in <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature-space"><span class="std std-doc">predictor feature space</span></a> such that we predict a response <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> <span class="math notranslate nohighlight">\(Y\)</span> from a set of <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a>s <span class="math notranslate nohighlight">\(X_1,\ldots,X_m\)</span>.</p></li>
 <li><p>the prediction is of the form:</p></li>
 </ul>
 <p>\begin{equation}
@@ -519,7 +524,7 @@ document.write(`
 <p>where <span class="math notranslate nohighlight">\(\epsilon\)</span> is an error term.</p>
 <p><strong>Supervised Learning</strong></p>
 <ul class="simple">
-<li><p>the response feature, <span class="math notranslate nohighlight">\(Y\)</span>, is available over the training and testing data</p></li>
+<li><p>the <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a>, <span class="math notranslate nohighlight">\(Y\)</span>, is available over the training and testing <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a></p></li>
 </ul>
 </section>
 <section id="load-the-required-libraries">
@@ -552,8 +557,8 @@ document.write(`
 <h2>Set the Random Number Seed<a class="headerlink" href="#set-the-random-number-seed" title="Permalink to this heading">#</a></h2>
 <p>These workflows and models may use random processes, e.g.:</p>
 <ul class="simple">
-<li><p>random train and test split with cross validation and k-fold cross validation</p></li>
-<li><p>random selection of a subset of features to consider for the next split</p></li>
+<li><p>random <a class="reference internal" href="MachineLearning_glossary_s_z.html#train-and-test-split"><span class="std std-doc">train and test split</span></a> with <a class="reference internal" href="MachineLearning_glossary_a_c.html#cross-validation"><span class="std std-doc">cross validation</span></a> and k-fold cross validation</p></li>
+<li><p>random selection of a subset of <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s to consider for the next split</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -592,7 +597,7 @@ document.write(`
 </section>
 <section id="read-the-data-table">
 <h2>Read the data table<a class="headerlink" href="#read-the-data-table" title="Permalink to this heading">#</a></h2>
-<p>We use a data “1D_Porosity.csv” comma delimited file from my GitHub <a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets">GeoDataSets Respository</a>.</p>
+<p>We use a <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> “1D_Porosity.csv” comma delimited file from my GitHub <a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets">GeoDataSets Respository</a>.</p>
 <ul class="simple">
 <li><p>this code loads the data directly from my GitHub repository.</p></li>
 <li><p>if you have the data file available locally (i.e. you are not connected to the internet) set the working directory to the location with the data file and use the second line below</p></li>
@@ -617,7 +622,7 @@ document.write(`
 </section>
 <section id="plot-the-available-data">
 <h2>Plot the Available Data<a class="headerlink" href="#plot-the-available-data" title="Permalink to this heading">#</a></h2>
-<p>Let’s do a simple scatter plot to check the data.</p>
+<p>Let’s do a simple <a class="reference internal" href="MachineLearning_glossary_s_z.html#scatter-plot"><span class="std std-doc">scatter plot</span></a> to check the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Depth (m)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Standardized Porosity&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;All Data&#39;</span><span class="p">);</span> 
@@ -663,9 +668,9 @@ document.write(`
 <h2>Fast Forward Through Data Analytics<a class="headerlink" href="#fast-forward-through-data-analytics" title="Permalink to this heading">#</a></h2>
 <p>This workflow is focussed on building predictive machine learning models</p>
 <ul class="simple">
-<li><p>for brevity we skip data checking, data analytics, statistical analysis, feature transformations etc.</p></li>
+<li><p>for brevity we skip <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> checking, <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a>, statistical analysis, <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-transformation"><span class="std std-doc">feature transformation</span></a>s etc.</p></li>
 <li><p>we skip all the way to model building</p></li>
-<li><p>we don’t even discuss model selection, feature selection, nor robust hyperparameter tuning</p></li>
+<li><p>we don’t even discuss model selection, <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-selection"><span class="std std-doc">feature selection</span></a>, nor robust hyperparameter tuning</p></li>
 </ul>
 <p>This is the most simple predictive machine learning workflow possible!</p>
 <ul class="simple">
@@ -677,22 +682,22 @@ document.write(`
 <p>We use the following steps to build our model</p>
 <ol class="arabic simple">
 <li><p><strong>instantiate</strong> the machine learning model with hyperparameters</p></li>
-<li><p><strong>fit</strong>, train the machine learing model to the training data</p></li>
+<li><p><strong>fit</strong>, train the machine learing model to the training <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a></p></li>
 <li><p><strong>predict</strong>, check the trained machine learning models to predict at withheld testing data</p></li>
 <li><p><strong>select</strong> the optimum hyperparameters, hyperparameter tuning</p></li>
 <li><p><strong>refit</strong> the model by training with all data given the tuned hyperparmaeters</p></li>
 </ol>
 <p>We will use the train - test approach, an alternative is the train, validate and test approach.</p>
 <ul class="simple">
-<li><p>we will start simple and cover k-fold cross validation and scikit-learn pipeline class later</p></li>
+<li><p>we will start simple and cover <a class="reference internal" href="MachineLearning_glossary_g_l.html#k-fold-cross-validation"><span class="std std-doc">k-fold cross validation</span></a> and scikit-learn pipeline class later</p></li>
 </ul>
 </section>
 <section id="split-train-and-test">
 <h2>Split Train and Test<a class="headerlink" href="#split-train-and-test" title="Permalink to this heading">#</a></h2>
 <p>We will demonstrate the following hyperparameter tuning methods:</p>
 <ul class="simple">
-<li><p><strong>cross validation</strong> - split 25% of data as withheld testing data, only 25% of data are tested</p></li>
-<li><p><strong>k-fold cross validation</strong> - calculate average error over k folds, all data are tested</p></li>
+<li><p><strong><a class="reference internal" href="MachineLearning_glossary_a_c.html#cross-validation"><span class="std std-doc">cross validation</span></a></strong> - split 25% of <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> as withheld testing data, only 25% of data are tested</p></li>
+<li><p><strong>k-fold cross validation</strong> - calculate <a class="reference internal" href="MachineLearning_glossary_a_c.html#average"><span class="std std-doc">average</span></a> error over k folds, all data are tested</p></li>
 </ul>
 <p>Let’s start with cross validation and then demonstrate k-fold cross validation.</p>
 <div class="cell docutils container">
@@ -713,7 +718,7 @@ document.write(`
 </section>
 <section id="build-a-decision-tree-model">
 <h2>Build a Decision Tree Model<a class="headerlink" href="#build-a-decision-tree-model" title="Permalink to this heading">#</a></h2>
-<p>Let’s instantiate (set the hyperparameter(s)) and fit (train with training data) a decision tree regression model to our data.</p>
+<p>Let’s instantiate (set the hyperparameter(s)) and fit (train with training <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>) a <a class="reference internal" href="MachineLearning_glossary_d_f.html#decision-tree"><span class="std std-doc">decision tree</span></a> <a class="reference internal" href="MachineLearning_glossary_m_r.html#regression"><span class="std std-doc">regression</span></a> model to our data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_leaf_nodes</span> <span class="o">=</span> <span class="mi">6</span>                                            <span class="c1"># set the hyperparameter</span>
@@ -726,7 +731,7 @@ document.write(`
 </section>
 <section id="predict-with-a-decision-tree-model">
 <h2>Predict With a Decision Tree Model<a class="headerlink" href="#predict-with-a-decision-tree-model" title="Permalink to this heading">#</a></h2>
-<p>Now let’s make a prediction with our trained decision tree model.</p>
+<p>Now let’s make a <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a> with our trained <a class="reference internal" href="MachineLearning_glossary_d_f.html#decision-tree"><span class="std std-doc">decision tree</span></a> model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">itest</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="n">depth</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[</span><span class="s1">&#39;Depth&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">itest</span><span class="p">]</span>            <span class="c1"># set the predictor value for our prediction</span>
@@ -748,9 +753,9 @@ document.write(`
 </section>
 <section id="predict-over-a-range-of-predictor-feature-values-with-a-decision-tree-model">
 <h2>Predict Over a Range of Predictor Feature Values with a Decision Tree Model<a class="headerlink" href="#predict-over-a-range-of-predictor-feature-values-with-a-decision-tree-model" title="Permalink to this heading">#</a></h2>
-<p>Now, let’s make predictions over a range of predictor feature values so we can visualize the model.</p>
+<p>Now, let’s make <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a>s over a range of <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a> <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s so we can visualize the model.</p>
 <ul class="simple">
-<li><p>this is easy to do since we have just 1 predictor feature</p></li>
+<li><p>this is easy to do since we have just 1 predictor <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a></p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -773,7 +778,7 @@ document.write(`
 </section>
 <section id="changing-the-model-hyperparameter-s">
 <h2>Changing the Model Hyperparameter(s)<a class="headerlink" href="#changing-the-model-hyperparameter-s" title="Permalink to this heading">#</a></h2>
-<p>Let’s try changing the model complexity and refitting the model.</p>
+<p>Let’s try changing the <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-complexity"><span class="std std-doc">model complexity</span></a> and refitting the model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_leaf_nodes</span> <span class="o">=</span> <span class="mi">10</span>                                         <span class="c1"># set the hyperparameter</span>
@@ -797,9 +802,9 @@ document.write(`
 </section>
 <section id="tuning-the-model-hyperparameter-s">
 <h2>Tuning the Model Hyperparameter(s)<a class="headerlink" href="#tuning-the-model-hyperparameter-s" title="Permalink to this heading">#</a></h2>
-<p>To tune the model hyperparameters we need a metric to summarize model error over the withheld testing data</p>
+<p>To tune the <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-hyperparameter"><span class="std std-doc">model hyperparameter</span></a>s we need a metric to summarize model error over the withheld testing <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a></p>
 <ul class="simple">
-<li><p>let’s predict at the testing data and calculate our metric, testing mean square error.</p></li>
+<li><p>let’s predict at the testing data and calculate our metric, testing <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean-square-error"><span class="std std-doc">mean square error</span></a>.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -891,13 +896,13 @@ document.write(`
 </section>
 <section id="complete-workflow-with-pipelines">
 <h2>Complete Workflow with Pipelines<a class="headerlink" href="#complete-workflow-with-pipelines" title="Permalink to this heading">#</a></h2>
-<p>Let’s repeat the above workflow with a pipline from scikit-learn. Here some general comments:</p>
+<p>Let’s repeat the above workflow with a pipline from scikit-learn. Here some general <a class="reference internal" href="MachineLearning_glossary_s_z.html#comments"><span class="std std-doc">comments</span></a>:</p>
 <ul class="simple">
 <li><p><strong>pipeline workflow steps</strong> - list of steps, custom labels and the associated scikit-learn classes</p></li>
 <li><p><strong>choices and hyperparameters</strong> - as a dictionary with combined step custom labels and hyperparameter names</p></li>
-<li><p><strong>workflow scenarios</strong> - we can specify lists of choices and hyperparameters</p></li>
+<li><p><strong>workflow <a class="reference internal" href="MachineLearning_glossary_s_z.html#scenarios"><span class="std std-doc">scenarios</span></a></strong> - we can specify lists of choices and hyperparameters</p></li>
 <li><p><strong>consistent iteration</strong> - the entire workflow is repeated for the full combinatorial</p></li>
-<li><p><strong>best model selected</strong> - best combination of model hyperparameters and choices are refit with all data</p></li>
+<li><p><strong>best model selected</strong> - best combination of <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-hyperparameter"><span class="std std-doc">model hyperparameter</span></a>s and choices are refit with all <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a></p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -947,20 +952,20 @@ On twitter I’m the &#64;GeostatsGuy.</p>
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
 </figcaption>
 </figure>
-<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a>, <a class="reference internal" href="MachineLearning_glossary_g_l.html#geostatistics"><span class="std std-doc">geostatistics</span></a>, and machine learning. Michael is also,</p>
 <ul class="simple">
-<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a <a class="reference internal" href="MachineLearning_glossary_a_c.html#core"><span class="std std-doc">core</span></a> faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>Michael has written over 100 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
 <p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
-<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a> and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
-<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">Data</span></a> Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>. We are solving challenging subsurface problems!</p></li>
 <li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
 </ul>
 <p>I’m always happy to discuss,</p>

@@ -174,6 +174,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_concepts.html">Machine Learning Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_subsurface_modeling.html">Subsurface Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_training_tuning.html">Training and Tuning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Probability Concepts</a></li>
@@ -219,7 +220,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_python.html">Python Code Snippets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_a_c.html">Glossary A-C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_d_f.html">Glossary D-F</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_g_l.html">Glossary G-L</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_m_r.html">Glossary M-R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_s_z.html">Glossary S-Z</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -417,7 +422,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-for-probability">Motivation for Probability</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-probability">What is Probability?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-definition">Probability Definition</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-calculate-probability">How to Calculate Probability?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-warning-about-calculating-probability">A Warning about Calculating Probability</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#venn-diagrams">Venn Diagrams</a></li>
@@ -493,10 +498,10 @@ document.write(`
 <h2>Motivation for Probability<a class="headerlink" href="#motivation-for-probability" title="Permalink to this heading">#</a></h2>
 <p>Why cover probability at the beginning of an e-book or course on machine learning?</p>
 <ol class="arabic simple">
-<li><p><strong>Model Formulation</strong> - many of our machine learning models are formulated with probability concepts, for example, naive Bayes classification is derived from Bayes’ Theorem and Bayesian linear regression estimates the probability distributions for our model parameters.</p></li>
-<li><p><strong>Data Cleaning and Preparation</strong> - is 90% of any machine learning workflow and we cannot complete these steps without understanding our data distributions and statistics and all of these are based on probability.</p></li>
-<li><p><strong>Loss Functions and Optimization</strong> - many of our machine learning models are trained through optimization of a loss function that relies on probability for stochastic steps or even directly in the loss function as is the case for maximum likelihood estimation.</p></li>
-<li><p><strong>Tuning Machine Learning Models</strong> - machine learning model tuning to reduce model overfit is based on the concept of expected model performance in the presence of various uncertainty sources, and probability is the language of statistical expectation and uncertainty.</p></li>
+<li><p><strong>Model Formulation</strong> - many of our machine learning models are formulated with probability concepts, for example, <a class="reference internal" href="MachineLearning_glossary_m_r.html#naive-bayes"><span class="std std-doc">naive Bayes</span></a> <a class="reference internal" href="MachineLearning_glossary_a_c.html#classification"><span class="std std-doc">classification</span></a> is derived from Bayes’ Theorem and <a class="reference internal" href="MachineLearning_glossary_a_c.html#bayesian-linear-regression"><span class="std std-doc">Bayesian linear regression</span></a> estimates the probability distributions for our <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter"><span class="std std-doc">model parameter</span></a>s.</p></li>
+<li><p><strong><a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">Data</span></a> Cleaning and Preparation</strong> - is 90% of any machine learning workflow and we cannot complete these steps without understanding our data distributions and <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">statistics</span></a> and all of these are based on probability.</p></li>
+<li><p><strong><a class="reference internal" href="MachineLearning_glossary_g_l.html#loss-function"><span class="std std-doc">Loss Function</span></a>s and Optimization</strong> - many of our machine learning models are trained through optimization of a loss function that relies on probability for stochastic steps or even directly in the loss function as is the case for <a class="reference internal" href="MachineLearning_glossary_m_r.html#maximum-likelihood-estimation"><span class="std std-doc">maximum likelihood estimation</span></a>.</p></li>
+<li><p><strong>Tuning Machine Learning Models</strong> - machine learning model tuning to reduce model overfit is based on the concept of expected model performance in the presence of various uncertainty sources, and probability is the language of statistical <a class="reference internal" href="MachineLearning_glossary_d_f.html#expectation"><span class="std std-doc">expectation</span></a> and uncertainty.</p></li>
 <li><p><strong>Machine Learning Model Choice</strong> - You will make choices between frequentist and Bayesian predictive machine learning models and their differences are the result of two distinct approaches to calculate probability and build models.</p></li>
 <li><p><strong>Real World Applications</strong> - to make the best choices in machine learning workflows design and to use our results to support decisions we must integrate probability concepts Using our models in the real world.</p></li>
 </ol>
@@ -507,8 +512,8 @@ document.write(`
 </div>
 <p>Now we get started by defining probability and then we will be ready to talk about ways to calculate it.</p>
 </section>
-<section id="what-is-probability">
-<h2>What is Probability?<a class="headerlink" href="#what-is-probability" title="Permalink to this heading">#</a></h2>
+<section id="probability-definition">
+<h2>Probability Definition<a class="headerlink" href="#probability-definition" title="Permalink to this heading">#</a></h2>
 <p>To understand what is probability consider Kolmogorov’s 3 axioms for probabilities, i.e., the rules that any measure of probability must honor,</p>
 <figure style="text-align: center;">
   <img src="_static/probability/kolmogorov.png" style="display: block; margin: 0 auto; width: 30%;">
@@ -524,7 +529,7 @@ P(𝐴) \ge 0
 \]</div>
 <p>      imagine negative probability!</p>
 <ol class="arabic simple" start="2">
-<li><p><strong>normalization</strong> - probability of the entire sample space is one (unity), also known as probability closure</p></li>
+<li><p><strong><a class="reference internal" href="MachineLearning_glossary_m_r.html#normalization"><span class="std std-doc">normalization</span></a></strong> - probability of the entire <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a> space is one (unity), also known as <a class="reference internal" href="MachineLearning_glossary_m_r.html#probability-closure"><span class="std std-doc">probability closure</span></a></p></li>
 </ol>
 <div class="math notranslate nohighlight">
 \[
@@ -532,7 +537,7 @@ P(\Omega) = 1
 \]</div>
 <p>      something happens!</p>
 <ol class="arabic simple" start="3">
-<li><p><strong>additivity</strong> - addition of probability of mutually exclusive events for unions</p></li>
+<li><p><strong>additivity</strong> - addition of probability of <a class="reference internal" href="MachineLearning_glossary_m_r.html#mutually-exclusive-events"><span class="std std-doc">mutually exclusive events</span></a> for unions</p></li>
 </ol>
 <div class="math notranslate nohighlight">
 \[
@@ -546,9 +551,9 @@ P\left(⋃_{i=1}^{\infty} A_i\right) = \sum_{i=1}^{\infty} P(A_i)
 </section>
 <section id="how-to-calculate-probability">
 <h2>How to Calculate Probability?<a class="headerlink" href="#how-to-calculate-probability" title="Permalink to this heading">#</a></h2>
-<p>There are 3 probability perspectives that can be applied to calculate probabilities,</p>
+<p>There are 3 <a class="reference internal" href="MachineLearning_glossary_m_r.html#probability-perspectives"><span class="std std-doc">probability perspectives</span></a> that can be applied to calculate probabilities,</p>
 <ol class="arabic simple">
-<li><p><strong>Probability by long-term frequencies</strong> (Frequentist Probability),</p></li>
+<li><p><strong>Probability by long-term frequencies</strong> (<a class="reference internal" href="MachineLearning_glossary_d_f.html#frequentist-probability"><span class="std std-doc">Frequentist Probability</span></a>),</p></li>
 </ol>
 <ul class="simple">
 <li><p>probability as ratio of outcomes from an experiment</p></li>
@@ -581,11 +586,11 @@ P(\text{heads}) = \frac{n(\text{heads})}{n}
 <li><p>did you know that there is a <span class="math notranslate nohighlight">\(\frac{1}{6,000}\)</span> probability of a coin landing and staying upright on its edge? This could  be lower depending of manner of tossing, coin thickness and characteristics of the surface.</p></li>
 </ul>
 <ol class="arabic simple" start="3">
-<li><p><strong>Probability by Degrees of belief</strong> (Bayesian Probability),</p></li>
+<li><p><strong>Probability by Degrees of belief</strong> (<a class="reference internal" href="MachineLearning_glossary_a_c.html#bayesian-probability"><span class="std std-doc">Bayesian Probability</span></a>),</p></li>
 </ol>
 <ul class="simple">
 <li><p>first we specify the scientific concept of “belief” as your opinion based on all your knowledge and experience.</p></li>
-<li><p>our model integrates our certainty about a result and data</p></li>
+<li><p>our model integrates our certainty about a result and <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a></p></li>
 <li><p>this is very flexible, we can assign probability to any event, and includes a framework for updating with new information</p></li>
 </ul>
 <p>      if this is your approach, then you are using the Bayesian approach for probability. If not, before you dismiss this approach let me make a couple arguments,</p>
@@ -600,20 +605,20 @@ P(\text{heads}) = \frac{n(\text{heads})}{n}
 </section>
 <section id="a-warning-about-calculating-probability">
 <h2>A Warning about Calculating Probability<a class="headerlink" href="#a-warning-about-calculating-probability" title="Permalink to this heading">#</a></h2>
-<p>Statistics can be misused or even abused, leading to flawed conclusions and poor decision-making. When probabilities are calculated improperly or misinterpreted, it can result in significant consequences. Here are a few examples of what can go wrong:</p>
+<p><a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">Statistics</span></a> can be misused or even abused, leading to flawed conclusions and poor decision-making. When probabilities are calculated improperly or misinterpreted, it can result in significant consequences. Here are a few examples of what can go wrong:</p>
 <ol class="arabic simple">
-<li><p><strong>Insufficient sampling</strong> - there are various rules of thumb about what constitutes a small sample size, i.e., too small for inference about the population parameters and too small to train a reliable prediction model. Some say 7, some say 30, indubitably there is a minimum sample size.</p></li>
+<li><p><strong>Insufficient sampling</strong> - there are various rules of thumb about what constitutes a small sample size, i.e., too small for <a class="reference internal" href="MachineLearning_glossary_g_l.html#inference"><span class="std std-doc">inference</span></a> about the <a class="reference internal" href="MachineLearning_glossary_m_r.html#population"><span class="std std-doc">population</span></a> <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a>s and too small to train a reliable <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a> model. Some say 7, some say 30, indubitably there is a minimum sample size.</p></li>
 </ol>
 <ul class="simple">
-<li><p>in general, our models will communicate increasing uncertainty as the number of data decreases, but at some point these models break!</p></li>
-<li><p>consider bootstrap, yes as the number of samples decrease the uncertainty in the statistic reported by bootstrap increases, but this uncertainty distribution is centered on the sample statistic! In other words, we need enough samples to have a reasonable estimate of the uncertainty model’s expectation in the first place.</p></li>
-<li><p>of course, there is minimum number of samples to complete a mathematical operation, for example principal components analysis can only calculate <span class="math notranslate nohighlight">\(n-1\)</span> principal components (where <span class="math notranslate nohighlight">\(n\)</span> is the number of samples) and we cannot fit a linear regression model to <span class="math notranslate nohighlight">\(n=1\)</span> samples. Best practice is to stay very far away (have many more samples) from any of these algorithm limitations.</p></li>
+<li><p>in general, our models will communicate increasing uncertainty as the number of <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> decreases, but at some point these models break!</p></li>
+<li><p>consider <a class="reference internal" href="MachineLearning_glossary_a_c.html#bootstrap"><span class="std std-doc">bootstrap</span></a>, yes as the number of samples decrease the uncertainty in the <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistic"><span class="std std-doc">statistic</span></a> reported by bootstrap increases, but this uncertainty distribution is centered on the sample statistic! In other words, we need enough samples to have a reasonable estimate of the uncertainty model’s <a class="reference internal" href="MachineLearning_glossary_d_f.html#expectation"><span class="std std-doc">expectation</span></a> in the first place.</p></li>
+<li><p>of course, there is minimum number of samples to complete a mathematical operation, for example principal components analysis can only calculate <span class="math notranslate nohighlight">\(n-1\)</span> principal components (where <span class="math notranslate nohighlight">\(n\)</span> is the number of samples) and we cannot fit a <a class="reference internal" href="MachineLearning_glossary_g_l.html#linear-regression"><span class="std std-doc">linear regression</span></a> model to <span class="math notranslate nohighlight">\(n=1\)</span> samples. Best practice is to stay very far away (have many more samples) from any of these algorithm limitations.</p></li>
 </ul>
 <ol class="arabic simple" start="2">
-<li><p><strong>Biased sampling</strong> - in general our probability calculations will not automatically debias the sample data. Any bias in the samples will pass bias through to the probabilities representing our uncertainty model.</p></li>
+<li><p><strong>Biased sampling</strong> - in general our probability calculations will not automatically debias the <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a> data. Any bias in the samples will pass bias through to the probabilities representing our uncertainty model.</p></li>
 </ol>
 <ul class="simple">
-<li><p>for example, a biased sample mean will bias simple kriging estimates away from data. Geostatistical simulation reproduces the entire input feature distribution, so any bias in any part of the distribution will be passed to the spatial models.</p></li>
+<li><p>for example, a biased sample <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a> will bias simple <a class="reference internal" href="MachineLearning_glossary_g_l.html#kriging"><span class="std std-doc">kriging</span></a> estimates away from data. Geostatistical <a class="reference internal" href="MachineLearning_glossary_s_z.html#simulation"><span class="std std-doc">simulation</span></a> reproduces the entire input feature distribution, so any bias in any part of the distribution will be passed to the spatial models.</p></li>
 <li><p>also, there is bad data. When we use Bayesian methods and rely on expert experience, that is not a license to say anything and defend it as belief. On the contrary, we must rigorously document and defend all our choices</p></li>
 </ul>
 <ol class="arabic simple" start="3">
@@ -622,16 +627,16 @@ P(\text{heads}) = \frac{n(\text{heads})}{n}
 <ul class="simple">
 <li><p>our first line of defense is to understand what our methods are doing under the hood! This will help us recognize logical inconsistencies as we build our workflows.</p></li>
 <li><p>our second line of defense is to check every step in our workflows. Like an accountant we must close the loops with all our probability calculations, a process that accountants call reconciliation. Like a software engineer we must unit test every operation to ensure we don’t introduce errors as we update our probability workflows.</p></li>
-<li><p>for example, if we perform primary feature cosimulation with the same random number seed as the secondary feature simulation we will introduce artificial correlation between the simulated primary and secondary features that will dramatically change the conditional and joint probabilities.</p></li>
-<li><p>in another example, if we use information from the likelihood probabilities to inform the prior probabilities, we will significantly under-estimate the uncertainty. This error is a form of information leakage, descriptively we state it as “double dipping” from the information.</p></li>
+<li><p>for example, if we perform primary <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> cosimulation with the same random number seed as the secondary feature simulation we will introduce artificial correlation between the simulated primary and secondary features that will dramatically change the conditional and joint probabilities.</p></li>
+<li><p>in another example, if we use information from the likelihood probabilities to inform the <a class="reference internal" href="MachineLearning_glossary_m_r.html#prior"><span class="std std-doc">prior</span></a> probabilities, we will significantly under-estimate the uncertainty. This error is a form of information leakage, descriptively we state it as “double dipping” from the information.</p></li>
 </ul>
 <p>Please remember these warnings as you proceed below and onward as you build your own data science workflows.</p>
 </section>
 <section id="venn-diagrams">
 <h2>Venn Diagrams<a class="headerlink" href="#venn-diagrams" title="Permalink to this heading">#</a></h2>
-<p>Venn Diagrams are a tool to communicate probability.</p>
+<p><a class="reference internal" href="MachineLearning_glossary_s_z.html#venn-diagram"><span class="std std-doc">Venn Diagram</span></a>s are a tool to communicate probability.</p>
 <ul class="simple">
-<li><p>representing the possible events or outcomes (<span class="math notranslate nohighlight">\(A, B,\ldots\)</span>) of an experiment within the collection of all possible events or outcomes, the sample space (<span class="math notranslate nohighlight">\(\Omega\)</span>).</p></li>
+<li><p>representing the possible events or outcomes (<span class="math notranslate nohighlight">\(A, B,\ldots\)</span>) of an experiment within the collection of all possible events or outcomes, the <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a> space (<span class="math notranslate nohighlight">\(\Omega\)</span>).</p></li>
 </ul>
 <figure style="text-align: center;">
   <img src="_static/probability/venn.png" style="display: block; margin: 0 auto; width: 50%;">
@@ -643,7 +648,7 @@ P(\text{heads}) = \frac{n(\text{heads})}{n}
 <li><p>the relative size of regions for each event within is the relative probability of occurrence, probability of <span class="math notranslate nohighlight">\(B\)</span> is greater than probability of <span class="math notranslate nohighlight">\(A\)</span></p></li>
 <li><p>the overlap over events is the probability of joint occurrence, there is 0.0 probability of <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> occurring together</p></li>
 </ol>
-<p>Let us include a more practical Venn diagram to ensure this concept is not too abstract. Here’s a Venn diagram from 3,000 core samples with interpreted facies</p>
+<p>Let us include a more practical Venn diagram to ensure this concept is not too abstract. Here’s a Venn diagram from 3,000 core samples with interpreted <a class="reference internal" href="MachineLearning_glossary_d_f.html#facies"><span class="std std-doc">facies</span></a></p>
 <ul class="simple">
 <li><p>the events are sandstone (Sm) and mudstone (Fm)</p></li>
 </ul>
@@ -676,7 +681,7 @@ P(A) = \lim_{n \to \infty} \frac{n(A)}{n}
 <p><span class="math notranslate nohighlight">\(n(A)\)</span> = number of times event <span class="math notranslate nohighlight">\(A\)</span> occurred
 <span class="math notranslate nohighlight">\(n\)</span> = number of trails</p>
 <ul class="simple">
-<li><p>we use limit notation above to indicate sufficient sampling and that the solution converges and improves accuracy as we introduce more samples from our experiment</p></li>
+<li><p>we use limit notation above to indicate sufficient sampling and that the solution converges and improves accuracy as we introduce more <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s from our experiment</p></li>
 </ul>
 <p>For example,</p>
 <ul class="simple">
@@ -686,9 +691,9 @@ P(A) = \lim_{n \to \infty} \frac{n(A)}{n}
 </section>
 <section id="probability-operations">
 <h2>Probability Operations<a class="headerlink" href="#probability-operations" title="Permalink to this heading">#</a></h2>
-<p><strong>Union of Events</strong> - for example, all outcomes in the sample space that belong to either event <span class="math notranslate nohighlight">\(A\)</span> or <span class="math notranslate nohighlight">\(B\)</span></p>
+<p><strong><a class="reference internal" href="MachineLearning_glossary_s_z.html#union-of-events"><span class="std std-doc">Union of Events</span></a></strong> - for example, all outcomes in the sample space that belong to either event <span class="math notranslate nohighlight">\(A\)</span> or <span class="math notranslate nohighlight">\(B\)</span></p>
 <ul class="simple">
-<li><p>for the union of events operator, we use the word “or” and the mathematics symbol, <span class="math notranslate nohighlight">\(cup\)</span>, using set notation we state the samples in the union <span class="math notranslate nohighlight">\(A\)</span> or <span class="math notranslate nohighlight">\(B\)</span> as,</p></li>
+<li><p>for the union of events operator, we use the word “or” and the mathematics symbol, <span class="math notranslate nohighlight">\(cup\)</span>, using set notation we state the <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s in the union <span class="math notranslate nohighlight">\(A\)</span> or <span class="math notranslate nohighlight">\(B\)</span> as,</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
@@ -701,13 +706,13 @@ A \cup B = \{x: x \in A \text{ or } x \in B\}
 \[
 P(A \cup B)
 \]</div>
-<p>Here’s a Venn diagram illustrating the union <span class="math notranslate nohighlight">\(P(A \cup B)\)</span>.</p>
+<p>Here’s a <a class="reference internal" href="MachineLearning_glossary_s_z.html#venn-diagram"><span class="std std-doc">Venn diagram</span></a> illustrating the union <span class="math notranslate nohighlight">\(P(A \cup B)\)</span>.</p>
 <figure style="text-align: center;">
   <img src="_static/probability/venn_union.png" style="display: block; margin: 0 auto; width: 50%;">
   <figcaption style="text-align: center;"> A Venn diagram representing union probability operator for events \(A\) or \(B\). Note, the legend on the top right is included to clarify the plot but is not part of the Venn diagram.
 </figcaption>
 </figure>
-<p><strong>Intersection of Events</strong> - for example, all outcomes in the sample space that belong to both events <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span></p>
+<p><strong><a class="reference internal" href="MachineLearning_glossary_g_l.html#intersection-of-events"><span class="std std-doc">Intersection of Events</span></a></strong> - for example, all outcomes in the sample space that belong to both events <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span></p>
 <ul class="simple">
 <li><p>for the intersection of events operator, we use the word “and” and the mathematics symbol <span class="math notranslate nohighlight">\(cap\)</span>, using set notation we state the samples in the intersection <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> as,</p></li>
 </ul>
@@ -729,7 +734,7 @@ P(A \cap B)
 \[
 P(A,B)
 \]</div>
-<p>      we will call this a joint probability later. Here is a Venn diagram illustrating the intersection <span class="math notranslate nohighlight">\(P(A \cap B)\)</span>.</p>
+<p>      we will call this a <a class="reference internal" href="MachineLearning_glossary_g_l.html#joint-probability"><span class="std std-doc">joint probability</span></a> later. Here is a Venn diagram illustrating the intersection <span class="math notranslate nohighlight">\(P(A \cap B)\)</span>.</p>
 <figure style="text-align: center;">
   <img src="_static/probability/venn_intersection.png" style="display: block; margin: 0 auto; width: 50%;">
   <figcaption style="text-align: center;"> A Venn diagram representing intersection probability operator for events \(A\) and \(B\). Note, the legend on the top right is included to clarify the plot but is not part of the Venn diagram.
@@ -756,7 +761,7 @@ P(A^c)
   <figcaption style="text-align: center;"> A Venn diagram representing probability compliment operator for events \(A\). Note, the legend on the top right is included to clarify the plot but is not part of the Venn diagram.
 </figcaption>
 </figure>
-<p><strong>Mutually Exclusive Events</strong> - for example, events do not intersect or do not have any common outcomes, <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> do not occur at the same time.</p>
+<p><strong><a class="reference internal" href="MachineLearning_glossary_m_r.html#mutually-exclusive-events"><span class="std std-doc">Mutually Exclusive Events</span></a></strong> - for example, events do not intersect or do not have any common outcomes, <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> do not occur at the same time.</p>
 <ul class="simple">
 <li><p>using set notation, we state events <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are mutually exclusive as,</p></li>
 </ul>
@@ -819,7 +824,7 @@ P(A,B) = 0.0
   <figcaption style="text-align: center;"> A Venn diagram representing events \(A\) and \(B\) as exhaustive, mutually exclusive.
 </figcaption>
 </figure>
-<p><strong>Combinations of Operators</strong> - we can use these probability operators with any number of events to communicate complicated probability cases. For example, let us define these events,</p>
+<p><strong>Combinations of Operators</strong> - we can use these <a class="reference internal" href="MachineLearning_glossary_m_r.html#probability-operators"><span class="std std-doc">probability operators</span></a> with any number of events to communicate complicated probability cases. For example, let us define these events,</p>
 <ul class="simple">
 <li><p>Event <span class="math notranslate nohighlight">\(A\)</span>: oil present (<span class="math notranslate nohighlight">\(A^c\)</span>: dry hole)</p></li>
 <li><p>Event <span class="math notranslate nohighlight">\(B\)</span>: 𝑆𝑚 (<span class="math notranslate nohighlight">\(B^c\)</span>: 𝐹𝑚)</p></li>
@@ -839,8 +844,8 @@ P(A^c \cap B \cap C) = \frac{\text{Area}(A^c \cap B \cap C)}{\text{Area}(\Omega)
 </section>
 <section id="constraints-on-probability">
 <h2>Constraints on Probability<a class="headerlink" href="#constraints-on-probability" title="Permalink to this heading">#</a></h2>
-<p>Now that we have defined probability notation and probability operations, now we return the idea of permissible probability values expressed by Kolmogorov. We can now build on Kolmogorov’s probability axioms with this set of probability constraints,</p>
-<p>Non-negativity, Normalization constraints include,</p>
+<p>Now that we have defined probability notation and probability operations, now we return the idea of permissible probability values expressed by Kolmogorov. We can now build on Kolmogorov’s probability axioms with this set of <a class="reference internal" href="MachineLearning_glossary_m_r.html#probability-constraints"><span class="std std-doc">probability constraints</span></a>,</p>
+<p>Non-negativity, <a class="reference internal" href="MachineLearning_glossary_m_r.html#normalization"><span class="std std-doc">Normalization</span></a> constraints include,</p>
 <ul class="simple">
 <li><p>Probability is bounded,</p></li>
 </ul>
@@ -850,7 +855,7 @@ P(A^c \cap B \cap C) = \frac{\text{Area}(A^c \cap B \cap C)}{\text{Area}(\Omega)
 \]</div>
 <p>      probability must be between 0.0 and 1.0 (including 0.0 and 1.0)</p>
 <ul class="simple">
-<li><p>Probability closure,</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_m_r.html#probability-closure"><span class="std std-doc">Probability closure</span></a>,</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
@@ -875,12 +880,12 @@ P(\emptyset) = 0.0
 <section id="probability-addition-rule">
 <h2>Probability Addition Rule<a class="headerlink" href="#probability-addition-rule" title="Permalink to this heading">#</a></h2>
 <p><a id="prob-addition-rule"></a></p>
-<p>What is the probability for a union of events? Remember that union is an “or” operation represented by the <span class="math notranslate nohighlight">\(\cup\)</span> notation. Consider,</p>
+<p>What is the probability for a <a class="reference internal" href="MachineLearning_glossary_s_z.html#union-of-events"><span class="std std-doc">union of events</span></a>? Remember that union is an “or” operation represented by the <span class="math notranslate nohighlight">\(\cup\)</span> notation. Consider,</p>
 <div class="math notranslate nohighlight">
 \[
 P(A \cup B)
 \]</div>
-<p>inspection of the previously shown Venn diagram indicates that we can not calculate the union , <span class="math notranslate nohighlight">\(P(A \cup B)\)</span>, by just summing <span class="math notranslate nohighlight">\(P(A)\)</span> and <span class="math notranslate nohighlight">\(P(B)\)</span>.</p>
+<p>inspection of the previously shown <a class="reference internal" href="MachineLearning_glossary_s_z.html#venn-diagram"><span class="std std-doc">Venn diagram</span></a> indicates that we can not calculate the union , <span class="math notranslate nohighlight">\(P(A \cup B)\)</span>, by just summing <span class="math notranslate nohighlight">\(P(A)\)</span> and <span class="math notranslate nohighlight">\(P(B)\)</span>.</p>
 <figure style="text-align: center;">
   <img src="_static/probability/venn_intersection.png" style="display: block; margin: 0 auto; width: 50%;">
   <figcaption style="text-align: center;"> A Venn diagram representing events \(A\) and \(B\), showing the intersection of \(A\) and \(B\) that will be double counted if we calculate the union and \(A\) or \(B\) as the sum of \(A\) and \(B\). Note, the legend on the top right is included to clarify the plot but is not part of the Venn diagram.
@@ -903,7 +908,7 @@ P(A \cup B) = P(A) + P(B) - P(A \cap B)
 \[
 A_i \cap A_j = \emptyset, \quad \forall \quad i \ne j
 \]</div>
-<p>then we can write this general equation for the addition rule for any number of mutually exclusive events,</p>
+<p>then we can write this general equation for the <a class="reference internal" href="MachineLearning_glossary_a_c.html#addition-rule"><span class="std std-doc">addition rule</span></a> for any number of <a class="reference internal" href="MachineLearning_glossary_m_r.html#mutually-exclusive-events"><span class="std std-doc">mutually exclusive events</span></a>,</p>
 <div class="math notranslate nohighlight">
 \[
 P\left( \bigcup_{i=1}^k A_i \right) = \sum_{i=1}^k P(A_i)
@@ -922,12 +927,12 @@ P\left( \bigcup_{i=1}^k A_i \right) = \sum_{i=1}^k P(A_i)
 <li><p>to express this we use the notation, <span class="math notranslate nohighlight">\(P(B|A)\)</span></p></li>
 <li><p>we read this notation as, “probability of B given A”</p></li>
 </ul>
-<p>This is an example of a conditional probability. We calculate conditional probability with this equation,</p>
+<p>This is an example of a <a class="reference internal" href="MachineLearning_glossary_a_c.html#conditional-probability"><span class="std std-doc">conditional probability</span></a>. We calculate conditional probability with this equation,</p>
 <div class="math notranslate nohighlight">
 \[
 P(B|A) = \frac{P(A \cap B)}{P(A)}
 \]</div>
-<p>This may seem complicated, but we can easily visualize and understand this equation from our Venn diagram.</p>
+<p>This may seem complicated, but we can easily visualize and understand this equation from our <a class="reference internal" href="MachineLearning_glossary_s_z.html#venn-diagram"><span class="std std-doc">Venn diagram</span></a>.</p>
 <figure style="text-align: center;">
   <img src="_static/probability/venn_conditional1.png" style="display: block; margin: 0 auto; width: 50%;">
   <figcaption style="text-align: center;"> To calculate conditional probability we "shrink our universe" to the given condition. For the probability of $B$ given $A$ we shrink our Venn diagram to \(A\).
@@ -1010,7 +1015,7 @@ P(B|A) = \frac{P(A \cap B)}{P(A)}
 \[
 \frac{P(A \cap B)} = P(B|A) \cdot {P(A)}
 \]</div>
-<p>spoiler alert, later we will define this at the multiplication rule, but for now we can substitute this as the denominator for the conditional probability, <span class="math notranslate nohighlight">\(P(C|B \cap A)\)</span>, to get,</p>
+<p>spoiler alert, later we will define this at the <a class="reference internal" href="MachineLearning_glossary_m_r.html#multiplication-rule"><span class="std std-doc">multiplication rule</span></a>, but for now we can substitute this as the denominator for the conditional probability, <span class="math notranslate nohighlight">\(P(C|B \cap A)\)</span>, to get,</p>
 <div class="math notranslate nohighlight">
 \[
 P(C|B \cap A) = \frac{P(A \cap B \cap C}{P(B|A) \cdot P(A)}
@@ -1020,7 +1025,7 @@ P(C|B \cap A) = \frac{P(A \cap B \cap C}{P(B|A) \cdot P(A)}
 \[
 P(A \cap B \cap C) = P(C|B \cap A) \cdot P(B|A) \cdot P(A)
 \]</div>
-<p>Do you see the pattern? We can calculate high order probability intersections as a sequential set, product sum of marginal probability and then growing conditional probabilities. Let me state it with words,</p>
+<p>Do you see the pattern? We can calculate high order probability intersections as a sequential set, product sum of <a class="reference internal" href="MachineLearning_glossary_m_r.html#marginal-probability"><span class="std std-doc">marginal probability</span></a> and then growing conditional probabilities. Let me state it with words,</p>
 <ul class="simple">
 <li><p>probability of <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span> and <span class="math notranslate nohighlight">\(C\)</span> is the probability of <span class="math notranslate nohighlight">\(A\)</span> times the probability of <span class="math notranslate nohighlight">\(B\)</span> given <span class="math notranslate nohighlight">\(A\)</span>, times the probability of <span class="math notranslate nohighlight">\(C\)</span> given <span class="math notranslate nohighlight">\(B\)</span> and <span class="math notranslate nohighlight">\(A\)</span>.</p></li>
 </ul>
@@ -1036,14 +1041,14 @@ P(A_1, A_2, \ldots , A_n) = P(A_n|A_{n-1}, \ldots , A_1) \cdot P(A_{n-1}|A_{n-2}
 \]</div>
 <p>Are we just showing off now? No! This example teaches us a lot about how conditional probabilities work.</p>
 <ul class="simple">
-<li><p>also, this is exactly the concept used with sequential Gaussian simulation where we sample sequentially from conditional distributions instead of from the high order joint probability, an impossible task without the sequential approach!</p></li>
+<li><p>also, this is exactly the concept used with sequential Gaussian <a class="reference internal" href="MachineLearning_glossary_s_z.html#simulation"><span class="std std-doc">simulation</span></a> where we <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a> sequentially from conditional distributions instead of from the high order <a class="reference internal" href="MachineLearning_glossary_g_l.html#joint-probability"><span class="std std-doc">joint probability</span></a>, an impossible task without the sequential approach!</p></li>
 </ul>
 <p>Now we are ready to summarize marginal, conditional and joint probabilities together.</p>
 </section>
 <section id="marginal-conditional-and-joint-probabilities">
 <h2>Marginal, Conditional and Joint Probabilities<a class="headerlink" href="#marginal-conditional-and-joint-probabilities" title="Permalink to this heading">#</a></h2>
-<p>Now we define marginal, conditional and joint probability, provide notation and discuss how to calculate them:</p>
-<p><strong>Marginal Probability</strong> - probability of an event, irrespective of any other event,</p>
+<p>Now we define marginal, conditional and <a class="reference internal" href="MachineLearning_glossary_g_l.html#joint-probability"><span class="std std-doc">joint probability</span></a>, provide notation and discuss how to calculate them:</p>
+<p><strong><a class="reference internal" href="MachineLearning_glossary_m_r.html#marginal-probability"><span class="std std-doc">Marginal Probability</span></a></strong> - probability of an event, irrespective of any other event,</p>
 <div class="math notranslate nohighlight">
 \[
 P(A), P(B)
@@ -1070,7 +1075,7 @@ P(A) = \int_{-\infty}^{\infty} P(A,B) dB
 \[
 P(A) = \sum_{i=1}^{k_B} P(A,B)
 \]</div>
-<p><strong>Conditional Probability</strong> - probability of an event, given another event has already occurred,</p>
+<p><strong><a class="reference internal" href="MachineLearning_glossary_a_c.html#conditional-probability"><span class="std std-doc">Conditional Probability</span></a></strong> - probability of an event, given another event has already occurred,</p>
 <div class="math notranslate nohighlight">
 \[
 P(A \text{ given } B), P(B \text{ given } A)
@@ -1096,7 +1101,7 @@ P(B|A) = \frac{P(A,B)}{P(A)}
 \[
 P(B|A) \ne P(A|B)
 \]</div>
-<p><strong>Joint Probability</strong> - probability of multiple events occurring together,</p>
+<p><strong><a class="reference internal" href="MachineLearning_glossary_g_l.html#joint-probability"><span class="std std-doc">Joint Probability</span></a></strong> - probability of multiple events occurring together,</p>
 <div class="math notranslate nohighlight">
 \[
 P(A \text{ and } B), P(B \text{ and } A)
@@ -1141,7 +1146,7 @@ P(A,B) = \frac{n(A,B)}{n(\Omega)}
 </section>
 <section id="probability-multiplication-rule">
 <h2>Probability Multiplication Rule<a class="headerlink" href="#probability-multiplication-rule" title="Permalink to this heading">#</a></h2>
-<p>As shown above, we can calculate the joint probability of <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> as the product of the conditional probability of <span class="math notranslate nohighlight">\(B\)</span> given <span class="math notranslate nohighlight">\(A\)</span> with the marginal probability of <span class="math notranslate nohighlight">\(A\)</span>,</p>
+<p>As shown above, we can calculate the <a class="reference internal" href="MachineLearning_glossary_g_l.html#joint-probability"><span class="std std-doc">joint probability</span></a> of <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> as the product of the <a class="reference internal" href="MachineLearning_glossary_a_c.html#conditional-probability"><span class="std std-doc">conditional probability</span></a> of <span class="math notranslate nohighlight">\(B\)</span> given <span class="math notranslate nohighlight">\(A\)</span> with the <a class="reference internal" href="MachineLearning_glossary_m_r.html#marginal-probability"><span class="std std-doc">marginal probability</span></a> of <span class="math notranslate nohighlight">\(A\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
 P(A \cap B) = P(A,B) = P(B|A) \cdot P(A)
@@ -1151,16 +1156,16 @@ P(A \cap B) = P(A,B) = P(B|A) \cdot P(A)
 \[
 P(B \cap A) = P(B,A) = P(A|B) \cdot P(B)
 \]</div>
-<p>this is know as the multiplication rule, we use the multiplication rule to develop the definition of independence.</p>
+<p>this is know as the <a class="reference internal" href="MachineLearning_glossary_m_r.html#multiplication-rule"><span class="std std-doc">multiplication rule</span></a>, we use the multiplication rule to develop the definition of <a class="reference internal" href="MachineLearning_glossary_g_l.html#independence"><span class="std std-doc">independence</span></a>.</p>
 </section>
 <section id="independent-events">
 <h2>Independent Events<a class="headerlink" href="#independent-events" title="Permalink to this heading">#</a></h2>
-<p>Given the probability multiplication rule,</p>
+<p>Given the probability <a class="reference internal" href="MachineLearning_glossary_m_r.html#multiplication-rule"><span class="std std-doc">multiplication rule</span></a>,</p>
 <div class="math notranslate nohighlight">
 \[
 P(A \cap B) = P(A,B) = P(B|A) \cdot P(A)
 \]</div>
-<p>now we ask the question, what is the conditional probability <span class="math notranslate nohighlight">\(P(B|A)\)</span> if events <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are independent? Given independence between <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> we would expect that knowing about <span class="math notranslate nohighlight">\(A\)</span> will not impact the outcome of <span class="math notranslate nohighlight">\(B\)</span>,</p>
+<p>now we ask the question, what is the <a class="reference internal" href="MachineLearning_glossary_a_c.html#conditional-probability"><span class="std std-doc">conditional probability</span></a> <span class="math notranslate nohighlight">\(P(B|A)\)</span> if events <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are independent? Given independence between <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> we would expect that knowing about <span class="math notranslate nohighlight">\(A\)</span> will not impact the outcome of <span class="math notranslate nohighlight">\(B\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
 P(B|A) = P(B)
@@ -1177,14 +1182,14 @@ P(A|B) = P(A)
 \]</div>
 <p>Now we can summarize this as, events <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are independent if and only if the following relations are true,</p>
 <ol class="arabic simple">
-<li><p><span class="math notranslate nohighlight">\(P(A \cap B) = P(A) \cdot P(B)\)</span> - joint probability is the product of the marginal probabilities</p></li>
-<li><p><span class="math notranslate nohighlight">\(P(A|B) = P(A)\)</span> - conditional is the marginal probability</p></li>
+<li><p><span class="math notranslate nohighlight">\(P(A \cap B) = P(A) \cdot P(B)\)</span> - <a class="reference internal" href="MachineLearning_glossary_g_l.html#joint-probability"><span class="std std-doc">joint probability</span></a> is the product of the marginal probabilities</p></li>
+<li><p><span class="math notranslate nohighlight">\(P(A|B) = P(A)\)</span> - conditional is the <a class="reference internal" href="MachineLearning_glossary_m_r.html#marginal-probability"><span class="std std-doc">marginal probability</span></a></p></li>
 <li><p><span class="math notranslate nohighlight">\(P(B|A) = P(B)\)</span> - conditional probability is the marginal probability</p></li>
 </ol>
 <p>If any of these are violated, we can suspect that there exists some form of relationship.</p>
 <ul class="simple">
 <li><p>we leave the significance of this result outside the scope for this chapter on probability</p></li>
-<li><p>certainly, if we can assume independence this simplifies our data science workflows</p></li>
+<li><p>certainly, if we can assume <a class="reference internal" href="MachineLearning_glossary_g_l.html#independence"><span class="std std-doc">independence</span></a> this simplifies our <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> science workflows</p></li>
 </ul>
 <p><strong>Independence Example #1</strong> - check independence for the following dataset.</p>
 <figure style="text-align: center;">
@@ -1207,9 +1212,9 @@ P(A_1) = \frac{5}{10} \quad P(A_2) = \frac{6}{10} \quad P(A_1,A_2) = \frac{2}{10
 <p>Now we finally dive into the Bayesian approach to probability, a very flexible approach that can be applied to assign probability to anything, and includes a framework for updating with new information.</p>
 <p>When I say that the Bayesian approach can assign probability to anything, I realize this needs some further explanation,</p>
 <ul class="simple">
-<li><p>of course, remember my statements in the “A Warning about Calculating Probability” section above, there are times when we do not have enough data, and there are workflows that are incorrect.</p></li>
+<li><p>of course, remember my statements in the “A Warning about Calculating Probability” section above, there are times when we do not have enough <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>, and there are workflows that are incorrect.</p></li>
 </ul>
-<p>I mean that any type of information can be encoded into the Bayesian framework, including belief</p>
+<p>Any type of information can be encoded into the Bayesian framework, including belief.</p>
 <p>Let us discuss this supported by a great example from the introduction chapter of Sivia (1996), “What is the Mass of Jupyter?”.</p>
 <figure style="text-align: center;">
   <img src="_static/probability/Jupiter.png" style="display: block; margin: 0 auto; width: 80%;">
@@ -1218,8 +1223,8 @@ P(A_1) = \frac{5}{10} \quad P(A_2) = \frac{6}{10} \quad P(A_1,A_2) = \frac{2}{10
 </figure>
 <p>What would be frequentist and Bayesian approaches to calculate the probabilities for the uncertainty model of the mass of Jupiter?</p>
 <ul class="simple">
-<li><p>Frequentist perspective - calculate the cumulative distribution function by measuring the mass of enough Jupiter-like planets from many star systems.</p></li>
-<li><p>Bayesian - form a prior probability and update with any available information.</p></li>
+<li><p>Frequentist perspective - calculate the <a class="reference internal" href="MachineLearning_glossary_a_c.html#cumulative-distribution-function"><span class="std std-doc">cumulative distribution function</span></a> by measuring the mass of enough Jupiter-like planets from many star systems.</p></li>
+<li><p>Bayesian - form a <a class="reference internal" href="MachineLearning_glossary_m_r.html#prior"><span class="std std-doc">prior</span></a> probability and update with any available information.</p></li>
 </ul>
 <p>Now to anyone saying, the frequentist approach is possible, remember the first exoplanets were discovered in 1995 by astronomers Michel Mayor and Didier Queloz.</p>
 <ul class="simple">
@@ -1233,7 +1238,7 @@ P(A_1) = \frac{5}{10} \quad P(A_2) = \frac{6}{10} \quad P(A_1,A_2) = \frac{2}{10
 </section>
 <section id="bayes-theorem">
 <h2>Bayes’ Theorem<a class="headerlink" href="#bayes-theorem" title="Permalink to this heading">#</a></h2>
-<p>Once again, here’s the multiplication rule,</p>
+<p>Once again, here’s the <a class="reference internal" href="MachineLearning_glossary_m_r.html#multiplication-rule"><span class="std std-doc">multiplication rule</span></a>,</p>
 <div class="math notranslate nohighlight">
 \[
 P(B \cup A) = P(B,A) = P(A|B) \cdot P(B)
@@ -1258,22 +1263,22 @@ P(A|B) \cdot P(B) = P(B|A) \cdot P(A)
 \[
 P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}
 \]</div>
-<p>To better explain Bayes’ theorem, we replace the <span class="math notranslate nohighlight">\(A\)</span> with “Model” and <span class="math notranslate nohighlight">\(B\)</span> with “New Data”, where “New Data” is the new data that we are updating with.</p>
+<p>To better explain Bayes’ theorem, we replace the <span class="math notranslate nohighlight">\(A\)</span> with “Model” and <span class="math notranslate nohighlight">\(B\)</span> with “New <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">Data</span></a>”, where “New Data” is the new data that we are updating with.</p>
 <div class="math notranslate nohighlight">
 \[
 P(\text{Model}|\text{New Data}) = \frac{P(\text{New Data}|\text{Model}) \cdot P(\text{Model})}{P(\text{New Data})}
 \]</div>
-<p>now we can see Bayesian updating as taking a model and updating it with new data.</p>
+<p>now we can see <a class="reference internal" href="MachineLearning_glossary_a_c.html#bayesian-updating"><span class="std std-doc">Bayesian updating</span></a> as taking a model and updating it with new data.</p>
 <p>Now we make some observations about Bayes’ theorem,</p>
 <ol class="arabic simple">
 <li><p>We are reversing conditional probabilities to get <span class="math notranslate nohighlight">\(P(A|B)\)</span> from <span class="math notranslate nohighlight">\(P(B|A)\)</span>, this often comes in handy because we readily have access to one but not the other.</p></li>
 <li><p>The probabilities in Bayes’ theorem are known as:</p></li>
 </ol>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(P(B)\)</span> - evidence</p></li>
-<li><p><span class="math notranslate nohighlight">\(P(A)\)</span> - prior</p></li>
-<li><p><span class="math notranslate nohighlight">\(P(B|A)\)</span> - likelihood</p></li>
-<li><p><span class="math notranslate nohighlight">\(P(A|B)\)</span> - posterior</p></li>
+<li><p><span class="math notranslate nohighlight">\(P(B)\)</span> - <a class="reference internal" href="MachineLearning_glossary_d_f.html#evidence"><span class="std std-doc">evidence</span></a></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(A)\)</span> - <a class="reference internal" href="MachineLearning_glossary_m_r.html#prior"><span class="std std-doc">prior</span></a></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(B|A)\)</span> - <a class="reference internal" href="MachineLearning_glossary_g_l.html#likelihood-function"><span class="std std-doc">likelihood function</span></a></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(A|B)\)</span> - <a class="reference internal" href="MachineLearning_glossary_m_r.html#posterior"><span class="std std-doc">posterior</span></a></p></li>
 </ul>
 <p>      we can substitute the probabilities with their labels,</p>
 <div class="math notranslate nohighlight">
@@ -1287,7 +1292,7 @@ P(\text{Model}|\text{New Data}) = \frac{P(\text{New Data}|\text{Model}) \cdot P(
 <li><p>the prior probability is estimated prior to the collection of the new information in the likelihood. If the prior and likelihood includes new information, then this is “double accounting” of the new information!</p></li>
 </ul>
 <ol class="arabic simple" start="4">
-<li><p>Evidence term is usually just a standardization to ensure probability closure.</p></li>
+<li><p>Evidence term is usually just a <a class="reference internal" href="MachineLearning_glossary_s_z.html#standardization"><span class="std std-doc">standardization</span></a> to ensure <a class="reference internal" href="MachineLearning_glossary_m_r.html#probability-closure"><span class="std std-doc">probability closure</span></a>.</p></li>
 </ol>
 <ul class="simple">
 <li><p>evidence probability is often calculated with marginalization,</p></li>
@@ -1318,14 +1323,14 @@ P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B|A) \cdot P(A) + P(B|A^c) \cdot P(A^c)}
 P(B) = \sum_{i=1}^{m} P(B|A_i) \cdot P(A_i), \quad \forall \quad i = 1,\ldots,m
 \]</div>
 <ul class="simple">
-<li><p>in some cases, like Markov chain Monte Carlo with the Metropolis-Hastings algorithm, we eliminate the need for the evidence term because we calculate a probability ratio of the proposed step vs. the current state and the evidence probability cancels out.</p></li>
+<li><p>in some cases, like <a class="reference internal" href="MachineLearning_glossary_m_r.html#markov-chain-monte-carlo"><span class="std std-doc">Markov chain Monte Carlo</span></a> with the Metropolis-Hastings algorithm, we eliminate the need for the evidence term because we calculate a probability ratio of the proposed step vs. the current state and the evidence probability cancels out.</p></li>
 </ul>
 <ol class="arabic simple" start="5">
 <li><p>If the prior is naïve then the posterior is equal to the likelihood. This is logical, if we know nothing prior to collecting the new data then we completely rely on the likelihood probability.</p></li>
 </ol>
 <ul class="simple">
 <li><p>a naïve prior is a maximum uncertainty prior, like the uniform probability with all outcomes equal probable</p></li>
-<li><p>under the assumption of standard normal, global Gaussian distribution with a mean of 0.0 and standard deviation of 1.0, a naïve prior is the standard normal distribution</p></li>
+<li><p>under the assumption of standard normal, global Gaussian distribution with a <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a> of 0.0 and <a class="reference internal" href="MachineLearning_glossary_s_z.html#standard-deviation"><span class="std std-doc">standard deviation</span></a> of 1.0, a naïve prior is the standard normal distribution</p></li>
 </ul>
 <ol class="arabic simple" start="6">
 <li><p>If the likelihood probability is naïve then the posterior is equal to the prior. Once again, this is logical, if the new data provides no information, then we should continue to rely on the prior probability and the original model is not updated.</p></li>
@@ -1333,7 +1338,7 @@ P(B) = \sum_{i=1}^{m} P(B|A_i) \cdot P(A_i), \quad \forall \quad i = 1,\ldots,m
 </section>
 <section id="bayesian-probability-example-problems">
 <h2>Bayesian Probability Example Problems<a class="headerlink" href="#bayesian-probability-example-problems" title="Permalink to this heading">#</a></h2>
-<p>An efficient way to improve your understanding of Bayesian probability is through solving illustrative problems. Here’s a great group of problems,</p>
+<p>An efficient way to improve your understanding of <a class="reference internal" href="MachineLearning_glossary_a_c.html#bayesian-probability"><span class="std std-doc">Bayesian probability</span></a> is through solving illustrative problems. Here’s a great group of problems,</p>
 <ul class="simple">
 <li><p>you conduct a test and get a positive test result for something we can’t directly observe happening, but what is the probability of the thing actually happening given the positive test?</p></li>
 </ul>
@@ -1349,13 +1354,13 @@ P(B) = \sum_{i=1}^{m} P(B|A_i) \cdot P(A_i), \quad \forall \quad i = 1,\ldots,m
   <figcaption style="text-align: center;"> Bayes' theorem rewritten for the case of tests. 
 </figcaption>
 </figure>
-<p><strong>Bayesian Updating Example #1</strong> - prior information at a site suggests a deepwater channel reservoir exists at a given location with a probability of 0.6. We consider further investigation with a 3D seismic survey.</p>
-<p>3D seismic survey will indicate a channelized reservoir:</p>
+<p><strong><a class="reference internal" href="MachineLearning_glossary_a_c.html#bayesian-updating"><span class="std std-doc">Bayesian Updating</span></a> Example #1</strong> - prior information at a site suggests a deepwater channel reservoir exists at a given location with a probability of 0.6. We consider further investigation with a 3D seismic survey.</p>
+<p>3D <a class="reference internal" href="MachineLearning_glossary_s_z.html#seismic"><span class="std std-doc">seismic</span></a> survey will indicate a channelized reservoir:</p>
 <p>‐ is present with 0.9 probability if it really is present</p>
 <p>‐ is not present with a probability 0.7 if it really is not</p>
-<p>We have our test, seismic survey, that will offer new data, and we have our prior information (prior to collecting the new seismic data). Now we define our events,</p>
+<p>We have our test, seismic survey, that will offer new data, and we have our <a class="reference internal" href="MachineLearning_glossary_m_r.html#prior"><span class="std std-doc">prior</span></a> information (prior to collecting the new seismic data). Now we define our events,</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(A\)</span> = the deepwater channel is present, then <span class="math notranslate nohighlight">\(P(A)\)</span> is the probability the thing is happening before collecting the new data</p></li>
+<li><p><span class="math notranslate nohighlight">\(A\)</span> = the deepwater channel is present, then <span class="math notranslate nohighlight">\(P(A)\)</span> is the probability the thing is happening before collecting the new <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a></p></li>
 <li><p><span class="math notranslate nohighlight">\(B\)</span> = new seismic shows a deepwater channel, then <span class="math notranslate nohighlight">\(P(B)\)</span> is the probability of a positive test for the thing happening</p></li>
 </ul>
 <p>It follows that the compliments are,</p>
@@ -1363,7 +1368,7 @@ P(B) = \sum_{i=1}^{m} P(B|A_i) \cdot P(A_i), \quad \forall \quad i = 1,\ldots,m
 <li><p><span class="math notranslate nohighlight">\(A^c\)</span> = the deepwater channel not present, then <span class="math notranslate nohighlight">\(P(A^c)\)</span> is the probability the thing is not happening before collecting the new data</p></li>
 <li><p><span class="math notranslate nohighlight">\(B^c\)</span> = new seismic does not show a deepwater channel, then <span class="math notranslate nohighlight">\(P(B^c)\)</span> is the probability of a negative test for the thing happening</p></li>
 </ul>
-<p>Now we write out Bayes’ theorem, the regular and expanded evidence term by marginalization,</p>
+<p>Now we write out Bayes’ theorem, the regular and expanded <a class="reference internal" href="MachineLearning_glossary_d_f.html#evidence"><span class="std std-doc">evidence</span></a> term by marginalization,</p>
 <div class="math notranslate nohighlight">
 \[
 P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)} = \frac{P(B|A) \cdot P(A)}{P(B|A) \cdot P(A) + P(B|A^c) \cdot P(A^c)}
@@ -1384,10 +1389,10 @@ P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)} = \frac{P(B|A) \cdot P(A)}{P(B|A) \cdot 
 \[
 P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B|A) \cdot P(A) + P(B|A^c) \cdot P(A^c)} = \frac{0.9 \cdot 0.6}{0.9 \cdot 0.6 + 0.3 \cdot 0.4} = 0.82
 \]</div>
-<p>Given a positive test, seismic indicating a deepwater channel is present, we have posterior probability of 0.82.</p>
+<p>Given a positive test, seismic indicating a deepwater channel is present, we have <a class="reference internal" href="MachineLearning_glossary_m_r.html#posterior"><span class="std std-doc">posterior</span></a> probability of 0.82.</p>
 <p>Is seismic data useful? How do we access this?</p>
 <ul class="simple">
-<li><p>consider the change from prior probability, 0.6, to posterior probability, 0.82, showing a reduction in uncertainty. By integrating the value and potential loss of this decision it is possible to now assign the value of information for seismic data.</p></li>
+<li><p>consider the change from prior probability, 0.6, to posterior probability, 0.82, showing a reduction in uncertainty. By integrating this and the potential loss of this decision it is possible to now assign the value of information for seismic data.</p></li>
 <li><p>I leave decision analysis out of scope for this e-book, but it is a fascinating topic, and I recommend anyone involved in data science to learn at least the basics to ensure you add value by impacting the decision(s)!</p></li>
 </ul>
 <p>It is quite instructive to conduct a sensitivity on this example problem to assess the behavior of Bayesian updating. You could download and run my <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_Bayesian_Updating.ipynb">interactive Bayesian updating dashboard</a> to accomplish this.</p>
@@ -1399,7 +1404,7 @@ P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B|A) \cdot P(A) + P(B|A^c) \cdot P(A^c)} = \
   <figcaption style="text-align: center;"> My interactive Python dashboard demonstrating Bayesian updating. Note, \(H\) represents the thing is happening (\(A\) in our example), and \(+\) represents a positive test and \(-\) represents a negative test (\(B\) and \(B^c\) respectively in our example). 
 </figcaption>
 </figure>
-<p>We have improved the test precision, probability of seismic detecting a channel given it is present, <span class="math notranslate nohighlight">\(P(B|A)\)</span> from 0.9 to 0.99.</p>
+<p>We have improved the test <a class="reference internal" href="MachineLearning_glossary_m_r.html#precision"><span class="std std-doc">precision</span></a>, probability of seismic detecting a channel given it is present, <span class="math notranslate nohighlight">\(P(B|A)\)</span> from 0.9 to 0.99.</p>
 <div class="math notranslate nohighlight">
 \[
 P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B|A) \cdot P(A) + P(B|A^c) \cdot P(A^c)} = \frac{0.99 \cdot 0.6}{0.99 \cdot 0.6 + 0.3 \cdot 0.4} = 0.83
@@ -1423,7 +1428,7 @@ P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B|A) \cdot P(A) + P(B|A^c) \cdot P(A^c)} = \
   <figcaption style="text-align: center;"> Machines 1, 2 and 3, produce the same product that are then mixed in the assembly line. They each have different production rates (percentage of total and error rates).
 </figcaption>
 </figure>
-<p>We want to know given an error in an individual product, what is the probability that the product came from a specific machine? First, we define our variables,</p>
+<p>We want to know given an error in an individual product, what is the probability that the product came from a specific machine? First, we define our <a class="reference internal" href="MachineLearning_glossary_s_z.html#variable"><span class="std std-doc">variable</span></a>s,</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(Y\)</span> = the product has an error</p></li>
 <li><p><span class="math notranslate nohighlight">\(X_1, X_2, X_3\)</span> = the product came from machines 1, 2 or 3 respectively.</p></li>
@@ -1481,23 +1486,23 @@ P(X_1|Y) + P(X_2|Y) + P(X_3|Y) = 0.41 + 0.38 + 0.21 = 1.0
 </section>
 <section id="bayesian-updating-with-gaussian-distributions">
 <h2>Bayesian Updating with Gaussian Distributions<a class="headerlink" href="#bayesian-updating-with-gaussian-distributions" title="Permalink to this heading">#</a></h2>
-<p>Sivia (1996) provided an analytical approach for Bayesian updating under the assumption of a standard normal global distribution, Gaussian distributed with mean of 0.0 and variance of 1.0. We calculate,</p>
+<p>Sivia (1996) provided an analytical approach for <a class="reference internal" href="MachineLearning_glossary_a_c.html#bayesian-updating"><span class="std std-doc">Bayesian updating</span></a> under the assumption of a standard normal global distribution, Gaussian distributed with mean of 0.0 and variance of 1.0. We calculate,</p>
 <ul class="simple">
-<li><p>the mean of the posterior distribution from the prior and likelihood mean and variance.</p></li>
+<li><p>the mean of the <a class="reference internal" href="MachineLearning_glossary_m_r.html#posterior"><span class="std std-doc">posterior</span></a> distribution from the prior and likelihood mean and variance.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
 \mu_{\text{posterior}} = \frac{\mu_{\text{likelihood}} \cdot \sigma^2_{\text{prior}} + \mu_{\text{prior}} \cdot \sigma^2_{\text{likelihood}}}{\left[1.0 − \sigma^2_{\text{likelihood}} \right] \cdot \left[\sigma^2_{\text{prior}} − 1.0 \right]+1.0}
 \]</div>
 <ul class="simple">
-<li><p>the variance of the posterior distribution from the prior and likelihood variances</p></li>
+<li><p>the <a class="reference internal" href="MachineLearning_glossary_s_z.html#variance"><span class="std std-doc">variance</span></a> of the posterior distribution from the prior and likelihood variances</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
 \sigma^2_{\text{posterior}} = \frac{\sigma^2_{\text{prior}} \cdot \sigma^2_{\text{likelihood}}}{\left[1.0 − \sigma^2_{\text{likelihood}} \right] \cdot \left[\sigma^2_{\text{prior}} − 1.0 \right]+1.0}
 \]</div>
 <ul class="simple">
-<li><p>consistent with the multivariate Gaussian distribution this posterior is homoscedastic, the prior or likelihood means are not in the equation for posterior variance.</p></li>
+<li><p>consistent with the <a class="reference internal" href="MachineLearning_glossary_m_r.html#multivariate"><span class="std std-doc">multivariate</span></a> Gaussian distribution this posterior is homoscedastic, the prior or likelihood means are not in the equation for posterior variance.</p></li>
 <li><p>my third dashboard in this Jupyter notebook <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_Bayesian_Updating.ipynb">interactive Bayesian updating dashboard</a> includes Bayesian updating with Gaussian distributions.</p></li>
 </ul>
 <figure style="text-align: center;">
@@ -1507,9 +1512,9 @@ P(X_1|Y) + P(X_2|Y) + P(X_3|Y) = 0.41 + 0.38 + 0.21 = 1.0
 </figure>
 <p>This example helps my students understand the concept of Bayesian updating for building uncertainty distributions. Here are some things to try out,</p>
 <ol class="arabic simple">
-<li><p>a naïve prior or likelihood and observe the posterior is the same as the likelihood or prior, respectively.</p></li>
+<li><p>a naïve <a class="reference internal" href="MachineLearning_glossary_m_r.html#prior"><span class="std std-doc">prior</span></a> or likelihood and observe the posterior is the same as the likelihood or prior, respectively.</p></li>
 <li><p>a very certain, low variance prior. Start with a large prior variance and as you reduce the variance, the posterior is pulled towards the prior. The influence of prior and likelihood is proportional to their relative certainty.</p></li>
-<li><p>a contradiction between prior and likelihood with very different means. You may be able to even introduce extrapolation, a low prior positive mean with higher positive likelihood mean can result in an even higher positive posterior mean.</p></li>
+<li><p>a contradiction between prior and likelihood with very different <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a>s. You may be able to even introduce extrapolation, a low prior positive mean with higher positive likelihood mean can result in an even higher positive posterior mean.</p></li>
 </ol>
 </section>
 <section id="comments">
@@ -1525,20 +1530,20 @@ P(X_1|Y) + P(X_2|Y) + P(X_3|Y) = 0.41 + 0.38 + 0.21 = 1.0
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
 </figcaption>
 </figure>
-<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a>, <a class="reference internal" href="MachineLearning_glossary_g_l.html#geostatistics"><span class="std std-doc">geostatistics</span></a>, and machine learning. Michael is also,</p>
 <ul class="simple">
-<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a <a class="reference internal" href="MachineLearning_glossary_a_c.html#core"><span class="std std-doc">core</span></a> faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>Michael has written over 100 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
 <p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
-<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a> and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
-<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PIs including Profs. Foster, Torres-Verdin and van Oort)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">Data</span></a> Analytics and Machine Learning consortium (co-PIs including Profs. Foster, Torres-Verdin and van Oort)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>. We are solving challenging subsurface problems!</p></li>
 <li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
 </ul>
 <p>I’m always happy to discuss,</p>
@@ -1612,7 +1617,7 @@ P(X_1|Y) + P(X_2|Y) + P(X_3|Y) = 0.41 + 0.38 + 0.21 = 1.0
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-for-probability">Motivation for Probability</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-probability">What is Probability?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-definition">Probability Definition</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-calculate-probability">How to Calculate Probability?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-warning-about-calculating-probability">A Warning about Calculating Probability</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#venn-diagrams">Venn Diagrams</a></li>

@@ -174,6 +174,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_concepts.html">Machine Learning Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_subsurface_modeling.html">Subsurface Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_training_tuning.html">Training and Tuning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
@@ -219,7 +220,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_python.html">Python Code Snippets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_a_c.html">Glossary A-C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_d_f.html">Glossary D-F</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_g_l.html">Glossary G-L</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_m_r.html">Glossary M-R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_s_z.html">Glossary S-Z</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -489,54 +494,54 @@ document.write(`
 <p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
 <section id="motivation-for-multivariate-analysis">
 <h2>Motivation for Multivariate Analysis<a class="headerlink" href="#motivation-for-multivariate-analysis" title="Permalink to this heading">#</a></h2>
-<p>To build good machine learning models, we build on a foundation of statistical analysis to explore and understand the relationships within our data. This includes the relationships between 2 or more features at a time!</p>
+<p>To build good machine learning models, we build on a foundation of statistical analysis to explore and understand the relationships within our <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>. This includes the relationships between 2 or more <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s at a time!</p>
 <ul class="simple">
-<li><p>in many cases these multivariate statistics are actually critical components of the machine learning methods, e.g., eigenvalues and eigenvectors are calculated from the covariance matrix for principal component analysis.</p></li>
+<li><p>in many cases these <a class="reference internal" href="MachineLearning_glossary_m_r.html#multivariate"><span class="std std-doc">multivariate</span></a> <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">statistics</span></a> are actually critical components of the machine learning methods, e.g., <a class="reference internal" href="MachineLearning_glossary_d_f.html#eigenvalue"><span class="std std-doc">eigenvalue</span></a>s and <a class="reference internal" href="MachineLearning_glossary_d_f.html#eigenvector"><span class="std std-doc">eigenvector</span></a>s are calculated from the <a class="reference internal" href="MachineLearning_glossary_a_c.html#covariance"><span class="std std-doc">covariance</span></a> matrix for <a class="reference internal" href="MachineLearning_glossary_m_r.html#principal-component-analysis"><span class="std std-doc">principal component analysis</span></a>.</p></li>
 </ul>
-<p>Let’s talk about bivariate and multivariate methods briefly. I confess the statistics beyond bivariate is a placeholder right now. Note, in the feature ranking workflow (link above) I have included partial correlation, maximum relevance minimum redundancy (MRMR) based on mutual information and random forest feature importance methods that extract information beyond bivariate.</p>
+<p>Let’s talk about <a class="reference internal" href="MachineLearning_glossary_a_c.html#bivariate"><span class="std std-doc">bivariate</span></a> and multivariate methods briefly. I confess the <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistic"><span class="std std-doc">statistic</span></a>s beyond bivariate is a placeholder right now. Note, in the <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-ranking"><span class="std std-doc">feature ranking</span></a> workflow (link above) I have included partial correlation, <a class="reference internal" href="MachineLearning_glossary_m_r.html#maximum-relevance-minimum-redundancy"><span class="std std-doc">maximum relevance minimum redundancy</span></a> (MRMR) based on <a class="reference internal" href="MachineLearning_glossary_m_r.html#mutual-information"><span class="std std-doc">mutual information</span></a> and <a class="reference internal" href="MachineLearning_glossary_m_r.html#random-forest"><span class="std std-doc">random forest</span></a> <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-importance"><span class="std std-doc">feature importance</span></a> methods that extract information beyond bivariate.</p>
 </section>
 <section id="bivariate-analysis">
 <h2>Bivariate Analysis<a class="headerlink" href="#bivariate-analysis" title="Permalink to this heading">#</a></h2>
-<p>Understand and quantify the relationship between two variables, i.e., the bivariate probability density function, <span class="math notranslate nohighlight">\(f_{x,y}(x,y)\)</span>, for example,</p>
+<p>Understand and quantify the relationship between two <a class="reference internal" href="MachineLearning_glossary_s_z.html#variable"><span class="std std-doc">variable</span></a>s, i.e., the bivariate <a class="reference internal" href="MachineLearning_glossary_m_r.html#probability-density-function"><span class="std std-doc">probability density function</span></a>, <span class="math notranslate nohighlight">\(f_{x,y}(x,y)\)</span>, for example,</p>
 <ul class="simple">
 <li><p>porosity and permeability</p></li>
 <li><p>fraction of shale and oil recovery</p></li>
 <li><p>copper and gold</p></li>
 <li><p>basal area and tree height</p></li>
 </ul>
-<p>How can we use these relationships? To improve our prediction models and ultimately make better decisions.</p>
-<p>What would be the impact if we ignore these relationships and simply modeled each feature separately?</p>
+<p>How can we use these relationships? To improve our <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a> models and ultimately make better decisions.</p>
+<p>What would be the impact if we ignore these relationships and simply modeled each <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> separately?</p>
 <ul class="simple">
-<li><p><strong>assumption of independence</strong> - there will be no relationship between our estimates or simulated realizations, the joint probability density function will not be reproduced and unrealistic combinations may occur, e.g., very high permeability with very low porosity</p></li>
-<li><p><strong>data conditioning</strong> - will impose the relationship at data locations. The geostatistics models honor the data at the data locations and the data scatter plot is the correct relationship, but away from the data this relationship will fade</p></li>
+<li><p><strong>assumption of <a class="reference internal" href="MachineLearning_glossary_g_l.html#independence"><span class="std std-doc">independence</span></a></strong> - there will be no relationship between our estimates or simulated <a class="reference internal" href="MachineLearning_glossary_m_r.html#realizations"><span class="std std-doc">realizations</span></a>, the <a class="reference internal" href="MachineLearning_glossary_g_l.html#joint-probability"><span class="std std-doc">joint probability</span></a> density function will not be reproduced and unrealistic combinations may occur, e.g., very high permeability with very low porosity</p></li>
+<li><p><strong><a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> conditioning</strong> - will impose the relationship at data locations. The <a class="reference internal" href="MachineLearning_glossary_g_l.html#geostatistics"><span class="std std-doc">geostatistics</span></a> models honor the data at the data locations and the data scatter plot is the correct relationship, but away from the data this relationship will fade</p></li>
 </ul>
-<p>Here’s an example of an interesting bivariate relationship. When we scatter plot the data and plot the facies we can see the natural groups with respect to porosity and permeability. Clearly, considering only porosity or permeability would not be sufficient to understand this data.</p>
+<p>Here’s an example of an interesting bivariate relationship. When we <a class="reference internal" href="MachineLearning_glossary_s_z.html#scatter-plot"><span class="std std-doc">scatter plot</span></a> the data and plot the <a class="reference internal" href="MachineLearning_glossary_d_f.html#facies"><span class="std std-doc">facies</span></a> we can see the natural groups with respect to porosity and permeability. Clearly, considering only porosity or permeability would not be sufficient to understand this data.</p>
 <figure style="text-align: center;">
   <img src="_static/multivariate/bivariate_example.png" style="display: block; margin: 0 auto; width: 100%;">
   <figcaption style="text-align: center;">Example of a complicated bivariate relationship.</figcaption>
 </figure>
-<p>Bivariate statistics are our tools to quantify and impose these bivariate relationships in our geostatistical models.</p>
+<p><a class="reference internal" href="MachineLearning_glossary_a_c.html#bivariate-statistic"><span class="std std-doc">Bivariate statistic</span></a>s are our tools to quantify and impose these bivariate relationships in our geostatistical models.</p>
 </section>
 <section id="bivariate-statistics">
 <h2>Bivariate Statistics<a class="headerlink" href="#bivariate-statistics" title="Permalink to this heading">#</a></h2>
-<p><strong>Pearson’s Product‐Moment Correlation Coefficient</strong> or just the correlation coefficient or just correlation, is a widely-known bivariate statistic, if you say 0.9 correlation most engineers and scientists can visualize this! Here’s the important points and limitations for the correlation coefficient,</p>
+<p><strong>Pearson’s Product‐Moment <a class="reference internal" href="MachineLearning_glossary_a_c.html#correlation-coefficient"><span class="std std-doc">Correlation Coefficient</span></a></strong> or just the correlation coefficient or just correlation, is a widely-known <a class="reference internal" href="MachineLearning_glossary_a_c.html#bivariate-statistic"><span class="std std-doc">bivariate statistic</span></a>, if you say 0.9 correlation most engineers and scientists can visualize this! Here’s the important points and limitations for the correlation coefficient,</p>
 <ul class="simple">
 <li><p>the notation for correlation is, <span class="math notranslate nohighlight">\(\rho_{x,y}\)</span></p></li>
-<li><p>provides a measure of the degree of linear relationship, i.e., nonlinear relationships will bias the correlation coefficient</p></li>
-<li><p>is very sensitive to outliers, i.e., a single extreme outlier can significantly increase or reduce the apparent correlation</p></li>
+<li><p>provides a measure of the degree of linear relationship, i.e., nonlinear relationships will <a class="reference internal" href="MachineLearning_glossary_a_c.html#bias"><span class="std std-doc">bias</span></a> the correlation coefficient</p></li>
+<li><p>is very sensitive to <a class="reference internal" href="MachineLearning_glossary_m_r.html#outlier"><span class="std std-doc">outlier</span></a>s, i.e., a single extreme outlier can significantly increase or reduce the apparent correlation</p></li>
 </ul>
 <p>There are some other deeper points that should be made about the Gaussian assumption,</p>
 <ul class="simple">
-<li><p>the correlation coefficient provides a complete description for the bivariate relationship only under the assumption of bivariate Gaussianity. If we assume Gaussian, then the means, <span class="math notranslate nohighlight">\(\overline{x}\)</span> and <span class="math notranslate nohighlight">\(\overline{y}\)</span>, standard deviations, <span class="math notranslate nohighlight">\(s_x\)</span> and <span class="math notranslate nohighlight">\(s_y\)</span>, with the correlation coefficient, <span class="math notranslate nohighlight">\(\rho_{x,y}\)</span> completely describe the bivariate probability density function <span class="math notranslate nohighlight">\(f_{x,y}(x,y)\)</span></p></li>
-<li><p>for any other distributions, the correlation coefficient is not sufficient to know the entire, bivariate probability density function <span class="math notranslate nohighlight">\(f_{x,y}(x,y)\)</span>, e.g., to calculate conditional distributions, <span class="math notranslate nohighlight">\(f_{x|y}\)</span></p></li>
-<li><p>the standard approach in geostatistics is to apply Gaussian anamorphosis to each feature and then to assume bivariate Gaussian so that the correlation coefficient is sufficient to describe the relationship between the two features</p></li>
+<li><p>the correlation coefficient provides a complete description for the bivariate relationship only under the assumption of bivariate Gaussianity. If we assume Gaussian, then the <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a>s, <span class="math notranslate nohighlight">\(\overline{x}\)</span> and <span class="math notranslate nohighlight">\(\overline{y}\)</span>, standard deviations, <span class="math notranslate nohighlight">\(s_x\)</span> and <span class="math notranslate nohighlight">\(s_y\)</span>, with the correlation coefficient, <span class="math notranslate nohighlight">\(\rho_{x,y}\)</span> completely describe the bivariate <a class="reference internal" href="MachineLearning_glossary_m_r.html#probability-density-function"><span class="std std-doc">probability density function</span></a> <span class="math notranslate nohighlight">\(f_{x,y}(x,y)\)</span></p></li>
+<li><p>for any other distributions, the correlation coefficient is not sufficient to know the entire, <a class="reference internal" href="MachineLearning_glossary_a_c.html#bivariate"><span class="std std-doc">bivariate</span></a> probability density function <span class="math notranslate nohighlight">\(f_{x,y}(x,y)\)</span>, e.g., to calculate conditional distributions, <span class="math notranslate nohighlight">\(f_{x|y}\)</span></p></li>
+<li><p>the standard approach in <a class="reference internal" href="MachineLearning_glossary_g_l.html#geostatistics"><span class="std std-doc">geostatistics</span></a> is to apply <a class="reference internal" href="MachineLearning_glossary_g_l.html#gaussian-anamorphosis"><span class="std std-doc">Gaussian anamorphosis</span></a> to each <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> and then to assume bivariate Gaussian so that the correlation coefficient is sufficient to describe the relationship between the two features</p></li>
 </ul>
 <p>What about spatial bivariate relationship?</p>
 <ul class="simple">
-<li><p>the full cokriging system includes cross variograms and cross covariance that capture the relationships between two features over space! But due to the difficulty of inferring and modeling the required linear model of coregionalization, this is rarely done.</p></li>
-<li><p>instead a simplifying apply like collocated cokriging is applied that only retains the collocated secondary data and limits the model of bivariate relationship to the collocated (lag <span class="math notranslate nohighlight">\(\bf{h}\)</span> of 0.0) correlation coefficient</p></li>
+<li><p>the full cokriging system includes cross <a class="reference internal" href="MachineLearning_glossary_s_z.html#variogram"><span class="std std-doc">variogram</span></a>s and cross <a class="reference internal" href="MachineLearning_glossary_a_c.html#covariance"><span class="std std-doc">covariance</span></a> that capture the relationships between two features over space! But due to the difficulty of inferring and modeling the required linear model of coregionalization, this is rarely done.</p></li>
+<li><p>instead a simplifying apply like collocated cokriging is applied that only retains the collocated <a class="reference internal" href="MachineLearning_glossary_s_z.html#secondary-data"><span class="std std-doc">secondary data</span></a> and limits the model of bivariate relationship to the collocated (lag <span class="math notranslate nohighlight">\(\bf{h}\)</span> of 0.0) correlation coefficient</p></li>
 </ul>
-<p>More could be done! Let’s review the sample variance of variable <span class="math notranslate nohighlight">\(x\)</span>. Of course, I’m truncating our notation as <span class="math notranslate nohighlight">\(x\)</span> is a set of samples a locations in our modeling space, <span class="math notranslate nohighlight">\(x(\bf{u_\alpha}), \, \forall \, \alpha = 0, 1, \dots, n - 1\)</span>.</p>
+<p>More could be done! Let’s review the <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a> <a class="reference internal" href="MachineLearning_glossary_s_z.html#variance"><span class="std std-doc">variance</span></a> of <a class="reference internal" href="MachineLearning_glossary_s_z.html#variable"><span class="std std-doc">variable</span></a> <span class="math notranslate nohighlight">\(x\)</span>. Of course, I’m truncating our notation as <span class="math notranslate nohighlight">\(x\)</span> is a set of samples a locations in our modeling space, <span class="math notranslate nohighlight">\(x(\bf{u_\alpha}), \, \forall \, \alpha = 0, 1, \dots, n - 1\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[
 \sigma^2_{x}  = \frac{\sum_{i=1}^{n} (x_i - \overline{x})^2}{(n-1)}
@@ -546,7 +551,7 @@ document.write(`
 \[
 C_{xy}  = \frac{\sum_{i=1}^{n} (x_i - \overline{x})(y_i - \overline{y})}{(n-1)}
 \]</div>
-<p>We now have a measure that represents the manner in which variables <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> co-vary or vary together.  We can standardized the covariance by the product of the standard deviations of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> to calculate the correlation coefficient.</p>
+<p>We now have a measure that represents the manner in which variables <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> co-vary or vary together.  We can standardized the covariance by the product of the <a class="reference internal" href="MachineLearning_glossary_s_z.html#standard-deviation"><span class="std std-doc">standard deviation</span></a>s of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> to calculate the correlation coefficient.</p>
 <div class="math notranslate nohighlight">
 \[
 \rho_{xy}  = \frac{\sum_{i=1}^{n} (x_i - \overline{x})(y_i - \overline{y})}{(n-1)\sigma_x \sigma_y}, \, -1.0 \le \rho_{xy} \le 1.0
@@ -558,7 +563,7 @@ C_{xy}  = \frac{\sum_{i=1}^{n} (x_i - \overline{x})(y_i - \overline{y})}{(n-1)}
 \]</div>
 <p>To help you calibrate you eye to the correlation coefficient I developed an interactive <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_Correlation_Coefficient.ipynb">correlation dashboard</a>.</p>
 <ul class="simple">
-<li><p>for the bivariate Gaussian case vary the correlation coefficient and observe the samples, condition expectation and joint probability density</p></li>
+<li><p>for the bivariate Gaussian case vary the correlation coefficient and observe the samples, condition <a class="reference internal" href="MachineLearning_glossary_d_f.html#expectation"><span class="std std-doc">expectation</span></a> and <a class="reference internal" href="MachineLearning_glossary_g_l.html#joint-probability"><span class="std std-doc">joint probability</span></a> density</p></li>
 </ul>
 <figure style="text-align: center;">
   <img src="_static/multivariate/correlation.png" style="display: block; margin: 0 auto; width: 100%;">
@@ -570,7 +575,7 @@ C_{xy}  = \frac{\sum_{i=1}^{n} (x_i - \overline{x})(y_i - \overline{y})}{(n-1)}
 \[
 \rho_{R_x R_y}  = \frac{\sum_{i=1}^{n} (R_{x_i} - \overline{R_x})(R_{y_i} - \overline{R_y})}{(n-1)\sigma_{R_x} \sigma_{R_y}}, \, -1.0 \le \rho_{R_x,R_y} \le 1.0
 \]</div>
-<p>The rank correlation applies the rank transform to the data prior to calculating the correlation coefficient.  To calculate the rank transform simply replace the data values with the rank <span class="math notranslate nohighlight">\(R_x = 1,\dots,n\)</span>, where <span class="math notranslate nohighlight">\(n\)</span> is the maximum value and <span class="math notranslate nohighlight">\(1\)</span> is the minimum value.</p>
+<p>The rank correlation applies the rank transform to the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> <a class="reference internal" href="MachineLearning_glossary_m_r.html#prior"><span class="std std-doc">prior</span></a> to calculating the correlation coefficient.  To calculate the rank transform simply replace the data <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s with the rank <span class="math notranslate nohighlight">\(R_x = 1,\dots,n\)</span>, where <span class="math notranslate nohighlight">\(n\)</span> is the maximum value and <span class="math notranslate nohighlight">\(1\)</span> is the minimum value.</p>
 <div class="math notranslate nohighlight">
 \[
 x_\alpha, \, \forall \alpha = 1,\dots, n, \, | \, x_i \ge x_j \, \forall \, i \gt j 
@@ -584,24 +589,24 @@ R_{x_i} = i
   <img src="_static/multivariate/correlation_outlier.png" style="display: block; margin: 0 auto; width: 100%;">
   <figcaption style="text-align: center;">Interactive Python dashboard for visualizing correlation coefficient.</figcaption>
 </figure>
-<p>The correlation coefficients provide useful metrics to quantify relationships between two variables at a time. We can also consider bivariate scatter plots and matrix scatter plots to visualize multivariate data.</p>
+<p>The correlation coefficients provide useful metrics to quantify relationships between two variables at a time. We can also consider bivariate <a class="reference internal" href="MachineLearning_glossary_s_z.html#scatter-plot"><span class="std std-doc">scatter plot</span></a>s and <a class="reference internal" href="MachineLearning_glossary_m_r.html#matrix-scatter-plots"><span class="std std-doc">matrix scatter plots</span></a> to visualize <a class="reference internal" href="MachineLearning_glossary_m_r.html#multivariate"><span class="std std-doc">multivariate</span></a> data.</p>
 <ul class="simple">
 <li><p>remember, current practical subsurface modeling is bivariate, two variables at a time</p></li>
 </ul>
 </section>
 <section id="multivariate-statistics">
 <h2>Multivariate Statistics<a class="headerlink" href="#multivariate-statistics" title="Permalink to this heading">#</a></h2>
-<p>While we are limited to bivariate models, we need to understand some multivariate methods to work with multivariate data.</p>
+<p>While we are limited to <a class="reference internal" href="MachineLearning_glossary_a_c.html#bivariate"><span class="std std-doc">bivariate</span></a> models, we need to understand some <a class="reference internal" href="MachineLearning_glossary_m_r.html#multivariate"><span class="std std-doc">multivariate</span></a> methods to work with multivariate data.</p>
 <ul class="simple">
 <li><p>only a short summary is provided here, see the discussion on joint and conditional probabilities and distributions in the <a class="reference internal" href="MachineLearning_probability.html"><span class="doc std std-doc">Probability Concepts</span></a> chapter</p></li>
 <li><p>see my lecture on <a class="reference external" href="https://youtu.be/Ui2El5CZPRE?si=uA_IqurENzC6Owbg">Multivariate Analysis</a></p></li>
 </ul>
-<p>Here’s a short summary of multivariate statistics. If we define a probability density function (PDF) of feature <span class="math notranslate nohighlight">\(X_1\)</span> as,</p>
+<p>Here’s a short summary of multivariate <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistic"><span class="std std-doc">statistic</span></a>s. If we define a <a class="reference internal" href="MachineLearning_glossary_m_r.html#probability-density-function"><span class="std std-doc">probability density function</span></a> (PDF) of feature <span class="math notranslate nohighlight">\(X_1\)</span> as,</p>
 <div class="math notranslate nohighlight">
 \[
 f_{X_1}(x_1)
 \]</div>
-<p>we can extend the definition to a joint PDF for any arbitrary number, e.g., <span class="math notranslate nohighlight">\(m\)</span>, features as,</p>
+<p>we can extend the definition to a joint PDF for any arbitrary number, e.g., <span class="math notranslate nohighlight">\(m\)</span>, <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s as,</p>
 <div class="math notranslate nohighlight">
 \[
 f_{X_1,\ldots,X_m}(x_1,\ldots,x_m)
@@ -616,19 +621,19 @@ f_{Y | X}(y | x)
 \[ 
 f_{Y | X_1, \ldots, X_m}(y | x_1,\ldots,x_m)
 \]</div>
-<p>and many of our statistical concepts extend to high dimensions, for example consider the correlation coefficient,</p>
+<p>and many of our statistical concepts extend to high dimensions, for example consider the <a class="reference internal" href="MachineLearning_glossary_a_c.html#correlation-coefficient"><span class="std std-doc">correlation coefficient</span></a>,</p>
 <div class="math notranslate nohighlight">
 \[
 \rho_{X,Y}
 \]</div>
-<p>between 2 features and now the partial correlation coefficient that calculates correlation between 2 features (<span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>) while controlling for all other features (<span class="math notranslate nohighlight">\(Z\)</span>).</p>
+<p>between 2 features and now the <a class="reference internal" href="MachineLearning_glossary_m_r.html#partial-correlation-coefficient"><span class="std std-doc">partial correlation coefficient</span></a> that calculates correlation between 2 features (<span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>) while controlling for all other features (<span class="math notranslate nohighlight">\(Z\)</span>).</p>
 <div class="math notranslate nohighlight">
 \[
 \rho_{X,Y | Z}
 \]</div>
-<p>Ultimately the difficulty with calculating high dimensionality (massively multivariate) probabilities and statistics is inferential, we rarely have enough data to observe vast multivariate space and to model probabilities and statistics in that space!</p>
+<p>Ultimately the difficulty with calculating high dimensionality (massively multivariate) probabilities and <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">statistics</span></a> is inferential, we rarely have enough <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> to observe vast multivariate space and to model probabilities and statistics in that space!</p>
 <ul class="simple">
-<li><p>See my linked lecture on the curse of dimensionality above.</p></li>
+<li><p>See my linked lecture on the <a class="reference internal" href="MachineLearning_glossary_a_c.html#curse-of-dimensionality"><span class="std std-doc">curse of dimensionality</span></a> above.</p></li>
 </ul>
 </section>
 <section id="load-the-required-libraries">
@@ -717,7 +722,7 @@ f_{Y | X_1, \ldots, X_m}(y | x_1,\ldots,x_m)
 </section>
 <section id="design-custom-color-map">
 <h2>Design Custom Color Map<a class="headerlink" href="#design-custom-color-map" title="Permalink to this heading">#</a></h2>
-<p>Accounting for significance by masking nonsignificant values</p>
+<p>Accounting for significance by masking nonsignificant <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s</p>
 <ul class="simple">
 <li><p>for demonstration only currently, could be updated for each plot based on results confidence and uncertainty</p></li>
 </ul>
@@ -745,11 +750,11 @@ f_{Y | X_1, \ldots, X_m}(y | x_1,\ldots,x_m)
 </section>
 <section id="visualizing-correlation">
 <h2>Visualizing Correlation<a class="headerlink" href="#visualizing-correlation" title="Permalink to this heading">#</a></h2>
-<p>Before we load data, let’s make some synthetic bivariate Gaussian data on the fly and calculate the correlation coefficient.</p>
+<p>Before we load data, let’s make some synthetic <a class="reference internal" href="MachineLearning_glossary_a_c.html#bivariate"><span class="std std-doc">bivariate</span></a> Gaussian data on the fly and calculate the <a class="reference internal" href="MachineLearning_glossary_a_c.html#correlation-coefficient"><span class="std std-doc">correlation coefficient</span></a>.</p>
 <ul class="simple">
 <li><p>this will help us calibrate our eye to correlation, in the Gaussian case where it perfectly describes the relationship</p></li>
 </ul>
-<p>You can specify 4 correlation coefficients and the number of data and then rerun this block to visualize the scatter plots.</p>
+<p>You can specify 4 correlation coefficients and the number of <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> and then rerun this block to visualize the <a class="reference internal" href="MachineLearning_glossary_s_z.html#scatter-plot"><span class="std std-doc">scatter plot</span></a>s.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corr_mat</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.96</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.7</span><span class="p">];</span> <span class="n">ndata</span> <span class="o">=</span> <span class="mi">1000</span>                   <span class="c1"># set the correlation coefficient, number of samples</span>
@@ -776,19 +781,19 @@ f_{Y | X_1, \ldots, X_m}(y | x_1,\ldots,x_m)
 </section>
 <section id="impact-of-outliers-on-correlation-coefficients">
 <h2>Impact of Outliers on Correlation Coefficients<a class="headerlink" href="#impact-of-outliers-on-correlation-coefficients" title="Permalink to this heading">#</a></h2>
-<p>Let’s observe the impact of a single outlier on the correlation coefficient.</p>
+<p>Let’s observe the impact of a single outlier on the <a class="reference internal" href="MachineLearning_glossary_a_c.html#correlation-coefficient"><span class="std std-doc">correlation coefficient</span></a>.</p>
 <ul class="simple">
 <li><p>compare Person product moment and Spearman rank correlation coefficient</p></li>
 </ul>
 <p>How to run this example?</p>
 <ul class="simple">
-<li><p>set the original data correlation, defaulted as 0.0, no correlation</p></li>
-<li><p>set the number of data in the original sample with correlation</p></li>
-<li><p>set the sample <span class="math notranslate nohighlight">\(x_{n+1},y_{n+1}\)</span>, to be appended to the data as potentially an outlier</p></li>
+<li><p>set the original <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> correlation, defaulted as 0.0, no correlation</p></li>
+<li><p>set the number of data in the original <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a> with correlation</p></li>
+<li><p>set the sample <span class="math notranslate nohighlight">\(x_{n+1},y_{n+1}\)</span>, to be appended to the data as potentially an <a class="reference internal" href="MachineLearning_glossary_m_r.html#outlier"><span class="std std-doc">outlier</span></a></p></li>
 </ul>
 <p>For the case that I designed you will observe,</p>
 <ul class="simple">
-<li><p>when the new sample is in the middle of the previous data there is not a significant impact on either correlation statistic</p></li>
+<li><p>when the new sample is in the middle of the previous data there is not a significant impact on either correlation <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistic"><span class="std std-doc">statistic</span></a></p></li>
 <li><p>when as the new sample moves further from the sample data the correlation coefficient increases while the rank correlation coefficient remains close to the original sample correlation, it is more robust in the presence of outliers</p></li>
 </ul>
 <div class="cell docutils container">
@@ -834,11 +839,11 @@ f_{Y | X_1, \ldots, X_m}(y | x_1,\ldots,x_m)
 </section>
 <section id="loading-tabular-data">
 <h2>Loading Tabular Data<a class="headerlink" href="#loading-tabular-data" title="Permalink to this heading">#</a></h2>
-<p>Here’s the command to load our comma delimited data file in to a Pandas’ DataFrame object.</p>
-<p>Let’s load the provided multivariate, spatial dataset ‘sample_data_MV_biased.csv’. It is a comma delimited file with:</p>
+<p>Here’s the command to load our comma delimited <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> file in to a Pandas’ <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a> object.</p>
+<p>Let’s load the provided <a class="reference internal" href="MachineLearning_glossary_m_r.html#multivariate"><span class="std std-doc">multivariate</span></a>, spatial dataset ‘sample_data_MV_biased.csv’. It is a comma delimited file with:</p>
 <ul class="simple">
 <li><p>X and Y coordinates (<span class="math notranslate nohighlight">\(m\)</span>)</p></li>
-<li><p>facies 0 and 1</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_d_f.html#facies"><span class="std std-doc">facies</span></a> 0 and 1</p></li>
 <li><p>porosity (fraction)</p></li>
 <li><p>permeability (<span class="math notranslate nohighlight">\(mD\)</span>)</p></li>
 <li><p>acoustic impedance (<span class="math notranslate nohighlight">\(\frac{kg}{m^3} \cdot \frac{m}{s} \cdot 10^3\)</span>).</p></li>
@@ -855,10 +860,10 @@ f_{Y | X_1, \ldots, X_m}(y | x_1,\ldots,x_m)
 </section>
 <section id="visualize-the-dataframe">
 <h2>Visualize the DataFrame<a class="headerlink" href="#visualize-the-dataframe" title="Permalink to this heading">#</a></h2>
-<p>Visualizing the DataFrame is useful.</p>
+<p>Visualizing the <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a> is useful.</p>
 <p>We can preview by utilizing the ‘head’ DataFrame member function (with a nice and clean format, see below).</p>
 <ul class="simple">
-<li><p>add parameter ‘n=13’ to see the first 13 rows of the dataset.</p></li>
+<li><p>add <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a> ‘n=13’ to see the first 13 rows of the dataset.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1018,9 +1023,9 @@ f_{Y | X_1, \ldots, X_m}(y | x_1,\ldots,x_m)
 </section>
 <section id="summary-statistics-for-tabular-data">
 <h2>Summary Statistics for Tabular Data<a class="headerlink" href="#summary-statistics-for-tabular-data" title="Permalink to this heading">#</a></h2>
-<p>There are a lot of efficient methods to calculate summary statistics from tabular data in DataFrames. The describe command provides count, mean, minimum, maximum, and quartiles all in a nice data table.</p>
+<p>There are a lot of efficient methods to calculate summary <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistic"><span class="std std-doc">statistic</span></a>s from <a class="reference internal" href="MachineLearning_glossary_s_z.html#tabular-data"><span class="std std-doc">tabular data</span></a> in <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a>s. The describe command provides count, <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a>, minimum, maximum, and quartiles all in a nice <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> table.</p>
 <ul class="simple">
-<li><p>We use transpose just to flip the table so that features are on the rows and the statistics are on the columns.</p></li>
+<li><p>We use transpose just to flip the table so that <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s are on the rows and the <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">statistics</span></a> are on the columns.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1131,10 +1136,10 @@ f_{Y | X_1, \ldots, X_m}(y | x_1,\ldots,x_m)
 </section>
 <section id="visualizing-tabular-data-with-location-maps">
 <h2>Visualizing Tabular Data with Location Maps<a class="headerlink" href="#visualizing-tabular-data-with-location-maps" title="Permalink to this heading">#</a></h2>
-<p>It is natural to set the x and y coordinate and feature ranges manually, e.g. do you want your color bar to go from 0.05887 to 0.24230 exactly? Also, let’s pick a color map for display.</p>
+<p>It is natural to set the x and y coordinate and <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> ranges manually, e.g. do you want your color bar to go from 0.05887 to 0.24230 exactly? Also, let’s pick a color map for display.</p>
 <ul class="simple">
-<li><p>I heard that plasma is known to be friendly to the color blind as the color and intensity vary together (hope I got that right, it was an interesting Twitter conversation started by Matt Hall from Agile if I recall correctly).</p></li>
-<li><p>We will assume a study area of 0 to 1,000m in x and y and omit any data outside this area.</p></li>
+<li><p>I heard that plasma is known to be friendly to the color blind as the color and intensity vary together (hope I got that right, it was an interesting Twitter conversation started by Matt Hall from Agile if I remember correctly).</p></li>
+<li><p>We will assume a study area of 0 to 1,000m in x and y and omit any <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> outside this area.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1175,7 +1180,7 @@ f_{Y | X_1, \ldots, X_m}(y | x_1,\ldots,x_m)
 </section>
 <section id="id1">
 <h2>Bivariate Analysis<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
-<p>Let’s start with simple bivariate scatter plots, and calculating bivariate statistics. Here’s the scatter plots.</p>
+<p>Let’s start with simple <a class="reference internal" href="MachineLearning_glossary_a_c.html#bivariate"><span class="std std-doc">bivariate</span></a> <a class="reference internal" href="MachineLearning_glossary_s_z.html#scatter-plot"><span class="std std-doc">scatter plot</span></a>s, and calculating <a class="reference internal" href="MachineLearning_glossary_a_c.html#bivariate-statistic"><span class="std std-doc">bivariate statistic</span></a>s. Here’s the scatter plots.</p>
 <ul class="simple">
 <li><p>I included code below (commented out) for writing the plot as an image file. Note, you can write to many different formats, e.g., .tif, jpg, etc. and you can also control the resolution.</p></li>
 <li><p>by saving in .pdf, .svg, or eps formats you create vector graphics that retain their sharpness at any resolution with economy of file size</p></li>
@@ -1207,10 +1212,10 @@ f_{Y | X_1, \ldots, X_m}(y | x_1,\ldots,x_m)
 </section>
 <section id="correlation-and-covariance">
 <h2>Correlation and Covariance<a class="headerlink" href="#correlation-and-covariance" title="Permalink to this heading">#</a></h2>
-<p>It is straight forward to calculate the covariance and correlation from the pairs of data in our dataset. Here’s the covariance matrix.</p>
+<p>It is straight forward to calculate the <a class="reference internal" href="MachineLearning_glossary_a_c.html#covariance"><span class="std std-doc">covariance</span></a> and correlation from the pairs of <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> in our dataset. Here’s the covariance matrix.</p>
 <ul class="simple">
 <li><p>Notice that the matrix is symmetrical? Makes sense, as the <span class="math notranslate nohighlight">\(C_{Por,Perm} = C_{Perm,Por}\)</span>.</p></li>
-<li><p>Also, note that the diagonal values (<span class="math notranslate nohighlight">\(C_{i,j}\)</span> where <span class="math notranslate nohighlight">\(i=j\)</span>) equal to the variance.</p></li>
+<li><p>Also, note that the diagonal <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s (<span class="math notranslate nohighlight">\(C_{i,j}\)</span> where <span class="math notranslate nohighlight">\(i=j\)</span>) equal to the <a class="reference internal" href="MachineLearning_glossary_s_z.html#variance"><span class="std std-doc">variance</span></a>.</p></li>
 </ul>
 <p>We check porosity by calculating the variance.</p>
 <div class="cell docutils container">
@@ -1289,7 +1294,7 @@ The variance of porosity is 0.000936
 <h2>Visualize the Correlation Matrix<a class="headerlink" href="#visualize-the-correlation-matrix" title="Permalink to this heading">#</a></h2>
 <p>It is convenient to visualize the correlation matrix as follows.</p>
 <ul class="simple">
-<li><p>I added a custom colour bar to communicate significance. Demonstration only, I did not calculate confidence intervals, but that could be added.</p></li>
+<li><p>I added a custom colour bar to communicate significance. Demonstration only, I did not calculate <a class="reference internal" href="MachineLearning_glossary_a_c.html#confidence-interval"><span class="std std-doc">confidence interval</span></a>s, but that could be added.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1335,14 +1340,14 @@ The variance of porosity is 0.000936
 </section>
 <section id="spearman-s-rank-correlation-coefficient">
 <h2>Spearman’s Rank Correlation Coefficient<a class="headerlink" href="#spearman-s-rank-correlation-coefficient" title="Permalink to this heading">#</a></h2>
-<p>The Spearman’s rank correlation coefficient, provides a measure of the degree of monotonic relationship.</p>
+<p>The Spearman’s rank <a class="reference internal" href="MachineLearning_glossary_a_c.html#correlation-coefficient"><span class="std std-doc">correlation coefficient</span></a>, provides a measure of the degree of monotonic relationship.</p>
 <ul class="simple">
-<li><p>Rank transform, e.g. <span class="math notranslate nohighlight">\(R_(x_i)\)</span>, sort the data in ascending order and replace the data with the index, $i=1,\ldots,n.</p></li>
-<li><p>Spearman’s rank correlation coefficient is more robust in the presence of outliers and some nonlinear features than the Pearson’s correlation coefficient</p></li>
+<li><p>Rank transform, e.g. <span class="math notranslate nohighlight">\(R_(x_i)\)</span>, sort the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> in ascending order and replace the data with the index, $i=1,\ldots,n.</p></li>
+<li><p>Spearman’s rank correlation coefficient is more robust in the presence of <a class="reference internal" href="MachineLearning_glossary_m_r.html#outlier"><span class="std std-doc">outlier</span></a>s and some nonlinear <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s than the Pearson’s correlation coefficient</p></li>
 </ul>
 <p>Let’s try out the rank correlation coefficient with SciPy’s stats module function.</p>
 <ul class="simple">
-<li><p>it also provides a p-value for each measure for significance testing, i.e., if p-value &lt; alpha then we reject the null hypothesis that the rank correlation coefficient is 0.0.</p></li>
+<li><p>it also provides a p-<a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a> for each measure for significance testing, i.e., if p-value &lt; alpha then we reject the null hypothesis that the rank correlation coefficient is 0.0.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1374,7 +1379,7 @@ Rank Correlation p-value:
 </section>
 <section id="compare-pearson-and-spearman-correlation">
 <h2>Compare Pearson and Spearman Correlation<a class="headerlink" href="#compare-pearson-and-spearman-correlation" title="Permalink to this heading">#</a></h2>
-<p>Let’s make a simple random dataset and add an outlier and then compare Pearson and Spearman correlation coefficients.</p>
+<p>Let’s make a simple random dataset and add an <a class="reference internal" href="MachineLearning_glossary_m_r.html#outlier"><span class="std std-doc">outlier</span></a> and then compare Pearson and Spearman <a class="reference internal" href="MachineLearning_glossary_a_c.html#correlation-coefficient"><span class="std std-doc">correlation coefficient</span></a>s.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corr</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">xout</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="n">yout</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>                       <span class="c1"># correlation, outlier datum, and total number of data</span>
@@ -1619,7 +1624,7 @@ Rank Correlation p-value:
 <h2>Simpson Paradox<a class="headerlink" href="#simpson-paradox" title="Permalink to this heading">#</a></h2>
 <p>The above is a good example of “Simpson’s Paradox”,</p>
 <ul class="simple">
-<li><p>the data trend reverses or disappears when groups are combined (or separated).</p></li>
+<li><p>the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> <a class="reference internal" href="MachineLearning_glossary_s_z.html#trend"><span class="std std-doc">trend</span></a> reverses or disappears when groups are combined (or separated).</p></li>
 </ul>
 </section>
 <section id="plot-correlation-and-rank-correlation-matrices">
@@ -1653,13 +1658,13 @@ Rank Correlation p-value:
 </section>
 <section id="matrix-scatter-plots">
 <h2>Matrix Scatter Plots<a class="headerlink" href="#matrix-scatter-plots" title="Permalink to this heading">#</a></h2>
-<p>If we have 3 or more variables to consider then matrix scatter plot offer an efficient method to display the multivariate relationships, 2 variables at a time.  Once can identify:</p>
+<p>If we have 3 or more <a class="reference internal" href="MachineLearning_glossary_s_z.html#variable"><span class="std std-doc">variable</span></a>s to consider then matrix scatter plot offer an efficient method to display the <a class="reference internal" href="MachineLearning_glossary_m_r.html#multivariate"><span class="std std-doc">multivariate</span></a> relationships, 2 variables at a time.  Once can identify:</p>
 <ol class="arabic simple">
-<li><p>the range, envelope of the paired data</p></li>
+<li><p>the range, envelope of the paired <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a></p></li>
 <li><p>homoscedastic and heteroscedastic behaviors</p></li>
-<li><p>nonlinear features</p></li>
+<li><p>nonlinear <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s</p></li>
 </ol>
-<p>Here’s the seaborn package matrix scatter plot function, pairplot. Let’s color the results by facies.</p>
+<p>Here’s the seaborn package matrix <a class="reference internal" href="MachineLearning_glossary_s_z.html#scatter-plot"><span class="std std-doc">scatter plot</span></a> function, pairplot. Let’s color the results by <a class="reference internal" href="MachineLearning_glossary_d_f.html#facies"><span class="std std-doc">facies</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Facies&#39;</span><span class="p">,</span><span class="nb">vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="s1">&#39;Perm&#39;</span><span class="p">,</span><span class="s1">&#39;AI&#39;</span><span class="p">],</span><span class="n">markers</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
@@ -1682,10 +1687,10 @@ Rank Correlation p-value:
 <ul class="simple">
 <li><p>we can independently set lower, upper and diagonal components of the plot</p></li>
 </ul>
-<p>We demonstrate this with all facies pooled together for:</p>
+<p>We demonstrate this with all <a class="reference internal" href="MachineLearning_glossary_d_f.html#facies"><span class="std std-doc">facies</span></a> pooled together for:</p>
 <ul class="simple">
-<li><p>scatter plots for upper</p></li>
-<li><p>histograms for diagonal</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_s_z.html#scatter-plot"><span class="std std-doc">scatter plot</span></a>s for upper</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_g_l.html#histogram"><span class="std std-doc">histogram</span></a>s for diagonal</p></li>
 <li><p>kernel density plots for the lower</p></li>
 </ul>
 <div class="cell docutils container">
@@ -1707,9 +1712,9 @@ Rank Correlation p-value:
 </section>
 <section id="joint-conditional-and-marginals">
 <h2>Joint, Conditional and Marginals<a class="headerlink" href="#joint-conditional-and-marginals" title="Permalink to this heading">#</a></h2>
-<p>We can use kernel density estimation to estimate the joint probabilities density function (pdf) for the paired data, a 2D pdf!</p>
+<p>We can use kernel density <a class="reference internal" href="MachineLearning_glossary_d_f.html#estimation"><span class="std std-doc">estimation</span></a> to estimate the joint probabilities density function (pdf) for the paired <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>, a 2D pdf!</p>
 <ul class="simple">
-<li><p>We could use this to estimate any required joint, marginal and conditional probability (care must be taken with normalization).</p></li>
+<li><p>We could use this to estimate any required joint, marginal and <a class="reference internal" href="MachineLearning_glossary_a_c.html#conditional-probability"><span class="std std-doc">conditional probability</span></a> (care must be taken with <a class="reference internal" href="MachineLearning_glossary_m_r.html#normalization"><span class="std std-doc">normalization</span></a>).</p></li>
 </ul>
 <p>Let’s use the seaborn package ‘kdeplot’ function to estimate the joint pdf for porosity and acoustic impedance.</p>
 <div class="cell docutils container">
@@ -1741,7 +1746,7 @@ Rank Correlation p-value:
 </section>
 <section id="calculating-conditional-statistics">
 <h2>Calculating Conditional Statistics<a class="headerlink" href="#calculating-conditional-statistics" title="Permalink to this heading">#</a></h2>
-<p>Of course, we could just calculate the conditional statistics by-hand. We need to select some bins over the variable that we will condition to. Let’s calculate conditional statistical of porosity given acoustic impedance. We will select 9 equal spaced bins.</p>
+<p>Of course, we could just calculate the conditional <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">statistics</span></a> by-hand. We need to select some bins over the <a class="reference internal" href="MachineLearning_glossary_s_z.html#variable"><span class="std std-doc">variable</span></a> that we will condition to. Let’s calculate conditional statistical of porosity given acoustic impedance. We will select 9 equal spaced bins.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AI_bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span><span class="mi">8000</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>                           <span class="c1"># set the bin boundaries and then the centroids for plotting</span>
@@ -1881,7 +1886,7 @@ Rank Correlation p-value:
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
-<p>This was a basic treatment of multivariate analysis with a focus on bivariate. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
+<p>This was a basic treatment of <a class="reference internal" href="MachineLearning_glossary_m_r.html#multivariate-analysis"><span class="std std-doc">multivariate analysis</span></a> with a focus on <a class="reference internal" href="MachineLearning_glossary_a_c.html#bivariate"><span class="std std-doc">bivariate</span></a>. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
@@ -1892,20 +1897,20 @@ Rank Correlation p-value:
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
 </figcaption>
 </figure>
-<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a>, <a class="reference internal" href="MachineLearning_glossary_g_l.html#geostatistics"><span class="std std-doc">geostatistics</span></a>, and machine learning. Michael is also,</p>
 <ul class="simple">
-<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a <a class="reference internal" href="MachineLearning_glossary_a_c.html#core"><span class="std std-doc">core</span></a> faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>Michael has written over 100 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
 <p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
-<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a> and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
-<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">Data</span></a> Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>. We are solving challenging subsurface problems!</p></li>
 <li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
 </ul>
 <p>I’m always happy to discuss,</p>

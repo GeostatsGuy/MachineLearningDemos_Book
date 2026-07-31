@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'MachineLearning_concepts';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Training and Tuning" href="MachineLearning_training_tuning.html" />
+    <link rel="next" title="Subsurface Modeling" href="MachineLearning_subsurface_modeling.html" />
     <link rel="prev" title="Introduction" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -174,6 +174,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Machine Learning Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_subsurface_modeling.html">Subsurface Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_training_tuning.html">Training and Tuning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
@@ -219,7 +220,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_python.html">Python Code Snippets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_a_c.html">Glossary A-C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_d_f.html">Glossary D-F</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_g_l.html">Glossary G-L</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_m_r.html">Glossary M-R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_s_z.html">Glossary S-Z</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -502,12 +507,12 @@ document.write(`
 <li><p>also, you could Google a question about using a specific machine learning algorithm in Python and the top results will include <a class="reference external" href="https://stackoverflow.com/">StackOverflow</a> questions and responses, it is truly amazing how much experienced coders are willing to give back and share their knowledge. We truly have an amazing scientific community with the spirit of knowledge sharing and open-source development. Respect.</p></li>
 <li><p>of course, you could learn a lot about machine learning from a machine learning large language model (LLM) like <a class="reference external" href="https://chatgpt.com/">ChatGPT</a>. Not only will ChatGPT answer your questions, but it will also provide codes and help you debug them when you tell it what went wrong.</p></li>
 </ul>
-<p>One way of the other and you received and added this code to you data science workflow,</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n_neighbours</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="n">weights</span> <span class="o">=</span> <span class="s2">&quot;distance&quot;</span><span class="p">;</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">2</span>
+<p>One way of the other and you received and added this code to you <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> science workflow,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n_neighbours</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="n">weight</span><span class="p">](</span><span class="n">MachineLearning_glossary_s_z</span><span class="o">.</span><span class="n">ipynb</span><span class="c1">#weight)s = &quot;distance&quot;; p = 2</span>
 <span class="n">neigh</span> <span class="o">=</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">n_neighbours</span><span class="p">,</span><span class="n">weights</span> <span class="o">=</span> <span class="n">weights</span><span class="p">,</span><span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span> 
 </pre></div>
 </div>
-<p>et voilà (note I’m Canadian, so I use some French phrases), you have a trained predictive machine learning model that could be applied to make predictions for new cases.</p>
+<p>et voilà (note I’m Canadian, so I use some French phrases), you have a trained predictive machine learning model that could be applied to make <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a>s for new cases.</p>
 <ul class="simple">
 <li><p>But, is this a good model?</p></li>
 <li><p>How good is it?</p></li>
@@ -516,20 +521,20 @@ document.write(`
 <p>Without knowledge about basic machine learning concepts we can’t answer these questions and build the best possible models. In general, I’m not an advocate for black box modeling, because it is:</p>
 <ol class="arabic simple">
 <li><p>likely to lead to mistakes that may be difficult to detect and correct</p></li>
-<li><p>incompatible with the expectations for competent practice for professional engineers. I gave a talk on <a class="reference external" href="https://youtu.be/W_ZDg1Wb2vM?si=DF-n1E4-ik2ukLfF">Applying Machine Learning as a Compentent Engineer or Geoscientist</a></p></li>
+<li><p>incompatible with the <a class="reference internal" href="MachineLearning_glossary_d_f.html#expectation"><span class="std std-doc">expectation</span></a>s for competent practice for professional engineers. I gave a talk on <a class="reference external" href="https://youtu.be/W_ZDg1Wb2vM?si=DF-n1E4-ik2ukLfF">Applying Machine Learning as a Compentent Engineer or Geoscientist</a></p></li>
 </ol>
 <p>To help out this chapter provides you with the basic knowledge to answer these questions and to make better, more reliable machine learning models. Let’s start building this essential foundation with some definitions.</p>
 </section>
 <section id="big-data">
 <h2>Big Data<a class="headerlink" href="#big-data" title="Permalink to this heading">#</a></h2>
-<p>Everyone hears that machine learning needs a lot of data. In fact, so much data that it is called “big data”, but how do you know if you are working with big data?</p>
+<p>Everyone hears that machine learning needs a lot of data. In fact, so much data that it is called “<a class="reference internal" href="MachineLearning_glossary_a_c.html#big-data"><span class="std std-doc">big data</span></a>”, but how do you know if you are working with big data?</p>
 <ul class="simple">
-<li><p>the criteria for big data are these ‘V’s</p></li>
+<li><p>the criteria for big <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> are these ‘V’s</p></li>
 </ul>
 <p>If you answer “yes” for at least some of these criteria, then you are working with big data,</p>
 <ul class="simple">
-<li><p><strong>Volume</strong>: many data samples, difficult to handle and visualize</p></li>
-<li><p><strong>Velocity</strong>: high rate collection, continuous relative to decision making cycles</p></li>
+<li><p><strong>Volume</strong>: many data <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s, difficult to handle and visualize</p></li>
+<li><p><strong>Velocity</strong>: high rate collection, continuous relative to <a class="reference internal" href="MachineLearning_glossary_d_f.html#decision-making"><span class="std std-doc">decision making</span></a> cycles</p></li>
 <li><p><strong>Variety</strong>: data form various sources, with various types and scales</p></li>
 <li><p><strong>Variability</strong>: data acquisition changes during the project</p></li>
 <li><p><strong>Veracity</strong>: data has various levels of accuracy</p></li>
@@ -543,13 +548,13 @@ document.write(`
 <li><p>I’m getting ahead of myself, more on this in a bit. Don’t worry if I get carried away in hubris, rest assured this e-book is written for anyone interested to learn about machine learning.</p></li>
 <li><p>you can skip the short sections on subsurface data science or read along if interested.</p></li>
 </ul>
-<p>Now that we know big data, let’s talk about the big data related topics, statistics, geostatistics and data analytics.</p>
+<p>Now that we know big data, let’s talk about the big data related topics, <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">statistics</span></a>, <a class="reference internal" href="MachineLearning_glossary_g_l.html#geostatistics"><span class="std std-doc">geostatistics</span></a> and <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a>.</p>
 </section>
 <section id="statistics-geostatistics-and-data-analytics">
 <h2>Statistics, Geostatistics and Data Analytics<a class="headerlink" href="#statistics-geostatistics-and-data-analytics" title="Permalink to this heading">#</a></h2>
-<p>Statistics is the practice of,</p>
+<p><a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">Statistics</span></a> is the practice of,</p>
 <ol class="arabic simple">
-<li><p>collecting data</p></li>
+<li><p>collecting <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a></p></li>
 <li><p>organizing data</p></li>
 <li><p>interpreting data</p></li>
 <li><p>drawing conclusions from data</p></li>
@@ -560,11 +565,11 @@ document.write(`
 <p class="admonition-title">The importance of decision making in statistics.</p>
 <p>If your work does not impact the decision, you do not add value!</p>
 </div>
-<p>If you look up the definition of data analytics, you will find criteria that include, statistical analysis, and data visualization to support decision making.</p>
+<p>If you look up the definition of <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a>, you will find criteria that include, statistical analysis, and data visualization to support decision making.</p>
 <ul class="simple">
-<li><p>I call it, data analytics and statistics are the same thing.</p></li>
+<li><p>I call it, data analytics and <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistic"><span class="std std-doc">statistic</span></a>s are the same thing.</p></li>
 </ul>
-<p>Now we can append, geostatistics as a branch of applied statistics that accounts for,</p>
+<p>Now we can append, <a class="reference internal" href="MachineLearning_glossary_g_l.html#geostatistics"><span class="std std-doc">geostatistics</span></a> as a branch of applied statistics that accounts for,</p>
 <ol class="arabic simple">
 <li><p>the spatial (geological) context</p></li>
 <li><p>the spatial relationships</p></li>
@@ -576,12 +581,12 @@ document.write(`
 <li><p>spatial phenomenon are not i.i.d., so we developed a unique branch of statistics to address this</p></li>
 <li><p>by our assumption above (statistics is data analytics), we can state that geostatistics is the same as spatial data analytics</p></li>
 </ul>
-<p>Now, let’s use a Venn diagram to visualize statistics / data analytics and geostatistics / spatial data analytics,</p>
+<p>Now, let’s use a <a class="reference internal" href="MachineLearning_glossary_s_z.html#venn-diagram"><span class="std std-doc">Venn diagram</span></a> to visualize statistics / data analytics and geostatistics / spatial data analytics,</p>
 <figure style="text-align: center;">
   <img src="_static/concepts/Venn_stats.png" style="display: block; margin: 0 auto; width: 60%;">
   <figcaption style="text-align: center;">Venn diagram for statistics and geostatistics.</figcaption>
 </figure>
-<p>and we can add our previously discussed big data to our Venn diagram resulting in big data analytics and spatial big data analytics.</p>
+<p>and we can add our previously discussed big data to our Venn diagram resulting in <a class="reference internal" href="MachineLearning_glossary_a_c.html#big-data-analytics"><span class="std std-doc">big data analytics</span></a> and spatial big data analytics.</p>
 <figure style="text-align: center;">
   <img src="_static/concepts/Venn_big_data.png" style="display: block; margin: 0 auto; width: 60%;">
   <figcaption style="text-align: center;">Venn diagram for statistics and geostatistics with big data added.</figcaption>
@@ -598,8 +603,8 @@ document.write(`
 <ul class="simple">
 <li><p><strong>First Paradigm</strong> - logical reasoning with physical experiment and observation</p></li>
 <li><p><strong>Second Paradigm</strong> - theory-driven, where mathematical models and laws are used to explain and predict natural phenomena</p></li>
-<li><p><strong>Third Paradigm</strong> - computer-based numerical simulations and models to study complex systems that are too difficult or impossible to solve analytically or test experimentally</p></li>
-<li><p><strong>Fourth Paradigm</strong> - analysis of massive datasets with tools such as data analytics, machine learning, cloud computing and AI, patterns in the data guide insights.</p></li>
+<li><p><strong>Third Paradigm</strong> - computer-based numerical <a class="reference internal" href="MachineLearning_glossary_s_z.html#simulation"><span class="std std-doc">simulation</span></a>s and models to study complex systems that are too difficult or impossible to solve analytically or test experimentally</p></li>
+<li><p><strong>Fourth Paradigm</strong> - analysis of massive datasets with tools such as <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a>, machine learning, cloud computing and AI, patterns in the data guide insights.</p></li>
 </ul>
 <p>Here’s all of the four paradigms with dates for important developments with each,</p>
 <table class="table">
@@ -607,7 +612,7 @@ document.write(`
 <tr class="row-odd"><th class="head text-left"><p>1st Paradigm Empirical Science</p></th>
 <th class="head text-left"><p>2nd Paradigm Theoretical Science</p></th>
 <th class="head text-left"><p>3rd Paradigm Computational Science</p></th>
-<th class="head text-left"><p>4th Paradigm Data Science</p></th>
+<th class="head text-left"><p>4th Paradigm <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">Data</span></a> Science</p></th>
 </tr>
 </thead>
 <tbody>
@@ -678,7 +683,7 @@ document.write(`
 <ul class="simple">
 <li><p>certainly the Mesopotamians (4000 BC - 3500 BC) applied the first paradigm with their experiments that supported the development of the wheel, plow, chariot, weaving loom, and irrigation. Aside, I wanted to give a shout out to the ancient peoples, because I’m quite fascinated by the development of human societies and their technologies over time.</p></li>
 </ul>
-<p>On the other side, we can trace the development of fourth paradigm approaches, for example the artificial neural networks to McColloch and Pitts in 1943 and consider these early examples of learning by distilling patterns from large datasets,</p>
+<p>On the other side, we can trace the development of fourth paradigm approaches, for example the artificial <a class="reference internal" href="MachineLearning_glossary_m_r.html#neural-network"><span class="std std-doc">neural network</span></a>s to McColloch and Pitts in 1943 and consider these early examples of learning by distilling patterns from large datasets,</p>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>Year</p></th>
@@ -701,12 +706,12 @@ document.write(`
 <tr class="row-even"><td class="text-left"><p>1700s</p></td>
 <td class="text-left"><p>Natural history</p></td>
 <td class="text-left"><p>Carl Linnaeus – taxonomy</p></td>
-<td class="text-left"><p>Classification of species based on observable traits; data-first approach</p></td>
+<td class="text-left"><p><a class="reference internal" href="MachineLearning_glossary_a_c.html#classification"><span class="std std-doc">Classification</span></a> of species based on observable traits; data-first approach</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p>1801</p></td>
-<td class="text-left"><p>Statistics</p></td>
+<td class="text-left"><p><a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">Statistics</span></a></p></td>
 <td class="text-left"><p>Adolphe Quetelet – social physics</p></td>
-<td class="text-left"><p>Used statistics to analyze human behavior from large datasets</p></td>
+<td class="text-left"><p>Used <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistic"><span class="std std-doc">statistic</span></a>s to analyze human behavior from large datasets</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p>1830s</p></td>
 <td class="text-left"><p>Astronomy</p></td>
@@ -749,14 +754,14 @@ document.write(`
 </section>
 <section id="foundations-and-enablers-of-the-fourth-scientific-paradigm">
 <h2>Foundations and Enablers of the Fourth Scientific Paradigm<a class="headerlink" href="#foundations-and-enablers-of-the-fourth-scientific-paradigm" title="Permalink to this heading">#</a></h2>
-<p>What caused the fourth paradigm to start some time between 1943 and 2009? Is it the development of new math?</p>
+<p>What caused the <a class="reference internal" href="MachineLearning_glossary_d_f.html#fourth-paradigm"><span class="std std-doc">fourth paradigm</span></a> to start some time between 1943 and 2009? Is it the development of new math?</p>
 <ul class="simple">
-<li><p>the foundational mathematics behind data-driven models has been available for decades and even centuries. Consider the following examples of mathematical and statistical developments that underpin modern data science,</p></li>
+<li><p>the foundational mathematics behind <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>-driven models has been available for decades and even centuries. Consider the following examples of mathematical and statistical developments that underpin modern data science,</p></li>
 </ul>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>Technique</p></th>
-<th class="head text-left"><p>Key Contributor(s)</p></th>
+<th class="head text-left"><p>Contributor(s)</p></th>
 <th class="head text-left"><p>Date / Publication</p></th>
 </tr>
 </thead>
@@ -765,11 +770,11 @@ document.write(`
 <td class="text-left"><p>Isaac Newton, Gottfried Wilhelm Leibniz</p></td>
 <td class="text-left"><p>Newton: <em>Methods of Fluxions</em> (1671, pub. 1736); Leibniz: <em>Nova Methodus</em> (1684)</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><strong>Bayesian Probability</strong></p></td>
+<tr class="row-odd"><td class="text-left"><p><strong><a class="reference internal" href="MachineLearning_glossary_a_c.html#bayesian-probability"><span class="std std-doc">Bayesian Probability</span></a></strong></p></td>
 <td class="text-left"><p>Reverend Thomas Bayes</p></td>
 <td class="text-left"><p><em>An Essay Towards Solving a Problem in the Doctrine of Chances</em> (posthumous, 1763)</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p><strong>Linear Regression</strong></p></td>
+<tr class="row-even"><td class="text-left"><p><strong><a class="reference internal" href="MachineLearning_glossary_g_l.html#linear-regression"><span class="std std-doc">Linear Regression</span></a></strong></p></td>
 <td class="text-left"><p>Marie Legendre</p></td>
 <td class="text-left"><p>Formalized in 1805</p></td>
 </tr>
@@ -777,17 +782,17 @@ document.write(`
 <td class="text-left"><p>Ronald Fisher</p></td>
 <td class="text-left"><p><em>The Use of Multiple Measurements in Taxonomic Problems</em> (1939)</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p><strong>Monte Carlo Simulation</strong></p></td>
+<tr class="row-even"><td class="text-left"><p><strong><a class="reference internal" href="MachineLearning_glossary_m_r.html#monte-carlo-simulation"><span class="std std-doc">Monte Carlo Simulation</span></a></strong></p></td>
 <td class="text-left"><p>Stanislaw Ulam, John von Neumann</p></td>
 <td class="text-left"><p>Developed in early 1940s during the Manhattan Project</p></td>
 </tr>
 </tbody>
 </table>
-<p>Upon reflection, one might ask: why didn’t the fourth scientific paradigm emerge earlier—say, in the 1800s or even before the 1940s? What changed? The answer lies in the fact that several key developments were still needed to create the fertile ground for data science to take root.</p>
+<p>Upon reflection, one might ask: why didn’t the fourth scientific paradigm emerge earlier—say, in the 1800s or even before the 1940s? What changed? The answer lies in the fact that several critical developments were still needed to create the fertile ground for data science to take root.</p>
 <p>Specifically:</p>
 <ul class="simple">
 <li><p>the availability of inexpensive, accessible computing power</p></li>
-<li><p>the emergence of massive, high-volume datasets (big data)</p></li>
+<li><p>the emergence of massive, high-volume datasets (<a class="reference internal" href="MachineLearning_glossary_a_c.html#big-data"><span class="std std-doc">big data</span></a>)</p></li>
 </ul>
 <p>Let’s explore each of these in more detail.</p>
 <section id="cheap-and-available-compute">
@@ -880,7 +885,7 @@ document.write(`
 <td class="text-left"><p><a class="reference external" href="https://waterdata.usgs.gov/nwis">USGS NWIS</a></p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p><strong>Government Databases</strong></p></td>
-<td class="text-left"><p>Includes U.S. Census and oil &amp; gas production statistics. Open for public and research use.</p></td>
+<td class="text-left"><p>Includes U.S. Census and oil &amp; gas production <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">statistics</span></a>. Open for public and research use.</p></td>
 <td class="text-left"><p><a class="reference external" href="https://data.census.gov/">U.S. Census</a>, <a class="reference external" href="https://www.rrc.texas.gov/oil-and-gas/research-and-statistics/production-data/">Texas Oil &amp; Gas Data</a></p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p><strong>NASA Moon Trek</strong></p></td>
@@ -908,7 +913,7 @@ document.write(`
 <td class="text-left"><p><a class="reference external" href="https://data.worldbank.org/">World Bank Data</a></p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p><strong>Our World in Data</strong></p></td>
-<td class="text-left"><p>Curated global datasets on health, population, energy, CO₂, education, and more.</p></td>
+<td class="text-left"><p>Curated global datasets on health, <a class="reference internal" href="MachineLearning_glossary_m_r.html#population"><span class="std std-doc">population</span></a>, energy, CO₂, education, and more.</p></td>
 <td class="text-left"><p><a class="reference external" href="https://ourworldindata.org/">Our World in Data</a></p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p><strong>OpenStreetMap (OSM)</strong></p></td>
@@ -929,7 +934,7 @@ document.write(`
 <p>Here’s a local example of freely available big data. I downloaded the daily water level of our local Lake Travis from <a class="reference external" href="https://waterdatafortexas.org/reservoirs/individual/travis">Water Data for Texas</a>. Note the data is collected and provided by Lower Colorado Water Authority <a class="reference external" href="https://www.lcra.org/">LRCA</a>.</p>
 <p>I made a plot of the daily plot and added useful information such as,</p>
 <ul class="simple">
-<li><p>water height - in feet above mean sea level</p></li>
+<li><p>water height - in feet above <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a> sea level</p></li>
 <li><p>percentage full - the ratio of the current volume of water stored in a reservoir to its total storage capacity, expressed as a percentage, accounting for the shape of the reservoir</p></li>
 <li><p>max pool - maximum conservation pool, the top of the reservoir used for water supply, irrigation, hydropower and recreation and not including flood storage.</p></li>
 </ul>
@@ -953,7 +958,7 @@ document.write(`
 <h2>Data Science and Subsurface Resources<a class="headerlink" href="#data-science-and-subsurface-resources" title="Permalink to this heading">#</a></h2>
 <p>Spoiler alert, I’m going to boast a bit in the section. I often hear students say,</p>
 <ul class="simple">
-<li><p>“I can’t believe this data science course is in the <a class="reference external" href="https://pge.utexas.edu/">Hildebrand Department of Petroleum and Geosystems Engineering</a>!”</p></li>
+<li><p>“I can’t believe this <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> science course is in the <a class="reference external" href="https://pge.utexas.edu/">Hildebrand Department of Petroleum and Geosystems Engineering</a>!”</p></li>
 <li><p>“Why are you teaching machine learning in <a class="reference external" href="https://eps.jsg.utexas.edu/">Department of Earth and Planetary Sciences</a>?”</p></li>
 </ul>
 <p>Once again, my response is,</p>
@@ -966,22 +971,22 @@ document.write(`
   <img src="_static/concepts/history.png" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;">Timeline of data science development from the perspective of subsurface engineering and geoscience.</figcaption>
 </figure>
-<p>Shortly after Kolmogorov developed the fundamental probability axioms, Danie Krige developed a set of statistical, spatial, i.e., data-driven tools for making estimates in space while accounting for spatial continuity and scale. These tools were formalized with theory developed by Professor Matheron during the 1960s in a new science called geostatistics. Over the 1970s - 1990s the geostatistical methods and applications expanded from mining to address oil and gas, environmental, agriculture, fisheries, etc. with many important open source developments.</p>
+<p>Shortly after Kolmogorov developed the fundamental probability axioms, Danie Krige developed a set of statistical, spatial, i.e., data-driven tools for making estimates in space while accounting for spatial continuity and scale. These tools were formalized with theory developed by Professor Matheron during the 1960s in a new science called <a class="reference internal" href="MachineLearning_glossary_g_l.html#geostatistics"><span class="std std-doc">geostatistics</span></a>. Over the 1970s - 1990s the geostatistical methods and applications expanded from mining to address oil and gas, environmental, agriculture, fisheries, etc. with many important open source developments.</p>
 <p>Why was subsurface engineering and geoscience earlier in the development of data science?</p>
 <ul class="simple">
-<li><p>because, necessity is the mother of invention! Complicated, heterogeneous, sparsely sampled, vast systems with complicated physics and high value decisions drove us to data-driven methods.</p></li>
+<li><p>because, necessity is the mother of invention! Complicated, heterogeneous, sparsely sampled, vast systems with complicated physics and high <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a> decisions drove us to data-driven methods.</p></li>
 </ul>
 <p>There are many other engineering fields that had little motivation to develop and apply data science due to,</p>
 <ul class="simple">
-<li><p>homogeneous phenomenon that does not have significant spatial heterogeneity, continuity, nor uncertainty - with few samples the phenomenon is sufficiently understood, for example, sheet aluminum used for aircraft or cement used in structures</p></li>
-<li><p>exhaustive sampling of the population relative to the modeling purpose and do not need an estimation model with uncertainty - the phenomenon’s properties are known and the performance can be simulated in a finite element model, for example, radiographic testing for cracks in a machine housing</p></li>
+<li><p>homogeneous phenomenon that does not have significant spatial heterogeneity, continuity, nor uncertainty - with few <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s the phenomenon is sufficiently understood, for example, sheet aluminum used for aircraft or cement used in structures</p></li>
+<li><p>exhaustive sampling of the <a class="reference internal" href="MachineLearning_glossary_m_r.html#population"><span class="std std-doc">population</span></a> relative to the modeling purpose and do not need an <a class="reference internal" href="MachineLearning_glossary_d_f.html#estimation"><span class="std std-doc">estimation</span></a> model with uncertainty - the phenomenon’s properties are known and the performance can be simulated in a finite element model, for example, radiographic testing for cracks in a machine housing</p></li>
 <li><p>have well understood physics and can model the entire system with second and third paradigm phenomenon - the (coupled) physics is known and can be modeled, for example, the Boeing 777 was the first commerical airliner designed entirely using computed-aided design (CAD)</p></li>
 </ul>
 <p>Compare this to the typical context of subsurface engineering and geoscience, where data challenges are both unique and substantial:</p>
 <ul class="simple">
-<li><p><strong>Sparsely sampled datasets</strong> – we often sample only a minuscule fraction—sometimes as little as one hundred-billionth—of the subsurface volume of interest. This leads to significant uncertainty and a heavy reliance on statistical and data-driven models.</p></li>
-<li><p><strong>Massively multivariate datasets</strong> – integrating diverse data types (e.g., seismic, well logs, core data) poses a major challenge, requiring robust multivariate statistical and machine learning techniques.</p></li>
-<li><p><strong>Complex, heterogeneous earth systems</strong> – subsurface geology is highly variable and location-dependent. These open systems often behave unpredictably, demanding flexible and adaptive modeling approaches.</p></li>
+<li><p><strong>Sparsely sampled datasets</strong> – we often sample only a minuscule fraction—sometimes as little as one hundred-billionth—of the subsurface <a class="reference internal" href="MachineLearning_glossary_s_z.html#volume-of-interest"><span class="std std-doc">volume of interest</span></a>. This leads to significant uncertainty and a heavy reliance on statistical and data-driven models.</p></li>
+<li><p><strong>Massively <a class="reference internal" href="MachineLearning_glossary_m_r.html#multivariate"><span class="std std-doc">multivariate</span></a> datasets</strong> – integrating diverse data types (e.g., <a class="reference internal" href="MachineLearning_glossary_s_z.html#seismic"><span class="std std-doc">seismic</span></a>, <a class="reference internal" href="MachineLearning_glossary_s_z.html#well-log"><span class="std std-doc">well log</span></a>s, <a class="reference internal" href="MachineLearning_glossary_a_c.html#core"><span class="std std-doc">core</span></a> data) poses a major challenge, requiring robust multivariate statistical and machine learning techniques.</p></li>
+<li><p><strong>Complex, heterogeneous earth systems</strong> – subsurface geology is highly <a class="reference internal" href="MachineLearning_glossary_s_z.html#variable"><span class="std std-doc">variable</span></a> and location-dependent. These open systems often behave unpredictably, demanding flexible and adaptive modeling approaches.</p></li>
 <li><p><strong>High-stakes, high-cost decisions</strong> – The need to support critical, high-value decisions drives innovation in methods, workflows, and the adoption of advanced analytics.</p></li>
 </ul>
 <p>As a result, many of us in subsurface engineering and geoscience have a lot of experience learning, applying, and teaching data science to better understand and manage these complexities.</p>
@@ -992,13 +997,13 @@ document.write(`
 <ol class="arabic simple">
 <li><p><strong>toolbox</strong> - a collections of algorithms and mathematical models used by computer systems</p></li>
 <li><p><strong>learning</strong> - that improve their performance progressively on a specific task</p></li>
-<li><p><strong>training data</strong> - by learning patterns from sample data</p></li>
-<li><p><strong>general</strong> - to make predictions or decisions without being explicitly programmed for the specific task</p></li>
+<li><p><strong>training data</strong> - by learning patterns from <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a> data</p></li>
+<li><p><strong>general</strong> - to make <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a>s or decisions without being explicitly programmed for the specific task</p></li>
 </ol>
-<p>Let’s highlight some key ideas:</p>
+<p>Let’s highlight some salient ideas:</p>
 <ul class="simple">
 <li><p>machine learning is a numerical toolbox, a broad set of algorithms designed to adapt to different problems (toolbox)</p></li>
-<li><p>these algorithms improve by learning from or fitting to training data (learning from training data)</p></li>
+<li><p>these algorithms improve by learning from or fitting to training <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> (learning from training data)</p></li>
 <li><p>a single algorithm can often be trained and applied across many different domains (generalization)</p></li>
 </ul>
 <p>An especially important point, often overlooked is found near the end of the article:</p>
@@ -1010,12 +1015,12 @@ document.write(`
 </section>
 <section id="machine-learning-prerequisite-definitions">
 <h2>Machine Learning Prerequisite Definitions<a class="headerlink" href="#machine-learning-prerequisite-definitions" title="Permalink to this heading">#</a></h2>
-<p>To understand machine learning and in general, data science we need to first differentiate between the population and the sample.</p>
+<p>To understand machine learning and in general, data science we need to first differentiate between the <a class="reference internal" href="MachineLearning_glossary_m_r.html#population"><span class="std std-doc">population</span></a> and the sample.</p>
 <section id="population">
 <h3>Population<a class="headerlink" href="#population" title="Permalink to this heading">#</a></h3>
-<p>The population is all possible information of our spatial phenomenon of interest. Exhaustive, finite list of feature of interest over area of interest at the resolution of the data. For example,</p>
+<p>The population is all possible information of our spatial phenomenon of interest. Exhaustive, finite list of feature of interest over <a class="reference internal" href="MachineLearning_glossary_a_c.html#area-of-interest"><span class="std std-doc">area of interest</span></a> at the resolution of the data. For example,</p>
 <ul class="simple">
-<li><p>exhaustive set of porosity at every location within a gas reservoir at the scale of a core sample, i.e., imagine the entire reservoir drilled, extracted and analyzed core by core!</p></li>
+<li><p>exhaustive set of porosity at every location within a gas reservoir at the scale of a core <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>, i.e., imagine the entire reservoir drilled, extracted and analyzed core by core!</p></li>
 <li><p>for every tree in a forest the species, diameter at breast height (DBH), crown diameter, age, tree health status, wood volume and location, i.e., perfectly knowledge of our forest!</p></li>
 </ul>
 <p>Generally the entire population is not accessible due to,</p>
@@ -1027,9 +1032,9 @@ document.write(`
 </section>
 <section id="sample">
 <h3>Sample<a class="headerlink" href="#sample" title="Permalink to this heading">#</a></h3>
-<p>The limited set of values, at specific locations that have been measured. For example,</p>
+<p>The limited set of <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s, at specific locations that have been measured. For example,</p>
 <ul class="simple">
-<li><p>limited set of porosity values measured from extracted core sample and callibrated from well-logs within a reservoir</p></li>
+<li><p>limited set of porosity values measured from extracted <a class="reference internal" href="MachineLearning_glossary_a_c.html#core"><span class="std std-doc">core</span></a> sample and callibrated from well-logs within a reservoir</p></li>
 <li><p>1,000 randomly selected trees over an management unit, with species, diameter at breast height (DBH), crown diameter, age, tree health status, wood volume and location</p></li>
 </ul>
 <p>There is so much that I could mention about sampling! For example,</p>
@@ -1042,19 +1047,19 @@ document.write(`
 <ul class="simple">
 <li><p>What are we measuring from our population in our samples?</p></li>
 </ul>
-<p>Each distinct type of measure is called a variable or feature.</p>
+<p>Each distinct type of measure is called a <a class="reference internal" href="MachineLearning_glossary_s_z.html#variable"><span class="std std-doc">variable</span></a> or feature.</p>
 </section>
 <section id="variable-or-feature">
 <h3>Variable or Feature<a class="headerlink" href="#variable-or-feature" title="Permalink to this heading">#</a></h3>
 <p>In any scientific or engineering study, a property that is measured or observed is typically referred to as a variable.</p>
 <ul class="simple">
-<li><p>however, in data science and machine learning, we use the term feature almost exclusively.</p></li>
+<li><p>however, in data science and machine learning, we use the term <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> almost exclusively.</p></li>
 </ul>
 <p>While the terminology differs, the concept is the same: both refer to quantitative or categorical information about an object or system.</p>
 <p>To illustrate what constitutes a feature, consider the following examples drawn from real-world geoscience, oil adn gas, and mining contexts,</p>
 <ul class="simple">
 <li><p>porosity measured from 1.5 inch diameter, 2 inch long core plugs extracted from the Miocene-aged Tahiti field in the Gulf of Mexico</p></li>
-<li><p>permeability modeled from porosity (neutron density well log) and rock facies (interpreted fraction of shale logs) at 0.5 foot resolution along the well bore in the Late Devonian Leduc formation in the Western Canadian Sedimentary Basin.</p></li>
+<li><p>permeability modeled from porosity (neutron density <a class="reference internal" href="MachineLearning_glossary_s_z.html#well-log"><span class="std std-doc">well log</span></a>) and rock <a class="reference internal" href="MachineLearning_glossary_d_f.html#facies"><span class="std std-doc">facies</span></a> (interpreted fraction of shale logs) at 0.5 foot resolution along the well bore in the Late Devonian Leduc formation in the Western Canadian Sedimentary Basin.</p></li>
 <li><p>blast hole cuttings nickel grade aggregated over 8 inch diameter 10 meter blast holes at Voisey’s Bay Mine, Proterozoic gneissic complex.</p></li>
 </ul>
 <p>Did you see what I did?</p>
@@ -1064,7 +1069,7 @@ document.write(`
 <p>This is important because,</p>
 <ul class="simple">
 <li><p><strong>how the measurement is made?</strong> - changes the feature’s veracity (level of certainty in the measure) and different methods actually may change the shift the feature’s values so we may need to reconcile multiple measurement methods of the same feature.</p></li>
-<li><p><strong>what is the scale of the measurement?</strong> - is very important due to volume-variance effect, with increasing support volume, sample scale, the variance reduces due to volumetric averaging resulting in regression to the mean. I have a <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/GeostatsPy_volume_variance.html">chapter on volume-variance</a> in my Applied Geostatistics in Python e-book for those interested in more details.</p></li>
+<li><p><strong>what is the scale of the measurement?</strong> - is very important due to volume-<a class="reference internal" href="MachineLearning_glossary_s_z.html#variance"><span class="std std-doc">variance</span></a> effect, with increasing support volume, sample scale, the variance reduces due to volumetric averaging resulting in <a class="reference internal" href="MachineLearning_glossary_m_r.html#regression"><span class="std std-doc">regression</span></a> to the <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a>. I have a <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/GeostatsPy_volume_variance.html">chapter on volume-variance</a> in my Applied <a class="reference internal" href="MachineLearning_glossary_g_l.html#geostatistics"><span class="std std-doc">Geostatistics</span></a> in Python e-book for those interested in more details.</p></li>
 </ul>
 <p>Additionally, our subsurface measurements often requires significant analysis, interpretation, etc.</p>
 <ul class="simple">
@@ -1085,11 +1090,11 @@ document.write(`
 <ul class="simple">
 <li><p>so even porosity, often seen as a “simple” feature that’s observable in well logs and suitable for linear averaging, doesn’t escape an essential interpretation step. Estimating effective porosity involves assumptions, thresholds, or models about pore geometry and connectivity.</p></li>
 </ul>
-<p>This is a critical reminder, our features generally require interpretation, even when they appear directly measurable. Measurement scale, observation method, and intended use all influence how we define and derive a useful feature for our data science models.</p>
+<p>This is a critical reminder, our features generally require interpretation, even when they appear directly measurable. Measurement scale, observation method, and intended use all influence how we define and derive a useful feature for our <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> science models.</p>
 </section>
 <section id="predictor-and-response-features">
 <h3>Predictor and Response Features<a class="headerlink" href="#predictor-and-response-features" title="Permalink to this heading">#</a></h3>
-<p>To understand the difference between predictor and response features let’s look at the most concise expression of a machine learning model.</p>
+<p>To understand the difference between predictor and <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a>s let’s look at the most concise expression of a machine learning model.</p>
 <figure style="text-align: center;">
   <img src="_static/concepts/ML_equation.png" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;">The fundamental predictive machine learning model that maps from predictor to response features.</figcaption>
@@ -1099,23 +1104,23 @@ document.write(`
 <li><p>response (or dependent) feature(s) (or variable(s)) are the model output, <span class="math notranslate nohighlight">\(y\)</span>,</p></li>
 </ul>
 <p>and there is an error term, <span class="math notranslate nohighlight">\(\epsilon\)</span>.</p>
-<p>Machine Learning is all about estimating such models, <span class="math notranslate nohighlight">\(\hat{𝑓}\)</span>, for two purposes, inference or prediction.</p>
+<p>Machine Learning is all about estimating such models, <span class="math notranslate nohighlight">\(\hat{𝑓}\)</span>, for two purposes, inference or <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a>.</p>
 </section>
 <section id="inference">
 <h3>Inference<a class="headerlink" href="#inference" title="Permalink to this heading">#</a></h3>
-<p>Before we can make reliable predictions, we must first perform inference—that is, we must learn about the underlying system from a limited sample in order to model the broader population. Inference is the process of building an understanding of the system, denoted as <span class="math notranslate nohighlight">\(\hat{f}\)</span>, based on observed data.</p>
+<p>Before we can make reliable predictions, we must first perform <a class="reference internal" href="MachineLearning_glossary_g_l.html#inference"><span class="std std-doc">inference</span></a>—that is, we must learn about the underlying system from a limited sample in order to model the broader population. Inference is the process of building an understanding of the system, denoted as <span class="math notranslate nohighlight">\(\hat{f}\)</span>, based on observed data.</p>
 <p>Through inference, we seek to answer questions like:</p>
 <ul class="simple">
 <li><p>What are the relationships between features?</p></li>
 <li><p>Which features are most important?</p></li>
 <li><p>Are there complicated or nonlinear interactions between features?</p></li>
 </ul>
-<p>These insights are prerequisites for making any predictions, because they form the foundation of the model that will eventually be used for forecasting, classification, or decision-making.</p>
+<p>These insights are prerequisites for making any predictions, because they form the foundation of the model that will eventually be used for forecasting, <a class="reference internal" href="MachineLearning_glossary_a_c.html#classification"><span class="std std-doc">classification</span></a>, or decision-making.</p>
 <p>For example, imagine I walk into a room, pull a coin from my pocket, and flip it 10 times, observing 3 heads and 7 tails. Then I ask, “Is this a fair coin?”.</p>
 <p>This is a classic inferential problem.</p>
 <ul class="simple">
 <li><p>you’re using a limited sample (the 10 flips) to make an inference about the population—in this case, the probability distribution governing the coin</p></li>
-<li><p>and here’s the key twist: in this example, the coin itself is the population!</p></li>
+<li><p>and here’s the twist: in this example, the coin itself is the population!</p></li>
 </ul>
 <p>You’re not just summarizing the sample, you’re trying to learn something general about the system that generated the sample.</p>
 </section>
@@ -1138,45 +1143,45 @@ document.write(`
 <ul class="simple">
 <li><p>it depends on whether you’re modeling structure or estimating outcomes</p></li>
 </ul>
-<p><strong>Inferential Machine Learning</strong>, also called unsupervised learning, involves only predictor features (no known outcomes or labels). The aim is to learn structure in the data and improve understanding of the system.</p>
+<p><strong>Inferential Machine Learning</strong>, also called <a class="reference internal" href="MachineLearning_glossary_s_z.html#unsupervised-learning"><span class="std std-doc">unsupervised learning</span></a>, involves only <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a>s (no known outcomes or labels). The aim is to learn structure in the data and improve understanding of the system.</p>
 <p>Examples of machine learning inferential methods include,</p>
 <ul class="simple">
 <li><p>Cluster analysis – groups observations into distinct clusters (potential sub-populations), often as a preprocessing step for modeling.</p></li>
-<li><p>Dimensionality reduction – reduces the number of features by finding combinations that best preserve information while minimizing noise, for example, princpal components analysis (PCA), t-distributed Stochastic Neighbor Embedding (t-SNE) or multidimensional scaling (MDS).</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_d_f.html#dimensionality-reduction"><span class="std std-doc">Dimensionality reduction</span></a> – reduces the number of features by finding combinations that best preserve information while minimizing noise, for example, princpal components analysis (PCA), t-distributed Stochastic Neighbor Embedding (t-SNE) or <a class="reference internal" href="MachineLearning_glossary_m_r.html#multidimensional-scaling"><span class="std std-doc">multidimensional scaling</span></a> (MDS).</p></li>
 </ul>
 <p>These techniques help reveal relationships, patterns, or latent variables in the data—crucial for good modeling, but are not designed to make direct predictions.</p>
 <p>Some may push back on my definition of inferential machine learning and the inclusion of cluster analysis, because they include in statistical inference quantification of uncertainty and testing hypotheses that is not available in cluster analysis.</p>
 <ul class="simple">
 <li><p>I defend my choice by the difficulty and importance of identifying groups in subsurface and spatial datasets.</p></li>
 <li><p>For example, depofacies for reservoir models commonly describe 80% of heterogeneity, i.e., the deposfacies are the most important inference for many reservoirs!</p></li>
-<li><p>Also, I have a very broad view of uncertainty modeling and model checking that includes various types of resampling, for example, bootstrap and spatial boostrap and in the subsurface we can only rarely use analytical confidence intervals and hypothesis testing.</p></li>
+<li><p>Also, I have a very broad view of <a class="reference internal" href="MachineLearning_glossary_s_z.html#uncertainty-modeling"><span class="std std-doc">uncertainty modeling</span></a> and <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-checking"><span class="std std-doc">model checking</span></a> that includes various types of resampling, for example, <a class="reference internal" href="MachineLearning_glossary_a_c.html#bootstrap"><span class="std std-doc">bootstrap</span></a> and spatial boostrap and in the subsurface we can only rarely use analytical <a class="reference internal" href="MachineLearning_glossary_a_c.html#confidence-interval"><span class="std std-doc">confidence interval</span></a>s and hypothesis testing.</p></li>
 </ul>
-<p><strong>Predictive Machine Learning</strong>, also called supervised learning, this involves both predictor features and response features (labels). The model is trained to predict the response for new samples.</p>
+<p><strong>Predictive Machine Learning</strong>, also called <a class="reference internal" href="MachineLearning_glossary_s_z.html#supervised-learning"><span class="std std-doc">supervised learning</span></a>, this involves both predictor features and response features (labels). The model is trained to predict the response for new samples.</p>
 <p>Examples of machine learning predictive methods include,</p>
 <ul class="simple">
-<li><p>Linear regression - estimating the response feature as a linear combination of the predictor features</p></li>
-<li><p>Naive Bayes classifier - estimating the probability of each possible categorical result for a response feature from the product sum of the prior probability and each likelihood conditional probability</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_g_l.html#linear-regression"><span class="std std-doc">Linear regression</span></a> - estimating the response feature as a linear combination of the predictor features</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_m_r.html#naive-bayes"><span class="std std-doc">Naive Bayes</span></a> classifier - estimating the probability of each possible categorical result for a response feature from the product sum of the <a class="reference internal" href="MachineLearning_glossary_m_r.html#prior"><span class="std std-doc">prior</span></a> probability and each likelihood <a class="reference internal" href="MachineLearning_glossary_a_c.html#conditional-probability"><span class="std std-doc">conditional probability</span></a></p></li>
 </ul>
-<p>The model is optimized to minimize prediction error, often evaluated through cross-validation or test data. Let’s talk about how to make predictive machine learning models.</p>
+<p>The model is optimized to minimize <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction-error"><span class="std std-doc">prediction error</span></a>, often evaluated through cross-validation or test data. Let’s talk about how to make predictive machine learning models.</p>
 </section>
 </section>
 <section id="training-and-tuning-predictive-machine-learning-models">
 <h2>Training and Tuning Predictive Machine Learning Models<a class="headerlink" href="#training-and-tuning-predictive-machine-learning-models" title="Permalink to this heading">#</a></h2>
-<p>In predictive machine learning, we follow a standard model training and testing workflow. This process ensures that our model generalizes well to new data, rather than just fitting the training data perfectly.</p>
+<p>In predictive machine learning, we follow a standard model training and testing workflow. This process ensures that our model generalizes well to new <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>, rather than just fitting the training data perfectly.</p>
 <figure style="text-align: center;">
   <img src="_static/concepts/ML_workflow_portrait.png" style="display: block; margin: 0 auto; width: 100%;">
   <figcaption style="text-align: center;">Standard predictive machine learning modeling workflow.</figcaption>
 </figure>
-<p>Let’s walk through the key steps,</p>
+<p>Let’s walk through the main steps,</p>
 <ol class="arabic simple">
-<li><p><strong>Train and Test Split</strong> - divide the available data into mutually exclusive, exhaustive subsets: a training set and a testing set.</p></li>
+<li><p><strong><a class="reference internal" href="MachineLearning_glossary_s_z.html#train-and-test-split"><span class="std std-doc">Train and Test Split</span></a></strong> - divide the available data into mutually exclusive, exhaustive subsets: a training set and a testing set.</p></li>
 </ol>
 <ul class="simple">
 <li><p>typically, 15%–30% of the data is held out for testing</p></li>
 <li><p>the remaining 70%–85% is used for training the model</p></li>
 </ul>
 <ol class="arabic simple" start="2">
-<li><p><strong>Define a range of hyperparameter(s)</strong> values to explore, ranging from,</p></li>
+<li><p><strong>Define a range of hyperparameter(s)</strong> <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s to explore, ranging from,</p></li>
 </ol>
 <ul class="simple">
 <li><p>simple models with low flexibility</p></li>
@@ -1184,18 +1189,18 @@ document.write(`
 </ul>
 <p><span class="math notranslate nohighlight">\(\quad\)</span> This step may involve tuning multiple hyperparameters, in which case efficient sampling methods (e.g., grid search, random search, or Bayesian optimization) are often used.</p>
 <ol class="arabic simple" start="3">
-<li><p><strong>Train Model Parameters for Each Hyperparameter Setting</strong> - for each set of hyperparameters, train a model on the training data. This yields:</p></li>
+<li><p><strong>Train <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter"><span class="std std-doc">Model Parameter</span></a>s for Each Hyperparameter Setting</strong> - for each set of hyperparameters, train a model on the training data. This yields:</p></li>
 </ol>
 <ul class="simple">
 <li><p>a suite of trained models, each with different complexity</p></li>
-<li><p>each model has parameters optimized to minimize error on the training data</p></li>
+<li><p>each model has <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a>s optimized to minimize error on the training data</p></li>
 </ul>
 <ol class="arabic simple" start="4">
 <li><p><strong>Evaluate Each Model on the Withheld Testing Data</strong> - using the testing data,</p></li>
 </ol>
 <ul class="simple">
 <li><p>evaluate how each trained model performs on unseen data</p></li>
-<li><p>summarize prediction error (for example, root mean square error (RMSE), mean absolute error (MAE), classification accuracy) for each model</p></li>
+<li><p>summarize <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction-error"><span class="std std-doc">prediction error</span></a> (for example, <a class="reference internal" href="MachineLearning_glossary_m_r.html#root-mean-square-error"><span class="std std-doc">root mean square error</span></a> (RMSE), <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean-absolute-error"><span class="std std-doc">mean absolute error</span></a> (MAE), <a class="reference internal" href="MachineLearning_glossary_a_c.html#classification"><span class="std std-doc">classification</span></a> accuracy) for each model</p></li>
 </ul>
 <ol class="arabic simple" start="5">
 <li><p><strong>Select the Hyperparameters That Minimize Test Error</strong> - this is the hyperparameter tuning step:</p></li>
@@ -1205,11 +1210,11 @@ document.write(`
 <li><p>these are your tuned hyperparameters</p></li>
 </ul>
 <ol class="arabic simple" start="6">
-<li><p><strong>Retrain the Final Model on All Data Using Tuned Hyperparameters</strong> - now that the best model complexity has been identified,</p></li>
+<li><p><strong>Retrain the Final Model on All Data Using Tuned Hyperparameters</strong> - now that the best <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-complexity"><span class="std std-doc">model complexity</span></a> has been identified,</p></li>
 </ol>
 <ul class="simple">
 <li><p>retrain the model using both the training and test sets</p></li>
-<li><p>this maximizes the amount of data used for final model parameter estimation</p></li>
+<li><p>this maximizes the amount of data used for final model parameter <a class="reference internal" href="MachineLearning_glossary_d_f.html#estimation"><span class="std std-doc">estimation</span></a></p></li>
 <li><p>the resulting model is the one you deploy in real-world applications</p></li>
 </ul>
 </section>
@@ -1219,7 +1224,7 @@ document.write(`
 <ul class="simple">
 <li><p><strong>What is the main outcome of steps 1–5?</strong> - the only reliable outcome is the tuned hyperparameters.</p></li>
 </ul>
-<p><span class="math notranslate nohighlight">\(\quad\)</span> we do not use the model trained in step 3 or 4 directly, because it was trained without access to all available data. Instead, we retrain the final model using all data with the selected hyperparameters.</p>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> we do not use the model trained in step 3 or 4 directly, because it was trained without access to all available <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>. Instead, we retrain the final model using all data with the selected hyperparameters.</p>
 <ul class="simple">
 <li><p><strong>Why not train the model on all the data from the beginning?</strong> - because if we do that, we have no independent way to evaluate the model’s generalization. A very complex model can easily overfit—fitting the training data perfectly, but performing poorly on new, unseen data.</p></li>
 </ul>
@@ -1227,22 +1232,22 @@ document.write(`
 <p>This workflow for training and tuning predictive machine learning models is,</p>
 <ul class="simple">
 <li><p>an empirical, cross-validation-based process</p></li>
-<li><p>a practical simulation of real-world model use</p></li>
-<li><p>a method to identify the model complexity that best balances fit and generalization</p></li>
+<li><p>a practical <a class="reference internal" href="MachineLearning_glossary_s_z.html#simulation"><span class="std std-doc">simulation</span></a> of real-world model use</p></li>
+<li><p>a method to identify the <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-complexity"><span class="std std-doc">model complexity</span></a> that best balances fit and generalization</p></li>
 </ul>
-<p>I’ve said model parameters and model hyperparameters a bunch of times, so I owe you their definitions.</p>
+<p>I’ve said <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter"><span class="std std-doc">model parameter</span></a>s and <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-hyperparameter"><span class="std std-doc">model hyperparameter</span></a>s a bunch of times, so I owe you their definitions.</p>
 </section>
 <section id="model-parameters-and-model-hyperparameters">
 <h2>Model Parameters and Model Hyperparameters<a class="headerlink" href="#model-parameters-and-model-hyperparameters" title="Permalink to this heading">#</a></h2>
-<p><strong>Model parameters</strong> are fit during training phase to minimize error at the training data, i.e., model parameters are trained with training data and control model fit to the data. For example,</p>
+<p><strong><a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter"><span class="std std-doc">Model parameter</span></a>s</strong> are fit during training phase to minimize error at the training data, i.e., model parameters are trained with training data and control model fit to the data. For example,</p>
 <ul class="simple">
-<li><p>for the polynomial predictive machine learning model from the machine learning workflow example above, the model parameters are the polynomial coefficients, e.g., <span class="math notranslate nohighlight">\(b_3\)</span>, <span class="math notranslate nohighlight">\(b_2\)</span>, <span class="math notranslate nohighlight">\(b_1\)</span> and <span class="math notranslate nohighlight">\(c\)</span> (often called <span class="math notranslate nohighlight">\(b_0\)</span>) for the third order polynomial model.</p></li>
+<li><p>for the polynomial predictive machine learning model from the machine learning workflow example above, the model <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a>s are the polynomial coefficients, e.g., <span class="math notranslate nohighlight">\(b_3\)</span>, <span class="math notranslate nohighlight">\(b_2\)</span>, <span class="math notranslate nohighlight">\(b_1\)</span> and <span class="math notranslate nohighlight">\(c\)</span> (often called <span class="math notranslate nohighlight">\(b_0\)</span>) for the third order polynomial model.</p></li>
 </ul>
 <figure style="text-align: center;">
   <img src="_static/concepts/parameters.png" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;">Model parameters are adjusted to fit of the model to the data, i.e., model parameters are trained to minimize error over the training data (x markers).</figcaption>
 </figure>
-<p><strong>Model hyperparameters</strong> are very different. They do not constrain the model fit to the data directly, instead they constrain the model complexity.
+<p><strong><a class="reference internal" href="MachineLearning_glossary_m_r.html#model-hyperparameter"><span class="std std-doc">Model hyperparameter</span></a>s</strong> are very different. They do not constrain the model fit to the data directly, instead they constrain the model complexity.
 The model hyperparameters are selected (call tuning) to minimize error at the withheld testing data. Going back to our polynomial predictive machine learning example, the choice of polynomial order is the model hyperparameter.</p>
 <figure style="text-align: center;">
   <img src="_static/concepts/hyperparameters.png" style="display: block; margin: 0 auto; width: 100%;">
@@ -1255,69 +1260,69 @@ The model hyperparameters are selected (call tuning) to minimize error at the wi
 </section>
 <section id="regression-and-classification">
 <h2>Regression and Classification<a class="headerlink" href="#regression-and-classification" title="Permalink to this heading">#</a></h2>
-<p>Before we proceed, we need to define regression and classification.</p>
+<p>Before we proceed, we need to define regression and <a class="reference internal" href="MachineLearning_glossary_a_c.html#classification"><span class="std std-doc">classification</span></a>.</p>
 <ul class="simple">
-<li><p><strong>Regression</strong> - a predictive machine learning model where the response feature(s) is continuous.</p></li>
-<li><p><strong>Classification</strong> - a predictive machine learning model where the response feature(s) is categorical.</p></li>
+<li><p><strong>Regression</strong> - a predictive machine learning model where the <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a>(s) is continuous.</p></li>
+<li><p><strong>Classification</strong> - a predictive machine learning model where the response <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>(s) is categorical.</p></li>
 </ul>
 <p>It turns out that for each of these we need to build different models and use different methods to score these models.</p>
 <ul class="simple">
-<li><p>for the remainder of this discussion we will focus on regression, but in later chapters we introduce classification models as well.</p></li>
+<li><p>for the remainder of this discussion we will focus on <a class="reference internal" href="MachineLearning_glossary_m_r.html#regression"><span class="std std-doc">regression</span></a>, but in later chapters we introduce classification models as well.</p></li>
 </ul>
-<p>Now, to better understand predictive machine learning model tuning, i.e., the empirical approach to tune model complexity to minimize testing error, we need to understand the sources of testing error.</p>
+<p>Now, to better understand predictive machine learning model tuning, i.e., the empirical approach to tune <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-complexity"><span class="std std-doc">model complexity</span></a> to minimize testing error, we need to understand the sources of testing error.</p>
 <ul class="simple">
 <li><p>the causes of the thing that we are attempting to minimize!</p></li>
 </ul>
 </section>
 <section id="sources-of-predictive-machine-learning-testing-error">
 <h2>Sources of Predictive Machine Learning Testing Error<a class="headerlink" href="#sources-of-predictive-machine-learning-testing-error" title="Permalink to this heading">#</a></h2>
-<p>Mean square error (MSE) is a standard way to express error. Mean squared error is known as a norm because we at taking a vector of error (over all of the data) and summarizing with a single, non-negative value.</p>
+<p><a class="reference internal" href="MachineLearning_glossary_m_r.html#mean-square-error"><span class="std std-doc">Mean square error</span></a> (MSE) is a standard way to express error. <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">Mean</span></a> squared error is known as a norm because we at taking a vector of error (over all of the data) and summarizing with a single, non-negative <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>.</p>
 <ul class="simple">
-<li><p>specifically MSER is the L2 norm because the errors are squared before they are summed,</p></li>
-<li><p>the L2 norm has a lot of nice properties including a continuous error function that can be differentiated over all values of error, but it is sensitive to data outliers that may have a disproportionate impact on the sum of the squares. More about this later.</p></li>
+<li><p>specifically MSER is the L2 <a class="reference internal" href="MachineLearning_glossary_m_r.html#norm"><span class="std std-doc">norm</span></a> because the errors are squared before they are summed,</p></li>
+<li><p>the L2 norm has a lot of nice properties including a continuous error function that can be differentiated over all values of error, but it is sensitive to data <a class="reference internal" href="MachineLearning_glossary_m_r.html#outlier"><span class="std std-doc">outlier</span></a>s that may have a disproportionate impact on the sum of the squares. More about this later.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
 MSE = \frac{1}{n} \sum_{i=1}^{n} \left( y_i - \hat{y}_i \right)^2
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(y_i\)</span> is the actual observation of the response feature and <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> is the model estimate over data indexed, <span class="math notranslate nohighlight">\(i = 1,\ldots,n\)</span>. The <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> is estimated with our predictive machine learning model with a general form,</p>
+<p>where <span class="math notranslate nohighlight">\(y_i\)</span> is the actual observation of the <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a> and <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> is the model estimate over data indexed, <span class="math notranslate nohighlight">\(i = 1,\ldots,n\)</span>. The <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> is estimated with our predictive machine learning model with a general form,</p>
 <div class="math notranslate nohighlight">
 \[
 \hat{y}_i = \hat{f}(x^1_i, \ldots , x^m_i)
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(\hat{f}\)</span> is our predictive machine learning model and <span class="math notranslate nohighlight">\(x^1_i, \ldots , x^m_i\)</span> are the predictor feature values for the <span class="math notranslate nohighlight">\(i^{th}\)</span> data.</p>
-<p>Of course, MSE can be calculated over training data and this is often the loss function that we minimize for training the model parameters for regression models.</p>
+<p>where <span class="math notranslate nohighlight">\(\hat{f}\)</span> is our predictive machine learning model and <span class="math notranslate nohighlight">\(x^1_i, \ldots , x^m_i\)</span> are the <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a> values for the <span class="math notranslate nohighlight">\(i^{th}\)</span> data.</p>
+<p>Of course, MSE can be calculated over training data and this is often the <a class="reference internal" href="MachineLearning_glossary_g_l.html#loss-function"><span class="std std-doc">loss function</span></a> that we minimize for training the <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter"><span class="std std-doc">model parameter</span></a>s for regression models.</p>
 <div class="math notranslate nohighlight">
 \[
 MSE_{train} = \frac{1}{n_{train}} \sum_{i=1}^{n_{train}} \left( y_i - \hat{y}_i \right)^2
 \]</div>
-<p>and MSE can be calculated over the withheld testing data for hyperparameter tuning of regression models.</p>
+<p>and MSE can be calculated over the withheld testing data for hyperparameter tuning of <a class="reference internal" href="MachineLearning_glossary_m_r.html#regression"><span class="std std-doc">regression</span></a> models.</p>
 <p>If we take the <span class="math notranslate nohighlight">\(MSE_{test}\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
 MSE_{test} = \frac{1}{n_{test}} \sum_{i=1}^{n_{test}} \left( y_i - \hat{f}(x^1_i, \ldots , x^m_i) \right)^2
 \]</div>
-<p>but we pose it as the expected test square error we get this expectation form,</p>
+<p>but we pose it as the expected test square error we get this <a class="reference internal" href="MachineLearning_glossary_d_f.html#expectation"><span class="std std-doc">expectation</span></a> form,</p>
 <div class="math notranslate nohighlight">
 \[
 E \left[ \left( y_0 - \hat{f}(x^1_0, \ldots , x^m_0) \right)^2 \right]
 \]</div>
-<p>where we use the <span class="math notranslate nohighlight">\(_0\)</span> notation to indicate data samples not in the training dataset split, but in the withheld testing split. We can expand the quadratic and group the terms to get this convenient decomposition of expect test square error into three additive sources (derivation is available in <a class="reference external" href="https://www.amazon.com/Elements-Statistical-Learning-Prediction-Statistics/dp/0387848576/ref=sr_1_1?crid=32MDGH9EIGR9T&amp;dib=eyJ2IjoiMSJ9.p0bVgWPuChRIt10algkzSRLwDHzW4bCihIh1RA6GGZDYFtIQN37sOnIqDS5rCJ4fF5dgqsleBiGbmgJUSXISlcmayLc6C0aOcXVX8iCtyZElt9qVbd-Dvq9P3x4KTBlzHCFHDtjz0ImJUAd3LhT6D6KhOtiHOAveaz8xiE4jU1ah6LlDo0xzGoQVDXzNE6ODFzysbfBvzJMRGXhLbQBD292ixuH_tTBTPZwOzNGzpIw.TpRqJ1llQqMdsDXdXhWr0WQIhzTn6rpjDKSAzA10E_I&amp;dib_tag=se&amp;keywords=hastie+machine+learning&amp;qid=1728683359&amp;s=books&amp;sprefix=hastie+machine+learn%2Cstripbooks%2C187&amp;sr=1-1">Hastie et al., 2009</a>,</p>
+<p>where we use the <span class="math notranslate nohighlight">\(_0\)</span> notation to indicate data <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s not in the training dataset split, but in the withheld testing split. We can expand the quadratic and group the terms to get this convenient decomposition of expect test square error into three additive sources (derivation is available in <a class="reference external" href="https://www.amazon.com/Elements-Statistical-Learning-Prediction-Statistics/dp/0387848576/ref=sr_1_1?crid=32MDGH9EIGR9T&amp;dib=eyJ2IjoiMSJ9.p0bVgWPuChRIt10algkzSRLwDHzW4bCihIh1RA6GGZDYFtIQN37sOnIqDS5rCJ4fF5dgqsleBiGbmgJUSXISlcmayLc6C0aOcXVX8iCtyZElt9qVbd-Dvq9P3x4KTBlzHCFHDtjz0ImJUAd3LhT6D6KhOtiHOAveaz8xiE4jU1ah6LlDo0xzGoQVDXzNE6ODFzysbfBvzJMRGXhLbQBD292ixuH_tTBTPZwOzNGzpIw.TpRqJ1llQqMdsDXdXhWr0WQIhzTn6rpjDKSAzA10E_I&amp;dib_tag=se&amp;keywords=hastie+machine+learning&amp;qid=1728683359&amp;s=books&amp;sprefix=hastie+machine+learn%2Cstripbooks%2C187&amp;sr=1-1">Hastie et al., 2009</a>,</p>
 <figure style="text-align: center;">
   <img src="_static/concepts/three_error.png" style="display: block; margin: 0 auto; width: 90%;">
   <figcaption style="text-align: center;">Model error in testing with three additive components, model variance, model bias and irreducible error.</figcaption>
 </figure>
-<p>Let’s explain these three additive sources of error over test data, i.e., our best representation of the error we expect in the real-world use of our model to predict for cases not used to train the model,</p>
+<p>Let’s explain these three additive sources of error over test <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>, i.e., our best representation of the error we expect in the real-world use of our model to predict for cases not used to train the model,</p>
 <ol class="arabic simple">
-<li><p><strong>Model Variance</strong> - is error due to sensitivity to the dataset, for example a simple model like linear regression does not change much if we change the training data, but a more complicated model like a fifth order polynomial model will jump around a lot as we change the training data.</p></li>
+<li><p><strong><a class="reference internal" href="MachineLearning_glossary_m_r.html#model-variance"><span class="std std-doc">Model Variance</span></a></strong> - is error due to sensitivity to the dataset, for example a simple model like <a class="reference internal" href="MachineLearning_glossary_g_l.html#linear-regression"><span class="std std-doc">linear regression</span></a> does not change much if we change the training data, but a more complicated model like a fifth order polynomial model will jump around a lot as we change the training data.</p></li>
 </ol>
-<p><span class="math notranslate nohighlight">\(\quad\)</span> More model complexity tends to increase model variance.</p>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> More <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-complexity"><span class="std std-doc">model complexity</span></a> tends to increase model variance.</p>
 <ol class="arabic simple" start="2">
-<li><p><strong>Model Bias</strong> -  is error due to using an approximate model, i.e., the model is too simple to fit the natural phenomenon. A very simple model is inflexible and will generally have higher model bias while a more complicated model is flexible enough to fit the data and will have lower model bias.</p></li>
+<li><p><strong><a class="reference internal" href="MachineLearning_glossary_m_r.html#model-bias"><span class="std std-doc">Model Bias</span></a></strong> -  is error due to using an approximate model, i.e., the model is too simple to fit the natural phenomenon. A very simple model is inflexible and will generally have higher model bias while a more complicated model is flexible enough to fit the data and will have lower model bias.</p></li>
 </ol>
-<p><span class="math notranslate nohighlight">\(\quad\)</span> More model complexity tends to descrease model bias.</p>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> More model complexity tends to descrease model <a class="reference internal" href="MachineLearning_glossary_a_c.html#bias"><span class="std std-doc">bias</span></a>.</p>
 <ol class="arabic simple" start="3">
-<li><p><strong>Irreducible Error</strong> - is due to missing and incomplete data. There may be important features that were not sampled, or ranges of feature values that were not sampled. This is the error due to data limitations that cannot be address by the machine learning model hyperparameter tuning for optimum complexity; therefore, irreducible error is constant over the range of model complexity.</p></li>
+<li><p><strong><a class="reference internal" href="MachineLearning_glossary_g_l.html#irreducible-error"><span class="std std-doc">Irreducible Error</span></a></strong> - is due to missing and incomplete data. There may be important <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s that were not sampled, or ranges of feature values that were not sampled. This is the error due to data limitations that cannot be address by the machine learning <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-hyperparameter-tuning"><span class="std std-doc">model hyperparameter tuning</span></a> for optimum complexity; therefore, irreducible error is constant over the range of model complexity.</p></li>
 </ol>
 <p><span class="math notranslate nohighlight">\(\quad\)</span> More model complexity should not change irreducible error.</p>
 <p>Now we can take these three additive sources of error and produce an instructive, schematic plot,</p>
@@ -1325,7 +1330,7 @@ E \left[ \left( y_0 - \hat{f}(x^1_0, \ldots , x^m_0) \right)^2 \right]
   <img src="_static/concepts/variance_bias_tradeoff.png" style="display: block; margin: 0 auto; width: 60%;">
   <figcaption style="text-align: center;">Model error in testing vs. model complexity with three additive error components, model variance, model bias and irreducible error.</figcaption>
 </figure>
-<p>From this plot we can observe, the <strong>model bias-variance trade off</strong>,</p>
+<p>From this plot we can observe, the <strong><a class="reference internal" href="MachineLearning_glossary_m_r.html#model-biasvariance-trade-off"><span class="std std-doc">Model Bias–Variance Trade-off</span></a></strong>,</p>
 <ul class="simple">
 <li><p>testing error is high for low complexity models due to high model bias</p></li>
 <li><p>testing error is high for high complexity models due to high model variance</p></li>
@@ -1339,17 +1344,17 @@ E \left[ \left( y_0 - \hat{f}(x^1_0, \ldots , x^m_0) \right)^2 \right]
 </section>
 <section id="underfit-and-overfit-models">
 <h2>Underfit and Overfit Models<a class="headerlink" href="#underfit-and-overfit-models" title="Permalink to this heading">#</a></h2>
-<p>First visualize underfit and overfit first with a simple prediction problem with one predictor feature and one response feature, here’s a model that is too simple (left) and a model that is too complicated (right).</p>
+<p>First visualize underfit and overfit first with a simple <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a> problem with one <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a> and one <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a>, here’s a model that is too simple (left) and a model that is too complicated (right).</p>
 <figure style="text-align: center;">
   <img src="_static/concepts/under_overfit.png" style="display: block; margin: 0 auto; width: 100%;">
   <figcaption style="text-align: center;">Example underfit model (left), a model that is too simple / inflexible and overfit model (right), a model that is too complicated / flexible.</figcaption>
 </figure>
 <p>Some observations,</p>
 <ul class="simple">
-<li><p>the simple model is not sufficiently flexible to fit the data, this is likely an underfit model</p></li>
-<li><p>the overfit model perfectly fits all of the training data but is too noisy away from the training data and is likely an overfit model</p></li>
+<li><p>the simple model is not sufficiently flexible to fit the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>, this is likely an underfit model</p></li>
+<li><p>the <a class="reference internal" href="MachineLearning_glossary_m_r.html#overfit-model"><span class="std std-doc">overfit model</span></a> perfectly fits all of the training data but is too noisy away from the training data and is likely an overfit model</p></li>
 </ul>
-<p>To better understand the difference, we can now plot the training error alongside the previously shown testing error curve, illustrating how both change with model complexity.</p>
+<p>To better understand the difference, we can now plot the training error alongside the previously shown testing error curve, illustrating how both change with <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-complexity"><span class="std std-doc">model complexity</span></a>.</p>
 <figure style="text-align: center;">
   <img src="_static/concepts/overfit.png" style="display: block; margin: 0 auto; width: 60%;">
   <figcaption style="text-align: center;">Model error in training and testing vs. model complexity with illustration of under- and overfit model regions.</figcaption>
@@ -1357,7 +1362,7 @@ E \left[ \left( y_0 - \hat{f}(x^1_0, \ldots , x^m_0) \right)^2 \right]
 <p>From the plot, we can make the following observations:</p>
 <ul class="simple">
 <li><p><strong>Training Error</strong> – as model complexity increases, training error consistently decreases. With sufficient flexibility, the model can eventually fit the training data perfectly, driving training error to zero.</p></li>
-<li><p><strong>Testing Error</strong> – testing error is composed of bias, variance, and irreducible error. The interplay between bias and variance leads to a trade-off, resulting in an optimal model complexity that minimizes testing error.</p></li>
+<li><p><strong>Testing Error</strong> – testing error is composed of <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-bias"><span class="std std-doc">model bias</span></a>, <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-variance"><span class="std std-doc">model variance</span></a>, and <a class="reference internal" href="MachineLearning_glossary_g_l.html#irreducible-error"><span class="std std-doc">irreducible error</span></a>. The interplay between bias and variance leads to a trade-off, resulting in an optimal model complexity that minimizes testing error.</p></li>
 </ul>
 <p>Based on these observations, we can characterize underfitting and overfitting as follows:</p>
 <ul class="simple">
@@ -1367,28 +1372,28 @@ E \left[ \left( y_0 - \hat{f}(x^1_0, \ldots , x^m_0) \right)^2 \right]
 </section>
 <section id="more-about-training-and-testing-splits">
 <h2>More About Training and Testing Splits<a class="headerlink" href="#more-about-training-and-testing-splits" title="Permalink to this heading">#</a></h2>
-<p>A critical part of the machine learning training and tuning workflow is the training and testing data split. Here is some more considerations about training and testing data splits,</p>
+<p>A critical part of the machine learning training and tuning workflow is the training and testing <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> split. Here is some more considerations about training and testing data splits,</p>
 <section id="proportion-withheld-for-testing">
 <h3>Proportion Withheld for Testing<a class="headerlink" href="#proportion-withheld-for-testing" title="Permalink to this heading">#</a></h3>
 <p>Meta studies have identified that between 15% and 30% withheld for testing is typically optimum. To understand the underlying trade-off imagine these end members,</p>
 <ul class="simple">
-<li><p>withhold 2% of the data for testing, then we will have a lot of training data to train the model very well, but too few testing data to test our model over a range of prediction cases.</p></li>
+<li><p>withhold 2% of the data for testing, then we will have a lot of training data to train the model very well, but too few testing data to test our model over a range of <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a> cases.</p></li>
 <li><p>withhold 98% of the data for test, then with only 2% of the data available for training we will do a very good job testing our very poor model.</p></li>
 </ul>
 <p>The proportion to withhold for testing is a trade off between building a good model and testing this model well with a wide range of prediction cases.</p>
 </section>
 <section id="other-cross-validation-methods">
 <h3>Other Cross Validation Methods<a class="headerlink" href="#other-cross-validation-methods" title="Permalink to this heading">#</a></h3>
-<p>The train and test workflow above known as a cross validation or hold out approach, but there are many other methods for model training and testing,</p>
+<p>The train and test workflow above known as a <a class="reference internal" href="MachineLearning_glossary_a_c.html#cross-validation"><span class="std std-doc">cross validation</span></a> or hold out approach, but there are many other methods for model training and testing,</p>
 <ul class="simple">
 <li><p><strong>k-fold Cross Validation (K-fold CV)</strong> - we divide the data into k mutually exclusive, exhaustive equal size sets (called folds) for repeat the model train and test k times with each fold having a turn being withheld testing data while the remainder is training data.</p></li>
 <li><p><strong>Leave-One-Out Cross Validation (LOO CV)</strong> - we loop over all data, each time we assign the one datum as the testing data and train on the remainder n-1 data.</p></li>
 <li><p><strong>Leave-p-Out Cross Validation (LpO-CV)</strong> - we assign a integer p &lt; n and then loop over the combinatorial of possible cases with p withheld testing data. Since we consider all possible cases, this is an exhaustive cross validation approach.</p></li>
 </ul>
-<p>For each of the above folds or in general, training and testing dataset combinations, we calculate the error norm</p>
+<p>For each of the above folds or in general, training and testing dataset combinations, we calculate the error <a class="reference internal" href="MachineLearning_glossary_m_r.html#norm"><span class="std std-doc">norm</span></a></p>
 <ul class="simple">
-<li><p>then we average the error norm over the folds to provide a single error for hyperparameter tuning</p></li>
-<li><p>this method removes the sensitivity to the exact train and test split so it is often seen as more robust than regular hold out methods.</p></li>
+<li><p>then we <a class="reference internal" href="MachineLearning_glossary_a_c.html#average"><span class="std std-doc">average</span></a> the error norm over the folds to provide a single error for hyperparameter tuning</p></li>
+<li><p>this method removes the sensitivity to the exact <a class="reference internal" href="MachineLearning_glossary_s_z.html#train-and-test-split"><span class="std std-doc">train and test split</span></a> so it is often seen as more robust than regular hold out methods.</p></li>
 </ul>
 <p>The choice of proportion of the data to withhold for testing varies by the the cross validation method,</p>
 <ul class="simple">
@@ -1401,11 +1406,11 @@ E \left[ \left( y_0 - \hat{f}(x^1_0, \ldots , x^m_0) \right)^2 \right]
 <h3>Train, Validate and Test Split<a class="headerlink" href="#train-validate-and-test-split" title="Permalink to this heading">#</a></h3>
 <p>There is an alternative approach with three exhaustive, mutually exclusive subsets of the data</p>
 <ul class="simple">
-<li><p><strong>training data</strong> - subset is the same as train above and is used to train the model parameters</p></li>
-<li><p><strong>validate data</strong> - subset is like testing subset for the train and test split method above and is used to tune the model hyperparameters</p></li>
+<li><p><strong>training data</strong> - subset is the same as train above and is used to train the <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter"><span class="std std-doc">model parameter</span></a>s</p></li>
+<li><p><strong>validate data</strong> - subset is like testing subset for the train and test split method above and is used to tune the <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-hyperparameter"><span class="std std-doc">model hyperparameter</span></a>s</p></li>
 <li><p><strong>testing data</strong> - subset is applied to check the final model trained on all the data with the tuned hyperparameters</p></li>
 </ul>
-<p>The train, validate and test split philosophy is that this final model check is performed with data that was not involved with model construction, including training model parameters nor tuning model hyperparameters. There are two reasons that I push back on this method,</p>
+<p>The train, validate and test split philosophy is that this final model check is performed with data that was not involved with model construction, including <a class="reference internal" href="MachineLearning_glossary_s_z.html#training-model"><span class="std std-doc">training model</span></a> <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a>s nor tuning model hyperparameters. There are two reasons that I push back on this method,</p>
 <ol class="arabic simple">
 <li><p><strong>circular quest of perfect model validation</strong> - what do we do if we don’t quite like the performance in this testing phase, do we have a fourth subset for another test? and a fifth subset? and a sixth subset? ad infinitum?</p></li>
 <li><p><strong>we must train the deployed model with all data</strong> - we can never deploy a model that is not trained with all available data; therefore, we will still have to train with the test subset to get our final model?</p></li>
@@ -1414,7 +1419,7 @@ E \left[ \left( y_0 - \hat{f}(x^1_0, \ldots , x^m_0) \right)^2 \right]
 </section>
 <section id="spatial-fair-train-and-test-splits">
 <h3>Spatial Fair Train and Test Splits<a class="headerlink" href="#spatial-fair-train-and-test-splits" title="Permalink to this heading">#</a></h3>
-<p>Dr. Julian Salazar suggested that for spatial prediction problems that random train and test split may not fair. He proposed a <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0920410521015023">fair train and test split method</a> for spatial prediction models that splits the data based on the difficulty of the planned use of the model. Prediction difficulty is related to kriging variance that accounts for spatial continuity and distance offset. For example,</p>
+<p>Dr. Julian Salazar suggested that for spatial prediction problems that random train and test split may not fair. He proposed a <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0920410521015023">fair train and test split method</a> for spatial prediction models that splits the data based on the difficulty of the planned use of the model. Prediction difficulty is related to <a class="reference internal" href="MachineLearning_glossary_g_l.html#kriging-variance"><span class="std std-doc">kriging variance</span></a> that accounts for spatial continuity and distance offset. For example,</p>
 <ul class="simple">
 <li><p>if the model will be used to impute data with small offsets from available data then construct a train and test split with train data close to test data</p></li>
 <li><p>if the model will be used to predict a large distance offsets then perform splits the result is large offsets between train and test data.</p></li>
@@ -1424,7 +1429,7 @@ E \left[ \left( y_0 - \hat{f}(x^1_0, \ldots , x^m_0) \right)^2 \right]
 </section>
 <section id="ethical-and-professional-practice-concerns-with-data-science">
 <h2>Ethical and Professional Practice Concerns with Data Science<a class="headerlink" href="#ethical-and-professional-practice-concerns-with-data-science" title="Permalink to this heading">#</a></h2>
-<p>To demonstrate concerns with data science consider this example, <a class="reference external" href="https://arxiv.org/pdf/1602.04938.pdf">Rideiro et al. (2016)</a> trained a logistic regression classifier with 20 wolf and dog images to detect the difference between wolves and dogs.</p>
+<p>To demonstrate concerns with data science consider this example, <a class="reference external" href="https://arxiv.org/pdf/1602.04938.pdf">Rideiro et al. (2016)</a> trained a <a class="reference internal" href="MachineLearning_glossary_g_l.html#logistic-regression"><span class="std std-doc">logistic regression</span></a> classifier with 20 wolf and dog images to detect the difference between wolves and dogs.</p>
 <ul class="simple">
 <li><p>the input is a photo of a dog or wolf and the output is the probability of dog and the compliment, the probability of wolf</p></li>
 <li><p>the model worked well until this example here (see the left side below),</p></li>
@@ -1433,7 +1438,7 @@ E \left[ \left( y_0 - \hat{f}(x^1_0, \ldots , x^m_0) \right)^2 \right]
   <img src="_static/concepts/dog_and_wolf.png" style="display: block; margin: 0 auto; width: 100%;">
   <figcaption style="text-align: center;">Example dog misclassified as a wolf (left) and pixels that resulted in this misclassification (right), image taken from Rideiro et al. (2016).</figcaption>
 </figure>
-<p>where this results in a high probability of wolf. Fortunately the authors were able to interrogate the model and determine the pixels that had the greatest influence of the model’s determination of wolf (see the right side above). What happened?</p>
+<p>where this results in a high probability of wolf. Fortunately <a class="reference internal" href="MachineLearning_glossary_s_z.html#the-author"><span class="std std-doc">the author</span></a>s were able to interrogate the model and determine the pixels that had the greatest influence of the model’s determination of wolf (see the right side above). What happened?</p>
 <ul class="simple">
 <li><p>they trained a model to check for snow in the background. As a Canadian, I can assure you that many photos of wolves are in our snow filled northern regions of our country, while many dogs are photographed in grassy yards.</p></li>
 </ul>
@@ -1442,13 +1447,13 @@ E \left[ \left( y_0 - \hat{f}(x^1_0, \ldots , x^m_0) \right)^2 \right]
 <li><p>interpretability may be low with complicated models</p></li>
 <li><p>application of machine learning may become routine and trusted</p></li>
 </ul>
-<p>This is a dangerous combination, as the machine may become a trusted unquestioned authority. Rideiro and others state that they developed the problem to demonstrate this, but does it actually happen? Yes. I advised a team of students that attempted to automatically segment urban vs. rural environments from time lapse satellite photographs to build models of urban development. The model looked great, but I asked for an additional check with a plot of the by-pixel classification vs. pixel color. The results was a 100% correspondence, i.e., the model with all of it’s complicated convolution, activation, pooling was only looking for grey and tan pixels often associated with roads and buildings.</p>
+<p>This is a dangerous combination, as the machine may become a trusted unquestioned authority. Rideiro and others state that they developed the problem to demonstrate this, but does it actually happen? Yes. I advised a team of students that attempted to automatically segment urban vs. rural environments from time lapse satellite photographs to build models of urban development. The model looked great, but I asked for an additional check with a plot of the by-pixel <a class="reference internal" href="MachineLearning_glossary_a_c.html#classification"><span class="std std-doc">classification</span></a> vs. pixel color. The results was a 100% correspondence, i.e., the model with all of it’s complicated <a class="reference internal" href="MachineLearning_glossary_a_c.html#convolution"><span class="std std-doc">convolution</span></a>, activation, pooling was only looking for grey and tan pixels often associated with roads and buildings.</p>
 <p>I’m not going to say, ‘Skynet’, oops I just did, but just consider these thoughts:</p>
 <ul class="simple">
-<li><p>New power and distribution of wealth by concentrating rapid inference with big data as more data is being shared</p></li>
+<li><p>New power and distribution of wealth by concentrating rapid <a class="reference internal" href="MachineLearning_glossary_g_l.html#inference"><span class="std std-doc">inference</span></a> with <a class="reference internal" href="MachineLearning_glossary_a_c.html#big-data"><span class="std std-doc">big data</span></a> as more data is being shared</p></li>
 <li><p>Trade-offs that matter to society while maximizing a machine learning objective function may be ignored, resulting in low interpretability</p></li>
 <li><p>Societal changes, disruptive technologies, post-labor society</p></li>
-<li><p>Non-scientific results such as <a class="reference external" href="https://en.wikipedia.org/wiki/Clever_Hans">Clever Hans</a> effect with models that learn from tells in the data rather than really learning to perform the task resulting catastrophic failures</p></li>
+<li><p>Non-scientific results such as <a class="reference external" href="https://en.wikipedia.org/wiki/Clever_Hans">Clever Hans</a> effect with models that learn from tells in the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> rather than really learning to perform the task resulting catastrophic failures</p></li>
 </ul>
 <p>I don’t want to be too negative and to take this too far. Full disclosure, I’m the old-fashioned professor that thinks we should put of phones in our pockets, walk around with our heads up so we can greet each other and observe our amazing environments and societies. One thing that is certain, data science is changing society in so many ways and as Neil Postman in <a class="reference external" href="https://www.amazon.com/Technopoly-Surrender-Technology-Neil-Postman-ebook/dp/B004ZZJBW4/ref=sr_1_1?crid=E9SP0DFNP9JO&amp;dib=eyJ2IjoiMSJ9.ELnF0aIjkOw11vdTEQ3Tpg.NSaPUOIOz6m6i7XxpEMUJvZobANzU5baE6DlEa40Uzs&amp;dib_tag=se&amp;keywords=technolopoly&amp;qid=1728667409&amp;sprefix=technolopo%2Caps%2C127&amp;sr=8-1">Technopoly</a>)</p>
 <div class="remove-from-content-only admonition">
@@ -1469,20 +1474,20 @@ E \left[ \left( y_0 - \hat{f}(x^1_0, \ldots , x^m_0) \right)^2 \right]
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
 </figcaption>
 </figure>
-<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a>, <a class="reference internal" href="MachineLearning_glossary_g_l.html#geostatistics"><span class="std std-doc">geostatistics</span></a>, and machine learning. Michael is also,</p>
 <ul class="simple">
-<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a <a class="reference internal" href="MachineLearning_glossary_a_c.html#core"><span class="std std-doc">core</span></a> faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>Michael has written over 100 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
 <p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
-<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a> and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
-<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PIs including Profs. Foster, Torres-Verdin and van Oort)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">Data</span></a> Analytics and Machine Learning consortium (co-PIs including Profs. Foster, Torres-Verdin and van Oort)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>. We are solving challenging subsurface problems!</p></li>
 <li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
 </ul>
 <p>I’m always happy to discuss,</p>
@@ -1532,11 +1537,11 @@ E \left[ \left( y_0 - \hat{f}(x^1_0, \ldots , x^m_0) \right)^2 \right]
       </div>
     </a>
     <a class="right-next"
-       href="MachineLearning_training_tuning.html"
+       href="MachineLearning_subsurface_modeling.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Training and Tuning</p>
+        <p class="prev-next-title">Subsurface Modeling</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

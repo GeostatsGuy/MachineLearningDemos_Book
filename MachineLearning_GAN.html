@@ -174,6 +174,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_concepts.html">Machine Learning Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_subsurface_modeling.html">Subsurface Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_training_tuning.html">Training and Tuning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
@@ -219,7 +220,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_python.html">Python Code Snippets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_a_c.html">Glossary A-C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_d_f.html">Glossary D-F</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_g_l.html">Glossary G-L</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_m_r.html">Glossary M-R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_s_z.html">Glossary S-Z</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -481,15 +486,15 @@ document.write(`
 <h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this heading">#</a></h2>
 <p>What if we put together machines? Working in a competitive, adversarial manner?</p>
 <ul class="simple">
-<li><p>Could we make a more powerful machine learning model that learns its own loss function!</p></li>
+<li><p>Could we make a more powerful machine learning model that learns its own <a class="reference internal" href="MachineLearning_glossary_g_l.html#loss-function"><span class="std std-doc">loss function</span></a>!</p></li>
 <li><p>Could we make images that don’t collapse to exact reproduction of the images in the training set?</p></li>
 </ul>
-<p>Generative neural networks are very powerful, nature inspired computing deep learning method to make fake, but realistic, images by application of convolutional neural networks, an analogy of visual cortex that extend the ability of our artificial neural networks to better work with images.</p>
+<p>Generative neural networks are very powerful, nature inspired computing deep learning method to make fake, but realistic, images by application of <a class="reference internal" href="MachineLearning_glossary_a_c.html#convolutional-neural-network"><span class="std std-doc">convolutional neural network</span></a>s, an analogy of visual cortex that extend the ability of our artificial neural networks to better work with images.</p>
 <p>Nature inspired computing is looking to nature for inspiration to develop novel problem-solving methods,</p>
 <ul class="simple">
-<li><p><strong>artificial neural networks</strong> are inspired by biological neural networks</p></li>
-<li><p><strong>nodes</strong> in our model are artificial neurons, simple processors</p></li>
-<li><p><strong>connections</strong> between nodes are artificial synapses</p></li>
+<li><p><strong>artificial <a class="reference internal" href="MachineLearning_glossary_m_r.html#neural-network"><span class="std std-doc">neural network</span></a>s</strong> are inspired by biological neural networks</p></li>
+<li><p><strong><a class="reference internal" href="MachineLearning_glossary_m_r.html#node"><span class="std std-doc">node</span></a>s</strong> in our model are artificial neurons, simple processors</p></li>
+<li><p><strong><a class="reference internal" href="MachineLearning_glossary_a_c.html#connection"><span class="std std-doc">connection</span></a>s</strong> between nodes are artificial synapses</p></li>
 <li><p><strong>perceptive fields</strong> regularization to improve generalization and efficiency</p></li>
 </ul>
 <p>intelligence emerges from many connected simple processors. For the remainder of this chapter, I will used the terms nodes and connections to describe our convolutional neural network.</p>
@@ -498,29 +503,29 @@ document.write(`
 <h2>Artificial and Convolutional Neural Networks<a class="headerlink" href="#artificial-and-convolutional-neural-networks" title="Permalink to this heading">#</a></h2>
 <p>If you have not, take this opportunity to review my previous chapters in the e-book on,</p>
 <p><a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/MachineLearning_ANN.html">Artificial Neural Networks</a></p>
-<p>The <strong>main takeaways</strong> from my artificial neural network chapter are as follows,</p>
+<p>The <strong>main takeaways</strong> from my artificial <a class="reference internal" href="MachineLearning_glossary_m_r.html#neural-network"><span class="std std-doc">neural network</span></a> chapter are as follows,</p>
 <ul class="simple">
-<li><p><strong>architecture of a neural network</strong>, including its fundamental components, nodes (neurons) and the weighted connections between them.</p></li>
-<li><p><strong>forward pass</strong> computation through the network, where each node computes a weighted sum of its inputs (including a bias term), followed by the application of a nonlinear activation function.</p></li>
-<li><p><strong>computation of the error derivative</strong>, which is then backpropagated through the network via the chain rule to determine the gradients of the loss function with respect to each weight and bias.</p></li>
-<li><p><strong>aggregation of these gradients</strong> across all samples in a training batch, typically by averaging, to update the model parameters.</p></li>
-<li><p><strong>iterative training process</strong>, where the model is trained over multiple batches and epochs (passes over all the data) to continually refine the weights and biases until the model achieves an acceptable error rate on the test data.</p></li>
+<li><p><strong>architecture of a neural network</strong>, including its fundamental components, <a class="reference internal" href="MachineLearning_glossary_m_r.html#node"><span class="std std-doc">node</span></a>s (neurons) and the weighted <a class="reference internal" href="MachineLearning_glossary_a_c.html#connection"><span class="std std-doc">connection</span></a>s between them.</p></li>
+<li><p><strong>forward pass</strong> computation through the network, where each node computes a weighted sum of its inputs (including a <a class="reference internal" href="MachineLearning_glossary_a_c.html#bias"><span class="std std-doc">bias</span></a> term), followed by the application of a nonlinear <a class="reference internal" href="MachineLearning_glossary_a_c.html#activation-function"><span class="std std-doc">activation function</span></a>.</p></li>
+<li><p><strong>computation of the error derivative</strong>, which is then backpropagated through the network via the chain rule to determine the gradients of the <a class="reference internal" href="MachineLearning_glossary_g_l.html#loss-function"><span class="std std-doc">loss function</span></a> with respect to each weight and bias.</p></li>
+<li><p><strong>aggregation of these gradients</strong> across all <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s in a training batch, typically by averaging, to update the <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter"><span class="std std-doc">model parameter</span></a>s.</p></li>
+<li><p><strong>iterative training process</strong>, where the model is trained over multiple batches and epochs (passes over all the data) to continually refine the <a class="reference internal" href="MachineLearning_glossary_s_z.html#weight"><span class="std std-doc">weight</span></a>s and biases until the model achieves an acceptable error rate on the test data.</p></li>
 </ul>
 <p><a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/MachineLearning_CNN.html">Convolutional Neural Networks</a></p>
-<p>The main takeaways from my convolutional neural network chapter are as follows,</p>
+<p>The main takeaways from my <a class="reference internal" href="MachineLearning_glossary_a_c.html#convolutional-neural-network"><span class="std std-doc">convolutional neural network</span></a> chapter are as follows,</p>
 <ul class="simple">
-<li><p><strong>regularization</strong> of image data with receptive fields to preserve spatial information and to avoid overfit.</p></li>
+<li><p><strong>regularization</strong> of image <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> with receptive fields to preserve spatial information and to avoid overfit.</p></li>
 <li><p><strong>convolutional kernels</strong> with learnable weights to extraction information from images.</p></li>
 </ul>
 <p>For both of these chapters, I have included links to my recorded lectures and to neural networks built from scratch with NumPy only!</p>
 </section>
 <section id="generative-adversarial-networks-method">
 <h2>Generative Adversarial Networks Method<a class="headerlink" href="#generative-adversarial-networks-method" title="Permalink to this heading">#</a></h2>
-<p>If we start with a convolutional neural network and we flip it, i.e., reverse the order of the operations,</p>
+<p>If we start with a <a class="reference internal" href="MachineLearning_glossary_a_c.html#convolutional-neural-network"><span class="std std-doc">convolutional neural network</span></a> and we flip it, i.e., reverse the order of the operations,</p>
 <ul class="simple">
-<li><p>we have a machine that maps from a 1D vector of values, to an image, i.e., we can generate fake images by randomly assigning latent values</p></li>
-<li><p>to accomplish this instead of convolution operations with activation, we have transpose convolution operations with activation to move to the next feature map</p></li>
-<li><p>recall we also perform non-linear activation at each feature map to prevent network collapse</p></li>
+<li><p>we have a machine that maps from a 1D vector of <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s, to an image, i.e., we can generate fake images by randomly assigning latent values</p></li>
+<li><p>to accomplish this instead of <a class="reference internal" href="MachineLearning_glossary_a_c.html#convolution"><span class="std std-doc">convolution</span></a> operations with activation, we have transpose convolution operations with activation to move to the next <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> map</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_m_r.html#recall"><span class="std std-doc">recall</span></a> we also perform non-linear activation at each <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-map"><span class="std std-doc">feature map</span></a> to prevent network collapse</p></li>
 </ul>
 <figure style="text-align: center;">
   <img src="_static/GAN/flipcnn.png" style="display: block; margin: 0 auto; width: 80%;">
@@ -529,14 +534,14 @@ document.write(`
 </figure>
 <p>But how do we train this flipped convolutional neural network to make good images?</p>
 <ul class="simple">
-<li><p>we could take training images and score the difference between our generated fake images, for example, with a pixel-wise squared error (L2 norm)</p></li>
+<li><p>we could take <a class="reference internal" href="MachineLearning_glossary_s_z.html#training-image"><span class="std std-doc">training image</span></a>s and score the difference between our generated fake images, for example, with a pixel-wise squared error (L2 <a class="reference internal" href="MachineLearning_glossary_m_r.html#norm"><span class="std std-doc">norm</span></a>)</p></li>
 <li><p>but if we did this, our machine learning model would only learn how to make this image or a limited set of training images and that would not be useful</p></li>
 </ul>
-<p>We want to make a diverse set of image realizations, that look and behave correctly. This is the simulation paradigm at the heart of geostatistics,</p>
+<p>We want to make a diverse set of image <a class="reference internal" href="MachineLearning_glossary_m_r.html#realizations"><span class="std std-doc">realizations</span></a>, that look and behave correctly. This is the simulation paradigm at the heart of <a class="reference internal" href="MachineLearning_glossary_g_l.html#geostatistics"><span class="std std-doc">geostatistics</span></a>,</p>
 <ul class="simple">
-<li><p>to learn more about the simulation paradigm from geostatistics, see my <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/GeostatsPy_simulation.html">Simulation Chapter</a> from my free, online e-book, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book">Applied Geostatistics in Python</a>.</p></li>
+<li><p>to learn more about the <a class="reference internal" href="MachineLearning_glossary_s_z.html#simulation"><span class="std std-doc">simulation</span></a> paradigm from geostatistics, see my <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/GeostatsPy_simulation.html">Simulation Chapter</a> from my free, online e-book, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book">Applied Geostatistics in Python</a>.</p></li>
 </ul>
-<p>Instead of a typically loss function, we apply a classification convolutional neural network to map from the image to a probability of a real image, i.e., our loss function is effectively a network that learns to score the loss during training.</p>
+<p>Instead of a typically <a class="reference internal" href="MachineLearning_glossary_g_l.html#loss-function"><span class="std std-doc">loss function</span></a>, we apply a <a class="reference internal" href="MachineLearning_glossary_a_c.html#classification"><span class="std std-doc">classification</span></a> convolutional neural network to map from the image to a probability of a real image, i.e., our loss function is effectively a network that learns to score the loss during training.</p>
 <p>We have 2 neural networks in our GAN,</p>
 <ul class="simple">
 <li><p><strong>generator</strong> - flipped convolutional neural network that makes random fake images</p></li>
@@ -552,7 +557,7 @@ document.write(`
 <h2>Indirect, Adversarial Learning<a class="headerlink" href="#indirect-adversarial-learning" title="Permalink to this heading">#</a></h2>
 <p>How do we train these two coupled networks? We call each network an agent and we train them competively, e.g., they compete while learning!</p>
 <ul class="simple">
-<li><p>agent 1, Generator, is not trained to minimize an loss function with respect to training data (training image), no MSE!</p></li>
+<li><p>agent 1, Generator, is not trained to minimize an loss function with respect to training <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> (<a class="reference internal" href="MachineLearning_glossary_s_z.html#training-image"><span class="std std-doc">training image</span></a>), no MSE!</p></li>
 <li><p>instead the agent 1, Generator, is trained to fool agent 2, Discriminator</p></li>
 <li><p>agent 2, Discriminator, is learning at the same time to tell the difference between the real training images and the fakes from agent 1, generator</p></li>
 </ul>
@@ -562,7 +567,7 @@ document.write(`
 <li><p>Discriminator – correctly classify fake and real images</p></li>
 </ul>
 <p>Note, the generator never sees the real images, but by learning to fool the discriminator learns to make images like the real training images.</p>
-<p>The GAN loss function is stated as,</p>
+<p>The GAN <a class="reference internal" href="MachineLearning_glossary_g_l.html#loss-function"><span class="std std-doc">loss function</span></a> is stated as,</p>
 <div class="math notranslate nohighlight">
 \[
 \min_{\theta_G} \, \max_{\theta_D} \;
@@ -572,13 +577,13 @@ document.write(`
 \]</div>
 <p>where,</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\theta_D\)</span> - parameters (weights, biases) of the <strong>discriminator</strong></p></li>
+<li><p><span class="math notranslate nohighlight">\(\theta_D\)</span> - <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a>s (<a class="reference internal" href="MachineLearning_glossary_s_z.html#weight"><span class="std std-doc">weight</span></a>s, biases) of the <strong>discriminator</strong></p></li>
 <li><p><span class="math notranslate nohighlight">\(\theta_G\)</span> - parameters of the <strong>generator</strong></p></li>
 <li><p><span class="math notranslate nohighlight">\(D_{\theta_D}(\cdot)\)</span> - discriminator output, given the discriminator parameters <span class="math notranslate nohighlight">\(\theta_D\)</span> (probability input is real)</p></li>
 <li><p><span class="math notranslate nohighlight">\(G_{\theta_G}(\mathbf{x})\)</span> - output of the  Generator output given latent input <span class="math notranslate nohighlight">\(\mathbf{x}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\mathbf{y} \sim p_{\text{data}}\)</span> - training images from the <strong>real image set</strong></p></li>
-<li><p><span class="math notranslate nohighlight">\(\mathbf{x} \sim p_{\mathbf{x}}\)</span> - latent input sampled from known prior (e.g. uniform or normal)</p></li>
-<li><p><span class="math notranslate nohighlight">\(\mathbb{E}[\cdot]\)</span> - expectation over data (i.e., average over all samples)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{x} \sim p_{\mathbf{x}}\)</span> - latent input sampled from known <a class="reference internal" href="MachineLearning_glossary_m_r.html#prior"><span class="std std-doc">prior</span></a> (e.g. uniform or normal)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbb{E}[\cdot]\)</span> - <a class="reference internal" href="MachineLearning_glossary_d_f.html#expectation"><span class="std std-doc">expectation</span></a> over data (i.e., <a class="reference internal" href="MachineLearning_glossary_a_c.html#average"><span class="std std-doc">average</span></a> over all <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s)</p></li>
 <li><p><span class="math notranslate nohighlight">\(\log D(\cdot)\)</span> - log-likelihood that the discriminator assigns input as real</p></li>
 <li><p><span class="math notranslate nohighlight">\(\log(1 - D(G(\cdot)))\)</span> - log-likelihood that discriminator assigns fake to generator’s output</p></li>
 </ul>
@@ -634,7 +639,7 @@ L_G = -\mathbb{E}_{z \sim p_z}[\log D(G(z))]
 </ol>
 <ul class="simple">
 <li><p>all fake images have the same distribution as the real training images, <span class="math notranslate nohighlight">\(G(\mathbf{x}) \sim p_{\text{data}}\)</span></p></li>
-<li><p>the best the discriminator can do is to assign a anive classification, <span class="math notranslate nohighlight">\(D(\cdot) = 0.5\)</span>, for all fake and real training images</p></li>
+<li><p>the best the discriminator can do is to assign a naive <a class="reference internal" href="MachineLearning_glossary_a_c.html#classification"><span class="std std-doc">classification</span></a>, <span class="math notranslate nohighlight">\(D(\cdot) = 0.5\)</span>, for all fake and real training images</p></li>
 </ul>
 <p><span class="math notranslate nohighlight">\(\quad\)</span> then the loss is,</p>
 <div class="math notranslate nohighlight">
@@ -649,9 +654,7 @@ L_G = -\mathbb{E}_{z \sim p_z}[\log D(G(z))]
 <section id="import-required-packages">
 <h2>Import Required Packages<a class="headerlink" href="#import-required-packages" title="Permalink to this heading">#</a></h2>
 <p>We will also need some standard packages. These should have been installed with Anaconda 3.</p>
-<ul class="simple">
-<li><p>recall our goal is to build a convolutional neural network by-hand with only basic math and array operations, so we only need NumPy along with matplotlib for plotting.</p></li>
-</ul>
+<p>Note, our goal is to build a <a class="reference internal" href="MachineLearning_glossary_a_c.html#convolutional-neural-network"><span class="std std-doc">convolutional neural network</span></a> by-hand with only basic math and array operations, so we only need NumPy along with matplotlib for plotting.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline                                         
@@ -679,21 +682,21 @@ L_G = -\mathbb{E}_{z \sim p_z}[\log D(G(z))]
 </section>
 <section id="declare-functions">
 <h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
-<p>Here’s the functions to make, train and visualize our generative adversarial network, including the steps,</p>
+<p>Here’s the functions to make, train and visualize our <a class="reference internal" href="MachineLearning_glossary_g_l.html#generative-adversarial-network"><span class="std std-doc">generative adversarial network</span></a>, including the steps,</p>
 <ul class="simple">
-<li><p>make a simple set of synthetic data</p></li>
-<li><p>initialize the weights in our generator and discriminator</p></li>
+<li><p>make a simple set of synthetic <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a></p></li>
+<li><p>initialize the <a class="reference internal" href="MachineLearning_glossary_s_z.html#weight"><span class="std std-doc">weight</span></a>s in our generator and discriminator</p></li>
 <li><p>apply our generator and discrimintor</p></li>
 <li><p>calculate the error derivative and update the generator and discriminator weights and biases</p></li>
 </ul>
 <p>Here’s a list of the functions,</p>
 <ol class="arabic simple">
 <li><p><strong>generate_real_data</strong> -  synthetic data generator</p></li>
-<li><p><strong>initialize_generator_weights</strong> - assign small random weights and bias for generator</p></li>
+<li><p><strong>initialize_generator_weights</strong> - assign small random weights and <a class="reference internal" href="MachineLearning_glossary_a_c.html#bias"><span class="std std-doc">bias</span></a> for generator</p></li>
 <li><p><strong>initialize_discriminator_weights</strong> - assign small random weights and bias for discriminator</p></li>
-<li><p><strong>generator_forward</strong> - calculate a set of fake data with the generator given a set of latent values and the current weights and biases</p></li>
-<li><p><strong>discriminator_forward</strong> - calculate the probability of a real image over a set of images and return a 1D ndarray of probabilities</p></li>
-<li><p><strong>sigmoid</strong> - activation function to apply in the generator and discriminator</p></li>
+<li><p><strong>generator_forward</strong> - calculate a set of fake data with the generator given a set of latent <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s and the current weights and biases</p></li>
+<li><p><strong>discriminator_forward</strong> - calculate the probability of a real image over a set of images and return a 1D <a class="reference internal" href="MachineLearning_glossary_m_r.html#ndarray"><span class="std std-doc">ndarray</span></a> of probabilities</p></li>
+<li><p><strong>sigmoid</strong> - <a class="reference internal" href="MachineLearning_glossary_a_c.html#activation-function"><span class="std std-doc">activation function</span></a> to apply in the generator and discriminator</p></li>
 <li><p><strong>generator_gradients</strong> - compute generator gradients averaged over the batch</p></li>
 <li><p><strong>discriminator_gradients</strong> - compute generator gradients averaged over the batch</p></li>
 </ol>
@@ -886,19 +889,19 @@ L_G = -\mathbb{E}_{z \sim p_z}[\log D(G(z))]
 </section>
 <section id="visualize-the-generative-adversarial-network">
 <h2>Visualize the Generative Adversarial Network<a class="headerlink" href="#visualize-the-generative-adversarial-network" title="Permalink to this heading">#</a></h2>
-<p>We are implementing a minimal Generative Adversarial Network (GAN) with the 2 agents,</p>
+<p>We are implementing a minimal <a class="reference internal" href="MachineLearning_glossary_g_l.html#generative-adversarial-network"><span class="std std-doc">Generative Adversarial Network</span></a> (GAN) with the 2 agents,</p>
 <ul class="simple">
-<li><p><strong>Generator</strong> - that produces 3-node outputs (like tiny 1D images) from a single latent input</p></li>
-<li><p><strong>Discriminator</strong> - that evaluates these outputs to distinguish between <strong>real</strong> and <strong>fake</strong> samples.</p></li>
+<li><p><strong>Generator</strong> - that produces 3-<a class="reference internal" href="MachineLearning_glossary_m_r.html#node"><span class="std std-doc">node</span></a> outputs (like tiny 1D images) from a single latent input</p></li>
+<li><p><strong>Discriminator</strong> - that evaluates these outputs to distinguish between <strong>real</strong> and <strong>fake</strong> <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s.</p></li>
 </ul>
 <p>Now let’s define the parts of the <strong>Generator</strong>,</p>
 <ul class="simple">
-<li><p><strong>Latent Node</strong> - <span class="math notranslate nohighlight">\(L_1\)</span>, a single random value with uniform distribution, <span class="math notranslate nohighlight">\(U[0.4,1.0]\)</span>. Note we set the minimum as 0.4 to stay away from 0.0 or negative values as these would remove the slope or flip the slope of the fakes.</p></li>
-<li><p><strong>Generator Weights</strong> - <span class="math notranslate nohighlight">\(\lambda_{1,2}\)</span>, <span class="math notranslate nohighlight">\(\lambda_{1,3}\)</span> and <span class="math notranslate nohighlight">\(\lambda_{1,4}\)</span> for the connections from latent to each of the output nodes. This is the simplest possible tranpose convolution, with a kernel size is 3, output nodes is 3 and latent node is 1, so the kernel does not translate. I did this to greatly simplify the book keeping, but the concepts could be extended to a more realistic convolution / tranpose convolution architectures for more realistic images sizes problem.</p></li>
-<li><p><strong>Generator Bias</strong> - <span class="math notranslate nohighlight">\(b\)</span>, a single, constant bias over the output layer (output image), the nodes, <span class="math notranslate nohighlight">\(O_2\)</span>, <span class="math notranslate nohighlight">\(O_3\)</span>, and <span class="math notranslate nohighlight">\(O_4\)</span></p></li>
-<li><p><strong>Generator Output Nodes</strong> - <span class="math notranslate nohighlight">\(O_2\)</span>, <span class="math notranslate nohighlight">\(O_3\)</span>, and <span class="math notranslate nohighlight">\(O_4\)</span>, the single and last feature map in our very simple generator; therefore, the output a 1D image with 3 nodes or pixels that are passed to the <strong>Discriminator</strong> input nodes, <span class="math notranslate nohighlight">\(I_5\)</span>, <span class="math notranslate nohighlight">\(I_6\)</span>, and <span class="math notranslate nohighlight">\(I_7\)</span></p></li>
+<li><p><strong>Latent Node</strong> - <span class="math notranslate nohighlight">\(L_1\)</span>, a single random <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a> with uniform distribution, <span class="math notranslate nohighlight">\(U[0.4,1.0]\)</span>. Note we set the minimum as 0.4 to stay away from 0.0 or negative values as these would remove the slope or flip the slope of the fakes.</p></li>
+<li><p><strong>Generator <a class="reference internal" href="MachineLearning_glossary_s_z.html#weight"><span class="std std-doc">Weight</span></a>s</strong> - <span class="math notranslate nohighlight">\(\lambda_{1,2}\)</span>, <span class="math notranslate nohighlight">\(\lambda_{1,3}\)</span> and <span class="math notranslate nohighlight">\(\lambda_{1,4}\)</span> for the connections from latent to each of the output nodes. This is the simplest possible tranpose <a class="reference internal" href="MachineLearning_glossary_a_c.html#convolution"><span class="std std-doc">convolution</span></a>, with a kernel size is 3, output nodes is 3 and latent node is 1, so the kernel does not translate. I did this to greatly simplify the book keeping, but the concepts could be extended to a more realistic convolution / tranpose convolution architectures for more realistic images sizes problem.</p></li>
+<li><p><strong>Generator <a class="reference internal" href="MachineLearning_glossary_a_c.html#bias"><span class="std std-doc">Bias</span></a></strong> - <span class="math notranslate nohighlight">\(b\)</span>, a single, constant bias over the output layer (output image), the nodes, <span class="math notranslate nohighlight">\(O_2\)</span>, <span class="math notranslate nohighlight">\(O_3\)</span>, and <span class="math notranslate nohighlight">\(O_4\)</span></p></li>
+<li><p><strong>Generator Output Nodes</strong> - <span class="math notranslate nohighlight">\(O_2\)</span>, <span class="math notranslate nohighlight">\(O_3\)</span>, and <span class="math notranslate nohighlight">\(O_4\)</span>, the single and last <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-map"><span class="std std-doc">feature map</span></a> in our very simple generator; therefore, the output a 1D image with 3 nodes or pixels that are passed to the <strong>Discriminator</strong> input nodes, <span class="math notranslate nohighlight">\(I_5\)</span>, <span class="math notranslate nohighlight">\(I_6\)</span>, and <span class="math notranslate nohighlight">\(I_7\)</span></p></li>
 <li><p><strong>Discriminator Input Nodes</strong> - <span class="math notranslate nohighlight">\(I_5\)</span>, <span class="math notranslate nohighlight">\(I_6\)</span>, and <span class="math notranslate nohighlight">\(I_7\)</span>, that receive the real images or the fake images from the generator output nodes, <span class="math notranslate nohighlight">\(O_2\)</span>, <span class="math notranslate nohighlight">\(O_3\)</span>, <span class="math notranslate nohighlight">\(O_4\)</span></p></li>
-<li><p><strong>Discriminator Weights</strong> - <span class="math notranslate nohighlight">\(\lambda_{5,8}\)</span>, <span class="math notranslate nohighlight">\(\lambda_{6,8}\)</span>, and <span class="math notranslate nohighlight">\(\lambda_{7,8}\)</span> for the connections from input nodes (input image) to the output (descision) node, <span class="math notranslate nohighlight">\(D_8\)</span></p></li>
+<li><p><strong>Discriminator Weights</strong> - <span class="math notranslate nohighlight">\(\lambda_{5,8}\)</span>, <span class="math notranslate nohighlight">\(\lambda_{6,8}\)</span>, and <span class="math notranslate nohighlight">\(\lambda_{7,8}\)</span> for the <a class="reference internal" href="MachineLearning_glossary_a_c.html#connection"><span class="std std-doc">connection</span></a>s from input nodes (input image) to the output (descision) node, <span class="math notranslate nohighlight">\(D_8\)</span></p></li>
 <li><p><strong>Discriminator Bias</strong> - <span class="math notranslate nohighlight">\(c\)</span>, bias applied at the output (descision) node, <span class="math notranslate nohighlight">\(D_8\)</span></p></li>
 </ul>
 <p>Now let’s visualize this very simple generative adversarial network.</p>
@@ -989,16 +992,16 @@ L_G = -\mathbb{E}_{z \sim p_z}[\log D(G(z))]
 <section id="comments-on-network-nomenclature">
 <h2>Comments on Network Nomenclature<a class="headerlink" href="#comments-on-network-nomenclature" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p><strong>Network Nodes and Connections</strong> - I choose to use unique numbers for all nodes, <span class="math notranslate nohighlight">\(L_1\)</span>, <span class="math notranslate nohighlight">\(O_2\)</span>, <span class="math notranslate nohighlight">\(O_3\)</span>, <span class="math notranslate nohighlight">\(\ldots\)</span> instead of <span class="math notranslate nohighlight">\(L_1\)</span>, <span class="math notranslate nohighlight">\(O_1\)</span>, <span class="math notranslate nohighlight">\(O_2\)</span>, <span class="math notranslate nohighlight">\(\ldots\)</span> to simplify the notation for the weights; therefore, when I say <span class="math notranslate nohighlight">\(\lambda_{5,8}\)</span> you know exactly where this weight is applied in the network.</p></li>
-<li><p><strong>Node Outputs</strong> - I use the node label to also describe the output from the node, for example <span class="math notranslate nohighlight">\(O_2\)</span> is a node in the generator’s output layer and also the signal or value output from that node.</p></li>
-<li><p><strong>Pre- and Post-activation</strong> - at our nodes <span class="math notranslate nohighlight">\(O_2\)</span>, <span class="math notranslate nohighlight">\(O_3\)</span>, <span class="math notranslate nohighlight">\(O_4\)</span>, and <span class="math notranslate nohighlight">\(D_8\)</span> we have the node input before activation and the node output after activation, I use the notation <span class="math notranslate nohighlight">\(O_{2_{in}}\)</span>, <span class="math notranslate nohighlight">\(O_{3_{in}}\)</span>, <span class="math notranslate nohighlight">\(O_{4_{in}}\)</span> and <span class="math notranslate nohighlight">\(D_{8_{in}}\)</span> for the pre-activation input and <span class="math notranslate nohighlight">\(O_2\)</span>, <span class="math notranslate nohighlight">\(O_3\)</span>, <span class="math notranslate nohighlight">\(O_4\)</span>, and <span class="math notranslate nohighlight">\(D_8\)</span> for the post-activation node output. This is important because with back propagation we have to step through the nodes, going from post-activation to pre-activation.</p></li>
+<li><p><strong>Network Nodes and <a class="reference internal" href="MachineLearning_glossary_a_c.html#connection"><span class="std std-doc">Connection</span></a>s</strong> - I choose to use unique numbers for all nodes, <span class="math notranslate nohighlight">\(L_1\)</span>, <span class="math notranslate nohighlight">\(O_2\)</span>, <span class="math notranslate nohighlight">\(O_3\)</span>, <span class="math notranslate nohighlight">\(\ldots\)</span> instead of <span class="math notranslate nohighlight">\(L_1\)</span>, <span class="math notranslate nohighlight">\(O_1\)</span>, <span class="math notranslate nohighlight">\(O_2\)</span>, <span class="math notranslate nohighlight">\(\ldots\)</span> to simplify the notation for the <a class="reference internal" href="MachineLearning_glossary_s_z.html#weight"><span class="std std-doc">weight</span></a>s; therefore, when I say <span class="math notranslate nohighlight">\(\lambda_{5,8}\)</span> you know exactly where this weight is applied in the network.</p></li>
+<li><p><strong>Node Outputs</strong> - I use the node label to also describe the output from the node, for example <span class="math notranslate nohighlight">\(O_2\)</span> is a node in the generator’s output layer and also the signal or <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a> output from that node.</p></li>
+<li><p><strong>Pre- and Post-activation</strong> - at our <a class="reference internal" href="MachineLearning_glossary_m_r.html#node"><span class="std std-doc">node</span></a>s <span class="math notranslate nohighlight">\(O_2\)</span>, <span class="math notranslate nohighlight">\(O_3\)</span>, <span class="math notranslate nohighlight">\(O_4\)</span>, and <span class="math notranslate nohighlight">\(D_8\)</span> we have the node input before activation and the node output after activation, I use the notation <span class="math notranslate nohighlight">\(O_{2_{in}}\)</span>, <span class="math notranslate nohighlight">\(O_{3_{in}}\)</span>, <span class="math notranslate nohighlight">\(O_{4_{in}}\)</span> and <span class="math notranslate nohighlight">\(D_{8_{in}}\)</span> for the pre-activation input and <span class="math notranslate nohighlight">\(O_2\)</span>, <span class="math notranslate nohighlight">\(O_3\)</span>, <span class="math notranslate nohighlight">\(O_3\)</span>00000000, and <span class="math notranslate nohighlight">\(O_3\)</span>11111111 for the post-activation node output. This is important because with back propagation we have to step through the nodes, going from post-activation to pre-activation.</p></li>
 <li><p><strong>Latent</strong> - while publications often use <span class="math notranslate nohighlight">\(z\)</span> notation for the latent values, to be consistent with my notion above, I use <span class="math notranslate nohighlight">\(L_1\)</span> for the latent value, i.e., the output from my latent node, <span class="math notranslate nohighlight">\(L_1\)</span>.</p></li>
 </ul>
 <p>Now let’s walk-through all the parts of our example GAN and show all the math.</p>
 </section>
 <section id="sigmoid-activation">
 <h2>Sigmoid Activation<a class="headerlink" href="#sigmoid-activation" title="Permalink to this heading">#</a></h2>
-<p>For reference, let’s visualize the sigmoid activation function,</p>
+<p>For reference, let’s visualize the sigmoid <a class="reference internal" href="MachineLearning_glossary_a_c.html#activation-function"><span class="std std-doc">activation function</span></a>,</p>
 <ul class="simple">
 <li><p><strong>activation</strong> - the non-linear transformation, this is the sigmoid activation</p></li>
 </ul>
@@ -1015,7 +1018,7 @@ x_{out} = \sigma(x_{in}) = \dfrac{1}{1 + e^{-x_{in}}}
 \]</div>
 <p>note, for convenience the derrivative of the sigmoid activation function with respect to the input is posed for the output.</p>
 <ul class="simple">
-<li><p>as we back-propogate backwards over the activation function we can us the output to step back through the activated network node</p></li>
+<li><p>as we back-propogate backwards over the activation function we can us the output to step back through the activated network <a class="reference internal" href="MachineLearning_glossary_m_r.html#node"><span class="std std-doc">node</span></a></p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1044,20 +1047,18 @@ x_{out} = \sigma(x_{in}) = \dfrac{1}{1 + e^{-x_{in}}}
 </section>
 <section id="generator-forward-pass">
 <h2>Generator Forward Pass<a class="headerlink" href="#generator-forward-pass" title="Permalink to this heading">#</a></h2>
-<p>First, let’s walk through the generator to go from a latent value to a fake image. The generator takes a latent input,</p>
+<p>First, let’s walk through the generator to go from a latent <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a> to a fake image. The generator takes a latent input,</p>
 <div class="math notranslate nohighlight">
 \[
 L_1 \sim \mathcal{U}(0.4, 1)
 \]</div>
-<ul class="simple">
-<li><p>recall, our simple generator has only one layer <span class="math notranslate nohighlight">\(L1\)</span>, with only 3 outputs, <span class="math notranslate nohighlight">\(O_2\)</span>, <span class="math notranslate nohighlight">\(O_3\)</span>, and <span class="math notranslate nohighlight">\(O_4\)</span>, representing the fake image.</p></li>
-</ul>
-<p>Then latent value, <span class="math notranslate nohighlight">\(L_1\)</span>, is passed through the transpose convolution kernel to the output,</p>
+<p>Note, our simple generator has only one layer <span class="math notranslate nohighlight">\(L1\)</span>, with only 3 outputs, <span class="math notranslate nohighlight">\(O_2\)</span>, <span class="math notranslate nohighlight">\(O_3\)</span>, and <span class="math notranslate nohighlight">\(O_4\)</span>, representing the fake image.</p>
+<p>Then latent value, <span class="math notranslate nohighlight">\(L_1\)</span>, is passed through the transpose <a class="reference internal" href="MachineLearning_glossary_a_c.html#convolution"><span class="std std-doc">convolution</span></a> kernel to the output,</p>
 <ul class="simple">
 <li><p>our transpose convolution kernel has a size of 3, the same size as our output, so we don’t see it translate it, resulting in greatly simplified book keeping!</p></li>
-<li><p>the tranpose convolution kernel weights are <span class="math notranslate nohighlight">\(\lambda_{1,2}\)</span>, <span class="math notranslate nohighlight">\(\lambda_{1,3}\)</span>, and <span class="math notranslate nohighlight">\(\lambda_{1,4}\)</span></p></li>
+<li><p>the tranpose convolution kernel <a class="reference internal" href="MachineLearning_glossary_s_z.html#weight"><span class="std std-doc">weight</span></a>s are <span class="math notranslate nohighlight">\(\lambda_{1,2}\)</span>, <span class="math notranslate nohighlight">\(\lambda_{1,3}\)</span>, and <span class="math notranslate nohighlight">\(\lambda_{1,4}\)</span></p></li>
 </ul>
-<p>We apply the sigmoid activation in each of the output nodes</p>
+<p>We apply the sigmoid activation in each of the output <a class="reference internal" href="MachineLearning_glossary_m_r.html#node"><span class="std std-doc">node</span></a>s</p>
 <p>Each output is computed by applying a linear transformation followed by a <strong>sigmoid</strong> activation, <span class="math notranslate nohighlight">\(\sigma\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1074,7 +1075,7 @@ O_4 = \sigma(\lambda_{1,4} \cdot z + b)
 <p>where,</p>
 <ul class="simple">
 <li><p><strong><span class="math notranslate nohighlight">\(\lambda_{1,j}\)</span></strong> - are the transpose convolution kernel weights</p></li>
-<li><p><strong><span class="math notranslate nohighlight">\(b\)</span></strong> - is the shared bias, single bias term for the output layer</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(b\)</span></strong> - is the shared <a class="reference internal" href="MachineLearning_glossary_a_c.html#bias"><span class="std std-doc">bias</span></a>, single bias term for the output layer</p></li>
 </ul>
 <p>We can also write the generator forward pass in matrix notation as,</p>
 <div class="math notranslate nohighlight">
@@ -1103,7 +1104,7 @@ b
 </section>
 <section id="discriminator-forward-pass">
 <h2>Discriminator Forward Pass<a class="headerlink" href="#discriminator-forward-pass" title="Permalink to this heading">#</a></h2>
-<p>Now let’s walk-through the discriminator, going from an image, real or fake, to a probability of real. The discriminator receives the image, over 3 input nodes, <span class="math notranslate nohighlight">\(I_5\)</span>, <span class="math notranslate nohighlight">\(I_6\)</span>, and <span class="math notranslate nohighlight">\(I_7\)</span>. In the case of a fake image,</p>
+<p>Now let’s walk-through the discriminator, going from an image, real or fake, to a probability of real. The discriminator receives the image, over 3 input <a class="reference internal" href="MachineLearning_glossary_m_r.html#node"><span class="std std-doc">node</span></a>s, <span class="math notranslate nohighlight">\(I_5\)</span>, <span class="math notranslate nohighlight">\(I_6\)</span>, and <span class="math notranslate nohighlight">\(I_7\)</span>. In the case of a fake image,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{bmatrix}
@@ -1133,9 +1134,9 @@ I_6^{real} \\
 I_7^{real}
 \end{bmatrix}
 \end{split}\]</div>
-<p>Since we have only 1 layer and the convolution kernel is 3 with an input of 3 once again there is no translation!</p>
+<p>Since we have only 1 layer and the <a class="reference internal" href="MachineLearning_glossary_a_c.html#convolution"><span class="std std-doc">convolution</span></a> kernel is 3 with an input of 3 once again there is no translation!</p>
 <ul class="simple">
-<li><p>we just take input image, <span class="math notranslate nohighlight">\(I_5\)</span>, <span class="math notranslate nohighlight">\(I_6\)</span>, and <span class="math notranslate nohighlight">\(I_7\)</span>, and apply the convolutional kernel weights, <span class="math notranslate nohighlight">\(\lambda_{5,8}\)</span>, <span class="math notranslate nohighlight">\(\lambda_{6,8}\)</span>, and <span class="math notranslate nohighlight">\(\lambda_{7,8}\)</span>, and add the bias term, <span class="math notranslate nohighlight">\(c\)</span>,</p></li>
+<li><p>we just take input image, <span class="math notranslate nohighlight">\(I_5\)</span>, <span class="math notranslate nohighlight">\(I_6\)</span>, and <span class="math notranslate nohighlight">\(I_7\)</span>, and apply the convolutional kernel <a class="reference internal" href="MachineLearning_glossary_s_z.html#weight"><span class="std std-doc">weight</span></a>s, <span class="math notranslate nohighlight">\(\lambda_{5,8}\)</span>, <span class="math notranslate nohighlight">\(\lambda_{6,8}\)</span>, and <span class="math notranslate nohighlight">\(\lambda_{7,8}\)</span>, and add the bias term, <span class="math notranslate nohighlight">\(c\)</span>,</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
@@ -1147,9 +1148,9 @@ D_8 = \sigma\left(
 \]</div>
 <p>where,</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\lambda_{i,8}\)</span> are the convolutional kernel weights to go from input image to next feature map, only 1 value, our output probability</p></li>
-<li><p><span class="math notranslate nohighlight">\(c\)</span> is the bias term</p></li>
-<li><p><span class="math notranslate nohighlight">\(\sigma(x) = \dfrac{1}{1 + e^{-x}}\)</span> is the sigmoid activation function</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda_{i,8}\)</span> are the convolutional kernel weights to go from input image to next <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-map"><span class="std std-doc">feature map</span></a>, only 1 value, our output probability</p></li>
+<li><p><span class="math notranslate nohighlight">\(c\)</span> is the <a class="reference internal" href="MachineLearning_glossary_a_c.html#bias"><span class="std std-doc">bias</span></a> term</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma(x) = \dfrac{1}{1 + e^{-x}}\)</span> is the sigmoid <a class="reference internal" href="MachineLearning_glossary_a_c.html#activation-function"><span class="std std-doc">activation function</span></a></p></li>
 </ul>
 <p><span class="math notranslate nohighlight">\(D_8 \in [0, 1]\)</span> represents the probability assigned by the discriminator that the input is <strong>real</strong> (i.e. not a fake from the generator).</p>
 <p>We can also write the discriminator forward pass in matrix notation as,</p>
@@ -1171,23 +1172,23 @@ I_7
 <p>where,</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\lambda_{5,8}, \lambda_{6,8}, \lambda_{7,8}\)</span> are scalar weights</p></li>
-<li><p><span class="math notranslate nohighlight">\(I_5, I_6, I_7\)</span> are the input values (i.e., outputs of the generator, <span class="math notranslate nohighlight">\(O_2, O_3, O_4\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(I_5, I_6, I_7\)</span> are the input <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s (i.e., outputs of the generator, <span class="math notranslate nohighlight">\(O_2, O_3, O_4\)</span>)</p></li>
 <li><p><span class="math notranslate nohighlight">\(c\)</span> is the bias term</p></li>
 <li><p><span class="math notranslate nohighlight">\(\sigma(x) = \dfrac{1}{1 + e^{-x}}\)</span> is the sigmoid function</p></li>
 </ul>
 </section>
 <section id="discriminator-loss">
 <h2>Discriminator Loss<a class="headerlink" href="#discriminator-loss" title="Permalink to this heading">#</a></h2>
-<p>Binary cross-entropy is a loss function used for binary classification tasks where the output is a probability between 0 and 1, and the target label is either 0 or 1.</p>
+<p>Binary cross-entropy is a <a class="reference internal" href="MachineLearning_glossary_g_l.html#loss-function"><span class="std std-doc">loss function</span></a> used for binary <a class="reference internal" href="MachineLearning_glossary_a_c.html#classification"><span class="std std-doc">classification</span></a> tasks where the output is a probability between 0 and 1, and the target label is either 0 or 1.</p>
 <ul class="simple">
-<li><p><strong>Prediction</strong> (model output) - <span class="math notranslate nohighlight">\(\hat{y} \in (0, 1)\)</span>, the output of <span class="math notranslate nohighlight">\(D_8\)</span>, the discriminator’s classification, probability that the image is real</p></li>
+<li><p><strong><a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">Prediction</span></a></strong> (model output) - <span class="math notranslate nohighlight">\(\hat{y} \in (0, 1)\)</span>, the output of <span class="math notranslate nohighlight">\(D_8\)</span>, the discriminator’s classification, probability that the image is real</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
 \hat{y} = D_8
 \]</div>
 <ul class="simple">
-<li><p><strong>True label</strong> (ground truth) - <span class="math notranslate nohighlight">\(y \in \{0, 1\}\)</span>, 0 if the image is from the generator, fake, and 1 if the image is from the real training data</p></li>
+<li><p><strong>True label</strong> (ground truth) - <span class="math notranslate nohighlight">\(y \in \{0, 1\}\)</span>, 0 if the image is from the generator, fake, and 1 if the image is from the real training <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a></p></li>
 </ul>
 <p>Now we can define the <strong>binary cross-entropy loss</strong> as,</p>
 <div class="math notranslate nohighlight">
@@ -1223,15 +1224,15 @@ I_7
 </section>
 <section id="discriminator-loss-derivative">
 <h2>Discriminator Loss Derivative<a class="headerlink" href="#discriminator-loss-derivative" title="Permalink to this heading">#</a></h2>
-<p>To perform backpropagation we need to calculate the loss derivative. Let’s do this for the input of the activation function as our output node, <span class="math notranslate nohighlight">\(D_8\)</span>,</p>
+<p>To perform backpropagation we need to calculate the loss derivative. Let’s do this for the input of the <a class="reference internal" href="MachineLearning_glossary_a_c.html#activation-function"><span class="std std-doc">activation function</span></a> as our output node, <span class="math notranslate nohighlight">\(D_8\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{d\mathcal{L}}{dz}
 \]</div>
 <ul class="simple">
-<li><p>define <span class="math notranslate nohighlight">\(z\)</span> as the input for the sigmoid activation as output node, <span class="math notranslate nohighlight">\(D_8\)</span>.</p></li>
+<li><p>define <span class="math notranslate nohighlight">\(z\)</span> as the input for the sigmoid activation as output <a class="reference internal" href="MachineLearning_glossary_m_r.html#node"><span class="std std-doc">node</span></a>, <span class="math notranslate nohighlight">\(D_8\)</span>.</p></li>
 <li><p>as you see we do this because it results in a very simple, efficient result.</p></li>
-<li><p>recall, the sigmoid function,</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_m_r.html#recall"><span class="std std-doc">recall</span></a>, the sigmoid function,</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
@@ -1278,15 +1279,15 @@ I_7
 \[
 \frac{d\mathcal{L}}{dz} = \hat{y} - y
 \]</div>
-<p>This result shows the gradient is just the <strong>error</strong> — the difference between predicted and true values.</p>
+<p>This result shows the gradient is just the <strong>error</strong> — the difference between predicted and true <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s.</p>
 <p>Now we can make this simple interpretation,</p>
 <ul class="simple">
-<li><p>if <span class="math notranslate nohighlight">\(\hat{y} &gt; y\)</span>, the model overestimates <span class="math notranslate nohighlight">\(\rightarrow\)</span> gradient is positive <span class="math notranslate nohighlight">\(\rightarrow\)</span> lower prediction by moving in the negative gradient</p></li>
+<li><p>if <span class="math notranslate nohighlight">\(\hat{y} &gt; y\)</span>, the model overestimates <span class="math notranslate nohighlight">\(\rightarrow\)</span> gradient is positive <span class="math notranslate nohighlight">\(\rightarrow\)</span> lower <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a> by moving in the negative gradient</p></li>
 <li><p>if <span class="math notranslate nohighlight">\(\hat{y} &lt; y\)</span>, the model underestimates <span class="math notranslate nohighlight">\(\rightarrow\)</span> gradient is negative <span class="math notranslate nohighlight">\(\rightarrow\)</span> increase prediction by moving in the negative gradient</p></li>
 </ul>
-<p>I know that a title this section “Discriminator Loss Derivative”, but excuse me for performing just a little bit of backpropagation (to before sigmoid activation).</p>
+<p>I know that a title this section “Discriminator Loss Derivative”, but excuse me for performing just a little bit of <a class="reference internal" href="MachineLearning_glossary_a_c.html#backpropagation"><span class="std std-doc">backpropagation</span></a> (to before sigmoid activation).</p>
 <ul class="simple">
-<li><p>next we carry on with back propagation to the discriminator weights and biases</p></li>
+<li><p>next we carry on with back propagation to the discriminator <a class="reference internal" href="MachineLearning_glossary_s_z.html#weight"><span class="std std-doc">weight</span></a>s and biases</p></li>
 </ul>
 </section>
 <section id="discriminator-back-propagation">
@@ -1301,7 +1302,7 @@ z = \mathbf{w}^\top \mathbf{x} + c \quad \Rightarrow \quad \frac{dz}{d\mathbf{w}
 \[
 \frac{d\mathcal{L}}{d\mathbf{w}} = \frac{d\mathcal{L}}{dz} \cdot \frac{dz}{d\mathbf{w}} = (\hat{y} - y) \cdot \mathbf{x}
 \]</div>
-<p>So for each of our discriminator weights, <span class="math notranslate nohighlight">\(\lambda_{5,8}\)</span>, <span class="math notranslate nohighlight">\(\lambda_{6,8}\)</span>, and <span class="math notranslate nohighlight">\(\lambda_{7,8}\)</span> we have,</p>
+<p>So for each of our discriminator <a class="reference internal" href="MachineLearning_glossary_s_z.html#weight"><span class="std std-doc">weight</span></a>s, <span class="math notranslate nohighlight">\(\lambda_{5,8}\)</span>, <span class="math notranslate nohighlight">\(\lambda_{6,8}\)</span>, and <span class="math notranslate nohighlight">\(\lambda_{7,8}\)</span> we have,</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{d\mathcal{L}}{d\lambda_{5,8}} = (\hat{y} - y) \cdot I_5
@@ -1314,7 +1315,7 @@ z = \mathbf{w}^\top \mathbf{x} + c \quad \Rightarrow \quad \frac{dz}{d\mathbf{w}
 \[
 \frac{d\mathcal{L}}{d\lambda_{7,8}} = (\hat{y} - y) \cdot I_7
 \]</div>
-<p>and for the bias, <span class="math notranslate nohighlight">\(c\)</span>, we calculate the next component for the chain rule as,</p>
+<p>and for the <a class="reference internal" href="MachineLearning_glossary_a_c.html#bias"><span class="std std-doc">bias</span></a>, <span class="math notranslate nohighlight">\(c\)</span>, we calculate the next component for the chain rule as,</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{dz}{dc} = 1
@@ -1324,7 +1325,7 @@ z = \mathbf{w}^\top \mathbf{x} + c \quad \Rightarrow \quad \frac{dz}{d\mathbf{w}
 \[
 \frac{d\mathcal{L}}{dc} = \frac{d\mathcal{L}}{dz} \cdot \frac{dz}{dc} = (\hat{y} - y) \cdot 1 = \hat{y} - y
 \]</div>
-<p>The backpropagation for our very simple discriminator is quite simple, we can summarize for the weights,</p>
+<p>The <a class="reference internal" href="MachineLearning_glossary_a_c.html#backpropagation"><span class="std std-doc">backpropagation</span></a> for our very simple discriminator is quite simple, we can summarize for the weights,</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{d\mathcal{L}}{d\mathbf{w}} = (\hat{y} - y) \cdot \mathbf{x}
@@ -1334,7 +1335,7 @@ z = \mathbf{w}^\top \mathbf{x} + c \quad \Rightarrow \quad \frac{dz}{d\mathbf{w}
 \[
 \frac{d\mathcal{L}}{dc} = \hat{y} - y
 \]</div>
-<p>Let’s write these out for all of our discriminators parameters,
+<p>Let’s write these out for all of our discriminators <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a>s,
 $<span class="math notranslate nohighlight">\(
 \begin{aligned}
 \frac{d\mathcal{L}}{d\lambda_{5,8}} &amp;= (\hat{y} - y) \cdot I_5 \\
@@ -1346,7 +1347,7 @@ $<span class="math notranslate nohighlight">\(
 </section>
 <section id="generator-loss-derivative-and-back-propagation-through-the-discriminator">
 <h2>Generator Loss Derivative and Back Propagation Through the Discriminator<a class="headerlink" href="#generator-loss-derivative-and-back-propagation-through-the-discriminator" title="Permalink to this heading">#</a></h2>
-<p>Recall that the goal of the generator is to make fake images the discriminator assigns as a high probability of a real image, i.e., to fool the discriminator</p>
+<p><a class="reference internal" href="MachineLearning_glossary_m_r.html#recall"><span class="std std-doc">Recall</span></a> that the goal of the generator is to make fake images the discriminator assigns as a high probability of a real image, i.e., to fool the discriminator</p>
 <ul class="simple">
 <li><p>the generator produces a fake image,</p></li>
 </ul>
@@ -1356,7 +1357,7 @@ $<span class="math notranslate nohighlight">\(
 \]</div>
 <p><span class="math notranslate nohighlight">\(\quad\)</span> where ( z ) is a latent vector (e.g., sampled from Uniform[0.4, 1]).</p>
 <ul class="simple">
-<li><p>the discriminator evaluates this fake sample and returns:</p></li>
+<li><p>the discriminator evaluates this fake <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a> and returns:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
@@ -1489,7 +1490,7 @@ $<span class="math notranslate nohighlight">\(
 </section>
 <section id="backpropagation-through-generator-to-weights-and-bias">
 <h2>Backpropagation Through Generator to Weights and Bias<a class="headerlink" href="#backpropagation-through-generator-to-weights-and-bias" title="Permalink to this heading">#</a></h2>
-<p>We now propagate through the generators sigmoid activation in each of the output nodes,</p>
+<p>We now propagate through the generators sigmoid activation in each of the output <a class="reference internal" href="MachineLearning_glossary_m_r.html#node"><span class="std std-doc">node</span></a>s,</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{dO_i}{dz_i} = O_i (1 - O_i)
@@ -1503,17 +1504,17 @@ $<span class="math notranslate nohighlight">\(
 \frac{d\mathcal{L}_G}{dz_i} = \frac{d\mathcal{L}_G}{dO_i} \cdot \frac{dO_i}{dz_i}
 = \frac{d\mathcal{L}_G}{dO_i} \cdot O_i (1 - O_i)
 \]</div>
-<p>Recall,</p>
+<p><a class="reference internal" href="MachineLearning_glossary_m_r.html#recall"><span class="std std-doc">Recall</span></a>,</p>
 <div class="math notranslate nohighlight">
 \[
 z_i = \lambda_{1,i} \cdot L_1 + b
 \]</div>
-<p>so we can calculate the generator’s weights partial derivatives as,</p>
+<p>so we can calculate the generator’s <a class="reference internal" href="MachineLearning_glossary_s_z.html#weight"><span class="std std-doc">weight</span></a>s partial derivatives as,</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{dz_i}{d\lambda_{1,i}} = L_1
 \]</div>
-<p>and the generator’s bias partial derivative as,</p>
+<p>and the generator’s <a class="reference internal" href="MachineLearning_glossary_a_c.html#bias"><span class="std std-doc">bias</span></a> partial derivative as,</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{dz_i}{db} = 1
@@ -1567,20 +1568,20 @@ z_i = \lambda_{1,i} \cdot L_1 + b
 </section>
 <section id="simple-gan-training-workflow">
 <h2>Simple GAN Training Workflow<a class="headerlink" href="#simple-gan-training-workflow" title="Permalink to this heading">#</a></h2>
-<p>We start with initialization of the generator and discriminator weights and bias and setting the training hyperparameters.</p>
+<p>We start with initialization of the generator and discriminator <a class="reference internal" href="MachineLearning_glossary_s_z.html#weight"><span class="std std-doc">weight</span></a>s and bias and setting the training hyperparameters.</p>
 <ol class="arabic simple">
 <li><p>Generate the Synthethic, “Real Images” for training</p></li>
 </ol>
 <ul class="simple">
-<li><p>sample <span class="math notranslate nohighlight">\(N\)</span> real 3-node, 1D images <span class="math notranslate nohighlight">\(\mathbf{I} = \{(I_{5,i}, I_{6,i}, I_{7,i})\}_{i=1}^N\)</span></p></li>
-<li><p>use the synthetic training data function:</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a> <span class="math notranslate nohighlight">\(N\)</span> real 3-<a class="reference internal" href="MachineLearning_glossary_m_r.html#node"><span class="std std-doc">node</span></a>, 1D images <span class="math notranslate nohighlight">\(\mathbf{I} = \{(I_{5,i}, I_{6,i}, I_{7,i})\}_{i=1}^N\)</span></p></li>
+<li><p>use the synthetic training <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> function:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
 \text{Real images} \sim \text{linear decreasing trend} + \text{noise}
 \]</div>
 <ol class="arabic simple" start="2">
-<li><p><strong>Initialize generator weights and bias</strong> - the weights,</p></li>
+<li><p><strong>Initialize generator weights and <a class="reference internal" href="MachineLearning_glossary_a_c.html#bias"><span class="std std-doc">bias</span></a></strong> - the weights,</p></li>
 </ol>
 <div class="math notranslate nohighlight">
 \[
@@ -1790,7 +1791,7 @@ c \leftarrow 0.0
 <h2>Visualize Real Images and Trained Generator Fake Images<a class="headerlink" href="#visualize-real-images-and-trained-generator-fake-images" title="Permalink to this heading">#</a></h2>
 <p>Let’s check a set of fake images from our trained generator against the real images.</p>
 <ul class="simple">
-<li><p>recall the generator never saw these images, the discriminator saw the real and fake images and told the generator how good or bad were the generator’s fake images.</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_m_r.html#recall"><span class="std std-doc">recall</span></a> the generator never saw these images, the discriminator saw the real and fake images and told the generator how good or bad were the generator’s fake images.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1825,7 +1826,7 @@ c \leftarrow 0.0
 <h2>Visualize Real Images and Generator Fake Images Over Training Epochs<a class="headerlink" href="#visualize-real-images-and-generator-fake-images-over-training-epochs" title="Permalink to this heading">#</a></h2>
 <p>It is interesting to see how our generator’s fake images evolve over the training epochs.</p>
 <ul class="simple">
-<li><p>as first the fake images are random due to the random initialization of the generator’s weights and bias</p></li>
+<li><p>as first the fake images are random due to the random initialization of the generator’s <a class="reference internal" href="MachineLearning_glossary_s_z.html#weight"><span class="std std-doc">weight</span></a>s and <a class="reference internal" href="MachineLearning_glossary_a_c.html#bias"><span class="std std-doc">bias</span></a></p></li>
 <li><p>as the training proceeds the generator learns to improve the fake images.</p></li>
 </ul>
 <p>I include the real images at the end for comparison.</p>
@@ -1857,7 +1858,7 @@ c \leftarrow 0.0
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
-<p>This was a basic treatment of generative adversarial networks. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
+<p>This was a basic treatment of <a class="reference internal" href="MachineLearning_glossary_g_l.html#generative-adversarial-network"><span class="std std-doc">generative adversarial network</span></a>s. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
@@ -1868,20 +1869,20 @@ c \leftarrow 0.0
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
 </figcaption>
 </figure>
-<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a>, <a class="reference internal" href="MachineLearning_glossary_g_l.html#geostatistics"><span class="std std-doc">geostatistics</span></a>, and machine learning. Michael is also,</p>
 <ul class="simple">
-<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a <a class="reference internal" href="MachineLearning_glossary_a_c.html#core"><span class="std std-doc">core</span></a> faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>Michael has written over 100 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
 <p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
-<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a> and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
-<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">Data</span></a> Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>. We are solving challenging subsurface problems!</p></li>
 <li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
 </ul>
 <p>I’m always happy to discuss,</p>

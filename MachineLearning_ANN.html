@@ -174,6 +174,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_concepts.html">Machine Learning Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_subsurface_modeling.html">Subsurface Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_training_tuning.html">Training and Tuning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
@@ -219,7 +220,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_python.html">Python Code Snippets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_a_c.html">Glossary A-C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_d_f.html">Glossary D-F</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_g_l.html">Glossary G-L</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_m_r.html">Glossary M-R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_s_z.html">Glossary S-Z</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -489,41 +494,41 @@ document.write(`
 <p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
 <section id="motivation">
 <h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this heading">#</a></h2>
-<p>Artificial neural networks are very powerful, nature inspired computing based on an analogy of brain</p>
+<p>Artificial <a class="reference internal" href="MachineLearning_glossary_m_r.html#neural-network"><span class="std std-doc">neural network</span></a>s are very powerful, nature inspired computing based on an analogy of brain</p>
 <ul class="simple">
 <li><p>I suggest that they are like a reptilian brain, without planning and higher order reasoning</p></li>
 </ul>
 <p>In addition, artificial neural networks are a building block of many other deep learning methods, for example,</p>
 <ul class="simple">
-<li><p>convolutional neural networks</p></li>
-<li><p>recurrent neural networks</p></li>
-<li><p>generative adversarial networks</p></li>
-<li><p>autoencoders</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_a_c.html#convolutional-neural-network"><span class="std std-doc">convolutional neural network</span></a>s</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_m_r.html#recurrent-neural-network"><span class="std std-doc">recurrent neural network</span></a>s</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_g_l.html#generative-adversarial-network"><span class="std std-doc">generative adversarial network</span></a>s</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_a_c.html#autoencoder"><span class="std std-doc">autoencoder</span></a>s</p></li>
 </ul>
 <p>Nature inspired computing is looking to nature for inspiration to develop novel problem-solving methods,</p>
 <ul class="simple">
 <li><p><strong>artificial neural networks</strong> are inspired by biological neural networks</p></li>
-<li><p><strong>nodes</strong> -  in our model are artificial neurons, simple processors</p></li>
-<li><p><strong>connections</strong> between nodes are artificial synapses</p></li>
+<li><p><strong><a class="reference internal" href="MachineLearning_glossary_m_r.html#node"><span class="std std-doc">node</span></a>s</strong> -  in our model are artificial neurons, simple processors</p></li>
+<li><p><strong><a class="reference internal" href="MachineLearning_glossary_a_c.html#connection"><span class="std std-doc">connection</span></a>s</strong> between nodes are artificial synapses</p></li>
 </ul>
 <p>intelligence emerges from many connected simple processors. For the remainder of this chapter, I will used the terms nodes and connections to describe our artificial neural network.</p>
 </section>
 <section id="neural-network-concepts">
 <h2>Neural Network Concepts<a class="headerlink" href="#neural-network-concepts" title="Permalink to this heading">#</a></h2>
-<p>Here are some key aspects of artificial neural networks,</p>
+<p>Here are some <a class="reference internal" href="MachineLearning_glossary_g_l.html#key"><span class="std std-doc">key</span></a> aspects of artificial <a class="reference internal" href="MachineLearning_glossary_m_r.html#neural-network"><span class="std std-doc">neural network</span></a>s,</p>
 <p><strong>Basic Design</strong> - <em>“…a computing system made up of a number of simple, highly interconnected processing elements, which process information by their dynamic state response to external inputs.”</em> Caudill (1989).</p>
-<p><strong>Still a Prediction Model</strong> - while these models may be quite complicated with even millions of trainable model parameters, weights and biases, they are still a function that maps from predictor features to response features,</p>
+<p><strong>Still a <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">Prediction</span></a> Model</strong> - while these models may be quite complicated with even millions of trainable <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter"><span class="std std-doc">model parameter</span></a>s, <a class="reference internal" href="MachineLearning_glossary_s_z.html#weight"><span class="std std-doc">weight</span></a>s and biases, they are still a function that maps from <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a>s to <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a>s,</p>
 <div class="math notranslate nohighlight">
 \[
 Y=f(X)+\epsilon
 \]</div>
-<p><strong>Supervised learning</strong> – we provide training data with predictor features, <span class="math notranslate nohighlight">\(X_1,\ldots,𝑋_𝑚\)</span> and response feature(s), <span class="math notranslate nohighlight">\(𝑌_1,\ldots,𝑌_K\)</span>, with the expectation of some model prediction error, <span class="math notranslate nohighlight">\(\epsilon\)</span>.</p>
-<p><strong>Nonlinearity</strong> - nonlinearity is imparted to the system through the application of nonlinear activation functions to model nonlinear relationships</p>
+<p><strong><a class="reference internal" href="MachineLearning_glossary_s_z.html#supervised-learning"><span class="std std-doc">Supervised learning</span></a></strong> – we provide training <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> with predictor <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s, <span class="math notranslate nohighlight">\(X_1,\ldots,𝑋_𝑚\)</span> and response feature(s), <span class="math notranslate nohighlight">\(𝑌_1,\ldots,𝑌_K\)</span>, with the <a class="reference internal" href="MachineLearning_glossary_d_f.html#expectation"><span class="std std-doc">expectation</span></a> of some model <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction-error"><span class="std std-doc">prediction error</span></a>, <span class="math notranslate nohighlight">\(\epsilon\)</span>.</p>
+<p><strong>Nonlinearity</strong> - nonlinearity is imparted to the system through the application of nonlinear <a class="reference internal" href="MachineLearning_glossary_a_c.html#activation-function"><span class="std std-doc">activation function</span></a>s to model nonlinear relationships</p>
 <p><strong>Universal Function Approximator (Universal Approximation Theorem)</strong> - ANNs have the ability to learn any possible function shape of <span class="math notranslate nohighlight">\(f\)</span> over an interval, for an arbitrary wide (single hidden layer) by Cybenko (1989) and arbitrary depth by Lu and others (2017)</p>
 </section>
 <section id="a-simple-network">
 <h2>A Simple Network<a class="headerlink" href="#a-simple-network" title="Permalink to this heading">#</a></h2>
-<p>To get started, let’s build a neural net, single hidden layer, fully connected, feed-forward neural network,</p>
+<p>To get started, let’s build a neural net, single hidden layer, fully connected, feed-forward <a class="reference internal" href="MachineLearning_glossary_m_r.html#neural-network"><span class="std std-doc">neural network</span></a>,</p>
 <figure style="text-align: center;">
   <img src="_static/ANN/ann.png" style="display: block; margin: 0 auto; width: 60%;">
   <figcaption style="text-align: center;"> Simple demonstration artificial neural network.
@@ -538,27 +543,27 @@ Y=f(X)+\epsilon
 </figure>
 <p>Our artificial neural network has,</p>
 <ul class="simple">
-<li><p>3 predictor features, <span class="math notranslate nohighlight">\(X_1\)</span>, <span class="math notranslate nohighlight">\(X_2\)</span> and <span class="math notranslate nohighlight">\(X_3\)</span></p></li>
+<li><p>3 <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a>s, <span class="math notranslate nohighlight">\(X_1\)</span>, <span class="math notranslate nohighlight">\(X_2\)</span> and <span class="math notranslate nohighlight">\(X_3\)</span></p></li>
 <li><p>3 input nodes, <span class="math notranslate nohighlight">\(I_1\)</span>, <span class="math notranslate nohighlight">\(I_2\)</span> and <span class="math notranslate nohighlight">\(I_3\)</span></p></li>
 <li><p>2 hidden layer nodes, <span class="math notranslate nohighlight">\(H_4\)</span> and <span class="math notranslate nohighlight">\(H_5\)</span></p></li>
 <li><p>1 output node, <span class="math notranslate nohighlight">\(O_6\)</span></p></li>
-<li><p>1 response feature, <span class="math notranslate nohighlight">\(Y_1\)</span></p></li>
+<li><p>1 <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a>, <span class="math notranslate nohighlight">\(Y_1\)</span></p></li>
 </ul>
 <p>where all nodes fully connected. Note, deep learning is a neural network with more than 1 hidden layer, but for brevity let’s continue with our non-deep learning artificial neural network.</p>
 </section>
 <section id="comments-on-network-nomenclature">
 <h2>Comments on Network Nomenclature<a class="headerlink" href="#comments-on-network-nomenclature" title="Permalink to this heading">#</a></h2>
-<p>Just a couple more comments about my network nomenclature. My goal is to maximize simplicity and clarity,</p>
+<p>Just a couple more <a class="reference internal" href="MachineLearning_glossary_s_z.html#comments"><span class="std std-doc">comments</span></a> about my network nomenclature. My goal is to maximize simplicity and clarity,</p>
 <ul class="simple">
-<li><p><strong>Network Nodes and Connections</strong> - I choose to use unique numbers for all nodes, <span class="math notranslate nohighlight">\(I_1\)</span>, <span class="math notranslate nohighlight">\(I_2\)</span>, <span class="math notranslate nohighlight">\(I_3\)</span>, <span class="math notranslate nohighlight">\(H_4\)</span>, <span class="math notranslate nohighlight">\(H_5\)</span> and <span class="math notranslate nohighlight">\(O_6\)</span>, instead of repeating numbers over each layer, <span class="math notranslate nohighlight">\(I_1\)</span>, <span class="math notranslate nohighlight">\(I_2\)</span>, <span class="math notranslate nohighlight">\(I_3\)</span>, <span class="math notranslate nohighlight">\(H_1\)</span>, <span class="math notranslate nohighlight">\(H_2\)</span>, and <span class="math notranslate nohighlight">\(O_1\)</span> to simplify the notation for the weights; therefore, when I say <span class="math notranslate nohighlight">\(\lambda_{1,4}\)</span> you know exactly where this weight is applied in the network, from node <span class="math notranslate nohighlight">\(I_1\)</span> to node <span class="math notranslate nohighlight">\(H_4\)</span>.</p></li>
-<li><p><strong>Node Outputs</strong> - I use the node label to also describe the output from the node, for example <span class="math notranslate nohighlight">\(O_6\)</span> is the output node, <span class="math notranslate nohighlight">\(O_6\)</span>, and also the signal or value output from node <span class="math notranslate nohighlight">\(O_6\)</span>,</p></li>
+<li><p><strong>Network Nodes and <a class="reference internal" href="MachineLearning_glossary_a_c.html#connection"><span class="std std-doc">Connection</span></a>s</strong> - I choose to use unique numbers for all nodes, <span class="math notranslate nohighlight">\(I_1\)</span>, <span class="math notranslate nohighlight">\(I_2\)</span>, <span class="math notranslate nohighlight">\(I_3\)</span>, <span class="math notranslate nohighlight">\(H_4\)</span>, <span class="math notranslate nohighlight">\(H_5\)</span> and <span class="math notranslate nohighlight">\(O_6\)</span>, instead of repeating numbers over each layer, <span class="math notranslate nohighlight">\(I_1\)</span>, <span class="math notranslate nohighlight">\(I_2\)</span>, <span class="math notranslate nohighlight">\(I_3\)</span>, <span class="math notranslate nohighlight">\(H_1\)</span>, <span class="math notranslate nohighlight">\(I_2\)</span>, and <span class="math notranslate nohighlight">\(I_2\)</span> to simplify the notation for the <a class="reference internal" href="MachineLearning_glossary_s_z.html#weight"><span class="std std-doc">weight</span></a>s; therefore, when I say <span class="math notranslate nohighlight">\(I_2\)</span> you know exactly where this weight is applied in the network, from node <span class="math notranslate nohighlight">\(I_2\)</span> to node <span class="math notranslate nohighlight">\(I_2\)</span>.</p></li>
+<li><p><strong>Node Outputs</strong> - I use the node label to also describe the output from the node, for example <span class="math notranslate nohighlight">\(O_6\)</span> is the output node, <span class="math notranslate nohighlight">\(O_6\)</span>, and also the signal or <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a> output from node <span class="math notranslate nohighlight">\(O_6\)</span>,</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
 O_6 = \sigma \left( \lambda_{4,6} \cdot H_4 + \lambda_{5,6} \cdot H_5 \right) 
 \]</div>
 <ul class="simple">
-<li><p><strong>Pre- and Post-activation</strong> - at our nodes <span class="math notranslate nohighlight">\(H_4\)</span>, <span class="math notranslate nohighlight">\(H_5\)</span>, and <span class="math notranslate nohighlight">\(O_6\)</span>, we have the node input before activation and the node output after activation, I use the notation <span class="math notranslate nohighlight">\(H_{4_{in}}\)</span>, <span class="math notranslate nohighlight">\(H_{5_{in}}\)</span>, and <span class="math notranslate nohighlight">\(O_{6_{in}}\)</span> for the pre-activation input,</p></li>
+<li><p><strong>Pre- and Post-activation</strong> - at our <a class="reference internal" href="MachineLearning_glossary_m_r.html#node"><span class="std std-doc">node</span></a>s <span class="math notranslate nohighlight">\(H_4\)</span>, <span class="math notranslate nohighlight">\(H_5\)</span>, and <span class="math notranslate nohighlight">\(O_6\)</span>, we have the node input before activation and the node output after activation, I use the notation <span class="math notranslate nohighlight">\(H_{4_{in}}\)</span>, <span class="math notranslate nohighlight">\(H_{5_{in}}\)</span>, and <span class="math notranslate nohighlight">\(O_{6_{in}}\)</span> for the pre-activation input,</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
@@ -587,21 +592,21 @@ O_6 = \sigma \left( O_{6_{in}} \right) = \sigma \left( \lambda_{4,6} \cdot H_4 +
 \]</div>
 <p>It is important to have clean, clear notation because with back propagation we have to step through the nodes, going from post-activation to pre-activation.</p>
 <ul class="simple">
-<li><p>often variables like <span class="math notranslate nohighlight">\(z\)</span> are applied for pre-activation in neural network literature, but I feel this is ambiguous and may cause confusion as we provide a nuts and bolts approach, explicitly describing every equation, to describe exactly how neural networks are trained and predict</p></li>
+<li><p>often <a class="reference internal" href="MachineLearning_glossary_s_z.html#variable"><span class="std std-doc">variable</span></a>s like <span class="math notranslate nohighlight">\(z\)</span> are applied for pre-activation in <a class="reference internal" href="MachineLearning_glossary_m_r.html#neural-network"><span class="std std-doc">neural network</span></a> literature, but I feel this is ambiguous and may cause confusion as we provide a nuts and bolts approach, explicitly describing every equation, to describe exactly how neural networks are trained and predict</p></li>
 </ul>
 </section>
 <section id="description-of-the-network-approach">
 <h2>Description of the Network Approach<a class="headerlink" href="#description-of-the-network-approach" title="Permalink to this heading">#</a></h2>
 <p>Let’s talk about the network, the parts and how information flows through the network.</p>
-<p><strong>Feed-forward</strong> – all information flows from left to right. Each node sends the same signal along the connections to all the nodes in the next layer,</p>
+<p><strong>Feed-forward</strong> – all information flows from left to right. Each node sends the same signal along the <a class="reference internal" href="MachineLearning_glossary_a_c.html#connection"><span class="std std-doc">connection</span></a>s to all the nodes in the next layer,</p>
 <figure style="text-align: center;">
   <img src="_static/ANN/ann_flow.png" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;"> Feed forward, fully connected, with each node sending the same signal to all the nodes in the next layer.
 </figcaption>
 </figure>
-<p><strong>Input Layer</strong> - the input features are passed directly to the input nodes, in the case of continuous predictor features, there is one input node per feature and the features are,</p>
+<p><strong>Input Layer</strong> - the input features are passed directly to the input nodes, in the case of continuous <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a>s, there is one input node per feature and the features are,</p>
 <ul class="simple">
-<li><p>min / max normalization to a range <span class="math notranslate nohighlight">\(\left[ −1,1 \right]\)</span> or <span class="math notranslate nohighlight">\(\left[ 0,1 \right]\)</span> to improve activation function sensitivity and to remove the influence of scale differences in predictor features and to improve solution stability, i.e., smooth reduction in the training loss while training</p></li>
+<li><p>min / max normalization to a range <span class="math notranslate nohighlight">\(\left[ −1,1 \right]\)</span> or <span class="math notranslate nohighlight">\(\left[ 0,1 \right]\)</span> to improve <a class="reference internal" href="MachineLearning_glossary_a_c.html#activation-function"><span class="std std-doc">activation function</span></a> sensitivity and to remove the influence of scale differences in predictor features and to improve solution stability, i.e., smooth reduction in the training loss while training</p></li>
 </ul>
 <figure style="text-align: center;">
   <img src="_static/ANN/ann_input.png" style="display: block; margin: 0 auto; width: 70%;">
@@ -610,7 +615,7 @@ O_6 = \sigma \left( O_{6_{in}} \right) = \sigma \left( \lambda_{4,6} \cdot H_4 +
 </figure>
 <p>In the case of categorical predictor features, we have one input node per each category for each predictor feature, i.e., after one-hot-encoding of the feature where each encoding is passed to a separate input node.</p>
 <ul class="simple">
-<li><p>recall one-hot-encoding, 1 if the specific category, 0 otherwise, replaces the categorical feature with a binary vector with length as the number of categories.</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_m_r.html#recall"><span class="std std-doc">recall</span></a> one-hot-encoding, 1 if the specific category, 0 otherwise, replaces the <a class="reference internal" href="MachineLearning_glossary_a_c.html#categorical-feature"><span class="std std-doc">categorical feature</span></a> with a binary vector with length as the number of categories.</p></li>
 </ul>
 <figure style="text-align: center;">
   <img src="_static/ANN/ann_input_cat.png" style="display: block; margin: 0 auto; width: 90%;">
@@ -620,13 +625,13 @@ O_6 = \sigma \left( O_{6_{in}} \right) = \sigma \left( \lambda_{4,6} \cdot H_4 +
 <ul class="simple">
 <li><p>we could also use a single input node per categorical predictor and assign thresholds to each categories, for example <span class="math notranslate nohighlight">\(\left[ 0.0, 0.5, 1.0 \right]\)</span> for 3 categories, but this assumes an ordinal categorical feature</p></li>
 </ul>
-<p><strong>Hidden Layer</strong> -  the input layer values <span class="math notranslate nohighlight">\(I_1, I_2, I_2\)</span> are weighted with learnable weights,</p>
+<p><strong>Hidden Layer</strong> -  the input layer values <span class="math notranslate nohighlight">\(I_1, I_2, I_2\)</span> are weighted with learnable <a class="reference internal" href="MachineLearning_glossary_s_z.html#weight"><span class="std std-doc">weight</span></a>s,</p>
 <div class="math notranslate nohighlight">
 \[
 \lambda_{1,4}, \lambda_{2,4}, \lambda_{3,4}, \lambda_{1,5}, \lambda_{2,5}, \lambda_{3,5}
 \]</div>
 <ul class="simple">
-<li><p>in the hidden layer nodes, the weighted input layer values, <span class="math notranslate nohighlight">\(\lambda_{1,4} \cdot I_1, \lambda_{2,4} \cdot I_2 \cdot I_2, \ldots, \lambda_{3,5} \cdot I_3\)</span> are summed with the addition of a trainable bias term in each node, <span class="math notranslate nohighlight">\(b_4\)</span> and <span class="math notranslate nohighlight">\(b_5\)</span>.</p></li>
+<li><p>in the hidden layer nodes, the weighted input layer <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s, <span class="math notranslate nohighlight">\(\lambda_{1,4} \cdot I_1, \lambda_{2,4} \cdot I_2 \cdot I_2, \ldots, \lambda_{3,5} \cdot I_3\)</span> are summed with the addition of a trainable <a class="reference internal" href="MachineLearning_glossary_a_c.html#bias"><span class="std std-doc">bias</span></a> term in each node, <span class="math notranslate nohighlight">\(b_4\)</span> and <span class="math notranslate nohighlight">\(b_5\)</span>.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
@@ -653,7 +658,7 @@ H_{5} = \sigma \bigl( \lambda_{1,5} \cdot I_1 + \lambda_{2,5} \cdot I_2 + \lambd
   <figcaption style="text-align: center;"> The hidden layer of our artificial neural network highlighted. The input layer nodes' outputs are weighted and passed into the hidden layer nodes. The output from the hidden layer nodes to all output layer nodes is constant.
 </figcaption>
 </figure>
-<p><strong>Output Layer</strong> - for continuous response features there is one output node per normalized response feature. Once again the weighted linear combination of inputs plus a node bias are calculated,</p>
+<p><strong>Output Layer</strong> - for continuous <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a>s there is one output node per normalized response feature. Once again the weighted linear combination of inputs plus a node bias are calculated,</p>
 <div class="math notranslate nohighlight">
 \[
 O_{6_{in}} = \lambda_{4,6} \cdot H_4 + \lambda_{5,6} \cdot H_5 + b_6
@@ -664,8 +669,8 @@ O_{6_{in}} = \lambda_{4,6} \cdot H_4 + \lambda_{5,6} \cdot H_5 + b_6
 O_6 = \alpha \bigl( \lambda_{4,6} \cdot H_4 + \lambda_{5,6} \cdot H_5 + b_6 \bigr) = \lambda_{4,6} \cdot H_4 + \lambda_{5,6} \cdot H_5 + b_6 = O_{6_{in}} 
 \]</div>
 <ul class="simple">
-<li><p>backtransformation from normalized to original response feature(s) are then applied to recover the ultimate prediction</p></li>
-<li><p>as with continuous predictor features, min / max normalization is applied to continuous response features to a range [−1,1] or [0,1] to improve activation function sensitivity</p></li>
+<li><p>backtransformation from normalized to original response feature(s) are then applied to recover the ultimate <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a></p></li>
+<li><p>as with continuous predictor features, min / max <a class="reference internal" href="MachineLearning_glossary_m_r.html#normalization"><span class="std std-doc">normalization</span></a> is applied to continuous response features to a range [−1,1] or [0,1] to improve activation function sensitivity</p></li>
 </ul>
 <figure style="text-align: center;">
   <img src="_static/ANN/ann_output.png" style="display: block; margin: 0 auto; width: 70%;">
@@ -683,17 +688,17 @@ O_6 = \alpha \bigl( \lambda_{4,6} \cdot H_4 + \lambda_{5,6} \cdot H_5 + b_6 \big
 </figure></section>
 <section id="walkthrough-the-network">
 <h2>Walkthrough the Network<a class="headerlink" href="#walkthrough-the-network" title="Permalink to this heading">#</a></h2>
-<p>Now we are ready to walkthough the artificial neural network.</p>
+<p>Now we are ready to walkthough the artificial <a class="reference internal" href="MachineLearning_glossary_m_r.html#neural-network"><span class="std std-doc">neural network</span></a>.</p>
 <ul class="simple">
-<li><p>we follow a single path to illustrate the precise calculations associated with making a prediction with an artificial neural network</p></li>
+<li><p>we follow a single path to illustrate the precise calculations associated with making a <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a> with an artificial neural network</p></li>
 </ul>
 <p>The full forward pass is explained next.</p>
-<p><strong>Inside an Input Layer Node</strong> - input layer nodes just pass the predictor features,</p>
+<p><strong>Inside an Input Layer Node</strong> - input layer nodes just pass the <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a>s,</p>
 <ul class="simple">
-<li><p>normalized continuous predictor feature value</p></li>
-<li><p>a single one-hot-encoding value [0 or 1] for categorical prediction features</p></li>
+<li><p>normalized continuous predictor <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> value</p></li>
+<li><p>a single one-hot-encoding <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a> [0 or 1] for categorical prediction features</p></li>
 </ul>
-<p>into the hidden layer nodes, with general vector notation,</p>
+<p>into the hidden layer <a class="reference internal" href="MachineLearning_glossary_m_r.html#node"><span class="std std-doc">node</span></a>s, with general vector notation,</p>
 <div class="math notranslate nohighlight">
 \[
 I = X
@@ -709,12 +714,12 @@ I = X
 H_j = H_{j_{in}} = X_j
 \]</div>
 <p><strong>Inside an Hidden Layer Node</strong></p>
-<p>The hidden layer nodes are simple processors. The take linearly weighted combinations of inputs, add a node bias term and then nonlinearly transform the result, this transform is call the activation function, <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
+<p>The hidden layer nodes are simple processors. The take linearly weighted combinations of inputs, add a node bias term and then nonlinearly transform the result, this transform is call the <a class="reference internal" href="MachineLearning_glossary_a_c.html#activation-function"><span class="std std-doc">activation function</span></a>, <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
 <ul class="simple">
 <li><p>indeed, a very simple processor!</p></li>
 <li><p>through many interconnected nodes we gain a very flexible predictor, emergent ability to characterize complicated, nonlinear patterns.</p></li>
 </ul>
-<p>Prior to activation we have,</p>
+<p><a class="reference internal" href="MachineLearning_glossary_m_r.html#prior"><span class="std std-doc">Prior</span></a> to activation we have,</p>
 <div class="math notranslate nohighlight">
 \[
 H_{4_{in}} = \sum_{i=1}^{3} \left( \lambda_{i,4} \cdot I_i \right) + b_4
@@ -745,7 +750,7 @@ H_{j_{in}} = \sum_{i=1}^{|I|} \left( \lambda_{i,j} \cdot I_i \right) + b_j
 H_{j_{in}} = \sigma \bigl( \sum_{i=1}^{|I|} \left( \lambda_{i,j} \cdot I_i \right) + b_j \bigr)
 \]</div>
 <p><strong>Inside an Output Layer Node</strong></p>
-<p>The output layer nodes take linearly weighted combinations of nodes’ inputs, adds a node bias term and then transforms the result with an activation function, <span class="math notranslate nohighlight">\(\alpha\)</span>, same as the hidden layer nodes,</p>
+<p>The output layer nodes take linearly weighted combinations of nodes’ inputs, adds a node <a class="reference internal" href="MachineLearning_glossary_a_c.html#bias"><span class="std std-doc">bias</span></a> term and then transforms the result with an activation function, <span class="math notranslate nohighlight">\(\alpha\)</span>, same as the hidden layer nodes,</p>
 <p>Prior to activation we have,</p>
 <div class="math notranslate nohighlight">
 \[
@@ -785,9 +790,9 @@ O_j = \alpha(O_{j_{in}}) = \frac{e^{O_{j_{in}}}}{\sum_{\iota=1}^{K} e^{O_{\iota_
 </section>
 <section id="network-forward-pass">
 <h2>Network Forward Pass<a class="headerlink" href="#network-forward-pass" title="Permalink to this heading">#</a></h2>
-<p>Now that we have completed a walk-through of our network on a single path, let’s combine all the paths through our network to demonstrate a complete forward pass through our artificial neural network.</p>
+<p>Now that we have completed a walk-through of our network on a single path, let’s combine all the paths through our network to demonstrate a complete forward pass through our artificial <a class="reference internal" href="MachineLearning_glossary_m_r.html#neural-network"><span class="std std-doc">neural network</span></a>.</p>
 <ul class="simple">
-<li><p>this is the calculation required to make a prediction with out,</p></li>
+<li><p>this is the calculation required to make a <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a> with out,</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
@@ -796,25 +801,25 @@ O_6 = \sigma_{O_6} \bigl(
   + \lambda_{5,6} \cdot \sigma_{H_5} \left( \lambda_{1,5} I_1 + \lambda_{2,5} I_2 + \lambda_{3,5} I_3 + b_5 \right)
   + b_6 \bigr)
 \]</div>
-<p>where the activation functions <span class="math notranslate nohighlight">\(\sigma_{H_4}\)</span> = <span class="math notranslate nohighlight">\(\sigma_{H_5}\)</span> = <span class="math notranslate nohighlight">\(\sigma\)</span> are sigmoid, and <span class="math notranslate nohighlight">\(\sigma_{O_6}\)</span> is linear (identity), so we could simplify the forward pass to,</p>
+<p>where the <a class="reference internal" href="MachineLearning_glossary_a_c.html#activation-function"><span class="std std-doc">activation function</span></a>s <span class="math notranslate nohighlight">\(\sigma_{H_4}\)</span> = <span class="math notranslate nohighlight">\(\sigma_{H_5}\)</span> = <span class="math notranslate nohighlight">\(\sigma\)</span> are sigmoid, and <span class="math notranslate nohighlight">\(\sigma_{O_6}\)</span> is linear (identity), so we could simplify the forward pass to,</p>
 <div class="math notranslate nohighlight">
 \[
 O_6 = \lambda_{4,6} \cdot \sigma \left( \lambda_{1,4} I_1 + \lambda_{2,4} I_2 + \lambda_{3,4} I_3 + b_4 \right) 
   + \lambda_{5,6} \cdot \sigma \left( \lambda_{1,5} I_1 + \lambda_{2,5} I_2 + \lambda_{3,5} I_3 + b_5 \right)
   + b_6
 \]</div>
-<p>This emphasizes that our neural network is a nested set of activated linear systems, i.e., linearly weighted averages plus bias terms applied to activation functions.</p>
+<p>This emphasizes that our neural network is a nested set of activated linear systems, i.e., linearly weighted <a class="reference internal" href="MachineLearning_glossary_a_c.html#average"><span class="std std-doc">average</span></a>s plus <a class="reference internal" href="MachineLearning_glossary_a_c.html#bias"><span class="std std-doc">bias</span></a> terms applied to activation functions.</p>
 </section>
 <section id="number-of-model-parameters">
 <h2>Number of Model Parameters<a class="headerlink" href="#number-of-model-parameters" title="Permalink to this heading">#</a></h2>
-<p>In general, there are many model parameters, <span class="math notranslate nohighlight">\(theta\)</span>, in an artificial neural network. First, let’s clarify these definitions to describe our artificial neural network,</p>
+<p>In general, there are many <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter"><span class="std std-doc">model parameter</span></a>s, <span class="math notranslate nohighlight">\(theta\)</span>, in an artificial neural network. First, let’s clarify these definitions to describe our artificial neural network,</p>
 <ul class="simple">
-<li><p><strong>neural network width</strong> - the number of nodes in the layers of the neural network</p></li>
+<li><p><strong><a class="reference internal" href="MachineLearning_glossary_m_r.html#neural-network"><span class="std std-doc">neural network</span></a> width</strong> - the number of nodes in the layers of the neural network</p></li>
 <li><p><strong>neural network depth</strong> - the number of layers in the neural network, typically the input layer is not included in this calculation</p></li>
 </ul>
 <p>Now, let’s assume the following compact notation for a 3 layer artificial neural network, input, output and 1 hidden layer, with the width of each layer as,</p>
 <ul class="simple">
-<li><p>number of input nodes, <span class="math notranslate nohighlight">\(p\)</span></p></li>
+<li><p>number of input <a class="reference internal" href="MachineLearning_glossary_m_r.html#node"><span class="std std-doc">node</span></a>s, <span class="math notranslate nohighlight">\(p\)</span></p></li>
 <li><p>number of hidden layer nodes, <span class="math notranslate nohighlight">\(m\)</span></p></li>
 <li><p>and number of output nodes, <span class="math notranslate nohighlight">\(k\)</span></p></li>
 </ul>
@@ -823,17 +828,17 @@ O_6 = \lambda_{4,6} \cdot \sigma \left( \lambda_{1,4} I_1 + \lambda_{2,4} I_2 + 
   <figcaption style="text-align: center;"> Notation for artificial neural network width, number of input nodes, \(p\), number of hidden layer nodes, \(m\), and number of output nodes, \(k\). 
 </figcaption>
 </figure>
-<p>fully connected, so for every connection there is a weight,</p>
+<p>fully connected, so for every <a class="reference internal" href="MachineLearning_glossary_a_c.html#connection"><span class="std std-doc">connection</span></a> there is a weight,</p>
 <div class="math notranslate nohighlight">
 \[
 \lambda_{𝐼_{1,\ldots,𝑝},𝐻_{1,\ldots,𝑚} } \quad \text{and} \quad \lambda_{𝐻_{1,\ldots,𝑚},𝑂_{1,\ldots,𝑘} }
 \]</div>
-<p>with full connectivity the number of weights is</p>
+<p>with full connectivity the number of <a class="reference internal" href="MachineLearning_glossary_s_z.html#weight"><span class="std std-doc">weight</span></a>s is</p>
 <div class="math notranslate nohighlight">
 \[
 𝑝 \times 𝑚 \quad \text{and} \quad 𝑚 \times 𝑘
 \]</div>
-<p>and at each hidden layer node there is a bias term,</p>
+<p>and at each hidden layer node there is a <a class="reference internal" href="MachineLearning_glossary_a_c.html#bias"><span class="std std-doc">bias</span></a> term,</p>
 <div class="math notranslate nohighlight">
 \[
 𝑏_{H_{1,\ldots,m} }
@@ -843,7 +848,7 @@ O_6 = \lambda_{4,6} \cdot \sigma \left( \lambda_{1,4} I_1 + \lambda_{2,4} I_2 + 
 \[
 𝑏_{O_{1,\ldots,k} }
 \]</div>
-<p>Therefore, the number of model parameters is,</p>
+<p>Therefore, the number of model <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a>s is,</p>
 <div class="math notranslate nohighlight">
 \[
 |\theta| = 𝑝 \times 𝑚 + 𝑚 \times 𝑘 + 𝑚 + 𝑘 
@@ -920,22 +925,22 @@ O_6 = \lambda_{4,6} \cdot \sigma \left( \lambda_{1,4} I_1 + \lambda_{2,4} I_2 + 
 </section>
 <section id="activation-functions">
 <h2>Activation Functions<a class="headerlink" href="#activation-functions" title="Permalink to this heading">#</a></h2>
-<p>The activation function is a transformation of the linear combination of the weighted node inputs plus the node bias term. Nonlinear activation,</p>
+<p>The <a class="reference internal" href="MachineLearning_glossary_a_c.html#activation-function"><span class="std std-doc">activation function</span></a> is a transformation of the linear combination of the weighted <a class="reference internal" href="MachineLearning_glossary_m_r.html#node"><span class="std std-doc">node</span></a> inputs plus the node <a class="reference internal" href="MachineLearning_glossary_a_c.html#bias"><span class="std std-doc">bias</span></a> term. Nonlinear activation,</p>
 <ul class="simple">
 <li><p>introduces non-linear properties, and complexity to the network</p></li>
 <li><p>prevents the network from collapsing</p></li>
 </ul>
-<p>Without the nonlinear activation function we would have linear regression, the entire system collapses.</p>
-<p>For more information about activation functions and a demonstration of the collapse without nonlinear activation to multilinear regression see the associated chapter in this e-book, <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/MachineLearning_activation_functions.html">Neural Network Activation Functions</a>.</p>
+<p>Without the nonlinear activation function we would have <a class="reference internal" href="MachineLearning_glossary_g_l.html#linear-regression"><span class="std std-doc">linear regression</span></a>, the entire system collapses.</p>
+<p>For more information about activation functions and a demonstration of the collapse without nonlinear activation to multilinear <a class="reference internal" href="MachineLearning_glossary_m_r.html#regression"><span class="std std-doc">regression</span></a> see the associated chapter in this e-book, <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/MachineLearning_activation_functions.html">Neural Network Activation Functions</a>.</p>
 </section>
 <section id="training-networks-steps">
 <h2>Training Networks Steps<a class="headerlink" href="#training-networks-steps" title="Permalink to this heading">#</a></h2>
-<p>Training an artificial neural network proceeds iteratively by these steps,</p>
+<p>Training an artificial <a class="reference internal" href="MachineLearning_glossary_m_r.html#neural-network"><span class="std std-doc">neural network</span></a> proceeds iteratively by these steps,</p>
 <ol class="arabic simple" start="0">
-<li><p>initialized the model parameters</p></li>
-<li><p>forward pass to make a prediction</p></li>
-<li><p>calculate the error derivative based on the prediction and truth over training data</p></li>
-<li><p>backpropagate the error derivative back through the artificial neural network to calculate the derivatives of the error over all the model weights and biases parameters</p></li>
+<li><p>initialized the <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter"><span class="std std-doc">model parameter</span></a>s</p></li>
+<li><p>forward pass to make a <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a></p></li>
+<li><p>calculate the error derivative based on the prediction and truth over training <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a></p></li>
+<li><p>backpropagate the error derivative back through the artificial neural network to calculate the derivatives of the error over all the model weights and biases <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a>s</p></li>
 <li><p>update the model parameters based on the derivatives and learning rates</p></li>
 <li><p>repeat until convergence.</p></li>
 </ol>
@@ -946,10 +951,10 @@ O_6 = \lambda_{4,6} \cdot \sigma \left( \lambda_{1,4} I_1 + \lambda_{2,4} I_2 + 
 </figure>
 <p>Here’s some details on each step,</p>
 <ol class="arabic simple" start="0">
-<li><p><strong>Initializing the Model Parameters</strong> - initialize all model parameters with typically small (near zero) random values. Here’s a couple common methods,</p></li>
+<li><p><strong>Initializing the Model Parameters</strong> - initialize all model parameters with typically small (near zero) random <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s. Here’s a couple common methods,</p></li>
 </ol>
 <ul class="simple">
-<li><p><strong>Xavier Weight Initialization</strong> - random realizations from uniform distributions specified by <span class="math notranslate nohighlight">\(U[\text{min}, \text{max}]\)</span>,</p></li>
+<li><p><strong>Xavier Weight Initialization</strong> - random <a class="reference internal" href="MachineLearning_glossary_m_r.html#realizations"><span class="std std-doc">realizations</span></a> from uniform distributions specified by <span class="math notranslate nohighlight">\(U[\text{min}, \text{max}]\)</span>,</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
@@ -957,14 +962,14 @@ O_6 = \lambda_{4,6} \cdot \sigma \left( \lambda_{1,4} I_1 + \lambda_{2,4} I_2 + 
 \]</div>
 <p>     where <span class="math notranslate nohighlight">\(F^{-1}_U\)</span> is the inverse of the CDF, <span class="math notranslate nohighlight">\(p\)</span> is the number of inputs, and <span class="math notranslate nohighlight">\(p^{\ell}\)</span> is a random cumulative probability value drawn from the uniform distribution, <span class="math notranslate nohighlight">\(U[0,1]\)</span>.</p>
 <ul class="simple">
-<li><p><strong>Normalized Xavier Weight Initialization</strong> - random realizations from uniform distributions specified by <span class="math notranslate nohighlight">\(U[\text{min}, \text{max}]\)</span>,</p></li>
+<li><p><strong>Normalized Xavier Weight Initialization</strong> - random <a class="reference internal" href="MachineLearning_glossary_m_r.html#realization"><span class="std std-doc">realization</span></a>s from uniform distributions specified by <span class="math notranslate nohighlight">\(U[\text{min}, \text{max}]\)</span>,</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
 \lambda_{i,j} = F_U^{-1} \left[ \frac{-1}{\sqrt{p}+k}, \frac{1}{\sqrt{p}+k} \right] (p^\ell)
 \]</div>
 <p>     where <span class="math notranslate nohighlight">\(F^{-1}_U\)</span> is the inverse of the CDF, <span class="math notranslate nohighlight">\(p\)</span> is the number of inputs, <span class="math notranslate nohighlight">\(k\)</span> is the number of outputs, and <span class="math notranslate nohighlight">\(p^{\ell}\)</span> is a random cumulative probability value drawn from the uniform distribution, <span class="math notranslate nohighlight">\(U[0,1]\)</span>.</p>
-<p>     For example, if we return to our first hidden layer node,</p>
+<p>     For example, if we return to our first hidden layer <a class="reference internal" href="MachineLearning_glossary_m_r.html#node"><span class="std std-doc">node</span></a>,</p>
 <figure style="text-align: center;">
   <img src="_static/ANN/ann_walkthrough_hidden.png" style="display: block; margin: 0 auto; width: 30%;">
   <figcaption style="text-align: center;"> First hidden layer node with 3 inputs, and 1 output.
@@ -1021,11 +1026,11 @@ L = \frac{1}{2} \left(\hat{y} - y \right)^2
 <ol class="arabic simple" start="5">
 <li><p><strong>Repeat Until Convergence</strong> - return to step 1, until the error, <span class="math notranslate nohighlight">\(L\)</span>, is reduced to an acceptable level, i.e., model convergence is the condition to stop the iterations</p></li>
 </ol>
-<p>These are the steps, now let’s dive into the details for each, but first let’s start with the mathematical framework for backpropagation - the chain rule.</p>
+<p>These are the steps, now let’s dive into the details for each, but first let’s start with the mathematical framework for <a class="reference internal" href="MachineLearning_glossary_a_c.html#backpropagation"><span class="std std-doc">backpropagation</span></a> - the chain rule.</p>
 </section>
 <section id="the-chain-rule">
 <h2>The Chain Rule<a class="headerlink" href="#the-chain-rule" title="Permalink to this heading">#</a></h2>
-<p>Upon reflection, it is clear that the forward pass through our artificial neural network involves a sequence of nested operations that progressively transform the input signals as they propagate from the input nodes, through each layer, to the output nodes.</p>
+<p>Upon reflection, it is clear that the forward pass through our artificial <a class="reference internal" href="MachineLearning_glossary_m_r.html#neural-network"><span class="std std-doc">neural network</span></a> involves a sequence of nested operations that progressively transform the input signals as they propagate from the input nodes, through each layer, to the output nodes.</p>
 <p>So we can represent this as a sequence of nested operations,</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1059,12 +1064,12 @@ y = h \bigl( g(f(x)) \bigr)
 \[
 \frac{\partial y}{\partial x} = \frac{\partial h}{\partial g} \cdot \frac{\partial g}{\partial f} \cdot \frac{\partial f}{\partial x}
 \]</div>
-<p>This is what we do with backpropagation, but this may be too abstract! Let’s move to a very simple feed forward neural network with only these three nodes,</p>
+<p>This is what we do with <a class="reference internal" href="MachineLearning_glossary_a_c.html#backpropagation"><span class="std std-doc">backpropagation</span></a>, but this may be too abstract! Let’s move to a very simple feed forward neural network with only these three nodes,</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(I_1\)</span> - input node</p></li>
+<li><p><span class="math notranslate nohighlight">\(I_1\)</span> - input <a class="reference internal" href="MachineLearning_glossary_m_r.html#node"><span class="std std-doc">node</span></a></p></li>
 <li><p><span class="math notranslate nohighlight">\(H_2 = h(I_1)\)</span> - hidden layer node, a function of <span class="math notranslate nohighlight">\(I_1\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(O_3 = o(H_2)\)</span> - output node, a function of <span class="math notranslate nohighlight">\(H_2\)</span></p></li>
-<li><p>this is still intentionally abstract, i.e., without mention of weights and biases, to help you develop a mental framework of backpropagation with neural netowrks by the chain rule, we will dive into the details immediately after this discussion.</p></li>
+<li><p>this is still intentionally abstract, i.e., without mention of <a class="reference internal" href="MachineLearning_glossary_s_z.html#weight"><span class="std std-doc">weight</span></a>s and biases, to help you develop a mental framework of backpropagation with neural netowrks by the chain rule, we will dive into the details immediately after this discussion.</p></li>
 </ul>
 <p>The output <span class="math notranslate nohighlight">\(O_3\)</span> depends on the input <span class="math notranslate nohighlight">\(I_1\)</span> through these nested functions:</p>
 <div class="math notranslate nohighlight">
@@ -1094,40 +1099,40 @@ O_3 = o \bigl( h(I_1) \bigr)
 </section>
 <section id="neural-networks-backpropagation-building-blocks">
 <h2>Neural Networks Backpropagation Building Blocks<a class="headerlink" href="#neural-networks-backpropagation-building-blocks" title="Permalink to this heading">#</a></h2>
-<p>Let’s cover the numerical building blocks for backpropagation. Once you understand these backpropagation building blocks, you will be able to backpropagate our simple network and even any complicated artificial neural networks by hand,</p>
+<p>Let’s cover the numerical building blocks for <a class="reference internal" href="MachineLearning_glossary_a_c.html#backpropagation"><span class="std std-doc">backpropagation</span></a>. Once you understand these backpropagation building blocks, you will be able to backpropagate our simple network and even any complicated artificial neural networks by hand,</p>
 <ol class="arabic simple">
 <li><p>calculating the loss derivative</p></li>
-<li><p>backpropagation through nodes</p></li>
-<li><p>backpropagation along connections</p></li>
+<li><p>backpropagation through <a class="reference internal" href="MachineLearning_glossary_m_r.html#node"><span class="std std-doc">node</span></a>s</p></li>
+<li><p>backpropagation along <a class="reference internal" href="MachineLearning_glossary_a_c.html#connection"><span class="std std-doc">connection</span></a>s</p></li>
 <li><p>accounting for multiple paths</p></li>
-<li><p>loss derivatives with respect to weights and biases</p></li>
+<li><p>loss derivatives with respect to <a class="reference internal" href="MachineLearning_glossary_s_z.html#weight"><span class="std std-doc">weight</span></a>s and biases</p></li>
 </ol>
-<p>For now I demonstrate backpropagation of this loss derivative for a single training data sample, <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<p>For now I demonstrate backpropagation of this loss derivative for a single training <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>, <span class="math notranslate nohighlight">\(y\)</span>.</p>
 <ul class="simple">
 <li><p>I address multiple samples later, <span class="math notranslate nohighlight">\(y_i, i=1, \ldots, n\)</span></p></li>
 </ul>
 <p>Let’s start with calculating the loss derivative.</p>
 <section id="calculating-the-loss-derivative">
 <h3>Calculating the Loss Derivative<a class="headerlink" href="#calculating-the-loss-derivative" title="Permalink to this heading">#</a></h3>
-<p>Backpropagation is based on the concept of allocating or propagating the loss derivative backwards through the neural network,</p>
+<p>Backpropagation is based on the concept of allocating or propagating the loss derivative backwards through the <a class="reference internal" href="MachineLearning_glossary_m_r.html#neural-network"><span class="std std-doc">neural network</span></a>,</p>
 <ul class="simple">
 <li><p>we calculate the loss derivative and then distribute it sequentially, in reverse direction, from network output back towards the network input</p></li>
 <li><p>it is important to know that we are working with derivatives, and that backpropagation is NOT distributing error, although as you will see it may look that way!</p></li>
 </ul>
-<p>We start by defining the loss, given the truth, <span class="math notranslate nohighlight">\(𝑦\)</span>, and our prediction, <span class="math notranslate nohighlight">\(\hat{y} = O_6\)</span>, we calculate our <span class="math notranslate nohighlight">\(L^2\)</span> loss as,</p>
+<p>We start by defining the loss, given the truth, <span class="math notranslate nohighlight">\(𝑦\)</span>, and our <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a>, <span class="math notranslate nohighlight">\(\hat{y} = O_6\)</span>, we calculate our <span class="math notranslate nohighlight">\(L^2\)</span> loss as,</p>
 <div class="math notranslate nohighlight">
 \[
 L = \frac{1}{2} \left( \hat{y} - y \right)^2
 \]</div>
-<p>our choice of loss function allows us to use the prediction error as the loss derivative! We calculate the loss derivative as the partial derivative of the loss with respect to the estimate, <span class="math notranslate nohighlight">\(\frac{\partial 𝐿}{\partial \hat{y}}\)</span>,</p>
+<p>our choice of <a class="reference internal" href="MachineLearning_glossary_g_l.html#loss-function"><span class="std std-doc">loss function</span></a> allows us to use the <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction-error"><span class="std std-doc">prediction error</span></a> as the loss derivative! We calculate the loss derivative as the partial derivative of the loss with respect to the estimate, <span class="math notranslate nohighlight">\(\frac{\partial 𝐿}{\partial \hat{y}}\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{\partial \mathcal{L}}{\partial \hat{y}} = \frac{\partial \frac{1}{2} \left( \hat{y} - y \right)^2 }{\partial \hat{y}} = \hat{y} - y
 \]</div>
-<p>You see what I mean, we are backpropagating the loss derivative, but due to our formulation of the <span class="math notranslate nohighlight">\(L^2\)</span> loss, we only have to calculate the error at our output node output, but once again - it is the loss derivative.</p>
+<p>You see what I <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a>, we are backpropagating the loss derivative, but due to our formulation of the <span class="math notranslate nohighlight">\(L^2\)</span> loss, we only have to calculate the error at our output node output, but once again - it is the loss derivative.</p>
 <figure style="text-align: center;">
   <img src="_static/ANN/back_loss.png" style="display: block; margin: 0 auto; width: 40%;">
-  <figcaption style="text-align: center;"> Calculation of the loss derivative at the output of an output layer node, $O_6$.
+  <figcaption style="text-align: center;"> Calculation of the loss derivative at the output of an output layer node, \(O_6\).
 </figcaption>
 </figure>
 <p>For the example of our simple artificial neural network with the output at node, <span class="math notranslate nohighlight">\(O_6\)</span>, our loss derivative is,</p>
@@ -1139,13 +1144,13 @@ L = \frac{1}{2} \left( \hat{y} - y \right)^2
 </section>
 <section id="backpropagation-through-output-node-with-identity-activation">
 <h3>Backpropagation through Output Node with Identity Activation<a class="headerlink" href="#backpropagation-through-output-node-with-identity-activation" title="Permalink to this heading">#</a></h3>
-<p>Let’s backpropagate through our output node, <span class="math notranslate nohighlight">\(O_6\)</span>, from post-activation to pre-activation. To do this we need the partial derivative our activation function.</p>
+<p>Let’s backpropagate through our output node, <span class="math notranslate nohighlight">\(O_6\)</span>, from post-activation to pre-activation. To do this we need the partial derivative our <a class="reference internal" href="MachineLearning_glossary_a_c.html#activation-function"><span class="std std-doc">activation function</span></a>.</p>
 <ul class="simple">
-<li><p>since this is an output node with a regression artificial neural network I have selected the identity or linear activation function.</p></li>
+<li><p>since this is an output node with a <a class="reference internal" href="MachineLearning_glossary_m_r.html#regression"><span class="std std-doc">regression</span></a> artificial neural network I have selected the identity or linear activation function.</p></li>
 </ul>
 <figure style="text-align: center;">
   <img src="_static/ANN/back_node.png" style="display: block; margin: 0 auto; width: 45%;">
-  <figcaption style="text-align: center;"> Backpropagation of the loss derivative through the node, $O_6$, from $O_6$ post-activation output to $O_{6_{in}}$ pre-activation input.
+  <figcaption style="text-align: center;"> Backpropagation of the loss derivative through the node, \(O_6\), from \(O_6\) post-activation output to $O_{6_{in}}$ pre-activation input.
 </figcaption>
 </figure>
 <p>The identity activation at output node <span class="math notranslate nohighlight">\(O_6\)</span> is defined as:</p>
@@ -1209,7 +1214,7 @@ O_{6_{\text{in}}} = \lambda_{4,6} \cdot H_4 + \lambda_{5,6} \cdot H_5 + b_6
 </ul>
 <figure style="text-align: center;">
   <img src="_static/ANN/back_node_hidden.png" style="display: block; margin: 0 auto; width: 55%;">
-  <figcaption style="text-align: center;"> Backpropagation of the loss derivative through the node, $H_4$, from $H_4$ postactivation output to $H_{4_{in}}$ preactivation input.
+  <figcaption style="text-align: center;"> Backpropagation of the loss derivative through the node, \(H_4\), from \(H_4\) postactivation output to \(H_{4_{in}}\) preactivation input.
 </figcaption>
 </figure>
 <p>The sigmoid activation at output node <span class="math notranslate nohighlight">\(H_4\)</span> is defined as:</p>
@@ -1276,7 +1281,7 @@ u = e^{-H_{4_{in}}}
 <p>For continuity and completeness, let’s repeat the previously described method to backpropagate along the connection <span class="math notranslate nohighlight">\(I_1\)</span> to <span class="math notranslate nohighlight">\(H_4\)</span>.</p>
 <figure style="text-align: center;">
   <img src="_static/ANN/back_weight_input.png" style="display: block; margin: 0 auto; width: 75%;">
-  <figcaption style="text-align: center;"> Backpropagation of the loss derivative along the connection from $H_4$ to $I_1$.
+  <figcaption style="text-align: center;"> Backpropagation of the loss derivative along the connection from \(H_4\) to \(I_1\).
 </figcaption>
 </figure>
 <p>Once again, preactivation the input to node <span class="math notranslate nohighlight">\(H_4\)</span> is calculated as,</p>
@@ -1311,7 +1316,7 @@ H_{4_{\text{in}}} = \lambda_{1,4} \cdot I_1 + \lambda_{2,4} \cdot I_2 + \lambda_
 </ul>
 <figure style="text-align: center;">
   <img src="_static/ANN/multiple_paths.png" style="display: block; margin: 0 auto; width: 85%;">
-  <figcaption style="text-align: center;"> Multiple paths for backpropagation to input node, $I_1$, from output node $O_6$.
+  <figcaption style="text-align: center;"> Multiple paths for backpropagation to input node, \(I_1\), from output node \(O_6\).
 </figcaption>
 </figure>
 <p>To account for multiple paths we just need to sum over all the paths.</p>
@@ -1326,7 +1331,7 @@ H_{4_{\text{in}}} = \lambda_{1,4} \cdot I_1 + \lambda_{2,4} \cdot I_2 + \lambda_
 \[
 \frac{\partial \mathcal{L}}{\partial I_1} = \lambda_{1,4} \cdot \bigl((1 - H_4) \cdot H_4 \bigr) \cdot \lambda_{4,6} \cdot 1.0 \cdot (O_6 - y) + \lambda_{1,5} \cdot \bigl((1 - H_5) \cdot H_5 \bigr) \cdot \lambda_{5,6} \cdot 1.0 \cdot (O_6 - y)
 \]</div>
-<p>and then simplify by removing the 1.0 values and grouping terms as,</p>
+<p>and then simplify by removing the 1.0 <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s and grouping terms as,</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{\partial \mathcal{L}}{\partial I_1} 
@@ -1347,7 +1352,7 @@ H_{4_{\text{in}}} = \lambda_{1,4} \cdot I_1 + \lambda_{2,4} \cdot I_2 + \lambda_
 </ul>
 <figure style="text-align: center;">
   <img src="_static/ANN/back_node_input.png" style="display: block; margin: 0 auto; width: 87%;">
-  <figcaption style="text-align: center;"> Backpropagation of the loss derivative through the node, $I_1$, from $I_1$ postactivation output to $I_{1_{in}}$ preactivation input.
+  <figcaption style="text-align: center;"> Backpropagation of the loss derivative through the node, \(I_1\), from \(I_1\) postactivation output to \(I_{1_{in}}\) preactivation input.
 </figcaption>
 </figure>
 <p>The identity activation at output node <span class="math notranslate nohighlight">\(I_1\)</span> is defined as:</p>
@@ -1604,21 +1609,21 @@ O_{6_{\text{in}}} = \lambda_{4,6} \cdot H_4 + \lambda_{5,6} \cdot H_5 + b_6
 </section>
 <section id="backpropagation-example">
 <h2>Backpropagation Example<a class="headerlink" href="#backpropagation-example" title="Permalink to this heading">#</a></h2>
-<p>Let’s take the backpropagation method explained above and apply them to my interactive neural network.</p>
+<p>Let’s take the <a class="reference internal" href="MachineLearning_glossary_a_c.html#backpropagation"><span class="std std-doc">backpropagation</span></a> method explained above and apply them to my interactive <a class="reference internal" href="MachineLearning_glossary_m_r.html#neural-network"><span class="std std-doc">neural network</span></a>.</p>
 <ul class="simple">
-<li><p>Here’s the result for our first training epoch with only 1 sample,</p></li>
+<li><p>Here’s the result for our first training epoch with only 1 <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>,</p></li>
 </ul>
 <figure style="text-align: center;">
   <img src="_static/ANN/backpropagate_node.png" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;"> Backpropagation result for the first iteration.
 </figcaption>
 </figure>
-<p>My interactive dashboard provides all the loss derivatives with respect to the input for each node and the output signals from each node, so for example we can calculate <span class="math notranslate nohighlight">\(\frac{\partial L}{\partial \lambda_{4,6}}\)</span> as,</p>
+<p>My interactive dashboard provides all the loss derivatives with respect to the input for each <a class="reference internal" href="MachineLearning_glossary_m_r.html#node"><span class="std std-doc">node</span></a> and the output signals from each node, so for example we can calculate <span class="math notranslate nohighlight">\(\frac{\partial L}{\partial \lambda_{4,6}}\)</span> as,</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{\partial L}{\partial \lambda_{4,6}} = \frac{\partial O_{6_{\text{in}}}}{\partial \lambda_{4,6}} \cdot \frac{\partial L}{\partial O_{6_{\text{in}}}} = H_4 \cdot \frac{\partial L}{\partial O_{6_{\text{in}}}} = 0.42 \cdot 1.00 = 0.42
 \]</div>
-<p>Here’s the loss derivatives with respect to connection weights for the other hidden layer to output node connection,</p>
+<p>Here’s the loss derivatives with respect to <a class="reference internal" href="MachineLearning_glossary_a_c.html#connection"><span class="std std-doc">connection</span></a> weights for the other hidden layer to output node connection,</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{\partial L}{\partial \lambda_{5,6}} = \frac{\partial O_{6_{\text{in}}}}{\partial \lambda_{5,6}} \cdot \frac{\partial L}{\partial O_{6_{\text{in}}}} = H_5 \cdot \frac{\partial L}{\partial O_{6_{\text{in}}}} = 0.60 \cdot 1.00 = 0.60
@@ -1648,9 +1653,9 @@ O_{6_{\text{in}}} = \lambda_{4,6} \cdot H_4 + \lambda_{5,6} \cdot H_5 + b_6
 \[
 \frac{\partial L}{\partial \lambda_{3,5}} = \frac{\partial H_{5_{\text{in}}}}{\partial \lambda_{3,5}} \cdot \frac{\partial L}{\partial H_{5_{\text{in}}}} = I_3 \cdot \frac{\partial L}{\partial H_{5_{\text{in}}}} = 0.70 \cdot (-0.10) = -0.07
 \]</div>
-<p>This takes care of all of the connection weight error derivatives, now lets take care of the node bias error derivatives.</p>
+<p>This takes care of all of the connection <a class="reference internal" href="MachineLearning_glossary_s_z.html#weight"><span class="std std-doc">weight</span></a> error derivatives, now lets take care of the node bias error derivatives.</p>
 <ul class="simple">
-<li><p>the node bias error derivatives are the same as the node peractivation error derivatives. Now let’s calculate the bias terms in the hidden layer,</p></li>
+<li><p>the node <a class="reference internal" href="MachineLearning_glossary_a_c.html#bias"><span class="std std-doc">bias</span></a> error derivatives are the same as the node peractivation error derivatives. Now let’s calculate the bias terms in the hidden layer,</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
@@ -1663,9 +1668,9 @@ O_{6_{\text{in}}} = \lambda_{4,6} \cdot H_4 + \lambda_{5,6} \cdot H_5 + b_6
 </section>
 <section id="updating-model-parameters">
 <h2>Updating Model Parameters<a class="headerlink" href="#updating-model-parameters" title="Permalink to this heading">#</a></h2>
-<p>The loss derivatives with respect to each of the model parameters are the gradients, so we are ready to use gradient descent optimization with the addition of,</p>
+<p>The loss derivatives with respect to each of the <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter"><span class="std std-doc">model parameter</span></a>s are the gradients, so we are ready to use gradient descent optimization with the addition of,</p>
 <ul class="simple">
-<li><p><strong>learning rate</strong> -  to scale the rate of change of the model updates we assign a learning rate, <span class="math notranslate nohighlight">\(\eta\)</span>. For our model parameter examples from above,</p></li>
+<li><p><strong>learning rate</strong> -  to scale the rate of change of the model updates we assign a learning rate, <span class="math notranslate nohighlight">\(\eta\)</span>. For our model <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a> examples from above,</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
@@ -1680,7 +1685,7 @@ O_{6_{\text{in}}} = \lambda_{4,6} \cdot H_4 + \lambda_{5,6} \cdot H_5 + b_6
 b_j^{\ell} = b_j^{\ell - 1} + \eta \cdot \frac{\partial L}{\partial b_j}
 \]</div>
 <ul class="simple">
-<li><p>recall, this process of gradient calculation and model parameters, weights and biases, updating is iterated and is known as gradient descent optimization.</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_m_r.html#recall"><span class="std std-doc">recall</span></a>, this process of gradient calculation and model parameters, <a class="reference internal" href="MachineLearning_glossary_s_z.html#weight"><span class="std std-doc">weight</span></a>s and biases, updating is iterated and is known as gradient descent optimization.</p></li>
 <li><p>the goal is to explore the loss hypersurface, avoiding and escaping local minimums and ultimately finding the global minimum.</p></li>
 <li><p>learning rate, also known as step size is commonly set between 0.0 and 1.0, note 0.01 is the default in Keras module of TensorFlow</p></li>
 <li><p><strong>Low Learning Rate</strong> – more stable, but a slower solution, may get stuck in a local minimum</p></li>
@@ -1695,8 +1700,8 @@ b_j^{\ell} = b_j^{\ell - 1} + \eta \cdot \frac{\partial L}{\partial b_j}
 \eta^{\ell} = \eta^{\ell - 1} \cdot \left( \frac{1}{1 + \text{decay} \cdot \ell} \right)
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\ell\)</span> is the model training epoch</p>
-<p>Notice that the model parameter updates are for a single training data case? Consider this single model parameter,</p>
-<p>we calculate the update over all samples in the batch and apply the average of the updates.</p>
+<p>Notice that the model parameter updates are for a single training <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> case? Consider this single model parameter,</p>
+<p>we calculate the update over all samples in the batch and apply the <a class="reference internal" href="MachineLearning_glossary_a_c.html#average"><span class="std std-doc">average</span></a> of the updates.</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{\partial L}{\partial \lambda_{4,6}} = H_4 \cdot \frac{\partial L}{\partial O_{6_{\text{in}}}} = 0.42 \cdot 1.00 = 0.42
@@ -1706,7 +1711,7 @@ b_j^{\ell} = b_j^{\ell - 1} + \eta \cdot \frac{\partial L}{\partial b_j}
 \[
 \lambda_{4,6}^{\ell} = \lambda_{4,6}^{\ell - 1} + \eta \cdot \frac{\partial L}{\partial \lambda_{4,6}}
 \]</div>
-<p>is dependent on <span class="math notranslate nohighlight">\(H_4\)</span> node output, and <span class="math notranslate nohighlight">\(L\)</span> error that are for a single sample, <span class="math notranslate nohighlight">\(𝑥_1,\ldots,𝑥_𝑚\)</span> and <span class="math notranslate nohighlight">\(𝑦\)</span>; therefore, we cannot calculate a single parameter update over all our <span class="math notranslate nohighlight">\(1,\ldots,n\)</span> training data samples.</p>
+<p>is dependent on <span class="math notranslate nohighlight">\(H_4\)</span> <a class="reference internal" href="MachineLearning_glossary_m_r.html#node"><span class="std std-doc">node</span></a> output, and <span class="math notranslate nohighlight">\(L\)</span> error that are for a single <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>, <span class="math notranslate nohighlight">\(𝑥_1,\ldots,𝑥_𝑚\)</span> and <span class="math notranslate nohighlight">\(𝑦\)</span>; therefore, we cannot calculate a single parameter update over all our <span class="math notranslate nohighlight">\(1,\ldots,n\)</span> training data samples.</p>
 <ul class="simple">
 <li><p>instead we can calculate <span class="math notranslate nohighlight">\(1,\ldots,n\)</span> updates and then apply the average of all the updates to our model parameters,</p></li>
 </ul>
@@ -1726,13 +1731,13 @@ b_j^{\ell} = b_j^{\ell - 1} + \eta \cdot \frac{\partial L}{\partial b_j}
 <h2>Training Epochs<a class="headerlink" href="#training-epochs" title="Permalink to this heading">#</a></h2>
 <p>This is a good time to talk about stochastic gradient descent optimization, first let’s define some common terms,</p>
 <ul class="simple">
-<li><p><strong>Batch Gradient Descent</strong> - updates the model parameters after passing through all of the data</p></li>
-<li><p><strong>Stochastic Gradient Descent</strong> - updates the model parameters over each sample data</p></li>
+<li><p><strong>Batch Gradient Descent</strong> - updates the <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter"><span class="std std-doc">model parameter</span></a>s after passing through all of the data</p></li>
+<li><p><strong>Stochastic Gradient Descent</strong> - updates the model <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a>s over each sample data</p></li>
 <li><p><strong>Mini-batch Gradient Descent</strong> - updates the model parameter after passing through a single batch</p></li>
 </ul>
-<p>With mini-batch gradient descent stochasticity is introduced through the use of subsets of the data, known as batches,</p>
+<p>With mini-batch gradient descent stochasticity is introduced through the use of subsets of the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>, known as batches,</p>
 <ul class="simple">
-<li><p>for example, if we divide our 100 samples into 4 batches, then we iterate over each batch separately</p></li>
+<li><p>for example, if we divide our 100 <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s into 4 batches, then we iterate over each batch separately</p></li>
 <li><p>we speed up the individual updates, fewer data are faster to calculate, but we introduce more error</p></li>
 <li><p>this often helps the training explore for the global minimum and avoid getting stuck in local minimums and along ridges in the loss hypersurface</p></li>
 </ul>
@@ -1742,21 +1747,21 @@ b_j^{\ell} = b_j^{\ell - 1} + \eta \cdot \frac{\partial L}{\partial b_j}
 </ul>
 <p>There are many other considerations that I will add later including,</p>
 <ul class="simple">
-<li><p>momentum</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_m_r.html#momentum"><span class="std std-doc">momentum</span></a></p></li>
 <li><p>adaptive optimization</p></li>
 </ul>
-<p>Now let’s build the above artificial neural network by-hand and visualize the solution!</p>
+<p>Now let’s build the above artificial <a class="reference internal" href="MachineLearning_glossary_m_r.html#neural-network"><span class="std std-doc">neural network</span></a> by-hand and visualize the solution!</p>
 <ul class="simple">
 <li><p>this is by-hand so that you can see every calculation. I intentionally avoided using TensorFlow or PyTorch.</p></li>
 </ul>
 </section>
 <section id="interactive-dashboard">
 <h2>Interactive Dashboard<a class="headerlink" href="#interactive-dashboard" title="Permalink to this heading">#</a></h2>
-<p>I built out an interactive Python dashboard with the code below for training an artificial neural network. You can step through the training iteration and observe over the training epochs,</p>
+<p>I built out an interactive Python dashboard with the code below for training an artificial <a class="reference internal" href="MachineLearning_glossary_m_r.html#neural-network"><span class="std std-doc">neural network</span></a>. You can step through the training iteration and observe over the training epochs,</p>
 <ul class="simple">
-<li><p>model parameters</p></li>
-<li><p>forward pass predictions</p></li>
-<li><p>backpropagation of error derivatives</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter"><span class="std std-doc">model parameter</span></a>s</p></li>
+<li><p>forward pass <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a>s</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_a_c.html#backpropagation"><span class="std std-doc">backpropagation</span></a> of error derivatives</p></li>
 </ul>
 <p>If you would like to see artificial neural networks in action, check out my <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_ANN.ipynb">ANN interactive Python dashboard</a>,</p>
 <figure style="text-align: center;">
@@ -1785,7 +1790,7 @@ b_j^{\ell} = b_j^{\ell - 1} + \eta \cdot \frac{\partial L}{\partial b_j}
 </section>
 <section id="declare-functions">
 <h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
-<p>Here’s the functions to make, train and visualize our artificial neural network.</p>
+<p>Here’s the functions to make, train and visualize our artificial <a class="reference internal" href="MachineLearning_glossary_m_r.html#neural-network"><span class="std std-doc">neural network</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_grid</span><span class="p">():</span>
@@ -1883,12 +1888,12 @@ b_j^{\ell} = b_j^{\ell - 1} + \eta \cdot \frac{\partial L}{\partial b_j}
 <h2>The Simple ANN<a class="headerlink" href="#the-simple-ann" title="Permalink to this heading">#</a></h2>
 <p>I wrote this code to specify a simple ANN:</p>
 <ul class="simple">
-<li><p>three input nodes, 2 hidden nodes and 1 output node</p></li>
+<li><p>three input <a class="reference internal" href="MachineLearning_glossary_m_r.html#node"><span class="std std-doc">node</span></a>s, 2 hidden nodes and 1 output node</p></li>
 </ul>
-<p>and to train the ANN by iteratively performing the forward calculation and backpropagation. I calculate:</p>
+<p>and to train the ANN by iteratively performing the forward calculation and <a class="reference internal" href="MachineLearning_glossary_a_c.html#backpropagation"><span class="std std-doc">backpropagation</span></a>. I calculate:</p>
 <ul class="simple">
 <li><p>the error and then propagate it to each node</p></li>
-<li><p>solve for the partial derivatives of the error with respect to each weight and bias</p></li>
+<li><p>solve for the partial derivatives of the error with respect to each <a class="reference internal" href="MachineLearning_glossary_s_z.html#weight"><span class="std std-doc">weight</span></a> and <a class="reference internal" href="MachineLearning_glossary_a_c.html#bias"><span class="std std-doc">bias</span></a></p></li>
 </ul>
 <p>all weights, biases and partial derivatives for all epoch are recorded in vectors for plotting</p>
 <div class="cell docutils container">
@@ -1973,7 +1978,7 @@ b_j^{\ell} = b_j^{\ell - 1} + \eta \cdot \frac{\partial L}{\partial b_j}
 </section>
 <section id="now-visualize-the-network-for-a-specific-epoch">
 <h2>Now Visualize the Network for a Specific Epoch<a class="headerlink" href="#now-visualize-the-network-for-a-specific-epoch" title="Permalink to this heading">#</a></h2>
-<p>I wrote a custom network visualization below, select iepoch and visualize the artificial neural network for a specific epoch.</p>
+<p>I wrote a custom network visualization below, select iepoch and visualize the artificial <a class="reference internal" href="MachineLearning_glossary_m_r.html#neural-network"><span class="std std-doc">neural network</span></a> for a specific epoch.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iepoch</span> <span class="o">=</span> <span class="mi">1</span>
@@ -2139,7 +2144,7 @@ b_j^{\ell} = b_j^{\ell - 1} + \eta \cdot \frac{\partial L}{\partial b_j}
 </section>
 <section id="check-the-ann-convergence">
 <h2>Check the ANN Convergence<a class="headerlink" href="#check-the-ann-convergence" title="Permalink to this heading">#</a></h2>
-<p>Now we plot the weights, biases and prediction over the epochs to check the training convergence.</p>
+<p>Now we plot the <a class="reference internal" href="MachineLearning_glossary_s_z.html#weight"><span class="std std-doc">weight</span></a>s, biases and <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a> over the epochs to check the training convergence.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>
@@ -2182,7 +2187,7 @@ b_j^{\ell} = b_j^{\ell - 1} + \eta \cdot \frac{\partial L}{\partial b_j}
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
-<p>This was a basic treatment of artificial neural networks. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
+<p>This was a basic treatment of artificial <a class="reference internal" href="MachineLearning_glossary_m_r.html#neural-network"><span class="std std-doc">neural network</span></a>s. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
@@ -2193,20 +2198,20 @@ b_j^{\ell} = b_j^{\ell - 1} + \eta \cdot \frac{\partial L}{\partial b_j}
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
 </figcaption>
 </figure>
-<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a>, <a class="reference internal" href="MachineLearning_glossary_g_l.html#geostatistics"><span class="std std-doc">geostatistics</span></a>, and machine learning. Michael is also,</p>
 <ul class="simple">
-<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a <a class="reference internal" href="MachineLearning_glossary_a_c.html#core"><span class="std std-doc">core</span></a> faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>Michael has written over 100 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
 <p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
-<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a> and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
-<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">Data</span></a> Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>. We are solving challenging subsurface problems!</p></li>
 <li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
 </ul>
 <p>I’m always happy to discuss,</p>

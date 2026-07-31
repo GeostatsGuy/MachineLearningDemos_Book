@@ -174,6 +174,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_concepts.html">Machine Learning Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_subsurface_modeling.html">Subsurface Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_training_tuning.html">Training and Tuning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
@@ -219,7 +220,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_python.html">Python Code Snippets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_a_c.html">Glossary A-C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_d_f.html">Glossary D-F</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_g_l.html">Glossary G-L</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_m_r.html">Glossary M-R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_s_z.html">Glossary S-Z</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -476,29 +481,29 @@ document.write(`
   <figcaption style="text-align: center;"> Spatial dataset within an area of interest in plan view.
 </figcaption>
 </figure>
-<p>Do you have any concerns with this data? What if I add this information?</p>
+<p>Do you have any concerns with this <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>? What if I add this information?</p>
 <figure style="text-align: center;">
   <img src="_static/decluster/data_areas.png" style="display: block; margin: 0 auto; width: 60%;">
   <figcaption style="text-align: center;"> Spatial dataset within an area of interest with areas of high and low values indicated in plan view.
 </figcaption>
 </figure>
-<p>Do you see what is going on? The samples are actually clustered in the high area. It can get much worse,</p>
+<p>Do you see what is going on? The <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s are actually clustered in the high area. It can get much worse,</p>
 <figure style="text-align: center;">
   <img src="_static/decluster/data_areas_worse.png" style="display: block; margin: 0 auto; width: 60%;">
   <figcaption style="text-align: center;"> Spatial dataset within an area of interest with areas of high and low values indicated in plan view.
 </figcaption>
 </figure>
-<p>and as we continue to sample in the high region we will increase the bias in the sample statistics,</p>
+<p>and as we continue to sample in the high region we will increase the bias in the sample <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">statistics</span></a>,</p>
 <figure style="text-align: center;">
   <img src="_static/decluster/sample_bias.png" style="display: block; margin: 0 auto; width: 60%;">
   <figcaption style="text-align: center;"> Sample statistic vs. true population parameter over time as more clustered samples are collected.
 </figcaption>
 </figure>
-<p><strong>Source of Spatial Sampling Bias</strong> - in general, we should assume that all spatial data that we work with is biased.</p>
+<p><strong>Source of <a class="reference internal" href="MachineLearning_glossary_a_c.html#biased-spatial-sampling"><span class="std std-doc">Biased Spatial Sampling</span></a></strong> - in general, we should assume that all spatial data that we work with is biased.</p>
 <p>Data is collected to answer questions:</p>
 <ul class="simple">
 <li><p>how far does the contaminant plume extend? – sample peripheries</p></li>
-<li><p>where is the fault? – drill based on seismic interpretation</p></li>
+<li><p>where is the fault? – drill based on <a class="reference internal" href="MachineLearning_glossary_s_z.html#seismic"><span class="std std-doc">seismic</span></a> interpretation</p></li>
 <li><p>what is the highest mineral grade? – sample the best part</p></li>
 <li><p>who far does the reservoir extend? – offset drilling
 and to maximize NPV directly:</p></li>
@@ -525,17 +530,17 @@ Is random sampling sufficient for subsurface?  Is it available?</p>
 </ul>
 </li>
 </ul>
-<p><strong>Regular Sampling</strong>: when samples are taken at regular intervals (equally spaced).</p>
+<p><strong><a class="reference internal" href="MachineLearning_glossary_m_r.html#regular-sampling"><span class="std std-doc">Regular Sampling</span></a></strong>: when samples are taken at regular intervals (equally spaced).</p>
 <ul class="simple">
 <li><p>less reliable than random sampling.</p></li>
-<li><p>Warning: may resonate with some unsuspected environmental variable.</p></li>
+<li><p>Warning: may resonate with some unsuspected environmental <a class="reference internal" href="MachineLearning_glossary_s_z.html#variable"><span class="std std-doc">variable</span></a>.</p></li>
 </ul>
 <p>What do we have?</p>
 <ul class="simple">
 <li><p>we usually have biased, opportunity sampling</p></li>
 <li><p>we must account for bias (debiasing will be discussed later)</p></li>
 </ul>
-<p>So if we were designing sampling for representativity of the sample set and resulting sample statistics, by theory we have 2 options, random sampling and regular sampling.</p>
+<p>So if we were designing sampling for representativity of the sample set and resulting sample <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistic"><span class="std std-doc">statistic</span></a>s, by theory we have 2 options, random sampling and regular sampling.</p>
 <ul class="simple">
 <li><p>What would happen if you proposed random sampling in the Gulf of Mexico at $150M per well?</p></li>
 </ul>
@@ -544,11 +549,11 @@ Is random sampling sufficient for subsurface?  Is it available?</p>
 </section>
 <section id="cell-based-declustering-summary">
 <h2>Cell-based Declustering Summary<a class="headerlink" href="#cell-based-declustering-summary" title="Permalink to this heading">#</a></h2>
-<p>Sample data debiasing with cell-based declustering proceeds by placing a cell mesh over the data and share the weight over each cell.</p>
+<p>Sample data debiasing with cell-based <a class="reference internal" href="MachineLearning_glossary_d_f.html#declustering"><span class="std std-doc">declustering</span></a> proceeds by placing a cell mesh over the data and share the weight over each cell.</p>
 <ul class="simple">
-<li><p>data in densely sampled areas or volumes will get less weight while data in sparsely sampled areas or volumes will get more weight.</p></li>
+<li><p>data in densely sampled areas or volumes will get less <a class="reference internal" href="MachineLearning_glossary_s_z.html#weight"><span class="std std-doc">weight</span></a> while data in sparsely sampled areas or volumes will get more weight.</p></li>
 </ul>
-<p>Cell-based declustering weights are calculated by first identifying the cell that the data occupies, <span class="math notranslate nohighlight">\(\ell\)</span>, then applying this equation,</p>
+<p>Cell-based declustering weights are calculated by first identifying the cell that the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> occupies, <span class="math notranslate nohighlight">\(\ell\)</span>, then applying this equation,</p>
 <div class="math notranslate nohighlight">
 \[
 w(\bf{𝐮}_j) = \frac{1}{n_{\ell}} \cdot \frac{n}{L_o}
@@ -562,9 +567,9 @@ w(\bf{𝐮}_j) = \frac{1}{n_{\ell}} \cdot \frac{n}{L_o}
 <p>Additional considerations:</p>
 <ul class="simple">
 <li><p>influence of cell mesh origin is removed by averaging the data weights over multiple random cell mesh origins</p></li>
-<li><p>the optimum cell size is selected by minimizing or maximizing the declustered mean, based on whether the means is biased high or low respectively</p></li>
+<li><p>the optimum cell size is selected by minimizing or maximizing the declustered <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a>, based on whether the means is biased high or low respectively</p></li>
 </ul>
-<p>In this demonstration we will take a biased spatial sample data set and apply declustering using <strong>GeostatsPy</strong> functionality.</p>
+<p>In this demonstration we will take a biased spatial <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a> data set and apply declustering using <strong>GeostatsPy</strong> functionality.</p>
 </section>
 <section id="load-the-required-libraries">
 <h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
@@ -637,7 +642,7 @@ w(\bf{𝐮}_j) = \frac{1}{n_{\ell}} \cdot \frac{n}{L_o}
 </section>
 <section id="loading-tabular-data">
 <h2>Loading Tabular Data<a class="headerlink" href="#loading-tabular-data" title="Permalink to this heading">#</a></h2>
-<p>Here’s the command to load our comma delimited data file in to a Pandas’ DataFrame object.</p>
+<p>Here’s the command to load our comma delimited <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> file in to a Pandas’ <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a> object.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/spatial_nonlinear_MV_facies_v5_sand_only.csv&#39;</span><span class="p">)</span>
@@ -754,8 +759,8 @@ w(\bf{𝐮}_j) = \frac{1}{n_{\ell}} \cdot \frac{n}{L_o}
 </section>
 <section id="summary-statistics-for-tabular-data">
 <h2>Summary Statistics for Tabular Data<a class="headerlink" href="#summary-statistics-for-tabular-data" title="Permalink to this heading">#</a></h2>
-<p>The table includes X and Y coordinates (meters), Facies 1 and 2 (1 is sandstone and 0 interbedded sand and mudstone), Porosity (fraction), and permeability as Perm (mDarcy).</p>
-<p>There are a lot of efficient methods to calculate summary statistics from tabular data in DataFrames. The describe command provides count, mean, minimum, maximum, and quartiles all in a nice data table. We use transpose just to flip the table so that features are on the rows and the statistics are on the columns.</p>
+<p>The table includes X and Y coordinates (meters), <a class="reference internal" href="MachineLearning_glossary_d_f.html#facies"><span class="std std-doc">Facies</span></a> 1 and 2 (1 is sandstone and 0 interbedded sand and mudstone), Porosity (fraction), and permeability as Perm (mDarcy).</p>
+<p>There are a lot of efficient methods to calculate summary <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">statistics</span></a> from <a class="reference internal" href="MachineLearning_glossary_s_z.html#tabular-data"><span class="std std-doc">tabular data</span></a> in <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a>s. The describe command provides count, <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a>, minimum, maximum, and quartiles all in a nice <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> table. We use transpose just to flip the table so that <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s are on the rows and the <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistic"><span class="std std-doc">statistic</span></a>s are on the columns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>                                                 <span class="c1"># summary statistics</span>
@@ -878,7 +883,11 @@ w(\bf{𝐮}_j) = \frac{1}{n_{\ell}} \cdot \frac{n}{L_o}
 </section>
 <section id="specify-the-area-of-interest">
 <h2>Specify the Area of Interest<a class="headerlink" href="#specify-the-area-of-interest" title="Permalink to this heading">#</a></h2>
-<p>It is natural to set the x and y coordinate and feature ranges manually. e.g. do you want your color bar to go from 0.05887 to 0.24230 exactly? Also, let’s pick a color map for display. I heard that plasma is known to be friendly to the color blind as the color and intensity vary together (hope I got that right, it was an interesting Twitter conversation started by Matt Hall from Agile if I recall correctly). We will assume a study area of 0 to 1,000m in x and y and omit any data outside this area.</p>
+<p>It is natural to set the x and y coordinate and <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> ranges manually. e.g. do you want your color bar to go from 0.05887 to 0.24230 exactly? Also, let’s pick a color map for display.</p>
+<ul class="simple">
+<li><p>I heard that plasma is known to be friendly to the color blind as the color and intensity vary together (hope I got that right, it was an interesting Twitter conversation started by Matt Hall from Agile if I remember correctly).</p></li>
+<li><p>We assume a study area of 0 to 1,000m in x and y and omit any <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> outside this area.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xmin</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">xmax</span> <span class="o">=</span> <span class="mf">10000.0</span>                                    <span class="c1"># range of x values</span>
@@ -893,7 +902,7 @@ w(\bf{𝐮}_j) = \frac{1}{n_{\ell}} \cdot \frac{n}{L_o}
 </section>
 <section id="visualizing-tabular-data-with-location-maps">
 <h2>Visualizing Tabular Data with Location Maps<a class="headerlink" href="#visualizing-tabular-data-with-location-maps" title="Permalink to this heading">#</a></h2>
-<p>Let’s try out locmap. This is a reimplementation of GSLIB’s locmap program that uses matplotlib. I hope you find it simpler than matplotlib, if you want to get more advanced and build custom plots lock at the source. If you improve it, send me the new code. Any help is appreciated. To see the parameters, just type the command name:</p>
+<p>Let’s try out locmap. This is a reimplementation of GSLIB’s locmap program that uses matplotlib. I hope you find it simpler than matplotlib, if you want to get more advanced and build custom plots lock at the source. If you improve it, send me the new code. Any help is appreciated. To see the <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a>s, just type the command name:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">GSLIB</span><span class="o">.</span><span class="n">locmap</span>                                                  <span class="c1"># GeostatsPy&#39;s 2D point plot function</span>
@@ -922,8 +931,8 @@ w(\bf{𝐮}_j) = \frac{1}{n_{\ell}} \cdot \frac{n}{L_o}
 </section>
 <section id="cell-based-declustering">
 <h2>Cell-based Declustering<a class="headerlink" href="#cell-based-declustering" title="Permalink to this heading">#</a></h2>
-<p>Look carefully, and you’ll notice that the spatial samples are more dense in the high porosity regions and lower in the low porosity regions. There is preferential sampling. We cannot use the naive statistics to represent this region. We have to correct for the clustering of the samples in the high porosity regions.</p>
-<p>Let’s try cell declustering. We can interpret that we will want to minimize the declustering mean and that a cell size of between 100 - 200m is likely a good cell size, this is ‘an ocular’ estimate of the largest average spacing in the sparsely sampled regions.</p>
+<p>Look carefully, and you’ll notice that the spatial <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s are more dense in the high porosity regions and lower in the low porosity regions. There is preferential sampling. We cannot use the naive <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">statistics</span></a> to represent this region. We have to correct for the clustering of the samples in the high porosity regions.</p>
+<p>Let’s try cell <a class="reference internal" href="MachineLearning_glossary_d_f.html#declustering"><span class="std std-doc">declustering</span></a>. We can interpret that we will want to minimize the declustering <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a> and that a cell size of between 100 - 200m is likely a good cell size, this is ‘an ocular’ estimate of the largest <a class="reference internal" href="MachineLearning_glossary_a_c.html#average"><span class="std std-doc">average</span></a> spacing in the sparsely sampled regions.</p>
 <p>Let’s check out the declus program reimplemented in GeostatsPy from GSLIB.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1066,7 +1075,7 @@ w(\bf{𝐮}_j) = \frac{1}{n_{\ell}} \cdot \frac{n}{L_o}
 </section>
 <section id="checking-cell-based-declustering">
 <h2>Checking Cell-based Declustering<a class="headerlink" href="#checking-cell-based-declustering" title="Permalink to this heading">#</a></h2>
-<p>First, let’s look at the location map of the declustering weights.</p>
+<p>First, let’s look at the location map of the <a class="reference internal" href="MachineLearning_glossary_d_f.html#declustering"><span class="std std-doc">declustering</span></a> <a class="reference internal" href="MachineLearning_glossary_s_z.html#weight"><span class="std std-doc">weight</span></a>s.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">GSLIB</span><span class="o">.</span><span class="n">locmap_st</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Wts&#39;</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">2.5</span><span class="p">,</span><span class="s1">&#39;Well Data Weights&#39;</span><span class="p">,</span><span class="s1">&#39;X (m)&#39;</span><span class="p">,</span><span class="s1">&#39;Y (m)&#39;</span><span class="p">,</span><span class="s1">&#39;Weights&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span> <span class="c1"># check</span>
@@ -1160,8 +1169,8 @@ DescribeResult(nobs=270, minmax=(0.20904854434290107, 5.060379981544719), mean=1
 </section>
 <section id="calculating-declustered-statistics">
 <h2>Calculating Declustered Statistics<a class="headerlink" href="#calculating-declustered-statistics" title="Permalink to this heading">#</a></h2>
-<p>There are methods available to calculate weighted means, histograms and CDFs. We can always calculate weighted statistics manually.</p>
-<p><strong>Weighted Variance</strong></p>
+<p>There are methods available to calculate weighted <a class="reference internal" href="MachineLearning_glossary_m_r.html#mean"><span class="std std-doc">mean</span></a>s, <a class="reference internal" href="MachineLearning_glossary_g_l.html#histogram"><span class="std std-doc">histogram</span></a>s and CDFs. We can always calculate weighted <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">statistics</span></a> manually.</p>
+<p><strong>Weighted <a class="reference internal" href="MachineLearning_glossary_s_z.html#variance"><span class="std std-doc">Variance</span></a></strong></p>
 <div class="math notranslate nohighlight">
 \[
 \mu = \frac{1}{\sum^{n}_{j=1} w(\bf{u}_j)} \sum^{n}_{j=1} w(\bf{u}_j)x(\bf{u}_j)
@@ -1171,12 +1180,12 @@ DescribeResult(nobs=270, minmax=(0.20904854434290107, 5.060379981544719), mean=1
 \[
 \sigma^2 = \frac{1}{\sum^{n}_{j=1} w(\bf{u}_j)} \sum^{n}_{j=1} w(\bf{u}_j)(x(\bf{u}_j)-\overline{x})^2
 \]</div>
-<p><strong>Weighted Standard Deviation</strong></p>
+<p><strong>Weighted <a class="reference internal" href="MachineLearning_glossary_s_z.html#standard-deviation"><span class="std std-doc">Standard Deviation</span></a></strong></p>
 <div class="math notranslate nohighlight">
 \[
 \sigma = \sqrt{ \frac{1}{\sum^{n}_{j=1} w(\bf{u}_j)} \sum^{n}_{j=1} w(\bf{u}_j)(x(\bf{u}_j)-\overline{x})^2 }
 \]</div>
-<p>A convenient way to do this is with the StatsModels’ DescrStatsW object that adds the weights to the data (1D or 2D) and then provides member functions for weighted statistics.</p>
+<p>A convenient way to do this is with the StatsModels’ DescrStatsW object that adds the <a class="reference internal" href="MachineLearning_glossary_s_z.html#weight"><span class="std std-doc">weight</span></a>s to the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> (1D or 2D) and then provides member functions for weighted <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistic"><span class="std std-doc">statistic</span></a>s.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weighted_data</span> <span class="o">=</span> <span class="n">DescrStatsW</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Por&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Wts&#39;</span><span class="p">],</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -1200,7 +1209,7 @@ DescribeResult(nobs=270, minmax=(0.20904854434290107, 5.060379981544719), mean=1
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
-<p>This was a basic demonstration of spatial data declustering for representative statistics that may be implemented to improve our machine learning models. Much more can be done, I have other demonstrations for modeling workflows with GeostatsPy in the GitHub repository <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPy_Demos/tree/main">GeostatsPy_Demos</a>.</p>
+<p>This was a basic demonstration of spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> <a class="reference internal" href="MachineLearning_glossary_d_f.html#declustering"><span class="std std-doc">declustering</span></a> for representative <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">statistics</span></a> that may be implemented to improve our machine learning models. Much more can be done, I have other demonstrations for modeling workflows with GeostatsPy in the GitHub repository <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPy_Demos/tree/main">GeostatsPy_Demos</a>.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
@@ -1211,20 +1220,20 @@ DescribeResult(nobs=270, minmax=(0.20904854434290107, 5.060379981544719), mean=1
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
 </figcaption>
 </figure>
-<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a>, <a class="reference internal" href="MachineLearning_glossary_g_l.html#geostatistics"><span class="std std-doc">geostatistics</span></a>, and machine learning. Michael is also,</p>
 <ul class="simple">
-<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a <a class="reference internal" href="MachineLearning_glossary_a_c.html#core"><span class="std std-doc">core</span></a> faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>Michael has written over 100 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
 <p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
-<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a> and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
-<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">Data</span></a> Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>. We are solving challenging subsurface problems!</p></li>
 <li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
 </ul>
 <p>I’m always happy to discuss,</p>

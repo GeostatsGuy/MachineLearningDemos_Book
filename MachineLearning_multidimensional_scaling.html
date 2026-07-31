@@ -174,6 +174,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_concepts.html">Machine Learning Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_subsurface_modeling.html">Subsurface Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_training_tuning.html">Training and Tuning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
@@ -219,7 +220,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_python.html">Python Code Snippets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_a_c.html">Glossary A-C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_d_f.html">Glossary D-F</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_g_l.html">Glossary G-L</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_m_r.html">Glossary M-R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_s_z.html">Glossary S-Z</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -477,13 +482,13 @@ document.write(`
 <p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
 <section id="motivation-for-multidimensional-scaling">
 <h2>Motivation for Multidimensional Scaling<a class="headerlink" href="#motivation-for-multidimensional-scaling" title="Permalink to this heading">#</a></h2>
-<p>Working with more features / variables is harder!</p>
+<p>Working with more features / <a class="reference internal" href="MachineLearning_glossary_s_z.html#variable"><span class="std std-doc">variable</span></a>s is harder!</p>
 <ol class="arabic simple">
-<li><p>More difficult to visualize data and model</p></li>
+<li><p>More difficult to visualize <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> and model</p></li>
 <li><p>More data are required to infer the joint probabilities</p></li>
-<li><p>Less data coverage of feature space</p></li>
+<li><p>Less data coverage of <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-space"><span class="std std-doc">feature space</span></a></p></li>
 <li><p>More difficult to interrogate / check the model</p></li>
-<li><p>More likely redundant features, e.g., multicollinearity, resulting in model instability</p></li>
+<li><p>More likely redundant <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s, e.g., multicollinearity, resulting in model instability</p></li>
 <li><p>More computational effort, more computational resources and longer run times</p></li>
 <li><p>More complicated model is more likely overfit</p></li>
 <li><p>More professional time for model construction</p></li>
@@ -492,33 +497,33 @@ document.write(`
 </section>
 <section id="inferential-machine-learning">
 <h2>Inferential Machine Learning<a class="headerlink" href="#inferential-machine-learning" title="Permalink to this heading">#</a></h2>
-<p>There are no response features, <span class="math notranslate nohighlight">\(y\)</span>, just predictor features,</p>
+<p>There are no response <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s, <span class="math notranslate nohighlight">\(y\)</span>, just <a class="reference internal" href="MachineLearning_glossary_m_r.html#predictor-feature"><span class="std std-doc">predictor feature</span></a>s,</p>
 <div class="math notranslate nohighlight">
 \[
 𝑋_1,\ldots,𝑋_𝑚
 \]</div>
 <ul class="simple">
-<li><p>Machine learns by mimicry a compact representation of the data</p></li>
-<li><p>Captures patterns as feature projections, group assignments, neural network latent features, etc.</p></li>
-<li><p>We focus on inference of the population, the natural system, instead of prediction of response features.</p></li>
+<li><p>Machine learns by mimicry a compact representation of the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a></p></li>
+<li><p>Captures patterns as <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-projection"><span class="std std-doc">feature projection</span></a>s, group assignments, <a class="reference internal" href="MachineLearning_glossary_m_r.html#neural-network"><span class="std std-doc">neural network</span></a> <a class="reference internal" href="MachineLearning_glossary_g_l.html#latent-feature"><span class="std std-doc">latent feature</span></a>s, etc.</p></li>
+<li><p>We focus on <a class="reference internal" href="MachineLearning_glossary_g_l.html#inference"><span class="std std-doc">inference</span></a> of the <a class="reference internal" href="MachineLearning_glossary_m_r.html#population"><span class="std std-doc">population</span></a>, the natural system, instead of <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a> of <a class="reference internal" href="MachineLearning_glossary_m_r.html#response-feature"><span class="std std-doc">response feature</span></a>s.</p></li>
 </ul>
 </section>
 <section id="id1">
 <h2>Multidimensional Scaling<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
-<p>A powerful ordination method in inferential statistics / information visualization for exploring / visualizing the similarity (conversely the difference) between individual samples from a high dimensional dataset.</p>
+<p>A powerful ordination method in inferential <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">statistics</span></a> / information visualization for exploring / visualizing the similarity (conversely the difference) between individual samples from a high dimensional dataset.</p>
 <ul class="simple">
-<li><p>beyond 2 or 3 features it is difficult to visualize the relationships within our datasets</p></li>
-<li><p>for 2 features we can easily visualize the relationships between data samples with a regular scatter plot</p></li>
-<li><p>for 3 features we can either visualize our scatter plot in 3D (e.g., with interactive rotation) or by including color or through marginalization with matrix scatter plots</p></li>
+<li><p>beyond 2 or 3 <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s it is difficult to visualize the relationships within our datasets</p></li>
+<li><p>for 2 features we can easily visualize the relationships between <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> samples with a regular <a class="reference internal" href="MachineLearning_glossary_s_z.html#scatter-plot"><span class="std std-doc">scatter plot</span></a></p></li>
+<li><p>for 3 features we can either visualize our scatter plot in 3D (e.g., with interactive rotation) or by including color or through marginalization with <a class="reference internal" href="MachineLearning_glossary_m_r.html#matrix-scatter-plots"><span class="std std-doc">matrix scatter plots</span></a></p></li>
 </ul>
-<p>Multidimensional scaling projects the <span class="math notranslate nohighlight">\(m\)</span> dimensional data to <span class="math notranslate nohighlight">\(p\)</span> dimensions such that <span class="math notranslate nohighlight">\(p &lt;&lt; m\)</span>.</p>
+<p><a class="reference internal" href="MachineLearning_glossary_m_r.html#multidimensional-scaling"><span class="std std-doc">Multidimensional scaling</span></a> projects the <span class="math notranslate nohighlight">\(m\)</span> dimensional data to <span class="math notranslate nohighlight">\(p\)</span> dimensions such that <span class="math notranslate nohighlight">\(p &lt;&lt; m\)</span>.</p>
 <ul class="simple">
-<li><p>ideally we are able to project to <span class="math notranslate nohighlight">\(p=2\)</span> to easily explore the relationships between the samples</p></li>
+<li><p>ideally we are able to project to <span class="math notranslate nohighlight">\(p=2\)</span> to easily explore the relationships between the <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s</p></li>
 </ul>
-<p>While principal component analysis (PCA) operates with the covariance matrix, multidimensional scaling operates with the distance / dissimilarity matrix. For multidimensional scaling:</p>
+<p>While <a class="reference internal" href="MachineLearning_glossary_m_r.html#principal-component-analysis"><span class="std std-doc">principal component analysis</span></a> (PCA) operates with the <a class="reference internal" href="MachineLearning_glossary_a_c.html#covariance"><span class="std std-doc">covariance</span></a> matrix, multidimensional scaling operates with the distance / dissimilarity matrix. For multidimensional scaling:</p>
 <ul class="simple">
-<li><p>you don’t need to know the actual feature values, just the distance or dissimilarity between the samples</p></li>
-<li><p>as with any distance in feature space, we consider feature standardization to ensure that features with larger variance do not dominate the calculation</p></li>
+<li><p>you don’t need to know the actual feature <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s, just the distance or dissimilarity between the samples</p></li>
+<li><p>as with any distance in <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-space"><span class="std std-doc">feature space</span></a>, we consider feature <a class="reference internal" href="MachineLearning_glossary_s_z.html#standardization"><span class="std std-doc">standardization</span></a> to ensure that features with larger <a class="reference internal" href="MachineLearning_glossary_s_z.html#variance"><span class="std std-doc">variance</span></a> do not dominate the calculation</p></li>
 <li><p>we may work with a variety of dissimilarity measures</p></li>
 </ul>
 </section>
@@ -529,7 +534,7 @@ document.write(`
 <li><p>a list of cities, Boston, Chicago, DC, Denver, etc.</p></li>
 <li><p>along with their X and Y locations (ignore geodesic considerations)</p></li>
 </ul>
-<p>We have the locations, and we calculate the distance between each of the cities, a measure of pairwise sample dissimilarity by Euclidean distance, the distance matrix,</p>
+<p>We have the locations, and we calculate the distance between each of the cities, a measure of pairwise <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a> dissimilarity by Euclidean distance, the distance matrix,</p>
 <figure style="text-align: center;">
   <img src="_static\MDS\cities.png" style="display: block; margin: 0 auto; width: 100%;">
   <figcaption style="text-align: center;">Matrix of inter-city distances, analogous to sample dissimilarity, from http://personality-project.org/r/mds.html.</figcaption>
@@ -542,7 +547,7 @@ document.write(`
   <img src="_static\MDS\cities_MDS1.png" style="display: block; margin: 0 auto; width: 80%;">
   <figcaption style="text-align: center;">Cites projected by the distance matrix into a 2D space such that the inter-city distances are preserved, from http://personality-project.org/r/mds.html.</figcaption>
 </figure>
-<p>Unsurprisingly the matrix of distances between cities is perfectly reproduced, since the original data is in 2D, <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> coordinates, ignoring geodesic context</p>
+<p>Unsurprisingly the matrix of distances between cities is perfectly reproduced, since the original <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> is in 2D, <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> coordinates, ignoring geodesic context</p>
 <ul class="simple">
 <li><p>the distance matrix did not include any information about orientation or origin</p></li>
 </ul>
@@ -557,18 +562,18 @@ document.write(`
   <img src="_static\MDS\cities_MDS2.png" style="display: block; margin: 0 auto; width: 80%;">
   <figcaption style="text-align: center;">, MDS solution flipped to correct the \(Y\) coordinate, i.e., Seattle above LA, from http://personality-project.org/r/mds.html.</figcaption>
 </figure>
-<p>Of course, this example is trivial. Let’s demonstrate dimensionality reduction with a <a class="reference external" href="https://github.com/GeostatsGuy/PythonNumericalDemos/blob/master/MachineLearning_multidimensional_scaling_cities.ipynb">MDS workflow</a> developed by <a class="reference external" href="https://www.linkedin.com/in/alan-scherman/">Alan Scherman</a> while working with me on a summer undergraduate research project during an undergraduate Engineering <a class="reference external" href="http://B.Sc">B.Sc</a>. at Rice University.</p>
-<p>Alan took 20 cities, 10 from Texas and 10 from California and tabulated the distance from the centroid of the state, population, median income and average commute time and calculate the dissimilarity as the Euclidian norm.</p>
+<p>Of course, this example is trivial. Let’s demonstrate <a class="reference internal" href="MachineLearning_glossary_d_f.html#dimensionality-reduction"><span class="std std-doc">dimensionality reduction</span></a> with a <a class="reference external" href="https://github.com/GeostatsGuy/PythonNumericalDemos/blob/master/MachineLearning_multidimensional_scaling_cities.ipynb">MDS workflow</a> developed by <a class="reference external" href="https://www.linkedin.com/in/alan-scherman/">Alan Scherman</a> while working with me on a summer undergraduate research project during an undergraduate Engineering <a class="reference external" href="http://B.Sc">B.Sc</a>. at Rice University.</p>
+<p>Alan took 20 cities, 10 from Texas and 10 from California and tabulated the distance from the centroid of the state, <a class="reference internal" href="MachineLearning_glossary_m_r.html#population"><span class="std std-doc">population</span></a>, median income and average commute time and calculate the dissimilarity as the Euclidian <a class="reference internal" href="MachineLearning_glossary_m_r.html#norm"><span class="std std-doc">norm</span></a>.</p>
 <div class="math notranslate nohighlight">
 \[
 d_{i,j} = \sqrt{\left(d^{\Delta}_i - d^{\Delta}_j \right)^2 + \left(N_i - N_j \right)^2 + \left(I^{P50}_i - I^{P50}_j \right)^2 + \left(\overline{t}_i - \overline{t}_j \right)^2}
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(d^{\Delta}\)</span> is distance from state centroid, <span class="math notranslate nohighlight">\(N\)</span> is population, <span class="math notranslate nohighlight">\(I^{P50}\)</span> is median income and <span class="math notranslate nohighlight">\(\overline{t}\)</span> is average commute time. This Euclidian city dissimilarity is applied to calculate this dissimilarity matrix.</p>
+<p>where <span class="math notranslate nohighlight">\(d^{\Delta}\)</span> is distance from state centroid, <span class="math notranslate nohighlight">\(N\)</span> is population, <span class="math notranslate nohighlight">\(I^{P50}\)</span> is median income and <span class="math notranslate nohighlight">\(\overline{t}\)</span> is <a class="reference internal" href="MachineLearning_glossary_a_c.html#average"><span class="std std-doc">average</span></a> commute time. This Euclidian city dissimilarity is applied to calculate this dissimilarity matrix.</p>
 <figure style="text-align: center;">
   <img src="_static\MDS\TX_CA_dissimilarity.png" style="display: block; margin: 0 auto; width: 80%;">
   <figcaption style="text-align: center;"> Euclidean city dissimilarity matrix based on distance from the centroid of the state, population, median income and average commute time.</figcaption>
 </figure>
-<p>then with multidimensional scaling the cities are projected into a 2D space,</p>
+<p>then with <a class="reference internal" href="MachineLearning_glossary_m_r.html#multidimensional-scaling"><span class="std std-doc">multidimensional scaling</span></a> the cities are projected into a 2D space,</p>
 <figure style="text-align: center;">
   <img src="_static\MDS\TX_CA_MDS.png" style="display: block; margin: 0 auto; width: 80%;">
   <figcaption style="text-align: center;"> Texas and California cities projected into a lower dimensional 2D space from a 4D space based on centroid of the state, population, median income and average commute time.</figcaption>
@@ -582,7 +587,7 @@ d_{i,j} = \sqrt{\left(d^{\Delta}_i - d^{\Delta}_j \right)^2 + \left(N_i - N_j \r
 </section>
 <section id="classical-multidimensional-scaling">
 <h2>Classical Multidimensional Scaling<a class="headerlink" href="#classical-multidimensional-scaling" title="Permalink to this heading">#</a></h2>
-<p>Based on Euclidian distance between samples.</p>
+<p>Based on Euclidian distance between <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s.</p>
 <p>The Steps:</p>
 <ol class="arabic simple">
 <li><p>calculate the square, symmetric distance matrix:</p></li>
@@ -596,27 +601,27 @@ D^(2) = \begin{bmatrix}
 \delta_{n,1}^2 &amp; \delta_{n,2}^2 &amp; \dots &amp; \delta_{n,n}^2 \\
 \end{bmatrix}
 \end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\delta_{i,j}^2\)</span> is Euclidean distance between data samples at data indices <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>.</p>
+<p>where <span class="math notranslate nohighlight">\(\delta_{i,j}^2\)</span> is Euclidean distance between <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> samples at data indices <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>.</p>
 <ol class="arabic simple" start="3">
 <li><p>apply double centering <span class="math notranslate nohighlight">\(B = - \frac{1}{2} J D^{(2)} J\)</span></p></li>
-<li><p>solve for the eigenvalues, <span class="math notranslate nohighlight">\(\lambda_1,\ldots,\lambda_p\)</span></p></li>
+<li><p>solve for the <a class="reference internal" href="MachineLearning_glossary_d_f.html#eigenvalue"><span class="std std-doc">eigenvalue</span></a>s, <span class="math notranslate nohighlight">\(\lambda_1,\ldots,\lambda_p\)</span></p></li>
 <li><p>solve for the projected coordinates, <span class="math notranslate nohighlight">\(x^{'}_1, \dots ,x^{'}_p\)</span></p></li>
 </ol>
 <div class="math notranslate nohighlight">
 \[
 X^{'} = E_m \land^{\frac{1}{2}}_m
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(E_m\)</span> is the matrix of eigenvectors and <span class="math notranslate nohighlight">\(\land_m\)</span> is the diagonal matrix of eigenvalues.</p>
-<p>General comments about classical multidimensional scaling:</p>
+<p>where <span class="math notranslate nohighlight">\(E_m\)</span> is the matrix of <a class="reference internal" href="MachineLearning_glossary_d_f.html#eigenvector"><span class="std std-doc">eigenvector</span></a>s and <span class="math notranslate nohighlight">\(\land_m\)</span> is the diagonal matrix of eigenvalues.</p>
+<p>General remarks about classical <a class="reference internal" href="MachineLearning_glossary_m_r.html#multidimensional-scaling"><span class="std std-doc">multidimensional scaling</span></a>:</p>
 <ul class="simple">
-<li><p>nonlinear dimensionality reduction</p></li>
+<li><p>nonlinear <a class="reference internal" href="MachineLearning_glossary_d_f.html#dimensionality-reduction"><span class="std std-doc">dimensionality reduction</span></a></p></li>
 <li><p>no distribution assumption</p></li>
 <li><p>the transform may not be unique, and may be arbitrarily be translated, rotated and transformed (note, these do not change the pairwise distances <span class="math notranslate nohighlight">\(\delta_{i,j}^2\)</span>).</p></li>
 </ul>
 </section>
 <section id="metric-multidimensional-scaling">
 <h2>Metric Multidimensional Scaling<a class="headerlink" href="#metric-multidimensional-scaling" title="Permalink to this heading">#</a></h2>
-<p>A generalization of classical multidimensional scaling with a variety of metrics and a loss function optimization.</p>
+<p>A generalization of classical <a class="reference internal" href="MachineLearning_glossary_m_r.html#multidimensional-scaling"><span class="std std-doc">multidimensional scaling</span></a> with a variety of metrics and a <a class="reference internal" href="MachineLearning_glossary_g_l.html#loss-function"><span class="std std-doc">loss function</span></a> optimization.</p>
 <ul class="simple">
 <li><p>formulated as an optimization problem to minimize the square difference between the original and projected pairwise distances</p></li>
 </ul>
@@ -624,17 +629,17 @@ X^{'} = E_m \land^{\frac{1}{2}}_m
 \[
 min_{x_1,\ldots,x_m} \sum_{i&lt;j} \left( ||x_i - x_j|| - \delta_{i,j} \right)^2 
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(||x_i - x_j||\)</span> are the pairwise distances in the projected space (<span class="math notranslate nohighlight">\(p\)</span> dimensional) and <span class="math notranslate nohighlight">\(\delta_{i,j}\)</span> are the pairwise distances in the original feature space.</p>
-<p>General comments about metric multidimensional scaling:</p>
+<p>where <span class="math notranslate nohighlight">\(||x_i - x_j||\)</span> are the pairwise distances in the projected space (<span class="math notranslate nohighlight">\(p\)</span> dimensional) and <span class="math notranslate nohighlight">\(\delta_{i,j}\)</span> are the pairwise distances in the original <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-space"><span class="std std-doc">feature space</span></a>.</p>
+<p>General remarks about metric multidimensional scaling:</p>
 <ul class="simple">
 <li><p>dissimilarity measure must be meaningful</p></li>
-<li><p>dimensionality reduction is performed such that the error in the sample pairwise distance is minimized</p></li>
-<li><p>there is a variant known as non-metric multidimensional scaling for ordinal features (categorical with ordering).</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_d_f.html#dimensionality-reduction"><span class="std std-doc">dimensionality reduction</span></a> is performed such that the error in the <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a> pairwise distance is minimized</p></li>
+<li><p>there is a variant known as non-metric multidimensional scaling for ordinal <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s (categorical with ordering).</p></li>
 </ul>
 </section>
 <section id="checking-multidimensional-scaling-results">
 <h2>Checking Multidimensional Scaling Results<a class="headerlink" href="#checking-multidimensional-scaling-results" title="Permalink to this heading">#</a></h2>
-<p>The multidimensional scaling approach minimizes the square difference of the pairwise distances between all of the data samples and each other between the projected, lower dimensional, and original feature space.</p>
+<p>The <a class="reference internal" href="MachineLearning_glossary_m_r.html#multidimensional-scaling"><span class="std std-doc">multidimensional scaling</span></a> approach minimizes the square difference of the pairwise distances between all of the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s and each other between the projected, lower dimensional, and original <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-space"><span class="std std-doc">feature space</span></a>.</p>
 <ul class="simple">
 <li><p><strong>stress</strong> is defined as:</p></li>
 </ul>
@@ -649,8 +654,8 @@ Stress_P(x_1,\ldots,x_n) = \left( \sum_{i \ne j = 1,\ldots,n} \left( ||x_i - x_j
 <section id="comparison-with-principal-component-analysis">
 <h2>Comparison with Principal Component Analysis<a class="headerlink" href="#comparison-with-principal-component-analysis" title="Permalink to this heading">#</a></h2>
 <p>MDS and PCA are quite different, here’s a short summary of each to help elucidate the difference:</p>
-<p>Principal component analysis takes the covariance matrix (<span class="math notranslate nohighlight">\(m \times m\)</span>) between all the features and finds the orthogonal rotation such that the <strong>variance is maximized</strong> over the ordered principle components.</p>
-<p>Multidimensional scaling takes the matrix of the pairwise distances (<span class="math notranslate nohighlight">\(n \times n\)</span>) between all the samples in feature space and finds the nonlinear projection such that the <strong>error in the pairwise distances is minimized</strong>.</p>
+<p><a class="reference internal" href="MachineLearning_glossary_m_r.html#principal-component-analysis"><span class="std std-doc">Principal component analysis</span></a> takes the <a class="reference internal" href="MachineLearning_glossary_a_c.html#covariance"><span class="std std-doc">covariance</span></a> matrix (<span class="math notranslate nohighlight">\(m \times m\)</span>) between all the <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s and finds the orthogonal rotation such that the <strong><a class="reference internal" href="MachineLearning_glossary_s_z.html#variance"><span class="std std-doc">variance</span></a> is maximized</strong> over the ordered principle components.</p>
+<p><a class="reference internal" href="MachineLearning_glossary_m_r.html#multidimensional-scaling"><span class="std std-doc">Multidimensional scaling</span></a> takes the matrix of the pairwise distances (<span class="math notranslate nohighlight">\(n \times n\)</span>) between all the <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s in <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-space"><span class="std std-doc">feature space</span></a> and finds the nonlinear projection such that the <strong>error in the pairwise distances is minimized</strong>.</p>
 </section>
 <section id="load-the-required-libraries">
 <h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
@@ -717,7 +722,7 @@ Stress_P(x_1,\ldots,x_n) = \left( \sum_{i \ne j = 1,\ldots,n} \left( ||x_i - x_j
 </section>
 <section id="loading-data">
 <h2>Loading Data<a class="headerlink" href="#loading-data" title="Permalink to this heading">#</a></h2>
-<p>Let’s load the provided multivariate, spatial dataset <a class="reference external" href="https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/unconv_MV.csv">unconv_MV.csv</a> available in my GeoDataSet repo. It is a comma delimited file with:</p>
+<p>Let’s load the provided <a class="reference internal" href="MachineLearning_glossary_m_r.html#multivariate"><span class="std std-doc">multivariate</span></a>, spatial dataset <a class="reference external" href="https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/unconv_MV.csv">unconv_MV.csv</a> available in my GeoDataSet repo. It is a comma delimited file with:</p>
 <ul class="simple">
 <li><p>well index (integer)</p></li>
 <li><p>porosity (%)</p></li>
@@ -726,9 +731,9 @@ Stress_P(x_1,\ldots,x_n) = \left( \sum_{i \ne j = 1,\ldots,n} \left( ||x_i - x_j
 <li><p>brittleness (%)</p></li>
 <li><p>total organic carbon (%)</p></li>
 <li><p>vitrinite reflectance (%)</p></li>
-<li><p>initial gas production (90 day average) (MCFPD)</p></li>
+<li><p>initial gas production (90 day <a class="reference internal" href="MachineLearning_glossary_a_c.html#average"><span class="std std-doc">average</span></a>) (MCFPD)</p></li>
 </ul>
-<p>We load it with the pandas ‘read_csv’ function into a data frame we called ‘df’ and then preview it to make sure it loaded correctly.</p>
+<p>We load it with the pandas ‘read_csv’ function into a <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> frame we called ‘df’ and then preview it to make sure it loaded correctly.</p>
 <p><strong>Python Tip: using functions from a package</strong> just type the label for the package that we declared at the beginning:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </pre></div>
@@ -737,12 +742,12 @@ Stress_P(x_1,\ldots,x_n) = \left( \sum_{i \ne j = 1,\ldots,n} \left( ||x_i - x_j
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>but read csv has required input parameters. The essential one is the name of the file. For our circumstance all the other default parameters are fine. If you want to see all the possible parameters for this function, just go to the docs <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html">here</a>.</p>
+<p>but read csv has required input <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a>s. The essential one is the name of the file. For our circumstance all the other default parameters are fine. If you want to see all the possible parameters for this function, just go to the docs <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html">here</a>.</p>
 <ul class="simple">
 <li><p>The docs are always helpful</p></li>
 <li><p>There is often a lot of flexibility for Python functions, possible through using various inputs parameters</p></li>
 </ul>
-<p>also, the program has an output, a pandas DataFrame loaded from the data.  So we have to specficy the name / variable representing that new object.</p>
+<p>also, the program has an output, a pandas <a class="reference internal" href="MachineLearning_glossary_d_f.html#dataframe"><span class="std std-doc">DataFrame</span></a> loaded from the data.  So we have to specficy the name / <a class="reference internal" href="MachineLearning_glossary_s_z.html#variable"><span class="std std-doc">variable</span></a> representing that new object.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;unconv_MV.csv&quot;</span><span class="p">)</span>  
 </pre></div>
 </div>
@@ -869,7 +874,7 @@ Stress_P(x_1,\ldots,x_n) = \left( \sum_{i \ne j = 1,\ldots,n} \left( ||x_i - x_j
 </section>
 <section id="summary-statistics">
 <h2>Summary Statistics<a class="headerlink" href="#summary-statistics" title="Permalink to this heading">#</a></h2>
-<p>Let’s check the summary statistics of our data.</p>
+<p>Let’s check the summary <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">statistics</span></a> of our <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -1015,14 +1020,14 @@ Stress_P(x_1,\ldots,x_n) = \left( \sum_{i \ne j = 1,\ldots,n} \left( ||x_i - x_j
 </section>
 <section id="data-preparation">
 <h2>Data Preparation<a class="headerlink" href="#data-preparation" title="Permalink to this heading">#</a></h2>
-<p>Let’s make an ordinal feature from the continuous production:</p>
+<p>Let’s make an ordinal <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a> from the continuous production:</p>
 <ol class="arabic simple">
 <li><p>low</p></li>
 <li><p>medium</p></li>
 <li><p>high</p></li>
 <li><p>very high</p></li>
 </ol>
-<p>production rates.  This will help us visualize the results as we proceed, we can look at wells with different levels of production projected into a variety of lower dimensional spaces with multidimensional scaling.</p>
+<p>production rates.  This will help us visualize the results as we proceed, we can look at wells with different levels of production projected into a variety of lower dimensional spaces with <a class="reference internal" href="MachineLearning_glossary_m_r.html#multidimensional-scaling"><span class="std std-doc">multidimensional scaling</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2500</span><span class="p">,</span><span class="mi">5000</span><span class="p">,</span><span class="mi">7500</span><span class="p">,</span><span class="mi">10000</span><span class="p">]</span>                               <span class="c1"># assign the production bins (these are the fence posts)</span>
@@ -1054,13 +1059,13 @@ Stress_P(x_1,\ldots,x_n) = \left( \sum_{i \ne j = 1,\ldots,n} \left( ||x_i - x_j
 </section>
 <section id="id2">
 <h2>Multidimensional Scaling<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
-<p>The multidimensional scaling method follows the sample pattern as other scikit-learn methods, we:</p>
+<p>The <a class="reference internal" href="MachineLearning_glossary_m_r.html#multidimensional-scaling"><span class="std std-doc">multidimensional scaling</span></a> method follows the <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a> pattern as other scikit-learn methods, we:</p>
 <ol class="arabic simple">
 <li><p>instantiate</p></li>
 <li><p>fit</p></li>
 <li><p>apply, transform or predict</p></li>
 </ol>
-<p>Let’s run multidimensional scaling on our subset of features (<span class="math notranslate nohighlight">\(m = 3\)</span>) and project to only 2 features (<span class="math notranslate nohighlight">\(p = 2\)</span>).</p>
+<p>Let’s run multidimensional scaling on our subset of <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s (<span class="math notranslate nohighlight">\(m = 3\)</span>) and project to only 2 features (<span class="math notranslate nohighlight">\(p = 2\)</span>).</p>
 <ul class="simple">
 <li><p>we set the random_state for repeatability, everyone gets the same result from the iterative solution</p></li>
 <li><p>we use 20 random initializations, the best solution is selected to improve likelihood of selection of (or search resulting in) the global optimum and not a local optimum</p></li>
@@ -1281,7 +1286,7 @@ Stress_P(x_1,\ldots,x_n) = \left( \sum_{i \ne j = 1,\ldots,n} \left( ||x_i - x_j
 </section>
 <section id="observing-specific-samples">
 <h2>Observing Specific Samples<a class="headerlink" href="#observing-specific-samples" title="Permalink to this heading">#</a></h2>
-<p>Let’s reduce the number of wells and post the well numbers to observe their spacings in the original and projected features spaces.</p>
+<p>Let’s reduce the number of wells and post the well numbers to observe their spacings in the original and projected <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s spaces.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_subset</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span><span class="n">random_state</span> <span class="o">=</span> <span class="n">seed</span><span class="o">+</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>           <span class="c1"># randomly sample 30 data without replacement</span>
@@ -1378,7 +1383,7 @@ Stress_P(x_1,\ldots,x_n) = \left( \sum_{i \ne j = 1,\ldots,n} \left( ||x_i - x_j
 </section>
 <section id="applications-of-mds">
 <h2>Applications of MDS<a class="headerlink" href="#applications-of-mds" title="Permalink to this heading">#</a></h2>
-<p>The main application with multidimensional scaling is the ability to inspect high dimensional feature spaces for relationships between samples.</p>
+<p>The main application with <a class="reference internal" href="MachineLearning_glossary_m_r.html#multidimensional-scaling"><span class="std std-doc">multidimensional scaling</span></a> is the ability to inspect high dimensional <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature-space"><span class="std std-doc">feature space</span></a>s for relationships between samples.</p>
 <ul class="simple">
 <li><p>we may observe that specific wells cluster together</p></li>
 <li><p>we may observe systematic transitions</p></li>
@@ -1389,17 +1394,17 @@ Stress_P(x_1,\ldots,x_n) = \left( \sum_{i \ne j = 1,\ldots,n} \left( ||x_i - x_j
 <li><p>Well 70 is close to the many low producing well, but is a medium producing well.</p></li>
 <li><p>Wells 155 and 158 are in a location of high producing wells, but are medium producing wells.</p></li>
 </ol>
-<p>This analysis may identify opportunities for further investigation into these specific data samples. Perhaps there are data issues or other confounding features to integrate.</p>
-<p>Recall, MDS is a one-way-trip.</p>
+<p>This analysis may identify opportunities for further investigation into these specific data <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s. Perhaps there are data issues or other confounding <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s to integrate.</p>
+<p>Note, MDS is a one-way-trip.</p>
 <ul class="simple">
-<li><p>While we can project the data into MDS space, there is no backtransformation; therefore, we cannot take an arbitrary location in MDS space and calculate the original feature combination.</p></li>
+<li><p>While we can project the <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> into MDS space, there is no backtransformation; therefore, we cannot take an arbitrary location in MDS space and calculate the original feature combination.</p></li>
 <li><p>The solution is nonunique with respect to translation, rotation and flipping. Our interpretation is based on separation distance and groupings in MDS space.</p></li>
 <li><p>The calculation is performed each time we change the data resulting in a new solution.</p></li>
 </ul>
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
-<p>This was a basic treatment of multidimensional scaling. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
+<p>This was a basic treatment of <a class="reference internal" href="MachineLearning_glossary_m_r.html#multidimensional-scaling"><span class="std std-doc">multidimensional scaling</span></a>. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
@@ -1410,20 +1415,20 @@ Stress_P(x_1,\ldots,x_n) = \left( \sum_{i \ne j = 1,\ldots,n} \left( ||x_i - x_j
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
 </figcaption>
 </figure>
-<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a>, <a class="reference internal" href="MachineLearning_glossary_g_l.html#geostatistics"><span class="std std-doc">geostatistics</span></a>, and machine learning. Michael is also,</p>
 <ul class="simple">
-<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a <a class="reference internal" href="MachineLearning_glossary_a_c.html#core"><span class="std std-doc">core</span></a> faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>Michael has written over 100 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
 <p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
-<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a> and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
-<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">Data</span></a> Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>. We are solving challenging subsurface problems!</p></li>
 <li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
 </ul>
 <p>I’m always happy to discuss,</p>
