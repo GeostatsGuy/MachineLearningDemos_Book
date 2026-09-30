@@ -170,12 +170,17 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_concepts.html">Machine Learning Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_subsurface_modeling.html">Subsurface Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_training_tuning.html">Training and Tuning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_plotting_data_models.html">Loading and Plotting Data and Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_univariate_statistics.html">Univariate Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_univariate_analysis.html">Univariate Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_multivariate_analysis.html">Multivariate Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_declustering.html">Spatial Data Debiasing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_bootstrap.html">Bootstrap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_monte_carlo_simulation.html">Monte Carlo Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_transformations.html">Feature Transformations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_ranking.html">Feature Ranking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_imputation.html">Feature Imputation</a></li>
@@ -200,14 +205,22 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_activation_functions.html">Neural Networks Activation Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_ANN.html">Artificial Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_CNN.html">Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_RNN.html">Recurrent Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_autoencoder.html">Autoencoder Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_GAN.html">Generative Adversarial Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_attention.html">Attention</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_time_series.html">Time Series Analysis and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_volume_variance.html">Volume-variance Relations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_model_checking.html">Model Checking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_decision_making.html">Decision Making with Uncertainty</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_python.html">Python Code Snippets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_a_c.html">Glossary A-C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_d_f.html">Glossary D-F</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_g_l.html">Glossary G-L</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_m_r.html">Glossary M-R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_s_z.html">Glossary S-Z</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -418,21 +431,597 @@ document.write(`
                   
   <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;C:\Users\pm27995\Downloads&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mf">0.001</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="mi">17</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="mf">0.000001</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">gaussian_kde</span>
+
+<span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;Grades_Summary.xlsx&quot;</span>
+
+<span class="n">sheets</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Spring2023&quot;</span><span class="p">,</span> <span class="s2">&quot;Spring2024&quot;</span><span class="p">,</span> <span class="s2">&quot;Spring2026&quot;</span><span class="p">]</span>
+
+<span class="n">quizzes</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Quiz1&quot;</span><span class="p">,</span> <span class="s2">&quot;Quiz2&quot;</span><span class="p">,</span> <span class="s2">&quot;Quiz3&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Quiz4&quot;</span><span class="p">,</span> <span class="s2">&quot;Quiz5&quot;</span><span class="p">,</span> <span class="s2">&quot;Quiz6&quot;</span>
+<span class="p">]</span>
+
+<span class="n">assignments</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Assignment1&quot;</span><span class="p">,</span> <span class="s2">&quot;Assignment2&quot;</span><span class="p">,</span> <span class="s2">&quot;Assignment3&quot;</span><span class="p">,</span><span class="s2">&quot;Assignment4&quot;</span><span class="p">,</span> <span class="s2">&quot;Assignment5&quot;</span><span class="p">,</span> <span class="s2">&quot;Assignment6&quot;</span><span class="p">,</span><span class="s2">&quot;Assignment7&quot;</span><span class="p">,</span> <span class="s2">&quot;Assignment8&quot;</span><span class="p">,</span> <span class="s2">&quot;Assignment9&quot;</span>
+<span class="p">]</span>
+
+<span class="n">assessment_order</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Assignment1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Assignment2&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Quiz1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Assignment3&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Assignment4&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Quiz2&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Midterm1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Assignment5&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Assignment6&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Quiz4&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Assignment7&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Assignment8&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Quiz5&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Assignment9&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Quiz6&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Midterm2&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">sheet</span> <span class="ow">in</span> <span class="n">sheets</span><span class="p">:</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="n">sheet</span><span class="p">)</span>
+
+    <span class="c1"># Convert blanks to NaN</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^\s*$&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+    <span class="c1"># Convert quizzes to percentage</span>
+    <span class="k">for</span> <span class="n">quiz</span> <span class="ow">in</span> <span class="n">quizzes</span><span class="p">:</span>
+        <span class="n">df</span><span class="p">[</span><span class="n">quiz</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span>
+            <span class="n">df</span><span class="p">[</span><span class="n">quiz</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;coerce&quot;</span>
+        <span class="p">)</span> <span class="o">/</span> <span class="mf">20.0</span> <span class="o">*</span> <span class="mf">100.0</span>
+
+    <span class="k">for</span> <span class="n">assignment</span> <span class="ow">in</span> <span class="n">assignments</span><span class="p">:</span>
+        <span class="n">df</span><span class="p">[</span><span class="n">assignment</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span>
+            <span class="n">df</span><span class="p">[</span><span class="n">assignment</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;coerce&quot;</span>
+        <span class="p">)</span> <span class="o">/</span> <span class="mf">20.0</span> <span class="o">*</span> <span class="mf">100.0</span>
+
+    <span class="c1"># Convert midterms to percentage</span>
+    <span class="k">for</span> <span class="n">midterm</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;Midterm1&quot;</span><span class="p">,</span> <span class="s2">&quot;Midterm2&quot;</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">midterm</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="n">df</span><span class="p">[</span><span class="n">midterm</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span>
+                <span class="n">df</span><span class="p">[</span><span class="n">midterm</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;coerce&quot;</span>
+            <span class="p">)</span> <span class="o">/</span> <span class="mf">50.0</span> <span class="o">*</span> <span class="mf">100.0</span>
+
+    <span class="n">data</span><span class="p">[</span><span class="n">sheet</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span>
+
+<span class="c1"># Fill missing values with NaN</span>
+<span class="k">for</span> <span class="n">sheet</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="n">data</span><span class="p">[</span><span class="n">sheet</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">sheet</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^\s*$&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># ============================================================</span>
+<span class="c1"># Plot quiz PDFs</span>
+<span class="c1"># ============================================================</span>
+
+<span class="n">colors</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Spring2023&quot;</span><span class="p">:</span> <span class="s2">&quot;tab:blue&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Spring2024&quot;</span><span class="p">:</span> <span class="s2">&quot;tab:orange&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Spring2026&quot;</span><span class="p">:</span> <span class="s2">&quot;tab:green&quot;</span>
+<span class="p">}</span>
+
+<span class="n">data</span><span class="p">[</span><span class="s2">&quot;Spring2023&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16.999996909767695
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">File ~\AppData\Local\anaconda3\envs\book\lib\site-packages\pandas\compat\_optional.py:142,</span> in <span class="ni">import_optional_dependency</span><span class="nt">(name, extra, errors, min_version)</span>
+<span class="g g-Whitespace">    </span><span class="mi">141</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">142</span>     <span class="n">module</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">143</span> <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+
+<span class="nn">File ~\AppData\Local\anaconda3\envs\book\lib\importlib\__init__.py:127,</span> in <span class="ni">import_module</span><span class="nt">(name, package)</span>
+<span class="g g-Whitespace">    </span><span class="mi">126</span>         <span class="n">level</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="ne">--&gt; </span><span class="mi">127</span> <span class="k">return</span> <span class="n">_bootstrap</span><span class="o">.</span><span class="n">_gcd_import</span><span class="p">(</span><span class="n">name</span><span class="p">[</span><span class="n">level</span><span class="p">:],</span> <span class="n">package</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:1014,</span> in <span class="ni">_gcd_import</span><span class="nt">(name, package, level)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:991,</span> in <span class="ni">_find_and_load</span><span class="nt">(name, import_)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:973,</span> in <span class="ni">_find_and_load_unlocked</span><span class="nt">(name, import_)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;openpyxl&#39;
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">42</span>
+<span class="g g-Whitespace">     </span><span class="mi">38</span> <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="g g-Whitespace">     </span><span class="mi">40</span> <span class="k">for</span> <span class="n">sheet</span> <span class="ow">in</span> <span class="n">sheets</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">42</span>     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="n">sheet</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">44</span>     <span class="c1"># Convert blanks to NaN</span>
+<span class="g g-Whitespace">     </span><span class="mi">45</span>     <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^\s*$&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\anaconda3\envs\book\lib\site-packages\pandas\io\excel\_base.py:478,</span> in <span class="ni">read_excel</span><span class="nt">(io, sheet_name, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skiprows, nrows, na_values, keep_default_na, na_filter, verbose, parse_dates, date_parser, date_format, thousands, decimal, comment, skipfooter, storage_options, dtype_backend)</span>
+<span class="g g-Whitespace">    </span><span class="mi">476</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">io</span><span class="p">,</span> <span class="n">ExcelFile</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">477</span>     <span class="n">should_close</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="ne">--&gt; </span><span class="mi">478</span>     <span class="n">io</span> <span class="o">=</span> <span class="n">ExcelFile</span><span class="p">(</span><span class="n">io</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">479</span> <span class="k">elif</span> <span class="n">engine</span> <span class="ow">and</span> <span class="n">engine</span> <span class="o">!=</span> <span class="n">io</span><span class="o">.</span><span class="n">engine</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">480</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">481</span>         <span class="s2">&quot;Engine should not be specified when passing &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">482</span>         <span class="s2">&quot;an ExcelFile - ExcelFile already has the engine set&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">483</span>     <span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\anaconda3\envs\book\lib\site-packages\pandas\io\excel\_base.py:1513,</span> in <span class="ni">ExcelFile.__init__</span><span class="nt">(self, path_or_buffer, engine, storage_options)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1510</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span> <span class="o">=</span> <span class="n">engine</span>
+<span class="g g-Whitespace">   </span><span class="mi">1511</span> <span class="bp">self</span><span class="o">.</span><span class="n">storage_options</span> <span class="o">=</span> <span class="n">storage_options</span>
+<span class="ne">-&gt; </span><span class="mi">1513</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reader</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engines</span><span class="p">[</span><span class="n">engine</span><span class="p">](</span><span class="bp">self</span><span class="o">.</span><span class="n">_io</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\anaconda3\envs\book\lib\site-packages\pandas\io\excel\_openpyxl.py:548,</span> in <span class="ni">OpenpyxlReader.__init__</span><span class="nt">(self, filepath_or_buffer, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">533</span> <span class="nd">@doc</span><span class="p">(</span><span class="n">storage_options</span><span class="o">=</span><span class="n">_shared_docs</span><span class="p">[</span><span class="s2">&quot;storage_options&quot;</span><span class="p">])</span>
+<span class="g g-Whitespace">    </span><span class="mi">534</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">535</span>     <span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">536</span>     <span class="n">filepath_or_buffer</span><span class="p">:</span> <span class="n">FilePath</span> <span class="o">|</span> <span class="n">ReadBuffer</span><span class="p">[</span><span class="nb">bytes</span><span class="p">],</span>
+<span class="g g-Whitespace">    </span><span class="mi">537</span>     <span class="n">storage_options</span><span class="p">:</span> <span class="n">StorageOptions</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">538</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">539</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">540</span><span class="sd">     Reader using openpyxl engine.</span>
+<span class="g g-Whitespace">    </span><span class="mi">541</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">546</span><span class="sd">     {storage_options}</span>
+<span class="g g-Whitespace">    </span><span class="mi">547</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">548</span>     <span class="n">import_optional_dependency</span><span class="p">(</span><span class="s2">&quot;openpyxl&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">549</span>     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\anaconda3\envs\book\lib\site-packages\pandas\compat\_optional.py:145,</span> in <span class="ni">import_optional_dependency</span><span class="nt">(name, extra, errors, min_version)</span>
+<span class="g g-Whitespace">    </span><span class="mi">143</span> <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">144</span>     <span class="k">if</span> <span class="n">errors</span> <span class="o">==</span> <span class="s2">&quot;raise&quot;</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">145</span>         <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">146</span>     <span class="k">return</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">148</span> <span class="c1"># Handle submodules: if we have submodule, grab parent module from sys.modules</span>
+
+<span class="ne">ImportError</span>: Missing optional dependency &#39;openpyxl&#39;.  Use pip or conda to install openpyxl.
 </pre></div>
 </div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================================</span>
+<span class="c1"># Plot quiz distributions: P10-P90 + P50</span>
+<span class="c1"># ============================================================</span>
+
+<span class="n">colors</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Spring2023&quot;</span><span class="p">:</span> <span class="s2">&quot;tab:blue&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Spring2024&quot;</span><span class="p">:</span> <span class="s2">&quot;tab:orange&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Spring2026&quot;</span><span class="p">:</span> <span class="s2">&quot;tab:green&quot;</span>
+<span class="p">}</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span>
+    <span class="n">nrows</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
+    <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">quiz</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">quizzes</span><span class="p">[:</span><span class="mi">3</span><span class="p">]):</span>
+
+    <span class="k">for</span> <span class="n">semester</span> <span class="ow">in</span> <span class="n">sheets</span><span class="p">:</span>
+
+        <span class="n">values</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">semester</span><span class="p">][</span><span class="n">quiz</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">values</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+        <span class="n">kde</span> <span class="o">=</span> <span class="n">gaussian_kde</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+        <span class="n">pdf</span> <span class="o">=</span> <span class="n">kde</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+        <span class="c1"># CDF of the KDE</span>
+        <span class="n">dx</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">cdf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">pdf</span><span class="p">)</span> <span class="o">*</span> <span class="n">dx</span>
+        <span class="n">cdf</span> <span class="o">/=</span> <span class="n">cdf</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="c1"># Find P10, P50, P90 of the distribution</span>
+        <span class="n">p10</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="mf">0.10</span><span class="p">,</span> <span class="n">cdf</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+        <span class="n">p50</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="mf">0.50</span><span class="p">,</span> <span class="n">cdf</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+        <span class="n">p90</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="mf">0.90</span><span class="p">,</span> <span class="n">cdf</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+        <span class="c1"># PDF height at the percentile locations</span>
+        <span class="n">y10</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">p10</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">pdf</span><span class="p">)</span>
+        <span class="n">y50</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">p50</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">pdf</span><span class="p">)</span>
+        <span class="n">y90</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">p90</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">pdf</span><span class="p">)</span>
+
+        <span class="c1"># Plot PDF</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+            <span class="n">x</span><span class="p">,</span>
+            <span class="n">pdf</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">semester</span><span class="p">],</span>
+            <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="n">semester</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Shade the P10-P90 region of the PDF</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="n">p10</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="n">p90</span><span class="p">)</span>
+
+        <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
+            <span class="n">x</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span>
+            <span class="n">pdf</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span>
+            <span class="mi">0</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">semester</span><span class="p">],</span>
+            <span class="n">alpha</span><span class="o">=</span><span class="mf">0.20</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Mark median</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span>
+            <span class="n">p50</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">semester</span><span class="p">],</span>
+            <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span>
+            <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+            <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span>
+        <span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span>
+        <span class="n">quiz</span><span class="p">,</span>
+        <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">labelpad</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span>
+        <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span>
+    <span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Quiz Score (%)&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span>
+    <span class="s2">&quot;Quiz Score Distributions by Semester&quot;</span><span class="p">,</span>
+    <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/374a6829ec78f7b080684efac94ebdecc9461a2430b6a24ba724914be3c9172d.png" src="_images/374a6829ec78f7b080684efac94ebdecc9461a2430b6a24ba724914be3c9172d.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================================</span>
+<span class="c1"># Plot Assignment PDFs: P10-P90 + P50</span>
+<span class="c1"># ============================================================</span>
+
+<span class="n">assignments</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Assignment1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Assignment2&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Assignment3&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Assignment4&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Assignment5&quot;</span>
+<span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span>
+    <span class="n">nrows</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span>
+    <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">assignment</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">assignments</span><span class="p">):</span>
+
+    <span class="k">for</span> <span class="n">semester</span> <span class="ow">in</span> <span class="n">sheets</span><span class="p">:</span>
+
+        <span class="n">values</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span>
+            <span class="n">data</span><span class="p">[</span><span class="n">semester</span><span class="p">][</span><span class="n">assignment</span><span class="p">],</span>
+            <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;coerce&quot;</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">values</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+        <span class="c1"># KDE</span>
+        <span class="n">kde</span> <span class="o">=</span> <span class="n">gaussian_kde</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+        <span class="n">pdf</span> <span class="o">=</span> <span class="n">kde</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+        <span class="c1"># CDF of KDE</span>
+        <span class="n">dx</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">cdf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">pdf</span><span class="p">)</span> <span class="o">*</span> <span class="n">dx</span>
+        <span class="n">cdf</span> <span class="o">/=</span> <span class="n">cdf</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="c1"># P10, P50, P90</span>
+        <span class="n">p10</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="mf">0.10</span><span class="p">,</span> <span class="n">cdf</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+        <span class="n">p50</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="mf">0.50</span><span class="p">,</span> <span class="n">cdf</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+        <span class="n">p90</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="mf">0.90</span><span class="p">,</span> <span class="n">cdf</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+        <span class="c1"># Plot PDF</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+            <span class="n">x</span><span class="p">,</span>
+            <span class="n">pdf</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">semester</span><span class="p">],</span>
+            <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="n">semester</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Shade P10-P90</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="n">p10</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="n">p90</span><span class="p">)</span>
+
+        <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
+            <span class="n">x</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span>
+            <span class="n">pdf</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span>
+            <span class="mi">0</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">semester</span><span class="p">],</span>
+            <span class="n">alpha</span><span class="o">=</span><span class="mf">0.20</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Median</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span>
+            <span class="n">p50</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">semester</span><span class="p">],</span>
+            <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span>
+            <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+            <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span>
+        <span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span>
+        <span class="n">assignment</span><span class="p">,</span>
+        <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">labelpad</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+        <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span>
+    <span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Assignment Score (%)&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span>
+    <span class="s2">&quot;Assignment Score Distributions by Semester&quot;</span><span class="p">,</span>
+    <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/2788fbab8944e9fbaaf6e990d6cb0662428f8d0f88218eb83ace007d19f76d79.png" src="_images/2788fbab8944e9fbaaf6e990d6cb0662428f8d0f88218eb83ace007d19f76d79.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================================</span>
+<span class="c1"># Calculate percentiles</span>
+<span class="c1"># ============================================================</span>
+
+<span class="n">percentiles</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">90</span><span class="p">]</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">semester</span><span class="p">,</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+
+    <span class="c1"># Make sure assessment columns are numeric</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">assessment_order</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;coerce&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Calculate percentile across students</span>
+    <span class="n">results</span><span class="p">[</span><span class="n">semester</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+        <span class="p">{</span>
+            <span class="n">col</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">percentiles</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">()</span>
+            <span class="k">else</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">percentiles</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">assessment_order</span>
+        <span class="p">},</span>
+        <span class="n">index</span><span class="o">=</span><span class="n">percentiles</span>
+    <span class="p">)</span>
+
+<span class="c1"># ============================================================</span>
+<span class="c1"># Plot</span>
+<span class="c1"># ============================================================</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+
+<span class="c1"># One color per semester</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Spring2023&quot;</span><span class="p">:</span> <span class="s2">&quot;tab:blue&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Spring2024&quot;</span><span class="p">:</span> <span class="s2">&quot;tab:orange&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Spring2026&quot;</span><span class="p">:</span> <span class="s2">&quot;tab:green&quot;</span>
+<span class="p">}</span>
+
+<span class="c1"># Different line styles for percentiles</span>
+<span class="n">linestyles</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="mi">10</span><span class="p">:</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span>
+    <span class="mi">50</span><span class="p">:</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span>
+    <span class="mi">90</span><span class="p">:</span> <span class="s2">&quot;--&quot;</span>
+<span class="p">}</span>
+
+<span class="c1"># Slightly different transparency for the percentile lines</span>
+<span class="n">linewidths</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="mi">10</span><span class="p">:</span> <span class="mf">1.2</span><span class="p">,</span>
+    <span class="mi">50</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span>
+    <span class="mi">90</span><span class="p">:</span> <span class="mf">1.2</span>
+<span class="p">}</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">assessment_order</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">semester</span> <span class="ow">in</span> <span class="n">sheets</span><span class="p">:</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="n">semester</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">percentile</span> <span class="ow">in</span> <span class="n">percentiles</span><span class="p">:</span>
+
+        <span class="n">y</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">percentile</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+            <span class="n">x</span><span class="p">,</span>
+            <span class="n">y</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">semester</span><span class="p">],</span>
+            <span class="n">linestyle</span><span class="o">=</span><span class="n">linestyles</span><span class="p">[</span><span class="n">percentile</span><span class="p">],</span>
+            <span class="n">linewidth</span><span class="o">=</span><span class="n">linewidths</span><span class="p">[</span><span class="n">percentile</span><span class="p">],</span>
+            <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">semester</span><span class="si">}</span><span class="s2"> – </span><span class="si">{</span><span class="n">percentile</span><span class="si">}</span><span class="s2">th percentile&quot;</span>
+        <span class="p">)</span>
+
+<span class="c1"># ============================================================</span>
+<span class="c1"># Formatting</span>
+<span class="c1"># ============================================================</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span>
+    <span class="n">assessment_order</span><span class="p">,</span>
+    <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span>
+    <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;right&quot;</span>
+<span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Score (%)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Assessment&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span>
+    <span class="s2">&quot;Distribution of Student Performance by Assessment&quot;</span>
+<span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="c1"># Put legend outside plot</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span>
+    <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.02</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">,</span>
+    <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/81226526245b0aa28f3049b503194e4e32bc4acee558358f487c002513a7a6a3.png" src="_images/81226526245b0aa28f3049b503194e4e32bc4acee558358f487c002513a7a6a3.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">gaussian_kde</span>
+
+<span class="c1"># ============================================================</span>
+<span class="c1"># Plot quiz PDFs</span>
+<span class="c1"># ============================================================</span>
+
+<span class="n">quizzes</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Quiz1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Quiz2&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Quiz3&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Quiz4&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Quiz5&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Quiz6&quot;</span>
+<span class="p">]</span>
+
+<span class="n">colors</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Spring2023&quot;</span><span class="p">:</span> <span class="s2">&quot;tab:blue&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Spring2024&quot;</span><span class="p">:</span> <span class="s2">&quot;tab:orange&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Spring2026&quot;</span><span class="p">:</span> <span class="s2">&quot;tab:green&quot;</span>
+<span class="p">}</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span>
+    <span class="n">nrows</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+    <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
+    <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">quiz</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">quizzes</span><span class="p">):</span>
+
+    <span class="k">for</span> <span class="n">semester</span> <span class="ow">in</span> <span class="n">sheets</span><span class="p">:</span>
+
+        <span class="c1"># Convert to numeric and remove missing values</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span>
+            <span class="n">data</span><span class="p">[</span><span class="n">semester</span><span class="p">][</span><span class="n">quiz</span><span class="p">],</span>
+            <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;coerce&quot;</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">values</span>
+
+        <span class="c1"># Skip if insufficient data</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+        <span class="c1"># KDE</span>
+        <span class="n">kde</span> <span class="o">=</span> <span class="n">gaussian_kde</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+        <span class="n">pdf</span> <span class="o">=</span> <span class="n">kde</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+        <span class="c1"># Plot sideways PDF</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+            <span class="n">x</span><span class="p">,</span>
+            <span class="n">pdf</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">semester</span><span class="p">],</span>
+            <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="n">semester</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Fill underneath</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
+            <span class="n">x</span><span class="p">,</span>
+            <span class="n">pdf</span><span class="p">,</span>
+            <span class="n">alpha</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">semester</span><span class="p">]</span>
+        <span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">quiz</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>
+        <span class="kc">True</span><span class="p">,</span>
+        <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span>
+    <span class="p">)</span>
+
+<span class="c1"># Common x-axis</span>
+<span class="n">axes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Quiz Score (%)&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># One legend</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span>
+    <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span>
+<span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span>
+    <span class="s2">&quot;Quiz Score Distributions by Semester&quot;</span><span class="p">,</span>
+    <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f0ea71ee0b6b74d43e7f7000d36a5ece8ae6087d51a5b501279211892a3c8045.png" src="_images/f0ea71ee0b6b74d43e7f7000d36a5ece8ae6087d51a5b501279211892a3c8045.png" />
 </div>
 </div>
 
@@ -519,6 +1108,24 @@ By Michael J. Pyrcz
   
   <div class="footer-item">
     
+<div class="extra_footer">
+  <div style="
+  margin-top:1em;
+  text-align:center;
+  width:100%;
+  ">
+  <img src="_static/images/backcover.png"
+       alt="Applied Machine Learning in Python back cover"
+       style="
+         display:block;
+         margin-left:25px;
+         margin-right:auto;
+         width:77.5%;
+         max-width:775px;
+       ">
+</div>
+
+</div>
   </div>
   
 </div>

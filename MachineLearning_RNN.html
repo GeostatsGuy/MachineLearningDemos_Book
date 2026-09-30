@@ -888,6 +888,18 @@ O^t_{3_{\text{in}}} = \lambda_{2,3} \cdot H^t_2 + b_3
 <section id="declare-functions">
 <h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
 <p>Here’s the functions to make, train and visualize our <a class="reference internal" href="MachineLearning_glossary_m_r.html#recurrent-neural-network"><span class="std std-doc">recurrent neural network</span></a>.</p>
+<ul class="simple">
+<li><p>add_grid()</p></li>
+<li><p>initialize_rnn_weights(seed=None, scale=0.5)</p></li>
+<li><p>sigmoid(z) - sigmoid activation</p></li>
+<li><p>sigmoid_deriv(h) - sigmoid activation derivative</p></li>
+<li><p>forward_pass(x, params) - forward pass including recursion from previous prediction</p></li>
+<li><p>mse_loss(y_pred, y) - loss derivative at output</p></li>
+<li><p>backward_pass(x, y, y_pred, h2, a2, params) - backpropagate loss derivative including recursion from subsequent prediction</p></li>
+<li><p>update_weights(params, grads, lr=0.001) - update model parameters</p></li>
+<li><p>draw_node(ax, xy, text, color=”lightblue”) - draw network node</p></li>
+<li><p>draw_arrow(ax, p1, p2, t) - draw network connection</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_grid</span><span class="p">():</span>

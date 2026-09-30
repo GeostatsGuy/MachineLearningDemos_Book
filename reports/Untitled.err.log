@@ -1,0 +1,172 @@
+Traceback (most recent call last):
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\book\lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\book\lib\site-packages\nbclient\client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\book\lib\site-packages\jupyter_core\utils\__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\book\lib\asyncio\base_events.py", line 608, in run_until_complete
+    return future.result()
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\book\lib\site-packages\nbclient\client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\book\lib\site-packages\nbclient\client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\book\lib\site-packages\nbclient\client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import gaussian_kde
+
+file_name = "Grades_Summary.xlsx"
+
+sheets = ["Spring2023", "Spring2024", "Spring2026"]
+
+quizzes = [
+    "Quiz1", "Quiz2", "Quiz3",
+    "Quiz4", "Quiz5", "Quiz6"
+]
+
+assignments = [
+    "Assignment1", "Assignment2", "Assignment3","Assignment4", "Assignment5", "Assignment6","Assignment7", "Assignment8", "Assignment9"
+]
+
+assessment_order = [
+    "Assignment1",
+    "Assignment2",
+    "Quiz1",
+    "Assignment3",
+    "Assignment4",
+    "Quiz2",
+    "Midterm1",
+    "Assignment5",
+    "Assignment6",
+    "Quiz4",
+    "Assignment7",
+    "Assignment8",
+    "Quiz5",
+    "Assignment9",
+    "Quiz6",
+    "Midterm2",
+]
+
+data = {}
+
+for sheet in sheets:
+
+    df = pd.read_excel(file_name, sheet_name=sheet)
+
+    # Convert blanks to NaN
+    df = df.replace(r"^\s*$", np.nan, regex=True)
+    df = df.replace(0, np.nan)
+
+    # Convert quizzes to percentage
+    for quiz in quizzes:
+        df[quiz] = pd.to_numeric(
+            df[quiz], errors="coerce"
+        ) / 20.0 * 100.0
+
+    for assignment in assignments:
+        df[assignment] = pd.to_numeric(
+            df[assignment], errors="coerce"
+        ) / 20.0 * 100.0
+
+    # Convert midterms to percentage
+    for midterm in ["Midterm1", "Midterm2"]:
+        if midterm in df.columns:
+            df[midterm] = pd.to_numeric(
+                df[midterm], errors="coerce"
+            ) / 50.0 * 100.0
+
+    data[sheet] = df
+
+# Fill missing values with NaN
+for sheet in data:
+    data[sheet] = data[sheet].replace(r"^\s*$", np.nan, regex=True)
+
+# ============================================================
+# Plot quiz PDFs
+# ============================================================
+
+colors = {
+    "Spring2023": "tab:blue",
+    "Spring2024": "tab:orange",
+    "Spring2026": "tab:green"
+}
+
+data["Spring2023"]
+
+------------------
+
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+File [1;32m~\AppData\Local\anaconda3\envs\book\lib\site-packages\pandas\compat\_optional.py:142[0m, in [0;36mimport_optional_dependency[1;34m(name, extra, errors, min_version)[0m
+[0;32m    141[0m [38;5;28;01mtry[39;00m:
+[1;32m--> 142[0m     module [38;5;241m=[39m [43mimportlib[49m[38;5;241;43m.[39;49m[43mimport_module[49m[43m([49m[43mname[49m[43m)[49m
+[0;32m    143[0m [38;5;28;01mexcept[39;00m [38;5;167;01mImportError[39;00m:
+
+File [1;32m~\AppData\Local\anaconda3\envs\book\lib\importlib\__init__.py:127[0m, in [0;36mimport_module[1;34m(name, package)[0m
+[0;32m    126[0m         level [38;5;241m+[39m[38;5;241m=[39m [38;5;241m1[39m
+[1;32m--> 127[0m [38;5;28;01mreturn[39;00m [43m_bootstrap[49m[38;5;241;43m.[39;49m[43m_gcd_import[49m[43m([49m[43mname[49m[43m[[49m[43mlevel[49m[43m:[49m[43m][49m[43m,[49m[43m [49m[43mpackage[49m[43m,[49m[43m [49m[43mlevel[49m[43m)[49m
+
+File [1;32m<frozen importlib._bootstrap>:1014[0m, in [0;36m_gcd_import[1;34m(name, package, level)[0m
+
+File [1;32m<frozen importlib._bootstrap>:991[0m, in [0;36m_find_and_load[1;34m(name, import_)[0m
+
+File [1;32m<frozen importlib._bootstrap>:973[0m, in [0;36m_find_and_load_unlocked[1;34m(name, import_)[0m
+
+[1;31mModuleNotFoundError[0m: No module named 'openpyxl'
+
+During handling of the above exception, another exception occurred:
+
+[1;31mImportError[0m                               Traceback (most recent call last)
+Cell [1;32mIn[2], line 42[0m
+[0;32m     38[0m data [38;5;241m=[39m {}
+[0;32m     40[0m [38;5;28;01mfor[39;00m sheet [38;5;129;01min[39;00m sheets:
+[1;32m---> 42[0m     df [38;5;241m=[39m [43mpd[49m[38;5;241;43m.[39;49m[43mread_excel[49m[43m([49m[43mfile_name[49m[43m,[49m[43m [49m[43msheet_name[49m[38;5;241;43m=[39;49m[43msheet[49m[43m)[49m
+[0;32m     44[0m     [38;5;66;03m# Convert blanks to NaN[39;00m
+[0;32m     45[0m     df [38;5;241m=[39m df[38;5;241m.[39mreplace([38;5;124mr[39m[38;5;124m"[39m[38;5;124m^[39m[38;5;124m\[39m[38;5;124ms*$[39m[38;5;124m"[39m, np[38;5;241m.[39mnan, regex[38;5;241m=[39m[38;5;28;01mTrue[39;00m)
+
+File [1;32m~\AppData\Local\anaconda3\envs\book\lib\site-packages\pandas\io\excel\_base.py:478[0m, in [0;36mread_excel[1;34m(io, sheet_name, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skiprows, nrows, na_values, keep_default_na, na_filter, verbose, parse_dates, date_parser, date_format, thousands, decimal, comment, skipfooter, storage_options, dtype_backend)[0m
+[0;32m    476[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m [38;5;28misinstance[39m(io, ExcelFile):
+[0;32m    477[0m     should_close [38;5;241m=[39m [38;5;28;01mTrue[39;00m
+[1;32m--> 478[0m     io [38;5;241m=[39m [43mExcelFile[49m[43m([49m[43mio[49m[43m,[49m[43m [49m[43mstorage_options[49m[38;5;241;43m=[39;49m[43mstorage_options[49m[43m,[49m[43m [49m[43mengine[49m[38;5;241;43m=[39;49m[43mengine[49m[43m)[49m
+[0;32m    479[0m [38;5;28;01melif[39;00m engine [38;5;129;01mand[39;00m engine [38;5;241m!=[39m io[38;5;241m.[39mengine:
+[0;32m    480[0m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(
+[0;32m    481[0m         [38;5;124m"[39m[38;5;124mEngine should not be specified when passing [39m[38;5;124m"[39m
+[0;32m    482[0m         [38;5;124m"[39m[38;5;124man ExcelFile - ExcelFile already has the engine set[39m[38;5;124m"[39m
+[0;32m    483[0m     )
+
+File [1;32m~\AppData\Local\anaconda3\envs\book\lib\site-packages\pandas\io\excel\_base.py:1513[0m, in [0;36mExcelFile.__init__[1;34m(self, path_or_buffer, engine, storage_options)[0m
+[0;32m   1510[0m [38;5;28mself[39m[38;5;241m.[39mengine [38;5;241m=[39m engine
+[0;32m   1511[0m [38;5;28mself[39m[38;5;241m.[39mstorage_options [38;5;241m=[39m storage_options
+[1;32m-> 1513[0m [38;5;28mself[39m[38;5;241m.[39m_reader [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_engines[49m[43m[[49m[43mengine[49m[43m][49m[43m([49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_io[49m[43m,[49m[43m [49m[43mstorage_options[49m[38;5;241;43m=[39;49m[43mstorage_options[49m[43m)[49m
+
+File [1;32m~\AppData\Local\anaconda3\envs\book\lib\site-packages\pandas\io\excel\_openpyxl.py:548[0m, in [0;36mOpenpyxlReader.__init__[1;34m(self, filepath_or_buffer, storage_options)[0m
+[0;32m    533[0m [38;5;129m@doc[39m(storage_options[38;5;241m=[39m_shared_docs[[38;5;124m"[39m[38;5;124mstorage_options[39m[38;5;124m"[39m])
+[0;32m    534[0m [38;5;28;01mdef[39;00m [38;5;21m__init__[39m(
+[0;32m    535[0m     [38;5;28mself[39m,
+[0;32m    536[0m     filepath_or_buffer: FilePath [38;5;241m|[39m ReadBuffer[[38;5;28mbytes[39m],
+[0;32m    537[0m     storage_options: StorageOptions [38;5;241m=[39m [38;5;28;01mNone[39;00m,
+[0;32m    538[0m ) [38;5;241m-[39m[38;5;241m>[39m [38;5;28;01mNone[39;00m:
+[0;32m    539[0m [38;5;250m    [39m[38;5;124;03m"""[39;00m
+[0;32m    540[0m [38;5;124;03m    Reader using openpyxl engine.[39;00m
+[0;32m    541[0m 
+[1;32m   (...)[0m
+[0;32m    546[0m [38;5;124;03m    {storage_options}[39;00m
+[0;32m    547[0m [38;5;124;03m    """[39;00m
+[1;32m--> 548[0m     [43mimport_optional_dependency[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mopenpyxl[39;49m[38;5;124;43m"[39;49m[43m)[49m
+[0;32m    549[0m     [38;5;28msuper[39m()[38;5;241m.[39m[38;5;21m__init__[39m(filepath_or_buffer, storage_options[38;5;241m=[39mstorage_options)
+
+File [1;32m~\AppData\Local\anaconda3\envs\book\lib\site-packages\pandas\compat\_optional.py:145[0m, in [0;36mimport_optional_dependency[1;34m(name, extra, errors, min_version)[0m
+[0;32m    143[0m [38;5;28;01mexcept[39;00m [38;5;167;01mImportError[39;00m:
+[0;32m    144[0m     [38;5;28;01mif[39;00m errors [38;5;241m==[39m [38;5;124m"[39m[38;5;124mraise[39m[38;5;124m"[39m:
+[1;32m--> 145[0m         [38;5;28;01mraise[39;00m [38;5;167;01mImportError[39;00m(msg)
+[0;32m    146[0m     [38;5;28;01mreturn[39;00m [38;5;28;01mNone[39;00m
+[0;32m    148[0m [38;5;66;03m# Handle submodules: if we have submodule, grab parent module from sys.modules[39;00m
+
+[1;31mImportError[0m: Missing optional dependency 'openpyxl'.  Use pip or conda to install openpyxl.
+

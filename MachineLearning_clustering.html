@@ -1433,7 +1433,7 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 <p>Let’s repeat with the scikit-learn function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="mi">5</span>                                                         <span class="c1"># number categories / clusters </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="mi">2</span>                                                        <span class="c1"># number categories / clusters </span>
 
 <span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">K</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">n_init</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,[</span><span class="s1">&#39;Norm_Porosity&#39;</span><span class="p">,</span><span class="s1">&#39;Norm_AI&#39;</span><span class="p">]])</span> <span class="c1"># k-means clustering</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;kMeans&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">labels_</span> <span class="o">+</span> <span class="mi">1</span>
@@ -1448,7 +1448,17 @@ x_i^{\prime} = \frac{ \left( x_i - min(x) \right)}{\left( max(x) - min(x) \right
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5de7c7b64d9ae387d07fb4bf22bc893015ec088ade3d746ac470cf4a0cbb39c1.png" src="_images/5de7c7b64d9ae387d07fb4bf22bc893015ec088ade3d746ac470cf4a0cbb39c1.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;C:\Users\pm27995\AppData\Local\anaconda3\envs\book\lib\site-packages\joblib\externals\loky\backend\context.py&quot;, line 257, in _count_physical_cores
+    cpu_info = subprocess.run(
+  File &quot;C:\Users\pm27995\AppData\Local\anaconda3\envs\book\lib\subprocess.py&quot;, line 489, in run
+    with Popen(*popenargs, **kwargs) as process:
+  File &quot;C:\Users\pm27995\AppData\Local\anaconda3\envs\book\lib\subprocess.py&quot;, line 854, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File &quot;C:\Users\pm27995\AppData\Local\anaconda3\envs\book\lib\subprocess.py&quot;, line 1307, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+</pre></div>
+</div>
+<img alt="_images/e78be07d00c4ccada7b5914d3f073c3fe4155b63472a216aea3ceef74e3769d4.png" src="_images/e78be07d00c4ccada7b5914d3f073c3fe4155b63472a216aea3ceef74e3769d4.png" />
 </div>
 </div>
 </section>

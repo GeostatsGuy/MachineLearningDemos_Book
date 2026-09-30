@@ -428,7 +428,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-features-of-interest">The Features of Interest</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#information-sources">Information Sources</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsurface-uncertainty-models">Subsurface Uncertainty Models</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#support-decision-making">Support Decision Making</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-making-support">Decision Making Support</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-model">Numerical Model</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsurface-modeling-caveats">Subsurface Modeling Caveats</a></li>
 </ul>
@@ -520,38 +520,42 @@ document.write(`
 <h2>Motivation for Subsurface Modeling<a class="headerlink" href="#motivation-for-subsurface-modeling" title="Permalink to this heading">#</a></h2>
 <p>You could open a Jupyter notebook in Python and immediately start building machine learning models to solve subsurface problems.</p>
 <p><em>But you would be building on a shaky foundation.</em></p>
-<p>Successful <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> science begins with understanding the problem domain. Before selecting algorithms or writing code, you need to understand the subsurface, the available data, the objectives of the modeling effort, and the practical constraints under which the model will be developed and used.</p>
-<p>This chapter introduces the fundamental concepts that provide this foundation, including,</p>
+<p>Successful data science begins with an understanding of the problem domain. Before selecting algorithms or writing code, you need to understand the subsurface, the available data, the objectives of the modeling effort, and the practical constraints under which the model will be developed and used.</p>
+<p>This chapter introduces the fundamental concepts that provide this foundation, including:</p>
 <ol class="arabic simple">
 <li><p><strong>Subsurface Models</strong> — what they are, why they are built, and the different forms they can take.</p></li>
 <li><p><strong>Subsurface Data</strong> — the major data types, their relationships, associated metadata, methods of collection, strengths, and limitations.</p></li>
-<li><p><strong>Modeling Purpose</strong> — the goals of the model, its intended products and users, and ultimately the decisions the model is designed to support.</p></li>
+<li><p><strong>Modeling Purpose</strong> — the goals of the model, its intended products and users, and ultimately, the decisions the model is designed to support.</p></li>
 <li><p><strong>Modeling Strategies</strong> — practical principles, workflows, trade-offs, and fit-for-purpose approaches for developing effective subsurface models.</p></li>
 </ol>
 <p>Together, these concepts provide the context needed to develop robust data science workflows using the methods presented throughout this e-book.</p>
 </section>
 <section id="id1">
 <h2>Subsurface Modeling<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
-<p>What is subsurface modeling? I start my second day lecture with this question and a blank slide on the screen. I wait for students to provide their feedback. I am fortunate to have a variety of departments represented in your courses, and this is a sumamry of what they often say,</p>
+<p>What is subsurface modeling? I start my second-day lecture with this question and a blank slide on the screen. I wait for students to share their responses. I am fortunate to have students from a variety of departments represented in my courses, and the following is a summary of what they often say:</p>
 <ul class="simple">
-<li><p><strong>engineering students</strong> - flow forecasting with a physics-based model, to learn how fast and how much will be recovered from our wells and to ensure this model matches historical, past, production rates and composition.</p></li>
-<li><p><strong>geoscience students</strong> - building a subsuface heterogeneity model that intergrates, basin analysis, <a class="reference internal" href="MachineLearning_glossary_s_z.html#well-log"><span class="std std-doc">well log</span></a>s and well <a class="reference internal" href="MachineLearning_glossary_a_c.html#core"><span class="std std-doc">core</span></a>s, inverted <a class="reference internal" href="MachineLearning_glossary_s_z.html#seismic"><span class="std std-doc">seismic</span></a> attributes, to learn what is the resource in place.</p></li>
-<li><p><strong><a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> science students</strong> - a statistical data-driven model that is calibrated against withheld testing data.</p></li>
-<li><p><strong>business students</strong> - an uncertainty model that support optimum business development <a class="reference internal" href="MachineLearning_glossary_d_f.html#decision-making"><span class="std std-doc">decision making</span></a>.</p></li>
-<li><p><strong>environmental students</strong> - an accurate <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a> model that allows for extraction while minimizing environmental disturbance, protecting health and safety of the employees and communities.</p></li>
+<li><p><strong>engineering students</strong> - flow forecasting with a physics-based model to learn how fast and how much will be recovered from our wells, and to ensure that the model matches historical production rates and fluid composition.</p></li>
+<li><p><strong>geoscience students</strong> - building a subsurface heterogeneity model that integrates basin analysis, <a class="reference internal" href="MachineLearning_glossary_s_z.html#well-log"><span class="std std-doc">well log</span></a>s and well <a class="reference internal" href="MachineLearning_glossary_a_c.html#core"><span class="std std-doc">core</span></a>s, and inverted <a class="reference internal" href="MachineLearning_glossary_s_z.html#seismic"><span class="std std-doc">seismic</span></a> attributes to learn how much resource is in place.</p></li>
+<li><p><strong><a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> science students</strong> - a statistical, data-driven model that is calibrated against withheld testing data.</p></li>
+<li><p><strong>business students</strong> - an uncertainty model that supports optimal business development <a class="reference internal" href="MachineLearning_glossary_d_f.html#decision-making"><span class="std std-doc">decision making</span></a>.</p></li>
+<li><p><strong>environmental students</strong> - an accurate <a class="reference internal" href="MachineLearning_glossary_m_r.html#prediction"><span class="std std-doc">prediction</span></a> model that allows for resource extraction while minimizing environmental disturbance and protecting the health and safety of employees and communities.</p></li>
 </ul>
-<p>Which is subsurface modeling?</p>
+<p>Which of these is actually subsurface modeling?</p>
 <ul class="simple">
-<li><p>it is all of these.</p></li>
+<li><p>The answer: <strong>all of them are subsurface modeling.</strong></p></li>
 </ul>
-<p>This is one of the reasons that students from all over our campus enjoy and benefit from this content.</p>
+<p>This is one of the reasons that,</p>
+<ul class="simple">
+<li><p>students from across our campus enjoy and benefit from this course, e-book, codes, and YouTube lectures.</p></li>
+</ul>
+<p>Now let’s talk about the components of a subsurface model, first I summarize the aspects and then provide more details on each.</p>
 <section id="subsurface-modeling-aspects">
 <h3>Subsurface Modeling Aspects<a class="headerlink" href="#subsurface-modeling-aspects" title="Permalink to this heading">#</a></h3>
-<p>Calculating a numerical representation of the subsurface:</p>
+<p>We can generalize subsurface modeling as the calculation of a numerical representation of the subsurface. We can now list the key aspects of this model:</p>
 <ul class="simple">
-<li><p>over the interval (volume in space, or time) of interest</p></li>
+<li><p>over the interval of interest, including volume in space and/or time</p></li>
 <li><p>over the <a class="reference internal" href="MachineLearning_glossary_d_f.html#feature"><span class="std std-doc">feature</span></a>s of interest</p></li>
-<li><p>integrating all information sources</p></li>
+<li><p>integrating all available information sources</p></li>
 <li><p>integrating uncertainty through multiple <a class="reference internal" href="MachineLearning_glossary_m_r.html#realizations"><span class="std std-doc">realizations</span></a> and scenarios</p></li>
 <li><p>to support decision making</p></li>
 </ul>
@@ -562,20 +566,20 @@ document.write(`
 </section>
 <section id="the-volume-of-interest">
 <h3>The Volume of Interest<a class="headerlink" href="#the-volume-of-interest" title="Permalink to this heading">#</a></h3>
-<p>The <a class="reference internal" href="MachineLearning_glossary_s_z.html#volume-of-interest"><span class="std std-doc">volume of interest</span></a> or <a class="reference internal" href="MachineLearning_glossary_a_c.html#area-of-interest"><span class="std std-doc">area of interest</span></a> is the volume of the subsurface modeled, and could be,</p>
+<p>The <a class="reference internal" href="MachineLearning_glossary_s_z.html#volume-of-interest"><span class="std std-doc">volume of interest</span></a> or <a class="reference internal" href="MachineLearning_glossary_a_c.html#area-of-interest"><span class="std std-doc">area of interest</span></a> defines the spatial extent (or spatial interval) of the subsurface being modeled. For example:</p>
 <ul class="simple">
-<li><p>2D map from a single reservoir to a basin to the entire Gulf of America (Gulf of Mexico)</p></li>
-<li><p>2D cross section of a single reservoir unit, to the entire reservoir to the entire sediment package from the mudline to the maximum depth of resolvability</p></li>
-<li><p>3D model of near bore at the scale from 1 cm3</p></li>
-<li><p>3D model of a single reservoir at the model cell scale of 50 x 50 x 1 m</p></li>
+<li><p>a 2D map ranging from a single reservoir within a basin to the entire Gulf of America (Gulf of Mexico)</p></li>
+<li><p>a 2D cross section ranging from a single reservoir unit to an entire reservoir, or to the entire sediment package from the mudline (ocean bottom) to the maximum depth of resolvability</p></li>
+<li><p>a 3D model of the near-bore environment at a resolution as small as <span class="math notranslate nohighlight">\(1 mm^3\)</span></p></li>
+<li><p>a 3D model of a single reservoir at a model cell scale of <span class="math notranslate nohighlight">\(50 \times 50 \times 1 m\)</span></p></li>
 </ul>
-<p>For all of these volumes and areas, the scale and extent is determined by,</p>
+<p>For all of these volumes and areas, the scale and extent are determined by:</p>
 <ul class="simple">
-<li><p>purpose of the model – e.g. forward seismic model requires the overburden be included</p></li>
-<li><p>geologic interpretation – e.g. geological unit of interest onlaps uninteresting unit</p></li>
-<li><p>engineering constraints – e.g. drainage radius of a well, flow boundaries</p></li>
+<li><p><strong>purpose of the model</strong> – e.g. a forward seismic model requires the overburden to be included</p></li>
+<li><p><strong>geologic interpretation</strong> – e.g. the geological unit of interest onlaps an uninteresting unit</p></li>
+<li><p><strong>engineering constraints</strong> – e.g. the drainage radius of a well or flow boundaries</p></li>
 </ul>
-<p>is often subset into a variety of regions that are modelled separately.</p>
+<p>The volume of interest is often subdivided into a variety of regions that are modeled separately.</p>
 <figure style="text-align: center;">
   <img src="_static/subsurface/empty_section.png" style="display: block; margin: 0 auto; width: 80%;">
   <figcaption style="text-align: center;">Cross section of subsurface model volume of interest.</figcaption>
@@ -583,24 +587,25 @@ document.write(`
 </section>
 <section id="the-features-of-interest">
 <h3>The Features of Interest<a class="headerlink" href="#the-features-of-interest" title="Permalink to this heading">#</a></h3>
-<p>The feature of interest generally include, measures of rock and fluid properties, for example,</p>
+<p>The features of interest generally include measures of rock and fluid properties, for example:</p>
 <ul class="simple">
-<li><p>porosity</p></li>
-<li><p>permeability</p></li>
-<li><p>saturations</p></li>
-<li><p>lithology</p></li>
-<li><p>acoustic impedance</p></li>
+<li><p>porosity – pore space available for water, oil, or gas</p></li>
+<li><p>permeability – ability of the rock to transmit fluids</p></li>
+<li><p>saturations – fraction of the pore space occupied by each fluid</p></li>
+<li><p>lithology – rock type and composition</p></li>
+<li><p>acoustic impedance – resistance of the rock to seismic waves</p></li>
 </ul>
-<p>informative for the resolving subsurface forecasts, for example,</p>
+<p>These features are informative for predicting subsurface quantities, for example:</p>
+<p>These features are informative for predicting subsurface quantities, for example:</p>
 <ul class="simple">
-<li><p>resource volumes</p></li>
-<li><p>flow rates</p></li>
-<li><p>recovery factor</p></li>
+<li><p>resource volumes – water, oil, or gas in place</p></li>
+<li><p>flow rates – rate of fluid production or injection</p></li>
+<li><p>recovery factor – fraction of the in-place resource that can be recovered</p></li>
 </ul>
-<p>Based on direct or indirect measures of the subsurface,</p>
+<p>The features of interest may be based on direct or indirect measures of the subsurface:</p>
 <ul class="simple">
-<li><p>direct measures often have limited coverage, small scale, but high accuracy, for example, porosity from well <a class="reference internal" href="MachineLearning_glossary_a_c.html#core"><span class="std std-doc">core</span></a>s</p></li>
-<li><p>indirect measures often have exhaustive coverage, but with larger scale and lower accuracy, for example, seismic information</p></li>
+<li><p>direct measures often have limited coverage, but higher resolution, for example, porosity from well <a class="reference internal" href="MachineLearning_glossary_a_c.html#core"><span class="std std-doc">core</span></a>s</p></li>
+<li><p>indirect measures often have exhaustive coverage, but lower resolution, for example, seismic information</p></li>
 </ul>
 <figure style="text-align: center;">
   <img src="_static/subsurface/porosity_section.png" style="display: block; margin: 0 auto; width: 80%;">
@@ -609,14 +614,17 @@ document.write(`
 </section>
 <section id="information-sources">
 <h3>Information Sources<a class="headerlink" href="#information-sources" title="Permalink to this heading">#</a></h3>
-<p>The subsurface data come from a variety of information sources, including,</p>
+<p>Subsurface data come from a variety of information sources, and provide different types of information including:</p>
 <ul class="simple">
-<li><p>well or drill hole-based - for local conditioning data, spatial <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistic"><span class="std std-doc">statistic</span></a>s, and high resolution local <a class="reference internal" href="MachineLearning_glossary_s_z.html#trend-model"><span class="std std-doc">trend model</span></a>s</p></li>
-<li><p>remote sensing with seismic or gravity information - to support model extents determination, <a class="reference internal" href="MachineLearning_glossary_s_z.html#trend"><span class="std std-doc">trend</span></a> models and stationary domain segmentation</p></li>
-<li><p>basin or deposit analysis - large scale modeling to support model choice, model parameter <a class="reference internal" href="MachineLearning_glossary_g_l.html#inference"><span class="std std-doc">inference</span></a> and <a class="reference internal" href="MachineLearning_glossary_s_z.html#uncertainty-modeling"><span class="std std-doc">uncertainty modeling</span></a></p></li>
-<li><p>production or run of mine <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s - output from the extraction opperations that support inverse modeling workflows to estimate the feature models between the data</p></li>
+<li><p>well- or drill-hole-based data - local conditioning data, spatial <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistic"><span class="std std-doc">statistic</span></a>s, and high-resolution local <a class="reference internal" href="MachineLearning_glossary_s_z.html#trend-model"><span class="std std-doc">trend model</span></a>s</p></li>
+<li><p>remote sensing with seismic or gravity information - model extent determination, <a class="reference internal" href="MachineLearning_glossary_s_z.html#trend"><span class="std std-doc">trend</span></a> models, and stationary subdomain segmentation</p></li>
+<li><p>basin or deposit analysis - large-scale modeling to support model choice, model parameter <a class="reference internal" href="MachineLearning_glossary_g_l.html#inference"><span class="std std-doc">inference</span></a>, and <a class="reference internal" href="MachineLearning_glossary_s_z.html#uncertainty-modeling"><span class="std std-doc">uncertainty modeling</span></a></p></li>
+<li><p>production or run-of-mine <a class="reference internal" href="MachineLearning_glossary_s_z.html#sample"><span class="std std-doc">sample</span></a>s - output from extraction operations that supports inverse modeling workflows to estimate the feature models between the data</p></li>
 </ul>
-<p>subsurface modeling is a data integration challenge</p>
+<p>The challenge with subsurface modeling is integrating all these different information sources:</p>
+<ul class="simple">
+<li><p>subsurface modeling is a data integration challenge</p></li>
+</ul>
 <figure style="text-align: center;">
   <img src="_static/subsurface/information_section.png" style="display: block; margin: 0 auto; width: 80%;">
   <figcaption style="text-align: center;">Cross section of subsurface model with well and seismic data added.
@@ -625,9 +633,9 @@ document.write(`
 </section>
 <section id="subsurface-uncertainty-models">
 <h3>Subsurface Uncertainty Models<a class="headerlink" href="#subsurface-uncertainty-models" title="Permalink to this heading">#</a></h3>
-<p>Subsurface uncertainty is modeled and communicated through the deisgn and calculation of multiple models, including,</p>
+<p>Subsurface uncertainty is modeled and communicated through the design and calculation of multiple models, including,</p>
 <ul class="simple">
-<li><p>scenarios – based on changing the model assumptions and decisions, to capture measurement uncertainty and error along with <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter"><span class="std std-doc">model parameter</span></a> inference uncertainties</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_s_z.html#scenarios"><span class="std std-doc">scenarios</span></a> – based on changing the model inputs, assumptions and decisions, to capture measurement uncertainty and error along with <a class="reference internal" href="MachineLearning_glossary_m_r.html#model-parameter"><span class="std std-doc">model parameter</span></a> inference uncertainties</p></li>
 <li><p><a class="reference internal" href="MachineLearning_glossary_m_r.html#realization"><span class="std std-doc">realization</span></a>s - while holding model assumptions and decisions constant, apply new random seeds that cause the models to fluctuate away from the data and under the constraint of model choices and model <a class="reference internal" href="MachineLearning_glossary_m_r.html#parameter"><span class="std std-doc">parameter</span></a>s, to capture spatial uncertainty</p></li>
 </ul>
 <figure style="text-align: center;">
@@ -636,15 +644,15 @@ document.write(`
 </figcaption>
 </figure>
 </section>
-<section id="support-decision-making">
-<h3>Support Decision Making<a class="headerlink" href="#support-decision-making" title="Permalink to this heading">#</a></h3>
-<p>Often subsurface modeling is applied as support for decision making,</p>
+<section id="decision-making-support">
+<h3>Decision Making Support<a class="headerlink" href="#decision-making-support" title="Permalink to this heading">#</a></h3>
+<p>In general, subsurface modeling is applied to support decision-making:</p>
 <ul class="simple">
 <li><p>modeling only adds <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a> when it impacts a decision</p></li>
-<li><p>subsurface modeling is decision support, the actually development decision has many other constraint, including contracts, resources, safety and multiproject company-wide strategies</p></li>
-<li><p>decisions are made considering all <a class="reference internal" href="MachineLearning_glossary_s_z.html#scenarios"><span class="std std-doc">scenarios</span></a> and realizations simultaneously</p></li>
+<li><p>for optimum decision-making in the presence of uncertainty, decisions are made considering all <a class="reference internal" href="MachineLearning_glossary_s_z.html#scenarios"><span class="std std-doc">scenarios</span></a> and realizations simultaneously</p></li>
+<li><p>development decisions have various other inputs and constraints, including contracts, resources, safety, and multiproject company-wide strategies</p></li>
 </ul>
-<p>For example, where to place these injector wells for a water flood, secondary recovery?</p>
+<p>For example, where should injector wells be placed for a waterflood to optimize secondary recovery?</p>
 <figure style="text-align: center;">
   <img src="_static/subsurface/decision_section.png" style="display: block; margin: 0 auto; width: 80%;">
   <figcaption style="text-align: center;">Cross section of subsurface model with heterogeneity realizations, production wells and proposed injection wells (red).
@@ -653,16 +661,16 @@ document.write(`
 </section>
 <section id="numerical-model">
 <h3>Numerical Model<a class="headerlink" href="#numerical-model" title="Permalink to this heading">#</a></h3>
-<p>A subsurface model can be generalized as a numerical model that is based on,</p>
+<p>A subsurface model can be generalized as a numerical model based on two steps:</p>
+<ol class="arabic simple">
+<li><p>quantification – summaries of data, analog information, and expert judgment are used to calculate summary spatial <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">statistics</span></a> and trends over the subsurface volume of interest</p></li>
+<li><p>reproduction – spatial reservoir property distributions are generated over the subsurface volume of interest to reproduce the quantification and support decision-making</p></li>
+</ol>
+<p>This approach of quantification and reproduction is critical for:</p>
 <ul class="simple">
-<li><p>quantification - summaries of data, analog inforamtion and expert judgement to calculate summary spatial <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">statistics</span></a> and trends over the subsurface volume of interest</p></li>
-<li><p>reproduction – impose spatial reservoir property distributions over the subsurface volume of interest that reproduce the quantification to support decision making</p></li>
-</ul>
-<p>This approach of quantification and reproduction is critical to,</p>
-<ul class="simple">
-<li><p>subsurface model construction based on multi-displinary teams</p></li>
-<li><p><a class="reference internal" href="MachineLearning_glossary_m_r.html#model-checking"><span class="std std-doc">model checking</span></a> through closing the loops, i.e., do the models reproduce the quantifications that were applied as inputs</p></li>
-<li><p>model diagnostics and sensitivity studies that evaluate value of information and opportunity to improve model accuracy and reduce uncertainty</p></li>
+<li><p>subsurface model construction based on multidisciplinary teams, with each team member integrating their domain knowledge and data through quantification and reproduction</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_m_r.html#model-checking"><span class="std std-doc">model checking</span></a> through closing the loop, i.e., determining whether the models reproduce the quantifications that were applied as inputs</p></li>
+<li><p>model diagnostics and sensitivity studies that evaluate the value of information and opportunities to improve model accuracy and reduce uncertainty through the collection of additional data</p></li>
 </ul>
 <figure style="text-align: center;">
   <img src="_static/subsurface/workflow_section.png" style="display: block; margin: 0 auto; width: 60%;">
@@ -695,7 +703,7 @@ document.write(`
 <ul class="simple">
 <li><p>static properties that describe the reservoir at a point in time, including <a class="reference internal" href="MachineLearning_glossary_d_f.html#facies"><span class="std std-doc">facies</span></a>, porosity, permeability, mineralogy and saturation</p></li>
 <li><p>dynamic properties that describe reservoir behavior through time, including pressure, flow rate, velocity, water cut and fluid composition</p></li>
-<li><p>the most useful data are always related to the modeling objective</p></li>
+<li><p>data that are most useful for a given application are those related to the modeling objective</p></li>
 </ul>
 <p>Resolution – At what spatial or temporal scale is the property measured? Examples include:</p>
 <ul class="simple">
@@ -717,29 +725,29 @@ document.write(`
 </figure>
 <section id="data-dimensionality">
 <h3>Data Dimensionality<a class="headerlink" href="#data-dimensionality" title="Permalink to this heading">#</a></h3>
-<p>Subsurface data are represented in one to four dimensions depending on how the property varies in space and time.</p>
-<p>1D - data recorded in a sequence of distance or time</p>
+<p>Subsurface data are represented in one to four dimensions, depending on how the property varies in space and time.</p>
+<p><strong>1D</strong> – Data recorded as a sequence along distance or through time.</p>
 <ul class="simple">
-<li><p>variation in vertical <a class="reference internal" href="MachineLearning_glossary_s_z.html#trend"><span class="std std-doc">trend</span></a> of mineralogy or mechanical properties</p></li>
-<li><p>variation in a single well log, gamma ray (shale indicator)</p></li>
-<li><p><a class="reference internal" href="MachineLearning_glossary_m_r.html#production-data"><span class="std std-doc">production data</span></a> rate or composition measured at a production well</p></li>
+<li><p>variation in the vertical <a class="reference internal" href="MachineLearning_glossary_s_z.html#trend"><span class="std std-doc">trend</span></a> of mineralogy or mechanical properties</p></li>
+<li><p>variation in a single well log, such as gamma ray (shale indicator)</p></li>
+<li><p><a class="reference internal" href="MachineLearning_glossary_m_r.html#production-data"><span class="std std-doc">production data</span></a>, such as rate or composition, measured at a production well</p></li>
 </ul>
-<p>2D - often used to support spatial interpretation</p>
+<p><strong>2D</strong> – Often used to support spatial interpretation.</p>
 <ul class="simple">
 <li><p>geologic maps with depositional systems, stationary regions and trends</p></li>
 <li><p>core images with facies and sedimentary structures interpreted</p></li>
-<li><p>correlated well logs with interpolation model between well along a section</p></li>
-<li><p>exploration seismic sections with interpreted reservoir and non-reservoir within a stratgraphic framework</p></li>
+<li><p>correlated well logs with an interpolation model between wells along a section</p></li>
+<li><p>exploration seismic sections with interpreted reservoir and non-reservoir within a stratigraphic framework</p></li>
 </ul>
-<p>3D - micro, sector, reservoir and basin models</p>
+<p><strong>3D</strong> – Used for micro, sector, reservoir and basin models.</p>
 <ul class="simple">
 <li><p>seismic volumes with inverted reservoir attributes</p></li>
 <li><p>core tomography with pore-scale models</p></li>
-<li><p>near well bore micro models</p></li>
-<li><p>injection and production paired wells sector model</p></li>
-<li><p>comprehensive reservoir model for production forecasting</p></li>
+<li><p>near-wellbore micro models</p></li>
+<li><p>injection and production paired wells in a sector model</p></li>
+<li><p>comprehensive reservoir models for production forecasting</p></li>
 </ul>
-<p>4D – repeated measurements through time</p>
+<p><strong>4D</strong> – Repeated measurements over a 3D volume and through time.</p>
 <ul class="simple">
 <li><p>time-lapse (4D) seismic</p></li>
 <li><p>repeated pressure surveys</p></li>
@@ -755,15 +763,14 @@ document.write(`
 </ul>
 <figure style="text-align: center;">
   <img src="_static/subsurface/well_log.png" style="display: block; margin: 0 auto; width: 40%;">
-  <figcaption style="text-align: center;">Density and neutron log for measuring porosity from a sandstone unit, in Alberta, Canada, http://wiki.aapg.org/Density-neutron_log_porosity.</figcaption>
+  <figcaption style="text-align: center;">Density and neutron logs used to estimate porosity from a sandstone unit in Alberta, Canada, http://wiki.aapg.org/Density-neutron_log_porosity.</figcaption>
 </figure>
 <ul class="simple">
-<li><p>Qualitative data require interpretation before they can be represented in a subsurface model. Examples include lithology, facies, depositional environment, fault interpretations, and sequence stratigraphic units. Image below from <a class="reference external" href="http://www.sepmstrata.org/page.aspx?&amp;pageid=54&amp;3">sepmstrata.org</a>.</p></li>
+<li><p>Qualitative data require interpretation before they can be represented in a subsurface model. Examples include lithology, facies, depositional environment, fault interpretations, and sequence stratigraphic units. The image below is from <a class="reference external" href="http://www.sepmstrata.org/page.aspx?&amp;pageid=54&amp;3">sepmstrata.org</a>.</p></li>
 </ul>
 <figure style="text-align: center;">
   <img src="_static/subsurface/pomar.png" style="display: block; margin: 0 auto; width: 40%;">
-  <figcaption style="text-align: center;">Interpretation of lagoon carbonate setting from Pomar (2004), from Society for Sedimentary Geology.
-.</figcaption>
+  <figcaption style="text-align: center;">Interpretation of a lagoon carbonate setting from Pomar (2004), from the Society for Sedimentary Geology.</figcaption>
 </figure>
 <blockquote>
 <div><p>Terminology: In <a class="reference internal" href="MachineLearning_glossary_g_l.html#geostatistics"><span class="std std-doc">geostatistics</span></a> and reservoir modeling, qualitative commonly refers to interpreted geological information. In machine learning and <a class="reference internal" href="MachineLearning_glossary_s_z.html#statistics"><span class="std std-doc">statistics</span></a>, these data are more commonly referred to as categorical <a class="reference internal" href="MachineLearning_glossary_s_z.html#variable"><span class="std std-doc">variable</span></a>s because they are represented as discrete classes (nominal or ordinal).</p>
@@ -772,13 +779,13 @@ document.write(`
 <section id="hard-and-soft-data">
 <h3>Hard and Soft Data<a class="headerlink" href="#hard-and-soft-data" title="Permalink to this heading">#</a></h3>
 <p>In subsurface modeling, data are often classified as hard or soft based on the degree of measurement certainty and uncertainty.</p>
-<p><a class="reference internal" href="MachineLearning_glossary_g_l.html#hard-data"><span class="std std-doc">Hard Data</span></a> – measurements with a high degree of confidence that are treated as known values at their sample locations. Hard data are typically obtained from direct measurements. Examples include,</p>
+<p><a class="reference internal" href="MachineLearning_glossary_g_l.html#hard-data"><span class="std std-doc">Hard Data</span></a> – measurements or interpretations with a high degree of confidence that are treated as known values at their sample locations. Hard data are typically obtained from direct measurements or high-confidence interpretations. Examples include:</p>
 <ul class="simple">
 <li><p>core porosity measurements</p></li>
 <li><p>well log measurements</p></li>
 <li><p>lithofacies interpreted from core or high-confidence well log analysis</p></li>
 </ul>
-<p><a class="reference internal" href="MachineLearning_glossary_s_z.html#soft-data"><span class="std std-doc">Soft Data</span></a> – indirect measurements or interpretations that provide information about the property of interest with an associated degree of uncertainty. Soft data are often represented as probabilities, distributions, or calibrated estimates. Examples include,</p>
+<p><a class="reference internal" href="MachineLearning_glossary_s_z.html#soft-data"><span class="std std-doc">Soft Data</span></a> – measurements or interpretations that provide information about the property of interest with an associated degree of uncertainty. Soft data are often represented as probabilities, distributions, or calibrated estimates. Examples include:</p>
 <ul class="simple">
 <li><p>probability distribution of porosity inferred from seismic acoustic impedance</p></li>
 <li><p>probability of lithofacies from seismic attributes</p></li>
@@ -787,16 +794,16 @@ document.write(`
 </section>
 <section id="primary-and-secondary-data">
 <h3>Primary and Secondary Data<a class="headerlink" href="#primary-and-secondary-data" title="Permalink to this heading">#</a></h3>
-<p>Subsurface features are also commonly classified as primary or scondary data based on their role in modeling.</p>
+<p>Subsurface features are also commonly classified as primary or secondary data based on their role in modeling.</p>
 <p><a class="reference internal" href="MachineLearning_glossary_m_r.html#primary-data"><span class="std std-doc">Primary Data</span></a> – the property of interest that is modeled directly.</p>
-<p>Examples include,</p>
+<p>Examples include:</p>
 <ul class="simple">
 <li><p>porosity measurements used to build a 3D porosity model</p></li>
 <li><p>permeability measurements used to model reservoir flow properties</p></li>
 <li><p>facies observations used to construct a facies model</p></li>
 </ul>
 <p><a class="reference internal" href="MachineLearning_glossary_s_z.html#secondary-data"><span class="std std-doc">Secondary Data</span></a> – another property that is correlated with the primary data and provides additional spatial information through a calibrated relationship.</p>
-<p>Examples include,</p>
+<p>Examples include:</p>
 <ul class="simple">
 <li><p>acoustic impedance used to support porosity modeling</p></li>
 <li><p>porosity used to support permeability modeling</p></li>
@@ -806,6 +813,11 @@ document.write(`
   <img src="_static/subsurface/por_perm.png" style="display: block; margin: 0 auto; width: 60%;">
   <figcaption style="text-align: center;">Relationship between primary data (permeability) and secondary data (porosity) used to improve subsurface modeling (Pyrcz and Deutsch, 2014).</figcaption>
 </figure>
+<p>In the context of machine learning, any measrurements of the,</p>
+<ul class="simple">
+<li><p>predictor feature(s) are secondary data</p></li>
+<li><p>response feature is primary data</p></li>
+</ul>
 </section>
 <section id="general-types-of-subsurface-features">
 <h3>General Types of Subsurface Features<a class="headerlink" href="#general-types-of-subsurface-features" title="Permalink to this heading">#</a></h3>
@@ -813,23 +825,23 @@ document.write(`
 <ul class="simple">
 <li><p>the measurement scale determines which mathematical and statistical operations are meaningful for a feature.</p></li>
 </ul>
-<p><a class="reference internal" href="MachineLearning_glossary_a_c.html#categorical-nominal-feature"><span class="std std-doc">Categorical Nominal Feature</span></a>  – discrete categories with no meaningful ordering, including,</p>
+<p><a class="reference internal" href="MachineLearning_glossary_a_c.html#categorical-nominal-feature"><span class="std std-doc">Categorical Nominal Feature</span></a> – discrete categories with no meaningful ordering, including:</p>
 <ul class="simple">
 <li><p>Mineral type: quartz, feldspar, mica</p></li>
 <li><p>Lithology: sandstone, shale, limestone</p></li>
 <li><p>Depositional environment</p></li>
 </ul>
-<p><a class="reference internal" href="MachineLearning_glossary_a_c.html#categorical-ordinal-feature"><span class="std std-doc">Categorical Ordinal Feature</span></a>  – discrete categories with a meaningful ordering, but differences between categories are not necessarily equal, including,</p>
+<p><a class="reference internal" href="MachineLearning_glossary_a_c.html#categorical-ordinal-feature"><span class="std std-doc">Categorical Ordinal Feature</span></a> – discrete categories with a meaningful ordering, but differences between categories are not necessarily equal, including:</p>
 <ul class="simple">
 <li><p>Geologic age (youngest → oldest)</p></li>
 <li><p>Mohs hardness scale</p></li>
 <li><p>Reservoir quality ranking (poor, fair, good, excellent)</p></li>
 </ul>
-<p><a class="reference internal" href="MachineLearning_glossary_a_c.html#continuous-interval-feature"><span class="std std-doc">Continuous Interval Feature</span></a> – numerical <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s with equal intervals, but an arbitrary zero, so ratios are not meaningful, including,</p>
+<p><a class="reference internal" href="MachineLearning_glossary_a_c.html#continuous-interval-feature"><span class="std std-doc">Continuous Interval Feature</span></a> – numerical <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>s with equal intervals, but an arbitrary zero, so ratios are not meaningful, including:</p>
 <ul class="simple">
 <li><p>Temperature on the Celsius or Fahrenheit scale</p></li>
 </ul>
-<p><a class="reference internal" href="MachineLearning_glossary_a_c.html#continuous-ratio-feature"><span class="std std-doc">Continuous Ratio Feature</span></a> – numerical values with equal intervals and a true zero, so both differences and ratios are meaningful, including,</p>
+<p><a class="reference internal" href="MachineLearning_glossary_a_c.html#continuous-ratio-feature"><span class="std std-doc">Continuous Ratio Feature</span></a> – numerical values with equal intervals and a true zero, so both differences and ratios are meaningful, including:</p>
 <ul class="simple">
 <li><p>Temperature on the Kelvin scale</p></li>
 <li><p>Porosity</p></li>
@@ -1396,7 +1408,7 @@ V(\mathbf{u}_{\alpha})
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-features-of-interest">The Features of Interest</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#information-sources">Information Sources</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsurface-uncertainty-models">Subsurface Uncertainty Models</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#support-decision-making">Support Decision Making</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-making-support">Decision Making Support</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-model">Numerical Model</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsurface-modeling-caveats">Subsurface Modeling Caveats</a></li>
 </ul>

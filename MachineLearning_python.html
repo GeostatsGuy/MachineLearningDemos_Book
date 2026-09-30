@@ -2465,6 +2465,19 @@ Response feature: Prod
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Could not find the number of physical cores for the following reason:
+[WinError 2] The system cannot find the file specified
+Returning the number of logical cores instead. You can silence this warning by setting LOKY_MAX_CPU_COUNT to the number of cores you want to use.
+  File &quot;C:\Users\pm27995\AppData\Local\anaconda3\envs\book\lib\site-packages\joblib\externals\loky\backend\context.py&quot;, line 257, in _count_physical_cores
+    cpu_info = subprocess.run(
+  File &quot;C:\Users\pm27995\AppData\Local\anaconda3\envs\book\lib\subprocess.py&quot;, line 489, in run
+    with Popen(*popenargs, **kwargs) as process:
+  File &quot;C:\Users\pm27995\AppData\Local\anaconda3\envs\book\lib\subprocess.py&quot;, line 854, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File &quot;C:\Users\pm27995\AppData\Local\anaconda3\envs\book\lib\subprocess.py&quot;, line 1307, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+</pre></div>
+</div>
 <img alt="_images/d19bc60e905a2ecfeaea5603abad42f0a080fc5df476fed45044fefd8c1b4a39.png" src="_images/d19bc60e905a2ecfeaea5603abad42f0a080fc5df476fed45044fefd8c1b4a39.png" />
 </div>
 </div>
