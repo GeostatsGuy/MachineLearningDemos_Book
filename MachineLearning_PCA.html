@@ -212,7 +212,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_RNN.html">Recurrent Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_autoencoder.html">Autoencoder Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_GAN.html">Generative Adversarial Networks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning_attention.html">Attention</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_LSTM.html">Long Short-term Memory Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_attention.html">Attention Mechanism</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_time_series.html">Time Series Analysis and Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_volume_variance.html">Volume-variance Relations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_model_checking.html">Model Checking</a></li>
@@ -2357,29 +2358,29 @@ Correlation Matrix of the 6 principle components&#39; scores:
 Proportion of variance of original features:  [0.2 0.2 0.2 0.2 0.2]
 Correlation Matrix of original features:
 
-[[ 0.08 -0.   -0.    0.    0.  ]
- [-0.    0.08  0.   -0.    0.  ]
- [-0.    0.    0.08  0.    0.  ]
- [ 0.   -0.    0.    0.08  0.  ]
- [ 0.    0.    0.    0.    0.08]]
+[[ 0.08  0.    0.   -0.    0.  ]
+ [ 0.    0.08  0.   -0.   -0.  ]
+ [ 0.    0.    0.08 -0.    0.  ]
+ [-0.   -0.   -0.    0.08  0.  ]
+ [ 0.   -0.    0.    0.    0.08]]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PCA Variance Explained  [0.21 0.21 0.2  0.2  0.19]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PCA Variance Explained  [0.2 0.2 0.2 0.2 0.2]
 
 Correlation Matrix of scores:
 
-[[ 0.09  0.    0.    0.    0.  ]
- [ 0.    0.09 -0.    0.    0.  ]
- [ 0.   -0.    0.08 -0.    0.  ]
- [ 0.    0.   -0.    0.08 -0.  ]
- [ 0.    0.    0.   -0.    0.08]]
+[[ 0.08  0.   -0.    0.   -0.  ]
+ [ 0.    0.08 -0.   -0.    0.  ]
+ [-0.   -0.    0.08 -0.    0.  ]
+ [ 0.   -0.   -0.    0.08  0.  ]
+ [-0.    0.    0.    0.    0.08]]
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.98, &#39;Principal Component Scores&#39;)
 </pre></div>
 </div>
-<img alt="_images/0e80316763a245a6db48a187050afb185a6d87058278e3316ee4949dc35538f0.png" src="_images/0e80316763a245a6db48a187050afb185a6d87058278e3316ee4949dc35538f0.png" />
-<img alt="_images/5f83ccd62e38866a8cf90d56dba1a18be822083680fca27451b242100d3b0bac.png" src="_images/5f83ccd62e38866a8cf90d56dba1a18be822083680fca27451b242100d3b0bac.png" />
+<img alt="_images/9d555943138cfcd3e6b14a52b932bec9dcc21cdd7583bd5068156ca1b794b1ae.png" src="_images/9d555943138cfcd3e6b14a52b932bec9dcc21cdd7583bd5068156ca1b794b1ae.png" />
+<img alt="_images/036fd860f1c0e0d90f20da73aaa5366dda6cbb1c7cf435451eb4fd526efb6405.png" src="_images/036fd860f1c0e0d90f20da73aaa5366dda6cbb1c7cf435451eb4fd526efb6405.png" />
 </div>
 </div>
 <p>What happens when principal component analysis is applied to uncorrelated, uniformly distributed features?</p>
