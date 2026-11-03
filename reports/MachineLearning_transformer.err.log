@@ -1,0 +1,83 @@
+Traceback (most recent call last):
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\book\lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\book\lib\site-packages\nbclient\client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\book\lib\site-packages\jupyter_core\utils\__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\book\lib\asyncio\base_events.py", line 608, in run_until_complete
+    return future.result()
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\book\lib\site-packages\nbclient\client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\book\lib\site-packages\nbclient\client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\book\lib\site-packages\nbclient\client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+Q, K, V = calculate_QKV(Z)                                    # calculate query, key, and value projections
+Q_forecast, K_forecast, V_forecast = calculate_QKV(z_t_forecast)
+
+depth_all = np.concatenate([depth, depth_forecast])           # combine training and forecast data
+porosity_all = np.concatenate([porosity, porosity_forecast])
+
+Q_all = np.vstack([Q, Q_forecast])
+K_all = np.vstack([K, K_forecast])
+V_all = np.vstack([V, V_forecast])
+
+fig = plt.figure(figsize=(14, 6))                             # plot porosity and Q, K, V projections
+
+plt.subplot(121)                                              # left: porosity vs. depth (keep original plot)
+plt.plot(porosity, depth, 'o-', label='Training',
+         color='tab:blue', linewidth=2, markersize=7)
+plt.plot(porosity_forecast, depth_forecast, 's--',
+         label='Forecast', color='tab:orange',
+         linewidth=2, markersize=7)
+
+plt.xlabel('Porosity (%)')
+plt.ylabel('Depth (m)')
+plt.title('Input Data: Porosity vs. Depth')
+plt.ylim(14.5, 0.5)
+plt.grid(alpha=0.3)
+plt.legend()
+ 
+ax = plt.subplot(122)                                         # right: Query, Key, and Value projections vs. depth
+
+projections = [
+    (Q_all, 'tab:blue', 'Query (Q)'),
+    (K_all, 'tab:orange', 'Key (K)'),
+    (V_all, 'tab:green', 'Value (V)')
+]
+
+n_train = len(depth)
+
+for matrix, color, label in projections:
+    for i in range(matrix.shape[1]):
+        ax.plot(matrix[:n_train, i], depth, 'o-',             # training: solid line
+                color=color, linewidth=2, markersize=4,
+                label=label if i == 0 else '_nolegend_')
+
+        ax.plot(matrix[n_train:, i], depth_forecast, 's--',   # forecast: dashed line
+                color=color, linewidth=2, markersize=5,
+                label='_nolegend_')
+
+ax.set_xlabel('Projection Value')
+ax.set_ylabel('Depth (m)')
+ax.set_title('Query, Key, and Value Projections vs. Depth')
+ax.set_ylim(14.5, 0.5)
+ax.grid(alpha=0.3)
+ax.legend()
+
+plt.tight_layout(); plt.show()
+------------------
+
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mNameError[0m                                 Traceback (most recent call last)
+Cell [1;32mIn[12], line 1[0m
+[1;32m----> 1[0m Q, K, V [38;5;241m=[39m calculate_QKV([43mZ[49m)                                    [38;5;66;03m# calculate query, key, and value projections[39;00m
+[0;32m      2[0m Q_forecast, K_forecast, V_forecast [38;5;241m=[39m calculate_QKV(z_t_forecast)
+[0;32m      4[0m depth_all [38;5;241m=[39m np[38;5;241m.[39mconcatenate([depth, depth_forecast])           [38;5;66;03m# combine training and forecast data[39;00m
+
+[1;31mNameError[0m: name 'Z' is not defined
+
