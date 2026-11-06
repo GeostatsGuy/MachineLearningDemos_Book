@@ -1,0 +1,43 @@
+Traceback (most recent call last):
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\book\lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\book\lib\site-packages\nbclient\client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\book\lib\site-packages\jupyter_core\utils\__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\book\lib\asyncio\base_events.py", line 608, in run_until_complete
+    return future.result()
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\book\lib\site-packages\nbclient\client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\book\lib\site-packages\nbclient\client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\book\lib\site-packages\nbclient\client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+fig, axes = plt.subplots(1, 3, figsize=(13, 4))                      # visualize matrices
+
+matrices = [A, B, I]
+matrix_names = ['Matrix A', 'Matrix B', 'Identity Matrix I']
+
+for ax, matrix, name in zip(axes, matrices, matrix_names):
+    plot_matrix(ax,matrix,name)
+    
+cbar = fig.colorbar(im, ax=axes[2], shrink=0.8, pad=0.05); cbar.set_label('Matrix Value')
+fig.suptitle('Examples 3 × 3 Matrices', fontsize=14)
+
+plt.tight_layout(); plt.show()
+------------------
+
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mNameError[0m                                 Traceback (most recent call last)
+Cell [1;32mIn[16], line 9[0m
+[0;32m      6[0m [38;5;28;01mfor[39;00m ax, matrix, name [38;5;129;01min[39;00m [38;5;28mzip[39m(axes, matrices, matrix_names):
+[0;32m      7[0m     plot_matrix(ax,matrix,name)
+[1;32m----> 9[0m cbar [38;5;241m=[39m fig[38;5;241m.[39mcolorbar([43mim[49m, ax[38;5;241m=[39maxes[[38;5;241m2[39m], shrink[38;5;241m=[39m[38;5;241m0.8[39m, pad[38;5;241m=[39m[38;5;241m0.05[39m); cbar[38;5;241m.[39mset_label([38;5;124m'[39m[38;5;124mMatrix Value[39m[38;5;124m'[39m)
+[0;32m     10[0m fig[38;5;241m.[39msuptitle([38;5;124m'[39m[38;5;124mExamples 3 × 3 Matrices[39m[38;5;124m'[39m, fontsize[38;5;241m=[39m[38;5;241m14[39m)
+[0;32m     12[0m plt[38;5;241m.[39mtight_layout(); plt[38;5;241m.[39mshow()
+
+[1;31mNameError[0m: name 'im' is not defined
+

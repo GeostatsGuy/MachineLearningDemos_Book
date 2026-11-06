@@ -182,6 +182,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_univariate_statistics.html">Univariate Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_univariate_analysis.html">Univariate Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_multivariate_analysis.html">Multivariate Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_linear_algebra.html">Linear Algebra</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_declustering.html">Spatial Data Debiasing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_bootstrap.html">Bootstrap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_monte_carlo_simulation.html">Monte Carlo Simulation</a></li>
@@ -215,7 +216,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_LSTM.html">Long Short-term Memory Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_attention.html">Attention Mechanism</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_transformer.html">Transformers</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_time_series.html">Time Series Analysis and Modeling</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Volume-variance Relations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_model_checking.html">Model Checking</a></li>
@@ -912,31 +912,31 @@ D^2(\cdot,V) = D^2(\cdot,v) + D^2(v,V)
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.142531</td>
+      <td>0.062833</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.105578</td>
+      <td>0.110360</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.106748</td>
+      <td>0.106035</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.166078</td>
+      <td>0.092648</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.205261</td>
+      <td>0.115062</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
@@ -1051,7 +1051,7 @@ D^2(\cdot,V) = D^2(\cdot,v) + D^2(v,V)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c6de42aab999da4c46c9301fbe120492a2efd07616ee3ee8dc93a2ad31123a1a.png" src="_images/c6de42aab999da4c46c9301fbe120492a2efd07616ee3ee8dc93a2ad31123a1a.png" />
+<img alt="_images/a10cef949183b5f0805e95dde77ef2becd54d4e20a86ddba81e911f375f67a56.png" src="_images/a10cef949183b5f0805e95dde77ef2becd54d4e20a86ddba81e911f375f67a56.png" />
 </div>
 </div>
 <p>Let’s observe the impact of upscaling scaling on the two model’s distributions and variances.</p>
@@ -1112,7 +1112,7 @@ D^2(\cdot,V) = D^2(\cdot,v) + D^2(v,V)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9f0973a876a650e176b6743a483fc514c02306da04ee41b1eaad1da8fe3828f3.png" src="_images/9f0973a876a650e176b6743a483fc514c02306da04ee41b1eaad1da8fe3828f3.png" />
+<img alt="_images/6f2f2157e98051c9c03b98e9b44d020d2e070434150be5ef17106e1bf93eaf76.png" src="_images/6f2f2157e98051c9c03b98e9b44d020d2e070434150be5ef17106e1bf93eaf76.png" />
 </div>
 </div>
 <p>and now the model with shorter range, isotropic spatial continuity.</p>
@@ -1171,7 +1171,7 @@ D^2(\cdot,V) = D^2(\cdot,v) + D^2(v,V)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ed565534849ddce364d619fe1588b9936dec5dfd131eb67b4ee2a269f5dcd360.png" src="_images/ed565534849ddce364d619fe1588b9936dec5dfd131eb67b4ee2a269f5dcd360.png" />
+<img alt="_images/7841f6634ef7846dd814c65d74dac2256491a6776ec1b88e4143917793bc2052.png" src="_images/7841f6634ef7846dd814c65d74dac2256491a6776ec1b88e4143917793bc2052.png" />
 </div>
 </div>
 <p>We can see that with shorter ranges of spatial continuity, our variance reduces faster as we increase the support volume, i.e., the model cell size.</p>
@@ -1211,7 +1211,7 @@ D^2(\cdot,V) = D^2(\cdot,v) + D^2(v,V)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/952244ea234994b5b0025c082dab028120f265adff270dd16b062d5dd737721e.png" src="_images/952244ea234994b5b0025c082dab028120f265adff270dd16b062d5dd737721e.png" />
+<img alt="_images/8b11db0c42753fc878f06913a07c8f2c532e9b28eaf3984fba867e7bfa4dc925.png" src="_images/8b11db0c42753fc878f06913a07c8f2c532e9b28eaf3984fba867e7bfa4dc925.png" />
 </div>
 </div>
 <p>It is convenient to represent this as variance reduction factors,</p>
@@ -1240,7 +1240,7 @@ D^2(\cdot,V) = D^2(\cdot,v) + D^2(v,V)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8aaa6f5e241b7dc2c9d720ee7708c9993c21116fe876c925d8bd130d90fe3310.png" src="_images/8aaa6f5e241b7dc2c9d720ee7708c9993c21116fe876c925d8bd130d90fe3310.png" />
+<img alt="_images/516ac4c9622e423bd13f5cb6d272a5ce66a8214dc492832abc7cb3bcd80cb59a.png" src="_images/516ac4c9622e423bd13f5cb6d272a5ce66a8214dc492832abc7cb3bcd80cb59a.png" />
 </div>
 </div>
 <p>Since we’ve gone this far, let’s complete a larger experiment by looping over many variogram ranges and model volume supports and visualize the variance reduction.</p>
@@ -1285,7 +1285,7 @@ D^2(\cdot,V) = D^2(\cdot,v) + D^2(v,V)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/619cc005d5b11d75e468afa2da16c237dadb755a0c7fec29f54bca4ffe7303a9.png" src="_images/619cc005d5b11d75e468afa2da16c237dadb755a0c7fec29f54bca4ffe7303a9.png" />
+<img alt="_images/256b65f4fe1a49cd81d22fb954dda38df5c4bc2eb7e0eb16eae1178018c9ea2d.png" src="_images/256b65f4fe1a49cd81d22fb954dda38df5c4bc2eb7e0eb16eae1178018c9ea2d.png" />
 </div>
 </div>
 <p>See the trade-off between volume support, as a function of cell size, and the variogram range?</p>
@@ -1410,7 +1410,7 @@ D^2(v,V) = \overline{\gamma}_{V,V} - \overline{\gamma}_{v,v}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/71b6ab1135d15094f0167d1c41d4a3a0b11ee1b9d2126c8f85b8ea786b05acb9.png" src="_images/71b6ab1135d15094f0167d1c41d4a3a0b11ee1b9d2126c8f85b8ea786b05acb9.png" />
+<img alt="_images/8c1e69badef985b94c91d630388a4fa9685f84fb2b4cf4df60fcf2cb841dbf4a.png" src="_images/8c1e69badef985b94c91d630388a4fa9685f84fb2b4cf4df60fcf2cb841dbf4a.png" />
 </div>
 </div>
 <p>Firstly, both results are quite similar with 2 important differences,</p>
