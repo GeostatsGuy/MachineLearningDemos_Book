@@ -216,6 +216,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_LSTM.html">Long Short-term Memory Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_attention.html">Attention Mechanism</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_transformer.html">Transformers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_agentic.html">Agentic AI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_time_series.html">Time Series Analysis and Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_volume_variance.html">Volume-variance Relations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_model_checking.html">Model Checking</a></li>
@@ -859,7 +860,7 @@ document.write(`
 <p>Vector addition combines two vectors by adding their corresponding components to produce a new vector.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\bf m = \bf x + \bf z = \begin{bmatrix}x_1+y_1 \\ x_2+y_2 \\ \vdots \\ x_n+y_n \end{bmatrix}
+\bf m = \bf x + \bf z = \begin{bmatrix}x_1+z_1 \\ x_2+z_2 \\ \vdots \\ x_n+z_n \end{bmatrix}
 \end{split}\]</div>
 <p>We can conceptionalize vector addition as taking the first vector, <span class="math notranslate nohighlight">\(\bf{x}\)</span>, and then placing the second vector’s, <span class="math notranslate nohighlight">\(\bf{z}\)</span>, tail on the first vector’s head, the second vector’s (translated) head is the result of vector addition.</p>
 <ul class="simple">
@@ -1463,7 +1464,7 @@ x_1y_1+x_2y_2+x_3y_3
 <section id="matrix">
 <h2>Matrix<a class="headerlink" href="#matrix" title="Permalink to this heading">#</a></h2>
 <p>A matrix is a rectangular arrangement of numbers organized into rows and columns. Matrices are used in linear algebra and machine learning to organize data, represent relationships between variables, and perform transformations.</p>
-<p>A matrix with <span class="math notranslate nohighlight">\(m\)</span> rows and <span class="math notranslate nohighlight">\(n\)</span> columns has dimensions <span class="math notranslate nohighlight">\(m \times n\)</span>.</p>
+<p>A matrix with <span class="math notranslate nohighlight">\(n\)</span> rows and <span class="math notranslate nohighlight">\(m\)</span> columns has dimensions <span class="math notranslate nohighlight">\(n \times m\)</span>.</p>
 <p>Let’s visualize our example matrices, <span class="math notranslate nohighlight">\(\bf{A}\)</span>, <span class="math notranslate nohighlight">\(\bf{B}\)</span> and <span class="math notranslate nohighlight">\(\bf{I}\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1544,7 +1545,7 @@ Dimensions of I: (3, 3)
 <section id="matrix-transpose">
 <h2>Matrix Transpose<a class="headerlink" href="#matrix-transpose" title="Permalink to this heading">#</a></h2>
 <p>The transpose of a matrix is formed by switching its rows and columns. Each row of the original matrix becomes a column in the transposed matrix, and each column becomes a row.</p>
-<p>For a matrix <span class="math notranslate nohighlight">\(\bf A\)</span> with dimensions <span class="math notranslate nohighlight">\(m \times n\)</span>, its transpose, <span class="math notranslate nohighlight">\(\bf A^T\)</span>, has dimensions <span class="math notranslate nohighlight">\(n \times m\)</span>.</p>
+<p>For a matrix <span class="math notranslate nohighlight">\(\bf A\)</span> with dimensions <span class="math notranslate nohighlight">\(n \times m\)</span>, its transpose, <span class="math notranslate nohighlight">\(\bf A^T\)</span>, has dimensions <span class="math notranslate nohighlight">\(m \times n\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[
 \bf A^T_{j,i} = \bf A_{i,j}
@@ -1827,7 +1828,7 @@ c_{i,j} = a_{i,j} b_{i,j}
 <section id="matrix-vector-multiplication">
 <h2>Matrix-Vector Multiplication<a class="headerlink" href="#matrix-vector-multiplication" title="Permalink to this heading">#</a></h2>
 <p>Matrix-vector multiplication combines a matrix and a vector by calculating the dot product of each matrix row with the vector. The number of columns in the matrix must equal the number of elements in the vector.</p>
-<p>For a matrix <span class="math notranslate nohighlight">\(\bf A\)</span> with dimensions <span class="math notranslate nohighlight">\(m \times n\)</span> and a vector <span class="math notranslate nohighlight">\(\bf x\)</span> with <span class="math notranslate nohighlight">\(p\)</span> elements, the resulting vector <span class="math notranslate nohighlight">\(\bf p\)</span> has <span class="math notranslate nohighlight">\(m\)</span> elements.</p>
+<p>For a matrix <span class="math notranslate nohighlight">\(\bf A\)</span> with dimensions <span class="math notranslate nohighlight">\(n \times m\)</span> and a vector <span class="math notranslate nohighlight">\(\bf x\)</span> with <span class="math notranslate nohighlight">\(p\)</span> elements, the resulting vector <span class="math notranslate nohighlight">\(\bf p\)</span> has <span class="math notranslate nohighlight">\(n\)</span> elements.</p>
 <div class="math notranslate nohighlight">
 \[
 \bf p = \bf A \bf x
@@ -1835,7 +1836,7 @@ c_{i,j} = a_{i,j} b_{i,j}
 <p>Each element of the resulting vector is calculated as:</p>
 <div class="math notranslate nohighlight">
 \[
-n_i = \sum_{j=1}^{p} a_{i,j}x_j
+p_i = \sum_{j=1}^{m} a_{i,j}x_j
 \]</div>
 <p>Using our example matrix and vector:</p>
 <div class="math notranslate nohighlight">
@@ -1919,10 +1920,10 @@ n_i = \sum_{j=1}^{p} a_{i,j}x_j
 <p>For a matrix <span class="math notranslate nohighlight">\(\bf A\)</span> with dimensions <span class="math notranslate nohighlight">\(m \times n\)</span> and a matrix <span class="math notranslate nohighlight">\(\bf B\)</span> with dimensions <span class="math notranslate nohighlight">\(n \times p\)</span>, the resulting matrix <span class="math notranslate nohighlight">\(\bf C\)</span> has dimensions <span class="math notranslate nohighlight">\(m \times p\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
-\underbrace{\bf A}_{m \times n}
-\underbrace{\bf B}_{n \times p}
+\underbrace{\bf A}_{n \times m}
+\underbrace{\bf B}_{m \times p}
 =
-\underbrace{\bf C}_{m \times p}
+\underbrace{\bf C}_{n \times p}
 \]</div>
 <p>Each element of the resulting matrix is calculated as the dot product of a row of <span class="math notranslate nohighlight">\(\bf A\)</span> and a column of <span class="math notranslate nohighlight">\(\bf B\)</span>:</p>
 <div class="math notranslate nohighlight">

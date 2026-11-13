@@ -216,6 +216,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_LSTM.html">Long Short-term Memory Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_attention.html">Attention Mechanism</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_transformer.html">Transformers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_agentic.html">Agentic AI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_time_series.html">Time Series Analysis and Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_volume_variance.html">Volume-variance Relations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning_model_checking.html">Model Checking</a></li>
@@ -1906,7 +1907,7 @@ b_j^{\ell} = b_j^{\ell - 1} + \eta \cdot \frac{\partial L}{\partial b_j}
 
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
 
-<span class="n">nepoch</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">nepoch</span> <span class="o">=</span> <span class="mi">40</span>
 
 <span class="n">y4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nepoch</span><span class="p">);</span> <span class="n">y5</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nepoch</span><span class="p">);</span> <span class="n">y6</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nepoch</span><span class="p">)</span>
 
@@ -1974,6 +1975,36 @@ b_j^{\ell} = b_j^{\ell - 1} + \eta \cdot \frac{\partial L}{\partial b_j}
         <span class="n">w46</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">w46</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">dw46</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> <span class="n">w56</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">w56</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">dw56</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
 
         <span class="n">b4</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">b4</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">db4</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> <span class="n">b5</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">b5</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">db5</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> <span class="n">b6</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">b6</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">db6</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> 
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Epoch </span><span class="si">{</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">:</span><span class="s2">3d</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">nepoch</span><span class="si">}</span><span class="s2"> | &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Loss Gradient: </span><span class="si">{</span><span class="n">d6</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch   2/40 | Loss Gradient: 0.130167
+Epoch   4/40 | Loss Gradient: 0.054423
+Epoch   6/40 | Loss Gradient: 0.022686
+Epoch   8/40 | Loss Gradient: 0.009444
+Epoch  10/40 | Loss Gradient: 0.003929
+Epoch  12/40 | Loss Gradient: 0.001634
+Epoch  14/40 | Loss Gradient: 0.000680
+Epoch  16/40 | Loss Gradient: 0.000283
+Epoch  18/40 | Loss Gradient: 0.000118
+Epoch  20/40 | Loss Gradient: 0.000049
+Epoch  22/40 | Loss Gradient: 0.000020
+Epoch  24/40 | Loss Gradient: 0.000008
+Epoch  26/40 | Loss Gradient: 0.000004
+Epoch  28/40 | Loss Gradient: 0.000001
+Epoch  30/40 | Loss Gradient: 0.000001
+Epoch  32/40 | Loss Gradient: 0.000000
+Epoch  34/40 | Loss Gradient: 0.000000
+Epoch  36/40 | Loss Gradient: 0.000000
+Epoch  38/40 | Loss Gradient: 0.000000
+Epoch  40/40 | Loss Gradient: 0.000000
 </pre></div>
 </div>
 </div>
@@ -2184,7 +2215,7 @@ b_j^{\ell} = b_j^{\ell - 1} + \eta \cdot \frac{\partial L}{\partial b_j}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/96a2f9a7007123700054af340b223a0c9017cbf262afe43f97c8f1b445ec44a6.png" src="_images/96a2f9a7007123700054af340b223a0c9017cbf262afe43f97c8f1b445ec44a6.png" />
+<img alt="_images/461925fddff5785e6e76b6a6a2b59edaa9f32b16c38511d8f7c31469f88ca09f.png" src="_images/461925fddff5785e6e76b6a6a2b59edaa9f32b16c38511d8f7c31469f88ca09f.png" />
 </div>
 </div>
 </section>

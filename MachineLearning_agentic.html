@@ -1,0 +1,1309 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Agentic AI &#8212; Applied Machine Learning in Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'MachineLearning_agentic';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Time Series Analysis and Modeling" href="MachineLearning_time_series.html" />
+    <link rel="prev" title="Transformers" href="MachineLearning_transformer.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/AppliedMachineLearning.jpg" class="logo__image only-light" alt="Applied Machine Learning in Python - Home"/>
+    <script>document.write(`<img src="_static/AppliedMachineLearning.jpg" class="logo__image only-dark" alt="Applied Machine Learning in Python - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_concepts.html">Machine Learning Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_subsurface_modeling.html">Subsurface Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_training_tuning.html">Training and Tuning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_workflow_construction.html">Workflow Construction and Coding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_probability.html">Probability Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_plotting_data_models.html">Loading and Plotting Data and Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_univariate_statistics.html">Univariate Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_univariate_analysis.html">Univariate Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_multivariate_analysis.html">Multivariate Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_linear_algebra.html">Linear Algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_declustering.html">Spatial Data Debiasing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_bootstrap.html">Bootstrap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_monte_carlo_simulation.html">Monte Carlo Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_transformations.html">Feature Transformations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_ranking.html">Feature Ranking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_feature_imputation.html">Feature Imputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_clustering.html">Cluster Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_density-based_clustering.html">Density-based Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_spectral_clustering.html">Spectral Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_PCA.html">Principal Components Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_multidimensional_scaling.html">Multidimensional Scaling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_random_projection.html">Random Projection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_predictive.html">Prediction with scikit-learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_linear_regression.html">Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_ridge_regression.html">Ridge Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_LASSO_regression.html">LASSO Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_Bayesian_linear_regression.html">Bayesian Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_naive_Bayes.html">Naive Bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_polynomial_regression.html">Polynomial Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_knearest_neighbours.html">k-Nearest Neighbours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_decision_tree.html">Decision Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_ensemble_trees.html">Bagging Tree and Random Forest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_gradient_boosting.html">Gradient Boosting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_support_vector_machines.html">Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_activation_functions.html">Neural Networks Activation Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_ANN.html">Artificial Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_CNN.html">Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_RNN.html">Recurrent Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_autoencoder.html">Autoencoder Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_GAN.html">Generative Adversarial Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_LSTM.html">Long Short-term Memory Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_attention.html">Attention Mechanism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_transformer.html">Transformers</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Agentic AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_time_series.html">Time Series Analysis and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_volume_variance.html">Volume-variance Relations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_model_checking.html">Model Checking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_decision_making.html">Decision Making with Uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_python.html">Python Code Snippets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_datasets.html">Synthetic Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_a_c.html">Glossary A-C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_d_f.html">Glossary D-F</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_g_l.html">Glossary G-L</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_m_r.html">Glossary M-R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning_glossary_s_z.html">Glossary S-Z</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/GeostatsPyDemos_Book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/GeostatsPyDemos_Book/issues/new?title=Issue%20on%20page%20%2FMachineLearning_agentic.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/MachineLearning_agentic.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Agentic AI</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-transformer-based-large-language-models-llm-to-agentic-ai">From Transformer-based Large Language Models (LLM) to Agentic AI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-a-llm-does">What a LLM Does?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agentic-ai-architecture">Agentic AI Architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#components-of-an-ai-agent">Components of an AI Agent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autonomy-reliability-and-human-oversight">Autonomy, Reliability, and Human Oversight</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integrating-agentic-ai">Integrating Agentic AI</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agentic-ai-system-for-subsurface-analysis">Agentic AI System for Subsurface Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unexpected-decline-in-a-well">Unexpected Decline in a Well</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-locations-for-the-next-wells">Selecting Locations for the Next Wells</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#developing-a-new-production-forecasting-workflow">Developing a New Production Forecasting Workflow</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agentic-ai-issues">Agentic AI Issues</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#off-skilling">Off-Skilling</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agentic-ai-getting-it-wrong">Agentic AI Getting It Wrong</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hallucinations">Hallucinations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#false-confidence">False Confidence</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reproducibility">Reproducibility</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature">Temperature</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-number-seed">Random Number Seed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#professional-standards">Professional Standards</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-is-responsible">Who is Responsible?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-happens-to-expertise">What Happens to Expertise?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agentic-ai-opportunities">Agentic AI Opportunities</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#age-of-amplified-human-potential">Age of Amplified Human Potential</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-future-belongs-to-those-who-can-think-create-and-collaborate">The Future Belongs to Those Who Can Think, Create, and Collaborate</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chapter-summary">Chapter Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <figure style="text-align: center;">
+  <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
+</figure>
+<section id="agentic-ai">
+<h1>Agentic AI<a class="headerlink" href="#agentic-ai" title="Permalink to this heading">#</a></h1>
+<p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p>Chapter of e-book “Applied Machine Learning in Python: a Hands-on Guide with Code”.</p>
+<div class="remove-from-content-only admonition">
+<p class="admonition-title">Cite this e-Book as:</p>
+<p>Pyrcz, M.J., 2024, <em>Applied Machine Learning in Python: A Hands-on Guide with Code</em> [e-book]. Zenodo. doi:10.5281/zenodo.15169139 <a class="reference external" href="https://doi.org/10.5281/zenodo.15169139"><img alt="DOI" src="https://zenodo.org/badge/863274676.svg" /></a></p>
+</div>
+<p>The workflows in this book and more are available here:</p>
+<div class="remove-from-content-only admonition">
+<p class="admonition-title">Cite the MachineLearningDemos GitHub Repository as:</p>
+<p>Pyrcz, M.J., 2024, <em>MachineLearningDemos: Python Machine Learning Demonstration Workflows Repository</em> (0.0.3) [Software]. Zenodo. DOI: 10.5281/zenodo.13835312. GitHub repository: <a class="github reference external" href="https://github.com/GeostatsGuy/MachineLearningDemos">GeostatsGuy/MachineLearningDemos</a> <a class="reference external" href="https://zenodo.org/doi/10.5281/zenodo.13835312"><img alt="DOI" src="https://zenodo.org/badge/862519860.svg" /></a></p>
+</div>
+<p>By Michael J. Pyrcz <br />
+© Copyright 2024.</p>
+<p>This chapter is on <strong>Agentic AI</strong>. For this chapter there is no code, nor demonstrations. We focus on concepts, along with potential opportunities and issues.</p>
+<p><strong>YouTube Lecture</strong>: check out my lectures on:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://youtu.be/A9PiCMY_6nM?si=NxWSU_5RgQ4w55EL">Artificial Neural Networks</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/za2my_XDoOs?si=LeHU6p2_fc9dX4Yt">Convolutional Neural Networks</a></p></li>
+</ul>
+<p>These lectures are all part of my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=XonjO2wHdXffMpeI">Machine Learning Course</a> on YouTube with linked well-documented Python workflows and interactive dashboards. My goal is to share accessible, actionable, and repeatable educational content. If you want to know about my motivation, check out <a class="reference external" href="https://michaelpyrcz.com/my-story">Michael’s Story</a>.</p>
+<section id="motivation">
+<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this heading">#</a></h2>
+<p>Bridge from Neural Networks and Transformers to Agentic AI</p>
+<ul class="simple">
+<li><p>an LLM generates language</p></li>
+<li><p>an agentic AI system uses an LLM to pursue objectives, interact with its environment, and evaluate the results of its actions.</p></li>
+</ul>
+</section>
+<section id="from-transformer-based-large-language-models-llm-to-agentic-ai">
+<h2>From Transformer-based Large Language Models (LLM) to Agentic AI<a class="headerlink" href="#from-transformer-based-large-language-models-llm-to-agentic-ai" title="Permalink to this heading">#</a></h2>
+<p>We have built models that learn patterns, represent information, and generate predictions.</p>
+<ul class="simple">
+<li><p>What changes when we give these models objectives, tools, and the ability to act?</p></li>
+<li><p><strong>Central question</strong>: How do language models become autonomous problem solvers?</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/agentic/LLM.png" style="display: block; margin: 0 auto; width: 80%;">
+  <figcaption style="text-align: center;">Simple transformer flow chart.</figcaption>
+</figure>
+<p>How does a large language model work? From text to predictions:</p>
+<ol class="arabic simple">
+<li><p>Tokenization breaks language into manageable numerical identifiers.</p></li>
+<li><p>Input Embeddings represent tokens as numerical vectors that capture learned relationships.</p></li>
+<li><p>Positional Embeddings provide information about token order and position.</p></li>
+<li><p>Attention contextualizes each token by learning which other tokens matter.</p></li>
+<li><p>Transformer Layers progressively transform representations to capture relationships across the context.</p></li>
+<li><p>The neural network learns patterns that enable the model to predict the next token as a probability distribution conditioned on the preceding context.</p></li>
+</ol>
+<p>An LLM doesn’t retrieve the next word from a dictionary. It predicts what comes next based on patterns learned from enormous amounts of data.</p>
+<ul class="simple">
+<li><p>an LLM predicts what comes next.</p></li>
+<li><p>an agentic AI system uses those predictions to decide what to do next.</p></li>
+</ul>
+</section>
+<section id="what-a-llm-does">
+<h2>What a LLM Does?<a class="headerlink" href="#what-a-llm-does" title="Permalink to this heading">#</a></h2>
+<p>LLMs are powerful pattern recognition and language generation systems. What can they do, and what can they not do?</p>
+<p>They can perform reasoning-like tasks through sequential token generation.</p>
+<ul class="simple">
+<li><p>Generating a sequence of tokens, evaluating intermediate results, and incorporating new information can simulate important aspects of reasoning.</p></li>
+</ul>
+<p>They do not inherently have persistent objectives, reliable memory, or the ability to interact with external systems.</p>
+<ul class="simple">
+<li><p>An LLM’s capabilities are bounded by the information available to it and the reliability of its information sources.</p></li>
+</ul>
+<p>Generating a plan is different from executing a plan.</p>
+<ul class="simple">
+<li><p>An LLM can become part of an autonomous problem-solving system when connected to executable tools, feedback mechanisms, and the authority to take actions.</p></li>
+</ul>
+<p><strong>Consider</strong>: Is a model that can describe how to solve a problem actually solving the problem?</p>
+<ul class="simple">
+<li><p>intelligence in generating an answer versus capability in accomplishing an objective.</p></li>
+</ul>
+</section>
+<section id="agentic-ai-architecture">
+<h2>Agentic AI Architecture<a class="headerlink" href="#agentic-ai-architecture" title="Permalink to this heading">#</a></h2>
+<p>The LLM becomes the reasoning and language interface within a larger system.</p>
+<ul class="simple">
+<li><p>Additional components provide capabilities beyond text generation.</p></li>
+<li><p>The system can take actions, observe outcomes, and decide what to do next.</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/agentic/agentic.png" style="display: block; margin: 0 auto; width: 80%;">
+  <figcaption style="text-align: center;"> Agentic AI architecture built around the large language model.</figcaption>
+</figure>
+<p><strong>Remember</strong>:</p>
+<ol class="arabic simple">
+<li><p>The ability to describe an action is not the same as the ability to perform it.</p></li>
+<li><p>The ability to perform an action is not the same as the ability to perform it reliably.</p></li>
+</ol>
+</section>
+<section id="components-of-an-ai-agent">
+<h2>Components of an AI Agent<a class="headerlink" href="#components-of-an-ai-agent" title="Permalink to this heading">#</a></h2>
+<p>Consider the components of an LLM and an agentic AI system.</p>
+<figure style="text-align: center;">
+  <img src="_static/agentic/LLM_agent.png" style="display: block; margin: 0 auto; width: 80%;">
+  <figcaption style="text-align: center;">Agentic AI architecture built around the large language model.</figcaption>
+</figure>
+<p>Here are the components, their purposes, and some comments:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Comments</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Reasoning</p></td>
+<td><p>Interpret information and evaluate options</p></td>
+<td><p>Sequential generation and feedback simulate aspects of reasoning.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Planning</p></td>
+<td><p>Break objectives into achievable steps</p></td>
+<td><p>Steps are mapped to available tools and external resources.</p></td>
+</tr>
+<tr class="row-even"><td><p>Tools</p></td>
+<td><p>Interact with external systems</p></td>
+<td><p>Connect the model to external capabilities and information.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Retrieval</p></td>
+<td><p>Access relevant external knowledge</p></td>
+<td><p>Grounds responses in relevant, accessible information.</p></td>
+</tr>
+<tr class="row-even"><td><p>Memory</p></td>
+<td><p>Retain useful information and context</p></td>
+<td><p>Retains context and information across interactions.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Execution</p></td>
+<td><p>Carry out planned actions</p></td>
+<td><p>Translates generated plans into real-world actions.</p></td>
+</tr>
+<tr class="row-even"><td><p>Reflection</p></td>
+<td><p>Evaluate outcomes and adjust behavior</p></td>
+<td><p>Feedback from execution is what makes the system adaptive.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Consider these three important distinctions:</p>
+<ol class="arabic simple">
+<li><p>Tools allow interaction with the outside world (calculators, databases, APIs, software).</p></li>
+<li><p>Retrieval provides access to information not contained in the model’s immediate context.</p></li>
+<li><p>Memory allows information and experience to persist across interactions.</p></li>
+</ol>
+<p><strong>Consider</strong>: What can an agent accomplish that an LLM operating alone cannot?</p>
+<ul class="simple">
+<li><p>Move beyond generating answers to pursuing goals.</p></li>
+</ul>
+<p>Let’s reflect on two sets of comparisons related to these agentic AI components.</p>
+<p><strong>1. Reasoning and reflection are different.</strong></p>
+<ul class="simple">
+<li><p>Reasoning: What should I do?</p></li>
+<li><p>Reflection: Did what I did work, and what should I change?</p></li>
+</ul>
+<p><strong>2. Memory versus retrieval:</strong> An agent can use a vector database to support both functions.</p>
+<ul class="simple">
+<li><p>Retrieval accesses relevant information from an external knowledge source.</p></li>
+<li><p>Memory stores and retrieves information about previous interactions, observations, and experience.</p></li>
+</ul>
+</section>
+<section id="autonomy-reliability-and-human-oversight">
+<h2>Autonomy, Reliability, and Human Oversight<a class="headerlink" href="#autonomy-reliability-and-human-oversight" title="Permalink to this heading">#</a></h2>
+<p>Human-in-the-loop oversight and agent autonomy:</p>
+<ul class="simple">
+<li><p>Autonomy is a spectrum, not an on/off switch.</p></li>
+<li><p>Greater autonomy requires greater trust, verification, and control.</p></li>
+<li><p>Tool permissions and stopping conditions matter.</p></li>
+<li><p>Human oversight is essential for high-consequence decisions.</p></li>
+</ul>
+<p>Consider the difference between recommending an action, requesting approval, and executing an action independently.</p>
+<p><strong>Critical Questions:</strong></p>
+<ol class="arabic simple">
+<li><p>What objective would you give an agent?</p></li>
+<li><p>What information would it need?</p></li>
+<li><p>What tools should it access?</p></li>
+<li><p>What decisions could it make independently?</p></li>
+<li><p>When should it stop and ask for human input?</p></li>
+</ol>
+<p>We can summarize autonomy and human oversight as follows,</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Level</p></th>
+<th class="head"><p>Agent behavior</p></th>
+<th class="head"><p>Human involvement</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1. Recommend</p></td>
+<td><p>Proposes an action</p></td>
+<td><p>Human decides and executes</p></td>
+</tr>
+<tr class="row-odd"><td><p>2. Request approval</p></td>
+<td><p>Plans and prepares an action</p></td>
+<td><p>Human approves before execution</p></td>
+</tr>
+<tr class="row-even"><td><p>3. Execute independently</p></td>
+<td><p>Plans, acts, and evaluates outcomes</p></td>
+<td><p>Human establishes boundaries and monitors</p></td>
+</tr>
+</tbody>
+</table>
+<p>How do we decide?</p>
+<p>Decision Authority = Value of Action vs. Risk of Action</p>
+<ul class="simple">
+<li><p>Value: What benefit or improvement could the action deliver?</p></li>
+<li><p>Risk: What could go wrong, and what are the consequences?</p></li>
+</ul>
+<p>Delegate autonomy in proportion to the value of the opportunity and the acceptable risk of the action.</p>
+<p>Or even more concise:</p>
+<p>Higher potential risk <span class="math notranslate nohighlight">\(\rightarrow\)</span> Greater human oversight.</p>
+</section>
+<section id="integrating-agentic-ai">
+<h2>Integrating Agentic AI<a class="headerlink" href="#integrating-agentic-ai" title="Permalink to this heading">#</a></h2>
+<p>Let’s consider a variety of potential use cases for agentic AI in the subsurface and discuss the associated considerations.</p>
+<section id="agentic-ai-system-for-subsurface-analysis">
+<h3>Agentic AI System for Subsurface Analysis<a class="headerlink" href="#agentic-ai-system-for-subsurface-analysis" title="Permalink to this heading">#</a></h3>
+<p><strong>Objective</strong>: Investigate an unexpected decline in production from a well.</p>
+<figure style="text-align: center;">
+  <img src="_static/agentic/reservoir.png" style="display: block; margin: 0 auto; width: 80%;">
+  <figcaption style="text-align: center;">Reservoir model showing facies, porosity, and permeability, with two realizations.</figcaption>
+</figure>
+<p>The agent could:</p>
+<ul class="simple">
+<li><p>Retrieve well history and production data.</p></li>
+<li><p>Query relevant geological and engineering information.</p></li>
+<li><p>Identify possible explanations.</p></li>
+<li><p>Run analytical tools and compare scenarios.</p></li>
+<li><p>Evaluate results and request additional information.</p></li>
+<li><p>Produce a documented assessment for an engineer.</p></li>
+</ul>
+<p>But the engineer or geoscientist retains responsibility for validation and consequential decisions.</p>
+<p>Now let’s get more specific about the tasks and levels of assistance from agentic AI.</p>
+</section>
+<section id="unexpected-decline-in-a-well">
+<h3>Unexpected Decline in a Well<a class="headerlink" href="#unexpected-decline-in-a-well" title="Permalink to this heading">#</a></h3>
+<p>Consider the following levels of AI assistance. Which level would be acceptable in your opinion, and why?</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Assist</strong></p></th>
+<th class="head"><p><strong>Augment</strong></p></th>
+<th class="head"><p><strong>Collaborate</strong></p></th>
+<th class="head"><p><strong>Direct</strong></p></th>
+<th class="head"><p><strong>Conduct</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>1. AI-Assisted</strong></p></td>
+<td><p><strong>2. AI-Augmented</strong></p></td>
+<td><p><strong>3. AI-Collaborative</strong></p></td>
+<td><p><strong>4. AI-Directed</strong></p></td>
+<td><p><strong>5. AI-Autonomous</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>AI helps the professional perform the task.</p></td>
+<td><p>AI performs part of the task; the professional directs and integrates the work.</p></td>
+<td><p>AI and the professional iteratively perform the task together.</p></td>
+<td><p>The professional specifies the objective; AI plans and executes most of the workflow.</p></td>
+<td><p>AI conducts the task with minimal human intervention.</p></td>
+</tr>
+<tr class="row-even"><td><p>Summarizes production data, flags anomalies, and suggests possible causes.</p></td>
+<td><p>Analyzes well data, ranks potential causes, and recommends diagnostic tests.</p></td>
+<td><p>Works interactively with the engineer to investigate hypotheses, interpret results, and refine the diagnosis.</p></td>
+<td><p>Independently coordinates data retrieval, diagnostic workflows, and analysis, presenting findings and recommended interventions for approval.</p></td>
+<td><p>Autonomously investigates, executes authorized workflows, implements approved interventions, and monitors the well’s response.</p></td>
+</tr>
+</tbody>
+</table>
+<p>At what level would you trust an AI agent to investigate a production decline? At what level would you trust it to take corrective action?</p>
+</section>
+<section id="selecting-locations-for-the-next-wells">
+<h3>Selecting Locations for the Next Wells<a class="headerlink" href="#selecting-locations-for-the-next-wells" title="Permalink to this heading">#</a></h3>
+<p>Now consider the following levels of AI assistance. Which level would be acceptable in your opinion, and why?</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Assist</strong></p></th>
+<th class="head"><p><strong>Augment</strong></p></th>
+<th class="head"><p><strong>Collaborate</strong></p></th>
+<th class="head"><p><strong>Direct</strong></p></th>
+<th class="head"><p><strong>Conduct</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>1. AI-Assisted</strong></p></td>
+<td><p><strong>2. AI-Augmented</strong></p></td>
+<td><p><strong>3. AI-Collaborative</strong></p></td>
+<td><p><strong>4. AI-Directed</strong></p></td>
+<td><p><strong>5. AI-Autonomous</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>AI helps the professional perform the task.</p></td>
+<td><p>AI performs part of the task; the professional directs and integrates the work.</p></td>
+<td><p>AI and the professional iteratively perform the task together.</p></td>
+<td><p>The professional specifies the objective; AI plans and executes most of the workflow.</p></td>
+<td><p>AI conducts the task with minimal human intervention.</p></td>
+</tr>
+<tr class="row-even"><td><p>Maps existing wells, summarizes geological data, and identifies potential drilling locations.</p></td>
+<td><p>Ranks candidate locations using geological, production, and economic criteria.</p></td>
+<td><p>Works with the geoscientist to evaluate trade-offs, test scenarios, and refine well locations.</p></td>
+<td><p>Independently evaluates the development area, optimizes candidate locations, and recommends a drilling sequence for approval.</p></td>
+<td><p>Autonomously updates the development plan, selects and executes authorized well-location decisions, and learns from drilling and production outcomes.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Would you trust an AI agent to select the next well location? Would you trust it to authorize the drilling investment?</p>
+</section>
+<section id="developing-a-new-production-forecasting-workflow">
+<h3>Developing a New Production Forecasting Workflow<a class="headerlink" href="#developing-a-new-production-forecasting-workflow" title="Permalink to this heading">#</a></h3>
+<p>Now consider the following levels of AI assistance. Which level would be acceptable in your opinion, and why?</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Assist</strong></p></th>
+<th class="head"><p><strong>Augment</strong></p></th>
+<th class="head"><p><strong>Collaborate</strong></p></th>
+<th class="head"><p><strong>Direct</strong></p></th>
+<th class="head"><p><strong>Conduct</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>1. AI-Assisted</strong></p></td>
+<td><p><strong>2. AI-Augmented</strong></p></td>
+<td><p><strong>3. AI-Collaborative</strong></p></td>
+<td><p><strong>4. AI-Directed</strong></p></td>
+<td><p><strong>5. AI-Autonomous</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>AI helps the professional perform the task.</p></td>
+<td><p>AI performs part of the task; the professional directs and integrates the work.</p></td>
+<td><p>AI and the professional iteratively perform the task together.</p></td>
+<td><p>The professional specifies the objective; AI plans and executes most of the workflow.</p></td>
+<td><p>AI conducts the task with minimal human intervention.</p></td>
+</tr>
+<tr class="row-even"><td><p>Explains forecasting methods, identifies relevant data, and suggests potential workflows.</p></td>
+<td><p>Builds forecasting models, compares algorithms, and evaluates predictive performance.</p></td>
+<td><p>Works with the engineer to design, test, validate, and refine the workflow.</p></td>
+<td><p>Independently develops and validates the forecasting workflow, presenting it for review and approval.</p></td>
+<td><p>Autonomously deploys the workflow, generates forecasts, monitors performance, and updates models as new data arrive.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Would you trust an AI agent to develop and validate a forecasting workflow? Would you trust it to deploy that workflow and automatically update the models used for operational or reserves decisions?</p>
+</section>
+</section>
+<section id="agentic-ai-issues">
+<h2>Agentic AI Issues<a class="headerlink" href="#agentic-ai-issues" title="Permalink to this heading">#</a></h2>
+<p>Here are some potential issues with the use of agentic AI:</p>
+<ul class="simple">
+<li><p><strong>Off-skilling</strong>: Over-reliance on AI can erode fundamental technical skills, critical thinking, and independent problem-solving, i.e., Pick the skills you can afford to lose and assign those to agents.</p></li>
+<li><p><strong>Cognitive dependency</strong>: When AI routinely supplies answers, we may gradually lose the habit of questioning assumptions and working through difficult problems.</p></li>
+<li><p><strong>Loss of expertise</strong>: If junior professionals delegate foundational tasks, how will they develop the experience and intuition required to become senior experts?</p></li>
+</ul>
+<p>Let’s dive into the concept of off-skilling.</p>
+<section id="off-skilling">
+<h3>Off-Skilling<a class="headerlink" href="#off-skilling" title="Permalink to this heading">#</a></h3>
+<p>I’ve experienced the following example in my courses. I’ve observed a noticeable shift in average grades during the Spring 2026 semester:</p>
+<ul class="simple">
+<li><p>Improved assignment scores – take-home assignments completed with access to a computer and potentially AI agents.</p></li>
+<li><p>Reduced quiz scores – in-class exams completed with pen and paper, without access to a computer or phone, i.e., no access to agents.</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/agentic/grades.png" style="display: block; margin: 0 auto; width: 80%;">
+  <figcaption style="text-align: center;">Grade probability density functions by semester for the first five assignments and first three quizzes in one of my classes.</figcaption>
+</figure>
+<p>If you look carefully, you’ll see some changes in the distribution shapes that may be instructive, although, given the small sample size, take these observations with a grain of salt.</p>
+<ul class="simple">
+<li><p>Quiz 1 appears to be bimodal, while Quizzes 2 and 3 have a large lower tail. Is it possible that this reflects two different student populations? Students who complete their assignments and retain good study habits, and students who use agentic AI to complete assignments and summarize course notes, potentially reducing their understanding and retention?</p></li>
+<li><p>Assignment 5 was more open-ended and required more creativity. Did students using agentic AI perform worse on this assignment?</p></li>
+</ul>
+<p>Of course, we need more data. Any causal analysis would require a more rigorous, controlled, and thorough experiment.</p>
+<ul class="simple">
+<li><p>Yet, it is clear that there has been a shift in student performance over this past year.</p></li>
+</ul>
+</section>
+</section>
+<section id="agentic-ai-getting-it-wrong">
+<h2>Agentic AI Getting It Wrong<a class="headerlink" href="#agentic-ai-getting-it-wrong" title="Permalink to this heading">#</a></h2>
+<p>Sometimes agentic AI gets it wrong. What causes reliability issues with agentic AI?</p>
+<ul class="simple">
+<li><p><strong>Hallucinations</strong>: LLMs can generate convincing but factually incorrect information.</p></li>
+<li><p><strong>Compounding errors</strong>: In agentic workflows, an early mistake can propagate through multiple subsequent decisions and actions.</p></li>
+<li><p><strong>False confidence</strong>: Fluent explanations and polished outputs can create an illusion of accuracy and understanding.</p></li>
+<li><p><strong>Verification challenges</strong>: Complex workflows may make it difficult to identify where an error originated.</p></li>
+<li><p><strong>Reproducibility</strong>: Different prompts, model versions, retrieved information, and execution paths can produce different results.</p></li>
+</ul>
+<p>Let’s dive into hallucinations, false confidence, and reproducibility.</p>
+<section id="hallucinations">
+<h3>Hallucinations<a class="headerlink" href="#hallucinations" title="Permalink to this heading">#</a></h3>
+<p>Learned embeddings and relationships between tokens allow LLMs to model statistical patterns in language. Stochastic methods use these learned relationships to generate language and produce reasoning-like responses.</p>
+<ul class="simple">
+<li><p>Statistical associations do not guarantee factual accuracy. Incomplete training information, ambiguous context, or unsupported relationships can result in fabricated information.</p></li>
+<li><p>This raises a deeper philosophical question: If LLMs and agents are simulating human speech and decision-making, isn’t their output always, in some sense, constructed? Let’s not get stuck here and instead consider mitigation strategies.</p></li>
+</ul>
+<p>Mitigation:</p>
+<ul class="simple">
+<li><p><strong>Retrieval-augmented generation (RAG)</strong> – connect an LLM to a controlled knowledge source so it can retrieve relevant information when generating responses. For example, provide a pretrained LLM with access to a curated collection of reports related to subsurface engineering and resource extraction.</p></li>
+<li><p><strong>Use external tools</strong> – give the agent access to verified methods and workflows, including numerical flow simulators, geostatistical simulators, and decision-making tools, so that calculations can be performed using established methods.</p></li>
+<li><p><strong>Verification cases</strong> – benchmark agent results against known verification cases and expected outcomes.</p></li>
+<li><p><strong>Human oversight</strong> – maintain human oversight, particularly for consequential decisions. Ask the agent to provide calculation details and intermediate results to allow expert review of the applied workflows and methods.</p></li>
+<li><p><strong>Abstention</strong> – design agents to respond, “I don’t know” or “I cannot do that” when they lack the required resources, information, or capabilities.</p></li>
+<li><p><strong>Ask for uncertainty</strong> – request uncertainty estimates and supporting evidence for agent responses. Independently evaluate whether these uncertainties are justified and calibrated.</p></li>
+</ul>
+</section>
+<section id="false-confidence">
+<h3>False Confidence<a class="headerlink" href="#false-confidence" title="Permalink to this heading">#</a></h3>
+<p>Fluent explanations and polished outputs can create an illusion of accuracy and understanding.</p>
+<ul class="simple">
+<li><p>Responses are often beautifully structured, technically sophisticated, and highly persuasive.</p></li>
+<li><p>The use of agentic AI is becoming routine and accepted across many applications.</p></li>
+<li><p>Agentic AI is easy to use and accessible to many, but difficult to explain and understood by relatively few.</p></li>
+<li><p>Agentic AI can become an unquestioned authority, and this is a recipe for train wrecks.</p></li>
+</ul>
+<p>Mitigation:</p>
+<ul class="simple">
+<li><p><strong>Independently check responses</strong> – perform calculations independently using established workflows and methods.</p></li>
+<li><p><strong>Ask for uncertainty</strong> – request uncertainty estimates and supporting evidence for agent responses.</p></li>
+<li><p><strong>Challenge the conclusion</strong> – actively seek to falsify results from agentic AI, applying the critical approach required by the scientific method.</p></li>
+</ul>
+</section>
+<section id="reproducibility">
+<h3>Reproducibility<a class="headerlink" href="#reproducibility" title="Permalink to this heading">#</a></h3>
+<p>An LLM is a stochastic text generator, with sources of variability at multiple levels, including language generation, tools, and their versions.</p>
+<ul class="simple">
+<li><p>Every response can be a different realization. Therefore,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\text{same prompt} \ne \text{same answer}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\text{same objective} \ne \text{same execution path}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\text{a convincing result} \ne \text{a reproducible result}
+\]</div>
+<p>Mitigation:</p>
+<ul class="simple">
+<li><p><strong>Fix model and tool versions</strong> – document and control the versions of models, external tools, and software dependencies.</p></li>
+<li><p><strong>Set random number seeds</strong> – where supported, fix random number seeds to improve reproducibility of stochastic operations.</p></li>
+<li><p><strong>Reduce generator randomness</strong> – use lower temperature settings to reduce variation in generated responses.</p></li>
+<li><p><strong>Record execution details</strong> – retain prompts, retrieved information, tool inputs and outputs, model settings, and intermediate results to support auditing and reproduction of workflows.</p></li>
+</ul>
+<p>In summary,</p>
+<ul class="simple">
+<li><p>verification is not an optional final step. It must be designed into the agentic workflow.</p></li>
+</ul>
+<p>To better understand agentic AI reproducibility, let’s fill in more details on temperature and random number seeds.</p>
+</section>
+<section id="temperature">
+<h3>Temperature<a class="headerlink" href="#temperature" title="Permalink to this heading">#</a></h3>
+<p>Temperature controls how predictable an LLM’s generated responses are, not how capable or autonomous the agent is. It adjusts the probability distribution used when sampling the next token. Lower temperatures favor higher-probability tokens, while higher temperatures allow less-probable tokens to be selected more often.</p>
+<ul class="simple">
+<li><p><strong>Low temperature</strong> (e.g., 0.0–0.2): More predictable, consistent, and conservative responses. The model favors higher-probability tokens.</p></li>
+<li><p><strong>Medium temperature</strong> (e.g., 0.5–0.7): More variation in wording, generated responses, and potential approaches.</p></li>
+<li><p><strong>High temperature</strong> (e.g., 0.8–1.0+): More diverse and less predictable responses, with greater potential for unusual ideas and mistakes.</p></li>
+</ul>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Agent task</p></th>
+<th class="head text-center"><p>Suggested temperature</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Mathematical calculations</p></td>
+<td class="text-center"><p>0.0–0.2</p></td>
+</tr>
+<tr class="row-odd"><td><p>Data analysis</p></td>
+<td class="text-center"><p>0.0–0.2</p></td>
+</tr>
+<tr class="row-even"><td><p>Tool selection</p></td>
+<td class="text-center"><p>0.0–0.2</p></td>
+</tr>
+<tr class="row-odd"><td><p>Planning and task decomposition</p></td>
+<td class="text-center"><p>0.2–0.5</p></td>
+</tr>
+<tr class="row-even"><td><p>Research and synthesis</p></td>
+<td class="text-center"><p>0.3–0.6</p></td>
+</tr>
+<tr class="row-odd"><td><p>Brainstorming solutions</p></td>
+<td class="text-center"><p>0.7–1.0</p></td>
+</tr>
+<tr class="row-even"><td><p>Creative content generation</p></td>
+<td class="text-center"><p>0.7–1.0</p></td>
+</tr>
+</tbody>
+</table>
+<p>These are illustrative starting points, not universal settings. The appropriate temperature depends on the model, task, and application. For calculations and data analysis, deterministic external tools are preferable to relying on generated text, regardless of temperature.</p>
+</section>
+<section id="random-number-seed">
+<h3>Random Number Seed<a class="headerlink" href="#random-number-seed" title="Permalink to this heading">#</a></h3>
+<p>Temperature controls how much variation we encourage; the random seed helps us reproduce the variation.</p>
+<p>When an LLM generates a response, it samples from a probability distribution of possible next tokens. A random number seed initializes the pseudorandom number generator used in this sampling process. Using the same seed, with otherwise identical conditions, can help reproduce the same sequence of sampling decisions.</p>
+<p>Important considerations:</p>
+<ul class="simple">
+<li><p>A fixed seed can improve reproducibility, but does not guarantee identical outputs across different models, model versions, hardware, APIs, or multi-agent workflows.</p></li>
+<li><p>External tools, changing data, and nondeterministic execution can also affect results.</p></li>
+<li><p>A fixed seed does not make a high-temperature response predictable; it makes the sampling process more repeatable under otherwise identical conditions.</p></li>
+<li><p>Not all LLM providers or APIs expose a random seed parameter, and some provide only best-effort reproducibility.</p></li>
+</ul>
+<p>For reproducible agentic AI workflows, record the model and version, temperature, random seed (when available), prompts, tool inputs and outputs, retrieved information, and relevant software settings. This makes it easier to audit and investigate differences between runs.</p>
+</section>
+<section id="professional-standards">
+<h3>Professional Standards<a class="headerlink" href="#professional-standards" title="Permalink to this heading">#</a></h3>
+<p>Professional societies are establishing professional standards for the use of AI. Some common principles include:</p>
+<ul class="simple">
+<li><p>The use of AI remains within the scope of competent professional practice, with all the responsibilities and obligations of professional practice.</p></li>
+<li><p>AI is a tool, like other professional software. The professional remains responsible for understanding the methods, evaluating the results, and exercising appropriate judgment.</p></li>
+</ul>
+<p>This brings us to an important question: Who controls the agent, and who remains accountable for its actions?</p>
+</section>
+</section>
+<section id="who-is-responsible">
+<h2>Who is Responsible?<a class="headerlink" href="#who-is-responsible" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Autonomy without accountability</strong>: Who is responsible when an AI agent makes a consequential decision or takes an incorrect action?</p></li>
+<li><p><strong>Unintended consequences</strong>: An agent may faithfully pursue an objective while producing outcomes that were never intended.</p></li>
+<li><p><strong>Security vulnerabilities</strong>: Prompt injection, malicious retrieved content, and unauthorized tool access can manipulate agent behavior.</p></li>
+<li><p><strong>Loss of control</strong>: Agents with broad permissions can take actions, modify information, or interact with external systems faster than humans can supervise.</p></li>
+<li><p><strong>Confidentiality</strong>: Sensitive data may be exposed through prompts, retrieval systems, external tools, or connected applications.</p></li>
+</ul>
+</section>
+<section id="what-happens-to-expertise">
+<h2>What Happens to Expertise?<a class="headerlink" href="#what-happens-to-expertise" title="Permalink to this heading">#</a></h2>
+<p>These are the big human questions:</p>
+<p><strong>If AI performs the analysis</strong>, who develops the next generation of expert analysts?</p>
+<p><strong>If students delegate problem-solving</strong>, how do they develop technical intuition?</p>
+<p><strong>If professionals stop checking the underlying mathematics</strong>, how will they recognize when the answer is wrong?</p>
+<p><strong>If organizations replace expertise with automation</strong>, where will the judgment come from when the automation fails?</p>
+<p><strong>If we optimize for productivity today</strong>, are we sacrificing the expertise we need tomorrow?</p>
+<p>Are we building more capable humans, or making humans less capable?</p>
+<p>These are important questions. But they are not arguments against progress. They are reminders that we must be thoughtful about how we develop, deploy, and work with agentic AI.</p>
+<p>Let’s end on a positive note and explore some agentic AI optimism.</p>
+</section>
+<section id="agentic-ai-opportunities">
+<h2>Agentic AI Opportunities<a class="headerlink" href="#agentic-ai-opportunities" title="Permalink to this heading">#</a></h2>
+<p>There are amazing opportunities with agentic AI. Let’s talk about some of the possibilities.</p>
+<section id="age-of-amplified-human-potential">
+<h3>Age of Amplified Human Potential<a class="headerlink" href="#age-of-amplified-human-potential" title="Permalink to this heading">#</a></h3>
+<p>I agree, with agentic AI we can accomplish much more. Even with this e-book, I have accelerated my writing.</p>
+<ul class="simple">
+<li><p>I don’t spend time manually writing Markdown equations. Instead, I ask agentic AI to convert equations from my PowerPoint slides or create the Markdown representation from an equation description.</p></li>
+<li><p>I check my writing and, at times, ask agentic AI to help improve the grammar, clarity, and conciseness of my statements.</p></li>
+</ul>
+<p>As a professor, I have seen an improvement in my students’ writing as they use agentic AI to check and improve the grammar, logical flow, and clarity of their writing.</p>
+<ul class="simple">
+<li><p>I spend less time working as a line editor and more time focused on defensible, clear scientific communication.</p></li>
+</ul>
+<p>Here are some ideas for the opportunities in the age of amplified human potential.</p>
+<ul class="simple">
+<li><p><strong>Explore the impossible</strong>: Investigate more ideas, hypotheses, and possibilities than ever before.</p></li>
+<li><p><strong>Accelerate discovery</strong>: Move from questions to experiments, analysis, and insights at unprecedented speed.</p></li>
+<li><p><strong>Multiply expertise</strong>: Bring together knowledge, tools, and capabilities across disciplines.</p></li>
+<li><p><strong>Democratize innovation</strong>: Give more people access to powerful analytical and computational capabilities.</p></li>
+<li><p><strong>Solve bigger problems</strong>: Tackle complex scientific, engineering, environmental, and societal challenges.</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/agentic/foundation_model.png" style="display: block; margin: 0 auto; width: 80%;">
+  <figcaption style="text-align: center;">Illustration of seismic foundation model training generator (Qianqian et al., in press).</figcaption>
+</figure>
+</section>
+<section id="the-future-belongs-to-those-who-can-think-create-and-collaborate">
+<h3>The Future Belongs to Those Who Can Think, Create, and Collaborate<a class="headerlink" href="#the-future-belongs-to-those-who-can-think-create-and-collaborate" title="Permalink to this heading">#</a></h3>
+<p>I do not feel that agentic AI will replace human ingenuity. Here are some ideas to support this:</p>
+<ul class="simple">
+<li><p><strong>Fundamentals still matter</strong>: Mathematics, science, engineering, and critical thinking become even more valuable.</p></li>
+<li><p><strong>Creativity becomes leverage</strong>: Our ability to ask better questions and imagine new possibilities becomes a competitive advantage.</p></li>
+<li><p><strong>Expertise becomes scalable</strong>: One expert can orchestrate AI capabilities to accomplish work that once required a much larger team.</p></li>
+<li><p><strong>Learning becomes continuous</strong>: We can explore unfamiliar disciplines, develop new skills, and accelerate our intellectual growth.</p></li>
+<li><p><strong>Human ambition sets the direction</strong>: AI expands what we can accomplish, but we decide what is worth accomplishing.</p></li>
+</ul>
+<p>AI is not the end of human ingenuity. It may be the greatest amplifier of human ingenuity we have ever created.</p>
+<p>A potential roadmap to maximize value with AI at work:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>AI should help us…</strong></p></th>
+<th class="head"><p><strong>Humans must retain…</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Process more information</p></td>
+<td><p>Critical thinking</p></td>
+</tr>
+<tr class="row-odd"><td><p>Explore more alternatives</p></td>
+<td><p>Judgment</p></td>
+</tr>
+<tr class="row-even"><td><p>Automate repetitive work</p></td>
+<td><p>Fundamental skills</p></td>
+</tr>
+<tr class="row-odd"><td><p>Generate hypotheses</p></td>
+<td><p>Scientific skepticism</p></td>
+</tr>
+<tr class="row-even"><td><p>Execute complex workflows</p></td>
+<td><p>Accountability</p></td>
+</tr>
+<tr class="row-odd"><td><p>Accelerate learning</p></td>
+<td><p>Understanding</p></td>
+</tr>
+</tbody>
+</table>
+<p>We could say:</p>
+<ul class="simple">
+<li><p>The greatest risk of AI isn’t that machines become too intelligent,</p></li>
+<li><p>it’s that humans stop developing their own intelligence.</p></li>
+</ul>
+</section>
+</section>
+<section id="chapter-summary">
+<h2>Chapter Summary<a class="headerlink" href="#chapter-summary" title="Permalink to this heading">#</a></h2>
+<ol class="arabic">
+<li><p><strong>The Transformer is the engine; the agent is the system</strong></p>
+<p>The Transformer provides the language modeling capability. Agentic architecture adds planning, tools, memory, feedback, and execution.</p>
+</li>
+<li><p><strong>Prediction becomes action</strong></p>
+<p>An LLM predicts the next token. An agentic system uses model-generated outputs to select actions, observe their consequences, and determine what to do next.</p>
+</li>
+<li><p><strong>Autonomy requires feedback and judgment</strong></p>
+<p>The ability to execute actions does not automatically make an agent reliable. Verification, feedback, constraints, and human oversight are essential.</p>
+</li>
+<li><p><strong>Human productivity increases, but human ingenuity remains critical</strong></p>
+<p>Enhanced human productivity still requires strong fundamentals, creativity, critical thinking, and expertise.</p>
+</li>
+</ol>
+</section>
+<section id="comments">
+<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
+<p>This was a basic treatment of transformers, with a simple transfomer built from scratch and applied to 2 simple demonstration problems. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a> and the YouTube lecture links at the start of this chapter with resource links in the videos’ descriptions.</p>
+<p>I hope this is helpful,</p>
+<p><em>Michael</em></p>
+</section>
+<section id="about-the-author">
+<h2>About the Author<a class="headerlink" href="#about-the-author" title="Permalink to this heading">#</a></h2>
+<figure style="text-align: center;">
+  <img src="_static/intro/michael_pyrcz_officeshot_jacket.jpg" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
+</figcaption>
+</figure>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a>, <a class="reference internal" href="MachineLearning_glossary_g_l.html#geostatistics"><span class="std std-doc">geostatistics</span></a>, and machine learning. Michael is also,</p>
+<ul class="simple">
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a <a class="reference internal" href="MachineLearning_glossary_a_c.html#core"><span class="std std-doc">core</span></a> faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
+</ul>
+<p>Michael has written over 100 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">data</span></a> analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
+</section>
+<section id="want-to-work-together">
+<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, <a class="reference internal" href="MachineLearning_glossary_d_f.html#data-analytics"><span class="std std-doc">data analytics</span></a> and machine learning. Students and working professionals are welcome to participate.</p>
+<ul class="simple">
+<li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface <a class="reference internal" href="MachineLearning_glossary_d_f.html#data"><span class="std std-doc">Data</span></a> Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add <a class="reference internal" href="MachineLearning_glossary_s_z.html#value"><span class="std std-doc">value</span></a>. We are solving challenging subsurface problems!</p></li>
+<li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
+</ul>
+<p>I’m always happy to discuss,</p>
+<p><em>Michael</em></p>
+<p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="MachineLearning_transformer.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Transformers</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="MachineLearning_time_series.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Time Series Analysis and Modeling</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-transformer-based-large-language-models-llm-to-agentic-ai">From Transformer-based Large Language Models (LLM) to Agentic AI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-a-llm-does">What a LLM Does?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agentic-ai-architecture">Agentic AI Architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#components-of-an-ai-agent">Components of an AI Agent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autonomy-reliability-and-human-oversight">Autonomy, Reliability, and Human Oversight</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integrating-agentic-ai">Integrating Agentic AI</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agentic-ai-system-for-subsurface-analysis">Agentic AI System for Subsurface Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unexpected-decline-in-a-well">Unexpected Decline in a Well</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-locations-for-the-next-wells">Selecting Locations for the Next Wells</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#developing-a-new-production-forecasting-workflow">Developing a New Production Forecasting Workflow</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agentic-ai-issues">Agentic AI Issues</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#off-skilling">Off-Skilling</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agentic-ai-getting-it-wrong">Agentic AI Getting It Wrong</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hallucinations">Hallucinations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#false-confidence">False Confidence</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reproducibility">Reproducibility</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature">Temperature</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-number-seed">Random Number Seed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#professional-standards">Professional Standards</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-is-responsible">Who is Responsible?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-happens-to-expertise">What Happens to Expertise?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agentic-ai-opportunities">Agentic AI Opportunities</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#age-of-amplified-human-potential">Age of Amplified Human Potential</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-future-belongs-to-those-who-can-think-create-and-collaborate">The Future Belongs to Those Who Can Think, Create, and Collaborate</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chapter-summary">Chapter Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Michael J. Pyrcz
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024 CC BY-NC-ND 4.0.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div style="
+  margin-top:1em;
+  text-align:center;
+  width:100%;
+  ">
+  <img src="_static/images/backcover.png"
+       alt="Applied Machine Learning in Python back cover"
+       style="
+         display:block;
+         margin-left:25px;
+         margin-right:auto;
+         width:77.5%;
+         max-width:775px;
+       ">
+</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
